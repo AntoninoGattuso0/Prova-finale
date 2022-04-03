@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+
+\title{Peer-Review 55: UML}
+\author{Gambarin Paolo, Gattuso Antonino, Mersam Rebeca\\Gruppo 56}
+
+\begin{document}
+
+\maketitle
+
+Valutazione del diagramma UML delle classi del gruppo 55.
+
+\section{Lati positivi}
+
+Un lato positivo che abbiamo trovato è quello dell'utilizzo di un array di interi per contare il numero di pedine per ogni colore.
+
+\section{Lati negativi}
+
+Purtroppo in questo UML abbiamo trovato non pochi lati negativi:
+
+        -i nomi utilizzati per rappresentare le variabili e i metodi sono poco chiari e molto spesso vengono utilizzati per rappresentare variabili di classe diverse (es. id)
+        -alcuni attributi cambiano tipo in classi diverse: prof in "notUsedPieces" viene indicato come booleano, mentre in PlayerBoard viene indicato come intero
+        -le cardinalità a volte sono sbagliate: ci sono come minimo 2 cloud; ci sono minimo 2 playerboard
+        -ci sono alcuni errori per quanto riguarda le variabili in ingresso e uscita dei metodi: in CLOUD "setPlaceForStudent" crediamo debba restituire un intero dato che deve stabilire il numero
+            di studenti per ogni nuvola (quindi il nome SET non è il più appropriato); "getStudentCloud" dovrebbe avere in ingresso l'ID della nuvola e restituire un array di interi contenente
+            il numero di studenti per ogni colore presente sulla nuvola
+        -per quanto riguarda la classe ISLAND il numero di torri non è necessario dato che possono essere presenti 0 oppure 1 torre. Inoltre la dominanza non è determinata da un singolo colore, ma da tutte
+            le pedine dello stesso colore dei professori appartenenti a un determinato player
+        -la classe che indica i pezzi non usati è molto confusionaria dal punto di vista logico e pratico
+        -gameBoard presenta un metodo (setGame) che dovrebbe essere implementato in Game
+        -in PlayerBoard alcuni attributi e metodi sono ridondanti e dovrebbero essere ottimizzati 
+
+\section{Confronto tra le architetture}
+
+Confrontando i nostri due elaborati potremmo prendere spunto dal loro e utilizzare un array di interi invece di singole variabili per contare gli studenti di ogni colore, 
+dato che come scrittura è senz'altro più sintetica.
+
+\end{document}
