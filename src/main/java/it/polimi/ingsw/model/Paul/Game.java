@@ -1,5 +1,5 @@
 package it.polimi.ingsw.model.Paul;
 
-public class island {
-
+public class Game {
 }
+
