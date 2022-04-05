@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model.Nino;
 
 public class Ciro {
-    sd
+    public int calculateInfluence(){
+
+    }
 }

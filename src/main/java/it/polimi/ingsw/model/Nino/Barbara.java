@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model.Nino;
 
 public class Barbara {
-    cvs
+    public void compare(){
+
+    }
 }
