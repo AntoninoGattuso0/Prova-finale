@@ -1,4 +1,4 @@
-package it.polimi.ingsw.model.Nino;
+package it.polimi.ingsw.model;
 
 public class Dante {
     public int updateStepMN(int stepMotherNature){

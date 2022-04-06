@@ -1,6 +1,6 @@
-package it.polimi.ingsw.model.Rebi;
+package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.model.Paul.ColorPawn;
+import it.polimi.ingsw.model.ColorPawn;
 
 public class DiningRoom {
     private int blueRow;

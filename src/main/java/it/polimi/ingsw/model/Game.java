@@ -1,9 +1,5 @@
-package it.polimi.ingsw.model.Paul;
+package it.polimi.ingsw.model;
 
-
-import it.polimi.ingsw.model.Nino.CharacterCard;
-import it.polimi.ingsw.model.Nino.Cloud;
-import it.polimi.ingsw.model.Nino.Player;
 
 import java.util.ArrayList;
 import java.util.Random;

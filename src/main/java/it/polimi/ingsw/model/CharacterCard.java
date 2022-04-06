@@ -1,4 +1,4 @@
-package it.polimi.ingsw.model.Nino;
+package it.polimi.ingsw.model;
 
 public class CharacterCard {
     private int coinPrice;

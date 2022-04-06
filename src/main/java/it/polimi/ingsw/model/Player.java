@@ -1,6 +1,4 @@
-package it.polimi.ingsw.model.Nino;
-
-import com.sun.org.apache.xpath.internal.objects.XString;
+package it.polimi.ingsw.model;
 
 import java.util.ArrayList;
 

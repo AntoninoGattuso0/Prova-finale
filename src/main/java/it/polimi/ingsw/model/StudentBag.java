@@ -1,4 +1,4 @@
-package it.polimi.ingsw.model.Paul;
+package it.polimi.ingsw.model;
 
 public class StudentBag {
     private int num;

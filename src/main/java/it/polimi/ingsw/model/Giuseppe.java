@@ -1,4 +1,4 @@
-package it.polimi.ingsw.model.Rebi;
+package it.polimi.ingsw.model;
 
 public class Giuseppe {
     private int numPawn;
