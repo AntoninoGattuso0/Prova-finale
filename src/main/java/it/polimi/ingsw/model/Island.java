@@ -16,6 +16,8 @@ public  class Island {
         return isMotherNature;
     }
 
+    public void setMotherNatureTrue(){isMotherNature = true;};
+
     public boolean isTower(){
         return isTower;
     }
