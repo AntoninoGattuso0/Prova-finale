@@ -8,18 +8,18 @@ import java.util.Random;
 public class Game {
     private ArrayList<Player> players = new ArrayList<>(4);
     protected int totPlayer = 0;
-    private Cloud[] cloud = new Cloud[4];
+    private Cloud[] cloud;
     private ArrayList<Island> islands = new ArrayList<>(12);
     protected boolean isExpert;
     private CharacterCard[] card = new CharacterCard[3];
 
-    private void start(){
+    private void start() {
         int i;
 
-        StudentBag.num=120;
-        StudentBag.greenNum=StudentBag.redNum=StudentBag.yellowNum=StudentBag.pinkNum=StudentBag.blueNum=24;
+        StudentBag.num = 120;
+        StudentBag.greenNum = StudentBag.redNum = StudentBag.yellowNum = StudentBag.pinkNum = StudentBag.blueNum = 24;
 
-        for(i=0, i<11, i++){
+        for (i = 0, i < 11, i++) {
             Island island = new Island();
             island.isMotherNature = false;
             island.greenPawn = 0;
@@ -34,41 +34,55 @@ public class Game {
             islands.add(island);
         }
 
-        for(i=0; i<totPlayer-1; i++){
-            Player player = new Player();
-            newPlayer(player);
-            players.add(player);
-        }
 
+        newPlayer();
+
+//randomizza pedine per ogni isola
         Random rnd = new Random();
         int n = rnd.nextInt(12);
         islands.get(n).isMotherNature = true;
         int g, r, y, p, b = 2; //conteggio 2 pedine per colore
-        for(i=n+1; islands.get(i).isMotherNature = false; i++){
-            if(i==12) i=0;
-            if((i==n+6) || (i==n-6)) i++;
+        for (i = n + 1; !islands.get(i).isMotherNature; i += 1) {
+            if (i == 12) i = 0;
+            if ((i == n + 6) || (i == n - 6)) i += 1;
             int color = rnd.nextInt(5);
-            if((color == 0 && g!=0)){
-                g--;
-                islands.get(i).greenPawn += 1;
+            boolean check = false;
+            while (!check) {
+                if (color == 0 && g != 0) {
+                    g -= 1;
+                    islands.get(i).greenPawn += 1;
+                    check=true;
+                } else if (color == 1 && r != 0) {
+                    r -= 1;
+                    islands.get(i).redPawn += 1;
+                    check=true;
+                } else if (color == 2 && y != 0) {
+                    y -= 1;
+                    islands.get(i).yellowPawn += 1;
+                    check=true;
+                } else if (color == 3 && p != 0) {
+                    p -= 1;
+                    islands.get(i).pinkPawn += 1;
+                    check=true;
+                } else if (color == 4 && b != 0) {
+                    b -= 1;
+                    islands.get(i).bluePawn += 1;
+                    check=true;
+                }
+                else {
+                    color += 1;
+                    if (color == 5) color = 0;
+                }
             }
-            else if(color == 1){
-                r--;
-                islands.get(i).redPawn += 1;
-            }
-            else if(color == 2){
-                r--;
-                islands.get(i).yellowPawn += 1;
-            }
-            else if(color == 3){
-                p--;
-                islands.get(i).pinkPawn += 1;
-            }
-            else{
-                b--;
-                islands.get(i).bluePawn += 1;
-            }
-        };
+        }
+
+        // creazione nuvole
+        cloud = new Cloud[4]
+        for(i=0; i<totPlayer; i++){
+            Cloud nuvola = new Cloud();
+            cloud[i] = nuvola;
+        }
+    }
 
     public void newPlayer(){
         Player player = new Player();
