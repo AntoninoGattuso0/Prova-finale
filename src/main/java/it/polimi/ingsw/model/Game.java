@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
 
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,22 +17,41 @@ public class Game {
         int i;
         for(i=0, i<11, i++){
             Island island = new Island();
+            island.isMotherNature = false;
+            island.greenPawn = 0;
+            island.redPawn = 0;
+            island.yellowPawn = 0;
+            island.pinkPawn = 0;
+            island.bluePawn = 0;
+            island.isTower = false;
+            island.colorTower = null;
+            island.isProhibited = false;
+            island.totIsland = 1;
             islands.add(island);
         }
+
         for(i=0, i<totPlayer-1, i++){
             Player player = new Player();
+            newPlayer(player);
             players.add(player);
         }
+
         Random rnd = new Random();
         int n = rnd.nextInt(12);
-        islands.get(n).setMotherNatureTrue();
+        islands.get(n).isMotherNature = true;
+        for(i=n+1, , i++){
+            if(i==12) i=0;
+            if((i==n+6) || (i==n+6)) i++;
+        }
     };
 
-    public void newPlayer(){
-        for(int i=0, i<totPlayer, i++)
-        Player player1 = new Player();
-        players.add(player1);
-};
+    public void newPlayer(Player player){
+        Console console = System.console();
+        String str = console.readLine(" Inserisci il nome del Giocatore : ");
+        player.chooseNick(str);
+        player.numCoin = 0;
+    };
+
 
     public void moveMotherNature(int num);
 

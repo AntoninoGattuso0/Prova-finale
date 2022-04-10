@@ -1,22 +1,20 @@
 package it.polimi.ingsw.model;
 
 public  class Island {
-    private boolean isMotherNature;
-    private int greenPawn;
-    private int redPawn;
-    private int yellowPawn;
-    private int pinkPawn;
-    private int bluePawn;
-    private boolean isTower;
-    private ColorTower colorTower;
-    private boolean isProhibited;
-    private int totIsland;
+    protected boolean isMotherNature;
+    protected int greenPawn;
+    protected int redPawn;
+    protected int yellowPawn;
+    protected int pinkPawn;
+    protected int bluePawn;
+    protected boolean isTower;
+    protected ColorTower colorTower;
+    protected boolean isProhibited;
+    protected int totIsland;
 
     public boolean isMotherNature(){
         return isMotherNature;
     }
-
-    public void setMotherNatureTrue(){isMotherNature = true;};
 
     public boolean isTower(){
         return isTower;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Player {
     private String nickname;
-    private int numCoin;
+    protected int numCoin;
     private ArrayList<AssistantCard>;
     private SchoolBoard schoolBoard;
     private AssistanceCard currentAssistant;
