@@ -1,14 +1,14 @@
 package it.polimi.ingsw.model;
 
-public class StudentBag {
-    private int num;
-    private int greenNum;
-    private int redNum;
-    private int yellowNum;
-    private int pinkNum;
-    private int blueNum;
+public class  StudentBag {
+    static protected int num;
+    static protected int greenNum;
+    static protected int redNum;
+    static protected int yellowNum;
+    static protected int pinkNum;
+    static protected int blueNum;
 
-    public boolean checkNum(int num){
+    static public boolean checkNum(int num){
         if (num=='0')
             return true;
         return false;
