@@ -7,11 +7,9 @@ import java.util.ArrayList;
 
 public class GameTest extends TestCase {
     @Test
-    Island island = null;
-    ArrayList<Island>islands = new ArrayList<>(12);
-    int n;
-    public void testMotherNature(){
-        island = new Island();
-        assertEquals(true, islands.get(n).isMotherNature());
+    public void testStart(){
+        Game.totPlayer = 2;
+        Game.start();
+        assertEquals(2, Game.totPlayer);
     }
 }

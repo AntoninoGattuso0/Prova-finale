@@ -10,6 +10,6 @@ public class ProfTable {
     private int pinkProf;
     private int redProf;
 
-    public boolean checkProf(ColorPawn colorPawn )
+    public boolean checkProf(ColorPawn colorPawn );
 
 }

@@ -8,8 +8,8 @@ public class  StudentBag {
     static protected int pinkNum;
     static protected int blueNum;
 
-    static public boolean checkNum(int num){
-        if (num=='0')
+    static public boolean checkNum(){
+        if (StudentBag.num=='0')
             return true;
         return false;
     }
