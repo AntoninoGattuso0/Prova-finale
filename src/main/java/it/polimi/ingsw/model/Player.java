@@ -16,8 +16,14 @@ public class Player {
     public void useCaracter(Character card){
 
     }
-    public void useAssistance(AssistantCard card){
-
+    public void useAssistant(AssistantCard card){
+        int i;
+        int contr=0;
+        for(i=0;i<deckAssistant.size()&&contr==0;i++) {
+            if ( deckAssistant.get(i).cardValue == card.cardValue;){
+                deckAssistant.remove(i);
+            }
+        }
     }
     public void chooseNick(String nickname){
 
