@@ -98,19 +98,32 @@ public class Game {
         }
 
         //aggiunta di pedine all'entrata di ogni player
+        for(i=0; i<totPlayer; i++){
 
+        }
 
     }
 
     public static void newPlayer(String nick) {
-        int i;
-        for(i=0; i<totPlayer; i++){
+        int i, j, k;
+        for(i=0; i<totPlayer; i++) {
             Player player = new Player();
             player.chooseNick(nick);
-            if(isExpert)player.numCoin=1;
+            if (isExpert) player.numCoin = 1;
             else player.numCoin = -1;
-            player.deckAssistance
-            players.add(player);
+            //creazione assistenti
+            ArrayList<AssistantCard> deckAssistant = new ArrayList<>(10);
+            k = 1;
+            //aggiunta assistenti
+            for (j = 1; j < 11; j++) {
+                AssistantCard assistant = new AssistantCard();
+                assistant.cardValue = j;
+                if (j == 3 || j == 5 || j == 7 || j == 9) k++;
+                assistant.stepMotherNature = k;
+                deckAssistant.add(assistant);
+            }
+            player.deckAssistant = deckAssistant;
+        }
     }
 
     public void moveMotherNature(int num){
