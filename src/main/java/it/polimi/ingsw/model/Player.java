@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Player {
     private String nickname;
     protected int numCoin;
-    protected ArrayList<AssistanceCard> deckAssistance= new ArrayList<>(10);
+    protected ArrayList<AssistanceCard> deckAssistant= new ArrayList<>(10);
     protected SchoolBoard schoolBoard;
     protected AssistanceCard currentAssistant;
     public void checkNumStepMotherNature(int movemntsMotherNature,int num){

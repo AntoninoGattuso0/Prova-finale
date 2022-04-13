@@ -109,7 +109,7 @@ public class Game {
             player.chooseNick(nick);
             if(isExpert)player.numCoin=1;
             else player.numCoin = -1;
-            player.deckAssistant
+            player.deckAssistance
             players.add(player);
     }
 
