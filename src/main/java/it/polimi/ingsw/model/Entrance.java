@@ -5,7 +5,7 @@ import it.polimi.ingsw.model.ColorPawn;
 public class Entrance {
 
     protected static int numPawn;
-    protected static int greenPawn = 0;   //static
+    protected static int greenPawn = 0;   //static o no?
     protected static int bluePawn = 0;
     protected static int pinkPawn = 0;
     protected static int yellowPawn = 0;
