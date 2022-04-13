@@ -123,6 +123,9 @@ public class Game {
                 deckAssistant.add(assistant);
             }
             player.deckAssistant = deckAssistant;
+            //collegamento a schoolboard
+
+
         }
     }
 

@@ -22,7 +22,7 @@ public class Player {
         int i;
         int contr=0;
         for(i=0;i<deckAssistant.size()&&contr==0;i++) {
-            if ( deckAssistant.get(i).cardValue == card.cardValue;){
+            if (deckAssistant.get(i).cardValue == card.cardValue){
                 deckAssistant.remove(i);
             }
         }
@@ -31,12 +31,12 @@ public class Player {
 
     }
     //ho aggiunto il metodo discarded a Player e l'ho da AssistanceCard//
-    public void discarded(currentAssistant){
+    public void discarded(AssistantCard currentAssistant ){
         int i;
-        int contr==0;
+        int contr=0;
         for(i=0;i!=deckAssistant.size()&&contr==0;i++) {
             if(currentAssistant.getCardValue()==deckAssistant.get(i).getCardValue()){
-                contr==1;
+                contr=1;
                 deckAssistant.remove(i);
             }
         }
