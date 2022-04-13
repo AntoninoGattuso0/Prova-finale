@@ -27,9 +27,9 @@ public class Entrance {
     public boolean checkNum(){
         if(Game.totPlayer == 2 || Game.totPlayer == 4 && numPawn > 4)
             return true;
-        else if(Game.totPlayer = 3 && numPawn > 5)
+        else if(Game.totPlayer == 3 && numPawn > 5)
             return true;
-        else return false;
+        return false;
     }
 
     public void moveToDining(){
