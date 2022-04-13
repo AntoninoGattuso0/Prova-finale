@@ -33,7 +33,7 @@ public class Entrance {
     }
 
     public void moveToDining(){
-        int nPawn;  //variabile che tiene conto di quante pedine spostare in base al nr di player
+        int nPawn = 0;  //variabile che tiene conto di quante pedine spostare in base al nr di player
         if(Game.totPlayer == 2 || Game.totPlayer == 4) nPawn = 3;
         else if(Game.totPlayer == 3) nPawn = 4;
 
