@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-public class  StudentBag {
+public class StudentBag {
     static protected int num;
     static protected int greenNum;
     static protected int redNum;

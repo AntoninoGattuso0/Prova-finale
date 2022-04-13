@@ -3,12 +3,12 @@ package it.polimi.ingsw.model;
 import it.polimi.ingsw.model.ColorPawn;
 
 public class Entrance {
-    private int bluePawn;
-    private int greenPawn;
-    private int yellowPawn;
-    private int pinkPawn;
-    private int redPawn;
-    private int numPawn;
+    protected int bluePawn;
+    protected int greenPawn;
+    protected int yellowPawn;
+    protected int pinkPawn;
+    protected int redPawn;
+    protected int numPawn;
 
 
     void checkNum(int numPawn){

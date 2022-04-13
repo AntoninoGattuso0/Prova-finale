@@ -3,11 +3,11 @@ package it.polimi.ingsw.model;
 import it.polimi.ingsw.model.ColorPawn;
 
 public class DiningRoom {
-    private int blueRow;
-    private int greenRow;
-    private int yellowRow;
-    private int pinkRow;
-    private int redRow;
+    protected int blueRow;
+    protected int greenRow;
+    protected int yellowRow;
+    protected int pinkRow;
+    protected int redRow;
 
     public void addPawn(ColorPawn colorPawn) {
 
