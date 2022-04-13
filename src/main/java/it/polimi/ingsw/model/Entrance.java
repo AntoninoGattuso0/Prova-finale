@@ -8,7 +8,7 @@ public class Entrance {
 
     //in Game-start bisogna aggiungere un metodo che mette in Entrance le pedine studenti in base al numero di Player
 
-    //DEVO AGGIUNGERE METODO CHOOSE CLOUD PER REFILL ENTRATA
+
     //modifiche all'UML:ho aggiunto setter per definire quante sono le torri iniziali, final perché si setta all'inizio
     public final void setNumPawn(){
         if(Game.totPlayer == 2 || Game.totPlayer == 4) numPawn = 9;
@@ -20,7 +20,7 @@ public class Entrance {
         if(Game.totPlayer == 2 || Game.totPlayer == 4 && numPawn > 4)
             return true;
         else if(Game.totPlayer = 3 && numPawn > 5)
-            return true:
+            return true;
         else return false;
     }
 
@@ -33,4 +33,5 @@ public class Entrance {
     public void moveToIsland(){
 
     }
+    //DEVO AGGIUNGERE METODO CHOOSE CLOUD PER REFILL ENTRATA
 }
