@@ -35,7 +35,6 @@ public class Game {
             islands.add(island);
         }
 //mappa che associa numeri a colori ("m.get(int)" per ricevere il colore in base al numero inserito in int)
-
         m.put(0, "GREEN");
         m.put(1, "RED");
         m.put(2, "YELLOW");
@@ -99,10 +98,62 @@ public class Game {
         }
 
         //aggiunta di pedine all'entrata di ogni player
+        int j;
+        j = Entrance.numPawn;
+
         for(i=0; i<totPlayer; i++){
-
+            while(j>0) {
+                ArrayList<String> entrancePawn = new ArrayList<>();
+                if (StudentBag.greenNum != 0)
+                    entrancePawn.add("GREEN");
+                if (StudentBag.redNum != 0)
+                    entrancePawn.add("RED");
+                if (StudentBag.yellowNum != 0)
+                    entrancePawn.add("YELLOW");
+                if (StudentBag.pinkNum != 0)
+                    entrancePawn.add("PINK");
+                if (StudentBag.blueNum != 0)
+                    entrancePawn.add("BLUE");
+                if (StudentBag.num > 0) {
+                    int random = rnd.nextInt(entrancePawn.size());
+                    String color = m.get(random);
+                    if (Objects.equals(entrancePawn.get(random), "GREEN")) {
+                        Entrance.greenPawn++;
+                        Entrance.numPawn++;
+                        StudentBag.num--;
+                        StudentBag.greenNum--;
+                        if (StudentBag.greenNum == 0) startingPawn.remove(random);
+                    }
+                    else if (Objects.equals(entrancePawn.get(random), "RED")) {
+                        Entrance.redPawn++;
+                        Entrance.numPawn++;
+                        StudentBag.num--;
+                        StudentBag.redNum--;
+                        if (StudentBag.redNum == 0) startingPawn.remove(random);
+                    }
+                    else if (Objects.equals(entrancePawn.get(random), "YELLOW")) {
+                        Entrance.yellowPawn++;
+                        Entrance.numPawn++;
+                        StudentBag.num--;
+                        StudentBag.yellowNum--;
+                        if (StudentBag.yellowNum == 0) startingPawn.remove(random);
+                    }
+                    else if (Objects.equals(entrancePawn.get(random), "PINK")) {
+                        Entrance.pinkPawn++;
+                        Entrance.numPawn++;
+                        StudentBag.num--;
+                        StudentBag.pinkNum--;
+                        if (StudentBag.pinkNum == 0) startingPawn.remove(random);
+                    }
+                    else if (Objects.equals(entrancePawn.get(random), "BLUE")) {
+                        Entrance.bluePawn++;
+                        Entrance.numPawn++;
+                        StudentBag.num--;
+                        StudentBag.blueNum--;
+                        if (StudentBag.blueNum == 0) startingPawn.remove(random);
+                    }
+            }
         }
-
     }
 
     public static void newPlayer(String nick) {
@@ -126,7 +177,12 @@ public class Game {
             player.deckAssistant = deckAssistant;
             //collegamento a tower, dining and entrance
             Entrance entrance = new Entrance();
-
+            player.entrance = entrance;
+            DiningRoom diningRoom = new DiningRoom();
+            player.diningRoom = diningRoom;
+            TowerSpace towerSpace = new TowerSpace();
+            player.towerSpace = towerSpace;
+            players.add(player);
         }
     }
 
