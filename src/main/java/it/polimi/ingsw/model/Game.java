@@ -7,13 +7,14 @@ import java.util.*;
 public class Game {
     private static ArrayList<Player> players = new ArrayList<>(4);
     protected static int totPlayer = 0;
-    private static Cloud[] clouds;
+    private static ArrayList<Cloud> clouds;
     private static final ArrayList<Island> islands = new ArrayList<>(12);
-    protected boolean isExpert;
+    protected static boolean isExpert;
     private CharacterCard[] card = new CharacterCard[3];
 
     protected static void start() {
         int i;
+
 
         StudentBag.num = 120;
         StudentBag.greenNum = StudentBag.redNum = StudentBag.yellowNum = StudentBag.pinkNum = StudentBag.blueNum = 24;
@@ -32,7 +33,7 @@ public class Game {
             island.totIsland = 1;
             islands.add(island);
         }
-//mappa che associa numeri a colori
+//mappa che associa numeri a colori ("m.get(int)" per ricevere il colore in base al numero inserito in int)
         Map<Integer, String> m = new HashMap<Integer, String>();
         m.put(0, "GREEN");
         m.put(1, "RED");
@@ -43,7 +44,7 @@ public class Game {
 
         newPlayer();
 
-//randomizza pedine per ogni isola
+//randomizza pedine per ogni isola iniziale
         Random rnd = new Random();
         int n = rnd.nextInt(12);
         islands.get(n).isMotherNature = true;
@@ -53,7 +54,7 @@ public class Game {
         int y = 2;
         int p = 2;
         int b = 2; //conteggio 2 pedine per colore
-
+//arraylist per ogni colore
         ArrayList<String> startingPawn = new ArrayList<>(5);
         startingPawn.add("GREEN");
         startingPawn.add("RED");
@@ -88,24 +89,28 @@ public class Game {
                 }
             }
 
-        // creazione nuvole
-        clouds = new Cloud[4];
+        // creazione nuvole e inizializzazione
+        clouds = new ArrayList<>();
         for (i = 0; i < totPlayer; i++) {
             Cloud cloud = new Cloud();
             cloud.refillCloud();
-            clouds[i] = cloud;
+            clouds.add(cloud);
         }
+
+        //aggiunta di pedine all'entrata di ogni player
+
 
     }
 
-    public static void newPlayer() {
-        Player player = new Player();
-        Console console = System.console();
-        String str = console.readLine(" Inserisci il nome del Giocatore : ");
-        player.chooseNick(str);
-        player.numCoin = 0;
-        players.add(player);
-        totPlayer += 1; //non saprei, tot player si deve sapere a prescindere no?
+    public static void newPlayer(String nick) {
+        int i;
+        for(i=0; i<totPlayer; i++){
+            Player player = new Player();
+            player.chooseNick(nick);
+            if(isExpert)player.numCoin=1;
+            else player.numCoin = -1;
+            player.deckAssistance
+            players.add(player);
     }
 
     public void moveMotherNature(int num){
@@ -154,7 +159,7 @@ public class Game {
     };
 
     public boolean endGame(){
-        if(StudentBag.checkNum())return true;
+        if(StudentBag.num == 0)return true;
     };
 
     public void setCard(CharacterCard card) {
@@ -164,5 +169,10 @@ public class Game {
         for (i = 0; i < 4; i++) {
             card[i] = num;
         }
+    }
+
+    public int moveProf(){
+        int i;
+        return i;
     }
 }
