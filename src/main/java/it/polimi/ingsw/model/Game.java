@@ -154,7 +154,7 @@ public class Game {
     };
 
     public boolean endGame(){
-        if(StudentBag.checkNum())return true;
+        if(StudentBag.emptyPawn())return true;
     };
 
     public void setCard(CharacterCard card) {
