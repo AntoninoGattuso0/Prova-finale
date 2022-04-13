@@ -11,6 +11,7 @@ public class Game {
     private static final ArrayList<Island> islands = new ArrayList<>(12);
     protected static boolean isExpert;
     private CharacterCard[] card = new CharacterCard[3];
+    protected static Map<Integer, String> m = new HashMap<Integer, String>();
 
     protected static void start() {
         int i;
@@ -34,7 +35,7 @@ public class Game {
             islands.add(island);
         }
 //mappa che associa numeri a colori ("m.get(int)" per ricevere il colore in base al numero inserito in int)
-        Map<Integer, String> m = new HashMap<Integer, String>();
+
         m.put(0, "GREEN");
         m.put(1, "RED");
         m.put(2, "YELLOW");
@@ -123,8 +124,8 @@ public class Game {
                 deckAssistant.add(assistant);
             }
             player.deckAssistant = deckAssistant;
-            //collegamento a schoolboard
-
+            //collegamento a tower, dining and entrance
+            Entrance entrance = new Entrance();
 
         }
     }
