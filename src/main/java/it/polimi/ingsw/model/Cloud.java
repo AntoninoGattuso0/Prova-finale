@@ -79,7 +79,7 @@ public class Cloud {
                         startingPawn.remove(random);
                     }
                 }
-            }
+            }//
         }
     }
 }
