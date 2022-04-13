@@ -1,15 +1,16 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.model.ColorPawn;
-
-
 public class ProfTable {
-    private int blueProf;
-    private int greenProf;
-    private int yellowProf;
-    private int pinkProf;
-    private int redProf;
+    private int blueProf = -1;
+    private int greenProf = -1;
+    private int yellowProf = -1;
+    private int pinkProf = -1;
+    private int redProf = -1;
 
-    public boolean checkProf(ColorPawn colorPawn );
+
+    //modifiche all'UML:metodo restituisce un int ovvero il numero del giocatore che possiede il professore
+    public int checkProf()  {
+
+    }
 
 }

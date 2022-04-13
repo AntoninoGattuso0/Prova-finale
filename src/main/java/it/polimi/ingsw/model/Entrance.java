@@ -10,16 +10,17 @@ public class Entrance {
     protected int redPawn;
     protected int numPawn;
 
+    //in Game-start bisogna aggiungere un metodo che mette in Entrance le pedine studenti in base al numero di Player
 
-    void checkNum(int numPawn){
-
-    }
-
-    void moveToDining(ColorPawn colorPawn){
+    public void checkNum(int numPawn){
 
     }
 
-    void moveToIsland(ColorPawn colorPawn){
+    public void moveToDining(ColorPawn colorPawn){
+
+    }
+
+    public void moveToIsland(ColorPawn colorPawn){
 
     }
 }
