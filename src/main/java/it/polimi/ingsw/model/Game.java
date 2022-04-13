@@ -2,8 +2,7 @@ package it.polimi.ingsw.model;
 
 
 import java.io.Console;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class Game {
     private static ArrayList<Player> players = new ArrayList<>(4);
@@ -18,7 +17,7 @@ public class Game {
 
         StudentBag.num = 120;
         StudentBag.greenNum = StudentBag.redNum = StudentBag.yellowNum = StudentBag.pinkNum = StudentBag.blueNum = 24;
-
+//creazione isole
         for (i = 0; i < 12; i++) {
             Island island = new Island();
             island.isMotherNature = false;
@@ -34,6 +33,13 @@ public class Game {
             islands.add(island);
         }
 
+        Map<Integer, String> m = new HashMap<Integer, String>();
+        m.put(0, "GREEN");
+        m.put(1, "RED");
+        m.put(2, "YELLOW");
+        m.put(3, "PINK");
+        m.put(4, "BLUE");
+
 
         newPlayer();
 
@@ -41,43 +47,46 @@ public class Game {
         Random rnd = new Random();
         int n = rnd.nextInt(12);
         islands.get(n).isMotherNature = true;
+
         int g = 2;
         int r = 2;
         int y = 2;
         int p = 2;
         int b = 2; //conteggio 2 pedine per colore
+
+        ArrayList<String> startingPawn = new ArrayList<>(5);
+        startingPawn.add("GREEN");
+        startingPawn.add("RED");
+        startingPawn.add("YELLOW");
+        startingPawn.add("PINK");
+        startingPawn.add("BLUE");
+
         for (i = n + 1; !islands.get(i).isMotherNature; i++) {
             if (i == 12) i = 0;
             if ((i == n + 6) || (i == n - 6)) i++;
-            int color = rnd.nextInt(5);
-            boolean check = false;
-            while (!check) {
-                if (color == 0 && g != 0) {
+            int random = rnd.nextInt(startingPawn.size());
+            String color = m.get(random);
+                if (Objects.equals(startingPawn.get(random), "GREEN")) {
                     g--;
                     islands.get(i).greenPawn++;
-                    check = true;
-                } else if (color == 1 && r != 0) {
+                    if(g==0)startingPawn.remove(random);
+                } else if (Objects.equals(startingPawn.get(random), "RED")) {
                     r--;
                     islands.get(i).redPawn++;
-                    check = true;
-                } else if (color == 2 && y != 0) {
+                    if(r==0)startingPawn.remove(random);
+                } else if (Objects.equals(startingPawn.get(random), "YELLOW")) {
                     y--;
                     islands.get(i).yellowPawn++;
-                    check = true;
-                } else if (color == 3 && p != 0) {
+                    if(y==0)startingPawn.remove(random);
+                } else if (Objects.equals(startingPawn.get(random), "PINK")) {
                     p--;
                     islands.get(i).pinkPawn++;
-                    check = true;
-                } else if (color == 4 && b != 0) {
+                    if(p==0)startingPawn.remove(random);
+                } else if (Objects.equals(startingPawn.get(random), "BLUE") && b != 0) {
                     b--;
                     islands.get(i).bluePawn++;
-                    check = true;
-                } else {
-                    color++;
-                    if (color == 5) color = 0;
                 }
             }
-        }
 
         // creazione nuvole
         clouds = new Cloud[4];

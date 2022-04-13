@@ -12,9 +12,9 @@ public  class Island {
     protected boolean isProhibited;
     protected int totIsland;
 
-    public boolean isMotherNature(){
-        return isMotherNature;
-    }
+    //public boolean isMotherNature(){
+    //    return isMotherNature;
+    //}
 
     public boolean isTower(){
         return isTower;
