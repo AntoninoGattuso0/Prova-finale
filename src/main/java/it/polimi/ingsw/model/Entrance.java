@@ -5,9 +5,13 @@ import it.polimi.ingsw.model.ColorPawn;
 public class Entrance {
 
     protected int numPawn;
+    private int greenPawn;
+    private int bluePawn;
+    private int pinkPawn;
+    private int yellowPawn;
+    private int redPawn;
 
     //in Game-start bisogna aggiungere un metodo che mette in Entrance le pedine studenti in base al numero di Player
-
 
     //modifiche all'UML:ho aggiunto setter per definire quante sono le torri iniziali, final perché si setta all'inizio
     public final void setNumPawn(){
@@ -24,8 +28,7 @@ public class Entrance {
         else return false;
     }
 
-    public void moveToDining(ColorPawn colorPawn){
-
+    public void moveToDining(){
 
 
     }
@@ -33,5 +36,8 @@ public class Entrance {
     public void moveToIsland(){
 
     }
-    //DEVO AGGIUNGERE METODO CHOOSE CLOUD PER REFILL ENTRATA
+
+    public void chooseCloud(){
+
+    }
 }
