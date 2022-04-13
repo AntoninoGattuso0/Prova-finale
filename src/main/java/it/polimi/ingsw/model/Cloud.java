@@ -23,22 +23,22 @@ public class Cloud {
         m.put(2, "YELLOW");
         m.put(3, "PINK");
         m.put(4, "BLUE");
-        ArrayList<String> startingPawn = new ArrayList<>();
+        ArrayList<String> refillPawn = new ArrayList<>();
         if (StudentBag.greenNum != 0)
-            startingPawn.add("GREEN");
+            refillPawn.add("GREEN");
         if (StudentBag.redNum != 0)
-            startingPawn.add("RED");
+            refillPawn.add("RED");
         if (StudentBag.yellowNum != 0)
-            startingPawn.add("YELLOW");
+            refillPawn.add("YELLOW");
         if (StudentBag.pinkNum != 0)
-            startingPawn.add("PINK");
+            refillPawn.add("PINK");
         if (StudentBag.blueNum != 0)
-            startingPawn.add("BLUE");
+            refillPawn.add("BLUE");
         for (i = 0; i < numPawn; i++) {
             if (StudentBag.num > 0) {
-                int random = rnd.nextInt(startingPawn.size());
+                int random = rnd.nextInt(refillPawn.size());
                 String color = m.get(random);
-                if (Objects.equals(startingPawn.get(random), "GREEN")) {
+                if (Objects.equals(refillPawn.get(random), "GREEN")) {
                     greenPawn++;
                     numPawn++;
                     StudentBag.num--;
@@ -46,37 +46,37 @@ public class Cloud {
                     if(StudentBag.greenNum==0){
                         startingPawn.remove(random);
                     }
-                } else if (Objects.equals(startingPawn.get(random), "RED")) {
+                } else if (Objects.equals(refillPawn.get(random), "RED")) {
                     redPawn++;
                     numPawn++;
                     StudentBag.num--;
                     StudentBag.redNum--;
                     if(StudentBag.redNum==0){
-                        startingPawn.remove(random);
+                        refillPawn.remove(random);
                     }
-                } else if (Objects.equals(startingPawn.get(random), "YELLOW")) {
+                } else if (Objects.equals(refillPawn.get(random), "YELLOW")) {
                     yellowPawn++;
                     numPawn++;
                     StudentBag.num--;
                     StudentBag.yellowNum--;
                     if(StudentBag.yellowNum==0){
-                        startingPawn.remove(random);
+                        refillPawn.remove(random);
                     }
-                } else if (Objects.equals(startingPawn.get(random), "PINK")) {
+                } else if (Objects.equals(refillPawn.get(random), "PINK")) {
                     pinkPawn++;
                     numPawn++;
                     StudentBag.num--;
                     StudentBag.pinkNum--;
                     if(StudentBag.pinkNum==0){
-                        startingPawn.remove(random);
+                        refillPawn.remove(random);
                     }
-                } else if (Objects.equals(startingPawn.get(random), "BLUE")) {
+                } else if (Objects.equals(refillPawn.get(random), "BLUE")) {
                     bluePawn++;
                     numPawn++;
                     StudentBag.num--;
                     StudentBag.blueNum--;
                     if(StudentBag.blueNum==0){
-                        startingPawn.remove(random);
+                        refillPawn.remove(random);
                     }
                 }
             }
