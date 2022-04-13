@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Player {
     private String nickname;
     protected int numCoin;
-    private ArrayList<AssistanceCard> deckAssistance= new ArrayList<>(10);
+    private ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
     private SchoolBoard schoolBoard;
-    private AssistanceCard currentAssistant;
+    private AssistantCard currentAssistant;
     public void checkNumStepMotherNature(int movemntsMotherNature,int num){
 
     }
@@ -17,7 +17,7 @@ public class Player {
     public void useCaracter(Character card){
 
     }
-    public void useAssistance(AssistanceCard card){
+    public void useAssistance(AssistantCard card){
 
     }
     public void chooseNick(String nickname){
@@ -27,10 +27,10 @@ public class Player {
     public void discarded(currentAssistant){
         int i;
         int contr==0;
-        for(i=0;i!=deckAssistance.size()&&contr==0;i++) {
-            if(currentAssistant.getCardValue()==deckAssistance.get(i).getCardValue()){
+        for(i=0;i!=deckAssistant.size()&&contr==0;i++) {
+            if(currentAssistant.getCardValue()==deckAssistant.get(i).getCardValue()){
                 contr==1;
-                deckAssistance.remove(i);
+                deckAssistant.remove(i);
             }
         }
     }
