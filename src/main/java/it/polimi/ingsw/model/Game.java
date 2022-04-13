@@ -19,7 +19,7 @@ public class Game {
         StudentBag.num = 120;
         StudentBag.greenNum = StudentBag.redNum = StudentBag.yellowNum = StudentBag.pinkNum = StudentBag.blueNum = 24;
 
-        for (i = 0; i < 11; i++) {
+        for (i = 0; i < 12; i++) {
             Island island = new Island();
             island.isMotherNature = false;
             island.greenPawn = 0;
@@ -102,11 +102,11 @@ public class Game {
     public void moveMotherNature(int num){
         int i;
         int totIsland = islands.size();
-        for(i=0; islands.get(i).isMotherNature; i++);
+        for(i=0; !islands.get(i).isMotherNature; i++);
         islands.get(i).isMotherNature = false;
         num += i;
         if(num >= totIsland) num -= totIsland;
-        islands.get(i+num).isMotherNature = true;
+        islands.get(num).isMotherNature = true;
     };
 
     public void unifyIsland(){
@@ -125,7 +125,7 @@ public class Game {
                islands.remove(j);
            }
            j=i+1;
-           if(j> islands.size()) j=0;
+           if(j>= islands.size()) j=0;
            if(islands.get(j).isTower && islands.get(j).colorTower == islands.get(i).colorTower) {
                islands.get(i).greenPawn += islands.get(j).greenPawn;
                islands.get(i).redPawn += islands.get(j).redPawn;
