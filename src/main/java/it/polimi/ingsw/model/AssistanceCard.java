@@ -9,7 +9,4 @@ public class AssistanceCard {
     public int gesStep(){
         return stepMotherNature;
     }
-    public void discarded(){
-
-    }
 }

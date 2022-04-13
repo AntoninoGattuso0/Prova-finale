@@ -23,6 +23,7 @@ public class Player {
     public void chooseNick(String nickname){
 
     }
+    //ho aggiunto il metodo discarded a Player e l'ho eliminato da AssistanceCard
     public void discarded(currentAssistant){
         int i;
         int contr==0;

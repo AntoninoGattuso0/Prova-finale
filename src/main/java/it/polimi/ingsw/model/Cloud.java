@@ -10,7 +10,6 @@ public class Cloud {
     public void getNumPlayer(){
         int numPawn;
     }
-    public void refillCloud(){
-        
+    public void refillCloud() {
     }
 }
