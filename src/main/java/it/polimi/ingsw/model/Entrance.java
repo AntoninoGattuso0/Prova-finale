@@ -19,8 +19,9 @@ public class Entrance {
         else if(Game.totPlayer == 3) numPawn = 7;
     }
 
-    public
-
+    public static int getNumPawn(){
+        return numPawn;
+    }
 
     //modifiche all'UML: il ritorno di check è boolean
     public boolean checkNum(){
