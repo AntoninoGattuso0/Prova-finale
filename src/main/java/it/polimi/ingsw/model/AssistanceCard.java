@@ -1,8 +1,8 @@
 package it.polimi.ingsw.model;
 
-public class AssistanceCard {
-    private int cardValue;
-    private int stepMotherNature;
+public class AssistantCard {
+    protected int cardValue;
+    protected int stepMotherNature;
     public int getCardValue(){
         return cardValue;
     }

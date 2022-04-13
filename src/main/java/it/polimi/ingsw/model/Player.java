@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Player {
     private String nickname;
     protected int numCoin;
-    protected ArrayList<AssistanceCard> deckAssistant= new ArrayList<>(10);
-    protected SchoolBoard schoolBoard;
-    protected AssistanceCard currentAssistant;
+    private ArrayList<AssistanceCard> deckAssistance= new ArrayList<>(10);
+    private SchoolBoard schoolBoard;
+    private AssistanceCard currentAssistant;
     public void checkNumStepMotherNature(int movemntsMotherNature,int num){
 
     }
@@ -23,7 +23,7 @@ public class Player {
     public void chooseNick(String nickname){
 
     }
-    //ho aggiunto il metodo discarded a Player e l'ho eliminato da AssistanceCard
+    //ho aggiunto il metodo discarded a Player e l'ho da AssistanceCard
     public void discarded(currentAssistant){
         int i;
         int contr==0;
