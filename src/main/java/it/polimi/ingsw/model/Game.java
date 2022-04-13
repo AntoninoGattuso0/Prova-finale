@@ -9,11 +9,12 @@ public class Game {
     protected static int totPlayer = 0;
     private static ArrayList<Cloud> clouds;
     private static final ArrayList<Island> islands = new ArrayList<>(12);
-    protected boolean isExpert;
+    protected static boolean isExpert;
     private CharacterCard[] card = new CharacterCard[3];
 
     protected static void start() {
         int i;
+
 
         StudentBag.num = 120;
         StudentBag.greenNum = StudentBag.redNum = StudentBag.yellowNum = StudentBag.pinkNum = StudentBag.blueNum = 24;
@@ -88,24 +89,28 @@ public class Game {
                 }
             }
 
-        // creazione nuvole
-        clouds = new Cloud[4];
+        // creazione nuvole e inizializzazione
+        clouds = new ArrayList<>();
         for (i = 0; i < totPlayer; i++) {
             Cloud cloud = new Cloud();
             cloud.refillCloud();
-            clouds[i] = cloud;
+            clouds.add(cloud);
         }
+
+        //aggiunta di pedine all'entrata di ogni player
+
 
     }
 
-    public static void newPlayer() {
-        Player player = new Player();
-        Console console = System.console();
-        String str = console.readLine(" Inserisci il nome del Giocatore : ");
-        player.chooseNick(str);
-        player.numCoin = 0;
-        players.add(player);
-        totPlayer += 1; //non saprei, tot player si deve sapere a prescindere no?
+    public static void newPlayer(String nick) {
+        int i;
+        for(i=0; i<totPlayer; i++){
+            Player player = new Player();
+            player.chooseNick(nick);
+            if(isExpert)player.numCoin=1;
+            else player.numCoin = -1;
+            player.deckAssistant
+            players.add(player);
     }
 
     public void moveMotherNature(int num){
@@ -154,7 +159,7 @@ public class Game {
     };
 
     public boolean endGame(){
-        if(StudentBag.emptyPawn())return true;
+        if(StudentBag.num == 0)return true;
     };
 
     public void setCard(CharacterCard card) {
@@ -164,5 +169,10 @@ public class Game {
         for (i = 0; i < 4; i++) {
             card[i] = num;
         }
+    }
+
+    public int moveProf(){
+        int i;
+        return i;
     }
 }
