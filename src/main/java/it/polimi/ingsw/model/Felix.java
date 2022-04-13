@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-public class Felix {
+public class Felix extends CharacterCard{
     public void topInflunence(){
 
     }

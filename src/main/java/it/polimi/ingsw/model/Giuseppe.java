@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-public class Giuseppe {
+public class Giuseppe extends CharacterCard{
     private int numPawn;
     private int bluePawn;
     private int greenPawn;
