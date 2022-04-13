@@ -7,7 +7,7 @@ import java.util.*;
 public class Game {
     private static ArrayList<Player> players = new ArrayList<>(4);
     protected static int totPlayer = 0;
-    private static Cloud[] clouds;
+    private static ArrayList<Cloud> clouds;
     private static final ArrayList<Island> islands = new ArrayList<>(12);
     protected boolean isExpert;
     private CharacterCard[] card = new CharacterCard[3];
@@ -32,7 +32,7 @@ public class Game {
             island.totIsland = 1;
             islands.add(island);
         }
-//mappa che associa numeri a colori
+//mappa che associa numeri a colori ("m.get(int)" per ricevere il colore in base al numero inserito in int)
         Map<Integer, String> m = new HashMap<Integer, String>();
         m.put(0, "GREEN");
         m.put(1, "RED");
@@ -43,7 +43,7 @@ public class Game {
 
         newPlayer();
 
-//randomizza pedine per ogni isola
+//randomizza pedine per ogni isola iniziale
         Random rnd = new Random();
         int n = rnd.nextInt(12);
         islands.get(n).isMotherNature = true;
@@ -53,7 +53,7 @@ public class Game {
         int y = 2;
         int p = 2;
         int b = 2; //conteggio 2 pedine per colore
-
+//arraylist per ogni colore
         ArrayList<String> startingPawn = new ArrayList<>(5);
         startingPawn.add("GREEN");
         startingPawn.add("RED");
@@ -154,7 +154,7 @@ public class Game {
     };
 
     public boolean endGame(){
-        if(StudentBag.checkNum())return true;
+        if(StudentBag.emptyPawn())return true;
     };
 
     public void setCard(CharacterCard card) {
