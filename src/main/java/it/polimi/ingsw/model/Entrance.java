@@ -5,11 +5,11 @@ import it.polimi.ingsw.model.ColorPawn;
 public class Entrance {
 
     protected static int numPawn;
-    private int greenPawn = 0;
-    private int bluePawn = 0;
-    private int pinkPawn = 0;
-    private int yellowPawn = 0;
-    private int redPawn = 0;
+    protected static int greenPawn = 0;   //static
+    protected static int bluePawn = 0;
+    protected static int pinkPawn = 0;
+    protected static int yellowPawn = 0;
+    protected static int redPawn = 0;
 
     //in Game-start bisogna aggiungere un metodo che mette in Entrance le pedine studenti in base al numero di Player
 
@@ -19,8 +19,9 @@ public class Entrance {
         else if(Game.totPlayer == 3) numPawn = 7;
     }
 
-    public
-
+    public static int getNumPawn(){
+        return numPawn;
+    }
 
     //modifiche all'UML: il ritorno di check è boolean
     public boolean checkNum(){
@@ -37,6 +38,7 @@ public class Entrance {
         else if(Game.totPlayer == 3) nPawn = 4;
 
         for(int i = 0; i < nPawn; i++){
+
 
 
 

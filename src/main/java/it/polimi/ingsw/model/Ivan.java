@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-public class Ivan {
+public class Ivan extends CharacterCard{
     public void topInfl(){
 
     }
