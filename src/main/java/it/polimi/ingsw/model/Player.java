@@ -10,19 +10,25 @@ public class Player {
     protected Entrance entrance;
     protected DiningRoom diningRoom;
     protected TowerSpace towerSpace;
-    public void checkNumStepMotherNature(int movemntsMotherNature,int num){
-
+    public boolean checkNumStepMotherNature(int num){
+        boolean b;
+        if(currentAssistant.stepMotherNature<num){
+            b=false;
+        }else{
+            b=true;
+        }
+        return b;
     }
     // modifica UML: chooseCloud dovrebbe scegleire una nuvola  e spostare le pedine in entrance. quindi va fatto nella classe entrance.
     // public void chooseCloud(Cloud cloud){}//
     public void useCaracter(Character card){
 
     }
-    public void useAssistant(AssistantCard card){
+    public void useAssistant(){
         int i;
         int contr=0;
         for(i=0;i<deckAssistant.size()&&contr==0;i++) {
-            if (deckAssistant.get(i).cardValue == card.cardValue){
+            if (deckAssistant.get(i).cardValue == currentAssistant.cardValue){
                 deckAssistant.remove(i);
             }
         }

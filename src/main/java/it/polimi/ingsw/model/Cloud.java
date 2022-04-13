@@ -17,12 +17,6 @@ public class Cloud {
     public void refillCloud() {
         int i;
         Random rnd = new Random();
-        Map<Integer, String> m = new HashMap<Integer, String>();
-        m.put(0, "GREEN");
-        m.put(1, "RED");
-        m.put(2, "YELLOW");
-        m.put(3, "PINK");
-        m.put(4, "BLUE");
         ArrayList<String> refillPawn = new ArrayList<>();
         if (StudentBag.greenNum != 0)
             refillPawn.add("GREEN");
@@ -37,14 +31,14 @@ public class Cloud {
         for (i = 0; i < numPawn; i++) {
             if (StudentBag.num > 0) {
                 int random = rnd.nextInt(refillPawn.size());
-                String color = m.get(random);
+                String color = Game.m.get(random);
                 if (Objects.equals(refillPawn.get(random), "GREEN")) {
                     greenPawn++;
                     numPawn++;
                     StudentBag.num--;
                     StudentBag.greenNum--;
                     if(StudentBag.greenNum==0){
-                        startingPawn.remove(random);
+                        refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "RED")) {
                     redPawn++;
