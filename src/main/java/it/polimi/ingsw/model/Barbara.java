@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-public class Barbara {
+public class Barbara extends CharacterCard{
     public void compare(){
 
     }
