@@ -12,7 +12,7 @@ public class Entrance {
     //modifiche all'UML:ho aggiunto setter per definire quante sono le torri iniziali, final perché si setta all'inizio
     public final void setNumPawn(){
         if(Game.totPlayer == 2 || Game.totPlayer == 4) numPawn = 9;
-        else if(Game.totPlayer == 3) numPawn = 6;
+        else if(Game.totPlayer == 3) numPawn = 7;
     }
 
     //modifiche all'UML: il ritorno di check è boolean
