@@ -5,15 +5,14 @@ import java.util.ArrayList;
 public class Player {
     private String nickname;
     protected int numCoin;
-    private ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
-    private SchoolBoard schoolBoard;
+    protected ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
+    protected SchoolBoard schoolBoard;
     private AssistantCard currentAssistant;
     public void checkNumStepMotherNature(int movemntsMotherNature,int num){
 
     }
-    public void chooseCloud(Cloud cloud){
-
-    }
+    // modifica UML: chooseCloud dovrebbe scegleire una nuvola  e spostare le pedine in entrance. quindi va fatto nella classe entrance.
+    // public void chooseCloud(Cloud cloud){}//
     public void useCaracter(Character card){
 
     }
@@ -23,7 +22,7 @@ public class Player {
     public void chooseNick(String nickname){
 
     }
-    //ho aggiunto il metodo discarded a Player e l'ho da AssistanceCard
+    //ho aggiunto il metodo discarded a Player e l'ho da AssistanceCard//
     public void discarded(currentAssistant){
         int i;
         int contr==0;
