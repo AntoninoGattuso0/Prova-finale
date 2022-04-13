@@ -6,8 +6,10 @@ public class Player {
     private String nickname;
     protected int numCoin;
     protected ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
-    protected SchoolBoard schoolBoard;
     private AssistantCard currentAssistant;
+    protected Entrance entrance;
+    protected DiningRoom diningRoom;
+    protected TowerSpace towerSpace;
     public void checkNumStepMotherNature(int movemntsMotherNature,int num){
 
     }
