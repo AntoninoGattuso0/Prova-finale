@@ -1,4 +1,4 @@
 package it.polimi.ingsw.model;
 
-public class Omnia {
+public class Omnia extends CharacterCard{
 }
