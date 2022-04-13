@@ -32,7 +32,7 @@ public class Game {
             island.totIsland = 1;
             islands.add(island);
         }
-
+//mappa che associa numeri a colori
         Map<Integer, String> m = new HashMap<Integer, String>();
         m.put(0, "GREEN");
         m.put(1, "RED");
