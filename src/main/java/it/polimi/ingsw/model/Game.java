@@ -201,32 +201,31 @@ public class Game {
        if(islands.get(i).isTower){
            j=i-1;
            if(j<0) j= islands.size();
-           if(islands.get(j).isTower && islands.get(j).colorTower == islands.get(i).colorTower){
-               islands.get(i).greenPawn += islands.get(j).greenPawn;
-               islands.get(i).redPawn += islands.get(j).redPawn;
-               islands.get(i).yellowPawn += islands.get(j).yellowPawn;
-               islands.get(i).pinkPawn += islands.get(j).pinkPawn;
-               islands.get(i).bluePawn += islands.get(j).bluePawn;
-               islands.get(i).totIsland += islands.get(j).totIsland;
-               islands.remove(j);
-           }
+           checkIsland(i, j);
            j=i+1;
            if(j>= islands.size()) j=0;
-           if(islands.get(j).isTower && islands.get(j).colorTower == islands.get(i).colorTower) {
-               islands.get(i).greenPawn += islands.get(j).greenPawn;
-               islands.get(i).redPawn += islands.get(j).redPawn;
-               islands.get(i).yellowPawn += islands.get(j).yellowPawn;
-               islands.get(i).pinkPawn += islands.get(j).pinkPawn;
-               islands.get(i).bluePawn += islands.get(j).bluePawn;
-               islands.get(i).totIsland += islands.get(j).totIsland;
-               islands.remove(j);
-           }
+           checkIsland(i, j);
        }
-    };
+    }
+
+    private void checkIsland(int i, int j) { //controlla se le due isole si possono unire, nel caso le unisce
+        if(islands.get(j).isTower && islands.get(j).colorTower == islands.get(i).colorTower){
+            islands.get(i).greenPawn += islands.get(j).greenPawn;
+            islands.get(i).redPawn += islands.get(j).redPawn;
+            islands.get(i).yellowPawn += islands.get(j).yellowPawn;
+            islands.get(i).pinkPawn += islands.get(j).pinkPawn;
+            islands.get(i).bluePawn += islands.get(j).bluePawn;
+            islands.get(i).totIsland += islands.get(j).totIsland;
+            islands.remove(j);
+        }
+    }
+
+    ;
 
     public void topInfluence(){
        int i;
        for(i=0; !islands.get(i).isMotherNature; i++);
+       int n = ProfTable.checkProf();
        
     };
 
