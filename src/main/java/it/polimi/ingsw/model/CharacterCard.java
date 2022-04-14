@@ -8,5 +8,6 @@ public class CharacterCard {
     }
     public int increasePrice(int coinPrice){
         coinPrice=coinPrice+1;
+        return coinPrice;
     }
 }

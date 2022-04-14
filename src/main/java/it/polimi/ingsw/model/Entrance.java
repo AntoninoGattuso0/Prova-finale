@@ -5,7 +5,7 @@ import it.polimi.ingsw.model.ColorPawn;
 public class Entrance {
 
     protected static int numPawn;
-    protected static int greenPawn = 0;   //static
+    protected static int greenPawn = 0;   //static o no?
     protected static int bluePawn = 0;
     protected static int pinkPawn = 0;
     protected static int yellowPawn = 0;
@@ -27,13 +27,13 @@ public class Entrance {
     public boolean checkNum(){
         if(Game.totPlayer == 2 || Game.totPlayer == 4 && numPawn > 4)
             return true;
-        else if(Game.totPlayer = 3 && numPawn > 5)
+        else if(Game.totPlayer == 3 && numPawn > 5)
             return true;
-        else return false;
+        return false;
     }
 
     public void moveToDining(){
-        int nPawn;  //variabile che tiene conto di quante pedine spostare in base al nr di player
+        int nPawn = 0;  //variabile che tiene conto di quante pedine spostare in base al nr di player
         if(Game.totPlayer == 2 || Game.totPlayer == 4) nPawn = 3;
         else if(Game.totPlayer == 3) nPawn = 4;
 
