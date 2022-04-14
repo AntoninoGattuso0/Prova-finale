@@ -67,27 +67,27 @@ public class Game {
             if ((i == n + 6) || (i == n - 6)) i++;
             int random = rnd.nextInt(startingPawn.size());
             String color = m.get(random);
-                if (Objects.equals(startingPawn.get(random), "GREEN")) {
-                    g--;
-                    islands.get(i).greenPawn++;
-                    if(g==0)startingPawn.remove(random);
-                } else if (Objects.equals(startingPawn.get(random), "RED")) {
-                    r--;
-                    islands.get(i).redPawn++;
-                    if(r==0)startingPawn.remove(random);
-                } else if (Objects.equals(startingPawn.get(random), "YELLOW")) {
-                    y--;
-                    islands.get(i).yellowPawn++;
-                    if(y==0)startingPawn.remove(random);
-                } else if (Objects.equals(startingPawn.get(random), "PINK")) {
-                    p--;
-                    islands.get(i).pinkPawn++;
-                    if(p==0)startingPawn.remove(random);
-                } else if (Objects.equals(startingPawn.get(random), "BLUE") && b != 0) {
-                    b--;
-                    islands.get(i).bluePawn++;
-                }
+            if (Objects.equals(startingPawn.get(random), "GREEN")) {
+                g--;
+                islands.get(i).greenPawn++;
+                if (g == 0) startingPawn.remove(random);
+            } else if (Objects.equals(startingPawn.get(random), "RED")) {
+                r--;
+                islands.get(i).redPawn++;
+                if (r == 0) startingPawn.remove(random);
+            } else if (Objects.equals(startingPawn.get(random), "YELLOW")) {
+                y--;
+                islands.get(i).yellowPawn++;
+                if (y == 0) startingPawn.remove(random);
+            } else if (Objects.equals(startingPawn.get(random), "PINK")) {
+                p--;
+                islands.get(i).pinkPawn++;
+                if (p == 0) startingPawn.remove(random);
+            } else if (Objects.equals(startingPawn.get(random), "BLUE") && b != 0) {
+                b--;
+                islands.get(i).bluePawn++;
             }
+        }
 
         // creazione nuvole e inizializzazione
         clouds = new ArrayList<>();
@@ -98,22 +98,11 @@ public class Game {
         }
 
         //aggiunta di pedine all'entrata di ogni player
-        int j;
-        j = Entrance.numPawn;
+        int j = Entrance.numPawn;
 
-        for(i=0; i<totPlayer; i++){
-            while(j>0) {
-                ArrayList<String> entrancePawn = new ArrayList<>();
-                if (StudentBag.greenNum != 0)
-                    entrancePawn.add("GREEN");
-                if (StudentBag.redNum != 0)
-                    entrancePawn.add("RED");
-                if (StudentBag.yellowNum != 0)
-                    entrancePawn.add("YELLOW");
-                if (StudentBag.pinkNum != 0)
-                    entrancePawn.add("PINK");
-                if (StudentBag.blueNum != 0)
-                    entrancePawn.add("BLUE");
+        for (i = 0; i < totPlayer; i++) {
+            while (j > 0) {
+                ArrayList<String> entrancePawn = createArrayPawn();
                 if (StudentBag.num > 0) {
                     int random = rnd.nextInt(entrancePawn.size());
                     String color = m.get(random);
@@ -122,38 +111,51 @@ public class Game {
                         Entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.greenNum--;
-                        if (StudentBag.greenNum == 0) startingPawn.remove(random);
-                    }
-                    else if (Objects.equals(entrancePawn.get(random), "RED")) {
+                        if (StudentBag.greenNum == 0) entrancePawn.remove(random);
+                    } else if (Objects.equals(entrancePawn.get(random), "RED")) {
                         Entrance.redPawn++;
                         Entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.redNum--;
-                        if (StudentBag.redNum == 0) startingPawn.remove(random);
-                    }
-                    else if (Objects.equals(entrancePawn.get(random), "YELLOW")) {
+                        if (StudentBag.redNum == 0) entrancePawn.remove(random);
+                    } else if (Objects.equals(entrancePawn.get(random), "YELLOW")) {
                         Entrance.yellowPawn++;
                         Entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.yellowNum--;
-                        if (StudentBag.yellowNum == 0) startingPawn.remove(random);
-                    }
-                    else if (Objects.equals(entrancePawn.get(random), "PINK")) {
+                        if (StudentBag.yellowNum == 0) entrancePawn.remove(random);
+                    } else if (Objects.equals(entrancePawn.get(random), "PINK")) {
                         Entrance.pinkPawn++;
                         Entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.pinkNum--;
-                        if (StudentBag.pinkNum == 0) startingPawn.remove(random);
-                    }
-                    else if (Objects.equals(entrancePawn.get(random), "BLUE")) {
+                        if (StudentBag.pinkNum == 0) entrancePawn.remove(random);
+                    } else if (Objects.equals(entrancePawn.get(random), "BLUE")) {
                         Entrance.bluePawn++;
                         Entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.blueNum--;
-                        if (StudentBag.blueNum == 0) startingPawn.remove(random);
+                        if (StudentBag.blueNum == 0) entrancePawn.remove(random);
                     }
+                    j--;
+                }
             }
         }
+    }
+
+    static ArrayList<String> createArrayPawn() {
+        ArrayList<String> arrayPawn = new ArrayList<>();
+        if (StudentBag.greenNum != 0)
+            arrayPawn.add("GREEN");
+        if (StudentBag.redNum != 0)
+            arrayPawn.add("RED");
+        if (StudentBag.yellowNum != 0)
+            arrayPawn.add("YELLOW");
+        if (StudentBag.pinkNum != 0)
+            arrayPawn.add("PINK");
+        if (StudentBag.blueNum != 0)
+            arrayPawn.add("BLUE");
+        return arrayPawn;
     }
 
     public static void newPlayer(String nick) {

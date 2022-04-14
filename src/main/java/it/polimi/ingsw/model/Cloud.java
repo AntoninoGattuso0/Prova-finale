@@ -17,17 +17,7 @@ public class Cloud {
     public void refillCloud() {
         int i;
         Random rnd = new Random();
-        ArrayList<String> refillPawn = new ArrayList<>();
-        if (StudentBag.greenNum != 0)
-            refillPawn.add("GREEN");
-        if (StudentBag.redNum != 0)
-            refillPawn.add("RED");
-        if (StudentBag.yellowNum != 0)
-            refillPawn.add("YELLOW");
-        if (StudentBag.pinkNum != 0)
-            refillPawn.add("PINK");
-        if (StudentBag.blueNum != 0)
-            refillPawn.add("BLUE");
+        ArrayList<String> refillPawn = Game.createArrayPawn();
         for (i = 0; i < numPawn; i++) {
             if (StudentBag.num > 0) {
                 int random = rnd.nextInt(refillPawn.size());
