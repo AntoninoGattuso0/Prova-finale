@@ -42,7 +42,7 @@ public class Game {
         m.put(4, "BLUE");
 
 
-        newPlayer();
+        newPlayer();//bisogna capire come fare...
 
 //randomizza pedine per ogni isola iniziale
         Random rnd = new Random();
@@ -66,26 +66,26 @@ public class Game {
             if (i == 12) i = 0;
             if ((i == n + 6) || (i == n - 6)) i++;
             int random = rnd.nextInt(startingPawn.size());
-            String color = m.get(random);
-            if (Objects.equals(startingPawn.get(random), "GREEN")) {
+            if (Objects.equals(startingPawn.get(random), m.get(0))) {
                 g--;
                 islands.get(i).greenPawn++;
                 if (g == 0) startingPawn.remove(random);
-            } else if (Objects.equals(startingPawn.get(random), "RED")) {
+            } else if (Objects.equals(startingPawn.get(random), m.get(1))) {
                 r--;
                 islands.get(i).redPawn++;
                 if (r == 0) startingPawn.remove(random);
-            } else if (Objects.equals(startingPawn.get(random), "YELLOW")) {
+            } else if (Objects.equals(startingPawn.get(random), m.get(2))) {
                 y--;
                 islands.get(i).yellowPawn++;
                 if (y == 0) startingPawn.remove(random);
-            } else if (Objects.equals(startingPawn.get(random), "PINK")) {
+            } else if (Objects.equals(startingPawn.get(random), m.get(3))) {
                 p--;
                 islands.get(i).pinkPawn++;
                 if (p == 0) startingPawn.remove(random);
-            } else if (Objects.equals(startingPawn.get(random), "BLUE") && b != 0) {
+            } else if (Objects.equals(startingPawn.get(random), m.get(4))) {
                 b--;
                 islands.get(i).bluePawn++;
+                if (b == 0) startingPawn.remove(random);
             }
         }
 
@@ -98,41 +98,41 @@ public class Game {
         }
 
         //aggiunta di pedine all'entrata di ogni player
-        int j = Entrance.numPawn;
+
 
         for (i = 0; i < totPlayer; i++) {
+            int j =  players.get(i).entrance.numPawn;
             while (j > 0) {
                 ArrayList<String> entrancePawn = createArrayPawn();
                 if (StudentBag.num > 0) {
                     int random = rnd.nextInt(entrancePawn.size());
-                    String color = m.get(random);
-                    if (Objects.equals(entrancePawn.get(random), "GREEN")) {
-                        Entrance.greenPawn++;
-                        Entrance.numPawn++;
+                    if (Objects.equals(entrancePawn.get(random), m.get(0))) {//verde
+                        players.get(i).entrance.greenPawn++;
+                        players.get(i).entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.greenNum--;
                         if (StudentBag.greenNum == 0) entrancePawn.remove(random);
-                    } else if (Objects.equals(entrancePawn.get(random), "RED")) {
-                        Entrance.redPawn++;
-                        Entrance.numPawn++;
+                    } else if (Objects.equals(entrancePawn.get(random), m.get(1))) {//rosso
+                        players.get(i).entrance.redPawn++;
+                        players.get(i).entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.redNum--;
                         if (StudentBag.redNum == 0) entrancePawn.remove(random);
-                    } else if (Objects.equals(entrancePawn.get(random), "YELLOW")) {
-                        Entrance.yellowPawn++;
-                        Entrance.numPawn++;
+                    } else if (Objects.equals(entrancePawn.get(random), m.get(2))) {//giallo
+                        players.get(i).entrance.yellowPawn++;
+                        players.get(i).entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.yellowNum--;
                         if (StudentBag.yellowNum == 0) entrancePawn.remove(random);
-                    } else if (Objects.equals(entrancePawn.get(random), "PINK")) {
-                        Entrance.pinkPawn++;
-                        Entrance.numPawn++;
+                    } else if (Objects.equals(entrancePawn.get(random), m.get(3))) {//rosa
+                        players.get(i).entrance.pinkPawn++;
+                        players.get(i).entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.pinkNum--;
                         if (StudentBag.pinkNum == 0) entrancePawn.remove(random);
-                    } else if (Objects.equals(entrancePawn.get(random), "BLUE")) {
-                        Entrance.bluePawn++;
-                        Entrance.numPawn++;
+                    } else if (Objects.equals(entrancePawn.get(random), m.get(4))) {//blu
+                        players.get(i).entrance.bluePawn++;
+                        players.get(i).entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.blueNum--;
                         if (StudentBag.blueNum == 0) entrancePawn.remove(random);
@@ -143,7 +143,7 @@ public class Game {
         }
     }
 
-    static ArrayList<String> createArrayPawn() {
+    static ArrayList<String> createArrayPawn() {//crea un array per ogni colore (utilizzato per funzioni random)
         ArrayList<String> arrayPawn = new ArrayList<>();
         if (StudentBag.greenNum != 0)
             arrayPawn.add("GREEN");
@@ -178,12 +178,9 @@ public class Game {
             }
             player.deckAssistant = deckAssistant;
             //collegamento a tower, dining and entrance
-            Entrance entrance = new Entrance();
-            player.entrance = entrance;
-            DiningRoom diningRoom = new DiningRoom();
-            player.diningRoom = diningRoom;
-            TowerSpace towerSpace = new TowerSpace();
-            player.towerSpace = towerSpace;
+            player.entrance = new Entrance();
+            player.diningRoom = new DiningRoom();
+            player.towerSpace = new TowerSpace();
             players.add(player);
         }
     }

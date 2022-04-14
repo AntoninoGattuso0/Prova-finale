@@ -4,12 +4,12 @@ import it.polimi.ingsw.model.ColorPawn;
 
 public class Entrance {
 
-    protected static int numPawn;
-    protected static int greenPawn = 0;   //static o no?
-    protected static int bluePawn = 0;
-    protected static int pinkPawn = 0;
-    protected static int yellowPawn = 0;
-    protected static int redPawn = 0;
+    protected int numPawn;
+    protected int greenPawn = 0;   //static o no?                         penso di no -Paul
+    protected int bluePawn = 0;
+    protected int pinkPawn = 0;
+    protected int yellowPawn = 0;
+    protected int redPawn = 0;
 
     //in Game-start bisogna aggiungere un metodo che mette in Entrance le pedine studenti in base al numero di Player
 
