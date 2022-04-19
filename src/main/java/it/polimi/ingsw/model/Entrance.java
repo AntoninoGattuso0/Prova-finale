@@ -1,10 +1,8 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.model.ColorPawn;
-
 public class Entrance {
 
-    protected int numPawn;
+    protected static int numPawn;
     protected int greenPawn = 0;   //static o no?                         penso di no -Paul
     protected int bluePawn = 0;
     protected int pinkPawn = 0;
@@ -13,17 +11,19 @@ public class Entrance {
 
     //in Game-start bisogna aggiungere un metodo che mette in Entrance le pedine studenti in base al numero di Player
 
-    //modifiche all'UML:ho aggiunto setter per definire quante sono le torri iniziali, final perché si setta all'inizio
-    public final void setNumPawn(){
+    // modifiche all'UML:ho aggiunto setter per definire quante sono le torri iniziali, final o no?
+    public static void setNumPawn(){
         if(Game.totPlayer == 2 || Game.totPlayer == 4) numPawn = 9;
         else if(Game.totPlayer == 3) numPawn = 7;
     }
 
+//metodo che ritorna quante pedine sono presenti all'ingresso
     public static int getNumPawn(){
         return numPawn;
     }
 
     //modifiche all'UML: il ritorno di check è boolean
+    //metodo che controlla in base al numero di Players se ci sono ancora 4 o 5 pedine all'ingresso
     public boolean checkNum(){
         if(Game.totPlayer == 2 || Game.totPlayer == 4 && numPawn > 4)
             return true;
@@ -33,11 +33,8 @@ public class Entrance {
     }
 
     public void moveToDining(){
-        int nPawn = 0;  //variabile che tiene conto di quante pedine spostare in base al nr di player
-        if(Game.totPlayer == 2 || Game.totPlayer == 4) nPawn = 3;
-        else if(Game.totPlayer == 3) nPawn = 4;
+        if()
 
-        for(int i = 0; i < nPawn; i++){
 
 
 

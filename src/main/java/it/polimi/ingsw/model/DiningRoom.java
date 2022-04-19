@@ -1,18 +1,16 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.model.ColorPawn;
+import java.util.Objects;
 
 public class DiningRoom {
-    private int blueRow;
-    private int greenRow;
-    private int yellowRow;
-    private int pinkRow;
-    private int redRow;
 
-    public void addPawn(ColorPawn colorPawn) {
 
-    }
-    public void coinPosition(ColorPawn colorPawn){
+    //modifiche all'UML: array di array invece che 5 int
+    boolean [][] position = new boolean[5][10];
 
+
+    public int coinPosition(){
+        if(position[][3]||position[][6]||position[][9])
+            Player.numCoin++;
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Player {
     private String nickname;
-    protected int numCoin;
+    protected static int numCoin;         // l'ho modificato.. mi serve che sia static -- Rebi
     protected ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
     private AssistantCard currentAssistant;
     protected Entrance entrance;
