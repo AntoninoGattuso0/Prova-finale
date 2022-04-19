@@ -33,15 +33,9 @@ public class Entrance {
     }
 
     public void moveToDining(){
-        if()
 
 
 
-
-
-
-
-        }
     }
 
     public void moveToIsland(){
