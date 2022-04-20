@@ -9,7 +9,7 @@ public class ProfTable {
 
 
     //modifiche all'UML:metodo restituisce un int ovvero il numero del giocatore che possiede il professore
-    public static int checkProf()  {
+    public static int checkProf(int color)  { //allora dovrebbe ricevere in ingresso un int che indica il colore --Paul
 
     }
 

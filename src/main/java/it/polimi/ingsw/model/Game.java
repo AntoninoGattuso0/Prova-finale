@@ -247,9 +247,15 @@ public class Game {
     ;
 
     public void topInfluence(){
-       int i;
+       int i, j, n, color;
+       n = -1;
        for(i=0; !islands.get(i).isMotherNature; i++);
-       int n = ProfTable.checkProf(); //boh, sei arrivato qui ma manca il metodo
+       ArrayList<Integer> influence = new ArrayList<>(3);
+       for(j=0; j<totPlayer; j++) influence.add(0);
+       for(color=0; color<5; color++) {
+           n = ProfTable.checkProf(color); //boh, sei arrivato qui ma manca il metodo
+           influence.get(n).equals(islands.get(i).greenPawn);3
+       }
        islands.get(i).isTower = true;
        islands.get(i).colorTower = players.get(n).towerSpace.colorTower;
        unifyIsland(i);
@@ -272,7 +278,11 @@ public class Game {
     }
 
     public int moveProf(){
-        int i;
-        return i;
+        int i, j, num;
+        for(i=0; i<5; i++){
+            for(j=0; j<totPlayer; j++){
+                //aspetta che DiningRoom sia ultimata (o con arraylist o con matrice)
+            }
+        }
     }
 }
