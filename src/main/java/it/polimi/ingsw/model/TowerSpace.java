@@ -1,7 +1,7 @@
 package it.polimi.ingsw.model;
 
 public class TowerSpace {
-    private ColorTower colorTower;
+    protected ColorTower colorTower;
     protected int numTower;
 
     //modifiche all'UML:ho aggiunto setter per definire quante sono le torri iniziali, final o no?

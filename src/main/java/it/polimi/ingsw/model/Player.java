@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Player {
     private String nickname;
-    protected static int numCoin;         // l'ho modificato.. mi serve che sia static -- Rebi
+    protected int numCoin;         // l'ho modificato.. mi serve che sia static -- Rebi
     protected ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
     private AssistantCard currentAssistant;
     protected Entrance entrance;
@@ -27,7 +27,7 @@ public class Player {
     public void useAssistant(){
         int i;
         int contr=0;
-        for(i=0;i<deckAssistant.size()&&contr==0;i++) {
+        for(i=0;i<deckAssistant.size() && contr==0;i++) {  //qua contr non cambia mai :( --Paul
             if (deckAssistant.get(i).cardValue == currentAssistant.cardValue){
                 deckAssistant.remove(i);
             }

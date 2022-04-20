@@ -16,7 +16,6 @@ public class Game {
     protected static void start() {
         int i;
 
-
         StudentBag.num = 120;
         StudentBag.greenNum = StudentBag.redNum = StudentBag.yellowNum = StudentBag.pinkNum = StudentBag.blueNum = 24;
 //creazione isole
@@ -44,11 +43,11 @@ public class Game {
 
         newPlayer();//bisogna capire come fare...
 
-//randomizza pedine per ogni isola iniziale
+//randomizza madre natura
         Random rnd = new Random();
         int n = rnd.nextInt(12);
         islands.get(n).isMotherNature = true;
-
+//randomizza pedine per ogni isola iniziale
         int g = 2;
         int r = 2;
         int y = 2;
@@ -56,11 +55,11 @@ public class Game {
         int b = 2; //conteggio 2 pedine per colore
 //arraylist per ogni colore
         ArrayList<String> startingPawn = new ArrayList<>(5);
-        startingPawn.add("GREEN");
-        startingPawn.add("RED");
-        startingPawn.add("YELLOW");
-        startingPawn.add("PINK");
-        startingPawn.add("BLUE");
+        startingPawn.add(m.get(0));
+        startingPawn.add(m.get(1));
+        startingPawn.add(m.get(2));
+        startingPawn.add(m.get(3));
+        startingPawn.add(m.get(4));
 
         for (i = n + 1; !islands.get(i).isMotherNature; i++) {
             if (i == 12) i = 0;
@@ -98,8 +97,6 @@ public class Game {
         }
 
         //aggiunta di pedine all'entrata di ogni player
-
-
         for (i = 0; i < totPlayer; i++) {
             int j =  players.get(i).entrance.numPawn;
             while (j > 0) {
@@ -195,12 +192,11 @@ public class Game {
         islands.get(num).isMotherNature = true;
     };
 
-    public void unifyIsland(){
-       int i,j;
-       for(i=0; !islands.get(i).isMotherNature; i++);
+    public void unifyIsland(int i){ // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
+       int j;
        if(islands.get(i).isTower){
            j=i-1;
-           if(j<0) j= islands.size();
+           if(j<0) j = islands.size();
            checkIsland(i, j);
            j=i+1;
            if(j>= islands.size()) j=0;
@@ -225,12 +221,14 @@ public class Game {
     public void topInfluence(){
        int i;
        for(i=0; !islands.get(i).isMotherNature; i++);
-       int n = ProfTable.checkProf();
-       
+       int n = ProfTable.checkProf(); //boh, sei arrivato qui ma manca il metodo
+       islands.get(i).isTower = true;
+       islands.get(i).colorTower = players.get(n).towerSpace.colorTower;
+       unifyIsland(i);
     };
 
     public boolean endGame(){
-        if(StudentBag.num == 0)return true;
+        return StudentBag.num == 0;
     };
 
     public void setCard(CharacterCard card) {
