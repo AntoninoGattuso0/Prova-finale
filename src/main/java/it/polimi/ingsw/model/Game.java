@@ -10,7 +10,8 @@ public class Game {
     private static ArrayList<Cloud> clouds;
     private static final ArrayList<Island> islands = new ArrayList<>(12);
     protected static boolean isExpert;
-    private CharacterCard[] card = new CharacterCard[3];
+    protected final ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
+    protected static ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
     protected static Map<Integer, String> m = new HashMap<Integer, String>();
 
     protected static void start() {
@@ -138,6 +139,34 @@ public class Game {
                 }
             }
         }
+
+        //creazione arraylist con tutte i personaggi
+        Antonio antonio = new Antonio();
+        antonio.coinPrice = 2;
+        Barbara barbara = new Barbara();
+        Ciro ciro = new Ciro();
+        Dante dante = new Dante();
+        Ernesto ernesto = new Ernesto();
+        Felix felix = new Felix();
+        Giuseppe giuseppe = new Giuseppe;
+        Ivan ivan = new Ivan();
+        Lancillotto lancillotto = new Lancillotto();
+        Maria maria = new Maria();
+        Nicola nicola = new Nicola();
+        Omnia omnia = new Omnia();
+        characterCards.add(antonio);
+        characterCards.add(barbara);
+        characterCards.add(ciro);
+        characterCards.add(dante);
+        characterCards.add(ernesto);
+        characterCards.add(felix);
+        characterCards.add(giuseppe);
+        characterCards.add(ivan);
+        characterCards.add(lancillotto);
+        characterCards.add(maria);
+        characterCards.add(nicola);
+        characterCards.add(omnia);
+
     }
 
     static ArrayList<String> createArrayPawn() {//crea un array per ogni colore (utilizzato per funzioni random)
@@ -231,12 +260,15 @@ public class Game {
         return StudentBag.num == 0;
     };
 
-    public void setCard(CharacterCard card) {
+    public void setCard() { //posiziona a caso dei personaggi (3)
         int i;
-        Random count = new Random();
-        int num = count.nextInt(11);
-        for (i = 0; i < 4; i++) {
-            card[i] = num;
+        Random rnd = new Random();
+        int random = rnd.nextInt(characterCards.size());
+        for (i = 0; i < 3; i++) {
+            cards.add(characterCards.get(random));
+            cards.get(random).On= true;
+            characterCards.remove(random);
+            random = rnd.nextInt(characterCards.size());
         }
     }
 

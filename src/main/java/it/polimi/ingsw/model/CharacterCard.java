@@ -1,9 +1,9 @@
 package it.polimi.ingsw.model;
 
 public class CharacterCard {
-    private int coinPrice;
-    private boolean On;
-    public boolean isOn(){
+    protected int coinPrice; //modificato in protected
+    protected boolean On;
+    public boolean isOn();{
 
     }
     public int increasePrice(int coinPrice){
