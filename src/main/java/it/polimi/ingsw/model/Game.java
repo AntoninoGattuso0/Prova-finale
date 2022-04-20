@@ -142,7 +142,6 @@ public class Game {
 
         //creazione arraylist con tutte i personaggi
         Antonio antonio = new Antonio();
-        antonio.coinPrice = 2;
         Barbara barbara = new Barbara();
         Ciro ciro = new Ciro();
         Dante dante = new Dante();
