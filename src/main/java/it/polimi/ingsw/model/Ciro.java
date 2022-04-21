@@ -3,7 +3,7 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 
 public class Ciro extends CharacterCard{
-    public int calculateInfluence(int numisola){
+    public int calculateInfluence(int numisola){//copia del metodo per calcolare la top influenza
         int i, j, n, color;
         n = -1;
         for(i=0; !Game.islands.get(numisola); i++);
