@@ -8,9 +8,9 @@ public class DiningRoom {
 
     public void addPawn(ColorPawn colorPawn, int position[][]){
         if(Objects.equals(colorPawn, Game.m.get(0)))
-        for(int m = 0; m < 10; m++){
-                 if(position[0][m] != 1){
-                   position[0][m]= 1;
+        for(int j = 0; j < 10; j++){
+                 if(position[0][j] != 1){
+                   position[0][j]= 1;
                    break;
                  }
              }
