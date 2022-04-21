@@ -46,8 +46,6 @@ public class DiningRoom {
     }
 
 
-
-
     public void coinPosition(Player player){
         for(int i = 0; i < 5; i++){
             if(position[i][2] == 1 || position[i][5] == 1 || position[i][9] == 1)
