@@ -5,11 +5,11 @@ import java.util.*;
 public class Entrance {
 
     protected int numPawn;
-    protected int greenPawn = 0;
-    protected int bluePawn = 0;
-    protected int pinkPawn = 0;
-    protected int yellowPawn = 0;
-    protected int redPawn = 0;
+    protected static int greenPawn = 0;
+    protected static int bluePawn = 0;
+    protected static int pinkPawn = 0;
+    protected static int yellowPawn = 0;
+    protected static int redPawn = 0;
 
     // modifiche all'UML:ho aggiunto setter per definire quante sono le torri iniziali
     public void setNumPawn(){
@@ -33,7 +33,11 @@ public class Entrance {
     }
 
 
-    public void moveToIsland(){
+    public void moveToIsland(ColorPawn colorPawn, ArrayList<Island> islands){
+        if(Objects.equals(colorPawn.toString(), "GREEN"))
+            Island.greenPawn++;
+
+
 
     }
 
