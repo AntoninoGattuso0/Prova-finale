@@ -7,8 +7,8 @@ public class DiningRoom {
     int[][] position = new int[5][10];
 
     public void addPawn(ColorPawn colorPawn, int position[][]){
-        for(int m; m < 5; m++)
-            for(int n; n < 10; n++){
+        for(int m = 0; m < 5; m++)
+            for(int n = 0; n < 10; n++){
                 if(Objects.equals(colorPawn, Game.m.get(0))){
                  if(position[m][n] != 0)
                    position[m][n]= 1;
