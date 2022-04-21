@@ -18,9 +18,8 @@ public class Entrance {
     }
 
 //metodo che ritorna quante pedine sono presenti all'ingresso
-    public int getNumPawn(){
-        return numPawn;
-    }
+    public int getNumPawn(){   this.greenPawn;   }              //utile? questo metodo sarebbe utile se da qualche parte qualcuno lo usasse,
+                                                                // ma essendo protected e non private ci possono accedere tutte le calssi del model
 
     //modifiche all'UML: il ritorno di check è boolean
     //metodo che controlla in base al numero di Players se ci sono ancora 4 o 5 pedine all'ingresso
