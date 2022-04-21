@@ -19,7 +19,7 @@ public class Player {
         }
         return b;
     }
-    // modifica UML: chooseCloud dovrebbe scegleire una nuvola  e spostare le pedine in entrance. quindi va fatto nella classe entrance.
+    // modifica UML: chooseCloud dovrebbe scegliere una nuvola  e spostare le pedine in entrance. quindi va fatto nella classe entrance.
     // public void chooseCloud(Cloud cloud){}//
     public void useCaracter(Character card){
 

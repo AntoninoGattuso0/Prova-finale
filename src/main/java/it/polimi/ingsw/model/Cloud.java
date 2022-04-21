@@ -3,7 +3,7 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class Cloud {
-    private int numPawn;
+    private int numPawn;   //tutti questi mi servirebbero come protected -- Rebi
     private int greenPawn;
     private int redPawn;
     private int yellowPawn;

@@ -33,15 +33,40 @@ public class Entrance {
     }
 
 
-    public void moveToIsland(ColorPawn colorPawn, ArrayList<Island> islands){
+    public void moveToIsland(ColorPawn colorPawn, Island island){
         if(Objects.equals(colorPawn.toString(), "GREEN"))
-            Island.greenPawn++;
-
-
-
+            island.greenPawn++;
+        if(Objects.equals(colorPawn.toString(), "RED"))
+            island.redPawn++;
+        if(Objects.equals(colorPawn.toString(), "YELLOW"))
+            island.yellowPawn++;
+        if(Objects.equals(colorPawn.toString(), "PINK"))
+            island.pinkPawn++;
+        if(Objects.equals(colorPawn.toString(), "BLUE"))
+            island.bluePawn++;
     }
 
-    public void chooseCloud(){
-
+    public void chooseCloud(ColorPawn colorPawn, Cloud cloud){
+       while(cloud.numPawn!=0){
+            if(Objects.equals(colorPawn.toString(), "GREEN")) {
+                cloud.greenPawn--;
+                this.greenPawn++;
+            }
+            if(Objects.equals(colorPawn.toString(), "RED")) {
+                cloud.redPawn--;
+                this.redPawn++;
+            }
+            if(Objects.equals(colorPawn.toString(), "YELLOW")) {
+                cloud.yellowPawn--;
+                this.yellowPawn++;
+            }
+            if(Objects.equals(colorPawn.toString(), "PINK")) {
+                cloud.pinkPawn--;
+                this.pinkPawn++;
+            }
+            if(Objects.equals(colorPawn.toString(), "BLUE")) {
+                cloud.bluePawn--;
+                this.bluePawn++;
+        }
     }
 }

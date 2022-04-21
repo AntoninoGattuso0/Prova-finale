@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
 
-public  class Island {
+public class Island {
+    public int greenPawn;
     protected boolean isMotherNature;
     protected int greenPawn;
     protected int redPawn;
