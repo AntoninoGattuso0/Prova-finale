@@ -1,10 +1,10 @@
 package it.polimi.ingsw.model;
 
 public class Dante extends CharacterCard{
-    public void updateStepMN(){
+    public void updateStepMN(AssistantCard currentAssistant){
         int step;
-        step=Player.;
+        step=currentAssistant.getStep();
         step=step+2;
-        Player.currentAssistant=step;
+        currentAssistant.stepMotherNature=step;
     }
 }

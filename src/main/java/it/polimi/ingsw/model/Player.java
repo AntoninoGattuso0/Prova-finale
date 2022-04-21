@@ -27,16 +27,17 @@ public class Player {
     public void useAssistant(){
         int i;
         int contr=0;
-        for(i=0;i<deckAssistant.size() && contr==0;i++) {  //qua contr non cambia mai :( --Paul
+        for(i=0;i<deckAssistant.size() && contr==0;i++) {
             if (deckAssistant.get(i).cardValue == currentAssistant.cardValue){
                 deckAssistant.remove(i);
+                contr=1;
             }
         }
     }
     public void chooseNick(String nickname){
 
     }
-    //ho aggiunto il metodo discarded a Player e l'ho da AssistanceCard//
+    //ho aggiunto il metodo discarded a Player e l'ho tolto da AssistanceCard//
     public void discarded(AssistantCard currentAssistant ){
         int i;
         int contr=0;
