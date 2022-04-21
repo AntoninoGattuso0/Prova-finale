@@ -35,7 +35,6 @@ public class DiningRoom {
                     Entrance.redPawn--;
                     if(position[1][2] == 1 || position[1][5] == 1 || position[1][9] == 1)
                         player.numCoin++;
-
                     break;
                 }
             }
