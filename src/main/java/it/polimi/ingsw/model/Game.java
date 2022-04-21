@@ -5,7 +5,7 @@ import java.io.Console;
 import java.util.*;
 
 public class Game {
-    private static ArrayList<Player> players = new ArrayList<>(4);
+    protected static ArrayList<Player> players = new ArrayList<>(4);
     protected static int totPlayer = 0;
     private static ArrayList<Cloud> clouds;
     protected static final ArrayList<Island> islands = new ArrayList<>(12);
