@@ -49,22 +49,27 @@ public class Entrance {
        while(cloud.numPawn!=0){
             if(Objects.equals(colorPawn.toString(), "GREEN")) {
                 cloud.greenPawn--;
+                cloud.numPawn--;
                 this.greenPawn++;
             }
             if(Objects.equals(colorPawn.toString(), "RED")) {
                 cloud.redPawn--;
+                cloud.numPawn--;
                 this.redPawn++;
             }
             if(Objects.equals(colorPawn.toString(), "YELLOW")) {
                 cloud.yellowPawn--;
+                cloud.numPawn--;
                 this.yellowPawn++;
             }
             if(Objects.equals(colorPawn.toString(), "PINK")) {
                 cloud.pinkPawn--;
+                cloud.numPawn--;
                 this.pinkPawn++;
             }
             if(Objects.equals(colorPawn.toString(), "BLUE")) {
                 cloud.bluePawn--;
+                cloud.numPawn--;
                 this.bluePawn++;
         }
     }
