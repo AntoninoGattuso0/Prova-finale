@@ -6,7 +6,7 @@ public class Player {
     private String nickname;
     protected int numCoin;         // l'ho modificato.. mi serve che sia static -- Rebi
     protected ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
-    private AssistantCard currentAssistant;
+    protected AssistantCard currentAssistant;
     protected Entrance entrance;
     protected DiningRoom diningRoom;
     protected TowerSpace towerSpace;

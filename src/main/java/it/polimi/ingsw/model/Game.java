@@ -8,7 +8,7 @@ public class Game {
     private static ArrayList<Player> players = new ArrayList<>(4);
     protected static int totPlayer = 0;
     private static ArrayList<Cloud> clouds;
-    private static final ArrayList<Island> islands = new ArrayList<>(12);
+    protected static final ArrayList<Island> islands = new ArrayList<>(12);
     protected static boolean isExpert;
     protected final ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
     protected static ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
@@ -147,7 +147,7 @@ public class Game {
         Dante dante = new Dante();
         Ernesto ernesto = new Ernesto();
         Felix felix = new Felix();
-        Giuseppe giuseppe = new Giuseppe;
+        Giuseppe giuseppe = new Giuseppe();
         Ivan ivan = new Ivan();
         Lancillotto lancillotto = new Lancillotto();
         Maria maria = new Maria();

@@ -6,7 +6,7 @@ public class AssistantCard {
     public int getCardValue(){
         return cardValue;
     }
-    public int gesStep(){
+    public int getStep(){
         return stepMotherNature;
     }
 }
