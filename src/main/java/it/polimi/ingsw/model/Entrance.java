@@ -1,17 +1,17 @@
 package it.polimi.ingsw.model;
 
+import java.util.*;
+
 public class Entrance {
 
-    protected int numPawn;  //l'ho messo non static e ho cambiato alcuni metodi sotto togliendo "static", a che sarebbe servito mettere static nei metodi? -Paul
-    protected int greenPawn = 0;   //static o no?                         penso di no -Paul
+    protected int numPawn;
+    protected int greenPawn = 0;
     protected int bluePawn = 0;
     protected int pinkPawn = 0;
     protected int yellowPawn = 0;
     protected int redPawn = 0;
 
-    //in Game-start bisogna aggiungere un metodo che mette in Entrance le pedine studenti in base al numero di Player
-
-    // modifiche all'UML:ho aggiunto setter per definire quante sono le torri iniziali, final o no?
+    // modifiche all'UML:ho aggiunto setter per definire quante sono le torri iniziali
     public void setNumPawn(){
         if(Game.totPlayer == 2 || Game.totPlayer == 4) numPawn = 9;
         else if(Game.totPlayer == 3) numPawn = 7;
@@ -29,14 +29,9 @@ public class Entrance {
             return true;
         else if(Game.totPlayer == 3 && numPawn > 5)
             return true;
-        return false;
+        else return false;
     }
 
-    public void moveToDining(){
-
-
-
-    }
 
     public void moveToIsland(){
 
