@@ -27,15 +27,14 @@ public class Entrance {
     //modifiche all'UML: il ritorno di check è boolean
     //metodo che controlla in base al numero di Players se ci sono ancora 4 o 5 pedine all'ingresso
     public boolean checkNum(){
-        if(Game.totPlayer == 2 || Game.totPlayer == 4 && numPawn > 3 )
+        if((Game.totPlayer == 2 || Game.totPlayer == 4) && numPawn > 3 )
             return true;
        else if(Game.totPlayer == 3 && numPawn > 4)
             return true;
        else return false;
     }
 
-    //manca funzione che itera movetoisland
-    public void moveToIsland(ColorPawn colorPawn, Island island){
+    public void movePawnToIsland(ColorPawn colorPawn, Island island){
             //tutti questi spostamenti sono possibili se il numero di pedine all'entrata è 4 o 5 in base ai giocatori
             if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
                 island.greenPawn++;
@@ -60,6 +59,23 @@ public class Entrance {
             }else {
                 System.out.println("Errore: non esistono pedine di questo colore nell'ingresso");  //penso sia una cosa del controller
             }
+        }
+
+    public void moveToIsland(int n, ColorPawn colorPawn, Island island) {
+        //n = numero di pedine che si vogliono spostare da entrance a island
+        //la somma di n pedine da spostare da entrance verso l'isola e da entance verso diningroom deve essere 3 o 4
+        //controller?
+        if((Game.totPlayer == 2 || Game.totPlayer == 4) && (n > 0 &&  n < 4 )){
+            while(n != 0){
+                movePawnToIsland(colorPawn, island);
+                n--;
+            }
+        }
+            if(Game.totPlayer == 3 && (n > 0 &&  n < 5 )){
+                while(n != 0){
+                    movePawnToIsland(colorPawn, island);
+                    n--;
+                }
         }
     }
 

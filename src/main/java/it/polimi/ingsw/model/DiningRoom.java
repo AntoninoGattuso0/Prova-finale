@@ -12,7 +12,7 @@ public class DiningRoom {
     protected int numPink = 0;
     protected int numBlue = 0;
 
-    public void addPawn(ColorPawn colorPawn, Player player, Entrance entrance) {
+    public void addPawnToEntrance(ColorPawn colorPawn, Player player, Entrance entrance) {
 
         int j; //variabile che serve a iterare dentro le righe della sala
         if(Objects.equals(colorPawn.toString(), Game.m.get(0)))
@@ -75,5 +75,20 @@ public class DiningRoom {
                 }
             }
     }
-    
+
+    public void addPawn(int m, ColorPawn colorPawn, Player player, Entrance entrance){
+        if((Game.totPlayer == 2 || Game.totPlayer == 4) && (m > 0 &&  m < 4 )){
+            while(m != 0){
+                addPawnToEntrance(colorPawn, player, entrance);
+                m--;
+            }
+        }
+
+        if(Game.totPlayer == 3 && (m > 0 &&  m < 5 )){
+            while(m != 0){
+                addPawnToEntrance(colorPawn, player, entrance);
+                m--;
+            }
+        }
+    }
 }

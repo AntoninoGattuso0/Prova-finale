@@ -44,8 +44,7 @@ public class Giuseppe{
     public void useEffect(ColorPawn colorPawnCard, ColorPawn colorPawnEntrance, Entrance entrance){
         refillGiuseppeCard();
         if(!Objects.equals(colorPawnCard, colorPawnEntrance) && nPawn > 3){
-            int colorCard = colorPawnCard.ordinal();
-            int colorEntrance = colorPawnEntrance.ordinal();
+
 
 
 
