@@ -204,6 +204,7 @@ public class Game {
             player.deckAssistant = deckAssistant;
             //collegamento a tower, dining and entrance
             player.entrance = new Entrance();
+            player.entrance.setNumPawn();
             player.diningRoom = new DiningRoom();
             player.towerSpace = new TowerSpace();
             players.add(player);
