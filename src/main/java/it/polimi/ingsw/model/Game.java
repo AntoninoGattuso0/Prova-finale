@@ -102,7 +102,7 @@ public class Game {
 
         //aggiunta di pedine all'entrata di ogni player
         for (i = 0; i < totPlayer; i++) {
-            int j =  players.get(i).entrance.numPawn;   //che cosa restituisce? numPawn si modifica nel tempo
+            int j =  players.get(i).entrance.numPawn;   // è zero, devi chiamare il set di entrance!
             while (j > 0) {
                 ArrayList<String> entrancePawn = createArrayPawn();
                 if (StudentBag.num > 0) {
@@ -222,7 +222,7 @@ public class Game {
         num += i;
         if(num >= totIsland) num -= totIsland;
         islands.get(num).isMotherNature = true;
-    };
+    }
 
     public void unifyIsland(int i){ // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
        int j;
@@ -264,11 +264,11 @@ public class Game {
        islands.get(i).isTower = true;
        islands.get(i).colorTower = players.get(n).towerSpace.colorTower;
        unifyIsland(i);
-    };
+    }
 
     public boolean endGame(){
         return StudentBag.num == 0;
-    };
+    }                                 //Il gioco finisce anche in altri casi tipo fine torri player
 
     public void setCard() { //posiziona a caso dei personaggi (3)
         int i;

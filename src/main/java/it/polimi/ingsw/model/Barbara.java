@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Barbara {
+
     public void useEffect(int actualPlayer){
         if(Game.players.get(actualPlayer).diningRoom.numGreen==Game.players.get(ProfTable.greenProf).diningRoom.numGreen)
                 ProfTable.greenProf=actualPlayer;
@@ -15,4 +16,5 @@ public class Barbara {
             ProfTable.pinkProf=actualPlayer;
         if(Game.players.get(actualPlayer).diningRoom.numYellow==Game.players.get(ProfTable.greenProf).diningRoom.numYellow)
             ProfTable.yellowProf=actualPlayer;
+    }
 }

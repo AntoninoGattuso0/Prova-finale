@@ -3,11 +3,9 @@ package it.polimi.ingsw.model;
 public class Felix{
 
     //UML: Cambio nome del metodo
-    public int noTowerInflunence(Island island){
+    public void useEffect(Island island, Player player){
         int influence;
         if(island.isTower)
-        influence = Game.moveProf() - island.totIsland;
-
-        return influence;
+            influence = Game.topInflunce() - island.totIsland;
     }
 }

@@ -36,30 +36,30 @@ public class Entrance {
 
     //manca funzione che itera movetoisland
     public void moveToIsland(ColorPawn colorPawn, Island island){
-        //tutti questi spostamenti sono possibili se il numero di pedine all'entrata è 4 o 5 in base ai giocatori
-        if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
-            island.greenPawn++;
-            this.greenPawn--;
-            this.numPawn--;
-        }else if(Objects.equals(colorPawn.toString(), "RED") && this.redPawn > 0){
-            island.redPawn++;
-            this.redPawn--;
-            this.numPawn--;
-        }else  if(Objects.equals(colorPawn.toString(), "YELLOW") && this.yellowPawn > 0){
-            island.yellowPawn++;
-            this.yellowPawn--;
-            this.numPawn--;
-        }else if(Objects.equals(colorPawn.toString(), "PINK") && this.pinkPawn > 0){
-            island.pinkPawn++;
-            this.pinkPawn--;
-            this.numPawn--;
-        }else if(Objects.equals(colorPawn.toString(), "BLUE") && this.bluePawn > 0){
-            island.bluePawn++;
-            this.bluePawn--;
-            this.numPawn--;
-        }else {
-            System.out.println("errore colore non presente in entrata");
-        }
+            //tutti questi spostamenti sono possibili se il numero di pedine all'entrata è 4 o 5 in base ai giocatori
+            if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
+                island.greenPawn++;
+                this.greenPawn--;
+                this.numPawn--;
+            }else if(Objects.equals(colorPawn.toString(), "RED") && this.redPawn > 0){
+                island.redPawn++;
+                this.redPawn--;
+                this.numPawn--;
+            }else  if(Objects.equals(colorPawn.toString(), "YELLOW") && this.yellowPawn > 0){
+                island.yellowPawn++;
+                this.yellowPawn--;
+                this.numPawn--;
+            }else if(Objects.equals(colorPawn.toString(), "PINK") && this.pinkPawn > 0){
+                island.pinkPawn++;
+                this.pinkPawn--;
+                this.numPawn--;
+            }else if(Objects.equals(colorPawn.toString(), "BLUE") && this.bluePawn > 0){
+                island.bluePawn++;
+                this.bluePawn--;
+                this.numPawn--;
+            }else {
+                System.out.println("Errore: non esistono pedine di questo colore nell'ingresso");  //penso sia una cosa del controller
+            }
         }
     }
 
