@@ -5,7 +5,7 @@ abstract class CharacterCard {
     protected int coinPrice; //modificato in protected
     protected boolean On;
 
-    public boolean isOn(){
+    public boolean isOn(){  //carino :)
         On=true;
         return On;
     }
