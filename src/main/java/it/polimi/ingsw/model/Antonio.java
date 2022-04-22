@@ -59,7 +59,7 @@ public class Antonio extends CharacterCard{
             }
         }
     }
-    public void moveStudent(ColorPawn colorPawn, Island island){
+    public void useEffect(ColorPawn colorPawn, Island island){
             if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
                 island.greenPawn++;
                 this.greenPawn--;
@@ -84,5 +84,4 @@ public class Antonio extends CharacterCard{
                 System.out.println("errore colore non presente in entrata");
             }
         }
-    }
-}
+    }}

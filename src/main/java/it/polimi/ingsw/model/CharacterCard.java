@@ -10,5 +10,5 @@ package it.polimi.ingsw.model;
         coinPrice=coinPrice+1;
         return coinPrice;
     }
-    public abstract void useeffect();
+    public abstract void useEffect();
 }
