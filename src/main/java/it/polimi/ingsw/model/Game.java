@@ -198,9 +198,9 @@ public class Game {
             //aggiunta assistenti
             for (j = 1; j < 11; j++) {
                 AssistantCard assistant = new AssistantCard();
-                assistant.cardValue = j;
+                assistant.getCardValue() = j;
                 if (j == 3 || j == 5 || j == 7 || j == 9) k++;
-                assistant.stepMotherNature = k;
+                assistant.getStep()= k;
                 deckAssistant.add(assistant);
             }
             player.deckAssistant = deckAssistant;

@@ -1,6 +1,5 @@
 package it.polimi.ingsw.model;
-
-public abstract class CharacterCard {
+ abstract class CharacterCard {
     protected int coinPrice; //modificato in protected
     protected boolean On;
     public boolean isOn(){
@@ -11,4 +10,5 @@ public abstract class CharacterCard {
         coinPrice=coinPrice+1;
         return coinPrice;
     }
+    public abstract void useeffect();
 }
