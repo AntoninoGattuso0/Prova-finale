@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Entrance {
 
-    protected int numPawn;        //numero di pedine totali presenti all'entrata della plancia
+    protected int numPawn = 0;        //numero di pedine totali presenti all'entrata della plancia
 
     //numero di pedine per ogni colore, inizialmente sono zero, poi in base al numero di player vengono aggiunte pedine in maniera randomica
     protected int greenPawn = 0;
@@ -27,11 +27,11 @@ public class Entrance {
     //modifiche all'UML: il ritorno di check è boolean
     //metodo che controlla in base al numero di Players se ci sono ancora 4 o 5 pedine all'ingresso
     public boolean checkNum(){
-        if(Game.totPlayer == 2 || Game.totPlayer == 4 && numPawn > 3)
+        if(Game.totPlayer == 2 || Game.totPlayer == 4 && numPawn > 3 )
             return true;
-        else if(Game.totPlayer == 3 && numPawn > 4)
+       else if(Game.totPlayer == 3 && numPawn > 4)
             return true;
-        else return false;
+       else return false;
     }
 
 
