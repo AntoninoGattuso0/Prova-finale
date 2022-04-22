@@ -16,7 +16,6 @@ public class Antonio extends CharacterCard{
         ArrayList<String> refillPawn = Game.createArrayPawn();
         if (StudentBag.num > 0) {
             int random = rnd.nextInt(refillPawn.size());
-            String color = Game.m.get(random);
             if (Objects.equals(refillPawn.get(random), "GREEN")) {
                 greenPawn++;
                 numPawnAntonio++;
