@@ -42,7 +42,7 @@ public class Game {
         m.put(4, "BLUE");
 
 
-        newPlayer();//bisogna capire come fare...
+       // newPlayer();//bisogna capire come fare...
 
 //randomizza madre natura
         Random rnd = new Random();
@@ -244,7 +244,7 @@ public class Game {
         }
     }
 
-    ;
+
 
     public void topInfluence(){
        int i, j, n, color;
@@ -254,7 +254,7 @@ public class Game {
        for(j=0; j<totPlayer; j++) influence.add(0);
        for(color=0; color<5; color++) {
            n = ProfTable.checkProf(color); //boh, sei arrivato qui ma manca il metodo
-           influence.get(n).equals(islands.get(i).greenPawn);3
+           influence.get(n).equals(islands.get(i).greenPawn);
        }
        islands.get(i).isTower = true;
        islands.get(i).colorTower = players.get(n).towerSpace.colorTower;
@@ -284,5 +284,6 @@ public class Game {
                 //aspetta che DiningRoom sia ultimata (o con arraylist o con matrice)
             }
         }
+        return 0;
     }
 }
