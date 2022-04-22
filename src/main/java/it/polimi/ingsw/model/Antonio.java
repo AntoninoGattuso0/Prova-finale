@@ -59,7 +59,30 @@ public class Antonio extends CharacterCard{
             }
         }
     }
-    public void moveStudent(){
-        //copiare metodo dello spostamento di studente sull'isola
+    public void moveStudent(ColorPawn colorPawn, Island island){
+            if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
+                island.greenPawn++;
+                this.greenPawn--;
+                this.numPawnAntonio--;
+            }else if(Objects.equals(colorPawn.toString(), "RED") && this.redPawn > 0){
+                island.redPawn++;
+                this.redPawn--;
+                this.numPawnAntonio--;
+            }else  if(Objects.equals(colorPawn.toString(), "YELLOW") && this.yellowPawn > 0){
+                island.yellowPawn++;
+                this.yellowPawn--;
+                this.numPawnAntonio--;
+            }else if(Objects.equals(colorPawn.toString(), "PINK") && this.pinkPawn > 0){
+                island.pinkPawn++;
+                this.pinkPawn--;
+                this.numPawnAntonio--;
+            }else if(Objects.equals(colorPawn.toString(), "BLUE") && this.bluePawn > 0){
+                island.bluePawn++;
+                this.bluePawn--;
+                this.numPawnAntonio--;
+            }else {
+                System.out.println("errore colore non presente in entrata");
+            }
+        }
     }
 }
