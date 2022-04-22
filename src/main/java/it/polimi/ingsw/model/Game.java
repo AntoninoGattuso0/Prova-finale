@@ -102,7 +102,7 @@ public class Game {
 
         //aggiunta di pedine all'entrata di ogni player
         for (i = 0; i < totPlayer; i++) {
-            int j =  players.get(i).entrance.numPawn;   // è zero, devi chiamare il set di entrance!
+            int j =  players.get(i).entrance.numPawn;
             while (j > 0) {
                 ArrayList<String> entrancePawn = createArrayPawn();
                 if (StudentBag.num > 0) {
