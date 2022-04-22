@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
-public class Antonio extends CharacterCard{
+public class Antonio{
     protected int numPawnAntonio;
     protected int greenPawn;
     protected int redPawn;
@@ -84,4 +84,4 @@ public class Antonio extends CharacterCard{
                 System.out.println("errore colore non presente in entrata");
             }
         }
-    }}
+    }

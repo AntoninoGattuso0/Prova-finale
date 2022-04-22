@@ -2,7 +2,7 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-public class Giuseppe extends CharacterCard{
+public class Giuseppe{
     private int nPawn = 0;
     protected int numGreenPawn = 0;
     protected int numRedPawn = 0;
