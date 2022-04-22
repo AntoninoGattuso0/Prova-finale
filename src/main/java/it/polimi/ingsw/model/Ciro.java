@@ -2,8 +2,8 @@ package it.polimi.ingsw.model;
 
 import java.util.ArrayList;
 
-public class Ciro extends CharacterCard{
-    public int topinfluenceAntonio(int numisola){//copia del metodo per calcolare la top influenza
+public class Ciro {
+    public int useEffect(int numisola){//copia del metodo per calcolare la top influenza
         int j, n, color;
         n = -1;
         ArrayList<Integer> influence = new ArrayList<>(3);
