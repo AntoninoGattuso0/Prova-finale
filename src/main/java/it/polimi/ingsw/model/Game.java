@@ -42,7 +42,7 @@ public class Game {
         m.put(4, "BLUE");
 
 
-       // newPlayer();//bisogna capire come fare...
+       Game.newPlayer();//bisogna capire come fare...
 
 //randomizza madre natura
         Random rnd = new Random();
@@ -183,10 +183,12 @@ public class Game {
         return arrayPawn;
     }
 
-    public static void newPlayer(String nick) {
+    public static void newPlayer() {
         int i, j, k;
         for(i=0; i<totPlayer; i++) {
             Player player = new Player();
+            String nick;
+            nick = System.
             player.chooseNick(nick);
             if (isExpert) player.numCoin = 1;
             else player.numCoin = -1;
