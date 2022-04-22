@@ -41,17 +41,54 @@ public class Giuseppe{
         this.nPawn = 6;
     }
 
-    public void useEffect(ColorPawn colorPawnCard, ColorPawn colorPawnEntrance, Entrance entrance){
-        refillGiuseppeCard();
-        if(!Objects.equals(colorPawnCard, colorPawnEntrance) && nPawn > 3){
-
-
-
+    public void swapPawn(ColorPawn colorPawnCard, ColorPawn colorPawnEntrance, Entrance entrance){
+        if(!Objects.equals(colorPawnCard, colorPawnEntrance) && this.nPawn > 3){
+            if(Objects.equals(colorPawnCard.toString(), "GREEN")){
+                this.numGreenPawn--;
+                entrance.greenPawn++;
+            }else if(Objects.equals(colorPawnCard.toString(), "RED")){
+                this.numRedPawn--;
+                entrance.redPawn++;
+            }else if(Objects.equals(colorPawnCard.toString(), "YELLOW")){
+                this.numYellowPawn--;
+                entrance.redPawn++;
+            }else if(Objects.equals(colorPawnCard.toString(), "PINK")){
+                this.numPinkPawn--;
+                entrance.redPawn++;
+            }else if(Objects.equals(colorPawnCard.toString(), "BLUE")){
+                this.numBluePawn--;
+                entrance.bluePawn++;
+            }
+            if(Objects.equals(colorPawnEntrance.toString(), "GREEN")){
+                this.numGreenPawn++;
+                entrance.greenPawn--;
+            }else if(Objects.equals(colorPawnEntrance.toString(), "RED")){
+                this.numRedPawn++;
+                entrance.redPawn--;
+            }else if(Objects.equals(colorPawnEntrance.toString(), "YELLOW")){
+                this.numYellowPawn++;
+                entrance.redPawn--;
+            }else if(Objects.equals(colorPawnEntrance.toString(), "PINK")){
+                this.numPinkPawn++;
+                entrance.redPawn--;
+            }else if(Objects.equals(colorPawnEntrance.toString(), "BLUE")){
+                this.numBluePawn++;
+                entrance.bluePawn--;
+            }
 
         }
-
-
-
-
     }
+    //LEGGIMI :( non va bene il fatto che anche se la funzione viene chiamata n volte viene richiamata sempre su stessa isola e pedina
+    public void useEffect(int numPawnSwap, ColorPawn colorPawnCard, ColorPawn colorPawnEntrance, Entrance entrance){
+        boolean swap = false;
+        if(numPawnSwap > 0 && numPawnSwap < 4)
+            swap = true;
+        if(swap){
+            while(numPawnSwap != 0){
+                swapPawn(colorPawnCard, colorPawnEntrance, entrance);
+                numPawnSwap--;
+            }
+        }
+    }
+
 }

@@ -4,8 +4,9 @@ public class Felix{
 
     //UML: Cambio nome del metodo
     public void useEffect(Island island, Player player){
-        int influence;
+        int influence = metodoCheRestituisceInfluenza();
         if(island.isTower)
-            influence = Game.topInflunce() - island.totIsland;
+            influence = metodoCheRestituisceInfluenza() - island.totIsland;   //mi serve un metodo che restituisca l'influenza sull'isola
+        return influence;
     }
 }

@@ -61,6 +61,8 @@ public class Entrance {
             }
         }
 
+
+        //LEGGIMI :( non va bene il fatto che anche se la funzione viene chiamata n volte viene richiamata sempre su stessa isola e pedina
     public void moveToIsland(int n, ColorPawn colorPawn, Island island) {
         //n = numero di pedine che si vogliono spostare da entrance a island
         //la somma di n pedine da spostare da entrance verso l'isola e da entance verso diningroom deve essere 3 o 4
