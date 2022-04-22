@@ -2,7 +2,7 @@ package it.polimi.ingsw.model;
 
 public class TowerSpace {
     protected ColorTower colorTower;
-    protected int numTower;
+    private int numTower;
 
     //modifiche all'UML:ho aggiunto setter per definire quante sono le torri iniziali
     public void setNumTowerIniziale(){

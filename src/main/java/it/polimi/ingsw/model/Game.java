@@ -99,7 +99,7 @@ public class Game {
 
         //aggiunta di pedine all'entrata di ogni player
         for (i = 0; i < totPlayer; i++) {
-            int j =  players.get(i).entrance.numPawn;
+            int j =  players.get(i).entrance.numPawn;   //che cosa restituisce? numPawn si modifica nel tempo
             while (j > 0) {
                 ArrayList<String> entrancePawn = createArrayPawn();
                 if (StudentBag.num > 0) {

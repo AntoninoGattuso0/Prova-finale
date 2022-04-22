@@ -4,21 +4,24 @@ import java.util.*;
 
 public class Entrance {
 
-    protected int numPawn;
+    protected int numPawn;        //numero di pedine totali presenti all'entrata della plancia
+
+    //numero di pedine per ogni colore, inizialmente sono zero, poi in base al numero di player vengono aggiunte pedine in maniera randomica
     protected int greenPawn = 0;
     protected int bluePawn = 0;
     protected int pinkPawn = 0;
     protected int yellowPawn = 0;
     protected int redPawn = 0;
 
-    // modifiche all'UML:ho aggiunto setter per definire quante sono le torri iniziali
+    // modifiche all'UML:ho aggiunto setter per definire quante sono le pedine che devono esserci in Entrance
+    //all'inizio del gioco e dopo che ho fatto refill da una nuvola
     public void setNumPawn(){
         if(Game.totPlayer == 2 || Game.totPlayer == 4) this.numPawn = 9;
         else if(Game.totPlayer == 3) this.numPawn = 7;
     }
 
 //metodo che ritorna quante pedine sono presenti all'ingresso
-    public int getNumPawn(){   return this.numPawn;   }              //utile? questo metodo sarebbe utile se da qualche parte qualcuno lo usasse,
+    public int getNumPawn(){ return this.numPawn; }              //utile? questo metodo sarebbe utile se da qualche parte qualcuno lo usasse,
                                                                 // ma essendo protected e non private ci possono accedere tutte le calssi del model
 
     //modifiche all'UML: il ritorno di check è boolean
@@ -33,16 +36,32 @@ public class Entrance {
 
 
     public void moveToIsland(ColorPawn colorPawn, Island island){
-        if(Objects.equals(colorPawn.toString(), "GREEN"))
+        //tutti questi spostamenti sono possibili se il numero di pedine all'entrata è 4 o 5 in base ai giocatori
+        if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
             island.greenPawn++;
-        if(Objects.equals(colorPawn.toString(), "RED"))
+            this.greenPawn--;
+            this.numPawn--;
+        }
+        if(Objects.equals(colorPawn.toString(), "RED") && this.redPawn > 0){
             island.redPawn++;
-        if(Objects.equals(colorPawn.toString(), "YELLOW"))
+            this.redPawn--;
+            this.numPawn--;
+        }
+        if(Objects.equals(colorPawn.toString(), "YELLOW") && this.yellowPawn > 0){
             island.yellowPawn++;
-        if(Objects.equals(colorPawn.toString(), "PINK"))
+            this.yellowPawn--;
+            this.numPawn--;
+        }
+        if(Objects.equals(colorPawn.toString(), "PINK") && this.pinkPawn > 0){
             island.pinkPawn++;
-        if(Objects.equals(colorPawn.toString(), "BLUE"))
+            this.pinkPawn--;
+            this.numPawn--;
+        }
+        if(Objects.equals(colorPawn.toString(), "BLUE") && this.bluePawn > 0){
             island.bluePawn++;
+            this.bluePawn--;
+            this.numPawn--;
+        }
     }
 
     public void chooseCloud (Cloud cloud){
