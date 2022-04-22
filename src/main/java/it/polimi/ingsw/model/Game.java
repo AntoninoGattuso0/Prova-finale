@@ -282,7 +282,7 @@ public class Game {
         }
     }
 
-    public void moveProf(){
+    public static void moveProf(){
         int i, j;
         ArrayList<Integer> maxColor = new ArrayList<>();
         for(i=0; i<5; i++){
