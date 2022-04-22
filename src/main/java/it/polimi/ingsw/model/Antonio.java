@@ -5,12 +5,12 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Antonio extends CharacterCard{
-    private int numPawn;
-    private int greenPawn;
-    private int redPawn;
-    private int yellowPawn;
-    private int pinkPawn;
-    private int bluePawn;
+    protected int numPawnAntonio;
+    protected int greenPawn;
+    protected int redPawn;
+    protected int yellowPawn;
+    protected int pinkPawn;
+    protected int bluePawn;
     public void checkStudent(int numPawn){
         int i;
         Random rnd = new Random();
@@ -20,7 +20,7 @@ public class Antonio extends CharacterCard{
             String color = Game.m.get(random);
             if (Objects.equals(refillPawn.get(random), "GREEN")) {
                 greenPawn++;
-                numPawn++;
+                numPawnAntonio++;
                 StudentBag.num--;
                 StudentBag.greenNum--;
                 if(StudentBag.greenNum==0){
@@ -28,7 +28,7 @@ public class Antonio extends CharacterCard{
                 }
             } else if (Objects.equals(refillPawn.get(random), "RED")) {
                 redPawn++;
-                numPawn++;
+                numPawnAntonio++;
                 StudentBag.num--;
                 StudentBag.redNum--;
                 if(StudentBag.redNum==0){
@@ -36,7 +36,7 @@ public class Antonio extends CharacterCard{
                 }
             } else if (Objects.equals(refillPawn.get(random), "YELLOW")) {
                 yellowPawn++;
-                numPawn++;
+                numPawnAntonio++;
                 StudentBag.num--;
                 StudentBag.yellowNum--;
                 if(StudentBag.yellowNum==0){
@@ -44,7 +44,7 @@ public class Antonio extends CharacterCard{
                 }
             } else if (Objects.equals(refillPawn.get(random), "PINK")) {
                 pinkPawn++;
-                numPawn++;
+                numPawnAntonio++;
                 StudentBag.num--;
                 StudentBag.pinkNum--;
                 if(StudentBag.pinkNum==0){
@@ -52,7 +52,7 @@ public class Antonio extends CharacterCard{
                 }
             } else if (Objects.equals(refillPawn.get(random), "BLUE")) {
                 bluePawn++;
-                numPawn++;
+                numPawnAntonio++;
                 StudentBag.num--;
                 StudentBag.blueNum--;
                 if(StudentBag.blueNum==0){
