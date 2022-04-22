@@ -8,6 +8,7 @@ public class Game {
     protected static ArrayList<Player> players = new ArrayList<>(4);
     protected static int totPlayer = 0;
     private static ArrayList<Cloud> clouds;
+    private static ProfTable profTable;
     protected static final ArrayList<Island> islands = new ArrayList<>(12);
     protected static boolean isExpert;
     protected final ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
@@ -41,8 +42,10 @@ public class Game {
         m.put(3, "PINK");
         m.put(4, "BLUE");
 
+        Game.profTable = new ProfTable();
 
-       Game.newPlayer();//bisogna capire come fare...
+
+       Game.newPlayer("richiedi nick da controller che catzo");//bisogna capire come fare...
 
 //randomizza madre natura
         Random rnd = new Random();
@@ -183,12 +186,10 @@ public class Game {
         return arrayPawn;
     }
 
-    public static void newPlayer() {
+    public static void newPlayer(String nick) {
         int i, j, k;
         for(i=0; i<totPlayer; i++) {
             Player player = new Player();
-            String nick;
-            nick = System.
             player.chooseNick(nick);
             if (isExpert) player.numCoin = 1;
             else player.numCoin = -1;
@@ -243,6 +244,7 @@ public class Game {
             islands.get(i).pinkPawn += islands.get(j).pinkPawn;
             islands.get(i).bluePawn += islands.get(j).bluePawn;
             islands.get(i).totIsland += islands.get(j).totIsland;
+            islands.get(i).totIsland++;
             islands.remove(j);
         }
     }
@@ -280,13 +282,50 @@ public class Game {
         }
     }
 
-    public int moveProf(){
-        int i, j, num;
+    public void moveProf(){
+        int i, j;
+        ArrayList<Integer> maxColor = new ArrayList<>();
         for(i=0; i<5; i++){
-            for(j=0; j<totPlayer; j++){
-                //aspetta che DiningRoom sia ultimata (o con arraylist o con matrice)
+            if(i==0) {
+                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.numGreen);
+                int max = Collections.max(maxColor);
+                int indexMax = maxColor.indexOf(max);
+                maxColor.remove(indexMax);
+                if (!maxColor.contains(max)) ProfTable.greenProf = indexMax;
+                maxColor.clear();
+            }
+            else if (i==1) {
+                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.numRed);
+                int max = Collections.max(maxColor);
+                int indexMax = maxColor.indexOf(max);
+                maxColor.remove(indexMax);
+                if (!maxColor.contains(max)) ProfTable.redProf = indexMax;
+                maxColor.clear();
+            }
+            else if (i==2) {
+                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.numYellow);
+                int max = Collections.max(maxColor);
+                int indexMax = maxColor.indexOf(max);
+                maxColor.remove(indexMax);
+                if (!maxColor.contains(max)) ProfTable.yellowProf = indexMax;
+                maxColor.clear();
+            }
+            else if (i==3) {
+                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.numPink);
+                int max = Collections.max(maxColor);
+                int indexMax = maxColor.indexOf(max);
+                maxColor.remove(indexMax);
+                if (!maxColor.contains(max)) ProfTable.pinkProf = indexMax;
+                maxColor.clear();
+            }
+            else if (i==4) {
+                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.numBlue);
+                int max = Collections.max(maxColor);
+                int indexMax = maxColor.indexOf(max);
+                maxColor.remove(indexMax);
+                if (!maxColor.contains(max)) ProfTable.blueProf = indexMax;
+                maxColor.clear();
             }
         }
-        return 0;
     }
 }
