@@ -84,5 +84,6 @@ public class Antonio {
         } else {
             System.out.println("errore colore non presente in entrata");
         }
+        checkStudent();
     }
 }
