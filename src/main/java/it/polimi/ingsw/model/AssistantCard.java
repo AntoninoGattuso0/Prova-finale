@@ -1,12 +1,15 @@
 package it.polimi.ingsw.model;
 
 public class AssistantCard {
-    protected int cardValue;
-    protected int stepMotherNature;
+    private int cardValue;
+    private int stepMotherNature;
     public int getCardValue(){
         return cardValue;
     }
     public int getStep(){
         return stepMotherNature;
+    }
+    public void setStep(int num){
+        this.stepMotherNature=num;
     }
 }

@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-public class Ivan extends CharacterCard{
+public class Ivan{
     public void topInfl(Island island){
         int infl;
         if(island.isTower)

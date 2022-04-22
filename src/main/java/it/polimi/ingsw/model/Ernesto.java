@@ -2,7 +2,7 @@ package it.polimi.ingsw.model;
 
 import java.util.ArrayList;
 
-public class Ernesto extends CharacterCard {
+public class Ernesto{
     int numProhibitionCard;
 
 
