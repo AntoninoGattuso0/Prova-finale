@@ -3,12 +3,15 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class Giuseppe extends CharacterCard{
-    protected int nPawn = 0;
+    private int nPawn = 0;
     protected int numGreenPawn = 0;
     protected int numRedPawn = 0;
     protected int numYellowPawn = 0;
     protected int numPinkPawn = 0;
     protected int numBluePawn = 0;
+
+    public int getnPawn(){ return nPawn; }
+    public void setnPawn() { this.nPawn++; }
 
     //UML: nuovo metodo che aggiunge 6 pedine a caso alla carta
     private void refillGiuseppeCard(){
@@ -18,7 +21,7 @@ public class Giuseppe extends CharacterCard{
         for(int i = 0; i < 6; i++){
             if(Objects.equals(refillCharacterCard.get(random),Game.m.get(0))) {
                 this.numGreenPawn++;
-                this.nPawn++;
+                setnPawn();
                 StudentBag.num--;
                 StudentBag.greenNum--;
             }
@@ -49,5 +52,12 @@ public class Giuseppe extends CharacterCard{
         }
     }
 
-    //public void(ColorPawn)
+    public void swapPawn(ColorPawn colorPawnCard, ColorPawn colorPawnEntrance, Entrance entrance){
+        if(!Objects.equals(colorPawnCard, colorPawnEntrance))
+
+            entrance.greenPawn++;
+
+
+
+    }
 }
