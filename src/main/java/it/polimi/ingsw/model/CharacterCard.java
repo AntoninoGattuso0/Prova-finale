@@ -6,9 +6,8 @@ package it.polimi.ingsw.model;
         On=true;
         return On;
     }
-    public int increasePrice(int coinPrice){
-        coinPrice=coinPrice+1;
-        return coinPrice;
+    public int increasePrice(){
+        return coinPrice++;
     }
     public abstract void useEffect();
 }
