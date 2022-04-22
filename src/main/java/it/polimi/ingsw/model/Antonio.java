@@ -11,7 +11,7 @@ public class Antonio extends CharacterCard{
     protected int yellowPawn;
     protected int pinkPawn;
     protected int bluePawn;
-    public void checkStudent(int numPawnAntonio){
+    public void checkStudent(){
         Random rnd = new Random();
         ArrayList<String> refillPawn = Game.createArrayPawn();
         if (StudentBag.num > 0) {
