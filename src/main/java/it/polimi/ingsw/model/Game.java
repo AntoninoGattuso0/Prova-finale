@@ -280,7 +280,7 @@ public class Game {
            islands.get(island).isTower = true;
            islands.get(island).colorTower = players.get(influence.indexOf(max)).towerSpace.colorTower;
            unifyIsland(island);
-           return influence.indexof(max);
+           return influence.indexOf(max);
        }
        return -1;
     };
