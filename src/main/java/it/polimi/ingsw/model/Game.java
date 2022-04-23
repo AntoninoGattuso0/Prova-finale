@@ -251,19 +251,38 @@ public class Game {
 
 
 
-    public void topInfluence(){
-       int i, j, n, color;
-       n = -1;
-       for(i=0; !islands.get(i).isMotherNature; i++);
-       ArrayList<Integer> influence = new ArrayList<>(3);
-       for(j=0; j<totPlayer; j++) influence.add(0);
+    public int topInfluence(int island){
+       int i, n, color, max, max2;
+       ArrayList<Integer> influence = new ArrayList<>();
+       for(i=0; i<totPlayer; i++) influence.add(0);
        for(color=0; color<5; color++) {
            n = ProfTable.checkProf(color); //boh, sei arrivato qui ma manca il metodo
-           influence.get(n).equals(islands.get(i).greenPawn);
+           if(color==0 && n!=-1) influence.set(n, influence.get(n) + islands.get(island).greenPawn);
+
+           else if(color==1 && n!=-1) influence.set(n, influence.get(n) + islands.get(island).redPawn);
+
+           else if(color==2 && n!=-1)influence.set(n, influence.get(n) + islands.get(island).yellowPawn);
+
+           else if(color==3 && n!=-1)influence.set(n, influence.get(n) + islands.get(island).pinkPawn);
+
+           else if(color==4 && n!=-1)influence.set(n, influence.get(n) + islands.get(island).bluePawn);
        }
-       islands.get(i).isTower = true;
-       islands.get(i).colorTower = players.get(n).towerSpace.colorTower;
-       unifyIsland(i);
+
+       for(i=0; i<totPlayer; i++){
+           if(islands.get(island).isTower && islands.get(island).colorTower == players.get(i).towerSpace.colorTower)
+               influence.set(i, influence.get(i) + islands.get(island).totIsland);
+       }
+       max = Collections.max(influence);
+       max2 = max;
+       //l'IF controlla che non esista un numero uguale a MAX che abbia colore di torre diversa (dovrebbe coprire sia il
+       //gioco con 2/3/4 giocatori (in caso di 4 giocatori ci saranno 2 MAX uguali ma con colore uguale)
+       if(!(influence.contains(max2) && players.get(influence.indexOf(max2)).towerSpace.colorTower != players.get(influence.indexOf(max)).towerSpace.colorTower)){
+           islands.get(island).isTower = true;
+           islands.get(island).colorTower = players.get(influence.indexOf(max)).towerSpace.colorTower;
+           unifyIsland(island);
+           return influence.indexof(max);
+       }
+       return -1;
     };
 
     public boolean endGame(){
