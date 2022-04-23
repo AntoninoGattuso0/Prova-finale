@@ -3,7 +3,7 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class Cloud {
-    protected int numPawn;
+    protected int numPawn;    //sono inizializzati da qualche parte?
     protected int greenPawn;
     protected int redPawn;
     protected int yellowPawn;
@@ -12,7 +12,7 @@ public class Cloud {
 
     public void getNumPlayer() {
         int numPawn;
-    }
+    }      //che fa? mi sa che devi mettere return
 
     public void refillCloud() {
         int i;

@@ -5,13 +5,16 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Antonio{
+
     protected int numPawnAntonio;
     protected int greenPawn;
     protected int redPawn;
     protected int yellowPawn;
     protected int pinkPawn;
     protected int bluePawn;
+
     public void checkStudent(){
+
         Random rnd = new Random();
         ArrayList<String> refillPawn = Game.createArrayPawn();
         if (StudentBag.num > 0) {
@@ -59,7 +62,9 @@ public class Antonio{
             }
         }
     }
+
     public void useEffect(ColorPawn colorPawn, Island island){
+
             if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
                 island.greenPawn++;
                 this.greenPawn--;
@@ -83,5 +88,5 @@ public class Antonio{
             }else {
                 System.out.println("errore colore non presente in entrata");
             }
-        }
     }
+}

@@ -1,9 +1,10 @@
 package it.polimi.ingsw.model;
 
 public class Ivan{
-    public void topInfl(Island island){
-        int infl;
+    public void useEffect(Island island){
+        int infl = metodoCheCalcolaInfluenza();
         if(island.isTower)
-           return infl = Game.topInfluence() + 2;
+            infl = metodoCheCalcolaInfluenza() + 2;
+        return infl;
     }
 }
