@@ -13,7 +13,7 @@ public class Game {
     protected static boolean isExpert;
     protected final ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
     protected static ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
-    protected static Map<Integer, String> m = new HashMap<Integer, String>();
+    protected static Map<Integer, String> m = new HashMap<>();
 
     protected static void start() {
         int i;
@@ -144,7 +144,7 @@ public class Game {
         }
 
         //creazione arraylist con tutte i personaggi
-        Antonio antonio = new Antonio();
+        /*Antonio antonio = new Antonio();
         Barbara barbara = new Barbara();
         Ciro ciro = new Ciro();
         Dante dante = new Dante();
@@ -167,7 +167,7 @@ public class Game {
         characterCards.add(lancillotto);
         characterCards.add(maria);
         characterCards.add(nicola);
-        characterCards.add(omnia);
+        characterCards.add(omnia);*/
 
     }
 
@@ -222,9 +222,9 @@ public class Game {
         num += i;
         if(num >= totIsland) num -= totIsland;
         islands.get(num).isMotherNature = true;
-    };
+    }
 
-    public void unifyIsland(int i){ // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
+    public static void unifyIsland(int i){ // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
        int j;
        if(islands.get(i).isTower){
            j=i-1;
@@ -236,7 +236,7 @@ public class Game {
        }
     }
 
-    private void checkIsland(int i, int j) { //controlla se le due isole si possono unire, nel caso le unisce
+    private static void checkIsland(int i, int j) { //controlla se le due isole si possono unire, nel caso le unisce
         if(islands.get(j).isTower && islands.get(j).colorTower == islands.get(i).colorTower){
             islands.get(i).greenPawn += islands.get(j).greenPawn;
             islands.get(i).redPawn += islands.get(j).redPawn;
@@ -252,11 +252,12 @@ public class Game {
 
 
     public int topInfluence(int island){
-       int i, n, color, max, max2;
+       int i, j, k, n, color, max;
+       boolean notunique = false;
        ArrayList<Integer> influence = new ArrayList<>();
        for(i=0; i<totPlayer; i++) influence.add(0);
        for(color=0; color<5; color++) {
-           n = ProfTable.checkProf(color); //boh, sei arrivato qui ma manca il metodo
+           n = ProfTable.checkProf(color);
            if(color==0 && n!=-1) influence.set(n, influence.get(n) + islands.get(island).greenPawn);
 
            else if(color==1 && n!=-1) influence.set(n, influence.get(n) + islands.get(island).redPawn);
@@ -267,27 +268,36 @@ public class Game {
 
            else if(color==4 && n!=-1)influence.set(n, influence.get(n) + islands.get(island).bluePawn);
        }
+       if(totPlayer==4){
+           for(i=1; players.get(i).towerSpace.colorTower == players.get(0).towerSpace.colorTower; i++);
+           influence.set(0, influence.get(0) + influence.get(i));//ho tutte le pedine di una squadra sommate al player 0
+           for(j=1; j<totPlayer && j==i; j++);
+           for(k=2; k<totPlayer && (k==i || k==j); k++);
+           influence.set(j, influence.get(j) + influence.get(k));//sommo tutte le pedine dell'altra squadra all'indirizzo j
+           influence.set(i, 0);
+           influence.set(k, 0);
+       }
+
 
        for(i=0; i<totPlayer; i++){
            if(islands.get(island).isTower && islands.get(island).colorTower == players.get(i).towerSpace.colorTower)
                influence.set(i, influence.get(i) + islands.get(island).totIsland);
        }
+
        max = Collections.max(influence);
-       max2 = max;
-       //l'IF controlla che non esista un numero uguale a MAX che abbia colore di torre diversa (dovrebbe coprire sia il
-       //gioco con 2/3/4 giocatori (in caso di 4 giocatori ci saranno 2 MAX uguali ma con colore uguale)
-       if(!(influence.contains(max2) && players.get(influence.indexOf(max2)).towerSpace.colorTower != players.get(influence.indexOf(max)).towerSpace.colorTower)){
-           islands.get(island).isTower = true;
-           islands.get(island).colorTower = players.get(influence.indexOf(max)).towerSpace.colorTower;
-           unifyIsland(island);
-           return influence.indexOf(max);
+
+       for(i=0; i<influence.size() && !notunique;i++){
+           for(j=i+1; j<influence.size() && !notunique; j++){
+               if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && i!=j) notunique = true;
+           }
        }
+       if(!notunique) return influence.indexOf(max);
        return -1;
-    };
+    }
 
     public boolean endGame(){
         return StudentBag.num == 0;
-    };
+    }
 
     public void setCard() { //posiziona a caso dei personaggi (3)
         int i;

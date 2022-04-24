@@ -6,9 +6,6 @@ public class Ernesto{
     int numProhibitionCard;
 
 
-    public void prohibition(Island island){
-        if
 
-    }
 
 }

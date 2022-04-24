@@ -15,5 +15,7 @@ public class Ciro {
         Game.islands.get(numIsola).isTower = true;
         Game.islands.get(numIsola).colorTower = Game.players.get(n).towerSpace.colorTower;
         Game.unifyIsland(numIsola);
+
+        return 0;
     }
 }
