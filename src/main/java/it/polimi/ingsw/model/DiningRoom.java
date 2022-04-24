@@ -15,7 +15,7 @@ public class DiningRoom {
     public void addPawnToEntrance(ColorPawn colorPawn, Player player, Entrance entrance) {
 
         int j; //variabile che serve a iterare dentro le righe della sala
-        if(Objects.equals(colorPawn.toString(), Game.m.get(0)))
+        if(Objects.equals(colorPawn.toString(), Game.m.get(0))) //penso sia giusta, ma manca la parentesi dell'IF --Paul
         for(j = 0; j < 10; j++){
                  if(position[0][j] != 1){
                    position[0][j]= 1;
