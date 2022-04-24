@@ -251,22 +251,22 @@ public class Game {
 
 
 
-    public int topInfluence(int island){
-       int i, j, k, n, color, max;
+    public void topInfluence(Island island){
+       int i, j, k, n, color, max;;
        boolean notunique = false;
        ArrayList<Integer> influence = new ArrayList<>();
        for(i=0; i<totPlayer; i++) influence.add(0);
        for(color=0; color<5; color++) {
            n = ProfTable.checkProf(color);
-           if(color==0 && n!=-1) influence.set(n, influence.get(n) + islands.get(island).greenPawn);
+           if(color==0 && n!=-1) influence.set(n, influence.get(n) + island.greenPawn);
 
-           else if(color==1 && n!=-1) influence.set(n, influence.get(n) + islands.get(island).redPawn);
+           else if(color==1 && n!=-1) influence.set(n, influence.get(n) + island.redPawn);
 
-           else if(color==2 && n!=-1)influence.set(n, influence.get(n) + islands.get(island).yellowPawn);
+           else if(color==2 && n!=-1)influence.set(n, influence.get(n) + island.yellowPawn);
 
-           else if(color==3 && n!=-1)influence.set(n, influence.get(n) + islands.get(island).pinkPawn);
+           else if(color==3 && n!=-1)influence.set(n, influence.get(n) + island.pinkPawn);
 
-           else if(color==4 && n!=-1)influence.set(n, influence.get(n) + islands.get(island).bluePawn);
+           else if(color==4 && n!=-1)influence.set(n, influence.get(n) + island.bluePawn);
        }
        if(totPlayer==4){
            for(i=1; players.get(i).towerSpace.colorTower == players.get(0).towerSpace.colorTower; i++);
@@ -278,21 +278,19 @@ public class Game {
            influence.set(k, 0);
        }
 
-
        for(i=0; i<totPlayer; i++){
-           if(islands.get(island).isTower && islands.get(island).colorTower == players.get(i).towerSpace.colorTower)
-               influence.set(i, influence.get(i) + islands.get(island).totIsland);
+           if(island.isTower && island.colorTower == players.get(i).towerSpace.colorTower)
+               influence.set(i, influence.get(i) + island.totIsland);
        }
 
        max = Collections.max(influence);
 
        for(i=0; i<influence.size() && !notunique;i++){
            for(j=i+1; j<influence.size() && !notunique; j++){
-               if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && i!=j) notunique = true;
+               if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && players.get(i).towerSpace.colorTower != players.get(j).towerSpace.colorTower) notunique = true;
            }
        }
-       if(!notunique) return influence.indexOf(max);
-       return -1;
+       if(!notunique) island.colorTower = players.get(influence.indexOf(max)).towerSpace.colorTower;
     }
 
     public boolean endGame(){

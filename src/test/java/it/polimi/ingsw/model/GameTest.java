@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameTest {
     @Test
     public void testStart(){
+        Game.totPlayer = 3;
         Game.start();
-        assertFalse(false);
+        assertEquals(Game.players.size(), 2);
     }
 }
