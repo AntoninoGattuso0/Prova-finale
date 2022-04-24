@@ -37,7 +37,7 @@ public class Felix{
 
         for(i=0; i<influence.size() && !notunique;i++){
             for(j=i+1; j<influence.size() && !notunique; j++){
-                if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && Game.players.get(i).towerSpace.colorTower != players.get(j).towerSpace.colorTower) notunique = true;
+                if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && Game.players.get(i).towerSpace.colorTower != Game.players.get(j).towerSpace.colorTower) notunique = true;
             }
         }
         if(!notunique) island.colorTower = Game.players.get(influence.indexOf(max)).towerSpace.colorTower;
