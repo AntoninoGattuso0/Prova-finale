@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Ivan{
     public void useEffect(Island island, Player player){
-        int i, j, k, n, color, max;;
+        int i, j, k, n, color, max;
         boolean notunique = false;
         ArrayList<Integer> influence = new ArrayList<>();
         for(i=0; i<Game.totPlayer; i++) influence.add(0);
