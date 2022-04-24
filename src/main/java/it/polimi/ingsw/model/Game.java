@@ -1,7 +1,6 @@
 package it.polimi.ingsw.model;
 
 
-import java.io.Console;
 import java.util.*;
 
 public class Game {
@@ -14,6 +13,11 @@ public class Game {
     protected final ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
     protected static ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
     protected static Map<Integer, String> m = new HashMap<>();
+
+    public Game(int totPlayer, boolean isExpert) {
+        Game.totPlayer = totPlayer;
+        Game.isExpert = true;
+    }
 
     protected static void start() {
         int i;
