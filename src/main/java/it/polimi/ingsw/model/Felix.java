@@ -41,5 +41,6 @@ public class Felix{
             }
         }
         if(!notunique) island.colorTower = Game.players.get(influence.indexOf(max)).towerSpace.colorTower;
+        Game.unifyIsland(Game.islands.indexOf(island));
     }
 }

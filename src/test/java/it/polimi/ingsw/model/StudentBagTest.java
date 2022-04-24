@@ -6,5 +6,5 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StudentBagTest {
     @Test
-    public void test1()
+    public void test1();
 }

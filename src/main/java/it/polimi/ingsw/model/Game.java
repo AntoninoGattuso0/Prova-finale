@@ -251,7 +251,7 @@ public class Game {
 
 
 
-    public void topInfluence(Island island){
+    public static void topInfluence(Island island){
        int i, j, k, n, color, max;;
        boolean notunique = false;
        ArrayList<Integer> influence = new ArrayList<>();
@@ -291,6 +291,7 @@ public class Game {
            }
        }
        if(!notunique) island.colorTower = players.get(influence.indexOf(max)).towerSpace.colorTower;
+       unifyIsland(islands.indexOf(island));
     }
 
     public boolean endGame(){
