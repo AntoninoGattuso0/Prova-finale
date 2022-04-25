@@ -4,14 +4,23 @@ import java.util.*;
 
 public class Entrance {
 
-    protected int numPawn = 0;        //numero di pedine totali presenti all'entrata della plancia
+    protected int numPawn;        //numero di pedine totali presenti all'entrata della plancia
 
     //numero di pedine per ogni colore, inizialmente sono zero, poi in base al numero di player vengono aggiunte pedine in maniera randomica
-    protected int greenPawn = 0;
-    protected int bluePawn = 0;
-    protected int pinkPawn = 0;
-    protected int yellowPawn = 0;
-    protected int redPawn = 0;
+    protected int greenPawn;
+    protected int bluePawn;
+    protected int pinkPawn;
+    protected int yellowPawn;
+    protected int redPawn;
+
+    Entrance(){
+       numPawn = 0;
+       greenPawn = 0;
+       bluePawn = 0;
+       pinkPawn = 0;
+       yellowPawn = 0;
+       redPawn = 0;
+    }
 
     // modifiche all'UML:ho aggiunto setter per definire quante sono le pedine che devono esserci in Entrance
     //all'inizio del gioco e dopo che ho fatto refill da una nuvola
