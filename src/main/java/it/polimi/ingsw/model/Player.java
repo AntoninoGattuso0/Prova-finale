@@ -10,6 +10,11 @@ public class Player {
     protected Entrance entrance;
     protected DiningRoom diningRoom;
     protected TowerSpace towerSpace;
+    Player(String nick){
+        nickname=nick;
+        numCoin=0;
+
+    }
     public boolean checkNumStepMotherNature(int num){
         boolean b;
         if(currentAssistant.getStep()<num){
@@ -21,8 +26,14 @@ public class Player {
     }
     // modifica UML: chooseCloud dovrebbe scegliere una nuvola  e spostare le pedine in entrance. quindi va fatto nella classe entrance.
     // public void chooseCloud(Cloud cloud){}//
-    public void useCaracter(Character card){
-        //devo farlooooo
+    public void useCaracter(CharacterCard card){ //se Character non è una classe, non posso passare niente in ignresso di quel tipo
+        int i;
+        for(i=0;i<3;i++){
+            if(Game.characterCards.get(i)==card){
+                Game.characterCards.get(i).useEffect();
+                Game.characterCards.get(i).increasePrice();
+            }
+        }
     }
     public void useAssistant(){
         int i;

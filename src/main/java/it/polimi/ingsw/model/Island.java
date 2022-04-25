@@ -11,12 +11,22 @@ public class Island {
     protected ColorTower colorTower;
     protected boolean isProhibited;
     protected int totIsland;
-
     //public boolean isMotherNature(){
     //    return isMotherNature;
     //}
-
-    public boolean isTower(){
-        return isTower;
+    Island(){
+            isMotherNature = false;
+            greenPawn = 0;
+            redPawn = 0;
+            yellowPawn = 0;
+            pinkPawn = 0;
+            bluePawn = 0;
+            isTower=false;
+            colorTower = null;
+            isProhibited = false;
+            totIsland = 1;
+        }
+    public boolean IsTower(Island island){
+        return island.isTower;
     }
 }

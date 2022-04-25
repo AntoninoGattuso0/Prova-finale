@@ -17,16 +17,19 @@ public class Game {
     public Game(int totPlayer, boolean isExpert) {
         Game.totPlayer = totPlayer;
         Game.isExpert = true;
+        start();
     }
 
     protected static void start() {
         int i;
-
-        StudentBag.num = 120;
+      /**  StudentBag.num = 120;
         StudentBag.greenNum = StudentBag.redNum = StudentBag.yellowNum = StudentBag.pinkNum = StudentBag.blueNum = 24;
+       invece di inizializzarlo così, si richiama il costruttore, se siete d'accordo eliminate questo commento. stessa cosa per tutti.**/
+        StudentBag studentBag= new StudentBag();
+
 //creazione isole
         for (i = 0; i < 12; i++) {
-            Island island = new Island();
+           /** Island island = new Island();
             island.isMotherNature = false;
             island.greenPawn = 0;
             island.redPawn = 0;
@@ -36,7 +39,8 @@ public class Game {
             island.isTower = false;
             island.colorTower = null;
             island.isProhibited = false;
-            island.totIsland = 1;
+            island.totIsland = 1;*/
+            Island island = new Island();
             islands.add(island);
         }
 //mappa che associa numeri a colori ("m.get(int)" per ricevere il colore in base al numero inserito in int)
@@ -46,10 +50,8 @@ public class Game {
         m.put(3, "PINK");
         m.put(4, "BLUE");
 
-        Game.profTable = new ProfTable();
+        ProfTable profTable = new ProfTable();
 
-
-       Game.newPlayer("richiedi nick da controller che catzo");//bisogna capire come fare...
 
 //randomizza madre natura
         Random rnd = new Random();
@@ -193,7 +195,7 @@ public class Game {
     public static void newPlayer(String nick) {
         int i, j, k;
         for(i=0; i<totPlayer; i++) {
-            Player player = new Player();
+            Player player = new Player(nick);
             player.chooseNick(nick);
             if (isExpert) player.numCoin = 1;
             else player.numCoin = -1;
