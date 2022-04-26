@@ -3,41 +3,47 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class Giuseppe extends CharacterCard{
-    protected int nPawn = 0;
-    protected int numGreenPawn = 0;
-    protected int numRedPawn = 0;
-    protected int numYellowPawn = 0;
-    protected int numPinkPawn = 0;
-    protected int numBluePawn = 0;
-
+    protected int nPawn;
+    protected int numGreenPawn;
+    protected int numRedPawn;
+    protected int numYellowPawn;
+    protected int numPinkPawn;
+    protected int numBluePawn;
     Giuseppe(){
+        coinPrice=1;
+        nPawn = 0;
+        numGreenPawn = 0;
+        numRedPawn = 0;
+        numYellowPawn = 0;
+        numPinkPawn=0;
+        numBluePawn=0;
         Random rdm = new Random();
         ArrayList<String> refillCharacterCard = Game.createArrayPawn();
         int random = rdm.nextInt(5);
         for(int i = 0; i < 6; i++){
             if(Objects.equals(refillCharacterCard.get(random),Game.m.get(0))) {
-                this.numGreenPawn++;
+                numGreenPawn++;
                 StudentBag.num--;
                 StudentBag.greenNum--;
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(1))) {
-                this.numRedPawn++;
+                numRedPawn++;
                 StudentBag.num--;
                 StudentBag.redNum--;
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(2))) {
-                this.numYellowPawn++;
+                numYellowPawn++;
                 StudentBag.num--;
                 StudentBag.yellowNum--;
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(3))) {
-                this.numPinkPawn++;
+                numPinkPawn++;
                 StudentBag.num--;
                 StudentBag.pinkNum--;
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(4))) {
-                this.numBluePawn++;
+                numBluePawn++;
                 StudentBag.num--;
                 StudentBag.blueNum--;
             }
         }
-        this.nPawn = 6;
+        nPawn = 6;
     }
 
     public void swapPawn(ColorPawn colorPawnCard, ColorPawn colorPawnEntrance, Entrance entrance){

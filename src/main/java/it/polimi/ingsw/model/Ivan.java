@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Ivan extends CharacterCard{
+    Ivan(){
+        coinPrice=2;
+    }
     public void useEffect(Island island, Player player){
         int i, j, k, n, color, max;
         boolean notunique = false;

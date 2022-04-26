@@ -3,7 +3,10 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Lancillotto extends Ciro{
+public class Lancillotto extends CharacterCard{
+    Lancillotto(){
+        coinPrice=3;
+    }
 
     public int removeColor(int island, int removedColor){
         int i, j, k, n, color, max;

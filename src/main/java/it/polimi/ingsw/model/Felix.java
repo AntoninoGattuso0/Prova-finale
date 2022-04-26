@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Felix extends CharacterCard{
+    Felix(){
+        coinPrice=3;
+    }
 
     //UML: Cambio nome del metodo
     public void useEffect(Island island){
