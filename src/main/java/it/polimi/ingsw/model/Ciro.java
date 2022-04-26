@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-public class Ciro {
+public class Ciro extends CharacterCard{
     Ciro(){
 
     }

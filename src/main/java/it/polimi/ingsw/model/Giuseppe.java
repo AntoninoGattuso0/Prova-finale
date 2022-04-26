@@ -2,7 +2,7 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-public class Giuseppe{
+public class Giuseppe extends CharacterCard{
     protected int nPawn = 0;
     protected int numGreenPawn = 0;
     protected int numRedPawn = 0;
@@ -10,8 +10,7 @@ public class Giuseppe{
     protected int numPinkPawn = 0;
     protected int numBluePawn = 0;
 
-    //UML: nuovo metodo che aggiunge 6 pedine a caso alla carta
-    private void refillGiuseppeCard(){
+    Giuseppe(){
         Random rdm = new Random();
         ArrayList<String> refillCharacterCard = Game.createArrayPawn();
         int random = rdm.nextInt(5);

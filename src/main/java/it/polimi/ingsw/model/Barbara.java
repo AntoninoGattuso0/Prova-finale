@@ -1,9 +1,6 @@
 package it.polimi.ingsw.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
-public class Barbara {
+public class Barbara extends CharacterCard{
 
     public void useEffect(int actualPlayer){
         if(Game.players.get(actualPlayer).diningRoom.numGreen==Game.players.get(ProfTable.greenProf).diningRoom.numGreen)

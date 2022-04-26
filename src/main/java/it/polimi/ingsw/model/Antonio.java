@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
-public class Antonio{
+public class Antonio extends CharacterCard{
     protected int numPawnAntonio;
     protected int greenPawn;
     protected int redPawn;

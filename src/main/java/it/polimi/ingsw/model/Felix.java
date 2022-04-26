@@ -3,7 +3,7 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Felix{
+public class Felix extends CharacterCard{
 
     //UML: Cambio nome del metodo
     public void useEffect(Island island){

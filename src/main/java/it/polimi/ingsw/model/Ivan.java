@@ -3,7 +3,7 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Ivan{
+public class Ivan extends CharacterCard{
     public void useEffect(Island island, Player player){
         int i, j, k, n, color, max;
         boolean notunique = false;

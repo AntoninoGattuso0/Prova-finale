@@ -10,7 +10,7 @@ public class Game {
     private static ProfTable profTable;
     protected static final ArrayList<Island> islands = new ArrayList<>(12);
     protected static boolean isExpert;
-    protected final ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
+    protected static ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
     protected static ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
     protected static Map<Integer, String> m = new HashMap<>();
 
@@ -39,7 +39,7 @@ public class Game {
             island.isTower = false;
             island.colorTower = null;
             island.isProhibited = false;
-            island.totIsland = 1;*/
+            island.totIsland = 1;**/
             Island island = new Island();
             islands.add(island);
         }
@@ -51,7 +51,6 @@ public class Game {
         m.put(4, "BLUE");
 
         ProfTable profTable = new ProfTable();
-
 
 //randomizza madre natura
         Random rnd = new Random();

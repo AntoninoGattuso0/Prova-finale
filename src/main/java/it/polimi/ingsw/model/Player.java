@@ -28,14 +28,11 @@ public class Player {
     // public void chooseCloud(Cloud cloud){}//
     public void useCaracter(CharacterCard card){ //se Character non è una classe, non posso passare niente in ignresso di quel tipo
         int i;
-        for(i=0;i<3;i++){
-            if(Game.characterCards.get(i)==card){
-                Game.characterCards.get(i).useEffect();
-                Game.characterCards.get(i).increasePrice();
-            }
+            i=Game.cards.indexOf(card);
+             //   Game.cards.get(i).useEffect();
         }
-    }
     public void useAssistant(){
+
         int i;
         int contr=0;
         for(i=0;i<deckAssistant.size() && contr==0;i++) {
