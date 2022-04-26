@@ -149,7 +149,7 @@ public class Game {
         }
 
         //creazione arraylist con tutte i personaggi
-        /*Antonio antonio = new Antonio();
+        Antonio antonio = new Antonio();
         Barbara barbara = new Barbara();
         Ciro ciro = new Ciro();
         Dante dante = new Dante();
@@ -172,7 +172,7 @@ public class Game {
         characterCards.add(lancillotto);
         characterCards.add(maria);
         characterCards.add(nicola);
-        characterCards.add(omnia);*/
+        characterCards.add(omnia);
 
     }
 
@@ -309,7 +309,6 @@ public class Game {
         int random = rnd.nextInt(characterCards.size());
         for (i = 0; i < 3; i++) {
             cards.add(characterCards.get(random));
-            cards.get(random).On= true;
             characterCards.remove(random);
             random = rnd.nextInt(characterCards.size());
         }

@@ -26,10 +26,11 @@ public class Player {
     }
     // modifica UML: chooseCloud dovrebbe scegliere una nuvola  e spostare le pedine in entrance. quindi va fatto nella classe entrance.
     // public void chooseCloud(Cloud cloud){}//
-    public void useCaracter(CharacterCard card){ //se Character non è una classe, non posso passare niente in ignresso di quel tipo
+    public void useCharacter(CharacterCard card){ //se Character non è una classe, non posso passare niente in ignresso di quel tipo
         int i;
             i=Game.cards.indexOf(card);
-             //   Game.cards.get(i).useEffect();
+
+
         }
     public void useAssistant(){
 
