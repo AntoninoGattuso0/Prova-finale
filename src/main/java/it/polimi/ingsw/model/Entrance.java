@@ -57,8 +57,8 @@ public class Entrance {
                     StudentBag.blueNum--;
                     if (StudentBag.blueNum == 0) entrancePawn.remove(random);
                 }
-                j--;
             }
+            j--;
         }
     }
 
