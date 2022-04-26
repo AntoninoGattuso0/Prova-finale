@@ -12,6 +12,7 @@ public class Antonio extends CharacterCard{
     protected int pinkPawn;
     protected int bluePawn;
     Antonio(){ //COSTRUTTORE ANTONIO: manca l'inizializzazione del prezzo. Non so come fare visto che CharacterCard è una classe astratta -Nino
+        coinPrice=1;
         numPawnAntonio=0;
         greenPawn=0;
         redPawn=0;

@@ -1,7 +1,9 @@
 package it.polimi.ingsw.model;
 
 public class Barbara extends CharacterCard{
-
+    Barbara(){
+        coinPrice=2;
+    }
     public void useEffect(int actualPlayer){
         if(Game.players.get(actualPlayer).diningRoom.numGreen==Game.players.get(ProfTable.greenProf).diningRoom.numGreen)
                 ProfTable.greenProf=actualPlayer;

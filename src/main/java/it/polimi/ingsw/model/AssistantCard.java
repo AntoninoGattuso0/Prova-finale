@@ -4,10 +4,11 @@ public class AssistantCard {
 
     private int cardValue;
     private int stepMotherNature;
-
-    public int getCardValue(){
-        return cardValue;
+    AssistantCard(){
+        cardValue=0;
+        stepMotherNature=0;
     }
+    public int getCardValue(){return cardValue;}
     public void setCardValue(int cardValue){
         this.cardValue = cardValue;
     }
