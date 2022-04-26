@@ -8,11 +8,11 @@ public class StudentBag {
     static protected int pinkNum;
     static protected int blueNum;
     StudentBag(){ //COSTRUTTORE STUDENTBAG: non ricordo il numero di pedine, modificatelo se il numero è sbagliato. -Nino
-        greenNum=26;
-        redNum=26;
-        yellowNum=26;
-        pinkNum=26;
-        blueNum=26;
+        greenNum=24;
+        redNum=24;
+        yellowNum=24;
+        pinkNum=24;
+        blueNum=24;
         num=blueNum+redNum+yellowNum+pinkNum+greenNum;
     }
 }

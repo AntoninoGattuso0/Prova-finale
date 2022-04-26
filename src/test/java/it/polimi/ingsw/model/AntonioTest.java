@@ -12,6 +12,7 @@ public class AntonioTest {
 
     assertEquals(4,antonio.numPawnAntonio);
     assertEquals(4,antonio.greenPawn+antonio.bluePawn+antonio.pinkPawn+antonio.redPawn+antonio.yellowPawn);
+    assertEquals(116,studentBag.num);
     }
     }
 

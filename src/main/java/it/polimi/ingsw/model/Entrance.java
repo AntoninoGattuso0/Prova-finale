@@ -14,12 +14,13 @@ public class Entrance {
     protected int redPawn;
 
     Entrance(){
-       numPawn = 0;
        greenPawn = 0;
        bluePawn = 0;
        pinkPawn = 0;
        yellowPawn = 0;
        redPawn = 0;
+       setNumPawn();
+
     }
 
     // modifiche all'UML:ho aggiunto setter per definire quante sono le pedine che devono esserci in Entrance
