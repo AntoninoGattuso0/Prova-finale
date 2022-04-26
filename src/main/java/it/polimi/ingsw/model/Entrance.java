@@ -20,7 +20,46 @@ public class Entrance {
        yellowPawn = 0;
        redPawn = 0;
        setNumPawn();
-
+       int j = numPawn;
+        Random rnd = new Random();
+        while (j > 0) {
+            ArrayList<String> entrancePawn = Game.createArrayPawn();
+            if (StudentBag.num > 0) {
+                int random = rnd.nextInt(entrancePawn.size());
+                if (Objects.equals(entrancePawn.get(random), Game.m.get(0))) {//verde
+                    greenPawn++;
+                    numPawn++;
+                    StudentBag.num--;
+                    StudentBag.greenNum--;
+                    if (StudentBag.greenNum == 0) entrancePawn.remove(random);
+                } else if (Objects.equals(entrancePawn.get(random), Game.m.get(1))) {//rosso
+                    redPawn++;
+                    numPawn++;
+                    StudentBag.num--;
+                    StudentBag.redNum--;
+                    if (StudentBag.redNum == 0) entrancePawn.remove(random);
+                } else if (Objects.equals(entrancePawn.get(random), Game.m.get(2))) {//giallo
+                    yellowPawn++;
+                    numPawn++;
+                    StudentBag.num--;
+                    StudentBag.yellowNum--;
+                    if (StudentBag.yellowNum == 0) entrancePawn.remove(random);
+                } else if (Objects.equals(entrancePawn.get(random), Game.m.get(3))) {//rosa
+                    pinkPawn++;
+                    numPawn++;
+                    StudentBag.num--;
+                    StudentBag.pinkNum--;
+                    if (StudentBag.pinkNum == 0) entrancePawn.remove(random);
+                } else if (Objects.equals(entrancePawn.get(random), Game.m.get(4))) {//blu
+                    bluePawn++;
+                    numPawn++;
+                    StudentBag.num--;
+                    StudentBag.blueNum--;
+                    if (StudentBag.blueNum == 0) entrancePawn.remove(random);
+                }
+                j--;
+            }
+        }
     }
 
     // modifiche all'UML:ho aggiunto setter per definire quante sono le pedine che devono esserci in Entrance
