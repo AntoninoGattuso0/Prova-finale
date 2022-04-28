@@ -86,7 +86,7 @@ public class Game {
         }
         //aggiunta di pedine all'entrata di ogni player
         for (i = 0; i < totPlayer; i++) {
-            Player player= new Player("nick");
+            Player player= new Player("nick",i);
             int j =  player.entrance.numPawn;   //che cosa restituisce? numPawn si modifica nel tempo
             while (j > 0) {
                 ArrayList<String> entrancePawn = createArrayPawn();

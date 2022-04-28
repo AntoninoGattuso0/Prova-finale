@@ -3,6 +3,7 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 
 public class Player {
+    protected int IDplayer;
     private final String nickname;
     protected int numCoin;
     protected ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
@@ -10,8 +11,9 @@ public class Player {
     protected Entrance entrance;
     protected DiningRoom diningRoom;
     protected TowerSpace towerSpace;
-    Player(String nick) {
+    Player(String nick, int ID) {
         int j, k;
+        IDplayer=ID;
         nickname=nick;
         if (Game.isExpert) numCoin = 1;
         else numCoin = -1;
@@ -42,14 +44,12 @@ public class Player {
     }
     // modifica UML: chooseCloud dovrebbe scegliere una nuvola  e spostare le pedine in entrance. quindi va fatto nella classe entrance.
     // public void chooseCloud(Cloud cloud){}//
-    public void useCharacter(CharacterCard card){ //se Character non è una classe, non posso passare niente in ignresso di quel tipo
+    public int useCharacter(CharacterCard card){ //se Character non è una classe, non posso passare niente in ignresso di quel tipo
         int i;
             i=Game.cards.indexOf(card);
-
-
+            return i;
         }
     public void useAssistant(){
-
         int i;
         int contr=0;
         for(i=0;i<deckAssistant.size() && contr==0;i++) {
