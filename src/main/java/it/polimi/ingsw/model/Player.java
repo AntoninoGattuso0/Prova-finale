@@ -3,17 +3,33 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 
 public class Player {
-    private String nickname;
+    private final String nickname;
     protected int numCoin;
     protected ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
     protected AssistantCard currentAssistant;
     protected Entrance entrance;
     protected DiningRoom diningRoom;
     protected TowerSpace towerSpace;
-    Player(String nick){
+    Player(String nick) {
+        int j, k;
         nickname=nick;
-        numCoin=0;
-
+        if (Game.isExpert) numCoin = 1;
+        else numCoin = -1;
+        //creazione assistenti
+        k = 1;
+        //aggiunta assistenti
+        for (j = 1; j < 11; j++) {
+            AssistantCard assistant = new AssistantCard();
+            assistant.setCardValue(j);
+            if (j == 3 || j == 5 || j == 7 || j == 9) k++;
+            assistant.setStep(k);
+            deckAssistant.add(assistant);
+            //collegamento a tower, dining and entrance
+            entrance = new Entrance();
+            entrance.setNumPawn();
+            diningRoom = new DiningRoom();
+            towerSpace = new TowerSpace();
+        }
     }
     public boolean checkNumStepMotherNature(int num){
         boolean b;

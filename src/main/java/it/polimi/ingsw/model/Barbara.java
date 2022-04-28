@@ -4,7 +4,7 @@ public class Barbara extends CharacterCard{
     Barbara(){
         coinPrice=2;
     }
-    public void useEffect(int actualPlayer){
+    public int useEffect(int actualPlayer){
         if(Game.players.get(actualPlayer).diningRoom.numGreen==Game.players.get(ProfTable.greenProf).diningRoom.numGreen)
                 ProfTable.greenProf=actualPlayer;
         if(Game.players.get(actualPlayer).diningRoom.numRed==Game.players.get(ProfTable.greenProf).diningRoom.numRed)
@@ -15,5 +15,6 @@ public class Barbara extends CharacterCard{
             ProfTable.pinkProf=actualPlayer;
         if(Game.players.get(actualPlayer).diningRoom.numYellow==Game.players.get(ProfTable.greenProf).diningRoom.numYellow)
             ProfTable.yellowProf=actualPlayer;
+        return actualPlayer;
     }
 }

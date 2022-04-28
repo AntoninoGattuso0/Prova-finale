@@ -14,32 +14,17 @@ public class Game {
     protected static ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
     protected static Map<Integer, String> m = new HashMap<>();
 
-    public Game(int totPlayer, boolean isExpert) {
-        Game.totPlayer = totPlayer;
-        Game.isExpert = true;
-        start();
+    public Game(int totplayer, boolean isexpert) {
+        totPlayer = totplayer;
+        isExpert = isexpert;
     }
 
     protected static void start() {
         int i;
-      /**  StudentBag.num = 120;
-        StudentBag.greenNum = StudentBag.redNum = StudentBag.yellowNum = StudentBag.pinkNum = StudentBag.blueNum = 24;
-       invece di inizializzarlo così, si richiama il costruttore, se siete d'accordo eliminate questo commento. stessa cosa per tutti.**/
         StudentBag studentBag= new StudentBag();
-
+        ProfTable profTable = new ProfTable();
 //creazione isole
         for (i = 0; i < 12; i++) {
-           /** Island island = new Island();
-            island.isMotherNature = false;
-            island.greenPawn = 0;
-            island.redPawn = 0;
-            island.yellowPawn = 0;
-            island.pinkPawn = 0;
-            island.bluePawn = 0;
-            island.isTower = false;
-            island.colorTower = null;
-            island.isProhibited = false;
-            island.totIsland = 1;**/
             Island island = new Island();
             islands.add(island);
         }
@@ -49,9 +34,6 @@ public class Game {
         m.put(2, "YELLOW");
         m.put(3, "PINK");
         m.put(4, "BLUE");
-
-        ProfTable profTable = new ProfTable();
-
 //randomizza madre natura
         Random rnd = new Random();
         int n = rnd.nextInt(12);
@@ -69,7 +51,6 @@ public class Game {
         startingPawn.add(m.get(2));
         startingPawn.add(m.get(3));
         startingPawn.add(m.get(4));
-
         for (i = n + 1; !islands.get(i).isMotherNature; i++) {
             if (i == 12) i = 0;
             if ((i == n + 6) || (i == n - 6)) i++;
@@ -96,7 +77,6 @@ public class Game {
                 if (b == 0) startingPawn.remove(random);
             }
         }
-
         // creazione nuvole e inizializzazione
         clouds = new ArrayList<>();
         for (i = 0; i < totPlayer; i++) {
@@ -104,50 +84,50 @@ public class Game {
             cloud.refillCloud();
             clouds.add(cloud);
         }
-
         //aggiunta di pedine all'entrata di ogni player
         for (i = 0; i < totPlayer; i++) {
-            int j =  players.get(i).entrance.numPawn;   //che cosa restituisce? numPawn si modifica nel tempo
+            Player player= new Player("nick");
+            int j =  player.entrance.numPawn;   //che cosa restituisce? numPawn si modifica nel tempo
             while (j > 0) {
                 ArrayList<String> entrancePawn = createArrayPawn();
                 if (StudentBag.num > 0) {
                     int random = rnd.nextInt(entrancePawn.size());
                     if (Objects.equals(entrancePawn.get(random), m.get(0))) {//verde
-                        players.get(i).entrance.greenPawn++;
-                        players.get(i).entrance.numPawn++;
+                        player.entrance.greenPawn++;
+                        player.entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.greenNum--;
                         if (StudentBag.greenNum == 0) entrancePawn.remove(random);
                     } else if (Objects.equals(entrancePawn.get(random), m.get(1))) {//rosso
-                        players.get(i).entrance.redPawn++;
-                        players.get(i).entrance.numPawn++;
+                        player.entrance.redPawn++;
+                        player.entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.redNum--;
                         if (StudentBag.redNum == 0) entrancePawn.remove(random);
                     } else if (Objects.equals(entrancePawn.get(random), m.get(2))) {//giallo
-                        players.get(i).entrance.yellowPawn++;
-                        players.get(i).entrance.numPawn++;
+                        player.entrance.yellowPawn++;
+                        player.entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.yellowNum--;
                         if (StudentBag.yellowNum == 0) entrancePawn.remove(random);
                     } else if (Objects.equals(entrancePawn.get(random), m.get(3))) {//rosa
-                        players.get(i).entrance.pinkPawn++;
-                        players.get(i).entrance.numPawn++;
+                        player.entrance.pinkPawn++;
+                        player.entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.pinkNum--;
                         if (StudentBag.pinkNum == 0) entrancePawn.remove(random);
                     } else if (Objects.equals(entrancePawn.get(random), m.get(4))) {//blu
-                        players.get(i).entrance.bluePawn++;
-                        players.get(i).entrance.numPawn++;
+                        player.entrance.bluePawn++;
+                        player.entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.blueNum--;
                         if (StudentBag.blueNum == 0) entrancePawn.remove(random);
                     }
+                    players.add(player);
                     j--;
                 }
             }
         }
-
         //creazione arraylist con tutte i personaggi
         Antonio antonio = new Antonio();
         Barbara barbara = new Barbara();
@@ -173,7 +153,6 @@ public class Game {
         characterCards.add(maria);
         characterCards.add(nicola);
         characterCards.add(omnia);
-
     }
 
     static ArrayList<String> createArrayPawn() {//crea un array per ogni colore (utilizzato per funzioni random)
@@ -191,34 +170,13 @@ public class Game {
         return arrayPawn;
     }
 
-    public static void newPlayer(String nick) {
-        int i, j, k;
+  /*  public static void newPlayer(String nick) {
+        int i;
         for(i=0; i<totPlayer; i++) {
-            Player player = new Player(nick);
-            player.chooseNick(nick);
-            if (isExpert) player.numCoin = 1;
-            else player.numCoin = -1;
-            //creazione assistenti
-            ArrayList<AssistantCard> deckAssistant = new ArrayList<>(10);
-            k = 1;
-            //aggiunta assistenti
-            for (j = 1; j < 11; j++) {
-                AssistantCard assistant = new AssistantCard();
-                assistant.setCardValue(j);
-                if (j == 3 || j == 5 || j == 7 || j == 9) k++;
-                assistant.setStep(k);
-                deckAssistant.add(assistant);
-            }
-            player.deckAssistant = deckAssistant;
-            //collegamento a tower, dining and entrance
-            player.entrance = new Entrance();
-            player.entrance.setNumPawn();
-            player.diningRoom = new DiningRoom();
-            player.towerSpace = new TowerSpace();
+            Player player = new Player(nick);//inizializzazione player fatta in player -NINO
             players.add(player);
         }
-    }
-
+    }*/
     public void moveMotherNature(int num){
         int i;
         int totIsland = islands.size();
