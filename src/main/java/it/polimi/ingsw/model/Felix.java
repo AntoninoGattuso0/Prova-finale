@@ -17,15 +17,15 @@ public class Felix extends CharacterCard{
         for(i = 0; i < Game.totPlayer; i++) influence.add(0);
         for(color = 0; color < 5; color++) {
             n = ProfTable.checkProf(color);
-            if(color == 0 && n != -1) influence.set(n, influence.get(n) + island.greenPawn);
+            if(color == 0 && n != -1) influence.set(n, influence.get(n) + island.getGreenPawn());
 
-            else if(color == 1 && n != -1) influence.set(n, influence.get(n) + island.redPawn);
+            else if(color == 1 && n != -1) influence.set(n, influence.get(n) + island.getRedPawn());
 
-            else if(color == 2 && n != -1)influence.set(n, influence.get(n) + island.yellowPawn);
+            else if(color == 2 && n != -1)influence.set(n, influence.get(n) + island.getYellowPawn());
 
-            else if(color == 3 && n != -1)influence.set(n, influence.get(n) + island.pinkPawn);
+            else if(color == 3 && n != -1)influence.set(n, influence.get(n) + island.getPinkPawn());
 
-            else if(color == 4 && n != -1)influence.set(n, influence.get(n) + island.bluePawn);
+            else if(color == 4 && n != -1)influence.set(n, influence.get(n) + island.getBluePawn());
         }
         if(Game.totPlayer == 4){
             for( i = 1; Game.players.get(i).towerSpace.colorTower == Game.players.get(0).towerSpace.colorTower; i++)
@@ -44,7 +44,7 @@ public class Felix extends CharacterCard{
                 if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && Game.players.get(i).towerSpace.colorTower != Game.players.get(j).towerSpace.colorTower) notunique = true;
             }
         }
-        if(!notunique) island.colorTower = Game.players.get(influence.indexOf(max)).towerSpace.colorTower;
+        if(!notunique) island.getColorTower() = Game.players.get(influence.indexOf(max)).towerSpace.colorTower;
         Game.unifyIsland(Game.islands.indexOf(island));
     }
 }
