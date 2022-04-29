@@ -10,8 +10,8 @@ public class Game {
     protected static ProfTable profTable;
     protected static final ArrayList<Island> islands = new ArrayList<>(12);
     protected static boolean isExpert;
-    protected ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
-    protected ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
+    protected static ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
+    protected static ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
     protected static Map<Integer, String> m = new HashMap<>();
 
     public void setTotPlayer(int i){
