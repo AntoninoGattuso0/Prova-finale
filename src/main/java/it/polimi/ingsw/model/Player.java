@@ -15,7 +15,7 @@ public class Player {
         int j, k;
         IDplayer=ID;
         nickname=nick;
-        if (Game.isExpert) numCoin = 1;
+        if (Game.getExpert()==true) numCoin = 1;
         else numCoin = -1;
         //creazione assistenti
         k = 1;
@@ -28,7 +28,6 @@ public class Player {
             deckAssistant.add(assistant);
             //collegamento a tower, dining and entrance
             entrance = new Entrance();
-            entrance.setNumPawn();
             diningRoom = new DiningRoom();
             towerSpace = new TowerSpace();
         }
