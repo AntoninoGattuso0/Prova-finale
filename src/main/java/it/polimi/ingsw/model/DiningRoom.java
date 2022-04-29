@@ -6,11 +6,11 @@ public class DiningRoom {
     //modifiche all'UML: array di array: in cui gli elementi sono 0 o 1;
     //5 int che tengono conto di quante pedine di ogni colore sono presenti nella sala
     int[][] position = new int[5][10];
-    protected int numGreen;
-    protected int numRed;
-    protected int numYellow;
-    protected int numPink;
-    protected int numBlue;
+    private int numGreen;
+    private int numRed;
+    private int numYellow;
+    private int numPink;
+    private int numBlue;
 
     DiningRoom(){
         numGreen = 0;
@@ -18,6 +18,46 @@ public class DiningRoom {
         numYellow = 0;
         numPink = 0;
         numBlue = 0;
+    }
+
+    public int getNumGreen() {
+        return numGreen;
+    }
+
+    public int getNumRed() {
+        return numRed;
+    }
+
+    public int getNumYellow() {
+        return numYellow;
+    }
+
+    public int getNumPink() {
+        return numPink;
+    }
+
+    public int getNumBlue() {
+        return numBlue;
+    }
+
+    public void setNumGreen(int numGreen) {
+        this.numGreen = numGreen;
+    }
+
+    public void setNumRed(int numRed) {
+        this.numRed = numRed;
+    }
+
+    public void setNumYellow(int numYellow) {
+        this.numYellow = numYellow;
+    }
+
+    public void setNumPink(int numPink) {
+        this.numPink = numPink;
+    }
+
+    public void setNumBlue(int numBlue) {
+        this.numBlue = numBlue;
     }
 
     public void addPawnToEntrance(ColorPawn colorPawn, Player player, Entrance entrance){
