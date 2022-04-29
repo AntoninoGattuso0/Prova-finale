@@ -8,7 +8,7 @@ public class Game {
     protected static int totPlayer;
     private ArrayList<Cloud> clouds;
     protected static ProfTable profTable;
-    protected final ArrayList<Island> islands = new ArrayList<>(12);
+    protected static final ArrayList<Island> islands = new ArrayList<>(12);
     private boolean isExpert;
     private ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
     private ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
@@ -197,7 +197,7 @@ public class Game {
         islands.get(num).setMotherNature(true);
     }
 
-    public void unifyIsland(int i){ // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
+    public static void unifyIsland(int i){ // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
        int j;
        if(islands.get(i).getTower()){
            j=i-1;
@@ -209,7 +209,7 @@ public class Game {
        }
     }
 
-    private void checkIsland(int i, int j) { //controlla se le due isole si possono unire, nel caso le unisce
+    private static void checkIsland(int i, int j) { //controlla se le due isole si possono unire, nel caso le unisce
         if(islands.get(j).getTower() && islands.get(j).getColorTower() == islands.get(i).getColorTower()){
             islands.get(i).setGreenPawn(islands.get(i).getGreenPawn() + islands.get(j).getGreenPawn());
             islands.get(i).setRedPawn(islands.get(i).getRedPawn() + islands.get(j).getRedPawn());
