@@ -4,14 +4,14 @@ import java.util.*;
 
 public class Entrance {
 
-    protected int numPawn;        //numero di pedine totali presenti all'entrata della plancia
+    private int numPawn;        //numero di pedine totali presenti all'entrata della plancia
 
     //numero di pedine per ogni colore, inizialmente sono zero, poi in base al numero di player vengono aggiunte pedine in maniera randomica
-    protected int greenPawn;
-    protected int bluePawn;
-    protected int pinkPawn;
-    protected int yellowPawn;
-    protected int redPawn;
+    private int greenPawn;
+    private int bluePawn;
+    private int pinkPawn;
+    private int yellowPawn;
+    private int redPawn;
 
     Entrance(){
        greenPawn = 0;
@@ -20,17 +20,17 @@ public class Entrance {
        yellowPawn = 0;
        redPawn = 0;
        setNumPawn();
-       int j = numPawn;
+       int j = getNumPawn();
         Random rnd = new Random();
         while (j > 0) {
             ArrayList<String> entrancePawn = Game.createArrayPawn();
-            if (StudentBag.num > 0) {
+            if (StudentBag.getNum() > 0) {
                 int random = rnd.nextInt(entrancePawn.size());
                 if (Objects.equals(entrancePawn.get(random), Game.m.get(0))) {//verde
-                    greenPawn++;
-                    numPawn++;
+                    setGreenPawn(getGreenPawn() + 1);
+                    setNumPawn(getNumPawn() + 1);
+                    StudentBag.greenNum;
                     StudentBag.num--;
-                    StudentBag.greenNum--;
                     if (StudentBag.greenNum == 0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(1))) {//rosso
                     redPawn++;
@@ -60,6 +60,45 @@ public class Entrance {
             }
             j--;
         }
+    }
+
+    public int getGreenPawn() {
+        return greenPawn;
+    }
+    public int getRedPawn(){
+        return redPawn;
+    }
+
+    public int getYellowPawn() {
+        return yellowPawn;
+    }
+
+    public int getPinkPawn() {
+        return pinkPawn;
+    }
+
+    public int getBluePawn() {
+        return bluePawn;
+    }
+
+    public void setGreenPawn(int greenPawn) {
+        this.greenPawn = greenPawn;
+    }
+
+    public void setRedPawn(int redPawn) {
+        this.redPawn = redPawn;
+    }
+
+    public void setYellowPawn(int yellowPawn) {
+        this.yellowPawn = yellowPawn;
+    }
+
+    public void setPinkPawn(int pinkPawn) {
+        this.pinkPawn = pinkPawn;
+    }
+
+    public void setBluePawn(int bluePawn) {
+        this.bluePawn = bluePawn;
     }
 
     // modifiche all'UML:ho aggiunto setter per definire quante sono le pedine che devono esserci in Entrance

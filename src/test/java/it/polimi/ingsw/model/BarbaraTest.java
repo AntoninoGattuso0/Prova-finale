@@ -1,12 +1,8 @@
 package it.polimi.ingsw.model;
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-class BarbaraTest {
+/*class BarbaraTest {
     @Test
-    public void test1() {
+    /*public void test1() {
         Barbara barbara = new Barbara();
         Game game = new Game(3, true);
         game.start();
@@ -22,4 +18,4 @@ class BarbaraTest {
 
         assertEquals(2, game.profTable.greenProf);
     }
-}
+}*/

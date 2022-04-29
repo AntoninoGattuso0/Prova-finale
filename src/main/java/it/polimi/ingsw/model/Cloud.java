@@ -3,12 +3,12 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class Cloud {
-    protected int numPawn;    //sono inizializzati da qualche parte?
-    protected int greenPawn;
-    protected int redPawn;
-    protected int yellowPawn;
-    protected int pinkPawn;
-    protected int bluePawn;
+    private int numPawn;    //sono inizializzati da qualche parte?
+    private int greenPawn;
+    private int redPawn;
+    private int yellowPawn;
+    private int pinkPawn;
+    private int bluePawn;
 
     public void getNumPlayer() {
         int numPawn;
