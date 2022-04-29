@@ -19,12 +19,12 @@ public class Entrance {
        pinkPawn = 0;
        yellowPawn = 0;
        redPawn = 0;
-       setNumPawn();
+       startNumPawn();
        int j = getNumPawn();
         Random rnd = new Random();
         while (j > 0) {
             ArrayList<String> entrancePawn = Game.createArrayPawn();
-            if (StudentBag.getNum() > 0) {
+            if (StudentBag.getNumPawn() > 0) {
                 int random = rnd.nextInt(entrancePawn.size());
                 if (Objects.equals(entrancePawn.get(random), Game.m.get(0))) {//verde
                     setGreenPawn(getGreenPawn() + 1);
@@ -62,9 +62,14 @@ public class Entrance {
         }
     }
 
+    public int getNumPawn(){
+        return numPawn;
+    }
+
     public int getGreenPawn() {
         return greenPawn;
     }
+
     public int getRedPawn(){
         return redPawn;
     }
@@ -79,6 +84,10 @@ public class Entrance {
 
     public int getBluePawn() {
         return bluePawn;
+    }
+
+    public void setNumPawn(int numPawn) {
+        this.numPawn = numPawn;
     }
 
     public void setGreenPawn(int greenPawn) {
@@ -103,7 +112,7 @@ public class Entrance {
 
     // modifiche all'UML:ho aggiunto setter per definire quante sono le pedine che devono esserci in Entrance
     //all'inizio del gioco e dopo che ho fatto refill da una nuvola
-    public void setNumPawn(){
+    public void startNumPawn(){
         if(Game.totPlayer == 2 || Game.totPlayer == 4) this.numPawn = 9;
         else if(Game.totPlayer == 3) this.numPawn = 7;
     }
