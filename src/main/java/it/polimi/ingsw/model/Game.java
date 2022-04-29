@@ -96,7 +96,7 @@ public class Game {
         }
         //aggiunta di pedine all'entrata di ogni player
         for (i = 0; i < totPlayer; i++) {
-            Player player= new Player("nick",i);
+            Player player= new Player("nick");
             int j =  player.entrance.getNumPawn();   //che cosa restituisce? numPawn si modifica nel tempo
             while (j > 0) {
                 ArrayList<String> entrancePawn = createArrayPawn();
@@ -285,7 +285,7 @@ public class Game {
         ArrayList<Integer> maxColor = new ArrayList<>();
         for(i=0; i<5; i++){
             if(i==0) {
-                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.numGreen);
+                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumGreen());
                 int max = Collections.max(maxColor);
                 int indexMax = maxColor.indexOf(max);
                 maxColor.remove(indexMax);
@@ -293,7 +293,7 @@ public class Game {
                 maxColor.clear();
             }
             else if (i==1) {
-                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.numRed);
+                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumRed());
                 int max = Collections.max(maxColor);
                 int indexMax = maxColor.indexOf(max);
                 maxColor.remove(indexMax);
@@ -301,7 +301,7 @@ public class Game {
                 maxColor.clear();
             }
             else if (i==2) {
-                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.numYellow);
+                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumYellow());
                 int max = Collections.max(maxColor);
                 int indexMax = maxColor.indexOf(max);
                 maxColor.remove(indexMax);
@@ -309,7 +309,7 @@ public class Game {
                 maxColor.clear();
             }
             else if (i==3) {
-                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.numPink);
+                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumPink());
                 int max = Collections.max(maxColor);
                 int indexMax = maxColor.indexOf(max);
                 maxColor.remove(indexMax);
@@ -317,7 +317,7 @@ public class Game {
                 maxColor.clear();
             }
             else if (i==4) {
-                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.numBlue);
+                for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumBlue());
                 int max = Collections.max(maxColor);
                 int indexMax = maxColor.indexOf(max);
                 maxColor.remove(indexMax);

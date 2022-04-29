@@ -3,7 +3,6 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 
 public class Player {
-    private int IDplayer;
     private final String nickname;
     private int numCoin;
     private ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
@@ -11,9 +10,8 @@ public class Player {
     protected Entrance entrance;
     protected DiningRoom diningRoom;
     protected TowerSpace towerSpace;
-    Player(String nick, int ID) {
+    Player(String nick) {
         int j, k;
-        IDplayer=ID;
         nickname=nick;
         if (Game.getExpert()==true) numCoin = 1;
         else numCoin = -1;
@@ -32,6 +30,14 @@ public class Player {
             towerSpace = new TowerSpace();
         }
     }
+    public int getNumCoin() {
+        return numCoin;
+    }
+
+    public void setNumCoin(int numCoin) {
+        this.numCoin = numCoin;
+    }
+
     public boolean checkNumStepMotherNature(int num){
         boolean b;
         if(currentAssistant.getStep()<num){
