@@ -267,7 +267,7 @@ public class Game {
     }
 
     public boolean endGame(){
-        return StudentBag.num == 0;
+        return StudentBag.getNum() == 0;
     }
 
     public void setCard() { //posiziona a caso dei personaggi (3)
@@ -281,7 +281,7 @@ public class Game {
         }
     }
 
-    public static void moveProf(){
+    public void moveProf(){
         int i, j;
         ArrayList<Integer> maxColor = new ArrayList<>();
         for(i=0; i<5; i++){
@@ -290,7 +290,7 @@ public class Game {
                 int max = Collections.max(maxColor);
                 int indexMax = maxColor.indexOf(max);
                 maxColor.remove(indexMax);
-                if (!maxColor.contains(max)) ProfTable.greenProf = indexMax;
+                if (!maxColor.contains(max)) profTable.setGreenProf(indexMax);
                 maxColor.clear();
             }
             else if (i==1) {
@@ -298,7 +298,7 @@ public class Game {
                 int max = Collections.max(maxColor);
                 int indexMax = maxColor.indexOf(max);
                 maxColor.remove(indexMax);
-                if (!maxColor.contains(max)) ProfTable.redProf = indexMax;
+                if (!maxColor.contains(max)) profTable.setRedProf(indexMax);
                 maxColor.clear();
             }
             else if (i==2) {
@@ -306,7 +306,7 @@ public class Game {
                 int max = Collections.max(maxColor);
                 int indexMax = maxColor.indexOf(max);
                 maxColor.remove(indexMax);
-                if (!maxColor.contains(max)) ProfTable.yellowProf = indexMax;
+                if (!maxColor.contains(max)) profTable.setYellowProf(indexMax);
                 maxColor.clear();
             }
             else if (i==3) {
@@ -314,7 +314,7 @@ public class Game {
                 int max = Collections.max(maxColor);
                 int indexMax = maxColor.indexOf(max);
                 maxColor.remove(indexMax);
-                if (!maxColor.contains(max)) ProfTable.pinkProf = indexMax;
+                if (!maxColor.contains(max)) profTable.setPinkProf(indexMax);
                 maxColor.clear();
             }
             else if (i==4) {
@@ -322,7 +322,7 @@ public class Game {
                 int max = Collections.max(maxColor);
                 int indexMax = maxColor.indexOf(max);
                 maxColor.remove(indexMax);
-                if (!maxColor.contains(max)) ProfTable.blueProf = indexMax;
+                if (!maxColor.contains(max)) profTable.setBlueProf(indexMax);
                 maxColor.clear();
             }
         }
