@@ -13,7 +13,7 @@ public class StudentBag {
         yellowNum=24;
         pinkNum=24;
         blueNum=24;
-        num=blueNum+redNum+yellowNum+pinkNum+greenNum;
+        num=greenNum+redNum+yellowNum+pinkNum+blueNum;
     }
     public void setGreenNum(int i){
        greenNum = i;
@@ -63,6 +63,7 @@ public class StudentBag {
     public int getNum(){
         return num;
     }
-
-
+    public void setNum(){
+        num = blueNum+redNum+yellowNum+pinkNum+greenNum;
+    }
 }
