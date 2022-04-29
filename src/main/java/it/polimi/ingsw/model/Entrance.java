@@ -185,11 +185,11 @@ public class Entrance {
             startNumPawn();
 
             cloud.setNumPawn(0);
-            cloud.greenPawn = 0;
-            cloud.redPawn = 0;
-            cloud.yellowPawn = 0;
-            cloud.pinkPawn = 0;
-            cloud.bluePawn = 0;
+            cloud.setGreenPawn(0);
+            cloud.setRedPawn(0);
+            cloud.setYellowPawn(0);
+            cloud.setPinkPawn(0);
+            cloud.setBluePawn(0);
 
         }
     }
