@@ -16,7 +16,7 @@ public class Player {
     Player(String nick) {
         int j, k;
         setNickame(nick);
-        if (Game.IsExpert==true) numCoin = 1;
+        if (Game.isExpert==true) numCoin = 1;
         else numCoin = -1;
         //creazione assistenti
         k = 1;
