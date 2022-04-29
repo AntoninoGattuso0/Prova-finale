@@ -69,8 +69,8 @@ public class DiningRoom {
                    position[0][j]= 1;
                    setNumGreen(j);
                    entrance.setGreenPawn(entrance.getGreenPawn() - 1);
-                     if(Game.isExpert && (position[0][2] == 1 || position[0][5] == 1 || position[0][8] == 1))
-                         player.numCoin++;
+                     if(Game.getExpert() && (position[0][2] == 1 || position[0][5] == 1 || position[0][8] == 1))
+                         player.setNumCoin(player.getNumCoin() + 1);
                    break;
                  }
             }
@@ -82,8 +82,8 @@ public class DiningRoom {
                     position[1][j]= 1;
                     setNumRed(j);
                     entrance.setRedPawn(entrance.getRedPawn() - 1);
-                    if(Game.isExpert && (position[1][2] == 1 || position[1][5] == 1 || position[1][8] == 1))
-                        player.numCoin++;
+                    if(Game.getExpert() && (position[1][2] == 1 || position[1][5] == 1 || position[1][8] == 1))
+                        player.setNumCoin(player.getNumCoin() + 1);
                     break;
                 }
             }
@@ -95,8 +95,8 @@ public class DiningRoom {
                     position[2][j]= 1;
                     setNumYellow(j);
                     entrance.setYellowPawn(entrance.getYellowPawn() - 1);
-                    if(Game.isExpert && (position[2][2] == 1 || position[2][5] == 1 || position[2][8] == 1))
-                        player.numCoin++;
+                    if(Game.getExpert() && (position[2][2] == 1 || position[2][5] == 1 || position[2][8] == 1))
+                        player.setNumCoin(player.getNumCoin() + 1);
                     break;
                 }
             }
@@ -108,8 +108,8 @@ public class DiningRoom {
                     position[3][j]= 1;
                     setNumPink(j);
                     entrance.setPinkPawn(entrance.getPinkPawn() - 1);
-                    if(Game.isExpert && (position[3][2] == 1 || position[3][5] == 1 || position[3][8] == 1))
-                        player.numCoin++;
+                    if(Game.getExpert() && (position[3][2] == 1 || position[3][5] == 1 || position[3][8] == 1))
+                        player.setNumCoin(player.getNumCoin() + 1);
                     break;
                 }
             }
@@ -120,9 +120,9 @@ public class DiningRoom {
                 if(position[4][j] != 1){
                     position[4][j]= 1;
                     setNumBlue(j);
-                    entrance.setBluePawn(entrance.getBluePawn() - 1);;
-                    if(Game.isExpert && (position[4][2] == 1 || position[4][5] == 1 || position[4][8] == 1))
-                        player.numCoin++;
+                    entrance.setBluePawn(entrance.getBluePawn() - 1);
+                    if(Game.getExpert() && (position[4][2] == 1 || position[4][5] == 1 || position[4][8] == 1))
+                        player.setNumCoin(player.getNumCoin() + 1);
                     break;
                 }
             }
