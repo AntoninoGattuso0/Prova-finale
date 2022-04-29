@@ -63,7 +63,8 @@ public class StudentBag {
     public int getNum(){
         return num;
     }
-    public void setNum(){
-        num = blueNum+redNum+yellowNum+pinkNum+greenNum;
+    public void setNum(int num){
+        this.num = num;
     }
+
 }
