@@ -53,7 +53,7 @@ public class ProfTable {
     }
 
     public void setBlueProf(int blueProf) {
-        this.blueProf = pinkProf;
+        this.blueProf = blueProf;
     }
 
 
