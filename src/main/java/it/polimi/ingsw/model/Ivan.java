@@ -7,13 +7,14 @@ public class Ivan extends CharacterCard{
     Ivan(){
         coinPrice=2;
     }
+
     public void useEffect(Island island, Player player){
         int i, j, k, n, color, max;
         boolean notunique = false;
         ArrayList<Integer> influence = new ArrayList<>();
         for(i=0; i<Game.totPlayer; i++) influence.add(0);
         for(color=0; color<5; color++) {
-            n = ProfTable.checkProf(color);
+            n = Game.profTable.checkProf(color);
             if(color==0 && n!=-1) influence.set(n, influence.get(n) + island.getGreenPawn());
 
             else if(color==1 && n!=-1) influence.set(n, influence.get(n) + island.getRedPawn());
@@ -48,7 +49,7 @@ public class Ivan extends CharacterCard{
                 if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && Game.players.get(i).towerSpace.colorTower != Game.players.get(j).towerSpace.colorTower) notunique = true;
             }
         }
-        if(!notunique) island.getColorTower() = Game.players.get(influence.indexOf(max)).towerSpace.colorTower;
+        if(!notunique) island.setColorTower(Game.players.get(influence.indexOf(max)).towerSpace.colorTower);
         Game.unifyIsland(Game.islands.indexOf(island));
     }
 }
