@@ -223,7 +223,7 @@ public class Game {
 
 
 
-    public static void topInfluence(Island island){
+    public void topInfluence(Island island){
        int i, j, k, n, color, max;;
        boolean notunique = false;
        ArrayList<Integer> influence = new ArrayList<>();
