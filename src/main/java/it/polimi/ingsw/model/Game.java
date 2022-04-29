@@ -20,7 +20,6 @@ public class Game {
     public int getTotPlayer(){
         return totPlayer;
     }
-
     public Game(int h, boolean isExpert) {
         totPlayer = h;
         this.isExpert = isExpert;
@@ -216,7 +215,7 @@ public class Game {
 
 
 
-    public void topInfluence(Island island){
+    public static void topInfluence(Island island){
        int i, j, k, n, color, max;
        boolean notunique = false;
        ArrayList<Integer> influence = new ArrayList<>();
