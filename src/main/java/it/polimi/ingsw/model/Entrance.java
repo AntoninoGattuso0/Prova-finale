@@ -177,11 +177,12 @@ public class Entrance {
     public void chooseCloud (Cloud cloud){
 
         if(cloud.getNumPawn()!=0 && !checkNum()){      //utile o no il controllo di numPawn? (controller)
-            this.greenPawn += cloud.greenPawn;
-            this.redPawn += cloud.redPawn;
-            this.yellowPawn += cloud.yellowPawn;
-            this.pinkPawn += cloud.pinkPawn;
-            this.bluePawn += cloud.bluePawn;
+            setGreenPawn(cloud.getGreenPawn() + 1);
+            setRedPawn(cloud.getRedPawn() + 1);
+            setYellowPawn(cloud.getYellowPawn() + 1);
+            setPinkPawn(cloud.getPinkPawn() + 1);
+            setBluePawn(cloud.getBluePawn() + 1);
+
             startNumPawn();
 
             cloud.setNumPawn(0);
