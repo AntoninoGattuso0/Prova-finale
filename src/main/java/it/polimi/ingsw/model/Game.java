@@ -9,9 +9,9 @@ public class Game {
     private ArrayList<Cloud> clouds;
     protected static ProfTable profTable;
     protected static final ArrayList<Island> islands = new ArrayList<>(12);
-    protected static final boolean isExpert;
-    private ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
-    private ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
+    protected static final boolean isExpert = false;
+    protected ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
+    protected ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
     protected static Map<Integer, String> m = new HashMap<>();
 
     public void setTotPlayer(int i){
@@ -156,6 +156,47 @@ public class Game {
         characterCards.add(maria);
         characterCards.add(nicola);
         characterCards.add(omnia);
+
+        if(isExpert){
+            ArrayList<String> cards = createArrayPawn();
+            if (StudentBag.getNum() > 0) {
+                int random = rnd.nextInt(cards.size());
+                if (Objects.equals(cards.get(random), m.get(0))) {//verde
+                    player.entrance.setGreenPawn(player.entrance.getGreenPawn() + 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
+                    StudentBag.setNum(StudentBag.getNum() - 1);
+                    StudentBag.setGreenNum(StudentBag.getGreenNum() - 1);
+                    if (StudentBag.getGreenNum() == 0) entrancePawn.remove(random);
+                } else if (Objects.equals(entrancePawn.get(random), m.get(1))) {//rosso
+                    player.entrance.setRedPawn(player.entrance.getRedPawn() + 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
+                    StudentBag.setNum(StudentBag.getNum() - 1);
+                    StudentBag.setRedNum(StudentBag.getRedNum() - 1);
+                    if (StudentBag.getRedNum() == 0) entrancePawn.remove(random);
+                } else if (Objects.equals(entrancePawn.get(random), m.get(2))) {//giallo
+                    player.entrance.setYellowPawn(player.entrance.getYellowPawn() + 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
+                    StudentBag.setNum(StudentBag.getNum() - 1);
+                    StudentBag.setYellowNum(StudentBag.getYellowNum() - 1);
+                    if (StudentBag.getYellowNum() == 0) entrancePawn.remove(random);
+                } else if (Objects.equals(entrancePawn.get(random), m.get(3))) {//rosa
+                    player.entrance.setPinkPawn(player.entrance.getPinkPawn() + 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
+                    StudentBag.setNum(StudentBag.getNum() - 1);
+                    StudentBag.setPinkNum(StudentBag.getPinkNum() - 1);
+                    if (StudentBag.getPinkNum() == 0) entrancePawn.remove(random);
+                } else if (Objects.equals(entrancePawn.get(random), m.get(4))) {//blu
+                    player.entrance.setBluePawn(player.entrance.getBluePawn() + 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
+                    StudentBag.setNum(StudentBag.getNum() - 1);
+                    StudentBag.setBlueNum(StudentBag.getBlueNum() - 1);
+                    if (StudentBag.getBlueNum() == 0) entrancePawn.remove(random);
+                }
+                players.add(player);
+                j--;
+            }
+        }
+        }
     }
 
     static ArrayList<String> createArrayPawn() {//crea un array per ogni colore (utilizzato per funzioni random)
