@@ -7,7 +7,7 @@ public class Game {
     protected static ArrayList<Player> players = new ArrayList<>(4);
     protected static int totPlayer;
     private ArrayList<Cloud> clouds;
-    protected ProfTable profTable;
+    protected static ProfTable profTable;
     private final ArrayList<Island> islands = new ArrayList<>(12);
     private boolean isExpert;
     private ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
