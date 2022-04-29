@@ -13,4 +13,8 @@ public class TowerSpace {
     public int getNumTower() {
         return numTower;
     }  // esiste qualche metodo che sposta le torri decrementandole da qui?
+
+    public void setNumerTower(int numTower){
+        this.numTower = numTower;
+    }
 }
