@@ -7,7 +7,7 @@ public class Game {
     private ArrayList<Player> players = new ArrayList<>(4);
     private int totPlayer = 0;
     private ArrayList<Cloud> clouds;
-    private ProfTable profTable;
+    protected ProfTable profTable;
     private final ArrayList<Island> islands = new ArrayList<>(12);
     private boolean isExpert;
     private ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
@@ -97,14 +97,14 @@ public class Game {
         //aggiunta di pedine all'entrata di ogni player
         for (i = 0; i < totPlayer; i++) {
             Player player= new Player("nick",i);
-            int j =  player.entrance.numPawn;   //che cosa restituisce? numPawn si modifica nel tempo
+            int j =  player.entrance.getNumPawn();   //che cosa restituisce? numPawn si modifica nel tempo
             while (j > 0) {
                 ArrayList<String> entrancePawn = createArrayPawn();
                 int z = StudentBag.getNum();
                 if (StudentBag.getNum() > 0) {
                     int random = rnd.nextInt(entrancePawn.size());
                     if (Objects.equals(entrancePawn.get(random), m.get(0))) {//verde
-                        player.entrance.greenPawn++;
+                        player.entrance.setGreenPawn(player.entrance.getGreenPawn() + 1);
                         player.entrance.numPawn++;
                         StudentBag.num--;
                         StudentBag.greenNum--;
