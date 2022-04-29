@@ -49,6 +49,6 @@ public class Lancillotto extends CharacterCard{
             }
         }
         if(!notunique) island.setColorTower(Game.players.get(influence.indexOf(max)).towerSpace.colorTower);
-        unifyIsland(Game.islands.indexOf(island));
+        Game.unifyIsland(Game.islands.indexOf(island));
     }
 }
