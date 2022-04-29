@@ -3,16 +3,19 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 
 public class Player {
-    private final String nickname;
+    private String nickname;
     private int numCoin;
     private ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
     private AssistantCard currentAssistant;
     protected Entrance entrance;
     protected DiningRoom diningRoom;
     protected TowerSpace towerSpace;
+    public void setNickame(String nick){
+        this.nickname=nick;
+    }
     Player(String nick) {
         int j, k;
-        nickname=nick;
+        setNickame(nick);
         if (Game.getExpert()==true) numCoin = 1;
         else numCoin = -1;
         //creazione assistenti
