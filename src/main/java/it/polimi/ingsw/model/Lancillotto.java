@@ -8,23 +8,23 @@ public class Lancillotto extends CharacterCard{
         coinPrice=3;
     }
 
-    public int removeColor(int island, int removedColor){
+    public void removeColor(Island island, int removedColor){
         int i, j, k, n, color, max;
         boolean notunique = false;
         ArrayList<Integer> influence = new ArrayList<>();
         for(i=0; i<Game.totPlayer; i++) influence.add(0);
         for(color=0; color<5; color++) {
-            if(color==removedColor)color++;
-            n = ProfTable.checkProf(color);
-            if(color==0 && n!=-1) influence.set(n, influence.get(n) + Game.islands.get(island).greenPawn);
+            if(color == removedColor) color++;
+            n = Game.profTable.checkProf(color);
+            if(color==0 && n!=-1) influence.set(n, influence.get(n) + island.getGreenPawn());
 
-            else if(color==1 && n!=-1) influence.set(n, influence.get(n) + Game.islands.get(island).redPawn);
+            else if(color==1 && n!=-1) influence.set(n, influence.get(n) + island.getRedPawn());
 
-            else if(color==2 && n!=-1)influence.set(n, influence.get(n) + Game.islands.get(island).yellowPawn);
+            else if(color==2 && n!=-1)influence.set(n, influence.get(n) + island.getYellowPawn());
 
-            else if(color==3 && n!=-1)influence.set(n, influence.get(n) + Game.islands.get(island).pinkPawn);
+            else if(color==3 && n!=-1)influence.set(n, influence.get(n) + island.getPinkPawn());
 
-            else if(color==4 && n!=-1)influence.set(n, influence.get(n) + Game.islands.get(island).bluePawn);
+            else if(color==4 && n!=-1)influence.set(n, influence.get(n) + island.getBluePawn());
         }
         if(Game.totPlayer==4){
             for(i=1; Game.players.get(i).towerSpace.colorTower == Game.players.get(0).towerSpace.colorTower; i++);
@@ -36,20 +36,19 @@ public class Lancillotto extends CharacterCard{
             influence.set(k, 0);
         }
 
-
         for(i=0; i<Game.totPlayer; i++){
-            if(Game.islands.get(island).isTower && Game.islands.get(island).colorTower == Game.players.get(i).towerSpace.colorTower)
-                influence.set(i, influence.get(i) + Game.islands.get(island).totIsland);
+            if(island.getTower() && island.getColorTower() == Game.players.get(i).towerSpace.colorTower)
+                influence.set(i, influence.get(i) + island.getTotIsland());
         }
 
         max = Collections.max(influence);
 
         for(i=0; i<influence.size() && !notunique;i++){
             for(j=i+1; j<influence.size() && !notunique; j++){
-                if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && i!=j) notunique = true;
+                if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && Game.players.get(i).towerSpace.colorTower != Game.players.get(j).towerSpace.colorTower) notunique = true;
             }
         }
-        if(!notunique) return influence.indexOf(max);
-        return -1;
+        if(!notunique) island.setColorTower(Game.players.get(influence.indexOf(max)).towerSpace.colorTower);
+        unifyIsland(Game.islands.indexOf(island));
     }
 }
