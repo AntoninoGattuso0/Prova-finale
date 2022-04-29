@@ -4,19 +4,32 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class Game {
-    protected static ArrayList<Player> players = new ArrayList<>(4);
-    protected static int totPlayer = 0;
-    private static ArrayList<Cloud> clouds;
-    private static ProfTable profTable;
-    protected static final ArrayList<Island> islands = new ArrayList<>(12);
-    protected static boolean isExpert;
-    protected static ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
-    protected static ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
-    protected static Map<Integer, String> m = new HashMap<>();
+    private ArrayList<Player> players = new ArrayList<>(4);
+    private int totPlayer = 0;
+    private ArrayList<Cloud> clouds;
+    private ProfTable profTable;
+    private final ArrayList<Island> islands = new ArrayList<>(12);
+    private boolean isExpert;
+    private ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
+    private ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
+    private Map<Integer, String> m = new HashMap<>();
 
-    public Game(int totplayer, boolean isexpert) {
-        totPlayer = totplayer;
-        isExpert = isexpert;
+    public void setTotPlayer(int totPlayer) {
+        this.totPlayer = totPlayer;
+    }
+    public int getTotPlayer(){
+        return totPlayer;
+    }
+    public void setExpert(boolean isExpert){
+        this.isExpert = isExpert;
+    }
+    public boolean getExpert(){
+        return isExpert;
+    }
+
+    public Game(int totPlayer, boolean isExpert) {
+        this.totPlayer = totPlayer;
+        this.isExpert = isExpert;
         int i;
         StudentBag studentBag= new StudentBag();
         ProfTable profTable = new ProfTable();
@@ -34,7 +47,7 @@ public class Game {
 //randomizza madre natura
         Random rnd = new Random();
         int n = rnd.nextInt(12);
-        islands.get(n).isMotherNature = true;
+        islands.get(n).setMotherNature(true);
 //randomizza pedine per ogni isola iniziale
         int g = 2;
         int r = 2;
@@ -48,29 +61,29 @@ public class Game {
         startingPawn.add(m.get(2));
         startingPawn.add(m.get(3));
         startingPawn.add(m.get(4));
-        for (i = n + 1; !islands.get(i).isMotherNature; i++) {
+        for (i = n + 1; !islands.get(i).getMotherNature(); i++) {
             if (i == 12) i = 0;
             if ((i == n + 6) || (i == n - 6)) i++;
             int random = rnd.nextInt(startingPawn.size());
             if (Objects.equals(startingPawn.get(random), m.get(0))) {
                 g--;
-                islands.get(i).greenPawn++;
+                islands.get(i).setGreenPawn(islands.get(i).getGreenPawn() + 1);
                 if (g == 0) startingPawn.remove(random);
             } else if (Objects.equals(startingPawn.get(random), m.get(1))) {
                 r--;
-                islands.get(i).redPawn++;
+                islands.get(i).setRedPawn(islands.get(i).getRedPawn() + 1);
                 if (r == 0) startingPawn.remove(random);
             } else if (Objects.equals(startingPawn.get(random), m.get(2))) {
                 y--;
-                islands.get(i).yellowPawn++;
+                islands.get(i).setYellowPawn(islands.get(i).getYellowPawn() + 1);
                 if (y == 0) startingPawn.remove(random);
             } else if (Objects.equals(startingPawn.get(random), m.get(3))) {
                 p--;
-                islands.get(i).pinkPawn++;
+                islands.get(i).setPinkPawn(islands.get(i).getPinkPawn() + 1);
                 if (p == 0) startingPawn.remove(random);
             } else if (Objects.equals(startingPawn.get(random), m.get(4))) {
                 b--;
-                islands.get(i).bluePawn++;
+                islands.get(i).setBluePawn(islands.get(i).getBluePawn() + 1);
                 if (b == 0) startingPawn.remove(random);
             }
         }

@@ -22,44 +22,30 @@ public class StudentBag {
         return greenNum;
     }
     public void setRedNum(int i){
-        greenNum = i;
+        redNum = i;
     }
     public int getRedNum(){
-        return greenNum;
+        return redNum;
     }
     public void setYellow(int i){
-        greenNum = i;
+        yellowNum = i;
     }
     public int getYellowNum(){
-        return greenNum;
+        return yellowNum;
     }
     public void setPinkNum(int i){
-        greenNum = i;
+        pinkNum = i;
     }
     public int getPinkNum(){
-        return greenNum;
+        return pinkNum;
     }
     public void setBlueNum(int i){
-        greenNum = i;
+        blueNum = i;
     }
-    public int getBlueNum(){
-        return greenNum;
+    public int getBlueNum() {
+        return blueNum;
     }
-    public void modifyGreenNum(int i){
-        greenNum += i;
-    }
-    public void modifyRedNum(int i){
-        redNum += i;
-    }
-    public void modifyYellowNum(int i){
-        yellowNum += i;
-    }
-    public void modifyPinkNum(int i){
-        pinkNum += i;
-    }
-    public void modifyBlueNum(int i){
-        blueNum += i;
-    }
+
     public int getNum(){
         return num;
     }
