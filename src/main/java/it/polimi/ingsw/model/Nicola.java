@@ -30,7 +30,7 @@ public class Nicola extends CharacterCard{
                 StudentBag.setNum(StudentBag.getNum() - 1);
                 StudentBag.setYellowNum(StudentBag.getYellowNum() - 1);
                 if (StudentBag.getYellowNum() == 0) cards.remove(random);
-            } else if (Objects.equals(cards.get(random), m.get(3))) {//rosa
+            } else if (Objects.equals(cards.get(random), Game.m.get(3))) {//rosa
                 setPinkPawn(getPinkPawn() + 1);
                 StudentBag.setNum(StudentBag.getNum() - 1);
                 StudentBag.setPinkNum(StudentBag.getPinkNum() - 1);
