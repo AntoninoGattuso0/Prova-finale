@@ -2,11 +2,11 @@ package it.polimi.ingsw.model;
 
 public class StudentBag {
     private static int num;
-    private int greenNum;
-    private int redNum;
-    private int yellowNum;
-    private int pinkNum;
-    private int blueNum;
+    private static int greenNum;
+    private static int redNum;
+    private static int yellowNum;
+    private static int pinkNum;
+    private static int blueNum;
     StudentBag(){ //COSTRUTTORE STUDENTBAG: non ricordo il numero di pedine, modificatelo se il numero è sbagliato. -Nino
         greenNum=24;
         redNum=24;
@@ -15,42 +15,42 @@ public class StudentBag {
         blueNum=24;
         num=greenNum+redNum+yellowNum+pinkNum+blueNum;
     }
-    public void setGreenNum(int i){
+    public static void setGreenNum(int i){
        greenNum = i;
     }
-    public int getGreenNum(){
+    public static int getGreenNum(){
         return greenNum;
     }
-    public void setRedNum(int i){
+    public static void setRedNum(int i){
         redNum = i;
     }
-    public int getRedNum(){
+    public static int getRedNum(){
         return redNum;
     }
-    public void setYellow(int i){
+    public static void setYellow(int i){
         yellowNum = i;
     }
-    public int getYellowNum(){
+    public static int getYellowNum(){
         return yellowNum;
     }
-    public void setPinkNum(int i){
+    public static void setPinkNum(int i){
         pinkNum = i;
     }
-    public int getPinkNum(){
+    public static int getPinkNum(){
         return pinkNum;
     }
-    public void setBlueNum(int i){
+    public static void setBlueNum(int i){
         blueNum = i;
     }
-    public int getBlueNum() {
+    public static int getBlueNum() {
         return blueNum;
     }
 
     public static int getNum(){
         return num;
     }
-    public void setNum(int num){
-        this.num = num;
+    public static void setNum(int i){
+        num = i;
     }
 
 }

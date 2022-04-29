@@ -12,7 +12,7 @@ public class Game {
     private boolean isExpert;
     private ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
     private ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
-    private Map<Integer, String> m = new HashMap<>();
+    protected Map<Integer, String> m = new HashMap<>();
 
     public void setTotPlayer(int totPlayer) {
         this.totPlayer = totPlayer;
