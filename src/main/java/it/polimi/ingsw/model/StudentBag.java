@@ -60,7 +60,7 @@ public class StudentBag {
     public void modifyBlueNum(int i){
         blueNum += i;
     }
-    public int getNum(){
+    public static int getNum(){
         return num;
     }
     public void setNum(int num){

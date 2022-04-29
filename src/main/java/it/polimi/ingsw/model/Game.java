@@ -19,7 +19,7 @@ public class Game {
         isExpert = isexpert;
     }
 
-    protected static void start() {
+    protected void start() {
         int i;
         StudentBag studentBag= new StudentBag();
         ProfTable profTable = new ProfTable();
@@ -90,7 +90,7 @@ public class Game {
             int j =  player.entrance.numPawn;   //che cosa restituisce? numPawn si modifica nel tempo
             while (j > 0) {
                 ArrayList<String> entrancePawn = createArrayPawn();
-                if (StudentBag.num > 0) {
+                if (StudentBag.getNum() > 0) {
                     int random = rnd.nextInt(entrancePawn.size());
                     if (Objects.equals(entrancePawn.get(random), m.get(0))) {//verde
                         player.entrance.greenPawn++;
