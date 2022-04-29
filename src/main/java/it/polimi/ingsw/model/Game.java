@@ -229,7 +229,7 @@ public class Game {
        ArrayList<Integer> influence = new ArrayList<>();
        for(i=0; i<totPlayer; i++) influence.add(0);
        for(color=0; color<5; color++) {
-           n = ProfTable.checkProf(color);
+           n = profTable.checkProf(color);
            if(color==0 && n!=-1) influence.set(n, influence.get(n) + island.getGreenPawn());
 
            else if(color==1 && n!=-1) influence.set(n, influence.get(n) + island.getRedPawn());

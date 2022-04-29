@@ -2,6 +2,8 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
+import static it.polimi.ingsw.model.StudentBag.getGreenNum;
+
 public class Cloud {
     private int numPawn;    //sono inizializzati da qualche parte?
     private int greenPawn;
@@ -10,57 +12,101 @@ public class Cloud {
     private int pinkPawn;
     private int bluePawn;
 
-    public void getNumPlayer() {
-        int numPawn;
-    }      //che fa? mi sa che devi mettere return
+    public int getNumPawn() {
+        return numPawn;
+    }
+
+    public int getYellowPawn() {
+        return yellowPawn;
+    }
+
+    public int getRedPawn() {
+        return redPawn;
+    }
+
+    public int getPinkPawn() {
+        return pinkPawn;
+    }
+
+    public int getGreenPawn() {
+        return greenPawn;
+    }
+
+    public int getBluePawn() {
+        return bluePawn;
+    }
+
+    public void setYellowPawn(int yellowPawn) {
+        this.yellowPawn = yellowPawn;
+    }
+
+    public void setRedPawn(int redPawn) {
+        this.redPawn = redPawn;
+    }
+
+    public void setPinkPawn(int pinkPawn) {
+        this.pinkPawn = pinkPawn;
+    }
+
+    public void setGreenPawn(int greenPawn) {
+        this.greenPawn = greenPawn;
+    }
+
+    public void setBluePawn(int bluePawn) {
+        this.bluePawn = bluePawn;
+    }
+
+    public void setNumPawn(int numPawn) {
+        this.numPawn = numPawn;
+    }
 
     public void refillCloud() {
         int i;
         Random rnd = new Random();
         ArrayList<String> refillPawn = Game.createArrayPawn();
-        for (i = 0; i < numPawn; i++) {
-            if (StudentBag.num > 0) {
+        for (i = 0; i < getNumPawn(); i++) {
+            if (StudentBag.getNum() > 0) {
                 int random = rnd.nextInt(refillPawn.size());
                 String color = Game.m.get(random);
                 if (Objects.equals(refillPawn.get(random), "GREEN")) {
-                    greenPawn++;
-                    numPawn++;
-                    StudentBag.num--;
-                    StudentBag.greenNum--;
-                    if(StudentBag.greenNum==0){
-                        refillPawn.remove(random);
+                        setGreenPawn(getGreenNum() + 1);
+                        setNumPawn(getNumPawn() + 1);
+                        StudentBag.setNum(StudentBag.getNum() - 1);
+                        StudentBag.setGreenNum(StudentBag.getGreenNum() - 1);
+                        if (StudentBag.getGreenNum() == 0) {
+                            refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "RED")) {
-                    redPawn++;
-                    numPawn++;
-                    StudentBag.num--;
-                    StudentBag.redNum--;
-                    if(StudentBag.redNum==0){
-                        refillPawn.remove(random);
+                        setRedPawn(getRedPawn() + 1);
+                        setNumPawn(getNumPawn() + 1);
+                        StudentBag.setNum(StudentBag.getNum() - 1);
+                        StudentBag.setRedNum(StudentBag.getRedNum() - 1);
+                        if (StudentBag.getRedNum() == 0) {
+                            refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "YELLOW")) {
-                    yellowPawn++;
-                    numPawn++;
-                    StudentBag.num--;
-                    StudentBag.yellowNum--;
-                    if(StudentBag.yellowNum==0){
-                        refillPawn.remove(random);
+                        setYellowPawn(getYellowPawn() + 1);
+                        setNumPawn(getNumPawn() + 1);
+                        StudentBag.setNum(StudentBag.getNum() - 1);
+                        StudentBag.setYellowNum(StudentBag.getYellowNum() - 1);
+                        if (StudentBag.getYellowNum() == 0) {
+                            refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "PINK")) {
-                    pinkPawn++;
-                    numPawn++;
-                    StudentBag.num--;
-                    StudentBag.pinkNum--;
-                    if(StudentBag.pinkNum==0){
-                        refillPawn.remove(random);
+                        setPinkPawn(getPinkPawn() + 1);
+                        setNumPawn(getNumPawn() + 1);
+                        StudentBag.setNum(StudentBag.getNum() - 1);
+                        StudentBag.setPinkNum(StudentBag.getPinkNum() - 1);
+                        if (StudentBag.getPinkNum() == 0) {
+                            refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "BLUE")) {
-                    bluePawn++;
-                    numPawn++;
-                    StudentBag.num--;
-                    StudentBag.blueNum--;
-                    if(StudentBag.blueNum==0){
-                        refillPawn.remove(random);
+                        setBluePawn(getBluePawn() + 1);
+                        setNumPawn(getNumPawn() + 1);
+                        StudentBag.setNum(StudentBag.getNum() - 1);
+                        StudentBag.setBlueNum(StudentBag.getBlueNum()- 1);
+                        if (StudentBag.getBlueNum() == 0) {
+                            refillPawn.remove(random);
                     }
                 }
             }
