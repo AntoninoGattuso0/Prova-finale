@@ -3,14 +3,14 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 
 public class Player {
-    protected int IDplayer;
+    private int IDplayer;
     private final String nickname;
-    protected int numCoin;
-    protected ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
-    protected AssistantCard currentAssistant;
-    protected Entrance entrance;
-    protected DiningRoom diningRoom;
-    protected TowerSpace towerSpace;
+    private int numCoin;
+    private ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
+    private AssistantCard currentAssistant;
+    private Entrance entrance;
+    private DiningRoom diningRoom;
+    private TowerSpace towerSpace;
     Player(String nick, int ID) {
         int j, k;
         IDplayer=ID;
