@@ -1,4 +1,4 @@
-package it.polimi.ingsw.model;
+/*package it.polimi.ingsw.model;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameTest {
     @Test
     public void testStart(){
-        Game.totPlayer = 3;
+        Game game = new Game();
         Game.start();
-        assertEquals(Game.players.size(), 2);
+        assertEquals(4, Game.players.size());
     }
-}
+}*/
