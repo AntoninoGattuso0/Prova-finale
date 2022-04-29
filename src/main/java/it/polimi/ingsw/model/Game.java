@@ -8,7 +8,7 @@ public class Game {
     protected static int totPlayer;
     private ArrayList<Cloud> clouds;
     protected static ProfTable profTable;
-    private final ArrayList<Island> islands = new ArrayList<>(12);
+    protected final ArrayList<Island> islands = new ArrayList<>(12);
     private boolean isExpert;
     private ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
     private ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
