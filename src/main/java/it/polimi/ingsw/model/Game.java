@@ -20,12 +20,6 @@ public class Game {
     public int getTotPlayer(){
         return totPlayer;
     }
-    public void setExpert(boolean isExpert){
-        this.isExpert = isExpert;
-    }
-    public boolean getExpert(){
-        return isExpert;
-    }
 
     public Game(int h, boolean isExpert) {
         totPlayer = h;
