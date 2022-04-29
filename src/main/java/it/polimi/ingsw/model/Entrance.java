@@ -29,33 +29,33 @@ public class Entrance {
                 if (Objects.equals(entrancePawn.get(random), Game.m.get(0))) {//verde
                     setGreenPawn(getGreenPawn() + 1);
                     setNumPawn(getNumPawn() + 1);
-                    StudentBag.greenNum;
-                    StudentBag.num--;
-                    if (StudentBag.greenNum == 0) entrancePawn.remove(random);
+                    StudentBag.setNum(StudentBag.getNum()-1);
+                    StudentBag.setGreenNum(StudentBag.getGreenNum()-1);
+                    if(StudentBag.getGreenNum()==0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(1))) {//rosso
                     setRedPawn(getRedPawn() + 1);
                     setNumPawn(getNumPawn() + 1);
-                    StudentBag.num--;
-                    StudentBag.redNum--;
-                    if (StudentBag.redNum == 0) entrancePawn.remove(random);
+                    StudentBag.setNum(StudentBag.getNum()-1);
+                    StudentBag.setRedNum(StudentBag.getRedNum()-1);
+                    if(StudentBag.getRedNum()==0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(2))) {//giallo
                     setYellowPawn(getYellowPawn() + 1);
                     setNumPawn(getNumPawn() + 1);
-                    StudentBag.num--;
-                    StudentBag.yellowNum--;
-                    if (StudentBag.yellowNum == 0) entrancePawn.remove(random);
+                    StudentBag.setNum(StudentBag.getNum()-1);
+                    StudentBag.setYellowNum(StudentBag.getYellowNum()-1);
+                    if(StudentBag.getYellowNum()==0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(3))) {//rosa
                     setPinkPawn(getPinkPawn() + 1);
                     setNumPawn(getNumPawn() + 1);
-                    StudentBag.num--;
-                    StudentBag.pinkNum--;
-                    if (StudentBag.pinkNum == 0) entrancePawn.remove(random);
+                    StudentBag.setNum(StudentBag.getNum()-1);
+                    StudentBag.setPinkNum(StudentBag.getPinkNum()-1);
+                    if(StudentBag.getPinkNum()==0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(4))) {//blu
                     setBluePawn(getBluePawn() + 1);
                     setNumPawn(getNumPawn() + 1);
-                    StudentBag.num--;
-                    StudentBag.blueNum--;
-                    if (StudentBag.blueNum == 0) entrancePawn.remove(random);
+                    StudentBag.setNum(StudentBag.getNum()-1);
+                    StudentBag.setBlueNum(getBluePawn()-1);
+                    if(StudentBag.getBlueNum()==0) entrancePawn.remove(random);
                 }
             }
             j--;
@@ -130,25 +130,25 @@ public class Entrance {
     public void movePawnToIsland(ColorPawn colorPawn, Island island){
             //tutti questi spostamenti sono possibili se il numero di pedine all'entrata è 4 o 5 in base ai giocatori
             if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
-                island.greenPawn++;
-                this.greenPawn--;
-                this.numPawn--;
+                island.setGreenPawn(getGreenPawn() + 1);
+                setGreenPawn(getGreenPawn() - 1);
+                setNumPawn(getNumPawn() - 1);
             }else if(Objects.equals(colorPawn.toString(), "RED") && this.redPawn > 0){
-                island.redPawn++;
-                this.redPawn--;
-                this.numPawn--;
+                island.setRedPawn(getRedPawn() + 1);
+                setRedPawn(getRedPawn() - 1);
+                setNumPawn(getNumPawn() - 1);
             }else  if(Objects.equals(colorPawn.toString(), "YELLOW") && this.yellowPawn > 0){
-                island.yellowPawn++;
-                this.yellowPawn--;
-                this.numPawn--;
+                island.setYellowPawn(getYellowPawn() + 1);
+                setYellowPawn(getYellowPawn() - 1);
+                setNumPawn(getNumPawn() - 1);
             }else if(Objects.equals(colorPawn.toString(), "PINK") && this.pinkPawn > 0){
-                island.pinkPawn++;
-                this.pinkPawn--;
-                this.numPawn--;
+                island.setPinkPawn(getPinkPawn() + 1);
+                StudentBag.setNum(StudentBag.getNum()-1);
+                StudentBag.setPinkNum(StudentBag.getPinkNum()-1);
             }else if(Objects.equals(colorPawn.toString(), "BLUE") && this.bluePawn > 0){
-                island.bluePawn++;
-                this.bluePawn--;
-                this.numPawn--;
+                island.setBluePawn(getBluePawn() + 1);
+                StudentBag.setNum(StudentBag.getNum()-1);
+                StudentBag.setBlueNum(getBluePawn()-1);
             }else {
                 System.out.println("Errore: non esistono pedine di questo colore nell'ingresso");  //penso sia una cosa del controller
             }
@@ -176,15 +176,15 @@ public class Entrance {
 
     public void chooseCloud (Cloud cloud){
 
-        if(cloud.numPawn!=0 && !checkNum()){      //utile o no il controllo di numPawn? (controller)
+        if(cloud.getNumPawn()!=0 && !checkNum()){      //utile o no il controllo di numPawn? (controller)
             this.greenPawn += cloud.greenPawn;
             this.redPawn += cloud.redPawn;
             this.yellowPawn += cloud.yellowPawn;
             this.pinkPawn += cloud.pinkPawn;
             this.bluePawn += cloud.bluePawn;
-            setNumPawn();
+            startNumPawn();
 
-            cloud.numPawn = 0;
+            cloud.setNumPawn(0);
             cloud.greenPawn = 0;
             cloud.redPawn = 0;
             cloud.yellowPawn = 0;

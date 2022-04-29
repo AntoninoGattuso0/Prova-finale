@@ -10,9 +10,52 @@ public class Cloud {
     private int pinkPawn;
     private int bluePawn;
 
-    public void getNumPlayer() {
-        int numPawn;
-    }      //che fa? mi sa che devi mettere return
+    public void getNumPlayer() { return numPawn;
+    }//che fa? mi sa che devi mettere return
+
+    public int getYellowPawn() {
+        return yellowPawn;
+    }
+
+    public int getRedPawn() {
+        return redPawn;
+    }
+
+    public int getPinkPawn() {
+        return pinkPawn;
+    }
+
+    public int getGreenPawn() {
+        return greenPawn;
+    }
+
+    public int getBluePawn() {
+        return bluePawn;
+    }
+
+    public void setYellowPawn(int yellowPawn) {
+        this.yellowPawn = yellowPawn;
+    }
+
+    public void setRedPawn(int redPawn) {
+        this.redPawn = redPawn;
+    }
+
+    public void setPinkPawn(int pinkPawn) {
+        this.pinkPawn = pinkPawn;
+    }
+
+    public void setGreenPawn(int greenPawn) {
+        this.greenPawn = greenPawn;
+    }
+
+    public void setBluePawn(int bluePawn) {
+        this.bluePawn = bluePawn;
+    }
+
+    public void setNumPawn(int numPawn) {
+        this.numPawn = numPawn;
+    }
 
     public void refillCloud() {
         int i;
