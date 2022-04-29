@@ -52,19 +52,19 @@ public class ProfTable {
         this.pinkProf = pinkProf;
     }
 
-    public void setBlueProf(int pinkProf) {
-        this.pinkProf = pinkProf;
+    public void setBlueProf(int blueProf) {
+        this.blueProf = blueProf;
     }
 
 
 
     //modifiche all'UML:metodo restituisce un int ovvero il numero del giocatore che possiede il professore
     public int checkProf(int color)  {
-        if(color == 0) return greenProf;
-        else if(color == 1) return redProf;
-        else if(color == 2)  return yellowProf;
-        else if(color == 3) return pinkProf;
-        else if(color == 4) return blueProf;
+        if(color == 0) greenProf = getGreenProf();
+        else if(color == 1) redProf = getRedProf();
+        else if(color == 2)  yellowProf = getYellowProf();
+        else if(color == 3) pinkProf = getPinkProf();
+        else if(color == 4) blueProf = getBlueProf();
         return -1;
         }
 }
