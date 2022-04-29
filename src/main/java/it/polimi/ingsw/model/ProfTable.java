@@ -60,11 +60,11 @@ public class ProfTable {
 
     //modifiche all'UML:metodo restituisce un int ovvero il numero del giocatore che possiede il professore
     public int checkProf(int color)  {
-        if(color == 0) greenProf = getGreenProf();
-        else if(color == 1) redProf = getRedProf();
-        else if(color == 2)  yellowProf = getYellowProf();
-        else if(color == 3) pinkProf = getPinkProf();
-        else if(color == 4) blueProf = getBlueProf();
-        return -1;
+        if(color == 0) return greenProf = getGreenProf();
+        else if(color == 1) return redProf = getRedProf();
+        else if(color == 2)  return yellowProf = getYellowProf();
+        else if(color == 3) return pinkProf = getPinkProf();
+        else if(color == 4) return blueProf = getBlueProf();
+        else return -1;
         }
 }
