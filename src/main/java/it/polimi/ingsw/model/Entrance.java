@@ -28,7 +28,7 @@ public class Entrance {
                 int random = rnd.nextInt(entrancePawn.size());
                 if (Objects.equals(entrancePawn.get(random), Game.m.get(0))) {//verde
                     setGreenPawn(getGreenPawn() + 1);
-                    numPawn++;
+                    setNumPawn(getNumPawn() + 1);
                     StudentBag.greenNum;
                     StudentBag.num--;
                     if (StudentBag.greenNum == 0) entrancePawn.remove(random);
