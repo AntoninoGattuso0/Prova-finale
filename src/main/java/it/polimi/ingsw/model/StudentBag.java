@@ -21,13 +21,13 @@ public class StudentBag {
     public int getGreenNum(){
         return greenNum;
     }
-    public void setRedNumNum(int i){
+    public void setRedNum(int i){
         greenNum = i;
     }
-    public int getRedNumNum(){
+    public int getRedNum(){
         return greenNum;
     }
-    public void setYellowNum(int i){
+    public void setYellow(int i){
         greenNum = i;
     }
     public int getYellowNum(){
