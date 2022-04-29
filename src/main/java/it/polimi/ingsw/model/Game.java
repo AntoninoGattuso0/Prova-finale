@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Game {
     private ArrayList<Player> players = new ArrayList<>(4);
-    private int totPlayer = 0;
+    protected int totPlayer;
     private ArrayList<Cloud> clouds;
     protected ProfTable profTable;
     private final ArrayList<Island> islands = new ArrayList<>(12);
@@ -14,7 +14,7 @@ public class Game {
     private ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
     protected Map<Integer, String> m = new HashMap<>();
 
-    public void setTotPlayer(int totPlayer) {
+    public void setTotPlayer(int totPlayer){
         this.totPlayer = totPlayer;
     }
     public int getTotPlayer(){
