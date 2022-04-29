@@ -67,8 +67,8 @@ public class DiningRoom {
         for(j = 0; j < 10; j++){
                  if(position[0][j] != 1){
                    position[0][j]= 1;
-                   numGreen = j;
-                   entrance.greenPawn--;
+                   setNumGreen(j);
+                   entrance.setGreenPawn(entrance.getGreenPawn() - 1);
                      if(Game.isExpert && (position[0][2] == 1 || position[0][5] == 1 || position[0][8] == 1))
                          player.numCoin++;
                    break;
@@ -80,8 +80,8 @@ public class DiningRoom {
             for(j = 0; j < 10; j++){
                 if(position[1][j] != 1){
                     position[1][j]= 1;
-                    numRed = j;
-                    entrance.redPawn--;
+                    setNumRed(j);
+                    entrance.setRedPawn(entrance.getRedPawn() - 1);
                     if(Game.isExpert && (position[1][2] == 1 || position[1][5] == 1 || position[1][8] == 1))
                         player.numCoin++;
                     break;
@@ -93,8 +93,8 @@ public class DiningRoom {
             for(j = 0; j < 10; j++){
                 if(position[2][j] != 1){
                     position[2][j]= 1;
-                    numYellow = j;
-                    entrance.yellowPawn--;
+                    setNumYellow(j);
+                    entrance.setYellowPawn(entrance.getYellowPawn() - 1);
                     if(Game.isExpert && (position[2][2] == 1 || position[2][5] == 1 || position[2][8] == 1))
                         player.numCoin++;
                     break;
@@ -106,8 +106,8 @@ public class DiningRoom {
             for(j = 0; j < 10; j++){
                 if(position[3][j] != 1){
                     position[3][j]= 1;
-                    numPink = j;
-                    entrance.pinkPawn--;
+                    setNumPink(j);
+                    entrance.setPinkPawn(entrance.getPinkPawn() - 1);
                     if(Game.isExpert && (position[3][2] == 1 || position[3][5] == 1 || position[3][8] == 1))
                         player.numCoin++;
                     break;
@@ -119,8 +119,8 @@ public class DiningRoom {
             for(j = 0; j < 10; j++){
                 if(position[4][j] != 1){
                     position[4][j]= 1;
-                    this.numBlue = j;
-                    entrance.bluePawn--;
+                    setNumBlue(j);
+                    entrance.setBluePawn(entrance.getBluePawn() - 1);;
                     if(Game.isExpert && (position[4][2] == 1 || position[4][5] == 1 || position[4][8] == 1))
                         player.numCoin++;
                     break;
