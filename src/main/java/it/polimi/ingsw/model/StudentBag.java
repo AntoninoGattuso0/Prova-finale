@@ -27,7 +27,7 @@ public class StudentBag {
     public static int getRedNum(){
         return redNum;
     }
-    public static void setYellow(int i){
+    public static void setYellowNum(int i){
         yellowNum = i;
     }
     public static int getYellowNum(){
