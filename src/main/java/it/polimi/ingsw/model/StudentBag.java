@@ -1,7 +1,7 @@
 package it.polimi.ingsw.model;
 
 public class StudentBag {
-    private int num;
+    private static int num;
     private int greenNum;
     private int redNum;
     private int yellowNum;
@@ -46,7 +46,7 @@ public class StudentBag {
         return blueNum;
     }
 
-    public int getNum(){
+    public static int getNum(){
         return num;
     }
     public void setNum(int num){
