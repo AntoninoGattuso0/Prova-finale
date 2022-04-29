@@ -24,7 +24,7 @@ public class Entrance {
         Random rnd = new Random();
         while (j > 0) {
             ArrayList<String> entrancePawn = Game.createArrayPawn();
-            if (StudentBag.getNumPawn() > 0) {
+            if (StudentBag.getNum() > 0) {
                 int random = rnd.nextInt(entrancePawn.size());
                 if (Objects.equals(entrancePawn.get(random), Game.m.get(0))) {//verde
                     setGreenPawn(getGreenPawn() + 1);
@@ -33,26 +33,26 @@ public class Entrance {
                     StudentBag.num--;
                     if (StudentBag.greenNum == 0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(1))) {//rosso
-                    redPawn++;
-                    numPawn++;
+                    setRedPawn(getRedPawn() + 1);
+                    setNumPawn(getNumPawn() + 1);
                     StudentBag.num--;
                     StudentBag.redNum--;
                     if (StudentBag.redNum == 0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(2))) {//giallo
-                    yellowPawn++;
-                    numPawn++;
+                    setYellowPawn(getYellowPawn() + 1);
+                    setNumPawn(getNumPawn() + 1);
                     StudentBag.num--;
                     StudentBag.yellowNum--;
                     if (StudentBag.yellowNum == 0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(3))) {//rosa
-                    pinkPawn++;
-                    numPawn++;
+                    setPinkPawn(getPinkPawn() + 1);
+                    setNumPawn(getNumPawn() + 1);
                     StudentBag.num--;
                     StudentBag.pinkNum--;
                     if (StudentBag.pinkNum == 0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(4))) {//blu
-                    bluePawn++;
-                    numPawn++;
+                    setBluePawn(getBluePawn() + 1);
+                    setNumPawn(getNumPawn() + 1);
                     StudentBag.num--;
                     StudentBag.blueNum--;
                     if (StudentBag.blueNum == 0) entrancePawn.remove(random);
@@ -116,10 +116,6 @@ public class Entrance {
         if(Game.totPlayer == 2 || Game.totPlayer == 4) this.numPawn = 9;
         else if(Game.totPlayer == 3) this.numPawn = 7;
     }
-
-//metodo che ritorna quante pedine sono presenti all'ingresso
-    public int getNumPawn(){ return this.numPawn; }              //utile? questo metodo sarebbe utile se da qualche parte qualcuno lo usasse,
-                                                                // ma essendo protected e non private ci possono accedere tutte le calssi del model
 
     //modifiche all'UML: il ritorno di check è boolean
     //metodo che controlla in base al numero di Players se ci sono ancora 4 o 5 pedine all'ingresso
