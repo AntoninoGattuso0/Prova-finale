@@ -50,35 +50,35 @@ public class Giuseppe extends CharacterCard{
         if(!Objects.equals(colorPawnCard, colorPawnEntrance) && this.nPawn > 3){
             if(Objects.equals(colorPawnCard.toString(), "GREEN")){
                 this.numGreenPawn--;
-                entrance.greenPawn++;
+                entrance.setGreenPawn(entrance.getGreenPawn() + 1);
             }else if(Objects.equals(colorPawnCard.toString(), "RED")){
                 this.numRedPawn--;
-                entrance.redPawn++;
+                entrance.setRedPawn(entrance.getRedPawn() + 1);
             }else if(Objects.equals(colorPawnCard.toString(), "YELLOW")){
                 this.numYellowPawn--;
-                entrance.redPawn++;
+                entrance.setYellowPawn(entrance.getYellowPawn() + 1);
             }else if(Objects.equals(colorPawnCard.toString(), "PINK")){
                 this.numPinkPawn--;
-                entrance.redPawn++;
+                entrance.setPinkPawn(entrance.getPinkPawn() + 1);
             }else if(Objects.equals(colorPawnCard.toString(), "BLUE")){
                 this.numBluePawn--;
-                entrance.bluePawn++;
+                entrance.setBluePawn(entrance.getBluePawn() + 1);
             }
             if(Objects.equals(colorPawnEntrance.toString(), "GREEN")){
                 this.numGreenPawn++;
-                entrance.greenPawn--;
+                entrance.setGreenPawn(entrance.getGreenPawn() - 1);
             }else if(Objects.equals(colorPawnEntrance.toString(), "RED")){
                 this.numRedPawn++;
-                entrance.redPawn--;
+                entrance.setRedPawn(entrance.getRedPawn() - 1);
             }else if(Objects.equals(colorPawnEntrance.toString(), "YELLOW")){
                 this.numYellowPawn++;
-                entrance.redPawn--;
+                entrance.setYellowPawn(entrance.getYellowPawn() - 1);
             }else if(Objects.equals(colorPawnEntrance.toString(), "PINK")){
                 this.numPinkPawn++;
-                entrance.redPawn--;
+                entrance.setPinkPawn(entrance.getPinkPawn() - 1);
             }else if(Objects.equals(colorPawnEntrance.toString(), "BLUE")){
                 this.numBluePawn++;
-                entrance.bluePawn--;
+                entrance.setBluePawn(entrance.getBluePawn() - 1);
             }
 
         }
