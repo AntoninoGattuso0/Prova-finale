@@ -4,7 +4,7 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class Game {
-    private ArrayList<Player> players = new ArrayList<>(4);
+    protected ArrayList<Player> players = new ArrayList<>(4);
     protected static int totPlayer;
     private ArrayList<Cloud> clouds;
     protected ProfTable profTable;
