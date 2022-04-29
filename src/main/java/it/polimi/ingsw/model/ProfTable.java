@@ -2,11 +2,11 @@ package it.polimi.ingsw.model;
 
 public class ProfTable {
 
-    protected static int greenProf;
-    protected static int redProf;
-    protected static int yellowProf;
-    protected static int pinkProf;
-    protected static int blueProf;
+    private int greenProf;
+    private int redProf;
+    private int yellowProf;
+    private int pinkProf;
+    private int blueProf;
 
     ProfTable(){
         greenProf = -1;
@@ -16,11 +16,53 @@ public class ProfTable {
         blueProf = -1;
     }
 
+    public int getGreenProf() {
+        return greenProf;
+    }
+
+    public int getRedProf() {
+        return redProf;
+    }
+
+    public int getYellowProf() {
+        return yellowProf;
+    }
+
+    public int getPinkProf() {
+        return pinkProf;
+    }
+
+    public int getBlueProf() {
+        return blueProf;
+    }
+
+    public void setGreenProf(int greenProf) {
+        this.greenProf = greenProf;
+    }
+
+    public void setRedProf(int redProf) {
+        this.redProf = redProf;
+    }
+
+    public void setYellowProf(int yellowProf) {
+        this.yellowProf = yellowProf;
+    }
+
+    public void setPinkProf(int pinkProf) {
+        this.pinkProf = pinkProf;
+    }
+
+    public void setBlueProf(int pinkProf) {
+        this.pinkProf = pinkProf;
+    }
+
+
+
     //modifiche all'UML:metodo restituisce un int ovvero il numero del giocatore che possiede il professore
-    public static int checkProf(int color)  {
+    public int checkProf(int color)  {
         if(color == 0) return greenProf;
         else if(color == 1) return redProf;
-        else if(color == 2) return yellowProf;
+        else if(color == 2)  return yellowProf;
         else if(color == 3) return pinkProf;
         else if(color == 4) return blueProf;
         return -1;
