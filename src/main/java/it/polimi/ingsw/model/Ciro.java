@@ -12,5 +12,3 @@ public class Ciro extends UseEffect{
          coinPrice++;
     }
 }
-
-
