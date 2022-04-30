@@ -6,7 +6,7 @@ public class AntonioTest {
     @Test
     public void test1(){
         StudentBag studentBag= new StudentBag();
-    Antonio antonio = new Antonio();
+    Antonio antonio = new Antonio(studentBag);
     assertEquals(4,antonio.getNumPawnAntonio());
     assertEquals(4,antonio.getBluePawn()+antonio.getGreenPawn()+antonio.getPinkPawn()+antonio.getRedPawn()+antonio.getYellowPawn());
     assertEquals(116,studentBag.getNum());

@@ -1,8 +1,6 @@
 package it.polimi.ingsw.model;
 
 import java.util.*;
-
-import static it.polimi.ingsw.model.StudentBag.getGreenNum;
 public class Cloud {
     private int numPawn;    //sono inizializzati da qualche parte?
     private int greenPawn;
