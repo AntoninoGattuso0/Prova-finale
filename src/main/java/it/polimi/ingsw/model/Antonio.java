@@ -31,7 +31,7 @@ public class Antonio extends CharacterCard{
                     setNumPawnAntonio(getNumPawnAntonio()+1);
                     studentBag.setNum(studentBag.getNum()-1);
                     studentBag.setGreenNum(studentBag.getGreenNum()-1);
-                    if(StudentBag.getGreenNum()==0){
+                    if(studentBag.getGreenNum()==0){
                         refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "RED")) {
