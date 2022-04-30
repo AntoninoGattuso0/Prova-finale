@@ -118,25 +118,25 @@ public class Antonio extends CharacterCard{
             } else if (Objects.equals(refillPawn.get(random), "YELLOW")) {
                 setYellowPawn(getYellowPawn() + 1);
                 setNumPawnAntonio(getNumPawnAntonio() + 1);
-                StudentBag.setNum(StudentBag.getNum() - 1);
-                StudentBag.setYellowNum(StudentBag.getYellowNum() - 1);
-                if (StudentBag.getYellowNum() == 0) {
+                game.studentBag.setNum(game.studentBag.getNum() - 1);
+                StudentBag.setYellowNum(game.studentBag.getYellowNum() - 1);
+                if (game.studentBag.getYellowNum() == 0) {
                     refillPawn.remove(random);
                 }
             } else if (Objects.equals(refillPawn.get(random), "PINK")) {
                 setPinkPawn(getPinkPawn() + 1);
                 setNumPawnAntonio(getNumPawnAntonio() + 1);
-                StudentBag.setNum(StudentBag.getNum() - 1);
-                StudentBag.setPinkNum(StudentBag.getPinkNum() - 1);
-                if (StudentBag.getPinkNum() == 0) {
+                game.studentBag.setNum(game.studentBag.getNum() - 1);
+                game.studentBag.setPinkNum(game.studentBag.getPinkNum() - 1);
+                if (game.studentBag.getPinkNum() == 0) {
                     refillPawn.remove(random);
                 }
             } else if (Objects.equals(refillPawn.get(random), "BLUE")) {
                 setBluePawn(getBluePawn() + 1);
                 setNumPawnAntonio(getNumPawnAntonio() + 1);
-                StudentBag.setNum(StudentBag.getNum() - 1);
-                StudentBag.setBlueNum(StudentBag.getBlueNum()- 1);
-                if (StudentBag.getBlueNum() == 0) {
+                game.studentBag.setNum(game.studentBag.getNum() - 1);
+                game.studentBag.setBlueNum(game.studentBag.getBlueNum()- 1);
+                if (game.studentBag.getBlueNum() == 0) {
                     refillPawn.remove(random);
 
                 }
