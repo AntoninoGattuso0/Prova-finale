@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Nicola extends UseEffect {
+    private int coinPrice;
     private static int greenPawn;
     private static int redPawn;
     private static int yellowPawn;
@@ -185,6 +186,7 @@ public class Nicola extends UseEffect {
                 if (studentBag.getBlueNum() == 0) cards.remove(random);
             }
         }
+        coinPrice++;
     }
     static ArrayList<String> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
         ArrayList<String> arrayPawn = new ArrayList<>();

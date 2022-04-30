@@ -2,7 +2,7 @@ package it.polimi.ingsw.model;
 
 import java.util.ArrayList;
 
-public class Ciro extends UseEffect{//
+public class Ciro extends UseEffect{
     private int coinPrice;
     Ciro(){
         coinPrice=3;
