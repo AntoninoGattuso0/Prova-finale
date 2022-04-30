@@ -5,11 +5,11 @@ public class Omnia extends CharacterCard{
         coinPrice=3;
     }
 
-    public void removePawn(ColorPawn colorPawn){
+    public void removePawn(ColorPawn colorPawn,Game game){
         int i, j;
         for(i=0; i<3; i++){
-            for(j=0; j<Game.totPlayer; j++){
-                Game.players.get(j).diningRoom.removePawnFromDiningRoom(colorPawn, Game.players.get(j));
+            for(j=0; j<game.totPlayer; j++){
+                game.players.get(j).diningRoom.removePawnFromDiningRoom(colorPawn, game.players.get(j),game);
             }
         }
     }

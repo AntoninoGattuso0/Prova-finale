@@ -144,8 +144,8 @@ public class DiningRoom {
                 if (position[0][j] != 0) {
                     position[0][j] = 0;
                     setNumGreen(getNumGreen() - 1);
-                    StudentBag.setGreenNum(StudentBag.getGreenNum() + 1);
-                    StudentBag.setNum(StudentBag.getNum() + 1);
+                    game.studentBag.setGreenNum(game.studentBag.getGreenNum() + 1);
+                    game.studentBag.setNum(game.studentBag.getNum() + 1);
                     break;
                 }
             }
@@ -155,8 +155,8 @@ public class DiningRoom {
                     if (position[1][j] != 0) {
                         position[1][j] = 0;
                         setNumRed(getNumRed() - 1);
-                        StudentBag.setRedNum(StudentBag.getRedNum() + 1);
-                        StudentBag.setNum(StudentBag.getNum() + 1);
+                        game.studentBag.setRedNum(game.studentBag.getRedNum() + 1);
+                        game.studentBag.setNum(game.studentBag.getNum() + 1);
                         break;
                     }
                 }
@@ -167,8 +167,8 @@ public class DiningRoom {
                     if (position[2][j] != 0) {
                         position[2][j] = 0;
                         setNumYellow(getNumYellow() - 1);
-                        StudentBag.setYellowNum(StudentBag.getYellowNum() + 1);
-                        StudentBag.setNum(StudentBag.getNum() + 1);
+                        game.studentBag.setYellowNum(game.studentBag.getYellowNum() + 1);
+                        game.studentBag.setNum(game.studentBag.getNum() + 1);
                         break;
                     }
                 }
@@ -179,8 +179,8 @@ public class DiningRoom {
                     if (position[3][j] != 0) {
                         position[3][j] = 0;
                         setNumPink(getNumPink() - 1);
-                        StudentBag.setPinkNum(StudentBag.getPinkNum() + 1);
-                        StudentBag.setNum(StudentBag.getNum() + 1);
+                        game.studentBag.setPinkNum(game.studentBag.getPinkNum() + 1);
+                        game.studentBag.setNum(game.studentBag.getNum() + 1);
                         break;
                     }
                 }
@@ -191,8 +191,8 @@ public class DiningRoom {
                     if (position[4][j] != 0) {
                         position[4][j] = 0;
                         setNumBlue(getNumBlue() - 1);
-                        StudentBag.setBlueNum(StudentBag.getBlueNum() + 1);
-                        StudentBag.setNum(StudentBag.getNum() + 1);
+                        game.studentBag.setBlueNum(game.studentBag.getBlueNum() + 1);
+                        game.studentBag.setNum(game.studentBag.getNum() + 1);
                         break;
                     }
                 }
