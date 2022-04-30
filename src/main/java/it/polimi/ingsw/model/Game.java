@@ -4,16 +4,16 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class Game {
-    protected static ArrayList<Player> players  = new ArrayList<>(4);
+    protected static ArrayList<Player> players  = new ArrayList<>();
     protected static int totPlayer;
     private static ArrayList<Cloud> clouds;
     protected static ProfTable profTable;
-    protected static ArrayList<Island> islands = new ArrayList<>(12);
+    protected static ArrayList<Island> islands = new ArrayList<>();
     protected static boolean isExpert;
-    protected static ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
-    protected static ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
+    protected static ArrayList<CharacterCard> cards = new ArrayList<>(); //cambiato in arraylist;
+    protected static ArrayList<CharacterCard> characterCards = new ArrayList<>();//insieme di tutti i characters
     protected static Map<Integer, String> m = new HashMap<>();
-
+    protected StudentBag studentBag;
     public void setTotPlayer(int i){
         totPlayer = i;
     }
@@ -109,7 +109,7 @@ public class Game {
             i++;
             if ((i == n + 6)) i++;
             else if(i == n - 6) i++;
-            if (i == 12) i = 0;
+            if (i >= 12) i = 0;
         }
         // creazione nuvole e inizializzazione
         clouds = new ArrayList<>();
@@ -118,51 +118,8 @@ public class Game {
             cloud.refillCloud();
             clouds.add(cloud);
         }
-        //aggiunta di pedine all'entrata di ogni player
-        for (i = 0; i < totPlayer; i++) {
-            Player player= new Player("nick",i);
-            int j =  player.entrance.getNumPawn();   //che cosa restituisce? numPawn si modifica nel tempo
-            while (j > 0) {
-                ArrayList<String> entrancePawn = createArrayPawn();
-                if (StudentBag.getNum() > 0) {
-                    int random = rnd.nextInt(entrancePawn.size());
-                    if (Objects.equals(entrancePawn.get(random), m.get(0))) {//verde
-                        player.entrance.setGreenPawn(player.entrance.getGreenPawn() + 1);
-                        player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
-                        StudentBag.setNum(StudentBag.getNum() - 1);
-                        StudentBag.setGreenNum(StudentBag.getGreenNum() - 1);
-                        if (StudentBag.getGreenNum() == 0) entrancePawn.remove(random);
-                    } else if (Objects.equals(entrancePawn.get(random), m.get(1))) {//rosso
-                        player.entrance.setRedPawn(player.entrance.getRedPawn() + 1);
-                        player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
-                        StudentBag.setNum(StudentBag.getNum() - 1);
-                        StudentBag.setRedNum(StudentBag.getRedNum() - 1);
-                        if (StudentBag.getRedNum() == 0) entrancePawn.remove(random);
-                    } else if (Objects.equals(entrancePawn.get(random), m.get(2))) {//giallo
-                        player.entrance.setYellowPawn(player.entrance.getYellowPawn() + 1);
-                        player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
-                        StudentBag.setNum(StudentBag.getNum() - 1);
-                        StudentBag.setYellowNum(StudentBag.getYellowNum() - 1);
-                        if (StudentBag.getYellowNum() == 0) entrancePawn.remove(random);
-                    } else if (Objects.equals(entrancePawn.get(random), m.get(3))) {//rosa
-                        player.entrance.setPinkPawn(player.entrance.getPinkPawn() + 1);
-                        player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
-                        StudentBag.setNum(StudentBag.getNum() - 1);
-                        StudentBag.setPinkNum(StudentBag.getPinkNum() - 1);
-                        if (StudentBag.getPinkNum() == 0) entrancePawn.remove(random);
-                    } else if (Objects.equals(entrancePawn.get(random), m.get(4))) {//blu
-                        player.entrance.setBluePawn(player.entrance.getBluePawn() + 1);
-                        player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
-                        StudentBag.setNum(StudentBag.getNum() - 1);
-                        StudentBag.setBlueNum(StudentBag.getBlueNum() - 1);
-                        if (StudentBag.getBlueNum() == 0) entrancePawn.remove(random);
-                    }
-                    players.add(player);
-                    j--;
-                }
-            }
-        }
-        //creazione arraylist con tutte i personaggi
+        System.out.println("ddd");
+       //creazione arraylist con tutte i personaggi
         Antonio antonio = new Antonio();
         Barbara barbara = new Barbara();
         Ciro ciro = new Ciro();
@@ -189,28 +146,25 @@ public class Game {
         characterCards.add(omnia);
     }
 
-    static ArrayList<String> createArrayPawn() {//crea un array per ogni colore (utilizzato per funzioni random)
+    static ArrayList<String> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
         ArrayList<String> arrayPawn = new ArrayList<>();
-        if (StudentBag.getGreenNum() != 0)
+        if (studentBag.getGreenNum() != 0)
             arrayPawn.add("GREEN");
-        if (StudentBag.getRedNum() != 0)
+        if (studentBag.getRedNum() != 0)
             arrayPawn.add("RED");
-        if (StudentBag.getYellowNum() != 0)
+        if (studentBag.getYellowNum() != 0)
             arrayPawn.add("YELLOW");
-        if (StudentBag.getPinkNum() != 0)
+        if (studentBag.getPinkNum() != 0)
             arrayPawn.add("PINK");
-        if (StudentBag.getBlueNum() != 0)
+        if (studentBag.getBlueNum() != 0)
             arrayPawn.add("BLUE");
         return arrayPawn;
     }
 
-  /*  public static void newPlayer(String nick) {
-        int i;
-        for(i=0; i<totPlayer; i++) {
-            Player player = new Player(nick);//inizializzazione player fatta in player -NINO
+   public static void newPlayer(String nick) {
+            Player player = new Player(nick,players.size());//inizializzazione player fatta in player -NINO
             players.add(player);
         }
-    }*/
     public void moveMotherNature(int num){
         int i;
         int totIsland = islands.size();
