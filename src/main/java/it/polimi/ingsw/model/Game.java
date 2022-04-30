@@ -10,6 +10,7 @@ public class Game {
     protected static ProfTable profTable;
     protected static ArrayList<Island> islands = new ArrayList<>();
     protected static boolean isExpert;
+    protected static Antonio antonio;
     protected static ArrayList<CharacterCard> cards = new ArrayList<>(); //cambiato in arraylist;
     protected static ArrayList<CharacterCard> characterCards = new ArrayList<>();//insieme di tutti i characters
     protected static Map<Integer, String> m = new HashMap<>();
@@ -117,12 +118,12 @@ public class Game {
         clouds = new ArrayList<>();
         for (i = 0; i < totPlayer; i++) {
             Cloud cloud = new Cloud();
-            cloud.refillCloud();
+            cloud.refillCloud(studentBag);
             clouds.add(cloud);
         }
         System.out.println("ddd");
         //creazione arraylist con tutte i personaggi
-        Antonio antonio = new Antonio(studentBag);
+     /* Antonio antonio = new Antonio(studentBag);
         Barbara barbara = new Barbara();
         Ciro ciro = new Ciro();
         Dante dante = new Dante();
@@ -145,7 +146,7 @@ public class Game {
         characterCards.add(lancillotto);
         characterCards.add(maria);
         characterCards.add(nicola);
-        characterCards.add(omnia);
+        characterCards.add(omnia);*/
     }
 
     static ArrayList<String> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)

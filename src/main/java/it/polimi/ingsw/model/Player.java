@@ -35,6 +35,11 @@ public class Player {
             towerSpace = new TowerSpace();
         }
     }
+
+    public AssistantCard getCurrentAssistant() {
+        return currentAssistant;
+    }
+
     public int getNumCoin() {
         return numCoin;
     }

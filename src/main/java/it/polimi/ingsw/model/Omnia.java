@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-public class Omnia extends CharacterCard{
+public class Omnia extends UseEffect{
     Omnia(){
         coinPrice=3;
     }

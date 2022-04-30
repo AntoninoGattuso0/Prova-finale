@@ -2,14 +2,14 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-public class Giuseppe extends CharacterCard{
+public class Giuseppe extends UseEffect{
     protected int nPawn;
     protected int numGreenPawn;
     protected int numRedPawn;
     protected int numYellowPawn;
     protected int numPinkPawn;
     protected int numBluePawn;
-    Giuseppe(StudentBag studentBag){
+    public Giuseppe(StudentBag studentBag){
         coinPrice=1;
         nPawn = 0;
         numGreenPawn = 0;
@@ -84,7 +84,7 @@ public class Giuseppe extends CharacterCard{
         }
     }
     //LEGGIMI :( non va bene il fatto che anche se la funzione viene chiamata n volte viene richiamata sempre su stessa isola e pedina
-    public void useEffect(int numPawnSwap, ColorPawn colorPawnCard, ColorPawn colorPawnEntrance, Entrance entrance){
+    public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){
         boolean swap = false;
         if(numPawnSwap > 0 && numPawnSwap < 4)
             swap = true;

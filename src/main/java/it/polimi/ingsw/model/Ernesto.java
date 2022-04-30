@@ -1,12 +1,14 @@
 package it.polimi.ingsw.model;
 
-public class Ernesto extends CharacterCard{
+import java.util.ArrayList;
+
+public class Ernesto extends UseEffect{
 
     Ernesto(){
         coinPrice=2;
     }
 
-    public void notInfluence(Island island){
+    public void notInfluence(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){
         island.setProhibited(true);
     }
 

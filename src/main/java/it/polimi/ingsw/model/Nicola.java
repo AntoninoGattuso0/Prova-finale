@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
-public class Nicola extends CharacterCard {
+public class Nicola extends UseEffect {
     private static int greenPawn;
     private static int redPawn;
     private static int yellowPawn;

@@ -3,12 +3,12 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Ivan extends CharacterCard{
+public class Ivan extends UseEffect{
     Ivan(){
         coinPrice=2;
     }
 
-    public void useEffect(Island island, Player player){
+    public void useEffect(Island island, Player player){//   public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){
         int i, j, k, n, color, max;
         boolean notunique = false;
         ArrayList<Integer> influence = new ArrayList<>();

@@ -3,12 +3,12 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Lancillotto extends CharacterCard{
+public class Lancillotto extends UseEffect{
     Lancillotto(){
         coinPrice=3;
     }
 
-    public void removeColor(Island island, int removedColor, Game game){
+    public void removeColor(Island island, int removedColor, Game game){//(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn)
         int i, j, k, n, color, max;
         boolean notunique = false;
         ArrayList<Integer> influence = new ArrayList<>();

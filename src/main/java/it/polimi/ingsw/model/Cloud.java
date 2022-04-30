@@ -57,52 +57,52 @@ public class Cloud {
         this.numPawn = numPawn;
     }
 
-    public void refillCloud() {
+    public void refillCloud(StudentBag studentBag) {
         int i;
         Random rnd = new Random();
-        ArrayList<String> refillPawn = Game.createArrayPawn();
+        ArrayList<String> refillPawn = Game.createArrayPawn(studentBag);
         for (i = 0; i < getNumPawn(); i++) {
-            if (StudentBag.getNum() > 0) {
+            if (studentBag.getNum() > 0) {
                 int random = rnd.nextInt(refillPawn.size());
                 String color = Game.m.get(random);
                 if (Objects.equals(refillPawn.get(random), "GREEN")) {
-                        setGreenPawn(getGreenNum() + 1);
+                        setGreenPawn(getGreenPawn() + 1);
                         setNumPawn(getNumPawn() + 1);
-                        StudentBag.setNum(StudentBag.getNum() - 1);
-                        StudentBag.setGreenNum(StudentBag.getGreenNum() - 1);
-                        if (StudentBag.getGreenNum() == 0) {
+                    studentBag.setNum(studentBag.getNum() - 1);
+                    studentBag.setGreenNum(studentBag.getGreenNum() - 1);
+                        if (studentBag.getGreenNum() == 0) {
                             refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "RED")) {
                         setRedPawn(getRedPawn() + 1);
                         setNumPawn(getNumPawn() + 1);
-                        StudentBag.setNum(StudentBag.getNum() - 1);
-                        StudentBag.setRedNum(StudentBag.getRedNum() - 1);
-                        if (StudentBag.getRedNum() == 0) {
+                    studentBag.setNum(studentBag.getNum() - 1);
+                    studentBag.setRedNum(studentBag.getRedNum() - 1);
+                        if (studentBag.getRedNum() == 0) {
                             refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "YELLOW")) {
                         setYellowPawn(getYellowPawn() + 1);
                         setNumPawn(getNumPawn() + 1);
-                        StudentBag.setNum(StudentBag.getNum() - 1);
-                        StudentBag.setYellowNum(StudentBag.getYellowNum() - 1);
-                        if (StudentBag.getYellowNum() == 0) {
+                    studentBag.setNum(studentBag.getNum() - 1);
+                    studentBag.setYellowNum(studentBag.getYellowNum() - 1);
+                        if (studentBag.getYellowNum() == 0) {
                             refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "PINK")) {
                         setPinkPawn(getPinkPawn() + 1);
                         setNumPawn(getNumPawn() + 1);
-                        StudentBag.setNum(StudentBag.getNum() - 1);
-                        StudentBag.setPinkNum(StudentBag.getPinkNum() - 1);
-                        if (StudentBag.getPinkNum() == 0) {
+                        studentBag.setNum(studentBag.getNum() - 1);
+                        studentBag.setPinkNum(studentBag.getPinkNum() - 1);
+                        if (studentBag.getPinkNum() == 0) {
                             refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "BLUE")) {
                         setBluePawn(getBluePawn() + 1);
                         setNumPawn(getNumPawn() + 1);
-                        StudentBag.setNum(StudentBag.getNum() - 1);
-                        StudentBag.setBlueNum(StudentBag.getBlueNum()- 1);
-                        if (StudentBag.getBlueNum() == 0) {
+                        studentBag.setNum(studentBag.getNum() - 1);
+                        studentBag.setBlueNum(studentBag.getBlueNum()- 1);
+                        if (studentBag.getBlueNum() == 0) {
                             refillPawn.remove(random);
                     }
                 }

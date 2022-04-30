@@ -1,11 +1,15 @@
 package it.polimi.ingsw.model;
 
-public class Ciro extends CharacterCard{
+import java.util.ArrayList;
+
+public class Ciro extends UseEffect{
+    private int coinPrice;
     Ciro(){
         coinPrice=3;
     }
-    public void useEffect(Island island) {//copia del metodo per calcolare la top influenza
-        Game.topInfluence(island);
+    public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {//copia del metodo per calcolare la top influenza
+        game.topInfluence(island);
+         coinPrice++;
     }
 }
 

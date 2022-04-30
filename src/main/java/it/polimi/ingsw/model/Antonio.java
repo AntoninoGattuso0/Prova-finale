@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
-import static it.polimi.ingsw.model.StudentBag.*;
-
-public class Antonio extends CharacterCard{
+public class Antonio extends UseEffect{
+    private int coinPrice;
     private int numPawnAntonio;
     private int greenPawn;
     private int redPawn;
@@ -23,7 +22,7 @@ public class Antonio extends CharacterCard{
         bluePawn=0;
         while(numPawnAntonio<4){
             Random rnd = new Random();
-            ArrayList<String> refillPawn = Game.createArrayPawn();
+            ArrayList<String> refillPawn = Game.createArrayPawn(studentBag);
             if (studentBag.getNum() > 0) {
                 int random = rnd.nextInt(refillPawn.size());
                 if (Objects.equals(refillPawn.get(random), "GREEN")) {
@@ -71,7 +70,7 @@ public class Antonio extends CharacterCard{
         }
     }
 
-    public void useEffect(ColorPawn colorPawn, Island island,Game game) {
+    public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn) {
         if (Objects.equals(colorPawn.toString(), "GREEN") && getGreenPawn() > 0) {  //altrimenti cosa succede se la pedina verde non c'è?
             island.setGreenPawn(island.getGreenPawn() + 1);
             setGreenPawn(getGreenPawn() - 1);
@@ -142,6 +141,7 @@ public class Antonio extends CharacterCard{
                 }
             }
         }
+        coinPrice++;
     }
 
     public int getBluePawn() {

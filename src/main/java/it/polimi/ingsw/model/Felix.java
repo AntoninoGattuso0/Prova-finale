@@ -3,13 +3,14 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Felix extends CharacterCard{
+public class Felix extends UseEffect{
+    private int coinPrice;
     Felix(){
         coinPrice=3;
     }
 
     //UML: Cambio nome del metodo
-    public void useEffect(Island island){
+    public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){
         int i, j, k, n, color, max;
         boolean notunique = false;
         ArrayList<Integer> influence = new ArrayList<>();
