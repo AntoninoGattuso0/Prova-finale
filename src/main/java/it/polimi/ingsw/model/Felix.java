@@ -10,12 +10,12 @@ public class Felix extends UseEffect{
     }
 
     //UML: Cambio nome del metodo
-    public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){
+    public void useEffect(Game game, int num,Island island,Player player,ArrayList<ColorPawn> colorPawn){
         int i, j, k, n, color, max;
         boolean notunique = false;
         ArrayList<Integer> influence = new ArrayList<>();
 
-        for(i = 0; i < Game.totPlayer; i++) influence.add(0);
+        for(i = 0; i < game.totPlayer; i++) influence.add(0);
         for(color = 0; color < 5; color++) {
             n = game.profTable.checkProf(color);
             if(color == 0 && n != -1) influence.set(n, influence.get(n) + island.getGreenPawn());

@@ -12,7 +12,7 @@ public class Entrance {
     private int yellowPawn;
     private int redPawn;
 
-    Entrance(){
+    Entrance(StudentBag studentBag){
        greenPawn = 0;
        bluePawn = 0;
        pinkPawn = 0;
@@ -22,39 +22,39 @@ public class Entrance {
        int j = getNumPawn();
         Random rnd = new Random();
         while (j > 0) {
-            ArrayList<String> entrancePawn = Game.createArrayPawn();
-            if (StudentBag.getNum() > 0) {
+            ArrayList<String> entrancePawn = Game.createArrayPawn(studentBag);
+            if (studentBag.getNum() > 0) {
                 int random = rnd.nextInt(entrancePawn.size());
                 if (Objects.equals(entrancePawn.get(random), Game.m.get(0))) {//verde
                     setGreenPawn(getGreenPawn() + 1);
                     setNumPawn(getNumPawn() + 1);
-                    StudentBag.setNum(StudentBag.getNum() - 1);
-                    StudentBag.setGreenNum(StudentBag.getGreenNum() - 1);
-                    if(StudentBag.getGreenNum()==0) entrancePawn.remove(random);
+                    studentBag.setNum(studentBag.getNum() - 1);
+                    studentBag.setGreenNum(studentBag.getGreenNum() - 1);
+                    if(studentBag.getGreenNum()==0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(1))) {//rosso
                     setRedPawn(getRedPawn() + 1);
                     setNumPawn(getNumPawn() + 1);
-                    StudentBag.setNum(StudentBag.getNum() - 1);
-                    StudentBag.setRedNum(StudentBag.getRedNum() - 1);
-                    if(StudentBag.getRedNum()==0) entrancePawn.remove(random);
+                    studentBag.setNum(studentBag.getNum() - 1);
+                    studentBag.setRedNum(studentBag.getRedNum() - 1);
+                    if(studentBag.getRedNum()==0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(2))) {//giallo
                     setYellowPawn(getYellowPawn() + 1);
                     setNumPawn(getNumPawn() + 1);
-                    StudentBag.setNum(StudentBag.getNum() - 1);
-                    StudentBag.setYellowNum(StudentBag.getYellowNum() - 1);
-                    if(StudentBag.getYellowNum()==0) entrancePawn.remove(random);
+                    studentBag.setNum(studentBag.getNum() - 1);
+                    studentBag.setYellowNum(studentBag.getYellowNum() - 1);
+                    if(studentBag.getYellowNum()==0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(3))) {//rosa
                     setPinkPawn(getPinkPawn() + 1);
                     setNumPawn(getNumPawn() + 1);
-                    StudentBag.setNum(StudentBag.getNum() - 1);
-                    StudentBag.setPinkNum(StudentBag.getPinkNum() - 1);
-                    if(StudentBag.getPinkNum()==0) entrancePawn.remove(random);
+                    studentBag.setNum(studentBag.getNum() - 1);
+                    studentBag.setPinkNum(studentBag.getPinkNum() - 1);
+                    if(studentBag.getPinkNum()==0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(4))) {//blu
                     setBluePawn(getBluePawn() + 1);
                     setNumPawn(getNumPawn() + 1);
-                    StudentBag.setNum(StudentBag.getNum() - 1);
-                    StudentBag.setBlueNum(StudentBag.getBlueNum() - 1);
-                    if(StudentBag.getBlueNum()==0) entrancePawn.remove(random);
+                    studentBag.setNum(studentBag.getNum() - 1);
+                    studentBag.setBlueNum(studentBag.getBlueNum() - 1);
+                    if(studentBag.getBlueNum()==0) entrancePawn.remove(random);
                 }
             }
             j--;
@@ -126,7 +126,7 @@ public class Entrance {
        else return false;
     }
 
-    public void movePawnToIsland(ColorPawn colorPawn, Island island){
+    public void movePawnToIsland(ColorPawn colorPawn, Island island,Game game){
             //tutti questi spostamenti sono possibili se il numero di pedine all'entrata è 4 o 5 in base ai giocatori
             if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
                 island.setGreenPawn(getGreenPawn() + 1);
@@ -142,12 +142,12 @@ public class Entrance {
                 setNumPawn(getNumPawn() - 1);
             }else if(Objects.equals(colorPawn.toString(), "PINK") && this.pinkPawn > 0){
                 island.setPinkPawn(getPinkPawn() + 1);
-                StudentBag.setNum(StudentBag.getNum()-1);
-                StudentBag.setPinkNum(StudentBag.getPinkNum()-1);
+                game.studentBag.setNum(game.studentBag.getNum()-1);
+                game.studentBag.setPinkNum(game.studentBag.getPinkNum()-1);
             }else if(Objects.equals(colorPawn.toString(), "BLUE") && this.bluePawn > 0){
                 island.setBluePawn(getBluePawn() + 1);
-                StudentBag.setNum(StudentBag.getNum()-1);
-                StudentBag.setBlueNum(getBluePawn()-1);
+                game.studentBag.setNum(game.studentBag.getNum()-1);
+                game.studentBag.setBlueNum(getBluePawn()-1);
             }else {
                 System.out.println("Errore: non esistono pedine di questo colore nell'ingresso");  //penso sia una cosa del controller
             }
@@ -155,19 +155,19 @@ public class Entrance {
 
 
         //LEGGIMI :( non va bene il fatto che anche se la funzione viene chiamata n volte viene richiamata sempre su stessa isola e pedina
-    public void moveToIsland(int n, ColorPawn colorPawn, Island island) {
+    public void moveToIsland(int n, ColorPawn colorPawn, Island island,Game game) {
         //n = numero di pedine che si vogliono spostare da entrance a island
         //la somma di n pedine da spostare da entrance verso l'isola e da entance verso diningroom deve essere 3 o 4
         //controller?
         if((Game.totPlayer == 2 || Game.totPlayer == 4) && (n > 0 &&  n < 4 )){
             while(n != 0){
-                movePawnToIsland(colorPawn, island);
+                movePawnToIsland(colorPawn, island,game);
                 n--;
             }
         }
             if(Game.totPlayer == 3 && (n > 0 &&  n < 5 )){
                 while(n != 0){
-                    movePawnToIsland(colorPawn, island);
+                    movePawnToIsland(colorPawn, island,game);
                     n--;
                 }
         }

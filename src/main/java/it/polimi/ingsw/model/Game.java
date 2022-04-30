@@ -164,7 +164,7 @@ public class Game {
         return arrayPawn;
     }
 
-    public static void newPlayer(String nick) {
+    public static void newPlayer(String nick,Game game) {
         Player player = new Player(nick, players.size());//inizializzazione player fatta in player -NINO
         players.add(player);
     }
@@ -203,18 +203,17 @@ public class Game {
     }
 
 
-    public static void topInfluence(Island island) {
+    public static void topInfluence(Island island,Game game) {
         int i, j, k, n, color, max;
         if (island.getProhibited()) {
             island.setProhibited(false);
             //carte di ernesto +1
-
         } else {
             boolean notunique = false;
             ArrayList<Integer> influence = new ArrayList<>();
             for (i = 0; i < totPlayer; i++) influence.add(0);
             for (color = 0; color < 5; color++) {
-                n = profTable.checkProf(color);
+                n = game.profTable.checkProf(color);
                 if (color == 0 && n != -1) influence.set(n, influence.get(n) + island.getGreenPawn());
 
                 else if (color == 1 && n != -1) influence.set(n, influence.get(n) + island.getRedPawn());
