@@ -1,5 +1,5 @@
 package it.polimi.ingsw.model;
-//ce la faremo
+
 public class StudentBag {
     private int num;
     private int greenNum;
