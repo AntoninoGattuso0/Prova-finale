@@ -10,5 +10,4 @@ public class Ernesto extends CharacterCard{
         island.setProhibited(true);
     }
 
-
 }
