@@ -11,10 +11,9 @@ class BarbaraTest {
         for (i = 0; i < game.characterCards.size(); i++) {
             if (game.characterCards.get(i).getClass().equals(barbara.getClass())) ;
             {
-                game.characterCards.get(i).useEffect(2);
+                game.characterCards.get(i).useEffect(game.players.get(i).getIDplayer(),game);
             }
         }
-
         assertEquals(2, game.profTable.getGreenProf());
     }
 }

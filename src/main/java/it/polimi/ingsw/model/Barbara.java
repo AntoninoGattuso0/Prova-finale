@@ -4,6 +4,7 @@ public class Barbara extends CharacterCard{
     Barbara(){
         coinPrice=2;
     }
+
     public void useEffect(int actualPlayer, Game game){
         if(game.players.get(actualPlayer).diningRoom.getNumGreen()==game.players.get(ProfTable.getGreenProf()).diningRoom.getNumGreen())
                 ProfTable.setGreenProf(actualPlayer);
