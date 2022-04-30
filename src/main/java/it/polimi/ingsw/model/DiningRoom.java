@@ -136,7 +136,7 @@ public class DiningRoom {
         }
     }
 
-    public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player) { //le sposta da dining al sacchetto
+    public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player,Game game) { //le sposta da dining al sacchetto
 
         int j; //variabile che serve a iterare dentro le righe della sala
         if (Objects.equals(colorPawn.toString(), Game.m.get(0))) {
