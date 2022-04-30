@@ -165,7 +165,7 @@ public class Game {
     }
 
     public static void newPlayer(String nick,Game game) {
-        Player player = new Player(nick, players.size());//inizializzazione player fatta in player -NINO
+        Player player = new Player(nick, players.size(),game);//inizializzazione player fatta in player -NINO
         players.add(player);
     }
 
