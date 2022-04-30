@@ -12,7 +12,7 @@ public class DiningRoom {
     private int numPink;
     private int numBlue;
 
-    DiningRoom(){
+    DiningRoom() {
         numGreen = 0;
         numRed = 0;
         numYellow = 0;
@@ -60,68 +60,60 @@ public class DiningRoom {
         this.numBlue = numBlue;
     }
 
-    public void addPawnToDiningRoom(ColorPawn colorPawn, Player player, Entrance entrance){
+    public void addPawnToDiningRoom(ColorPawn colorPawn, Player player, Entrance entrance) {
 
         int j; //variabile che serve a iterare dentro le righe della sala
-        if(Objects.equals(colorPawn.toString(), Game.m.get(0))) {
-        for(j = 0; j < 10; j++){
-                 if(position[0][j] != 1){
-                   position[0][j]= 1;
-                   setNumGreen(j);
-                   entrance.setGreenPawn(entrance.getGreenPawn() - 1);
-                     if(Game.isExpert && (position[0][2] == 1 || position[0][5] == 1 || position[0][8] == 1))
-                         player.setNumCoin(player.getNumCoin() + 1);
-                   break;
-                 }
+        if (Objects.equals(colorPawn.toString(), Game.m.get(0))) {
+            for (j = 0; j < 10; j++) {
+                if (position[0][j] != 1) {
+                    position[0][j] = 1;
+                    setNumGreen(j);
+                    entrance.setGreenPawn(entrance.getGreenPawn() - 1);
+                    if (Game.isExpert && ( j == 2 || j == 5 || j == 8))
+                        player.setNumCoin(player.getNumCoin() + 1);
+                    break;
+                }
             }
-        }
-
-        if(Objects.equals(colorPawn.toString(), Game.m.get(1))){
-            for(j = 0; j < 10; j++){
-                if(position[1][j] != 1){
-                    position[1][j]= 1;
+        } else if (Objects.equals(colorPawn.toString(), Game.m.get(1))) {
+            for (j = 0; j < 10; j++) {
+                if (position[1][j] != 1) {
+                    position[1][j] = 1;
                     setNumRed(j);
                     entrance.setRedPawn(entrance.getRedPawn() - 1);
-                    if(Game.isExpert && (position[1][2] == 1 || position[1][5] == 1 || position[1][8] == 1))
+                    if (Game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
                     break;
                 }
             }
-        }
-
-        if(Objects.equals(colorPawn.toString(), Game.m.get(2))){
-            for(j = 0; j < 10; j++){
-                if(position[2][j] != 1){
-                    position[2][j]= 1;
+        } else if (Objects.equals(colorPawn.toString(), Game.m.get(2))) {
+            for (j = 0; j < 10; j++) {
+                if (position[2][j] != 1) {
+                    position[2][j] = 1;
                     setNumYellow(j);
                     entrance.setYellowPawn(entrance.getYellowPawn() - 1);
-                    if(Game.isExpert && (position[2][2] == 1 || position[2][5] == 1 || position[2][8] == 1))
+                    if (Game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
                     break;
                 }
             }
-        }
-
-        if(Objects.equals(colorPawn.toString(), Game.m.get(3))){
-            for(j = 0; j < 10; j++){
-                if(position[3][j] != 1){
-                    position[3][j]= 1;
+        } else if (Objects.equals(colorPawn.toString(), Game.m.get(3))) {
+            for (j = 0; j < 10; j++) {
+                if (position[3][j] != 1) {
+                    position[3][j] = 1;
                     setNumPink(j);
                     entrance.setPinkPawn(entrance.getPinkPawn() - 1);
-                    if(Game.isExpert && (position[3][2] == 1 || position[3][5] == 1 || position[3][8] == 1))
+                    if (Game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
                     break;
                 }
             }
-        }
-
-        if(Objects.equals(colorPawn.toString(), Game.m.get(4))) { //metodo toString restituisce la rappresentazione di stringa delle costanti enum
-            for(j = 0; j < 10; j++){
-                if(position[4][j] != 1){
-                    position[4][j]= 1;
+        } else if (Objects.equals(colorPawn.toString(), Game.m.get(4))) { //metodo toString restituisce la rappresentazione di stringa delle costanti enum
+            for (j = 0; j < 10; j++) {
+                if (position[4][j] != 1) {
+                    position[4][j] = 1;
                     setNumBlue(j);
                     entrance.setBluePawn(entrance.getBluePawn() - 1);
-                    if(Game.isExpert && (position[4][2] == 1 || position[4][5] == 1 || position[4][8] == 1))
+                    if (Game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
                     break;
                 }
@@ -129,18 +121,130 @@ public class DiningRoom {
         }
     }
 
-    public void addPawn(int m, ColorPawn colorPawn, Player player, Entrance entrance){
-        if((Game.totPlayer == 2 || Game.totPlayer == 4) && (m > 0 &&  m < 4 )){
-            while(m != 0){
+    public void addPawn(int m, ColorPawn colorPawn, Player player, Entrance entrance) {
+        if ((Game.totPlayer == 2 || Game.totPlayer == 4) && (m > 0 && m < 4)) {
+            while (m != 0) {
                 addPawnToDiningRoom(colorPawn, player, entrance);
                 m--;
             }
         }
 
-        if(Game.totPlayer == 3 && (m > 0 &&  m < 5 )){
-            while(m != 0){
+        if (Game.totPlayer == 3 && (m > 0 && m < 5)) {
+            while (m != 0) {
                 addPawnToDiningRoom(colorPawn, player, entrance);
                 m--;
+            }
+        }
+    }
+
+    public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player) { //le sposta da dining al sacchetto
+
+        int j; //variabile che serve a iterare dentro le righe della sala
+        if (Objects.equals(colorPawn.toString(), Game.m.get(0))) {
+            for (j = 10; j > 0; j--) {
+                if (position[0][j] != 0) {
+                    position[0][j] = 0;
+                    setNumGreen(getNumGreen() - 1);
+                    StudentBag.setGreenNum(StudentBag.getGreenNum() + 1);
+                    break;
+                }
+            }
+        } else if (Objects.equals(colorPawn.toString(), Game.m.get(1))) {
+            for (j = 10; j > 0; j--) {
+                for (j = 10; j > 0; j--) {
+                    if (position[1][j] != 0) {
+                        position[1][j] = 0;
+                        setNumRed(getNumRed() - 1);
+                        StudentBag.setRedNum(StudentBag.getRedNum() + 1);
+                        break;
+                    }
+                }
+            }
+        } else if (Objects.equals(colorPawn.toString(), Game.m.get(2))) {
+            for (j = 10; j > 0; j--) {
+                for (j = 10; j > 0; j--) {
+                    if (position[2][j] != 0) {
+                        position[2][j] = 0;
+                        setNumYellow(getNumYellow() - 1);
+                        StudentBag.setYellowNum(StudentBag.getYellowNum() + 1);
+                        break;
+                    }
+                }
+            }
+        } else if (Objects.equals(colorPawn.toString(), Game.m.get(3))) {
+            for (j = 10; j > 0; j--) {
+                for (j = 10; j > 0; j--) {
+                    if (position[3][j] != 0) {
+                        position[3][j] = 0;
+                        setNumPink(getNumPink() - 1);
+                        StudentBag.setPinkNum(StudentBag.getPinkNum() + 1);
+                        break;
+                    }
+                }
+            }
+        } else if (Objects.equals(colorPawn.toString(), Game.m.get(4))) { //metodo toString restituisce la rappresentazione di stringa delle costanti enum
+            for (j = 10; j > 0; j--) {
+                for (j = 10; j > 0; j--) {
+                    if (position[4][j] != 0) {
+                        position[4][j] = 0;
+                        setNumBlue(getNumBlue() - 1);
+                        StudentBag.setBlueNum(StudentBag.getBlueNum() + 1);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player, Entrance entrance) {//le sposta da dining all'entrance
+
+        int j; //variabile che serve a iterare dentro le righe della sala
+        if (Objects.equals(colorPawn.toString(), Game.m.get(0))) {
+            for (j = 10; j > 0; j--) {
+                if (position[0][j] != 0) {
+                    position[0][j] = 0;
+                    setNumGreen(getNumGreen() - 1);
+                    entrance.setGreenPawn(entrance.getGreenPawn() + 1);
+                    if (Game.isExpert && (position[0][2] == 1 || position[0][5] == 1 || position[0][8] == 1))
+                        player.setNumCoin(player.getNumCoin() + 1);
+                    break;
+                }
+            }
+        } else if (Objects.equals(colorPawn.toString(), Game.m.get(1))) {
+            for (j = 10; j > 0; j--) {
+                if (position[0][j] != 0) {
+                    position[0][j] = 0;
+                    setNumRed(getNumRed() - 1);
+                    entrance.setRedPawn(entrance.getRedPawn() + 1);
+                    break;
+                }
+            }
+        } else if (Objects.equals(colorPawn.toString(), Game.m.get(2))) {
+            for (j = 10; j > 0; j--) {
+                if (position[0][j] != 0) {
+                    position[0][j] = 0;
+                    setNumYellow(getNumYellow() - 1);
+                    entrance.setYellowPawn(entrance.getYellowPawn() + 1);
+                    break;
+                }
+            }
+        } else if (Objects.equals(colorPawn.toString(), Game.m.get(3))) {
+            for (j = 10; j > 0; j--) {
+                if (position[0][j] != 0) {
+                    position[0][j] = 0;
+                    setNumPink(getNumPink() - 1);
+                    entrance.setPinkPawn(entrance.getPinkPawn() + 1);
+                    break;
+                }
+            }
+        } else if (Objects.equals(colorPawn.toString(), Game.m.get(4))) { //metodo toString restituisce la rappresentazione di stringa delle costanti enum
+            for (j = 10; j > 0; j--) {
+                if (position[0][j] != 0) {
+                    position[0][j] = 0;
+                    setNumBlue(getNumBlue() - 1);
+                    entrance.setBluePawn(entrance.getBluePawn() + 1);
+                    break;
+                }
             }
         }
     }

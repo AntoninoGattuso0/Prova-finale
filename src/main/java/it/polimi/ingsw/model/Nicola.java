@@ -153,7 +153,8 @@ public class Nicola extends CharacterCard {
                 }
             }
         }
-        ArrayList<String> cards = new ArrayList<>();
+        //Refill Nicola
+        ArrayList<String> cards = Game.createArrayPawn();
         Random rnd = new Random();
         if (StudentBag.getNum() > 0) {
             int random = rnd.nextInt(cards.size());
