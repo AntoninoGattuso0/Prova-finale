@@ -4,11 +4,11 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class Game {
-    protected static ArrayList<Player> players = new ArrayList<>(4);
+    protected static ArrayList<Player> players  = new ArrayList<>(4);
     protected static int totPlayer;
-    private ArrayList<Cloud> clouds;
+    private static ArrayList<Cloud> clouds;
     protected static ProfTable profTable;
-    protected static final ArrayList<Island> islands = new ArrayList<>(12);
+    protected static ArrayList<Island> islands = new ArrayList<>(12);
     protected static boolean isExpert;
     protected static ArrayList<CharacterCard> cards = new ArrayList<>(3); //cambiato in arraylist;
     protected static ArrayList<CharacterCard> characterCards = new ArrayList<>(12);//insieme di tutti i characters
@@ -20,17 +20,38 @@ public class Game {
     public int getTotPlayer(){
         return totPlayer;
     }
-    public Game(int h, boolean isExpert) {
-        totPlayer = h;
-        this.isExpert = isExpert;
+
+    public Game(int giocatori, boolean expert) {
+        totPlayer = giocatori;
+        isExpert = expert;
         int i;
-        StudentBag studentBag= new StudentBag();
+        StudentBag studentBag = new StudentBag();
         ProfTable profTable = new ProfTable();
 //creazione isole
-        for (i = 0; i < 12; i++) {
-            Island island = new Island();
-            islands.add(island);
-        }
+        Island island1 = new Island();
+        Island island2 = new Island();
+        Island island3 = new Island();
+        Island island4 = new Island();
+        Island island5 = new Island();
+        Island island6 = new Island();
+        Island island7 = new Island();
+        Island island8 = new Island();
+        Island island9 = new Island();
+        Island island10 = new Island();
+        Island island11= new Island();
+        Island island12= new Island();
+        islands.add(island1);
+        islands.add(island2);
+        islands.add(island3);
+        islands.add(island4);
+        islands.add(island5);
+        islands.add(island6);
+        islands.add(island7);
+        islands.add(island8);
+        islands.add(island9);
+        islands.add(island10);
+        islands.add(island11);
+        islands.add(island12);
 //mappa che associa numeri a colori ("m.get(int)" per ricevere il colore in base al numero inserito in int)
         m.put(0, "GREEN");
         m.put(1, "RED");
@@ -40,7 +61,9 @@ public class Game {
 //randomizza madre natura
         Random rnd = new Random();
         int n = rnd.nextInt(12);
-        islands.get(n).setMotherNature(true);
+        Island island = islands.get(n);
+        island.setMotherNature(true);
+        islands.set(n, island);
 //randomizza pedine per ogni isola iniziale
         int g = 2;
         int r = 2;
@@ -54,9 +77,9 @@ public class Game {
         startingPawn.add(m.get(2));
         startingPawn.add(m.get(3));
         startingPawn.add(m.get(4));
-        for (i = n + 1; !islands.get(i).getMotherNature(); i++) {
-            if (i == 12) i = 0;
-            if ((i == n + 6) || (i == n - 6)) i++;
+        i=n+1;
+        if(i==12)i=0;
+        while(!(islands.get(i).getMotherNature())) {
             int random = rnd.nextInt(startingPawn.size());
             if (Objects.equals(startingPawn.get(random), m.get(0))) {
                 g--;
@@ -79,6 +102,10 @@ public class Game {
                 islands.get(i).setBluePawn(islands.get(i).getBluePawn() + 1);
                 if (b == 0) startingPawn.remove(random);
             }
+            i++;
+            if ((i == n + 6)) i++;
+            else if(i == n - 6) i++;
+            if (i == 12) i = 0;
         }
         // creazione nuvole e inizializzazione
         clouds = new ArrayList<>();

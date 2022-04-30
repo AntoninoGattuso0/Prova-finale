@@ -44,7 +44,7 @@ public class Felix extends CharacterCard{
                 if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && Game.players.get(i).towerSpace.colorTower != Game.players.get(j).towerSpace.colorTower) notunique = true;
             }
         }
-        if(!notunique) island.getColorTower() = Game.players.get(influence.indexOf(max)).towerSpace.colorTower;
+        if(!notunique) island.setColorTower(Game.players.get(influence.indexOf(max)).towerSpace.colorTower);
         Game.unifyIsland(Game.islands.indexOf(island));
     }
 }

@@ -10,16 +10,16 @@ class IslandTest {
     @Test
     public void testIsland(){
         Island island = new Island();
-        assertFalse(island.isMotherNature);
-        assertEquals(0, island.greenPawn);
-        assertEquals(0, island.redPawn);
-        assertEquals(0, island.yellowPawn);
-        assertEquals(0, island.pinkPawn);
-        assertEquals(0, island.bluePawn);
-        assertFalse(island.isTower);
-        assertNull(island.colorTower);
-        assertFalse(island.isProhibited);
-        assertEquals(1, island.totIsland);
+        assertFalse(island.getMotherNature());
+        assertEquals(0, island.getGreenPawn());
+        assertEquals(0, island.getRedPawn());
+        assertEquals(0, island.getYellowPawn());
+        assertEquals(0, island.getPinkPawn());
+        assertEquals(0, island.getBluePawn());
+        assertFalse(island.getTower());
+        assertNull(island.getColorTower());
+        assertFalse(island.getProhibited());
+        assertEquals(1, island.getTotIsland());
     }
 
 }

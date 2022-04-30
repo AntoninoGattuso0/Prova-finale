@@ -146,6 +146,7 @@ public class DiningRoom {
                     position[0][j] = 0;
                     setNumGreen(getNumGreen() - 1);
                     StudentBag.setGreenNum(StudentBag.getGreenNum() + 1);
+                    StudentBag.setNum(StudentBag.getNum() + 1);
                     break;
                 }
             }
@@ -156,6 +157,7 @@ public class DiningRoom {
                         position[1][j] = 0;
                         setNumRed(getNumRed() - 1);
                         StudentBag.setRedNum(StudentBag.getRedNum() + 1);
+                        StudentBag.setNum(StudentBag.getNum() + 1);
                         break;
                     }
                 }
@@ -167,6 +169,7 @@ public class DiningRoom {
                         position[2][j] = 0;
                         setNumYellow(getNumYellow() - 1);
                         StudentBag.setYellowNum(StudentBag.getYellowNum() + 1);
+                        StudentBag.setNum(StudentBag.getNum() + 1);
                         break;
                     }
                 }
@@ -178,6 +181,7 @@ public class DiningRoom {
                         position[3][j] = 0;
                         setNumPink(getNumPink() - 1);
                         StudentBag.setPinkNum(StudentBag.getPinkNum() + 1);
+                        StudentBag.setNum(StudentBag.getNum() + 1);
                         break;
                     }
                 }
@@ -189,6 +193,7 @@ public class DiningRoom {
                         position[4][j] = 0;
                         setNumBlue(getNumBlue() - 1);
                         StudentBag.setBlueNum(StudentBag.getBlueNum() + 1);
+                        StudentBag.setNum(StudentBag.getNum() + 1);
                         break;
                     }
                 }

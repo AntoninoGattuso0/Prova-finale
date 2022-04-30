@@ -1,4 +1,4 @@
-package it.polimi.ingsw.model;
+/*package it.polimi.ingsw.model;
 
 
 import org.junit.jupiter.api.Test;
@@ -14,4 +14,4 @@ class DiningRoomTest {
         assertEquals(7,entrance.greenPawn+entrance.redPawn+ entrance.yellowPawn+ entrance.pinkPawn+ entrance.bluePawn);
     }
 
-}
+}*/

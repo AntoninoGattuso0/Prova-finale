@@ -8,7 +8,7 @@ class StudentBagTest {
     @Test
     public void test1(){
         StudentBag studentbag = new StudentBag();
-        assertEquals(120, StudentBag.num);
+        assertEquals(120, StudentBag.getNum());
     }
 
 }
