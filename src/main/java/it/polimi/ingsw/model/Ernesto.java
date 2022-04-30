@@ -6,10 +6,4 @@ public class Ernesto extends CharacterCard{
         coinPrice=2;
     }
 
-    
-
-
-
-
-
 }

@@ -1,5 +1,5 @@
 package it.polimi.ingsw.model;
-
+//ce la faremo
 public class TowerSpace {
     protected ColorTower colorTower;
     private int numTower;

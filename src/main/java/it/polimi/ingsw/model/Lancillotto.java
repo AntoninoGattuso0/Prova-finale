@@ -2,7 +2,7 @@ package it.polimi.ingsw.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+//ce la faremo
 public class Lancillotto extends CharacterCard{
     Lancillotto(){
         coinPrice=3;

@@ -9,7 +9,7 @@ public class Giuseppe extends CharacterCard{
     protected int numYellowPawn;
     protected int numPinkPawn;
     protected int numBluePawn;
-    Giuseppe(){
+    Giuseppe(StudentBag studentBag){
         coinPrice=1;
         nPawn = 0;
         numGreenPawn = 0;
@@ -23,24 +23,24 @@ public class Giuseppe extends CharacterCard{
         for(int i = 0; i < 6; i++){
             if(Objects.equals(refillCharacterCard.get(random),Game.m.get(0))) {
                 numGreenPawn++;
-                StudentBag.setNum(StudentBag.getNum() - 1);
-                StudentBag.setGreenNum(StudentBag.getGreenNum() - 1);
+                studentBag.setNum(StudentBag.getNum() - 1);
+                studentBag.setGreenNum(StudentBag.getGreenNum() - 1);
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(1))) {
                 numRedPawn++;
-                StudentBag.setNum(StudentBag.getNum() - 1);
-                StudentBag.setRedNum(StudentBag.getRedNum() - 1);
+                studentBag.setNum(StudentBag.getNum() - 1);
+                studentBag.setRedNum(StudentBag.getRedNum() - 1);
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(2))) {
                 numYellowPawn++;
-                StudentBag.setNum(StudentBag.getNum() - 1);
-                StudentBag.setYellowNum(StudentBag.getYellowNum() - 1);
+                studentBag.setNum(StudentBag.getNum() - 1);
+                studentBag.setYellowNum(StudentBag.getYellowNum() - 1);
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(3))) {
                 numPinkPawn++;
-                StudentBag.setNum(StudentBag.getNum() - 1);
-                StudentBag.setPinkNum(StudentBag.getPinkNum() - 1);
+                studentBag.setNum(StudentBag.getNum() - 1);
+                studentBag.setPinkNum(StudentBag.getPinkNum() - 1);
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(4))) {
                 numBluePawn++;
-                StudentBag.setNum(StudentBag.getNum() - 1);
-                StudentBag.setBlueNum(StudentBag.getBlueNum() - 1);
+                studentBag.setNum(StudentBag.getNum() - 1);
+                studentBag.setBlueNum(StudentBag.getBlueNum() - 1);
             }
         }
         nPawn = 6;

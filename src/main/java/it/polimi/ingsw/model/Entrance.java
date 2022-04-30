@@ -1,7 +1,7 @@
 package it.polimi.ingsw.model;
 
 import java.util.*;
-
+//ce la faremo
 public class Entrance {
 
     private int numPawn;        //numero di pedine totali presenti all'entrata della plancia

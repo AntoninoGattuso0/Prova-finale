@@ -1,7 +1,7 @@
 package it.polimi.ingsw.model;
 
 import java.util.Objects;
-
+//ce la faremo
 public class DiningRoom {
     //modifiche all'UML: array di array: in cui gli elementi sono 0 o 1;
     //5 int che tengono conto di quante pedine di ogni colore sono presenti nella sala

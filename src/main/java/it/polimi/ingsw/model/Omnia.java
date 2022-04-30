@@ -1,5 +1,5 @@
 package it.polimi.ingsw.model;
-
+//ce la faremo
 public class Omnia extends CharacterCard{
     Omnia(){
         coinPrice=3;
