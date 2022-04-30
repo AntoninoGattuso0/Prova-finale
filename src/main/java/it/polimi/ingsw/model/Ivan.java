@@ -8,7 +8,7 @@ public class Ivan extends CharacterCard{
         coinPrice=2;
     }
 
-    public void useEffect(Island island, Player player){
+    public void useEffect(Island island, Player player, Game game){
         int i, j, k, n, color, max;
         boolean notunique = false;
         ArrayList<Integer> influence = new ArrayList<>();
