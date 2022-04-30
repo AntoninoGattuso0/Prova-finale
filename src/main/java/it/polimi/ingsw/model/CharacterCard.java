@@ -8,6 +8,7 @@ public abstract class CharacterCard { //vorrei riportarla a public class. le 12 
         return coinPrice++;
     }
 
-    public void useEffect(int i,Game game) {
+    public void useEffect(int i,Game game){
+        
     }
 }

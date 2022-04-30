@@ -120,17 +120,17 @@ public class Game {
         }
         System.out.println("ddd");
        //creazione arraylist con tutte i personaggi
-        Antonio antonio = new Antonio();
+        Antonio antonio = new Antonio(studentBag);
         Barbara barbara = new Barbara();
         Ciro ciro = new Ciro();
         Dante dante = new Dante();
         Ernesto ernesto = new Ernesto();
         Felix felix = new Felix();
-        Giuseppe giuseppe = new Giuseppe();
+        Giuseppe giuseppe = new Giuseppe(studentBag);
         Ivan ivan = new Ivan();
         Lancillotto lancillotto = new Lancillotto();
         Maria maria = new Maria();
-        Nicola nicola = new Nicola();
+        Nicola nicola = new Nicola(studentBag);
         Omnia omnia = new Omnia();
         characterCards.add(antonio);
         characterCards.add(barbara);
