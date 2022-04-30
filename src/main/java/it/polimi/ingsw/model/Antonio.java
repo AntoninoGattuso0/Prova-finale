@@ -13,7 +13,7 @@ public class Antonio extends CharacterCard{
     private int yellowPawn;
     private int pinkPawn;
     private int bluePawn;
-    public Antonio(){ //COSTRUTTORE ANTONIO: manca l'inizializzazione del prezzo. Non so come fare visto che CharacterCard è una classe astratta -Nino
+    public Antonio(StudentBag studentBag){ //COSTRUTTORE ANTONIO: manca l'inizializzazione del prezzo. Non so come fare visto che CharacterCard è una classe astratta -Nino
         coinPrice=1;
         numPawnAntonio=0;
         greenPawn=0;
@@ -24,46 +24,46 @@ public class Antonio extends CharacterCard{
         while(numPawnAntonio<4){
             Random rnd = new Random();
             ArrayList<String> refillPawn = Game.createArrayPawn();
-            if (StudentBag.getNum() > 0) {
+            if (studentBag.getNum() > 0) {
                 int random = rnd.nextInt(refillPawn.size());
                 if (Objects.equals(refillPawn.get(random), "GREEN")) {
                     setGreenPawn(getGreenNum()+1);
                     setNumPawnAntonio(getNumPawnAntonio()+1);
-                    StudentBag.setNum(StudentBag.getNum()-1);
-                    StudentBag.setGreenNum(StudentBag.getGreenNum()-1);
+                    studentBag.setNum(studentBag.getNum()-1);
+                    studentBag.setGreenNum(studentBag.getGreenNum()-1);
                     if(StudentBag.getGreenNum()==0){
                         refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "RED")) {
                     setRedPawn(getRedPawn()+1);
                     setNumPawnAntonio(getNumPawnAntonio()+1);
-                    StudentBag.setNum(StudentBag.getNum()-1);
-                    StudentBag.setRedNum(StudentBag.getRedNum()-1);
-                    if(StudentBag.getRedNum()==0){
+                    studentBag.setNum(studentBag.getNum()-1);
+                    studentBag.setRedNum(studentBag.getRedNum()-1);
+                    if(studentBag.getRedNum()==0){
                         refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "YELLOW")) {
                     setYellowPawn(getYellowPawn()+1);
                     setNumPawnAntonio(getNumPawnAntonio()+1);
-                    StudentBag.setNum(StudentBag.getNum()-1);
-                    StudentBag.setYellowNum(StudentBag.getYellowNum()-1);
-                    if(StudentBag.getYellowNum()==0){
+                    studentBag.setNum(studentBag.getNum()-1);
+                    studentBag.setYellowNum(studentBag.getYellowNum()-1);
+                    if(studentBag.getYellowNum()==0){
                         refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "PINK")) {
                     setPinkPawn(getPinkPawn()+1);
                     setNumPawnAntonio(getNumPawnAntonio()+1);
-                    StudentBag.setNum(StudentBag.getNum()-1);
-                    StudentBag.setPinkNum(StudentBag.getPinkNum()-1);
-                    if(StudentBag.getPinkNum()==0){
+                    studentBag.setNum(studentBag.getNum()-1);
+                    studentBag.setPinkNum(studentBag.getPinkNum()-1);
+                    if(studentBag.getPinkNum()==0){
                         refillPawn.remove(random);
                     }
                 } else if (Objects.equals(refillPawn.get(random), "BLUE")) {
                     setBluePawn(getBluePawn()+1);
                     setNumPawnAntonio(getNumPawnAntonio()+1);
-                    StudentBag.setNum(StudentBag.getNum()-1);
-                    StudentBag.setBlueNum(getBluePawn()-1);
-                    if(StudentBag.getBlueNum()==0){
+                    studentBag.setNum(studentBag.getNum()-1);
+                    studentBag.setBlueNum(getBluePawn()-1);
+                    if(studentBag.getBlueNum()==0){
                         refillPawn.remove(random);
                     }
                 }
@@ -71,7 +71,7 @@ public class Antonio extends CharacterCard{
         }
     }
 
-    public void useEffect(ColorPawn colorPawn, Island island) {
+    public void useEffect(ColorPawn colorPawn, Island island,Game game) {
         if (Objects.equals(colorPawn.toString(), "GREEN") && getGreenPawn() > 0) {  //altrimenti cosa succede se la pedina verde non c'è?
             island.setGreenPawn(island.getGreenPawn() + 1);
             setGreenPawn(getGreenPawn() - 1);
@@ -96,7 +96,7 @@ public class Antonio extends CharacterCard{
             System.out.println("errore colore non presente in entrata");
         }
         Random rnd = new Random();
-        ArrayList<String> refillPawn = Game.createArrayPawn();
+        ArrayList<String> refillPawn = Game.createArrayPawn(game.studentBag);
         if (StudentBag.getNum() > 0) {
             int random = rnd.nextInt(refillPawn.size());
             if (Objects.equals(refillPawn.get(random), "GREEN")) {
