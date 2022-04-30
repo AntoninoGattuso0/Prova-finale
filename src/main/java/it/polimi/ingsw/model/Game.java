@@ -10,7 +10,6 @@ public class Game {
     protected ProfTable profTable;
     protected static ArrayList<Island> islands = new ArrayList<>();
     protected static boolean isExpert;
-    protected static Antonio antonio;
     protected static ArrayList<CharacterCard> cards = new ArrayList<>(); //cambiato in arraylist;
     protected static ArrayList<CharacterCard> characterCards = new ArrayList<>();//insieme di tutti i characters
     protected static Map<Integer, String> m = new HashMap<>();
