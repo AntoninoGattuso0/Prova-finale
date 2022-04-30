@@ -23,24 +23,24 @@ public class Giuseppe extends CharacterCard{
         for(int i = 0; i < 6; i++){
             if(Objects.equals(refillCharacterCard.get(random),Game.m.get(0))) {
                 numGreenPawn++;
-                studentBag.setNum(StudentBag.getNum() - 1);
-                studentBag.setGreenNum(StudentBag.getGreenNum() - 1);
+                studentBag.setNum(studentBag.getNum() - 1);
+                studentBag.setGreenNum(studentBag.getGreenNum() - 1);
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(1))) {
                 numRedPawn++;
-                studentBag.setNum(StudentBag.getNum() - 1);
-                studentBag.setRedNum(StudentBag.getRedNum() - 1);
+                studentBag.setNum(studentBag.getNum() - 1);
+                studentBag.setRedNum(studentBag.getRedNum() - 1);
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(2))) {
                 numYellowPawn++;
-                studentBag.setNum(StudentBag.getNum() - 1);
-                studentBag.setYellowNum(StudentBag.getYellowNum() - 1);
+                studentBag.setNum(studentBag.getNum() - 1);
+                studentBag.setYellowNum(studentBag.getYellowNum() - 1);
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(3))) {
                 numPinkPawn++;
-                studentBag.setNum(StudentBag.getNum() - 1);
-                studentBag.setPinkNum(StudentBag.getPinkNum() - 1);
+                studentBag.setNum(studentBag.getNum() - 1);
+                studentBag.setPinkNum(studentBag.getPinkNum() - 1);
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(4))) {
                 numBluePawn++;
-                studentBag.setNum(StudentBag.getNum() - 1);
-                studentBag.setBlueNum(StudentBag.getBlueNum() - 1);
+                studentBag.setNum(studentBag.getNum() - 1);
+                studentBag.setBlueNum(studentBag.getBlueNum() - 1);
             }
         }
         nPawn = 6;

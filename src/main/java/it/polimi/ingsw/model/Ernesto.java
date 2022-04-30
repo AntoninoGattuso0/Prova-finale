@@ -6,4 +6,9 @@ public class Ernesto extends CharacterCard{
         coinPrice=2;
     }
 
+    public void notInfluence(Island island){
+        island.setProhibited(true);
+    }
+
+
 }
