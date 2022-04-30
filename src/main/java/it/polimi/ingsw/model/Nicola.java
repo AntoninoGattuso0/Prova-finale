@@ -13,7 +13,7 @@ public class Nicola extends UseEffect {
 
     Nicola(StudentBag studentBag) {
         Random rnd = new Random();
-        ArrayList<String> cards = Game.createArrayPawn();
+        ArrayList<String> cards = createArrayPawn(studentBag);
         if (studentBag.getNum() > 0) {
             int random = rnd.nextInt(cards.size());
             if (Objects.equals(cards.get(random), Game.m.get(0))) {//verde
@@ -154,7 +154,7 @@ public class Nicola extends UseEffect {
             }
         }
         //Refill Nicola
-        ArrayList<String> cards = Game.createArrayPawn();
+        ArrayList<String> cards = createArrayPawn(studentBag);
         Random rnd = new Random();
         if (studentBag.getNum() > 0) {
             int random = rnd.nextInt(cards.size());
@@ -185,5 +185,19 @@ public class Nicola extends UseEffect {
                 if (studentBag.getBlueNum() == 0) cards.remove(random);
             }
         }
+    }
+    static ArrayList<String> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
+        ArrayList<String> arrayPawn = new ArrayList<>();
+        if (studentBag.getGreenNum() != 0)
+            arrayPawn.add("GREEN");
+        if (studentBag.getRedNum() != 0)
+            arrayPawn.add("RED");
+        if (studentBag.getYellowNum() != 0)
+            arrayPawn.add("YELLOW");
+        if (studentBag.getPinkNum() != 0)
+            arrayPawn.add("PINK");
+        if (studentBag.getBlueNum() != 0)
+            arrayPawn.add("BLUE");
+        return arrayPawn;
     }
 }
