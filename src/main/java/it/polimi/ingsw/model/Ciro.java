@@ -8,7 +8,7 @@ public class Ciro extends UseEffect{
         coinPrice=3;
     }
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {//copia del metodo per calcolare la top influenza
-        game.topInfluence(island);
+        game.topInfluence(island,game);
          coinPrice++;
     }
 }

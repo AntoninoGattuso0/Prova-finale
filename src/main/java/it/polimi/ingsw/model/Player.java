@@ -14,7 +14,7 @@ public class Player {
     public void setNickame(String nick){
         this.nickname=nick;
     }
-    public Player(String nick,int i) {
+    public Player(String nick,int i,Game game) {
         IDplayer=i;
         int j, k;
         setNickame(nick);
@@ -30,7 +30,7 @@ public class Player {
             assistant.setStep(k);
             deckAssistant.add(assistant);
             //collegamento a tower, dining and entrance
-            entrance = new Entrance();
+            entrance = new Entrance(game.studentBag);
             diningRoom = new DiningRoom();
             towerSpace = new TowerSpace();
         }
