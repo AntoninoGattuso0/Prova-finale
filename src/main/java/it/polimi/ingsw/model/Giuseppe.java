@@ -87,11 +87,11 @@ public class Giuseppe extends UseEffect{
     //LEGGIMI :( non va bene il fatto che anche se la funzione viene chiamata n volte viene richiamata sempre su stessa isola e pedina
     public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){
         boolean swap = false;
-        if(numPawnSwap > 0 && numPawnSwap < 4)
+        if(colorPawn.size()/2<4&&colorPawn.size()/2>0)
             swap = true;
         if(swap){
-            while(numPawnSwap != 0){
-                swapPawn(colorPawnCard, colorPawnEntrance, entrance);
+            while(colorPawn.size() != 0){
+                swapPawn(colorPawnCard, colorPawnEntrance, player.entrance);
                 numPawnSwap--;
             }
         }
