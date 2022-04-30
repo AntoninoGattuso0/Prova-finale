@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
-// ce la faremo
 import static it.polimi.ingsw.model.StudentBag.*;
 
 public class Antonio extends CharacterCard{

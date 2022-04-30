@@ -1,6 +1,5 @@
 package it.polimi.ingsw.model;
 
-//ce la faremo
 public class Ciro extends CharacterCard{
     Ciro(){
         coinPrice=3;

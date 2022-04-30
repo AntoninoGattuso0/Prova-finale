@@ -1,6 +1,5 @@
 package it.polimi.ingsw.model;
 
-//ce la faremo
 public class Dante extends CharacterCard{
     Dante(){
         coinPrice=1;
