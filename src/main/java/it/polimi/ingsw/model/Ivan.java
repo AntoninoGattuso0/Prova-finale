@@ -14,7 +14,7 @@ public class Ivan extends CharacterCard{
         ArrayList<Integer> influence = new ArrayList<>();
         for(i=0; i<Game.totPlayer; i++) influence.add(0);
         for(color=0; color<5; color++) {
-            n = Game.profTable.checkProf(color);
+            n = game.profTable.checkProf(color);
             if(color==0 && n!=-1) influence.set(n, influence.get(n) + island.getGreenPawn());
 
             else if(color==1 && n!=-1) influence.set(n, influence.get(n) + island.getRedPawn());

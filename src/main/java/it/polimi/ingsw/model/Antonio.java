@@ -119,7 +119,7 @@ public class Antonio extends CharacterCard{
                 setYellowPawn(getYellowPawn() + 1);
                 setNumPawnAntonio(getNumPawnAntonio() + 1);
                 game.studentBag.setNum(game.studentBag.getNum() - 1);
-                StudentBag.setYellowNum(game.studentBag.getYellowNum() - 1);
+                game.studentBag.setYellowNum(game.studentBag.getYellowNum() - 1);
                 if (game.studentBag.getYellowNum() == 0) {
                     refillPawn.remove(random);
                 }

@@ -18,7 +18,7 @@ public class Giuseppe extends CharacterCard{
         numPinkPawn=0;
         numBluePawn=0;
         Random rdm = new Random();
-        ArrayList<String> refillCharacterCard = Game.createArrayPawn();
+        ArrayList<String> refillCharacterCard = Game.createArrayPawn(studentBag);
         int random = rdm.nextInt(5);
         for(int i = 0; i < 6; i++){
             if(Objects.equals(refillCharacterCard.get(random),Game.m.get(0))) {
