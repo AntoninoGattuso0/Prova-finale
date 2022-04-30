@@ -21,6 +21,10 @@ public class Game {
         return totPlayer;
     }
 
+    public static ArrayList<Player> getPlayers() {
+        return players;
+    }
+
     public Game(int giocatori, boolean expert) {
         totPlayer = giocatori;
         isExpert = expert;

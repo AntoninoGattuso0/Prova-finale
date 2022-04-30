@@ -7,6 +7,5 @@ public class CharacterCard { //vorrei riportarla a public class. le 12 carte com
       return coinPrice++;
    }
     public void useEffect(){
-        coinPrice++;
     }
 }
