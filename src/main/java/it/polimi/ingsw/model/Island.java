@@ -1,5 +1,5 @@
 package it.polimi.ingsw.model;
-//ce la faremo
+
 public class Island {
     private boolean isMotherNature;
     private int greenPawn;

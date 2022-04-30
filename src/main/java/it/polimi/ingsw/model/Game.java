@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-//ce la faremo
+
 import java.util.*;
 
 public class Game {

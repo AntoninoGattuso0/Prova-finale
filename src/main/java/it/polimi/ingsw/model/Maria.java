@@ -1,7 +1,7 @@
 package it.polimi.ingsw.model;
 
 import java.awt.*;
-//ce la faremo
+
 public class Maria extends CharacterCard{
     Maria(){
         coinPrice=1;

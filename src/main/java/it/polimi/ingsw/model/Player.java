@@ -1,7 +1,7 @@
 package it.polimi.ingsw.model;
 
 import java.util.ArrayList;
-//ce la faremo
+
 public class Player {
     private int IDplayer;
     private String nickname;
