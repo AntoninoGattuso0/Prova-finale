@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Ivan extends UseEffect{
+    private int coinPrice;
     Ivan(){
         coinPrice=2;
     }
@@ -51,5 +52,6 @@ public class Ivan extends UseEffect{
         }
         if(!notunique) island.setColorTower(Game.players.get(influence.indexOf(max)).towerSpace.colorTower);
         Game.unifyIsland(Game.islands.indexOf(island));
+        coinPrice++;
     }
 }

@@ -3,6 +3,7 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class Giuseppe extends UseEffect{
+    private int coinPrice;
     protected int nPawn;
     protected int numGreenPawn;
     protected int numRedPawn;
@@ -94,6 +95,7 @@ public class Giuseppe extends UseEffect{
                 numPawnSwap--;
             }
         }
+        coinPrice++;
     }
 
 }

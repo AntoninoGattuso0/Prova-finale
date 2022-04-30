@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Lancillotto extends UseEffect{
+    private int coinPrice;
     Lancillotto(){
         coinPrice=3;
     }
@@ -50,5 +51,6 @@ public class Lancillotto extends UseEffect{
         }
         if(!notunique) island.setColorTower(Game.players.get(influence.indexOf(max)).towerSpace.colorTower);
         Game.unifyIsland(Game.islands.indexOf(island));
+        coinPrice++;
     }
 }
