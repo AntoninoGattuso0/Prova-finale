@@ -8,16 +8,15 @@ public class Maria extends UseEffect{
     Maria(){
         coinPrice=1;
     }
-    public void scambiaStudenti(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){
-        diningRoom.removePawnFromDiningRoom(colorPawn1, player, entrance);
-        diningRoom.addPawnToDiningRoom(colorPawn2, player, entrance);
+    public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){
+        int k;
+        for(k=0; k<colorPawn.size(); k++)
+            if(k<colorPawn.size()/2)
+                player.diningRoom.removePawnFromDiningRoom(colorPawn.get(k), player, player.entrance);
+            else
+                player.diningRoom.addPawnToDiningRoom(colorPawn.get(k), player, player.entrance);
         coinPrice++;
     }
 
-    public void scambiaStudenti(ColorPawn colorPawn1, ColorPawn colorPawn2, ColorPawn colorPawn3, ColorPawn colorPawn4, Player player, Entrance entrance, DiningRoom diningRoom){
-        diningRoom.removePawnFromDiningRoom(colorPawn1, player, entrance);
-        diningRoom.addPawnToDiningRoom(colorPawn2, player, entrance);
-        diningRoom.removePawnFromDiningRoom(colorPawn3, player, entrance);
-        diningRoom.addPawnToDiningRoom(colorPawn4, player, entrance);
-    }
+
 }

@@ -12,7 +12,7 @@ public class Entrance {
     private int yellowPawn;
     private int redPawn;
 
-    Entrance(){
+    Entrance(Game game){
        greenPawn = 0;
        bluePawn = 0;
        pinkPawn = 0;
@@ -23,13 +23,13 @@ public class Entrance {
         Random rnd = new Random();
         while (j > 0) {
             ArrayList<String> entrancePawn = Game.createArrayPawn();
-            if (StudentBag.getNum() > 0) {
+            if (game.studentBag.getNum() > 0) {
                 int random = rnd.nextInt(entrancePawn.size());
                 if (Objects.equals(entrancePawn.get(random), Game.m.get(0))) {//verde
                     setGreenPawn(getGreenPawn() + 1);
                     setNumPawn(getNumPawn() + 1);
-                    StudentBag.setNum(StudentBag.getNum() - 1);
-                    StudentBag.setGreenNum(StudentBag.getGreenNum() - 1);
+                    game.studentBag.setNum(game.studentBag.getNum() - 1);
+                    game.studentBag.setGreenNum(StudentBag.getGreenNum() - 1);
                     if(StudentBag.getGreenNum()==0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(1))) {//rosso
                     setRedPawn(getRedPawn() + 1);

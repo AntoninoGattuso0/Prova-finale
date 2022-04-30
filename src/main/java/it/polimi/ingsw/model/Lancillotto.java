@@ -9,13 +9,14 @@ public class Lancillotto extends UseEffect{
         coinPrice=3;
     }
 
-    public void removeColor(Island island, int removedColor, Game game){//(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn)
-        int i, j, k, n, color, max;
+    public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){//(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn)
+        int j, k, n, color, max;
         boolean notunique = false;
         ArrayList<Integer> influence = new ArrayList<>();
         for(i=0; i<Game.totPlayer; i++) influence.add(0);
         for(color=0; color<5; color++) {
-            if(color == removedColor) color++;
+            String s = Game.m.get(color);
+            if(s.equals(colorPawn.get(0))) color++;
             n = game.profTable.checkProf(color);
             if(color==0 && n!=-1) influence.set(n, influence.get(n) + island.getGreenPawn());
 

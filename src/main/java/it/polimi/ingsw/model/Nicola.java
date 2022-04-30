@@ -88,9 +88,9 @@ public class Nicola extends UseEffect {
     }
 
 
-    public void useNicola(ColorPawn colorPawn, Player player, StudentBag studentBag) {
+    public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
         int j; //variabile che serve a iterare dentro le righe della sala
-        if (Objects.equals(colorPawn.toString(), Game.m.get(0))) {
+        if (colorPawn.get(0).equals(Game.m.get(0))) {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[0][j] != 1) {
                     player.diningRoom.position[0][j] = 1;
@@ -155,35 +155,35 @@ public class Nicola extends UseEffect {
             }
         }
         //Refill Nicola
-        ArrayList<String> cards = createArrayPawn(studentBag);
+        ArrayList<String> cards = createArrayPawn(game.studentBag);
         Random rnd = new Random();
-        if (studentBag.getNum() > 0) {
+        if (game.studentBag.getNum() > 0) {
             int random = rnd.nextInt(cards.size());
             if (Objects.equals(cards.get(random), Game.m.get(0))) {//verde
                 setGreenPawn(getGreenPawn() + 1);
-                studentBag.setNum(studentBag.getNum() - 1);
-                studentBag.setGreenNum(studentBag.getGreenNum() - 1);
-                if (studentBag.getGreenNum() == 0) cards.remove(random);
+                game.studentBag.setNum(game.studentBag.getNum() - 1);
+                game.studentBag.setGreenNum(game.studentBag.getGreenNum() - 1);
+                if (game.studentBag.getGreenNum() == 0) cards.remove(random);
             } else if (Objects.equals(cards.get(random), Game.m.get(1))) {//rosso
                 setRedPawn(getRedPawn() + 1);
-                studentBag.setNum(studentBag.getNum() - 1);
-                studentBag.setRedNum(studentBag.getRedNum() - 1);
-                if (studentBag.getRedNum() == 0) cards.remove(random);
+                game.studentBag.setNum(game.studentBag.getNum() - 1);
+                game.studentBag.setRedNum(game.studentBag.getRedNum() - 1);
+                if (game.studentBag.getRedNum() == 0) cards.remove(random);
             } else if (Objects.equals(cards.get(random), Game.m.get(2))) {//giallo
                 setYellowPawn(getYellowPawn() + 1);
-                studentBag.setNum(studentBag.getNum() - 1);
-                studentBag.setYellowNum(studentBag.getYellowNum() - 1);
-                if (studentBag.getYellowNum() == 0) cards.remove(random);
+                game.studentBag.setNum(game.studentBag.getNum() - 1);
+                game.studentBag.setYellowNum(gamestudentBag.getYellowNum() - 1);
+                if (game.studentBag.getYellowNum() == 0) cards.remove(random);
             } else if (Objects.equals(cards.get(random), Game.m.get(3))) {//rosa
                 setPinkPawn(getPinkPawn() + 1);
-                studentBag.setNum(studentBag.getNum() - 1);
-                studentBag.setPinkNum(studentBag.getPinkNum() - 1);
-                if (studentBag.getPinkNum() == 0) cards.remove(random);
+                game.studentBag.setNum(game.studentBag.getNum() - 1);
+                game.studentBag.setPinkNum(game.studentBag.getPinkNum() - 1);
+                if (game.studentBag.getPinkNum() == 0) cards.remove(random);
             } else if (Objects.equals(cards.get(random), Game.m.get(4))) {//blu
                 setBluePawn(getBluePawn() + 1);
-                studentBag.setNum(studentBag.getNum() - 1);
-                studentBag.setBlueNum(studentBag.getBlueNum() - 1);
-                if (studentBag.getBlueNum() == 0) cards.remove(random);
+                game.studentBag.setNum(game.studentBag.getNum() - 1);
+                game.studentBag.setBlueNum(game.studentBag.getBlueNum() - 1);
+                if (game.studentBag.getBlueNum() == 0) cards.remove(random);
             }
         }
         coinPrice++;
