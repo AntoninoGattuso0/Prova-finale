@@ -26,7 +26,7 @@ class LancillottoTest {
         Game.islands.get(0).setPinkPawn(3);
         Game.islands.get(0).setBluePawn(0);
         Lancillotto lancillotto = new Lancillotto();
-        CharacterCard card1 = new CharacterCard();
+        CharacterCard card1 = new CharacterCard(lancillotto);
         assertEquals(ColorTower.BLACK, Game.islands.get(0).getColorTower());
     }
 
