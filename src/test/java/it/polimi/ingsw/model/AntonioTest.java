@@ -26,24 +26,18 @@ public class AntonioTest {
     @Test
     public void TestUseEffectAntonio(){
         int i;
-        Game game= new Game(3,true);
-        System.out.println(game.studentBag.getNum());
+        Game game= new Game(3,true);;
         Antonio antonio=new Antonio(game.studentBag);
-        System.out.println(game.studentBag.getNum());
         ArrayList<ColorPawn> colorPawn=new ArrayList<>();
-        System.out.println(game.studentBag.getNum());
         for(i=0;i<2;i++){
             if(i==0)
                 colorPawn.add(ColorPawn.GREEN);
             if(i==1)
                 colorPawn.add(ColorPawn.RED);
         }
-        System.out.println(game.studentBag.getNum());
         Game.newPlayer("a",game);
-        System.out.println(game.studentBag.getNum());
         Game.newPlayer("b",game);
         Game.newPlayer("c",game);
-        System.out.println(game.studentBag.getNum());
         CharacterCard characterCard=new CharacterCard(antonio);
         characterCard.useEffect.useEffect(game,2,Game.islands.get(0),Game.players.get(0),colorPawn);
         assertEquals(4,antonio.getNumPawnAntonio());
