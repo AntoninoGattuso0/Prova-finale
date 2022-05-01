@@ -172,7 +172,7 @@ public class Nicola extends UseEffect {
             } else if (Objects.equals(cards.get(random), Game.m.get(2))) {//giallo
                 setYellowPawn(getYellowPawn() + 1);
                 game.studentBag.setNum(game.studentBag.getNum() - 1);
-                game.studentBag.setYellowNum(gamestudentBag.getYellowNum() - 1);
+                game.studentBag.setYellowNum(game.studentBag.getYellowNum() - 1);
                 if (game.studentBag.getYellowNum() == 0) cards.remove(random);
             } else if (Objects.equals(cards.get(random), Game.m.get(3))) {//rosa
                 setPinkPawn(getPinkPawn() + 1);
