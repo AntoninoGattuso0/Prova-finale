@@ -18,28 +18,33 @@ public class Giuseppe extends UseEffect{
         numBluePawn=0;
         Random rdm = new Random();
         ArrayList<String> refillCharacterCard = Game.createArrayPawn(studentBag);
-        int random = rdm.nextInt(5);
         for(int i = 0; i < 6; i++){
+            int random = rdm.nextInt(refillCharacterCard.size());
             if(Objects.equals(refillCharacterCard.get(random),Game.m.get(0))) {
                 numGreenPawn++;
                 studentBag.setNum(studentBag.getNum() - 1);
                 studentBag.setGreenNum(studentBag.getGreenNum() - 1);
+                if(studentBag.getGreenNum() == 0) refillCharacterCard.remove(random);
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(1))) {
                 numRedPawn++;
                 studentBag.setNum(studentBag.getNum() - 1);
                 studentBag.setRedNum(studentBag.getRedNum() - 1);
+                if(studentBag.getRedNum() == 0) refillCharacterCard.remove(random);
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(2))) {
                 numYellowPawn++;
                 studentBag.setNum(studentBag.getNum() - 1);
                 studentBag.setYellowNum(studentBag.getYellowNum() - 1);
+                if(studentBag.getYellowNum() == 0) refillCharacterCard.remove(random);
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(3))) {
                 numPinkPawn++;
                 studentBag.setNum(studentBag.getNum() - 1);
                 studentBag.setPinkNum(studentBag.getPinkNum() - 1);
+                if(studentBag.getPinkNum() == 0) refillCharacterCard.remove(random);
             }else if(Objects.equals(refillCharacterCard.get(random),Game.m.get(4))) {
                 numBluePawn++;
                 studentBag.setNum(studentBag.getNum() - 1);
                 studentBag.setBlueNum(studentBag.getBlueNum() - 1);
+                if(studentBag.getBlueNum() == 0) refillCharacterCard.remove(random);
             }
         }
         nPawn = 6;

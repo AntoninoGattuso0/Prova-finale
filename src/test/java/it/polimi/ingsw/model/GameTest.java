@@ -71,8 +71,9 @@ public class GameTest {
         Game.islands.get(2).setTower(true);
         Game.islands.get(2).setColorTower(ColorTower.BLACK);
         Game.unifyIsland(1);
-        assertEquals(3, Game.islands.get(0).getTotIsland());
         System.out.println(Game.islands.size());
+        assertEquals(3, Game.islands.get(0).getTotIsland());
+
     }
 
     @Test
@@ -119,5 +120,24 @@ public class GameTest {
         assertEquals(0, ProfTable.getYellowProf());
         assertEquals(2, ProfTable.getPinkProf());
         assertEquals(1, ProfTable.getBlueProf());
+    }
+    @Test
+    public void testNewPlayer(){
+        Game game = new Game(4, true);
+        int i;
+        for(i=0; i < game.getTotPlayer(); i++){
+            Game.newPlayer("Franco", game);
+        }
+        assertEquals(4, Game.players.size());
+        assertEquals(10, Game.players.get(0).deckAssistant.size());
+    }
+    @Test
+    public void testSetCharacterCard(){
+        Game game = new Game(4, true);
+        game.setCharacterCards(game);
+        int i;
+        for(i=0; i<3; i++)
+            System.out.println(Game.characterCards.get(i).useEffect);
+        assertEquals(3, Game.characterCards.size());
     }
 }

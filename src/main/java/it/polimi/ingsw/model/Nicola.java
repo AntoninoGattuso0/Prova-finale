@@ -10,6 +10,7 @@ public class Nicola extends UseEffect {
     private static int pinkPawn;
     private static int bluePawn;
     Nicola(StudentBag studentBag) {
+        coinPrice = 2;
         Random rnd = new Random();
         ArrayList<String> cards = createArrayPawn(studentBag);
         if (studentBag.getNum() > 0) {
@@ -73,9 +74,10 @@ public class Nicola extends UseEffect {
     public static int getBluePawn() {
         return bluePawn;
     }
+
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
         int j; //variabile che serve a iterare dentro le righe della sala
-        if (colorPawn.get(0).equals(Game.m.get(0))) {
+        if (colorPawn.get(0).toString().equals(Game.m.get(0))) {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[0][j] != 1) {
                     player.diningRoom.position[0][j] = 1;

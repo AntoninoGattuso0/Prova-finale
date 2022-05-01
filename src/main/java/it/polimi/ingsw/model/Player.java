@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Player {
     private String nickname;
     private int numCoin;
-    private ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
+    protected ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10); //mi servirebbe protected o un metodo per accedervi
     private AssistantCard currentAssistant;
     protected Entrance entrance;
     protected DiningRoom diningRoom;

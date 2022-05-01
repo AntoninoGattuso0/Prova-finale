@@ -8,7 +8,7 @@ public class Game {
     protected static ArrayList<Island> islands = new ArrayList<>();
     protected static boolean isExpert;
     protected static ArrayList<CharacterCard> cards = new ArrayList<>(); //cambiato in arraylist;
-    protected static ArrayList<CharacterCard> characterCards = new ArrayList<>();//insieme di tutti i characters
+    protected static ArrayList<CharacterCard> characterCards = new ArrayList<>(3);//insieme dei 3 characters usati
     protected static Map<Integer, String> m = new HashMap<>();
     protected StudentBag studentBag;
 
@@ -198,14 +198,79 @@ public class Game {
         public boolean endGame () {
             return studentBag.getNum() == 0;
         }
-        public void setCard () { //posiziona a caso dei personaggi (3)
-            int i;
-            Random rnd = new Random();
-            int random = rnd.nextInt(characterCards.size());
-            for (i = 0; i < 3; i++) {
-                cards.add(characterCards.get(random));
-                characterCards.remove(random);
-                random = rnd.nextInt(characterCards.size());
+
+        public void setCharacterCards (Game game) { //posiziona a caso dei personaggi (3)
+            if (Game.isExpert) {
+                Antonio antonio = new Antonio(game.studentBag);
+                Barbara barbara = new Barbara();
+                Ciro ciro = new Ciro();
+                Dante dante = new Dante();
+                Ernesto ernesto = new Ernesto();
+                Felix felix = new Felix();
+                Giuseppe giuseppe = new Giuseppe(game.studentBag);
+                Ivan ivan = new Ivan();
+                Lancillotto lancillotto = new Lancillotto();
+                Maria maria = new Maria();
+                Nicola nicola = new Nicola(game.studentBag);
+                Omnia omnia = new Omnia();
+
+                Random rnd = new Random();
+                int random = rnd.nextInt(12);
+                int random1 = rnd.nextInt(12);
+                int random2 = rnd.nextInt(12);
+                while (random == random1 || random1 == random2 || random == random2) {
+                    random = rnd.nextInt(12);
+                    random1 = rnd.nextInt(12);
+                    random2 = rnd.nextInt(12);
+                }
+                if (random == 0 || random1 == 0 || random2 == 0) {
+                    CharacterCard card = new CharacterCard(antonio);
+                    Game.characterCards.add(card);
+                }
+                if (random == 1 || random1 == 1 || random2 == 1) {
+                    CharacterCard card = new CharacterCard(barbara);
+                    Game.characterCards.add(card);
+                }
+                if (random == 2 || random1 == 2 || random2 == 2) {
+                    CharacterCard card = new CharacterCard(ciro);
+                    Game.characterCards.add(card);
+                }
+                if (random == 3 || random1 == 3 || random2 == 3) {
+                    CharacterCard card = new CharacterCard(dante);
+                    Game.characterCards.add(card);
+                }
+                if (random == 4 || random1 == 4 || random2 == 4) {
+                    CharacterCard card = new CharacterCard(ernesto);
+                    Game.characterCards.add(card);
+                }
+                if (random == 5 || random1 == 5 || random2 == 5) {
+                    CharacterCard card = new CharacterCard(felix);
+                    Game.characterCards.add(card);
+                }
+                if (random == 6 || random1 == 6 || random2 == 6) {
+                    CharacterCard card = new CharacterCard(giuseppe);
+                    Game.characterCards.add(card);
+                }
+                if (random == 7 || random1 == 7 || random2 == 7) {
+                    CharacterCard card = new CharacterCard(ivan);
+                    Game.characterCards.add(card);
+                }
+                if (random == 8 || random1 == 8 || random2 == 8) {
+                    CharacterCard card = new CharacterCard(lancillotto);
+                    Game.characterCards.add(card);
+                }
+                if (random == 9 || random1 == 9 || random2 == 9) {
+                    CharacterCard card = new CharacterCard(maria);
+                    Game.characterCards.add(card);
+                }
+                if (random == 10 || random1 == 10 || random2 == 10) {
+                    CharacterCard card = new CharacterCard(nicola);
+                    Game.characterCards.add(card);
+                }
+                if (random == 11 || random1 == 11 || random2 == 11) {
+                    CharacterCard card = new CharacterCard(omnia);
+                    Game.characterCards.add(card);
+                }
             }
         }
         public void moveProf () {
