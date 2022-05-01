@@ -202,7 +202,7 @@ public class Game {
         public void setCharacterCards (Game game) { //posiziona a caso dei personaggi (3)
             if (Game.isExpert) {
                 Antonio antonio = new Antonio(game.studentBag);
-                Barbara barbara = new Barbara();
+                Barbara barbara = new Barbara(game);
                 Ciro ciro = new Ciro();
                 Dante dante = new Dante();
                 Ernesto ernesto = new Ernesto();

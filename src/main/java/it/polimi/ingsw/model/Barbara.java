@@ -2,23 +2,84 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 public class Barbara extends UseEffect{
     private int coinPrice;
-    public Barbara(){
+    public Barbara(Game game){
         coinPrice=2;
     }
-    //DEVO MODIFICARE IL FATTO CHE I PROF POSSONO AVERE ANCHE -1.
-    //SE IL PROF NON LO HA NESSUNO IL CONTROLLO NON FUNZIONA PERCHè NON ESISTE
-    // UNA DINING ROOM PER IL PLAYER -1
-    public void useEffect(Game game, int actualPlayer, Island island, Player player, ArrayList<ColorPawn> colorPawn){
-        if(Game.players.get(actualPlayer).diningRoom.getNumGreen()==Game.players.get(ProfTable.getGreenProf()).diningRoom.getNumGreen())
-                ProfTable.setGreenProf(actualPlayer);
-        if(Game.players.get(actualPlayer).diningRoom.getNumRed()==Game.players.get(ProfTable.getRedProf()).diningRoom.getNumRed())
-            ProfTable.setRedProf(actualPlayer);
-        if(Game.players.get(actualPlayer).diningRoom.getNumBlue()==Game.players.get(ProfTable.getBlueProf()).diningRoom.getNumBlue())
-            ProfTable.setBlueProf(actualPlayer);
-        if(Game.players.get(actualPlayer).diningRoom.getNumPink()==Game.players.get(ProfTable.getPinkProf()).diningRoom.getNumPink())
-            ProfTable.setPinkProf(actualPlayer);
-        if(Game.players.get(actualPlayer).diningRoom.getNumYellow()==Game.players.get(ProfTable.getYellowProf()).diningRoom.getNumYellow())
-            ProfTable.setYellowProf(actualPlayer);
-        coinPrice++;
+    public void setCoinPrice(int coinPrice) {
+        this.coinPrice = coinPrice;
     }
-}
+    public int getCoinPrice() {
+        return coinPrice;
+    }
+    public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
+        int j;
+        int max;
+        max = 0;
+        if (ProfTable.getGreenProf() != -1) {
+            if (Game.players.get(i).diningRoom.getNumGreen() == Game.players.get(ProfTable.getGreenProf()).diningRoom.getNumGreen())
+                ProfTable.setGreenProf(i);
+        } else {
+            for (j = 0; j < game.getTotPlayer(); j++) {
+                if (Game.players.get(i).diningRoom.getNumGreen() < Game.players.get(j).diningRoom.getNumGreen())
+                    max = 1;
+            }
+            if (max == 0) {
+                ProfTable.setGreenProf(i);
+            }
+        }
+        max = 0;
+        if (ProfTable.getRedProf() != -1) {
+            if (Game.players.get(i).diningRoom.getNumRed() == Game.players.get(ProfTable.getRedProf()).diningRoom.getNumRed())
+                ProfTable.setRedProf(i);
+        } else {
+            for (j = 0; j < game.getTotPlayer(); j++) {
+
+                if (Game.players.get(i).diningRoom.getNumRed() < Game.players.get(j).diningRoom.getNumRed())
+                    max = 1;
+            }
+            if (max == 0) {
+                ProfTable.setRedProf(i);
+            }
+        }
+        max = 0;
+        if (ProfTable.getBlueProf() != -1) {
+            if (Game.players.get(i).diningRoom.getNumBlue() == Game.players.get(ProfTable.getBlueProf()).diningRoom.getNumBlue())
+                ProfTable.setBlueProf(i);
+        } else {
+            for (j = 0; j < game.getTotPlayer(); j++) {
+                if (Game.players.get(i).diningRoom.getNumBlue() < Game.players.get(j).diningRoom.getNumBlue())
+                    max = 1;
+            }
+            if (max == 0) {
+                ProfTable.setBlueProf(i);
+            }
+        }
+        max = 0;
+        if (ProfTable.getPinkProf() != -1) {
+            if (Game.players.get(i).diningRoom.getNumPink() == Game.players.get(ProfTable.getPinkProf()).diningRoom.getNumPink())
+                ProfTable.setPinkProf(i);
+        } else {
+            for (j = 0; j < game.getTotPlayer(); j++) {
+                if (Game.players.get(i).diningRoom.getNumPink() < Game.players.get(j).diningRoom.getNumPink())
+                    max = 1;
+            }
+            if (max == 0) {
+                ProfTable.setPinkProf(i);
+            }
+        }
+        max = 0;
+        if (ProfTable.getYellowProf() != -1) {
+            if (Game.players.get(i).diningRoom.getNumYellow() == Game.players.get(ProfTable.getYellowProf()).diningRoom.getNumYellow())
+                ProfTable.setYellowProf(i);
+        } else {
+            for (j = 0; j < game.getTotPlayer(); j++) {
+                if (Game.players.get(i).diningRoom.getNumYellow() < Game.players.get(j).diningRoom.getNumYellow())
+                    max = 1;
+            }
+            if (max == 0) {
+                ProfTable.setYellowProf(i);
+            }
+        }
+            setCoinPrice(getCoinPrice()+1);
+        }
+    }

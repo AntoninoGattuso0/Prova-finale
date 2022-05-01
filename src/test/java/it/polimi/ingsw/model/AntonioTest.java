@@ -40,7 +40,9 @@ public class AntonioTest {
         Game.newPlayer("c",game);
         CharacterCard characterCard=new CharacterCard(antonio);
         characterCard.useEffect.useEffect(game,2,Game.islands.get(0),Game.players.get(0),colorPawn);
+        assertEquals(4,antonio.getBluePawn()+antonio.getGreenPawn()+antonio.getPinkPawn()+antonio.getRedPawn()+antonio.getYellowPawn());
         assertEquals(4,antonio.getNumPawnAntonio());
+        assertEquals(2,antonio.getCoinPrice());
     }
 }
 

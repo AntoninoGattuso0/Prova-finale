@@ -142,8 +142,15 @@ public class Antonio extends UseEffect{
                     }
                 }
             }
-            coinPrice++;
+            setCoinPrice(getCoinPrice()+1);
         }
+    }
+
+    public int getCoinPrice() {
+        return coinPrice;
+    }
+    public void setCoinPrice(int coinPrice) {
+        this.coinPrice = coinPrice;
     }
     public int getBluePawn() {
         return bluePawn;
