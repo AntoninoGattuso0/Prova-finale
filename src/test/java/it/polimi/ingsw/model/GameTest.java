@@ -64,8 +64,9 @@ public class GameTest {
         Game.islands.get(1).setTower(true);
         Game.islands.get(1).setColorTower(ColorTower.BLACK);
         Game.islands.get(2).setTower(true);
-        Game.islands.get(2).setColorTower(ColorTower.WHITE);
+        Game.islands.get(2).setColorTower(ColorTower.BLACK);
         Game.unifyIsland(1);
+        assertEquals(3, Game.islands.get(0).getTotIsland());
         System.out.println(Game.islands.size());
     }
 
@@ -95,6 +96,23 @@ public class GameTest {
 
     @Test
     public void testMoveProf(){
-
+        Game game = new Game(3, true);
+        String nick1 = "Franco";
+        String nick2 = "Giovanni";
+        String nick3 = "Raviolo";
+        Game.newPlayer(nick1, game);
+        Game.newPlayer(nick2, game);
+        Game.newPlayer(nick3, game);
+        Game.players.get(0).diningRoom.setNumGreen(3);
+        Game.players.get(0).diningRoom.setNumYellow(2);
+        Game.players.get(1).diningRoom.setNumGreen(2);
+        Game.players.get(1).diningRoom.setNumBlue(2);
+        Game.players.get(2).diningRoom.setNumPink(1);
+        game.moveProf();
+        assertEquals(0, ProfTable.getGreenProf());
+        assertEquals(-1, ProfTable.getRedProf());
+        assertEquals(0, ProfTable.getYellowProf());
+        assertEquals(2, ProfTable.getPinkProf());
+        assertEquals(1, ProfTable.getBlueProf());
     }
 }
