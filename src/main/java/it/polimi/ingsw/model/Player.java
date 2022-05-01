@@ -3,7 +3,6 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 
 public class Player {
-    private int IDplayer;
     private String nickname;
     private int numCoin;
     private ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
@@ -14,8 +13,7 @@ public class Player {
     public void setNickame(String nick){
         this.nickname=nick;
     }
-    public Player(String nick,int i,Game game) {
-        IDplayer=i;
+    public Player(String nick,Game game) {
         int j, k;
         setNickame(nick);
         if (Game.isExpert) numCoin = 1;
@@ -28,11 +26,11 @@ public class Player {
             assistant.setCardValue(j);
             if (j == 3 || j == 5 || j == 7 || j == 9) k++;
             assistant.setStep(k);
-            deckAssistant.add(assistant);
+            this.deckAssistant.add(assistant);
             //collegamento a tower, dining and entrance
-            entrance = new Entrance(game.studentBag);
-            diningRoom = new DiningRoom();
-            towerSpace = new TowerSpace();
+            this.entrance = new Entrance(game.studentBag);
+            this.diningRoom = new DiningRoom();
+            this.towerSpace = new TowerSpace();
         }
     }
 
@@ -78,9 +76,6 @@ public class Player {
 
     }
 
-    public int getIDplayer() {
-        return IDplayer;
-    }
 
     //ho aggiunto il metodo discarded a Player e l'ho tolto da AssistanceCard//
     public void discarded(AssistantCard currentAssistant ){

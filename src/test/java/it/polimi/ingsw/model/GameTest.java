@@ -2,6 +2,7 @@ package it.polimi.ingsw.model;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -66,5 +67,34 @@ public class GameTest {
         Game.islands.get(2).setColorTower(ColorTower.WHITE);
         Game.unifyIsland(1);
         System.out.println(Game.islands.size());
+    }
+
+    @Test
+    public void testTopInfluence(){
+        Game game = new Game(3, true);
+        String nick1 = "Franco";
+        String nick2 = "Giovanni";
+        String nick3 = "Raviolo";
+        Game.newPlayer(nick1, game);
+        Game.newPlayer(nick2, game);
+        Game.newPlayer(nick3, game);
+        Game.players.get(0).towerSpace.colorTower = ColorTower.BLACK;
+        ProfTable.setGreenProf(0);
+        ProfTable.setRedProf(0);
+        ProfTable.setYellowProf(1);
+        ProfTable.setPinkProf(2);
+        ProfTable.setBlueProf(-1);
+        Game.islands.get(0).setGreenPawn(3);
+        Game.islands.get(0).setRedPawn(2);
+        Game.islands.get(0).setYellowPawn(4);
+        Game.islands.get(0).setPinkPawn(3);
+        Game.islands.get(0).setBluePawn(0);
+        Game.topInfluence(Game.islands.get(0), game);
+        assertEquals(ColorTower.BLACK, Game.islands.get(0).getColorTower());
+    }
+
+    @Test
+    public void testMoveProf(){
+
     }
 }

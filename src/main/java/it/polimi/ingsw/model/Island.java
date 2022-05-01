@@ -12,7 +12,7 @@ public class Island {
     private boolean isProhibited;
     private int totIsland;
 
-    Island() {
+    public Island() {
         isMotherNature = false;
         greenPawn = 0;
         redPawn = 0;

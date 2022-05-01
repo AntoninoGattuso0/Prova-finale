@@ -34,30 +34,10 @@ public class Game {
         studentBag = new StudentBag();
         profTable = new ProfTable();
 //creazione isole
-        Island island1 = new Island();
-        Island island2 = new Island();
-        Island island3 = new Island();
-        Island island4 = new Island();
-        Island island5 = new Island();
-        Island island6 = new Island();
-        Island island7 = new Island();
-        Island island8 = new Island();
-        Island island9 = new Island();
-        Island island10 = new Island();
-        Island island11 = new Island();
-        Island island12 = new Island();
-        islands.add(island1);
-        islands.add(island2);
-        islands.add(island3);
-        islands.add(island4);
-        islands.add(island5);
-        islands.add(island6);
-        islands.add(island7);
-        islands.add(island8);
-        islands.add(island9);
-        islands.add(island10);
-        islands.add(island11);
-        islands.add(island12);
+        for(i=0; i<12; i++){
+            Island island = new Island();
+            islands.add(island);
+        }
 //mappa che associa numeri a colori ("m.get(int)" per ricevere il colore in base al numero inserito in int)
         m.put(0, "GREEN");
         m.put(1, "RED");
@@ -120,31 +100,6 @@ public class Game {
             cloud.refillCloud(studentBag);
             clouds.add(cloud);
         }
-        //creazione arraylist con tutte i personaggi
-     /* Antonio antonio = new Antonio(studentBag);
-        Barbara barbara = new Barbara();
-        Ciro ciro = new Ciro();
-        Dante dante = new Dante();
-        Ernesto ernesto = new Ernesto();
-        Felix felix = new Felix();
-        Giuseppe giuseppe = new Giuseppe(studentBag);
-        Ivan ivan = new Ivan();
-        Lancillotto lancillotto = new Lancillotto();
-        Maria maria = new Maria();
-        Nicola nicola = new Nicola(studentBag);
-        Omnia omnia = new Omnia();
-        characterCards.add(antonio);
-        characterCards.add(barbara);
-        characterCards.add(ciro);
-        characterCards.add(dante);
-        characterCards.add(ernesto);
-        characterCards.add(felix);
-        characterCards.add(giuseppe);
-        characterCards.add(ivan);
-        characterCards.add(lancillotto);
-        characterCards.add(maria);
-        characterCards.add(nicola);
-        characterCards.add(omnia);*/
     }
 
     static ArrayList<String> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
@@ -163,7 +118,7 @@ public class Game {
     }
 
     public static void newPlayer(String nick,Game game) {
-        Player player = new Player(nick, players.size(),game);//inizializzazione player fatta in player -NINO
+        Player player = new Player(nick,game);//inizializzazione player fatta in player -NINO
         players.add(player);
     }
 
