@@ -184,7 +184,7 @@ public class DiningRoom {
     public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player, Entrance entrance) {//le sposta da dining all'entrance
         int j; //variabile che serve a iterare dentro le righe della sala
         if (Objects.equals(colorPawn.toString(), Game.m.get(0))) {
-            for (j = 10; j > 0; j--) {
+            for (j = 9; j > -1; j--) {
                 if (position[0][j] != 0) {
                     position[0][j] = 0;
                     setNumGreen(getNumGreen() - 1);
@@ -195,7 +195,7 @@ public class DiningRoom {
                 }
             }
         } else if (Objects.equals(colorPawn.toString(), Game.m.get(1))) {
-            for (j = 10; j > 0; j--) {
+            for (j = 9; j > -1; j--) {
                 if (position[0][j] != 0) {
                     position[0][j] = 0;
                     setNumRed(getNumRed() - 1);
@@ -204,7 +204,7 @@ public class DiningRoom {
                 }
             }
         } else if (Objects.equals(colorPawn.toString(), Game.m.get(2))) {
-            for (j = 10; j > 0; j--) {
+            for (j = 9; j > -1; j--) {
                 if (position[0][j] != 0) {
                     position[0][j] = 0;
                     setNumYellow(getNumYellow() - 1);
@@ -213,7 +213,7 @@ public class DiningRoom {
                 }
             }
         } else if (Objects.equals(colorPawn.toString(), Game.m.get(3))) {
-            for (j = 10; j > 0; j--) {
+            for (j = 9; j > -1; j--) {
                 if (position[0][j] != 0) {
                     position[0][j] = 0;
                     setNumPink(getNumPink() - 1);
@@ -222,7 +222,7 @@ public class DiningRoom {
                 }
             }
         } else if (Objects.equals(colorPawn.toString(), Game.m.get(4))) { //metodo toString restituisce la rappresentazione di stringa delle costanti enum
-            for (j = 10; j > 0; j--) {
+            for (j = 9; j > -1; j--) {
                 if (position[0][j] != 0) {
                     position[0][j] = 0;
                     setNumBlue(getNumBlue() - 1);
