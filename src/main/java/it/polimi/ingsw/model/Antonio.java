@@ -71,31 +71,31 @@ public class Antonio extends UseEffect{
     }
 
     public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn) {
-        if (Objects.equals(colorPawn.toString(), "GREEN") && getGreenPawn() > 0) {  //altrimenti cosa succede se la pedina verde non c'è?
+        Random rnd = new Random();
+        ArrayList<String> refillPawn = Game.createArrayPawn(game.studentBag);
+        if (Objects.equals(colorPawn.get(0).toString(), "GREEN") && getGreenPawn() > 0) {  //altrimenti cosa succede se la pedina verde non c'è?
             island.setGreenPawn(island.getGreenPawn() + 1);
             setGreenPawn(getGreenPawn() - 1);
             setNumPawnAntonio(getNumPawnAntonio() - 1);
-        } else if (Objects.equals(colorPawn.toString(), "RED") && getRedPawn() > 0) {
+        } else if (Objects.equals(colorPawn.get(0).toString(), "RED") && getRedPawn() > 0) {
             island.setRedPawn(island.getRedPawn() + 1);
             setRedPawn(getRedPawn() - 1);
             setNumPawnAntonio(getNumPawnAntonio() - 1);
-        } else if (Objects.equals(colorPawn.toString(), "YELLOW") && getYellowPawn() > 0) {
+        } else if (Objects.equals(colorPawn.get(0).toString(), "YELLOW") && getYellowPawn() > 0) {
             island.setYellowPawn(island.getYellowPawn()+1);
             setYellowPawn(getYellowPawn() - 1);
             setNumPawnAntonio(getNumPawnAntonio() - 1);
-        } else if (Objects.equals(colorPawn.toString(), "PINK") && getPinkPawn() > 0) {
+        } else if (Objects.equals(colorPawn.get(0).toString(), "PINK") && getPinkPawn() > 0) {
             island.setPinkPawn(island.getPinkPawn() + 1);
             setPinkPawn(getPinkPawn() - 1);
             setNumPawnAntonio(getNumPawnAntonio() - 1);
-        } else if (Objects.equals(colorPawn.toString(), "BLUE") && getBluePawn() > 0) {
+        } else if (Objects.equals(colorPawn.get(0).toString(), "BLUE") && getBluePawn() > 0) {
             island.setBluePawn(island.getBluePawn() + 1);
             setBluePawn(getBluePawn() - 1);
             setNumPawnAntonio(getNumPawnAntonio() - 1);
         } else {
             System.out.println("errore colore non presente in entrata");
         }
-        Random rnd = new Random();
-        ArrayList<String> refillPawn = Game.createArrayPawn(game.studentBag);
         if (game.studentBag.getNum() > 0) {
             int random = rnd.nextInt(refillPawn.size());
             if (Objects.equals(refillPawn.get(random), "GREEN")) {

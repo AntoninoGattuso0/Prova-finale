@@ -28,7 +28,7 @@ public class Player {
             assistant.setStep(k);
             this.deckAssistant.add(assistant);
             //collegamento a tower, dining and entrance
-            this.entrance = new Entrance(game.studentBag);
+            this.entrance = new Entrance(game);
             this.diningRoom = new DiningRoom();
             this.towerSpace = new TowerSpace();
         }

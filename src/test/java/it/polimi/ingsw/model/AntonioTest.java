@@ -13,11 +13,20 @@ public class AntonioTest {
     assertEquals(4,antonio.getNumPawnAntonio());
     assertEquals(4,antonio.getBluePawn()+antonio.getGreenPawn()+antonio.getPinkPawn()+antonio.getRedPawn()+antonio.getYellowPawn());
     assertEquals(116,game.studentBag.getNum());
+    System.out.println(antonio.getGreenPawn());
+        System.out.println(antonio.getPinkPawn());
+        System.out.println(antonio.getRedPawn());
+        System.out.println(antonio.getBluePawn());
+        System.out.println(antonio.getYellowPawn());
+
+
+
     }
     @Test
     public void TestUseEffectAntonio(){
         int i;
         Game game= new Game(3,true);
+        Antonio antonio=new Antonio(game.studentBag);
         ArrayList<ColorPawn> colorPawn=new ArrayList<>();
         for(i=0;i<2;i++){
             if(i==0)
@@ -28,9 +37,14 @@ public class AntonioTest {
         Game.newPlayer("a",game);
         Game.newPlayer("b",game);
         Game.newPlayer("c",game);
-        Antonio antonio=new Antonio(game.studentBag);
+
+        System.out.println("ciao");
+        while(antonio.getGreenPawn()==0){
+            antonio=new Antonio(game.studentBag);
+        }
         CharacterCard characterCard=new CharacterCard(antonio);
-        characterCard.useEffect.useEffect(game,i,Game.islands.get(0),Game.players.get(0),colorPawn);
+        characterCard.useEffect.useEffect(game,2,Game.islands.get(0),Game.players.get(0),colorPawn);
+        assertEquals(4,antonio.getNumPawnAntonio());
     }
     }
 
