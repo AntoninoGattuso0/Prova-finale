@@ -130,6 +130,14 @@ public class GameTest {
         }
         assertEquals(4, Game.players.size());
         assertEquals(10, Game.players.get(0).deckAssistant.size());
-
+    }
+    @Test
+    public void testSetCharacterCard(){
+        Game game = new Game(4, true);
+        game.setCharacterCards(game);
+        int i;
+        for(i=0; i<3; i++)
+            System.out.println(Game.characterCards.get(i).useEffect);
+        assertEquals(3, Game.characterCards.size());
     }
 }
