@@ -73,6 +73,7 @@ public class GameTest {
         Game.unifyIsland(1);
         assertEquals(3, Game.islands.get(0).getTotIsland());
         System.out.println(Game.islands.size());
+        INT J;
     }
 
     @Test
