@@ -18,7 +18,7 @@ public class ErnestoTest {
         Game.newPlayer(nick3, game);
         Ernesto ernesto = new Ernesto();
         CharacterCard characterCardErnesto = new CharacterCard(ernesto);
-        assertEquals(2, ernesto.coinPrice);
+        assertEquals(2, ernesto.getCoinPrice());
     }
     @Test
     public void TestNotInfluence(){
