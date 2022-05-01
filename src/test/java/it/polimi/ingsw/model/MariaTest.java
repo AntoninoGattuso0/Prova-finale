@@ -15,24 +15,26 @@ class MariaTest {
         Game.newPlayer("Frank", game);
         Game.newPlayer("Sibilla", game);
         Game.newPlayer("Ruperta", game);
+        Game.players.get(0).diningRoom.position[0][0] = 1;
+        Game.players.get(0).diningRoom.position[0][1] = 1;
+        Game.players.get(0).diningRoom.position[0][2] = 1;
         Game.players.get(0).diningRoom.setNumGreen(3);
+        Game.players.get(0).diningRoom.position[2][0] = 1;
+        Game.players.get(0).diningRoom.position[2][1] = 1;
         Game.players.get(0).diningRoom.setNumYellow(2);
-        Game.players.get(1).diningRoom.setNumGreen(2);
-        Game.players.get(1).diningRoom.setNumBlue(2);
-        Game.players.get(2).diningRoom.setNumPink(1);
         ArrayList<ColorPawn> colorPawns = new ArrayList<>();
         colorPawns.add(ColorPawn.GREEN);
-        colorPawns.add(ColorPawn.RED);
+        colorPawns.add(ColorPawn.YELLOW);
         colorPawns.add(ColorPawn.BLUE);
         colorPawns.add(ColorPawn.PINK);
         Maria maria = new Maria();
         CharacterCard card1 = new CharacterCard(maria);
+        System.out.println(Game.players.get(0).diningRoom.getNumGreen());
+        System.out.println(Game.players.get(0).entrance.getGreenPawn());
         card1.useEffect.useEffect(game, 1, Game.islands.get(0), Game.players.get(0), colorPawns);
         System.out.println(Game.players.get(0).diningRoom.getNumGreen());
-        System.out.println(Game.players.get(0).diningRoom.getNumRed());
-        System.out.println(Game.players.get(0).diningRoom.getNumYellow());
-        System.out.println(Game.players.get(0).diningRoom.getNumPink());
-        System.out.println(Game.players.get(0).diningRoom.getNumBlue());
+        System.out.println(Game.players.get(0).entrance.getGreenPawn());
+
 
     }
 }

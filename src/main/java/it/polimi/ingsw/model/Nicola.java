@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 public class Nicola extends UseEffect {
-    private int coinPrice;
+    protected int coinPrice;
     private static int greenPawn;
     private static int redPawn;
     private static int yellowPawn;
@@ -62,7 +62,7 @@ public class Nicola extends UseEffect {
     public static int getYellowPawn() {
         return yellowPawn;
     }
-    public void setPinkPawn(int i) {
+    public static void setPinkPawn(int i) {
         pinkPawn = i;
     }
     public static int getPinkPawn() {
@@ -81,7 +81,7 @@ public class Nicola extends UseEffect {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[0][j] != 1) {
                     player.diningRoom.position[0][j] = 1;
-                    player.diningRoom.setNumGreen(j);
+                    player.diningRoom.setNumGreen(j+1);
                     setGreenPawn(getGreenPawn() - 1);
                     if (Game.isExpert && (player.diningRoom.position[0][2] == 1 || player.diningRoom.position[0][5] == 1 || player.diningRoom.position[0][8] == 1))
                         player.setNumCoin(player.getNumCoin() + 1);
@@ -93,7 +93,7 @@ public class Nicola extends UseEffect {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[1][j] != 1) {
                     player.diningRoom.position[1][j] = 1;
-                    player.diningRoom.setNumRed(j);
+                    player.diningRoom.setNumRed(j+1);
                     setRedPawn(getRedPawn() - 1);
                     if (Game.isExpert && (player.diningRoom.position[1][2] == 1 || player.diningRoom.position[1][5] == 1 || player.diningRoom.position[1][8] == 1))
                         player.setNumCoin(player.getNumCoin() + 1);
@@ -105,7 +105,7 @@ public class Nicola extends UseEffect {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[2][j] != 1) {
                     player.diningRoom.position[2][j] = 1;
-                    player.diningRoom.setNumYellow(j);
+                    player.diningRoom.setNumYellow(j+1);
                     setYellowPawn(getYellowPawn() - 1);
                     if (Game.isExpert && (player.diningRoom.position[2][2] == 1 || player.diningRoom.position[2][5] == 1 || player.diningRoom.position[2][8] == 1))
                         player.setNumCoin(player.getNumCoin() + 1);
@@ -117,7 +117,7 @@ public class Nicola extends UseEffect {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[3][j] != 1) {
                     player.diningRoom.position[3][j] = 1;
-                    player.diningRoom.setNumPink(j);
+                    player.diningRoom.setNumPink(j+1);
                     setPinkPawn(getPinkPawn() - 1);
                     if (Game.isExpert && (player.diningRoom.position[3][2] == 1 || player.diningRoom.position[3][5] == 1 || player.diningRoom.position[3][8] == 1))
                         player.setNumCoin(player.getNumCoin() + 1);
@@ -129,7 +129,7 @@ public class Nicola extends UseEffect {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[4][j] != 1) {
                     player.diningRoom.position[4][j] = 1;
-                    player.diningRoom.setNumBlue(j);
+                    player.diningRoom.setNumBlue(j+1);
                     setBluePawn(getBluePawn() - 1);
                     if (Game.isExpert && (player.diningRoom.position[4][2] == 1 || player.diningRoom.position[4][5] == 1 || player.diningRoom.position[4][8] == 1))
                         player.setNumCoin(player.getNumCoin() + 1);
