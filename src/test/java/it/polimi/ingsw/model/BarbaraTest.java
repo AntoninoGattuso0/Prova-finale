@@ -1,22 +1,26 @@
 package it.polimi.ingsw.model;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 class BarbaraTest {
     @Test
     public void test1() {
+
+        Game game = new Game(2, true);
         Barbara barbara = new Barbara();
-        Game game = new Game(3, true);
-       // game.newPlayer("a");//0
-       // game.newPlayer("b");//1
-       // game.newPlayer("c");//2
-        int i;
-        game.profTable.setGreenProf(1);
-        for (i = 0; i < game.characterCards.size(); i++) {
-            if (game.characterCards.get(i).getClass().equals(barbara.getClass())) ;
-            {
-          //      game.characterCards.get(i).useEffect(i);
-            }
-        }
-        assertEquals(2, game.profTable.getGreenProf());
+        ArrayList<ColorPawn> colorPawn= new ArrayList<>();
+        colorPawn.add(ColorPawn.GREEN);
+        Game.newPlayer("a",game);//0
+        Game.newPlayer("b",game);//1
+        ProfTable.setGreenProf(0);
+        ProfTable.setRedProf(1);
+        ProfTable.setYellowProf(0);
+        ProfTable.setPinkProf(0);
+        ProfTable.setBlueProf(0);
+        CharacterCard characterCard=new CharacterCard(barbara);
+        characterCard.useEffect.useEffect(game,1,Game.islands.get(0),Game.players.get(0),colorPawn);
+        assertEquals(1, ProfTable.getGreenProf());
     }
 }
