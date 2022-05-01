@@ -9,12 +9,12 @@ public class StudentBag {
     private int blueNum;
 
     public StudentBag(){
-        greenNum=24;
-        redNum=24;
-        yellowNum=24;
-        pinkNum=24;
-        blueNum=24;
-        num=120;
+        setNum(120);
+        setYellowNum(24);
+        setRedNum(24);
+        setGreenNum(24);
+        setPinkNum(24);
+        setBlueNum(24);
     }
     public void setGreenNum(int i){
        greenNum = i;
@@ -48,10 +48,10 @@ public class StudentBag {
     }
 
     public  int getNum(){
-        return this.num;
+        return num;
     }
     public void setNum(int i){
-        this.num = i;
+        num = i;
     }
 
 }

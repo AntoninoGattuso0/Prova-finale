@@ -82,7 +82,7 @@ public class Antonio extends UseEffect{
             setRedPawn(getRedPawn() - 1);
             setNumPawnAntonio(getNumPawnAntonio() - 1);
         } else if (colorPawn.get(0).toString().equals("YELLOW") && getYellowPawn() > 0) {
-            island.setYellowPawn(island.getYellowPawn()+1);
+            island.setYellowPawn(island.getYellowPawn() + 1);
             setYellowPawn(getYellowPawn() - 1);
             setNumPawnAntonio(getNumPawnAntonio() - 1);
         } else if (colorPawn.get(0).toString().equals("PINK") && getPinkPawn() > 0) {
@@ -96,56 +96,57 @@ public class Antonio extends UseEffect{
         } else {
             System.out.println("errore colore non presente in entrata");
         }
-        System.out.println(refillPawn.size());
-        System.out.println(game.studentBag.getNum());
-        if (game.studentBag.getNum() > 0 && refillPawn.size()>0) {
-            int random = rnd.nextInt(refillPawn.size());
-            if (Objects.equals(refillPawn.get(random), "GREEN")) {
-                setGreenPawn(getGreenPawn() + 1);
-                setNumPawnAntonio(getNumPawnAntonio() + 1);
-                game.studentBag.setNum(game.studentBag.getNum() - 1);
-                game.studentBag.setGreenNum(game.studentBag.getGreenNum() - 1);
-                if (game.studentBag.getGreenNum() == 0) {
-                    refillPawn.remove(random);
-                }
-            } else if (Objects.equals(refillPawn.get(random), "RED")) {
-                setRedPawn(getRedPawn() + 1);
-                setNumPawnAntonio(getNumPawnAntonio() + 1);
-                game.studentBag.setNum(game.studentBag.getNum() - 1);
-                game.studentBag.setRedNum(game.studentBag.getRedNum() - 1);
-                if (game.studentBag.getRedNum() == 0) {
-                    refillPawn.remove(random);
-                }
-            } else if (Objects.equals(refillPawn.get(random), "YELLOW")) {
-                setYellowPawn(getYellowPawn() + 1);
-                setNumPawnAntonio(getNumPawnAntonio() + 1);
-                game.studentBag.setNum(game.studentBag.getNum() - 1);
-                game.studentBag.setYellowNum(game.studentBag.getYellowNum() - 1);
-                if (game.studentBag.getYellowNum() == 0) {
-                    refillPawn.remove(random);
-                }
-            } else if (Objects.equals(refillPawn.get(random), "PINK")) {
-                setPinkPawn(getPinkPawn() + 1);
-                setNumPawnAntonio(getNumPawnAntonio() + 1);
-                game.studentBag.setNum(game.studentBag.getNum() - 1);
-                game.studentBag.setPinkNum(game.studentBag.getPinkNum() - 1);
-                if (game.studentBag.getPinkNum() == 0) {
-                    refillPawn.remove(random);
-                }
-            } else if (Objects.equals(refillPawn.get(random), "BLUE")) {
-                setBluePawn(getBluePawn() + 1);
-                setNumPawnAntonio(getNumPawnAntonio() + 1);
-                game.studentBag.setNum(game.studentBag.getNum() - 1);
-                game.studentBag.setBlueNum(game.studentBag.getBlueNum()- 1);
-                if (game.studentBag.getBlueNum() == 0) {
-                    refillPawn.remove(random);
+        if (numPawnAntonio == 3) {
+            System.out.println(refillPawn.size());
+            System.out.println(game.studentBag.getNum());
+            if (game.studentBag.getNum() > 0 && refillPawn.size() > 0) {
+                int random = rnd.nextInt(refillPawn.size());
+                if (Objects.equals(refillPawn.get(random), "GREEN")) {
+                    setGreenPawn(getGreenPawn() + 1);
+                    setNumPawnAntonio(getNumPawnAntonio() + 1);
+                    game.studentBag.setNum(game.studentBag.getNum() - 1);
+                    game.studentBag.setGreenNum(game.studentBag.getGreenNum() - 1);
+                    if (game.studentBag.getGreenNum() == 0) {
+                        refillPawn.remove(random);
+                    }
+                } else if (Objects.equals(refillPawn.get(random), "RED")) {
+                    setRedPawn(getRedPawn() + 1);
+                    setNumPawnAntonio(getNumPawnAntonio() + 1);
+                    game.studentBag.setNum(game.studentBag.getNum() - 1);
+                    game.studentBag.setRedNum(game.studentBag.getRedNum() - 1);
+                    if (game.studentBag.getRedNum() == 0) {
+                        refillPawn.remove(random);
+                    }
+                } else if (Objects.equals(refillPawn.get(random), "YELLOW")) {
+                    setYellowPawn(getYellowPawn() + 1);
+                    setNumPawnAntonio(getNumPawnAntonio() + 1);
+                    game.studentBag.setNum(game.studentBag.getNum() - 1);
+                    game.studentBag.setYellowNum(game.studentBag.getYellowNum() - 1);
+                    if (game.studentBag.getYellowNum() == 0) {
+                        refillPawn.remove(random);
+                    }
+                } else if (Objects.equals(refillPawn.get(random), "PINK")) {
+                    setPinkPawn(getPinkPawn() + 1);
+                    setNumPawnAntonio(getNumPawnAntonio() + 1);
+                    game.studentBag.setNum(game.studentBag.getNum() - 1);
+                    game.studentBag.setPinkNum(game.studentBag.getPinkNum() - 1);
+                    if (game.studentBag.getPinkNum() == 0) {
+                        refillPawn.remove(random);
+                    }
+                } else if (Objects.equals(refillPawn.get(random), "BLUE")) {
+                    setBluePawn(getBluePawn() + 1);
+                    setNumPawnAntonio(getNumPawnAntonio() + 1);
+                    game.studentBag.setNum(game.studentBag.getNum() - 1);
+                    game.studentBag.setBlueNum(game.studentBag.getBlueNum() - 1);
+                    if (game.studentBag.getBlueNum() == 0) {
+                        refillPawn.remove(random);
 
+                    }
                 }
             }
+            coinPrice++;
         }
-        coinPrice++;
     }
-
     public int getBluePawn() {
         return bluePawn;
     }
