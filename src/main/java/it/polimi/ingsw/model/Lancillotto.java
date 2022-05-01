@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Lancillotto extends UseEffect{
     private int coinPrice;
-    Lancillotto(){
+    public Lancillotto(){
         coinPrice=3;
     }
 
