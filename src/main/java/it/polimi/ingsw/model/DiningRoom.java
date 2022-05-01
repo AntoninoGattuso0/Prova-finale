@@ -52,7 +52,7 @@ public class DiningRoom {
             for (j = 0; j < 10; j++) {
                 if (position[0][j] != 1) {
                     position[0][j] = 1;
-                    setNumGreen(j);
+                    setNumGreen(j+1);
                     entrance.setGreenPawn(entrance.getGreenPawn() - 1);
                     if (Game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
@@ -63,7 +63,7 @@ public class DiningRoom {
             for (j = 0; j < 10; j++) {
                 if (position[1][j] != 1) {
                     position[1][j] = 1;
-                    setNumRed(j);
+                    setNumRed(j+1);
                     entrance.setRedPawn(entrance.getRedPawn() - 1);
                     if (Game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
@@ -74,7 +74,7 @@ public class DiningRoom {
             for (j = 0; j < 10; j++) {
                 if (position[2][j] != 1) {
                     position[2][j] = 1;
-                    setNumYellow(j);
+                    setNumYellow(j+1);
                     entrance.setYellowPawn(entrance.getYellowPawn() - 1);
                     if (Game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
@@ -85,7 +85,7 @@ public class DiningRoom {
             for (j = 0; j < 10; j++) {
                 if (position[3][j] != 1) {
                     position[3][j] = 1;
-                    setNumPink(j);
+                    setNumPink(j+1);
                     entrance.setPinkPawn(entrance.getPinkPawn() - 1);
                     if (Game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
@@ -96,7 +96,7 @@ public class DiningRoom {
             for (j = 0; j < 10; j++) {
                 if (position[4][j] != 1) {
                     position[4][j] = 1;
-                    setNumBlue(j);
+                    setNumBlue(j+1);
                     entrance.setBluePawn(entrance.getBluePawn() - 1);
                     if (Game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
