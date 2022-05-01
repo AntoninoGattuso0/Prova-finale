@@ -1,7 +1,5 @@
 package it.polimi.ingsw.model;
-
 import java.util.ArrayList;
-
 public class Dante extends UseEffect{
     private int coinPrice;
     Dante(){

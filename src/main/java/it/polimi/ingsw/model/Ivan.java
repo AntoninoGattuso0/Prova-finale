@@ -1,14 +1,11 @@
 package it.polimi.ingsw.model;
-
 import java.util.ArrayList;
 import java.util.Collections;
-
 public class Ivan extends UseEffect{
     private int coinPrice;
     Ivan(){
         coinPrice=2;
     }
-
     public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){//   public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){
         int j, k, n, color, max;
         boolean notunique = false;
@@ -17,13 +14,9 @@ public class Ivan extends UseEffect{
         for(color=0; color<5; color++) {
             n = game.profTable.checkProf(color);
             if(color==0 && n!=-1) influence.set(n, influence.get(n) + island.getGreenPawn());
-
             else if(color==1 && n!=-1) influence.set(n, influence.get(n) + island.getRedPawn());
-
             else if(color==2 && n!=-1)influence.set(n, influence.get(n) + island.getYellowPawn());
-
             else if(color==3 && n!=-1)influence.set(n, influence.get(n) + island.getPinkPawn());
-
             else if(color==4 && n!=-1)influence.set(n, influence.get(n) + island.getBluePawn());
         }
         if(Game.totPlayer==4){
@@ -35,16 +28,12 @@ public class Ivan extends UseEffect{
             influence.set(i, 0);
             influence.set(k, 0);
         }
-
         for(i=0; i<Game.totPlayer; i++){
             if(island.getTower() && island.getColorTower() == Game.players.get(i).towerSpace.colorTower)
                 influence.set(i, influence.get(i) + island.getTotIsland());
         }
-
         influence.set(Game.players.indexOf(player), influence.get(Game.players.indexOf(player)) + 2);
-
         max = Collections.max(influence);
-
         for(i=0; i<influence.size() && !notunique;i++){
             for(j=i+1; j<influence.size() && !notunique; j++){
                 if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && Game.players.get(i).towerSpace.colorTower != Game.players.get(j).towerSpace.colorTower) notunique = true;

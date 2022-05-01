@@ -1,5 +1,4 @@
 package it.polimi.ingsw.model;
-
 import java.util.Objects;
 public class DiningRoom {
     //modifiche all'UML: array di array: in cui gli elementi sono 0 o 1;
@@ -10,7 +9,6 @@ public class DiningRoom {
     private int numYellow;
     private int numPink;
     private int numBlue;
-
     DiningRoom() {
         numGreen = 0;
         numRed = 0;
@@ -18,49 +16,37 @@ public class DiningRoom {
         numPink = 0;
         numBlue = 0;
     }
-
     public int getNumGreen() {
         return numGreen;
     }
-
     public int getNumRed() {
         return numRed;
     }
-
     public int getNumYellow() {
         return numYellow;
     }
-
     public int getNumPink() {
         return numPink;
     }
-
     public int getNumBlue() {
         return numBlue;
     }
-
     public void setNumGreen(int numGreen) {
         this.numGreen = numGreen;
     }
-
     public void setNumRed(int numRed) {
         this.numRed = numRed;
     }
-
     public void setNumYellow(int numYellow) {
         this.numYellow = numYellow;
     }
-
     public void setNumPink(int numPink) {
         this.numPink = numPink;
     }
-
     public void setNumBlue(int numBlue) {
         this.numBlue = numBlue;
     }
-
     public void addPawnToDiningRoom(ColorPawn colorPawn, Player player, Entrance entrance) {
-
         int j; //variabile che serve a iterare dentro le righe della sala
         if (Objects.equals(colorPawn.toString(), Game.m.get(0))) {
             for (j = 0; j < 10; j++) {
@@ -119,7 +105,6 @@ public class DiningRoom {
             }
         }
     }
-
     public void addPawn(int m, ColorPawn colorPawn, Player player, Entrance entrance) {
         if ((Game.totPlayer == 2 || Game.totPlayer == 4) && (m > 0 && m < 4)) {
             while (m != 0) {
@@ -127,7 +112,6 @@ public class DiningRoom {
                 m--;
             }
         }
-
         if (Game.totPlayer == 3 && (m > 0 && m < 5)) {
             while (m != 0) {
                 addPawnToDiningRoom(colorPawn, player, entrance);
@@ -135,9 +119,7 @@ public class DiningRoom {
             }
         }
     }
-
     public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player,Game game) { //le sposta da dining al sacchetto
-
         int j; //variabile che serve a iterare dentro le righe della sala
         if (Objects.equals(colorPawn.toString(), Game.m.get(0))) {
             for (j = 10; j > 0; j--) {
@@ -199,9 +181,7 @@ public class DiningRoom {
             }
         }
     }
-
     public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player, Entrance entrance) {//le sposta da dining all'entrance
-
         int j; //variabile che serve a iterare dentro le righe della sala
         if (Objects.equals(colorPawn.toString(), Game.m.get(0))) {
             for (j = 10; j > 0; j--) {

@@ -1,7 +1,5 @@
 package it.polimi.ingsw.model;
-
 import java.util.ArrayList;
-
 public class Barbara extends UseEffect{
     private int coinPrice;
     public Barbara(){

@@ -1,7 +1,5 @@
 package it.polimi.ingsw.model;
-
 import java.util.ArrayList;
-
 public class Ciro extends UseEffect{
     private int coinPrice;
     Ciro(){

@@ -1,7 +1,5 @@
 package it.polimi.ingsw.model;
-
 import java.util.*;
-
 public class Giuseppe extends UseEffect{
     private int coinPrice;
     protected int nPawn;
@@ -46,7 +44,6 @@ public class Giuseppe extends UseEffect{
         }
         nPawn = 6;
     }
-
     public void swapPawn(ColorPawn colorPawnCard, ColorPawn colorPawnEntrance, Entrance entrance){
         if(!Objects.equals(colorPawnCard, colorPawnEntrance) && this.nPawn > 3){
             if(Objects.equals(colorPawnCard.toString(), "GREEN")){
@@ -81,7 +78,6 @@ public class Giuseppe extends UseEffect{
                 this.numBluePawn++;
                 entrance.setBluePawn(entrance.getBluePawn() - 1);
             }
-
         }
     }
     //LEGGIMI :( non va bene il fatto che anche se la funzione viene chiamata n volte viene richiamata sempre su stessa isola e pedina
@@ -97,5 +93,4 @@ public class Giuseppe extends UseEffect{
         }
         coinPrice++;
     }
-
 }

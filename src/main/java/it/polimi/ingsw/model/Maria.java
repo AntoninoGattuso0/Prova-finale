@@ -1,8 +1,5 @@
 package it.polimi.ingsw.model;
-
-import java.awt.*;
 import java.util.ArrayList;
-
 public class Maria extends UseEffect{
     private int coinPrice;
     Maria(){

@@ -1,8 +1,5 @@
 package it.polimi.ingsw.model;
-
-
 import java.util.*;
-
 public class Game {
     protected static ArrayList<Player> players = new ArrayList<>();
     protected static int totPlayer;
@@ -18,15 +15,12 @@ public class Game {
     public void setTotPlayer(int i) {
         totPlayer = i;
     }
-
     public int getTotPlayer() {
         return totPlayer;
     }
-
     public static ArrayList<Player> getPlayers() {
         return players;
     }
-
     public Game(int giocatori, boolean expert) {
         totPlayer = giocatori;
         isExpert = expert;
@@ -102,7 +96,6 @@ public class Game {
             clouds.add(cloud);
         }
     }
-
     static ArrayList<String> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
         ArrayList<String> arrayPawn = new ArrayList<>(5);
         if (studentBag.getGreenNum() > 0)
@@ -117,12 +110,10 @@ public class Game {
             arrayPawn.add("BLUE");
         return arrayPawn;
     }
-
     public static void newPlayer(String nick,Game game) {
         Player player = new Player(nick,game);//inizializzazione player fatta in player -NINO
         Game.players.add(player);
     }
-
     public void moveMotherNature(int num) {
         int i;
         int totIsland = islands.size();
@@ -132,7 +123,6 @@ public class Game {
         if (num >= totIsland) num -= totIsland;
         islands.get(num).setMotherNature(true);
     }
-
     public static void unifyIsland(int i) { // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
         int j, k;
         boolean prevTrue, postTrue;
@@ -148,7 +138,6 @@ public class Game {
             else if(postTrue) islands.remove(k);
         }
     }
-
     public static boolean checkIsland(int i, int j) { //controlla se le due isole si possono unire, nel caso le unisce
         if (islands.get(j).getTower() && islands.get(j).getColorTower() == islands.get(i).getColorTower()) {
             islands.get(i).setGreenPawn(islands.get(i).getGreenPawn() + islands.get(j).getGreenPawn());
@@ -160,8 +149,6 @@ public class Game {
         }
         return false;
     }
-
-
     public static void topInfluence(Island island,Game game) {
         int i, j, k, n, color, max;
         if (island.getProhibited()) {
@@ -197,9 +184,7 @@ public class Game {
                 if (island.getTower() && island.getColorTower() == players.get(i).towerSpace.colorTower)
                     influence.set(i, influence.get(i) + island.getTotIsland());
             }
-
             max = Collections.max(influence);
-
             for (i = 0; i < influence.size() && !notunique; i++) {
                 for (j = i + 1; j < influence.size() && !notunique; j++) {
                     if ((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && players.get(i).towerSpace.colorTower != players.get(j).towerSpace.colorTower)
@@ -210,11 +195,9 @@ public class Game {
             unifyIsland(islands.indexOf(island));
         }
     }
-
         public boolean endGame () {
             return studentBag.getNum() == 0;
         }
-
         public void setCard () { //posiziona a caso dei personaggi (3)
             int i;
             Random rnd = new Random();
@@ -225,7 +208,6 @@ public class Game {
                 random = rnd.nextInt(characterCards.size());
             }
         }
-
         public void moveProf () {
             int i, j;
             ArrayList<Integer> maxColor = new ArrayList<>();

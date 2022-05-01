@@ -1,7 +1,5 @@
 package it.polimi.ingsw.model;
-
 import java.util.ArrayList;
-
 public class Player {
     private String nickname;
     private int numCoin;
@@ -33,19 +31,15 @@ public class Player {
             this.diningRoom = new DiningRoom();
             this.towerSpace = new TowerSpace();
     }
-
     public AssistantCard getCurrentAssistant() {
         return currentAssistant;
     }
-
     public int getNumCoin() {
         return numCoin;
     }
-
     public void setNumCoin(int numCoin) {
         this.numCoin = numCoin;
     }
-
     public boolean checkNumStepMotherNature(int num){
         boolean b;
         if(currentAssistant.getStep()<num){
@@ -73,10 +67,7 @@ public class Player {
         }
     }
     public void chooseNick(String nickname){
-
     }
-
-
     //ho aggiunto il metodo discarded a Player e l'ho tolto da AssistanceCard//
     public void discarded(AssistantCard currentAssistant ){
         int i;

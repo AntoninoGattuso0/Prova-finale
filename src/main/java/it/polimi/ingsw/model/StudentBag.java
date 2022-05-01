@@ -1,5 +1,4 @@
 package it.polimi.ingsw.model;
-
 public class StudentBag {
     private int num;
     private int greenNum;
@@ -7,7 +6,6 @@ public class StudentBag {
     private int yellowNum;
     private int pinkNum;
     private int blueNum;
-
     public StudentBag(){
         setNum(120);
         setYellowNum(24);
@@ -46,7 +44,6 @@ public class StudentBag {
     public int getBlueNum() {
         return blueNum;
     }
-
     public  int getNum(){
         return num;
     }

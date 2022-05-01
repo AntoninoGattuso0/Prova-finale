@@ -1,9 +1,7 @@
 package it.polimi.ingsw.model;
-
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
-
 public class Antonio extends UseEffect{
     private int coinPrice;
     private int numPawnAntonio;
@@ -150,47 +148,36 @@ public class Antonio extends UseEffect{
     public int getBluePawn() {
         return bluePawn;
     }
-
     public int getGreenPawn() {
         return greenPawn;
     }
-
     public int getNumPawnAntonio() {
         return numPawnAntonio;
     }
-
     public int getPinkPawn() {
         return pinkPawn;
     }
-
     public int getRedPawn() {
         return redPawn;
     }
-
     public int getYellowPawn() {
         return yellowPawn;
     }
-
     public void setBluePawn(int bluePawn) {
         this.bluePawn = bluePawn;
     }
-
     public void setGreenPawn(int greenPawn) {
         this.greenPawn = greenPawn;
     }
-
     public void setNumPawnAntonio(int numPawnAntonio) {
         this.numPawnAntonio = numPawnAntonio;
     }
-
     public void setPinkPawn(int pinkPawn) {
         this.pinkPawn = pinkPawn;
     }
-
     public void setRedPawn(int redPawn) {
         this.redPawn = redPawn;
     }
-
     public void setYellowPawn(int yellowPawn) {
         this.yellowPawn = yellowPawn;
     }

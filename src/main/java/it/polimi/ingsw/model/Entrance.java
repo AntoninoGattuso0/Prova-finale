@@ -66,55 +66,42 @@ public class Entrance {
             }
         }
     }
-
     public int getNumPawn(){
         return numPawn;
     }
-
     public int getGreenPawn() {
         return greenPawn;
     }
-
     public int getRedPawn(){
         return redPawn;
     }
-
     public int getYellowPawn() {
         return yellowPawn;
     }
-
     public int getPinkPawn() {
         return pinkPawn;
     }
-
     public int getBluePawn() {
         return bluePawn;
     }
-
     public void setNumPawn(int numpawn) {
         numPawn = numpawn;
     }
-
     public void setGreenPawn(int greenpawn) {
         greenPawn = greenpawn;
     }
-
     public void setRedPawn(int redpawn) {
         redPawn = redpawn;
     }
-
     public void setYellowPawn(int yellowpawn) {
         yellowPawn = yellowpawn;
     }
-
     public void setPinkPawn(int pinkPawn) {
         this.pinkPawn = pinkPawn;
     }
-
     public void setBluePawn(int bluePawn) {
         this.bluePawn = bluePawn;
     }
-
     // modifiche all'UML:ho aggiunto setter per definire quante sono le pedine che devono esserci in Entrance
     //all'inizio del gioco e dopo che ho fatto refill da una nuvola
     public void startNumPawn(){
@@ -123,7 +110,6 @@ public class Entrance {
         else if(Game.totPlayer == 3)
             setNumPawn(7);
     }
-
     //modifiche all'UML: il ritorno di check è boolean
     //metodo che controlla in base al numero di Players se ci sono ancora 4 o 5 pedine all'ingresso
     public boolean checkNum(){
@@ -133,7 +119,6 @@ public class Entrance {
             return true;
        else return false;
     }
-
     public void movePawnToIsland(ColorPawn colorPawn, Island island,Game game){
             //tutti questi spostamenti sono possibili se il numero di pedine all'entrata è 4 o 5 in base ai giocatori
             if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
@@ -160,8 +145,6 @@ public class Entrance {
                 System.out.println("Errore: non esistono pedine di questo colore nell'ingresso");  //penso sia una cosa del controller
             }
         }
-
-
         //LEGGIMI :( non va bene il fatto che anche se la funzione viene chiamata n volte viene richiamata sempre su stessa isola e pedina
     public void moveToIsland(int n, ColorPawn colorPawn, Island island,Game game) {
         //n = numero di pedine che si vogliono spostare da entrance a island
@@ -180,25 +163,20 @@ public class Entrance {
                 }
         }
     }
-
     public void chooseCloud (Cloud cloud){
-
         if(cloud.getNumPawn()!=0 && !checkNum()){      //utile o no il controllo di numPawn? (controller)
             setGreenPawn(cloud.getGreenPawn() + 1);
             setRedPawn(cloud.getRedPawn() + 1);
             setYellowPawn(cloud.getYellowPawn() + 1);
             setPinkPawn(cloud.getPinkPawn() + 1);
             setBluePawn(cloud.getBluePawn() + 1);
-
             startNumPawn();
-
             cloud.setNumPawn(0);
             cloud.setGreenPawn(0);
             cloud.setRedPawn(0);
             cloud.setYellowPawn(0);
             cloud.setPinkPawn(0);
             cloud.setBluePawn(0);
-
         }
     }
 }

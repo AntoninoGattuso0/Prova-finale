@@ -1,9 +1,7 @@
 package it.polimi.ingsw.model;
-
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
-
 public class Nicola extends UseEffect {
     private int coinPrice;
     private static int greenPawn;
@@ -11,7 +9,6 @@ public class Nicola extends UseEffect {
     private static int yellowPawn;
     private static int pinkPawn;
     private static int bluePawn;
-
     Nicola(StudentBag studentBag) {
         Random rnd = new Random();
         ArrayList<String> cards = createArrayPawn(studentBag);
@@ -46,48 +43,36 @@ public class Nicola extends UseEffect {
         }
         coinPrice = 2;
     }
-
     public static void setGreenPawn(int i) {
         greenPawn = i;
     }
-
     public static int getGreenPawn() {
         return greenPawn;
     }
-
     public static void setRedPawn(int i) {
         redPawn = i;
     }
-
     public static int getRedPawn() {
         return redPawn;
     }
-
     public static void setYellowPawn(int i) {
         yellowPawn = i;
     }
-
     public static int getYellowPawn() {
         return yellowPawn;
     }
-
     public void setPinkPawn(int i) {
         pinkPawn = i;
     }
-
     public static int getPinkPawn() {
         return pinkPawn;
     }
-
     public static void setBluePawn(int i) {
         bluePawn = i;
     }
-
     public static int getBluePawn() {
         return bluePawn;
     }
-
-
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
         int j; //variabile che serve a iterare dentro le righe della sala
         if (colorPawn.get(0).equals(Game.m.get(0))) {
@@ -102,7 +87,6 @@ public class Nicola extends UseEffect {
                 }
             }
         }
-
         if (Objects.equals(colorPawn.toString(), Game.m.get(1))) {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[1][j] != 1) {
@@ -115,7 +99,6 @@ public class Nicola extends UseEffect {
                 }
             }
         }
-
         if (Objects.equals(colorPawn.toString(), Game.m.get(2))) {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[2][j] != 1) {
@@ -128,7 +111,6 @@ public class Nicola extends UseEffect {
                 }
             }
         }
-
         if (Objects.equals(colorPawn.toString(), Game.m.get(3))) {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[3][j] != 1) {
@@ -141,7 +123,6 @@ public class Nicola extends UseEffect {
                 }
             }
         }
-
         if (Objects.equals(colorPawn.toString(), Game.m.get(4))) { //metodo toString restituisce la rappresentazione di stringa delle costanti enum
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[4][j] != 1) {

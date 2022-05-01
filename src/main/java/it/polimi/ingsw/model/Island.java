@@ -1,5 +1,4 @@
 package it.polimi.ingsw.model;
-
 public class Island {
     private boolean isMotherNature;
     private int greenPawn;
@@ -11,7 +10,6 @@ public class Island {
     private ColorTower colorTower;
     private boolean isProhibited;
     private int totIsland;
-
     public Island() {
         isMotherNature = false;
         greenPawn = 0;

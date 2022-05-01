@@ -1,11 +1,9 @@
 package it.polimi.ingsw.model;
-
 public class Omnia extends UseEffect{
     private int coinPrice;
     Omnia(){
         coinPrice=3;
     }
-
     public void removePawn(ColorPawn colorPawn,Game game){
         int i, j;
         for(i=0; i<3; i++){

@@ -1,5 +1,4 @@
 package it.polimi.ingsw.model;
-
 import java.util.*;
 public class Cloud {
     private int numPawn;    //sono inizializzati da qualche parte?
@@ -8,55 +7,42 @@ public class Cloud {
     private int yellowPawn;
     private int pinkPawn;
     private int bluePawn;
-
     public int getNumPawn() {
         return numPawn;
     }
-
     public int getYellowPawn() {
         return yellowPawn;
     }
-
     public int getRedPawn() {
         return redPawn;
     }
-
     public int getPinkPawn() {
         return pinkPawn;
     }
-
     public int getGreenPawn() {
         return greenPawn;
     }
-
     public int getBluePawn() {
         return bluePawn;
     }
-
     public void setYellowPawn(int yellowPawn) {
         this.yellowPawn = yellowPawn;
     }
-
     public void setRedPawn(int redPawn) {
         this.redPawn = redPawn;
     }
-
     public void setPinkPawn(int pinkPawn) {
         this.pinkPawn = pinkPawn;
     }
-
     public void setGreenPawn(int greenPawn) {
         this.greenPawn = greenPawn;
     }
-
     public void setBluePawn(int bluePawn) {
         this.bluePawn = bluePawn;
     }
-
     public void setNumPawn(int numPawn) {
         this.numPawn = numPawn;
     }
-
     public void refillCloud(StudentBag studentBag) {
         int i;
         Random rnd = new Random();
