@@ -3,6 +3,7 @@ package it.polimi.ingsw.model;
 import org.junit.jupiter.api.Test;
 
 class EntranceTest {
+
     @Test
     public void testMovePawnToIsland(){
     Game game= new Game(3,true);

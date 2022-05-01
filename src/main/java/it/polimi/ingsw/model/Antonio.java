@@ -151,9 +151,7 @@ public class Antonio extends UseEffect{
     public int getGreenPawn() {
         return greenPawn;
     }
-    public int getNumPawnAntonio() {
-        return numPawnAntonio;
-    }
+    public int getNumPawnAntonio() {return numPawnAntonio;}
     public int getPinkPawn() {
         return pinkPawn;
     }
