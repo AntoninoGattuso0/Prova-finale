@@ -45,7 +45,7 @@ public class GameTest {
     }
     @Test
     public void testCheckIsland(){
-        Game game = new Game(4, true);
+        Game game = new Game(3, true);
         Game.islands.get(0).setTower(true);
         Game.islands.get(0).setColorTower(ColorTower.BLACK);
         Game.islands.get(1).setTower(true);

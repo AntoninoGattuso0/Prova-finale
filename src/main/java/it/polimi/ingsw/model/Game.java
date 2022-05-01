@@ -65,8 +65,9 @@ public class Game {
         startingPawn.add(m.get(4));
         i = n + 1;
         if (i == 12) i = 0;
+        Random rnd1 = new Random();
         while (!(islands.get(i).getMotherNature())&&startingPawn.size()>0){
-            int random = rnd.nextInt(startingPawn.size());
+            int random = rnd1.nextInt(startingPawn.size());
             if (Objects.equals(startingPawn.get(random), m.get(0))) {
                 g--;
                 islands.get(i).setGreenPawn(islands.get(i).getGreenPawn() + 1);
@@ -104,21 +105,16 @@ public class Game {
 
     static ArrayList<String> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
         ArrayList<String> arrayPawn = new ArrayList<>();
-        if (studentBag.getGreenNum() != 0) {
+        if (studentBag.getGreenNum() > 0)
             arrayPawn.add("GREEN");
-        }
-        if (studentBag.getRedNum() != 0) {
+        if (studentBag.getRedNum() > 0)
             arrayPawn.add("RED");
-        }
-        if (studentBag.getYellowNum() != 0) {
+        if (studentBag.getYellowNum() > 0)
             arrayPawn.add("YELLOW");
-        }
-        if (studentBag.getPinkNum() != 0) {
+        if (studentBag.getPinkNum() > 0)
             arrayPawn.add("PINK");
-        }
-        if (studentBag.getBlueNum() != 0) {
+        if (studentBag.getBlueNum() > 0)
             arrayPawn.add("BLUE");
-        }
         return arrayPawn;
     }
 
