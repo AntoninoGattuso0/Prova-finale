@@ -43,7 +43,7 @@ public class AntonioTest {
         System.out.println(game.studentBag.getNum());
         Game.newPlayer("b",game);
         Game.newPlayer("c",game);
-
+        System.out.println(game.studentBag.getNum());
         CharacterCard characterCard=new CharacterCard(antonio);
         characterCard.useEffect.useEffect(game,2,Game.islands.get(0),Game.players.get(0),colorPawn);
         assertEquals(4,antonio.getNumPawnAntonio());
