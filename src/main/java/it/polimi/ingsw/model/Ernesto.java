@@ -6,7 +6,7 @@ public class Ernesto extends UseEffect{
     Ernesto(){
         coinPrice=2;
     }
-    public void notInfluence(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){
+    public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){
         island.setProhibited(true);
         coinPrice++;
     }
