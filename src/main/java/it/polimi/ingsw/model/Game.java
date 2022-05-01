@@ -65,7 +65,7 @@ public class Game {
         startingPawn.add(m.get(4));
         i = n + 1;
         if (i == 12) i = 0;
-        while (!(islands.get(i).getMotherNature())) {
+        while (!(islands.get(i).getMotherNature())){
             int random = rnd.nextInt(startingPawn.size());
             if (Objects.equals(startingPawn.get(random), m.get(0))) {
                 g--;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Barbara extends UseEffect{
     private int coinPrice;
-    Barbara(){
+    public Barbara(){
         coinPrice=2;
     }
     public void useEffect(Game game, int actualPlayer, Island island, Player player, ArrayList<ColorPawn> colorPawn){
