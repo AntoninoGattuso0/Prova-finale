@@ -46,6 +46,7 @@ public class DiningRoom {
     public void setNumBlue(int numBlue) {
         this.numBlue = numBlue;
     }
+
     public void addPawnToDiningRoom(ColorPawn colorPawn, Player player, Entrance entrance) {
         int j; //variabile che serve a iterare dentro le righe della sala
         if (Objects.equals(colorPawn.toString(), Game.m.get(0))) {
@@ -189,8 +190,6 @@ public class DiningRoom {
                     position[0][j] = 0;
                     setNumGreen(getNumGreen() - 1);
                     entrance.setGreenPawn(entrance.getGreenPawn() + 1);
-                    if (Game.isExpert && (position[0][2] == 1 || position[0][5] == 1 || position[0][8] == 1))
-                        player.setNumCoin(player.getNumCoin() + 1);
                     break;
                 }
             }
