@@ -70,7 +70,7 @@ public class Antonio extends UseEffect{
         }
     }
 
-    public void useEffectAntonio(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn) {
+    public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn) {
         if (Objects.equals(colorPawn.toString(), "GREEN") && getGreenPawn() > 0) {  //altrimenti cosa succede se la pedina verde non c'è?
             island.setGreenPawn(island.getGreenPawn() + 1);
             setGreenPawn(getGreenPawn() - 1);

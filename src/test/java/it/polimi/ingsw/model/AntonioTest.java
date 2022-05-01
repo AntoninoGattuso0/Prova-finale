@@ -30,8 +30,7 @@ public class AntonioTest {
         Game.newPlayer("c",game);
         Antonio antonio=new Antonio(game.studentBag);
         CharacterCard characterCard=new CharacterCard(antonio);
-        characterCard.useEffect.useEffect(game,i,Game.islands.get(0),Game.players.get(0));
-
+        characterCard.useEffect.useEffect(game,i,Game.islands.get(0),Game.players.get(0),colorPawn);
     }
     }
 
