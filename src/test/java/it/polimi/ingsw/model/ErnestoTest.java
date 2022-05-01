@@ -24,5 +24,6 @@ public class ErnestoTest {
         colorPawn.add(ColorPawn.GREEN);
         characterCard.useEffect.useEffect(game, 2, Game.islands.get(0), Game.players.get(0), colorPawn);
         assertTrue(island.getProhibited());
+        assertEquals(3, ernesto.coinPrice);
     }
 }
