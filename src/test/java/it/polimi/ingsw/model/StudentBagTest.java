@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class StudentBagTest {
     @Test
     public void test1(){
-        StudentBag studentbag = new StudentBag();
-        assertEquals(120, StudentBag.getNum());
+        StudentBag studentBag = new StudentBag();
+        assertEquals(120, studentBag.getNum());
     }
 
 }

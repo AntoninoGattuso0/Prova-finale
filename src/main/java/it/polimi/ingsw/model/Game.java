@@ -6,7 +6,7 @@ import java.util.*;
 public class Game {
     protected static ArrayList<Player> players = new ArrayList<>();
     protected static int totPlayer;
-    private static ArrayList<Cloud> clouds;
+    protected ArrayList<Cloud> clouds;
     protected ProfTable profTable;
     protected static ArrayList<Island> islands = new ArrayList<>();
     protected static boolean isExpert;
@@ -31,8 +31,8 @@ public class Game {
         totPlayer = giocatori;
         isExpert = expert;
         int i;
-        StudentBag studentBag = new StudentBag();
-        ProfTable profTable = new ProfTable();
+        studentBag = new StudentBag();
+        profTable = new ProfTable();
 //creazione isole
         Island island1 = new Island();
         Island island2 = new Island();
@@ -120,7 +120,6 @@ public class Game {
             cloud.refillCloud(studentBag);
             clouds.add(cloud);
         }
-        System.out.println("ddd");
         //creazione arraylist con tutte i personaggi
      /* Antonio antonio = new Antonio(studentBag);
         Barbara barbara = new Barbara();
@@ -179,26 +178,31 @@ public class Game {
     }
 
     public static void unifyIsland(int i) { // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
-        int j;
+        int j, k;
+        boolean prevTrue, postTrue;
         if (islands.get(i).getTower()) {
             j = i - 1;
-            if (j < 0) j = islands.size();
-            checkIsland(i, j);
-            j = i + 1;
-            if (j >= islands.size()) j = 0;
-            checkIsland(i, j);
+            k = i+1;
+            if (j < 0) j = islands.size() - 1;
+            if (k >= islands.size()) k = 0;
+            prevTrue = checkIsland(i, j);
+            postTrue = checkIsland(i, k);
+            if(prevTrue) islands.remove(j);
+            if(postTrue && prevTrue) islands.remove(k-1);
+            else if(postTrue) islands.remove(k);
         }
     }
 
-    private static void checkIsland(int i, int j) { //controlla se le due isole si possono unire, nel caso le unisce
+    public static boolean checkIsland(int i, int j) { //controlla se le due isole si possono unire, nel caso le unisce
         if (islands.get(j).getTower() && islands.get(j).getColorTower() == islands.get(i).getColorTower()) {
             islands.get(i).setGreenPawn(islands.get(i).getGreenPawn() + islands.get(j).getGreenPawn());
             islands.get(i).setRedPawn(islands.get(i).getRedPawn() + islands.get(j).getRedPawn());
             islands.get(i).setYellowPawn(islands.get(i).getYellowPawn() + islands.get(j).getYellowPawn());
             islands.get(i).setBluePawn(islands.get(i).getBluePawn() + islands.get(j).getBluePawn());
             islands.get(i).setTotIsland(islands.get(i).getTotIsland() + 1);
-            islands.remove(j);
+            return true;
         }
+        return false;
     }
 
 

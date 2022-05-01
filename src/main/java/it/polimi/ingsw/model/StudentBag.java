@@ -7,7 +7,8 @@ public class StudentBag {
     private int yellowNum;
     private int pinkNum;
     private int blueNum;
-    StudentBag(){ //COSTRUTTORE STUDENTBAG: non ricordo il numero di pedine, modificatelo se il numero è sbagliato. -Nino
+
+    public StudentBag(){ //COSTRUTTORE STUDENTBAG: non ricordo il numero di pedine, modificatelo se il numero è sbagliato. -Nino
         this.greenNum=24;
         this.redNum=24;
         this.yellowNum=24;

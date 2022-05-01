@@ -8,7 +8,7 @@ public class ProfTable {
     private static int pinkProf;
     private static int blueProf;
 
-    ProfTable(){
+    public ProfTable(){
         greenProf = -1;
         redProf = -1;
         yellowProf = -1;
