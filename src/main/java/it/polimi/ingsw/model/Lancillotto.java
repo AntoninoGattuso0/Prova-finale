@@ -15,8 +15,7 @@ public class Lancillotto extends UseEffect{
         ArrayList<Integer> influence = new ArrayList<>();
         for(i=0; i<Game.totPlayer; i++) influence.add(0);
         for(color=0; color<5; color++) {
-            String s = Game.m.get(color);
-            if(s.equals(colorPawn.get(0))) color++;
+            if(Game.m.get(color).equals(colorPawn.get(0).toString())) color++;
             n = game.profTable.checkProf(color);
             if(color==0 && n!=-1) influence.set(n, influence.get(n) + island.getGreenPawn());
 
