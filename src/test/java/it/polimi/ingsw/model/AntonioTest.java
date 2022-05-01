@@ -48,6 +48,6 @@ public class AntonioTest {
         characterCard.useEffect.useEffect(game,2,Game.islands.get(0),Game.players.get(0),colorPawn);
         assertEquals(4,antonio.getNumPawnAntonio());
     }
-    }
+}
 
 

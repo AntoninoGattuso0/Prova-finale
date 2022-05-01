@@ -27,11 +27,11 @@ public class Player {
             if (j == 3 || j == 5 || j == 7 || j == 9) k++;
             assistant.setStep(k);
             this.deckAssistant.add(assistant);
+        }
             //collegamento a tower, dining and entrance
             this.entrance = new Entrance(game);
             this.diningRoom = new DiningRoom();
             this.towerSpace = new TowerSpace();
-        }
     }
 
     public AssistantCard getCurrentAssistant() {
