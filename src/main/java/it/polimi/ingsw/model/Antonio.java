@@ -27,7 +27,7 @@ public class Antonio extends UseEffect{
                 int random = rnd.nextInt(refillPawn.size());
                 if (Objects.equals(refillPawn.get(random), "GREEN")) {
                     setGreenPawn(getGreenPawn()+1);
-                    setNumPawnAntonio(getNumPawnAntonio()+1);
+                    numPawnAntonio++;
                     studentBag.setNum(studentBag.getNum()-1);
                     studentBag.setGreenNum(studentBag.getGreenNum()-1);
                     if(studentBag.getGreenNum()==0){
@@ -35,7 +35,7 @@ public class Antonio extends UseEffect{
                     }
                 } else if (Objects.equals(refillPawn.get(random), "RED")) {
                     setRedPawn(getRedPawn()+1);
-                    setNumPawnAntonio(getNumPawnAntonio()+1);
+                    numPawnAntonio++;
                     studentBag.setNum(studentBag.getNum()-1);
                     studentBag.setRedNum(studentBag.getRedNum()-1);
                     if(studentBag.getRedNum()==0){
@@ -43,7 +43,7 @@ public class Antonio extends UseEffect{
                     }
                 } else if (Objects.equals(refillPawn.get(random), "YELLOW")) {
                     setYellowPawn(getYellowPawn()+1);
-                    setNumPawnAntonio(getNumPawnAntonio()+1);
+                    numPawnAntonio++;
                     studentBag.setNum(studentBag.getNum()-1);
                     studentBag.setYellowNum(studentBag.getYellowNum()-1);
                     if(studentBag.getYellowNum()==0){
@@ -51,7 +51,7 @@ public class Antonio extends UseEffect{
                     }
                 } else if (Objects.equals(refillPawn.get(random), "PINK")) {
                     setPinkPawn(getPinkPawn()+1);
-                    setNumPawnAntonio(getNumPawnAntonio()+1);
+                    numPawnAntonio++;
                     studentBag.setNum(studentBag.getNum()-1);
                     studentBag.setPinkNum(studentBag.getPinkNum()-1);
                     if(studentBag.getPinkNum()==0){
@@ -59,7 +59,7 @@ public class Antonio extends UseEffect{
                     }
                 } else if (Objects.equals(refillPawn.get(random), "BLUE")) {
                     setBluePawn(getBluePawn()+1);
-                    setNumPawnAntonio(getNumPawnAntonio()+1);
+                    numPawnAntonio++;
                     studentBag.setNum(studentBag.getNum()-1);
                     studentBag.setBlueNum(getBluePawn()-1);
                     if(studentBag.getBlueNum()==0){

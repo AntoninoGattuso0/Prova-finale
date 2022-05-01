@@ -13,7 +13,7 @@ public class Game {
     protected static ArrayList<CharacterCard> cards = new ArrayList<>(); //cambiato in arraylist;
     protected static ArrayList<CharacterCard> characterCards = new ArrayList<>();//insieme di tutti i characters
     protected static Map<Integer, String> m = new HashMap<>();
-    protected static StudentBag studentBag;
+    protected StudentBag studentBag;
 
     public void setTotPlayer(int i) {
         totPlayer = i;
@@ -104,7 +104,7 @@ public class Game {
     }
 
     static ArrayList<String> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
-        ArrayList<String> arrayPawn = new ArrayList<>();
+        ArrayList<String> arrayPawn = new ArrayList<>(5);
         if (studentBag.getGreenNum() > 0)
             arrayPawn.add("GREEN");
         if (studentBag.getRedNum() > 0)
