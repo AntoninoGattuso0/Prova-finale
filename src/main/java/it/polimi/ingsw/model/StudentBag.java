@@ -8,43 +8,43 @@ public class StudentBag {
     private int pinkNum;
     private int blueNum;
 
-    public StudentBag(){ //COSTRUTTORE STUDENTBAG: non ricordo il numero di pedine, modificatelo se il numero è sbagliato. -Nino
-        this.greenNum=24;
-        this.redNum=24;
-        this.yellowNum=24;
-        this.pinkNum=24;
-        this.blueNum=24;
-        this.num=greenNum+redNum+yellowNum+pinkNum+blueNum;
+    public StudentBag(){
+        greenNum=24;
+        redNum=24;
+        yellowNum=24;
+        pinkNum=24;
+        blueNum=24;
+        num=120;
     }
     public void setGreenNum(int i){
-       this.greenNum = i;
+       greenNum = i;
     }
     public int getGreenNum(){
-        return this.greenNum;
+        return greenNum;
     }
     public void setRedNum(int i){
-        this.redNum = i;
+        redNum = i;
     }
     public int getRedNum(){
-        return this.redNum;
+        return redNum;
     }
     public void setYellowNum(int i){
-        this.yellowNum = i;
+        yellowNum = i;
     }
     public int getYellowNum(){
-        return this.yellowNum;
+        return yellowNum;
     }
     public void setPinkNum(int i){
-        this.pinkNum = i;
+        pinkNum = i;
     }
     public int getPinkNum(){
-        return this.pinkNum;
+        return pinkNum;
     }
     public void setBlueNum(int i){
-        this.blueNum = i;
+        blueNum = i;
     }
     public int getBlueNum() {
-        return this.blueNum;
+        return blueNum;
     }
 
     public  int getNum(){

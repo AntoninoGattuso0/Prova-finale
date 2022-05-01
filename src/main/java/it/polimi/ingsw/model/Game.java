@@ -120,7 +120,7 @@ public class Game {
 
     public static void newPlayer(String nick,Game game) {
         Player player = new Player(nick,game);//inizializzazione player fatta in player -NINO
-        players.add(player);
+        Game.players.add(player);
     }
 
     public void moveMotherNature(int num) {

@@ -2,8 +2,7 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 public class Entrance {
-
-    private int numPawn;        //numero di pedine totali presenti all'entrata della plancia
+    private int numPawn;       //numero di pedine totali presenti all'entrata della plancia
 
     //numero di pedine per ogni colore, inizialmente sono zero, poi in base al numero di player vengono aggiunte pedine in maniera randomica
     private int greenPawn;
@@ -13,51 +12,48 @@ public class Entrance {
     private int redPawn;
 
     public Entrance(Game game){
-       greenPawn = 0;
-       bluePawn = 0;
-       pinkPawn = 0;
-       yellowPawn = 0;
-       redPawn = 0;
-       startNumPawn();
-       int j = getNumPawn();
-        Random rnd = new Random();
-        while (j > 0) {
+       setGreenPawn(0);
+       setBluePawn(0);
+       setPinkPawn(0);
+       setYellowPawn(0);
+       setRedPawn(0);
+       Random rnd = new Random();
+        if(Game.totPlayer == 2 || Game.totPlayer == 4)
+            setNumPawn(9);
+        else if(Game.totPlayer == 3)
+            setNumPawn(7);
+       int i;
+        for(i=0;i<getNumPawn();i++){
             ArrayList<String> entrancePawn = Game.createArrayPawn(game.studentBag);
-            if (game.studentBag.getNum() > 0) {
+            if (game.studentBag.getNum() > 0 && entrancePawn.size()>0) {
                 int random = rnd.nextInt(entrancePawn.size());
                 if (Objects.equals(entrancePawn.get(random), Game.m.get(0))) {//verde
-                    setGreenPawn(getGreenPawn() + 1);
-                    setNumPawn(getNumPawn() + 1);
-                    game.studentBag.setNum(game.studentBag.getNum() - 1);
+                    setGreenPawn(getGreenPawn()+1);
+                    game.studentBag.setNum(game.studentBag.getNum()-1);
                     game.studentBag.setGreenNum(game.studentBag.getGreenNum() - 1);
                     if(game.studentBag.getGreenNum()==0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(1))) {//rosso
                     setRedPawn(getRedPawn() + 1);
-                    setNumPawn(getNumPawn() + 1);
                     game.studentBag.setNum(game.studentBag.getNum() - 1);
                     game.studentBag.setRedNum(game.studentBag.getRedNum() - 1);
                     if(game.studentBag.getRedNum()==0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(2))) {//giallo
                     setYellowPawn(getYellowPawn() + 1);
-                    setNumPawn(getNumPawn() + 1);
                     game.studentBag.setNum(game.studentBag.getNum() - 1);
                     game.studentBag.setYellowNum(game.studentBag.getYellowNum() - 1);
                     if(game.studentBag.getYellowNum()==0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(3))) {//rosa
                     setPinkPawn(getPinkPawn() + 1);
-                    setNumPawn(getNumPawn() + 1);
                     game.studentBag.setNum(game.studentBag.getNum() - 1);
                     game.studentBag.setPinkNum(game.studentBag.getPinkNum() - 1);
                     if(game.studentBag.getPinkNum()==0) entrancePawn.remove(random);
                 } else if (Objects.equals(entrancePawn.get(random), Game.m.get(4))) {//blu
                     setBluePawn(getBluePawn() + 1);
-                    setNumPawn(getNumPawn() + 1);
                     game.studentBag.setNum(game.studentBag.getNum() - 1);
                     game.studentBag.setBlueNum(game.studentBag.getBlueNum() - 1);
                     if(game.studentBag.getBlueNum()==0) entrancePawn.remove(random);
                 }
             }
-            j--;
         }
     }
 
@@ -85,20 +81,20 @@ public class Entrance {
         return bluePawn;
     }
 
-    public void setNumPawn(int numPawn) {
-        this.numPawn = numPawn;
+    public void setNumPawn(int numpawn) {
+        numPawn = numpawn;
     }
 
-    public void setGreenPawn(int greenPawn) {
-        this.greenPawn = greenPawn;
+    public void setGreenPawn(int greenpawn) {
+        greenPawn = greenpawn;
     }
 
-    public void setRedPawn(int redPawn) {
-        this.redPawn = redPawn;
+    public void setRedPawn(int redpawn) {
+        redPawn = redpawn;
     }
 
-    public void setYellowPawn(int yellowPawn) {
-        this.yellowPawn = yellowPawn;
+    public void setYellowPawn(int yellowpawn) {
+        yellowPawn = yellowpawn;
     }
 
     public void setPinkPawn(int pinkPawn) {
@@ -112,8 +108,10 @@ public class Entrance {
     // modifiche all'UML:ho aggiunto setter per definire quante sono le pedine che devono esserci in Entrance
     //all'inizio del gioco e dopo che ho fatto refill da una nuvola
     public void startNumPawn(){
-        if(Game.totPlayer == 2 || Game.totPlayer == 4) this.numPawn = 9;
-        else if(Game.totPlayer == 3) this.numPawn = 7;
+        if(Game.totPlayer == 2 || Game.totPlayer == 4)
+            setNumPawn(9);
+        else if(Game.totPlayer == 3)
+            setNumPawn(7);
     }
 
     //modifiche all'UML: il ritorno di check è boolean

@@ -16,8 +16,8 @@ public class Player {
     public Player(String nick,Game game) {
         int j, k;
         setNickame(nick);
-        if (Game.isExpert) numCoin = 1;
-        else numCoin = -1;
+        if (Game.isExpert) setNumCoin(1);
+        else setNumCoin(-1);
         //creazione assistenti
         k = 1;
         //aggiunta assistenti
