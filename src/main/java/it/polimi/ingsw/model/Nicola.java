@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 public class Nicola extends UseEffect {
-    private int coinPrice;
+    protected int coinPrice;
     private static int greenPawn;
     private static int redPawn;
     private static int yellowPawn;
@@ -62,7 +62,7 @@ public class Nicola extends UseEffect {
     public static int getYellowPawn() {
         return yellowPawn;
     }
-    public void setPinkPawn(int i) {
+    public static void setPinkPawn(int i) {
         pinkPawn = i;
     }
     public static int getPinkPawn() {
