@@ -59,8 +59,8 @@ public class GameTest {
         game.islands.get(1).setColorTower(ColorTower.BLACK);
         game.islands.get(2).setTower(true);
         game.islands.get(2).setColorTower(ColorTower.BLACK);
-        assertTrue(Game.checkIsland(1, 0));
-        assertTrue(Game.checkIsland(1, 2));
+        assertTrue(Game.checkIsland(1, 0, game));
+        assertTrue(Game.checkIsland(1, 2, game));
     }
     @Test
     public void testUnifyIsland(){
@@ -72,7 +72,7 @@ public class GameTest {
         game.islands.get(1).setColorTower(ColorTower.BLACK);
         game.islands.get(2).setTower(true);
         game.islands.get(2).setColorTower(ColorTower.BLACK);
-        game.unifyIsland(1);
+        Game.unifyIsland(1, game);
         System.out.println(game.islands.size());
         assertEquals(3, game.islands.get(0).getTotIsland());
 

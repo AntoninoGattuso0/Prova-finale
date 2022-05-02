@@ -21,10 +21,10 @@ class CiroTest {
         Ciro ciro= new Ciro();
         ArrayList<ColorPawn> colorPawn= new ArrayList<>();
         CharacterCard characterCard=new CharacterCard(ciro);
-        Game.islands.get(0).setBluePawn(4);
-        Game.islands.get(0).setPinkPawn(5);
-        characterCard.useEffect.useEffect(game,i,Game.islands.get(0),Game.players.get(0),colorPawn);
-        if("GREY".equals(Game.islands.get(0).getColorTower())){
+        game.islands.get(0).setBluePawn(4);
+        game.islands.get(0).setPinkPawn(5);
+        characterCard.useEffect.useEffect(game,i,game.islands.get(0),game.players.get(0),colorPawn);
+        if("GREY".equals(game.islands.get(0).getColorTower())){
             i=0;
         }
         assertEquals(0,i);
