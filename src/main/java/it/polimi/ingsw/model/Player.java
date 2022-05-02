@@ -31,6 +31,9 @@ public class Player {
             this.diningRoom = new DiningRoom();
             this.towerSpace = new TowerSpace(game);
     }
+    public void setCurrentAssistant(AssistantCard currentAssistant) {
+        this.currentAssistant = currentAssistant;
+    }
     public AssistantCard getCurrentAssistant() {
         return currentAssistant;
     }
@@ -56,27 +59,17 @@ public class Player {
             i=Game.cards.indexOf(card);
             return i;
         }
-    public void useAssistant(){
+    public void useAssistant(Player player,AssistantCard currentAssistant){
         int i;
         int contr=0;
-        for(i=0;i<deckAssistant.size() && contr==0;i++) {
-            if (deckAssistant.get(i).getCardValue() == currentAssistant.getCardValue()){
-                deckAssistant.remove(i);
+        for(i=0;i<player.deckAssistant.size() && contr==0;i++) {
+            if (player.deckAssistant.get(i).getCardValue()==currentAssistant.getCardValue()){
+                player.setCurrentAssistant(currentAssistant);
+                player.deckAssistant.remove(i);
                 contr=1;
             }
         }
     }
     public void chooseNick(String nickname){
-    }
-    //ho aggiunto il metodo discarded a Player e l'ho tolto da AssistanceCard//
-    public void discarded(AssistantCard currentAssistant ){
-        int i;
-        int contr=0;
-        for(i=0;i!=deckAssistant.size()&&contr==0;i++) {
-            if(currentAssistant.getCardValue()==deckAssistant.get(i).getCardValue()){
-                contr=1;
-                deckAssistant.remove(i);
-            }
-        }
     }
 }
