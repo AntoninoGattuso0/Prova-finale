@@ -109,13 +109,13 @@ public class DiningRoom {
     public void addPawn(int m, ColorPawn colorPawn, Player player, Game game) {
         if ((game.totPlayer == 2 || game.totPlayer == 4) && (m > 0 && m < 4)) {
             while (m != 0) {
-                addPawnToDiningRoom(colorPawn, player);
+                addPawnToDiningRoom(colorPawn, player, game);
                 m--;
             }
         }
         if (game.totPlayer == 3 && (m > 0 && m < 5)) {
             while (m != 0) {
-                addPawnToDiningRoom(colorPawn, player);
+                addPawnToDiningRoom(colorPawn, player, game);
                 m--;
             }
         }
