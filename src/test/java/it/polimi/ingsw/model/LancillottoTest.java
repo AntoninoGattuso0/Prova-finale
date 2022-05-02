@@ -24,17 +24,17 @@ class LancillottoTest {
         ProfTable.setYellowProf(1);
         ProfTable.setPinkProf(2);
         ProfTable.setBlueProf(-1);
-        Game.islands.get(0).setGreenPawn(3);
-        Game.islands.get(0).setRedPawn(2);
-        Game.islands.get(0).setYellowPawn(4);
-        Game.islands.get(0).setPinkPawn(3);
-        Game.islands.get(0).setBluePawn(0);
+        game.islands.get(0).setGreenPawn(3);
+        game.islands.get(0).setRedPawn(2);
+        game.islands.get(0).setYellowPawn(4);
+        game.islands.get(0).setPinkPawn(3);
+        game.islands.get(0).setBluePawn(0);
         Lancillotto lancillotto = new Lancillotto();
         CharacterCard card1 = new CharacterCard(lancillotto);
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(1);
         colorPawn.add(ColorPawn.GREEN);
-        card1.useEffect.useEffect(game, 2,Game.islands.get(0),Game.players.get(0),colorPawn);
-        assertEquals(ColorTower.BLACK, Game.islands.get(0).getColorTower());
+        card1.useEffect.useEffect(game, 2,game.islands.get(0),game.players.get(0),colorPawn);
+        assertEquals(ColorTower.BLACK, game.islands.get(0).getColorTower());
     }
 
 }
