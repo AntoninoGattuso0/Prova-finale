@@ -17,6 +17,7 @@ class DanteTest {
     Game.newPlayer("b",game);
     Game.newPlayer("c",game);
     game.players.get(0).useAssistant(game.players.get(0),game.players.get(0).deckAssistant.get(2));
+    System.out.println(game.players.get(0).deckAssistant.get(2).getStep());
     CharacterCard characterCard=new CharacterCard(dante);
     characterCard.useEffect.useEffect(game,i,game.islands.get(0),game.players.get(0),colorPawns);
     assertEquals(3,game.players.get(0).deckAssistant.get(2).getStep());
