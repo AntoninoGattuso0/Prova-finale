@@ -129,22 +129,22 @@ public class Game {
         if (game.islands.get(i).getTower()) {
             j = i - 1;
             k = i+1;
-            if (j < 0) j = islands.size() - 1;
-            if (k >= islands.size()) k = 0;
-            prevTrue = checkIsland(i, j);
-            postTrue = checkIsland(i, k);
-            if(prevTrue) islands.remove(j);
-            if(postTrue && prevTrue) islands.remove(k-1);
-            else if(postTrue) islands.remove(k);
+            if (j < 0) j = game.islands.size() - 1;
+            if (k >= game.islands.size()) k = 0;
+            prevTrue = checkIsland(i, j, game);
+            postTrue = checkIsland(i, k, game);
+            if(prevTrue) game.islands.remove(j);
+            if(postTrue && prevTrue) game.islands.remove(k-1);
+            else if(postTrue) game.islands.remove(k);
         }
     }
-    public static boolean checkIsland(int i, int j) { //controlla se le due isole si possono unire, nel caso le unisce
-        if (islands.get(j).getTower() && islands.get(j).getColorTower() == islands.get(i).getColorTower()) {
-            islands.get(i).setGreenPawn(islands.get(i).getGreenPawn() + islands.get(j).getGreenPawn());
-            islands.get(i).setRedPawn(islands.get(i).getRedPawn() + islands.get(j).getRedPawn());
-            islands.get(i).setYellowPawn(islands.get(i).getYellowPawn() + islands.get(j).getYellowPawn());
-            islands.get(i).setBluePawn(islands.get(i).getBluePawn() + islands.get(j).getBluePawn());
-            islands.get(i).setTotIsland(islands.get(i).getTotIsland() + 1);
+    public static boolean checkIsland(int i, int j, Game game) { //controlla se le due isole si possono unire, nel caso le unisce
+        if (game.islands.get(j).getTower() && game.islands.get(j).getColorTower() == game.islands.get(i).getColorTower()) {
+            game.islands.get(i).setGreenPawn(game.islands.get(i).getGreenPawn() + game.islands.get(j).getGreenPawn());
+            game.islands.get(i).setRedPawn(game.islands.get(i).getRedPawn() + game.islands.get(j).getRedPawn());
+            game.islands.get(i).setYellowPawn(game.islands.get(i).getYellowPawn() + game.islands.get(j).getYellowPawn());
+            game.islands.get(i).setBluePawn(game.islands.get(i).getBluePawn() + game.islands.get(j).getBluePawn());
+            game.islands.get(i).setTotIsland(game.islands.get(i).getTotIsland() + 1);
             return true;
         }
         return false;
@@ -157,7 +157,7 @@ public class Game {
         } else {
             boolean notunique = false;
             ArrayList<Integer> influence = new ArrayList<>();
-            for (i = 0; i < totPlayer; i++) influence.add(0);
+            for (i = 0; i < game.totPlayer; i++) influence.add(0);
             for (color = 0; color < 5; color++) {
                 n = game.profTable.checkProf(color);
                 if (color == 0 && n != -1) influence.set(n, influence.get(n) + island.getGreenPawn());
@@ -170,29 +170,29 @@ public class Game {
 
                 else if (color == 4 && n != -1) influence.set(n, influence.get(n) + island.getBluePawn());
             }
-            if (totPlayer == 4) {
-                for (i = 1; players.get(i).towerSpace.colorTower == players.get(0).towerSpace.colorTower; i++) ;
+            if (game.totPlayer == 4) {
+                for (i = 1; game.players.get(i).towerSpace.colorTower == game.players.get(0).towerSpace.colorTower; i++) ;
                 influence.set(0, influence.get(0) + influence.get(i));//ho tutte le pedine di una squadra sommate al player 0
-                for (j = 1; j < totPlayer && j == i; j++) ;
-                for (k = 2; k < totPlayer && (k == i || k == j); k++) ;
+                for (j = 1; j < game.totPlayer && j == i; j++) ;
+                for (k = 2; k < game.totPlayer && (k == i || k == j); k++) ;
                 influence.set(j, influence.get(j) + influence.get(k));//sommo tutte le pedine dell'altra squadra all'indirizzo j
                 influence.set(i, 0);
                 influence.set(k, 0);
             }
 
-            for (i = 0; i < totPlayer; i++) {
-                if (island.getTower() && island.getColorTower() == players.get(i).towerSpace.colorTower)
+            for (i = 0; i < game.totPlayer; i++) {
+                if (island.getTower() && island.getColorTower() == game.players.get(i).towerSpace.colorTower)
                     influence.set(i, influence.get(i) + island.getTotIsland());
             }
             max = Collections.max(influence);
             for (i = 0; i < influence.size() && !notunique; i++) {
                 for (j = i + 1; j < influence.size() && !notunique; j++) {
-                    if ((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && players.get(i).towerSpace.colorTower != players.get(j).towerSpace.colorTower)
+                    if ((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && game.players.get(i).towerSpace.colorTower != game.players.get(j).towerSpace.colorTower)
                         notunique = true;
                 }
             }
-            if (!notunique) island.setColorTower(players.get(influence.indexOf(max)).towerSpace.colorTower);
-            unifyIsland(islands.indexOf(island));
+            if (!notunique) island.setColorTower(game.players.get(influence.indexOf(max)).towerSpace.colorTower);
+            unifyIsland(game.islands.indexOf(island), game);
         }
     }
         public boolean endGame () {
@@ -200,7 +200,7 @@ public class Game {
         }
 
         public void setCharacterCards (Game game) { //posiziona a caso dei personaggi (3)
-            if (Game.isExpert) {
+            if (game.isExpert) {
                 Antonio antonio = new Antonio(game.studentBag);
                 Barbara barbara = new Barbara(game);
                 Ciro ciro = new Ciro();
@@ -225,51 +225,51 @@ public class Game {
                 }
                 if (random == 0 || random1 == 0 || random2 == 0) {
                     CharacterCard card = new CharacterCard(antonio);
-                    Game.characterCards.add(card);
+                    game.characterCards.add(card);
                 }
                 if (random == 1 || random1 == 1 || random2 == 1) {
                     CharacterCard card = new CharacterCard(barbara);
-                    Game.characterCards.add(card);
+                    game.characterCards.add(card);
                 }
                 if (random == 2 || random1 == 2 || random2 == 2) {
                     CharacterCard card = new CharacterCard(ciro);
-                    Game.characterCards.add(card);
+                    game.characterCards.add(card);
                 }
                 if (random == 3 || random1 == 3 || random2 == 3) {
                     CharacterCard card = new CharacterCard(dante);
-                    Game.characterCards.add(card);
+                    game.characterCards.add(card);
                 }
                 if (random == 4 || random1 == 4 || random2 == 4) {
                     CharacterCard card = new CharacterCard(ernesto);
-                    Game.characterCards.add(card);
+                    game.characterCards.add(card);
                 }
                 if (random == 5 || random1 == 5 || random2 == 5) {
                     CharacterCard card = new CharacterCard(felix);
-                    Game.characterCards.add(card);
+                    game.characterCards.add(card);
                 }
                 if (random == 6 || random1 == 6 || random2 == 6) {
                     CharacterCard card = new CharacterCard(giuseppe);
-                    Game.characterCards.add(card);
+                    game.characterCards.add(card);
                 }
                 if (random == 7 || random1 == 7 || random2 == 7) {
                     CharacterCard card = new CharacterCard(ivan);
-                    Game.characterCards.add(card);
+                    game.characterCards.add(card);
                 }
                 if (random == 8 || random1 == 8 || random2 == 8) {
                     CharacterCard card = new CharacterCard(lancillotto);
-                    Game.characterCards.add(card);
+                    game.characterCards.add(card);
                 }
                 if (random == 9 || random1 == 9 || random2 == 9) {
                     CharacterCard card = new CharacterCard(maria);
-                    Game.characterCards.add(card);
+                    game.characterCards.add(card);
                 }
                 if (random == 10 || random1 == 10 || random2 == 10) {
                     CharacterCard card = new CharacterCard(nicola);
-                    Game.characterCards.add(card);
+                    game.characterCards.add(card);
                 }
                 if (random == 11 || random1 == 11 || random2 == 11) {
                     CharacterCard card = new CharacterCard(omnia);
-                    Game.characterCards.add(card);
+                    game.characterCards.add(card);
                 }
             }
         }
