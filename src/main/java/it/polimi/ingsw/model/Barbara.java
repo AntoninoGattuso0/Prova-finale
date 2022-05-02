@@ -16,11 +16,11 @@ public class Barbara extends UseEffect{
         int max;
         max = 0;
         if (ProfTable.getGreenProf() != -1) {
-            if (Game.players.get(i).diningRoom.getNumGreen() == Game.players.get(ProfTable.getGreenProf()).diningRoom.getNumGreen())
+            if (game.players.get(i).diningRoom.getNumGreen() == game.players.get(ProfTable.getGreenProf()).diningRoom.getNumGreen())
                 ProfTable.setGreenProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
-                if (Game.players.get(i).diningRoom.getNumGreen() < Game.players.get(j).diningRoom.getNumGreen())
+                if (game.players.get(i).diningRoom.getNumGreen() < game.players.get(j).diningRoom.getNumGreen())
                     max = 1;
             }
             if (max == 0) {
@@ -29,12 +29,12 @@ public class Barbara extends UseEffect{
         }
         max = 0;
         if (ProfTable.getRedProf() != -1) {
-            if (Game.players.get(i).diningRoom.getNumRed() == Game.players.get(ProfTable.getRedProf()).diningRoom.getNumRed())
+            if (game.players.get(i).diningRoom.getNumRed() == game.players.get(ProfTable.getRedProf()).diningRoom.getNumRed())
                 ProfTable.setRedProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
 
-                if (Game.players.get(i).diningRoom.getNumRed() < Game.players.get(j).diningRoom.getNumRed())
+                if (game.players.get(i).diningRoom.getNumRed() < game.players.get(j).diningRoom.getNumRed())
                     max = 1;
             }
             if (max == 0) {
@@ -43,11 +43,11 @@ public class Barbara extends UseEffect{
         }
         max = 0;
         if (ProfTable.getBlueProf() != -1) {
-            if (Game.players.get(i).diningRoom.getNumBlue() == Game.players.get(ProfTable.getBlueProf()).diningRoom.getNumBlue())
+            if (game.players.get(i).diningRoom.getNumBlue() == game.players.get(ProfTable.getBlueProf()).diningRoom.getNumBlue())
                 ProfTable.setBlueProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
-                if (Game.players.get(i).diningRoom.getNumBlue() < Game.players.get(j).diningRoom.getNumBlue())
+                if (game.players.get(i).diningRoom.getNumBlue() < game.players.get(j).diningRoom.getNumBlue())
                     max = 1;
             }
             if (max == 0) {
@@ -56,11 +56,11 @@ public class Barbara extends UseEffect{
         }
         max = 0;
         if (ProfTable.getPinkProf() != -1) {
-            if (Game.players.get(i).diningRoom.getNumPink() == Game.players.get(ProfTable.getPinkProf()).diningRoom.getNumPink())
+            if (game.players.get(i).diningRoom.getNumPink() == game.players.get(ProfTable.getPinkProf()).diningRoom.getNumPink())
                 ProfTable.setPinkProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
-                if (Game.players.get(i).diningRoom.getNumPink() < Game.players.get(j).diningRoom.getNumPink())
+                if (game.players.get(i).diningRoom.getNumPink() < game.players.get(j).diningRoom.getNumPink())
                     max = 1;
             }
             if (max == 0) {
@@ -69,11 +69,11 @@ public class Barbara extends UseEffect{
         }
         max = 0;
         if (ProfTable.getYellowProf() != -1) {
-            if (Game.players.get(i).diningRoom.getNumYellow() == Game.players.get(ProfTable.getYellowProf()).diningRoom.getNumYellow())
+            if (game.players.get(i).diningRoom.getNumYellow() == game.players.get(ProfTable.getYellowProf()).diningRoom.getNumYellow())
                 ProfTable.setYellowProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
-                if (Game.players.get(i).diningRoom.getNumYellow() < Game.players.get(j).diningRoom.getNumYellow())
+                if (game.players.get(i).diningRoom.getNumYellow() < game.players.get(j).diningRoom.getNumYellow())
                     max = 1;
             }
             if (max == 0) {
