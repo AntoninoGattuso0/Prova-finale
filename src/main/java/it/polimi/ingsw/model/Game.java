@@ -18,7 +18,7 @@ public class Game {
     public int getTotPlayer() {
         return totPlayer;
     }
-    public static ArrayList<Player> getPlayers() {
+    public ArrayList<Player> getPlayers() {
         return players;
     }
     public Game(int giocatori, boolean expert) {
@@ -112,7 +112,7 @@ public class Game {
     }
     public static void newPlayer(String nick,Game game) {
         Player player = new Player(nick,game);//inizializzazione player fatta in player -NINO
-        Game.players.add(player);
+        game.players.add(player);
     }
     public void moveMotherNature(int num) {
         int i;
@@ -123,10 +123,10 @@ public class Game {
         if (num >= totIsland) num -= totIsland;
         islands.get(num).setMotherNature(true);
     }
-    public static void unifyIsland(int i) { // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
+    public static void unifyIsland(int i, Game game) { // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
         int j, k;
         boolean prevTrue, postTrue;
-        if (islands.get(i).getTower()) {
+        if (game.islands.get(i).getTower()) {
             j = i - 1;
             k = i+1;
             if (j < 0) j = islands.size() - 1;

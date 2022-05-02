@@ -15,13 +15,13 @@ public class GameTest {
     public void testGame(){
         Game game = new Game(4, true);
         assertEquals(4, game.getTotPlayer());
-        assertEquals(12, Game.islands.size());
+        assertEquals(12, game.islands.size());
         int i;
-        for(i=0; !Game.islands.get(i).getMotherNature(); i++);
+        for(i=0; !game.islands.get(i).getMotherNature(); i++);
         System.out.println("Madre natura è sull'isola " + i);
         int s = i+1;
         if(s==12) s = 0;
-        int r = Game.islands.get(s).getRedPawn();
+        int r = game.islands.get(s).getRedPawn();
         System.out.println("Sull'isola " + s + " ci sono " + r + " pedine rosse");
         assertEquals(4, game.clouds.size());
         assertEquals(24, game.studentBag.getGreenNum());
@@ -41,40 +41,40 @@ public class GameTest {
     public void testMoveMotherNature(){
         Game game = new Game(4, true);
         int i;
-        for(i=0; !Game.islands.get(i).getMotherNature(); i++);
-        assertTrue(Game.islands.get(i).getMotherNature());
+        for(i=0; !game.islands.get(i).getMotherNature(); i++);
+        assertTrue(game.islands.get(i).getMotherNature());
         int j = i+3;
-        if(j>Game.islands.size())j = j - Game.islands.size();
-        assertFalse(Game.islands.get(j).getMotherNature());
+        if(j>game.islands.size())j = j - game.islands.size();
+        assertFalse(game.islands.get(j).getMotherNature());
         game.moveMotherNature(3);
-        assertFalse(Game.islands.get(i).getMotherNature());
-        assertTrue(Game.islands.get(j).getMotherNature());
+        assertFalse(game.islands.get(i).getMotherNature());
+        assertTrue(game.islands.get(j).getMotherNature());
     }
     @Test
     public void testCheckIsland(){
         Game game = new Game(3, true);
-        Game.islands.get(0).setTower(true);
-        Game.islands.get(0).setColorTower(ColorTower.BLACK);
-        Game.islands.get(1).setTower(true);
-        Game.islands.get(1).setColorTower(ColorTower.BLACK);
-        Game.islands.get(2).setTower(true);
-        Game.islands.get(2).setColorTower(ColorTower.BLACK);
+        game.islands.get(0).setTower(true);
+        game.islands.get(0).setColorTower(ColorTower.BLACK);
+        game.islands.get(1).setTower(true);
+        game.islands.get(1).setColorTower(ColorTower.BLACK);
+        game.islands.get(2).setTower(true);
+        game.islands.get(2).setColorTower(ColorTower.BLACK);
         assertTrue(Game.checkIsland(1, 0));
         assertTrue(Game.checkIsland(1, 2));
     }
     @Test
     public void testUnifyIsland(){
         Game game = new Game(4, true);
-        System.out.println(Game.islands.size());
-        Game.islands.get(0).setTower(true);
-        Game.islands.get(0).setColorTower(ColorTower.BLACK);
-        Game.islands.get(1).setTower(true);
-        Game.islands.get(1).setColorTower(ColorTower.BLACK);
-        Game.islands.get(2).setTower(true);
-        Game.islands.get(2).setColorTower(ColorTower.BLACK);
-        Game.unifyIsland(1);
-        System.out.println(Game.islands.size());
-        assertEquals(3, Game.islands.get(0).getTotIsland());
+        System.out.println(game.islands.size());
+        game.islands.get(0).setTower(true);
+        game.islands.get(0).setColorTower(ColorTower.BLACK);
+        game.islands.get(1).setTower(true);
+        game.islands.get(1).setColorTower(ColorTower.BLACK);
+        game.islands.get(2).setTower(true);
+        game.islands.get(2).setColorTower(ColorTower.BLACK);
+        game.unifyIsland(1);
+        System.out.println(game.islands.size());
+        assertEquals(3, game.islands.get(0).getTotIsland());
 
     }
 
@@ -87,19 +87,19 @@ public class GameTest {
         Game.newPlayer(nick1, game);
         Game.newPlayer(nick2, game);
         Game.newPlayer(nick3, game);
-        Game.players.get(0).towerSpace.colorTower = ColorTower.BLACK;
+        game.players.get(0).towerSpace.colorTower = ColorTower.BLACK;
         ProfTable.setGreenProf(0);
         ProfTable.setRedProf(0);
         ProfTable.setYellowProf(1);
         ProfTable.setPinkProf(2);
         ProfTable.setBlueProf(-1);
-        Game.islands.get(0).setGreenPawn(3);
-        Game.islands.get(0).setRedPawn(2);
-        Game.islands.get(0).setYellowPawn(4);
-        Game.islands.get(0).setPinkPawn(3);
-        Game.islands.get(0).setBluePawn(0);
-        Game.topInfluence(Game.islands.get(0), game);
-        assertEquals(ColorTower.BLACK, Game.islands.get(0).getColorTower());
+        game.islands.get(0).setGreenPawn(3);
+        game.islands.get(0).setRedPawn(2);
+        game.islands.get(0).setYellowPawn(4);
+        game.islands.get(0).setPinkPawn(3);
+        game.islands.get(0).setBluePawn(0);
+        Game.topInfluence(game.islands.get(0), game);
+        assertEquals(ColorTower.BLACK, game.islands.get(0).getColorTower());
     }
 
     @Test
@@ -111,11 +111,11 @@ public class GameTest {
         Game.newPlayer(nick1, game);
         Game.newPlayer(nick2, game);
         Game.newPlayer(nick3, game);
-        Game.players.get(0).diningRoom.setNumGreen(3);
-        Game.players.get(0).diningRoom.setNumYellow(2);
-        Game.players.get(1).diningRoom.setNumGreen(2);
-        Game.players.get(1).diningRoom.setNumBlue(2);
-        Game.players.get(2).diningRoom.setNumPink(1);
+        game.players.get(0).diningRoom.setNumGreen(3);
+        game.players.get(0).diningRoom.setNumYellow(2);
+        game.players.get(1).diningRoom.setNumGreen(2);
+        game.players.get(1).diningRoom.setNumBlue(2);
+        game.players.get(2).diningRoom.setNumPink(1);
         game.moveProf();
         assertEquals(0, ProfTable.getGreenProf());
         assertEquals(-1, ProfTable.getRedProf());
@@ -130,8 +130,8 @@ public class GameTest {
         for(i=0; i < game.getTotPlayer(); i++){
             Game.newPlayer("Franco", game);
         }
-        assertEquals(4, Game.players.size());
-        assertEquals(10, Game.players.get(0).deckAssistant.size());
+        assertEquals(4, game.players.size());
+        assertEquals(10, game.players.get(0).deckAssistant.size());
     }
     @Test
     public void testSetCharacterCard(){
@@ -139,7 +139,7 @@ public class GameTest {
         game.setCharacterCards(game);
         int i;
         for(i=0; i<3; i++)
-            System.out.println(Game.characterCards.get(i).useEffect);
-        assertEquals(3, Game.characterCards.size());
+            System.out.println(game.characterCards.get(i).useEffect);
+        assertEquals(3, game.characterCards.size());
     }
 }
