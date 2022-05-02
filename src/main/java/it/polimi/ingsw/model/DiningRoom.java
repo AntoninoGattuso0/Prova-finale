@@ -182,7 +182,7 @@ public class DiningRoom {
             }
         }
     }
-    public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player, Game game) {//le sposta da dining all'entrance
+    public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player, Game game, Entrance entrance) {//le sposta da dining all'entrance
         int j; //variabile che serve a iterare dentro le righe della sala
         if (Objects.equals(colorPawn.toString(), game.m.get(0)) && player.diningRoom.getNumGreen() > 0) {
             for (j = 9; j > -1; j--) {
