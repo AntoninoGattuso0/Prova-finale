@@ -29,7 +29,7 @@ public class Player {
             //collegamento a tower, dining and entrance
             this.entrance = new Entrance(game);
             this.diningRoom = new DiningRoom();
-            this.towerSpace = new TowerSpace();
+            this.towerSpace = new TowerSpace(game);
     }
     public AssistantCard getCurrentAssistant() {
         return currentAssistant;

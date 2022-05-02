@@ -95,8 +95,6 @@ public class Antonio extends UseEffect{
             System.out.println("errore colore non presente in entrata");
         }
         if (numPawnAntonio == 3) {
-            System.out.println(refillPawn.size());
-            System.out.println(game.studentBag.getNum());
             if (game.studentBag.getNum() > 0 && refillPawn.size() > 0) {
                 int random = rnd.nextInt(refillPawn.size());
                 if (Objects.equals(refillPawn.get(random), "GREEN")) {
@@ -142,8 +140,15 @@ public class Antonio extends UseEffect{
                     }
                 }
             }
-            coinPrice++;
+            setCoinPrice(getCoinPrice()+1);
         }
+    }
+
+    public int getCoinPrice() {
+        return coinPrice;
+    }
+    public void setCoinPrice(int coinPrice) {
+        this.coinPrice = coinPrice;
     }
     public int getBluePawn() {
         return bluePawn;
