@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class EntranceTest {
     @Test
@@ -21,7 +21,6 @@ class EntranceTest {
         System.out.println("Pink Pawns in entrance: " + game.players.get(0).entrance.getPinkPawn());
         System.out.println("Blue Pawns in entrance: " + game.players.get(0).entrance.getBluePawn());
 
-        //posso togliere dalla 23 a 28
         System.out.println("Player1: ");
         System.out.println("Green Pawns in entrance: " + game.players.get(1).entrance.getGreenPawn());
         System.out.println("Red Pawns in entrance: " + game.players.get(1).entrance.getRedPawn());
@@ -31,6 +30,27 @@ class EntranceTest {
         assertEquals(7, game.players.get(0).entrance.getGreenPawn() + game.players.get(0).entrance.getRedPawn() + game.players.get(0).entrance.getYellowPawn() + game.players.get(0).entrance.getPinkPawn() + game.players.get(0).entrance.getBluePawn());
         assertEquals(106, game.studentBag.getNum());
     }
+
+    @Test
+    public void TestStartNumPawn(){
+        Game game3 = new Game(2, true);
+        game3.newPlayer("Player0", game3);
+        game3.newPlayer("Player1", game3);
+        game3.players.get(0).entrance.startNumPawn(game3);
+        assertEquals(7, game3.players.get(0).entrance.getNumPawn());
+    }
+
+    @Test
+    public void TestCheckNum(){
+        Game game5 = new Game(2, true);
+        game5.newPlayer("Player0", game5);
+        game5.newPlayer("Player1", game5);
+        game5.players.get(0).entrance.setNumPawn(5);
+        assertTrue(game5.players.get(0).entrance.checkNum(game5));
+        game5.players.get(0).entrance.setNumPawn(3);
+        assertFalse(game5.players.get(0).entrance.checkNum(game5));
+    }
+
     @Test
     public void testMovePawnToIsland(){
         Game game1= new Game(3,true);
@@ -52,26 +72,38 @@ class EntranceTest {
             System.out.println("Yellow Pawns on the 3 island: " + game1.islands.get(2).getYellowPawn());
         }
 
+    }
 
-    }
+
     @Test
-    public void TestStartNumPawn(){
-        Game game3 = new Game(2, true);
-        game3.newPlayer("Player0", game3);
-        game3.newPlayer("Player1", game3);
-        game3.players.get(0).entrance.startNumPawn(game3);
-        assertEquals(7, game3.players.get(0).entrance.getNumPawn());
+    public void testMoveToIsland(){
+        Game game4 = new Game(2, true);
+        game4.newPlayer("Player0", game4);
+        game4.newPlayer("Player1", game4);
+        ArrayList<ColorPawn> colorPawn = new ArrayList<>(3);
+        colorPawn.add(ColorPawn.GREEN);
+        colorPawn.add(ColorPawn.GREEN);
+        colorPawn.add(ColorPawn.RED);
+        game4.islands.get(4).setRedPawn(3);
+        game4.islands.get(4).setGreenPawn(0);
+        int n = 3;
+        game4.players.get(1).entrance.moveToIsland(n, colorPawn, game4.islands.get(4), game4);
+        assertEquals(4, game4.islands.get(4).getRedPawn());
+        assertEquals(2, game4.islands.get(4).getGreenPawn());
     }
+
     @Test
     public void testChooseCloud(){
         Game game2 = new Game(2, true);
         game2.newPlayer("Player0", game2);
         game2.newPlayer("Player1", game2);
         game2.players.get(0).entrance.setNumPawn(4);
+        game2.players.get(0).entrance.setPinkPawn(2);
+        game2.clouds.get(0).setPinkPawn(1);
         game2.players.get(0).entrance.chooseCloud(game2.clouds.get(0), game2);
         assertEquals(7, game2.players.get(0).entrance.getNumPawn());
-
-
+        assertEquals(3, game2.players.get(0).entrance.getPinkPawn()):
+        assertEquals(0, game2.clouds.get(0).getNumPawn());
+        assertEquals(0, game2.clouds.get(0).getPinkPawn());
     }
-
 }
