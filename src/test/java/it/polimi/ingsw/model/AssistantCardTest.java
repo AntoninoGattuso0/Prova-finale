@@ -12,11 +12,11 @@ class AssistantCardTest {
         Game.newPlayer("a", game);
         Game.newPlayer("b", game);
         Game.newPlayer("c", game);
-        for (j = 0; j < Game.totPlayer; j++) {
+        for (j = 0; j < game.totPlayer; j++) {
             for (i = 0; i < 10; i++)
-                assertEquals(Game.players.get(j).deckAssistant.get(i).getCardValue(), Game.players.get(0).deckAssistant.get(i).getCardValue());
+                assertEquals(game.players.get(j).deckAssistant.get(i).getCardValue(), game.players.get(0).deckAssistant.get(i).getCardValue());
             for (i = 0; i < 10; i++)
-                assertEquals(Game.players.get(j).deckAssistant.get(i).getStep(), Game.players.get(0).deckAssistant.get(i).getStep());
+                assertEquals(game.players.get(j).deckAssistant.get(i).getStep(), game.players.get(0).deckAssistant.get(i).getStep());
         }
     }
 }
