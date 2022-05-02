@@ -12,9 +12,9 @@ public class Lancillotto extends UseEffect{
         int j, k, n, color, max;
         boolean notunique = false;
         ArrayList<Integer> influence = new ArrayList<>();
-        for(i=0; i<Game.totPlayer; i++) influence.add(0);
+        for(i=0; i<game.totPlayer; i++) influence.add(0);
         for(color=0; color<5; color++) {
-            if(Game.m.get(color).equals(colorPawn.get(0).toString())) color++;
+            if(game.m.get(color).equals(colorPawn.get(0).toString())) color++;
             n = game.profTable.checkProf(color);
             if(color==0 && n!=-1) influence.set(n, influence.get(n) + island.getGreenPawn());
             else if(color==1 && n!=-1) influence.set(n, influence.get(n) + island.getRedPawn());
@@ -22,27 +22,27 @@ public class Lancillotto extends UseEffect{
             else if(color==3 && n!=-1)influence.set(n, influence.get(n) + island.getPinkPawn());
             else if(color==4 && n!=-1)influence.set(n, influence.get(n) + island.getBluePawn());
         }
-        if(Game.totPlayer==4){
-            for(i=1; Game.players.get(i).towerSpace.colorTower == Game.players.get(0).towerSpace.colorTower; i++);
+        if(game.totPlayer==4){
+            for(i=1; game.players.get(i).towerSpace.colorTower == game.players.get(0).towerSpace.colorTower; i++);
             influence.set(0, influence.get(0) + influence.get(i));//ho tutte le pedine di una squadra sommate al player 0
-            for(j=1; j<Game.totPlayer && j==i; j++);
-            for(k=2; k<Game.totPlayer && (k==i || k==j); k++);
+            for(j=1; j<game.totPlayer && j==i; j++);
+            for(k=2; k<game.totPlayer && (k==i || k==j); k++);
             influence.set(j, influence.get(j) + influence.get(k));//sommo tutte le pedine dell'altra squadra all'indirizzo j
             influence.set(i, 0);
             influence.set(k, 0);
         }
-        for(i=0; i<Game.totPlayer; i++){
-            if(island.getTower() && island.getColorTower() == Game.players.get(i).towerSpace.colorTower)
+        for(i=0; i<game.totPlayer; i++){
+            if(island.getTower() && island.getColorTower() == game.players.get(i).towerSpace.colorTower)
                 influence.set(i, influence.get(i) + island.getTotIsland());
         }
         max = Collections.max(influence);
         for(i=0; i<influence.size() && !notunique;i++){
             for(j=i+1; j<influence.size() && !notunique; j++){
-                if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && Game.players.get(i).towerSpace.colorTower != Game.players.get(j).towerSpace.colorTower) notunique = true;
+                if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && game.players.get(i).towerSpace.colorTower != game.players.get(j).towerSpace.colorTower) notunique = true;
             }
         }
-        if(!notunique) island.setColorTower(Game.players.get(influence.indexOf(max)).towerSpace.colorTower);
-        Game.unifyIsland(Game.islands.indexOf(island));
+        if(!notunique) island.setColorTower(game.players.get(influence.indexOf(max)).towerSpace.colorTower);
+        Game.unifyIsland(game.islands.indexOf(island));
         coinPrice++;
     }
 }
