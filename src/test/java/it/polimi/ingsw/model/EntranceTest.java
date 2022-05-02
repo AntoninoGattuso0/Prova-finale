@@ -102,7 +102,7 @@ class EntranceTest {
         game2.clouds.get(0).setPinkPawn(1);
         game2.players.get(0).entrance.chooseCloud(game2.clouds.get(0), game2);
         assertEquals(7, game2.players.get(0).entrance.getNumPawn());
-        assertEquals(3, game2.players.get(0).entrance.getPinkPawn()):
+        assertEquals(3, game2.players.get(0).entrance.getPinkPawn());
         assertEquals(0, game2.clouds.get(0).getNumPawn());
         assertEquals(0, game2.clouds.get(0).getPinkPawn());
     }
