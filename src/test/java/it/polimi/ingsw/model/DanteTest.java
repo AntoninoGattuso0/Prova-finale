@@ -16,10 +16,11 @@ class DanteTest {
     Game.newPlayer("a",game);
     Game.newPlayer("b",game);
     Game.newPlayer("c",game);
-    Game.players.get(0).useAssistant(Game.players.get(0),Game.players.get(0).deckAssistant.get(2));
+    game.players.get(0).useAssistant(game.players.get(0),game.players.get(0).deckAssistant.get(2));
+    System.out.println(game.players.get(0).deckAssistant.get(2).getStep());
     CharacterCard characterCard=new CharacterCard(dante);
-    characterCard.useEffect.useEffect(game,i,Game.islands.get(0),Game.players.get(0),colorPawns);
-    assertEquals(3,Game.players.get(0).deckAssistant.get(2).getStep());
+    characterCard.useEffect.useEffect(game,i,game.islands.get(0),game.players.get(0),colorPawns);
+    assertEquals(3,game.players.get(0).deckAssistant.get(2).getStep());
 }
 
 }
