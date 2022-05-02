@@ -4,6 +4,7 @@ public class TowerSpace {
     private int numTower;
     public TowerSpace(Game game){
         int i=Game.players.size();
+        setNumTower(0);
         if(Game.totPlayer==2||Game.totPlayer==3) {
             if (i == 0) {
                 colorTower = ColorTower.WHITE;
@@ -18,10 +19,10 @@ public class TowerSpace {
         }else{
                 if (i == 0||i==2) {
                     colorTower = ColorTower.WHITE;
-                    setNumTowerIniziale();
+                    if(i == 0) setNumTowerIniziale();
                 } else if (i == 1||i==3) {
                     colorTower = ColorTower.BLACK;
-                    setNumTowerIniziale();
+                    if(i == 1) setNumTowerIniziale();
                 }
             }
         }
