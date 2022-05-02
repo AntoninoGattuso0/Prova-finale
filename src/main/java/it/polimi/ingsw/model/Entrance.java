@@ -164,8 +164,8 @@ public class Entrance {
                 }
         }
     }
-    public void chooseCloud (Cloud cloud){
-        if(cloud.getNumPawn()!=0 && !checkNum()){      //utile o no il controllo di numPawn? (controller)
+    public void chooseCloud (Cloud cloud, Game game){
+        if(cloud.getNumPawn()!=0 && !checkNum(game)){      //utile o no il controllo di numPawn? (controller)
             setGreenPawn(getGreenPawn() + cloud.getGreenPawn());
             setRedPawn(getRedPawn() + cloud.getRedPawn());
             setYellowPawn(getYellowPawn() + cloud.getYellowPawn());
