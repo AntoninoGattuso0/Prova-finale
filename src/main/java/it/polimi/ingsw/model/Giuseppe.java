@@ -17,7 +17,7 @@ public class Giuseppe extends UseEffect{
         this.coinPrice++;
     }
 
-    public Giuseppe(StudentBag studentBag){
+    public Giuseppe(Game game){
         coinPrice=1;
         nPawn = 0;
         numGreenPawn = 0;
@@ -26,7 +26,7 @@ public class Giuseppe extends UseEffect{
         numPinkPawn=0;
         numBluePawn=0;
         Random rdm = new Random();
-        ArrayList<String> refillCharacterCard = Game.createArrayPawn(studentBag);
+        ArrayList<String> refillCharacterCard = Game.createArrayPawn(game.studentBag);
         for(int i = 0; i < 6; i++){
             int random = rdm.nextInt(refillCharacterCard.size());
             if(Objects.equals(refillCharacterCard.get(random),Game.m.get(0))) {
