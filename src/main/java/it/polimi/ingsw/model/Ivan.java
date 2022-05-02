@@ -46,7 +46,7 @@ public class Ivan extends UseEffect{
                 if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && game.players.get(i).towerSpace.colorTower != Game.players.get(j).towerSpace.colorTower) notunique = true;
             }
         }
-        if(!notunique) island.setColorTower(Game.glayers.get(influence.indexOf(max)).towerSpace.colorTower);
+        if(!notunique) island.setColorTower(game.players.get(influence.indexOf(max)).towerSpace.colorTower);
         Game.unifyIsland(game.islands.indexOf(island));
         setCoinPrice();
     }
