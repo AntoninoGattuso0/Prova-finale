@@ -58,9 +58,7 @@ public class Island {
     public int getBluePawn() {
         return bluePawn;
     }
-    public void setTower(boolean isTower){
-        this.isTower = isTower;
-    }
+    public void setTower(boolean isTower){this.isTower = isTower;}
     public boolean getTower(){
         return isTower;
     }

@@ -2,10 +2,9 @@ package it.polimi.ingsw.model;
 
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LancillottoTest {
     @Test
@@ -35,7 +34,7 @@ class LancillottoTest {
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(1);
         colorPawn.add(ColorPawn.GREEN);
         card1.useEffect.useEffect(game, 2,Game.islands.get(0),Game.players.get(0),colorPawn);
-        assertEquals(ColorTower.WHITE, Game.islands.get(0).getColorTower());
+        assertEquals(ColorTower.BLACK, Game.islands.get(0).getColorTower());
     }
 
 }
