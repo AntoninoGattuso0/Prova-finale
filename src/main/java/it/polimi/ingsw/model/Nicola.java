@@ -42,7 +42,6 @@ public class Nicola extends UseEffect {
                 if (studentBag.getBlueNum() == 0) cards.remove(random);
             }
         }
-        coinPrice = 2;
     }
     public static void setGreenPawn(int i) {
         greenPawn = i;
