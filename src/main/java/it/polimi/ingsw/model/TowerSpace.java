@@ -23,6 +23,7 @@ public class TowerSpace {
                 } else if (i == 1||i==3) {
                     colorTower = ColorTower.BLACK;
                     if(i == 1) setNumTowerIniziale(game);
+                    cioa
                 }
             }
         }
