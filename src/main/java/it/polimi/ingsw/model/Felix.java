@@ -3,6 +3,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 public class Felix extends UseEffect{
     private int coinPrice;
+
+    public int getCoinPrice(){
+        return coinPrice;
+    }
+
+    public void setCoinPrice(){
+        this.coinPrice++;
+    }
+
     Felix(){
         coinPrice=3;
     }
@@ -37,6 +46,6 @@ public class Felix extends UseEffect{
         }
         if(!notunique) island.setColorTower(Game.players.get(influence.indexOf(max)).towerSpace.colorTower);
         Game.unifyIsland(Game.islands.indexOf(island));
-        coinPrice++;
+        setCoinPrice();
     }
 }

@@ -7,6 +7,10 @@ public class Omnia extends UseEffect{
     Omnia(){
         coinPrice=3;
     }
+    
+    public void setCoinPrice(int coinPrice){this.coinPrice = coinPrice;}
+    public int getCoinPrice(){return coinPrice;}
+
     public void useEffect(Game game, int s, Island island, Player player, ArrayList<ColorPawn> colorPawn){
         int i, j;
         for(i=0; i<3; i++){
