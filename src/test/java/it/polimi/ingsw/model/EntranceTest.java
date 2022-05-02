@@ -68,7 +68,7 @@ class EntranceTest {
         game2.newPlayer("Player0", game2);
         game2.newPlayer("Player1", game2);
         game2.players.get(0).entrance.setNumPawn(4);
-        game2.players.get(0).entrance.chooseCloud(game2.clouds.get(0));
+        game2.players.get(0).entrance.chooseCloud(game2.clouds.get(0), game2);
         assertEquals(7, game2.players.get(0).entrance.getNumPawn());
 
 
