@@ -75,6 +75,9 @@ public class Nicola extends UseEffect {
         return bluePawn;
     }
 
+    public void setCoinPrice(int coinPrice){this.coinPrice = coinPrice;}
+    public int getCoinPrice(){return coinPrice;}
+
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
         int j; //variabile che serve a iterare dentro le righe della sala
         if (colorPawn.get(0).toString().equals(Game.m.get(0))) {

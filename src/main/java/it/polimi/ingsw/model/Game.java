@@ -1,15 +1,15 @@
 package it.polimi.ingsw.model;
 import java.util.*;
 public class Game {
-    protected static ArrayList<Player> players = new ArrayList<>();
-    protected static int totPlayer;
+    protected ArrayList<Player> players = new ArrayList<>();
+    protected int totPlayer;
     protected ArrayList<Cloud> clouds;
     protected ProfTable profTable;
-    protected static ArrayList<Island> islands = new ArrayList<>();
-    protected static boolean isExpert;
-    protected static ArrayList<CharacterCard> cards = new ArrayList<>(); //cambiato in arraylist;
-    protected static ArrayList<CharacterCard> characterCards = new ArrayList<>(3);//insieme dei 3 characters usati
-    protected static Map<Integer, String> m = new HashMap<>();
+    protected ArrayList<Island> islands = new ArrayList<>();
+    protected boolean isExpert;
+    protected ArrayList<CharacterCard> cards = new ArrayList<>(); //cambiato in arraylist;
+    protected ArrayList<CharacterCard> characterCards = new ArrayList<>(3);//insieme dei 3 characters usati
+    protected Map<Integer, String> m = new HashMap<>();
     protected StudentBag studentBag;
 
     public void setTotPlayer(int i) {

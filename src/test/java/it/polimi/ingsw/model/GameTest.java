@@ -1,5 +1,6 @@
 package it.polimi.ingsw.model;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import java.io.Console;
@@ -9,6 +10,7 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
+
     @Test
     public void testGame(){
         Game game = new Game(4, true);

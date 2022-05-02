@@ -6,6 +6,8 @@ public class Lancillotto extends UseEffect{
     public Lancillotto(){
         coinPrice=3;
     }
+    public void setCoinPrice(int coinPrice){this.coinPrice = coinPrice;}
+    public int getCoinPrice(){return coinPrice;}
     public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){//(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn)
         int j, k, n, color, max;
         boolean notunique = false;
