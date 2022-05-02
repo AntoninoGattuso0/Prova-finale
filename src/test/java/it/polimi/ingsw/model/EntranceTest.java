@@ -41,7 +41,7 @@ class EntranceTest {
         int s = game1.islands.get(2).getYellowPawn();
         System.out.println("Yellow Pawns in player0 entrance: " + game1.players.get(0).entrance.getYellowPawn());
         System.out.println("Yellow Pawns on the 3 island: " + game1.islands.get(2).getYellowPawn());
-        boolean minPawn =  game1.players.get(0).entrance.checkNum();
+        boolean minPawn =  game1.players.get(0).entrance.checkNum(game1);
         if(k > 0 && minPawn){
             ArrayList<ColorPawn> colorPawn = new ArrayList<>(1);
             colorPawn.add(ColorPawn.YELLOW);
