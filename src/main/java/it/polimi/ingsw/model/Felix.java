@@ -45,7 +45,7 @@ public class Felix extends UseEffect{
             }
         }
         if(!notunique) island.setColorTower(game.players.get(influence.indexOf(max)).towerSpace.colorTower);
-        Game.unifyIsland(game.islands.indexOf(island));
+        Game.unifyIsland(game.islands.indexOf(island), game);
         setCoinPrice();
     }
 }
