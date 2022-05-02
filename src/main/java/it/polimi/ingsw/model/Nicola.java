@@ -9,7 +9,7 @@ public class Nicola extends UseEffect {
     private static int yellowPawn;
     private static int pinkPawn;
     private static int bluePawn;
-    Nicola(StudentBag studentBag) {
+    Nicola(StudentBag studentBag, Game game) {
         coinPrice = 2;
         Random rnd = new Random();
         ArrayList<String> cards = createArrayPawn(studentBag);
