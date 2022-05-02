@@ -45,7 +45,7 @@ public class Game {
         int n = rnd.nextInt(12);
         Island island = islands.get(n);
         island.setMotherNature(true);
-        islands.set(n, island);
+        islands.set(n, island);lol
 //randomizza pedine per ogni isola iniziale
         int g = 2;
         int r = 2;
