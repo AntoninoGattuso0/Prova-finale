@@ -10,6 +10,7 @@ class DanteTest {
 @Test
     public void TestUseEffectDante(){
     Game game= new Game(3,true);
+    game.start(game);
     Dante dante=new Dante();
     int i=0;
     ArrayList<ColorPawn> colorPawns= new ArrayList<>();
@@ -20,7 +21,7 @@ class DanteTest {
     System.out.println(game.players.get(0).deckAssistant.get(2).getStep());
     CharacterCard characterCard=new CharacterCard(dante);
     characterCard.useEffect.useEffect(game,i,game.islands.get(0),game.players.get(0),colorPawns);
-    assertEquals(3,game.players.get(0).deckAssistant.get(2).getStep());
+    assertEquals(4,game.players.get(0).getCurrentAssistant().getStep());
 }
 
 }

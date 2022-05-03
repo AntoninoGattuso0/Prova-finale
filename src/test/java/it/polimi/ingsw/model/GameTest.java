@@ -1,11 +1,8 @@
 package it.polimi.ingsw.model;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-import java.io.Console;
 import java.util.ArrayList;
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,6 +11,7 @@ public class GameTest {
     @Test
     public void testGame(){
         Game game = new Game(4, true);
+        game.start(game);
         assertEquals(4, game.getTotPlayer());
         assertEquals(12, game.islands.size());
         int i;
@@ -34,17 +32,19 @@ public class GameTest {
     @Test
     public void testCreateArrayPawn(){
         Game game = new Game(4, true);
+        game.start(game);
         ArrayList<String> a = Game.createArrayPawn(game.studentBag);
         System.out.println(a);
     }
     @Test
     public void testMoveMotherNature(){
         Game game = new Game(4, true);
+        game.start(game);
         int i;
         for(i=0; !game.islands.get(i).getMotherNature(); i++);
         assertTrue(game.islands.get(i).getMotherNature());
         int j = i+3;
-        if(j>game.islands.size())j = j - game.islands.size();
+        if(j>=game.islands.size()) j = j - game.islands.size();
         assertFalse(game.islands.get(j).getMotherNature());
         game.moveMotherNature(3);
         assertFalse(game.islands.get(i).getMotherNature());
@@ -53,18 +53,20 @@ public class GameTest {
     @Test
     public void testCheckIsland(){
         Game game = new Game(3, true);
+        game.start(game);
         game.islands.get(0).setTower(true);
         game.islands.get(0).setColorTower(ColorTower.BLACK);
         game.islands.get(1).setTower(true);
         game.islands.get(1).setColorTower(ColorTower.BLACK);
         game.islands.get(2).setTower(true);
         game.islands.get(2).setColorTower(ColorTower.BLACK);
-        assertTrue(Game.checkIsland(1, 0));
-        assertTrue(Game.checkIsland(1, 2));
+        assertTrue(Game.checkIsland(1, 0, game));
+        assertTrue(Game.checkIsland(1, 2, game));
     }
     @Test
     public void testUnifyIsland(){
         Game game = new Game(4, true);
+        game.start(game);
         System.out.println(game.islands.size());
         game.islands.get(0).setTower(true);
         game.islands.get(0).setColorTower(ColorTower.BLACK);
@@ -72,7 +74,7 @@ public class GameTest {
         game.islands.get(1).setColorTower(ColorTower.BLACK);
         game.islands.get(2).setTower(true);
         game.islands.get(2).setColorTower(ColorTower.BLACK);
-        game.unifyIsland(1);
+        Game.unifyIsland(1, game);
         System.out.println(game.islands.size());
         assertEquals(3, game.islands.get(0).getTotIsland());
 
@@ -81,6 +83,7 @@ public class GameTest {
     @Test
     public void testTopInfluence(){
         Game game = new Game(3, true);
+        game.start(game);
         String nick1 = "Franco";
         String nick2 = "Giovanni";
         String nick3 = "Raviolo";
@@ -105,6 +108,7 @@ public class GameTest {
     @Test
     public void testMoveProf(){
         Game game = new Game(3, true);
+        game.start(game);
         String nick1 = "Franco";
         String nick2 = "Giovanni";
         String nick3 = "Raviolo";
@@ -126,6 +130,7 @@ public class GameTest {
     @Test
     public void testNewPlayer(){
         Game game = new Game(4, true);
+        game.start(game);
         int i;
         for(i=0; i < game.getTotPlayer(); i++){
             Game.newPlayer("Franco", game);
@@ -136,6 +141,7 @@ public class GameTest {
     @Test
     public void testSetCharacterCard(){
         Game game = new Game(4, true);
+        game.start(game);
         game.setCharacterCards(game);
         int i;
         for(i=0; i<3; i++)

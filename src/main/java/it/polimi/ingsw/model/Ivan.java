@@ -13,7 +13,7 @@ public class Ivan extends UseEffect{
     Ivan(){
         coinPrice=2;
     }
-    public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn, Game game){//   public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){
+    public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){//   public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){
         int j, k, n, color, max;
         boolean notunique = false;
         ArrayList<Integer> influence = new ArrayList<>();
@@ -43,11 +43,11 @@ public class Ivan extends UseEffect{
         max = Collections.max(influence);
         for(i=0; i<influence.size() && !notunique;i++){
             for(j=i+1; j<influence.size() && !notunique; j++){
-                if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && game.players.get(i).towerSpace.colorTower != Game.players.get(j).towerSpace.colorTower) notunique = true;
+                if((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && game.players.get(i).towerSpace.colorTower != game.players.get(j).towerSpace.colorTower) notunique = true;
             }
         }
         if(!notunique) island.setColorTower(game.players.get(influence.indexOf(max)).towerSpace.colorTower);
-        Game.unifyIsland(game.islands.indexOf(island));
+        Game.unifyIsland(game.islands.indexOf(island), game);
         setCoinPrice();
     }
 }

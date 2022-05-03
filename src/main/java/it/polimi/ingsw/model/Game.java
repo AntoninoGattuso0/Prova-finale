@@ -24,6 +24,14 @@ public class Game {
     public Game(int giocatori, boolean expert) {
         totPlayer = giocatori;
         isExpert = expert;
+        //mappa che associa numeri a colori ("m.get(int)" per ricevere il colore in base al numero inserito in int)
+        m.put(0, "GREEN");
+        m.put(1, "RED");
+        m.put(2, "YELLOW");
+        m.put(3, "PINK");
+        m.put(4, "BLUE");
+    }
+    public void start (Game game){
         int i;
         studentBag = new StudentBag();
         profTable = new ProfTable();
@@ -32,12 +40,6 @@ public class Game {
             Island island = new Island();
             islands.add(island);
         }
-//mappa che associa numeri a colori ("m.get(int)" per ricevere il colore in base al numero inserito in int)
-        m.put(0, "GREEN");
-        m.put(1, "RED");
-        m.put(2, "YELLOW");
-        m.put(3, "PINK");
-        m.put(4, "BLUE");
 //randomizza madre natura
         Random rnd = new Random();
         int n = rnd.nextInt(12);
@@ -92,7 +94,7 @@ public class Game {
         clouds = new ArrayList<>();
         for (i = 0; i < totPlayer; i++) {
             Cloud cloud = new Cloud();
-            cloud.refillCloud(studentBag);
+            cloud.refillCloud(studentBag, game);
             clouds.add(cloud);
         }
     }
@@ -207,11 +209,11 @@ public class Game {
                 Dante dante = new Dante();
                 Ernesto ernesto = new Ernesto();
                 Felix felix = new Felix();
-                Giuseppe giuseppe = new Giuseppe(game.studentBag);
+                Giuseppe giuseppe = new Giuseppe(game.studentBag, game);
                 Ivan ivan = new Ivan();
                 Lancillotto lancillotto = new Lancillotto();
                 Maria maria = new Maria();
-                Nicola nicola = new Nicola(game.studentBag);
+                Nicola nicola = new Nicola(game.studentBag, game);
                 Omnia omnia = new Omnia();
 
                 Random rnd = new Random();

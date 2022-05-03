@@ -7,6 +7,14 @@ public class Cloud {
     private int yellowPawn;
     private int pinkPawn;
     private int bluePawn;
+    public Cloud(){
+        numPawn=0;
+        greenPawn=0;
+        redPawn=0;
+        yellowPawn=0;
+        pinkPawn=0;
+        bluePawn=0;
+    }
     public int getNumPawn() {
         return numPawn;
     }
@@ -43,14 +51,14 @@ public class Cloud {
     public void setNumPawn(int numPawn) {
         this.numPawn = numPawn;
     }
-    public void refillCloud(StudentBag studentBag) {
+    public void refillCloud(StudentBag studentBag, Game game) {
         int i;
         Random rnd = new Random();
         ArrayList<String> refillPawn = Game.createArrayPawn(studentBag);
         for (i = 0; i < getNumPawn(); i++) {
             if (studentBag.getNum() > 0) {
                 int random = rnd.nextInt(refillPawn.size());
-                String color = Game.m.get(random);
+                String color = game.m.get(random);
                 if (Objects.equals(refillPawn.get(random), "GREEN")) {
                         setGreenPawn(getGreenPawn() + 1);
                         setNumPawn(getNumPawn() + 1);

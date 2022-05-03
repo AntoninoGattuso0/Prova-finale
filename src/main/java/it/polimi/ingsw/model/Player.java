@@ -14,7 +14,7 @@ public class Player {
     public Player(String nick,Game game) {
         int j, k;
         setNickame(nick);
-        if (Game.isExpert) setNumCoin(1);
+        if (game.isExpert) setNumCoin(1);
         else setNumCoin(-1);
         //creazione assistenti
         k = 1;
@@ -54,11 +54,6 @@ public class Player {
     }
     // modifica UML: chooseCloud dovrebbe scegliere una nuvola  e spostare le pedine in entrance. quindi va fatto nella classe entrance.
     // public void chooseCloud(Cloud cloud){}//
-    public int useCharacter(CharacterCard card){ //se Character non è una classe, non posso passare niente in ignresso di quel tipo
-        int i;
-            i=Game.cards.indexOf(card);
-            return i;
-        }
     public void useAssistant(Player player,AssistantCard currentAssistant){
         int i;
         int contr=0;

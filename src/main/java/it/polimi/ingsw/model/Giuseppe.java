@@ -17,7 +17,7 @@ public class Giuseppe extends UseEffect{
         this.coinPrice++;
     }
 
-    public Giuseppe(Game game, StudentBag  studentBag){
+    public Giuseppe(StudentBag  studentBag, Game game){
         coinPrice=1;
         nPawn = 0;
         numGreenPawn = 0;

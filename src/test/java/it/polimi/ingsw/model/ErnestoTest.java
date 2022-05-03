@@ -10,6 +10,7 @@ public class ErnestoTest {
     @Test
     public void TestErnesto(){
         Game game = new Game(3, true);
+        game.start(game);
         String nick1 = "Rebeca";
         String nick2 = "Paolo";
         String nick3 = "Antonino";
@@ -23,6 +24,7 @@ public class ErnestoTest {
     @Test
     public void TestNotInfluence(){
         Game game = new Game(3, true);
+        game.start(game);
         String nick1 = "Rebeca";
         String nick2 = "Paolo";
         String nick3 = "Antonino";
@@ -33,7 +35,7 @@ public class ErnestoTest {
         CharacterCard characterCardErnesto = new CharacterCard(ernesto);
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(1);
         colorPawn.add(ColorPawn.GREEN);
-        characterCardErnesto.useEffect.useEffect(game, 2, Game.islands.get(0), Game.players.get(0), colorPawn);
+        characterCardErnesto.useEffect.useEffect(game, 2, game.islands.get(0), game.players.get(0), colorPawn);
         assertTrue(game.islands.get(0).getProhibited());
     }
 }
