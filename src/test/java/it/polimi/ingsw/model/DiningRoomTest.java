@@ -62,7 +62,7 @@ class DiningRoomTest {
         game.players.get(1).diningRoom.setNumPink(8);
         game.studentBag.setPinkNum(20);
         game.studentBag.setNum(98);
-        game.players.get(1).diningRoom.removePawnFromDiningRoom(ColorPawn.PINK,  game.players.get(1), game);
+        game.players.get(1).diningRoom.removePawnFromDiningRoom(ColorPawn.PINK, game.players.get(1), game);
         assertEquals(7, game.players.get(1).diningRoom.getNumPink());
         assertEquals(21, game.studentBag.getPinkNum());
         assertEquals(99, game.studentBag.getNum());

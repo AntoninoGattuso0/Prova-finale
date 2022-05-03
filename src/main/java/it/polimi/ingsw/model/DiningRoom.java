@@ -129,62 +129,54 @@ public class DiningRoom {
         int j; //variabile che serve a iterare dentro le righe della sala
         if (Objects.equals(colorPawn.toString(), game.m.get(0)) ) {
             for (j = 9; j > -1; j--) {
-                if (position[0][j] != 0) {
-                    position[0][j] = 0;
-                    player.diningRoom.setNumGreen(getNumGreen() - 1);
+                if (player.diningRoom.position[0][j] != 0) {
+                    player.diningRoom.position[0][j] = 0;
+                    player.diningRoom.setNumGreen(player.diningRoom.getNumGreen() - 1);
                     game.studentBag.setGreenNum(game.studentBag.getGreenNum() + 1);
                     game.studentBag.setNum(game.studentBag.getNum() + 1);
                     break;
                 }
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(1))) {
-            for (j = 9; j > -1; j--) {
-                for (j = 10; j > 0; j--) {
-                    if (position[1][j] != 0) {
-                        position[1][j] = 0;
-                        player.diningRoom.setNumRed(getNumRed() - 1);
+                for (j = 9; j > -1; j--) {
+                    if (player.diningRoom.position[1][j] != 0) {
+                        player.diningRoom.position[1][j] = 0;
+                        player.diningRoom.setNumRed(player.diningRoom.getNumRed() - 1);
                         game.studentBag.setRedNum(game.studentBag.getRedNum() + 1);
                         game.studentBag.setNum(game.studentBag.getNum() + 1);
                         break;
                     }
-                }
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(2))) {
-            for (j = 9; j > -1; j--) {
                 for (j = 9; j > -1; j--) {
-                    if (position[2][j] != 0) {
-                        position[2][j] = 0;
-                        player.diningRoom.setNumYellow(getNumYellow() - 1);
+                    if (player.diningRoom.position[2][j] != 0) {
+                        player.diningRoom.position[2][j] = 0;
+                        player.diningRoom.setNumYellow(player.diningRoom.getNumYellow() - 1);
                         game.studentBag.setYellowNum(game.studentBag.getYellowNum() + 1);
                         game.studentBag.setNum(game.studentBag.getNum() + 1);
                         break;
                     }
-                }
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(3))) {
-            for (j = 9; j > -1; j--) {
                 for (j = 9; j > -1; j--) {
-                    if (position[3][j] != 0) {
-                        position[3][j] = 0;
-                        player.diningRoom.setNumPink(getNumPink() - 1);
+                    if (player.diningRoom.position[3][j] != 0) {
+                        player.diningRoom.position[3][j] = 0;
+                        player.diningRoom.setNumPink(player.diningRoom.getNumPink() - 1);
                         game.studentBag.setPinkNum(game.studentBag.getPinkNum() + 1);
                         game.studentBag.setNum(game.studentBag.getNum() + 1);
                         break;
-                    }
                 }
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(4))) { //metodo toString restituisce la rappresentazione di stringa delle costanti enum
-            for (j = 9; j > -1; j--) {
                 for (j = 9; j > -1; j--) {
-                    if (position[4][j] != 0) {
-                        position[4][j] = 0;
-                        player.diningRoom.setNumBlue(getNumBlue() - 1);
+                    if (player.diningRoom.position[4][j] != 0) {
+                        player.diningRoom.position[4][j] = 0;
+                        player.diningRoom.setNumBlue(player.diningRoom.getNumBlue() - 1);
                         game.studentBag.setBlueNum(game.studentBag.getBlueNum() + 1);
                         game.studentBag.setNum(game.studentBag.getNum() + 1);
                         break;
                     }
                 }
-            }
         }
     }
     public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player, Game game, Entrance entrance) {//le sposta da dining all'entrance
