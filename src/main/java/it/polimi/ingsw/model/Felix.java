@@ -13,10 +13,11 @@ public class Felix extends UseEffect{
     }
 
     Felix(){
-        coinPrice=3;
+        coinPrice = 3;
     }
+
     //UML: Cambio nome del metodo
-    public void useEffect(Game game, int num,Island island,Player player,ArrayList<ColorPawn> colorPawn){
+    public void useEffect(Game game, int num, Island island, Player player, ArrayList<ColorPawn> colorPawn){
         int i, j, k, n, color, max;
         boolean notunique = false;
         ArrayList<Integer> influence = new ArrayList<>();

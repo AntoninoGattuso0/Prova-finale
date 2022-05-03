@@ -10,6 +10,43 @@ public class Entrance {
     private int yellowPawn;
     private int redPawn;
 
+    public int getNumPawn(){
+        return numPawn;
+    }
+    public int getGreenPawn() {
+        return greenPawn;
+    }
+    public int getRedPawn(){
+        return redPawn;
+    }
+    public int getYellowPawn() {
+        return yellowPawn;
+    }
+    public int getPinkPawn() {
+        return pinkPawn;
+    }
+    public int getBluePawn() {
+        return bluePawn;
+    }
+    public void setNumPawn(int numPawn) {
+        this.numPawn = numPawn;
+    }
+    public void setGreenPawn(int greenPawn) {
+        this.greenPawn = greenPawn;
+    }
+    public void setRedPawn(int redPawn) {
+        this.redPawn = redPawn;
+    }
+    public void setYellowPawn(int yellowPawn) {
+        this.yellowPawn = yellowPawn;
+    }
+    public void setPinkPawn(int pinkPawn) {
+        this.pinkPawn = pinkPawn;
+    }
+    public void setBluePawn(int bluePawn) {
+        this.bluePawn = bluePawn;
+    }
+
     public Entrance(Game game){
        setGreenPawn(0);
        setBluePawn(0);
@@ -65,42 +102,7 @@ public class Entrance {
             }
         }
     }
-    public int getNumPawn(){
-        return numPawn;
-    }
-    public int getGreenPawn() {
-        return greenPawn;
-    }
-    public int getRedPawn(){
-        return redPawn;
-    }
-    public int getYellowPawn() {
-        return yellowPawn;
-    }
-    public int getPinkPawn() {
-        return pinkPawn;
-    }
-    public int getBluePawn() {
-        return bluePawn;
-    }
-    public void setNumPawn(int numPawn) {
-        this.numPawn = numPawn;
-    }
-    public void setGreenPawn(int greenPawn) {
-        this.greenPawn = greenPawn;
-    }
-    public void setRedPawn(int redPawn) {
-        this.redPawn = redPawn;
-    }
-    public void setYellowPawn(int yellowPawn) {
-        this.yellowPawn = yellowPawn;
-    }
-    public void setPinkPawn(int pinkPawn) {
-        this.pinkPawn = pinkPawn;
-    }
-    public void setBluePawn(int bluePawn) {
-        this.bluePawn = bluePawn;
-    }
+
     // modifiche all'UML:ho aggiunto setter per definire quante sono le pedine che devono esserci in Entrance
     //all'inizio del gioco e dopo che ho fatto refill da una nuvola
     public void startNumPawn(Game game){

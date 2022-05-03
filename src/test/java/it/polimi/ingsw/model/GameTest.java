@@ -14,6 +14,7 @@ public class GameTest {
     @Test
     public void testGame(){
         Game game = new Game(4, true);
+        game.start(game);
         assertEquals(4, game.getTotPlayer());
         assertEquals(12, game.islands.size());
         int i;
@@ -34,12 +35,14 @@ public class GameTest {
     @Test
     public void testCreateArrayPawn(){
         Game game = new Game(4, true);
+        game.start(game);
         ArrayList<String> a = Game.createArrayPawn(game.studentBag);
         System.out.println(a);
     }
     @Test
     public void testMoveMotherNature(){
         Game game = new Game(4, true);
+        game.start(game);
         int i;
         for(i=0; !game.islands.get(i).getMotherNature(); i++);
         assertTrue(game.islands.get(i).getMotherNature());
@@ -53,6 +56,7 @@ public class GameTest {
     @Test
     public void testCheckIsland(){
         Game game = new Game(3, true);
+        game.start(game);
         game.islands.get(0).setTower(true);
         game.islands.get(0).setColorTower(ColorTower.BLACK);
         game.islands.get(1).setTower(true);
@@ -65,6 +69,7 @@ public class GameTest {
     @Test
     public void testUnifyIsland(){
         Game game = new Game(4, true);
+        game.start(game);
         System.out.println(game.islands.size());
         game.islands.get(0).setTower(true);
         game.islands.get(0).setColorTower(ColorTower.BLACK);
@@ -81,6 +86,7 @@ public class GameTest {
     @Test
     public void testTopInfluence(){
         Game game = new Game(3, true);
+        game.start(game);
         String nick1 = "Franco";
         String nick2 = "Giovanni";
         String nick3 = "Raviolo";
@@ -105,6 +111,7 @@ public class GameTest {
     @Test
     public void testMoveProf(){
         Game game = new Game(3, true);
+        game.start(game);
         String nick1 = "Franco";
         String nick2 = "Giovanni";
         String nick3 = "Raviolo";
@@ -126,6 +133,7 @@ public class GameTest {
     @Test
     public void testNewPlayer(){
         Game game = new Game(4, true);
+        game.start(game);
         int i;
         for(i=0; i < game.getTotPlayer(); i++){
             Game.newPlayer("Franco", game);
@@ -136,6 +144,7 @@ public class GameTest {
     @Test
     public void testSetCharacterCard(){
         Game game = new Game(4, true);
+        game.start(game);
         game.setCharacterCards(game);
         int i;
         for(i=0; i<3; i++)
