@@ -83,12 +83,14 @@ class EntranceTest {
     public void testMoveToIsland(){
         Game game4 = new Game(2, true);
         game4.start(game4);
-        game4.newPlayer("Player0", game4);
-        game4.newPlayer("Player1", game4);
+        Game.newPlayer("Player0", game4);
+        Game.newPlayer("Player1", game4);
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(3);
         colorPawn.add(ColorPawn.GREEN);
         colorPawn.add(ColorPawn.GREEN);
         colorPawn.add(ColorPawn.RED);
+        game4.players.get(1).entrance.setGreenPawn(5);
+        game4.players.get(1).entrance.setRedPawn(2);
         game4.islands.get(4).setRedPawn(3);
         game4.islands.get(4).setGreenPawn(0);
         int n = 3;
