@@ -62,6 +62,8 @@ class DiningRoomTest {
         game.start(game);
         Game.newPlayer("Ezra", game);
         Game.newPlayer("Joshua", game);
+        game.players.get(1).entrance.setNumPawn(8);
+        game.players.get(1).entrance.setPinkPawn(8);
         for(i=0;i<8;i++) {
             game.players.get(1).diningRoom.addPawnToDiningRoom(ColorPawn.PINK, game.players.get(1), game);
         }

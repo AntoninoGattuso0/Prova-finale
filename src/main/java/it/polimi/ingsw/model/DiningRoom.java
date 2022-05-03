@@ -42,7 +42,13 @@ public class DiningRoom {
         this.numBlue = numBlue;
     }
 
-    DiningRoom() {
+     public DiningRoom() {
+        int i,j;
+        for(i=0;i<10;i++){
+            for(j=0;j<5;j++){
+                position[j][i]=0;
+            }
+        }
         numGreen = 0;
         numRed = 0;
         numYellow = 0;
