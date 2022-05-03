@@ -64,6 +64,7 @@ public class DiningRoom {
                     player.diningRoom.position[0][j] = 1;
                     player.diningRoom.setNumGreen(j+1);
                     player.entrance.setGreenPawn(player.entrance.getGreenPawn() - 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() - 1);
                     if (game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
                     break;
@@ -75,6 +76,7 @@ public class DiningRoom {
                     player.diningRoom.position[1][j] = 1;
                     player.diningRoom.setNumRed(j+1);
                     player.entrance.setRedPawn(player.entrance.getRedPawn() - 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() - 1);
                     if (game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
                     break;
@@ -86,6 +88,7 @@ public class DiningRoom {
                     player.diningRoom.position[2][j] = 1;
                     player.diningRoom.setNumYellow(j+1);
                     player.entrance.setYellowPawn(player.entrance.getYellowPawn() - 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() - 1);
                     if (game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
                     break;
@@ -97,6 +100,7 @@ public class DiningRoom {
                     player.diningRoom.position[3][j] = 1;
                     player.diningRoom.setNumPink(j+1);
                     player.entrance.setPinkPawn(player.entrance.getPinkPawn() - 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() - 1);
                     if (game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
                     break;
@@ -108,6 +112,7 @@ public class DiningRoom {
                     player.diningRoom.position[4][j] = 1;
                     player.diningRoom.setNumBlue(j+1);
                     player.entrance.setBluePawn(player.entrance.getBluePawn() - 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() - 1);
                     if (game.isExpert && ( j == 2 || j == 5 || j == 8))
                         player.setNumCoin(player.getNumCoin() + 1);
                     break;
