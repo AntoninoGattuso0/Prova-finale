@@ -12,6 +12,8 @@ public class Cloud {
         greenPawn=0;
         redPawn=0;
         yellowPawn=0;
+        pinkPawn=0;
+        bluePawn=0;
     }
     public int getNumPawn() {
         return numPawn;

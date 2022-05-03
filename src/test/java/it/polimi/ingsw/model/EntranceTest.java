@@ -111,7 +111,7 @@ class EntranceTest {
         game2.players.get(0).entrance.setYellowPawn(0);
         game2.players.get(0).entrance.setBluePawn(2);
         game2.players.get(0).entrance.setGreenPawn(0);
-        game2.clouds.get()
+        game2.clouds.get(0).setNumPawn(3);
         game2.clouds.get(0).setPinkPawn(1);
         game2.clouds.get(0).setBluePawn(1);
         game2.clouds.get(0).setGreenPawn(0);
