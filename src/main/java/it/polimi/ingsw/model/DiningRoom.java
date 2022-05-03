@@ -140,7 +140,6 @@ public class DiningRoom {
                     player.diningRoom.setNumGreen(player.diningRoom.getNumGreen() - 1);
                     game.studentBag.setGreenNum(game.studentBag.getGreenNum() + 1);
                     game.studentBag.setNum(game.studentBag.getNum() + 1);
-                    break;
                 }
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(1))) {
@@ -189,9 +188,9 @@ public class DiningRoom {
         int j; //variabile che serve a iterare dentro le righe della sala
         if (Objects.equals(colorPawn.toString(), game.m.get(0)) && player.diningRoom.getNumGreen() > 0) {
             for (j = 9; j > -1; j--) {
-                if (position[0][j] != 0) {
-                    position[0][j] = 0;
-                    player.diningRoom.setNumGreen(getNumGreen() - 1);
+                if (player.diningRoom.position[0][j] != 0) {
+                    player.diningRoom.position[0][j] = 0;
+                    player.diningRoom.setNumGreen(player.diningRoom.getNumGreen() - 1);
                     player.entrance.setGreenPawn(player.entrance.getGreenPawn() + 1);
                     player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
                     break;
@@ -199,9 +198,9 @@ public class DiningRoom {
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(1)) && player.diningRoom.getNumRed() > 0) {
             for (j = 9; j > -1; j--) {
-                if (position[1][j] != 0) {
-                    position[1][j] = 0;
-                    player.diningRoom.setNumRed(getNumRed() - 1);
+                if (player.diningRoom.position[1][j] != 0) {
+                    player.diningRoom.position[1][j] = 0;
+                    player.diningRoom.setNumRed(player.diningRoom.getNumRed() - 1);
                     player.entrance.setRedPawn(player.entrance.getRedPawn() + 1);
                     player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
                     break;
@@ -209,9 +208,9 @@ public class DiningRoom {
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(2)) && player.diningRoom.getNumYellow() > 0) {
             for (j = 9; j > -1; j--) {
-                if (position[2][j] != 0) {
-                    position[2][j] = 0;
-                    player.diningRoom.setNumYellow(getNumYellow() - 1);
+                if (player.diningRoom.position[2][j] != 0) {
+                    player.diningRoom.position[2][j] = 0;
+                    player.diningRoom.setNumYellow(player.diningRoom.getNumYellow() - 1);
                     player.entrance.setYellowPawn(player.entrance.getYellowPawn() + 1);
                     player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
                     break;
@@ -219,9 +218,9 @@ public class DiningRoom {
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(3))&& player.diningRoom.getNumPink() > 0) {
             for (j = 9; j > -1; j--) {
-                if (position[3][j] != 0) {
-                    position[3][j] = 0;
-                    player.diningRoom.setNumPink(getNumPink() - 1);
+                if (player.diningRoom.position[3][j] != 0) {
+                    player.diningRoom.position[3][j] = 0;
+                    player.diningRoom.setNumPink(player.diningRoom.getNumPink() - 1);
                     player.entrance.setPinkPawn(player.entrance.getPinkPawn() + 1);
                     player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
                     break;
@@ -229,9 +228,9 @@ public class DiningRoom {
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(4)) && player.diningRoom.getNumBlue() > 0) { //metodo toString restituisce la rappresentazione di stringa delle costanti enum
             for (j = 9; j > -1; j--) {
-                if (position[4][j] != 0) {
-                    position[4][j] = 0;
-                    player.diningRoom.setNumBlue(getNumBlue() - 1);
+                if (player.diningRoom.position[4][j] != 0) {
+                    player.diningRoom.position[4][j] = 0;
+                    player.diningRoom.setNumBlue(player.diningRoom.getNumBlue() - 1);
                     player.entrance.setBluePawn(player.entrance.getBluePawn() + 1);
                     player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
                     break;

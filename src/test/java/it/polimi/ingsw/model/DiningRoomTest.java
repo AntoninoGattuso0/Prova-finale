@@ -25,12 +25,11 @@ class DiningRoomTest {
         game.start(game);
         Game.newPlayer("Abner", game);
         Game.newPlayer("Tamar", game);
-        game.players.get(0).entrance.setNumPawn(7);
+        game.players.get(0).entrance.setNumPawn(4);
         game.players.get(0).entrance.setRedPawn(3);
-        game.players.get(0).diningRoom.setNumRed(2);
-        game.players.get(0).diningRoom.position[1][0] = 1;
-        game.players.get(0).diningRoom.position[1][1] = 1;
-        game.players.get(0).setNumCoin(4);
+        for(int i = 0; i < 2; i++){
+            game.players.get(0).diningRoom.addPawnToDiningRoom(ColorPawn.RED,  game.players.get(0), game);
+        }
         game.players.get(0).diningRoom.addPawnToDiningRoom(ColorPawn.RED,  game.players.get(0), game);
         assertEquals(3, game.players.get(0).diningRoom.getNumRed());
         assertEquals(2, game.players.get(0).entrance.getRedPawn());
