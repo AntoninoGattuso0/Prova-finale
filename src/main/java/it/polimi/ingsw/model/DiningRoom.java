@@ -151,7 +151,7 @@ public class DiningRoom {
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(2))) {
             for (j = 9; j > -1; j--) {
-                for (j = 10; j > 0; j--) {
+                for (j = 9; j > -1; j--) {
                     if (position[2][j] != 0) {
                         position[2][j] = 0;
                         setNumYellow(getNumYellow() - 1);

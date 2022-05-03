@@ -11,6 +11,7 @@ class MariaTest {
     @Test
     public void testUseEffectMaria(){
         Game game = new Game(4, true);
+        game.start(game);
         Game.newPlayer("Johnny", game);
         Game.newPlayer("Frank", game);
         Game.newPlayer("Sibilla", game);

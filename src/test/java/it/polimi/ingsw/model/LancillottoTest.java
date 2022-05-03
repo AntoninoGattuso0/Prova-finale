@@ -10,6 +10,7 @@ class LancillottoTest {
     @Test
     public void testLancillotto(){
         Game game = new Game(3, true);
+        game.start(game);
         String nick1 = "Franco";
         String nick2 = "Giovanni";
         String nick3 = "Raviolo";
@@ -17,8 +18,8 @@ class LancillottoTest {
         Game.newPlayer(nick2, game);
         Game.newPlayer(nick3, game);
         game.players.get(0).towerSpace.colorTower = ColorTower.BLACK;
-        game.players.get(1).towerSpace.colorTower = ColorTower.WHITE;
-        game.players.get(2).towerSpace.colorTower = ColorTower.GREY;
+        game.players.get(1).towerSpace.colorTower = ColorTower.BLACK;
+        game.players.get(2).towerSpace.colorTower = ColorTower.BLACK;
         ProfTable.setGreenProf(0);
         ProfTable.setRedProf(0);
         ProfTable.setYellowProf(1);
