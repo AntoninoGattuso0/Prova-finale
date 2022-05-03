@@ -1,4 +1,5 @@
 package it.polimi.ingsw.model;
+import java.util.ArrayList;
 import java.util.Objects;
 public class DiningRoom {
     //modifiche all'UML: array di array: in cui gli elementi sono 0 o 1;
@@ -9,13 +10,7 @@ public class DiningRoom {
     private int numYellow;
     private int numPink;
     private int numBlue;
-    DiningRoom() {
-        numGreen = 0;
-        numRed = 0;
-        numYellow = 0;
-        numPink = 0;
-        numBlue = 0;
-    }
+
     public int getNumGreen() {
         return numGreen;
     }
@@ -45,6 +40,14 @@ public class DiningRoom {
     }
     public void setNumBlue(int numBlue) {
         this.numBlue = numBlue;
+    }
+
+    DiningRoom() {
+        numGreen = 0;
+        numRed = 0;
+        numYellow = 0;
+        numPink = 0;
+        numBlue = 0;
     }
 
     public void addPawnToDiningRoom(ColorPawn colorPawn, Player player, Game game) {
@@ -106,17 +109,19 @@ public class DiningRoom {
             }
         }
     }
-    public void addPawn(int m, ColorPawn colorPawn, Player player, Game game) {
+    public void addPawn(int m, ArrayList<ColorPawn> colorPawn, Player player, Game game) {
         if ((game.totPlayer == 2 || game.totPlayer == 4) && (m > 0 && m < 4)) {
             while (m != 0) {
-                addPawnToDiningRoom(colorPawn, player, game);
+                addPawnToDiningRoom(colorPawn.get(m - 1), player, game);
                 m--;
+                colorPawn.remove(m);
             }
         }
         if (game.totPlayer == 3 && (m > 0 && m < 5)) {
             while (m != 0) {
-                addPawnToDiningRoom(colorPawn, player, game);
+                addPawnToDiningRoom(colorPawn.get(m - 1), player, game);
                 m--;
+                colorPawn.remove(m);
             }
         }
     }
@@ -190,6 +195,7 @@ public class DiningRoom {
                     position[0][j] = 0;
                     setNumGreen(getNumGreen() - 1);
                     player.entrance.setGreenPawn(player.entrance.getGreenPawn() + 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
                     break;
                 }
             }
@@ -199,6 +205,7 @@ public class DiningRoom {
                     position[0][j] = 0;
                     setNumRed(getNumRed() - 1);
                     player.entrance.setRedPawn(player.entrance.getRedPawn() + 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
                     break;
                 }
             }
@@ -208,6 +215,7 @@ public class DiningRoom {
                     position[0][j] = 0;
                     setNumYellow(getNumYellow() - 1);
                     player.entrance.setYellowPawn(player.entrance.getYellowPawn() + 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
                     break;
                 }
             }
@@ -217,6 +225,7 @@ public class DiningRoom {
                     position[0][j] = 0;
                     setNumPink(getNumPink() - 1);
                     player.entrance.setPinkPawn(player.entrance.getPinkPawn() + 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
                     break;
                 }
             }
@@ -226,6 +235,7 @@ public class DiningRoom {
                     position[0][j] = 0;
                     setNumBlue(getNumBlue() - 1);
                     player.entrance.setBluePawn(player.entrance.getBluePawn() + 1);
+                    player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
                     break;
                 }
             }

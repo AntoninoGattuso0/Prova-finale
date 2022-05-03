@@ -5,13 +5,7 @@ public class ProfTable {
     private static int yellowProf;
     private static int pinkProf;
     private static int blueProf;
-    public ProfTable(){
-        greenProf = -1;
-        redProf = -1;
-        yellowProf = -1;
-        pinkProf = -1;
-        blueProf = -1;
-    }
+
     public static int getGreenProf() {
         return greenProf;
     }
@@ -42,6 +36,15 @@ public class ProfTable {
     public static void setBlueProf(int i) {
         blueProf = i;
     }
+
+    public ProfTable(){
+        greenProf = -1;
+        redProf = -1;
+        yellowProf = -1;
+        pinkProf = -1;
+        blueProf = -1;
+    }
+
     //modifiche all'UML:metodo restituisce un int ovvero il numero del giocatore che possiede il professore
     public int checkProf(int color)  {
         if(color == 0) return greenProf;
@@ -51,4 +54,3 @@ public class ProfTable {
         else if(color == 4) return blueProf;
         else return -1;
         }
-}
