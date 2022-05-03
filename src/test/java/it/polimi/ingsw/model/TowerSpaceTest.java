@@ -14,7 +14,7 @@ public class TowerSpaceTest{
         assertEquals(8, game.players.get(0).towerSpace.getNumTower());
     }
 
-    @Test
+  /*  @Test
     public void TestTowerSpace(){
         Game game = new Game(2, true);
         game.start(game);
@@ -22,7 +22,7 @@ public class TowerSpaceTest{
         Game.newPlayer("Lucia", game);
         assertEquals(0,0 ); //ordinal
 
-    }
+    }*/
 
 
 
