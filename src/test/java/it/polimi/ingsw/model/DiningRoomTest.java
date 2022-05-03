@@ -55,17 +55,16 @@ class DiningRoomTest {
 
     @Test
     public void testRemovePawnFromDiningRoom(){
+        int i;
         Game game = new Game(2, true);
         game.start(game);
         Game.newPlayer("Ezra", game);
         Game.newPlayer("Joshua", game);
-        game.players.get(1).diningRoom.setNumPink(8);
-        game.studentBag.setPinkNum(20);
-        game.studentBag.setNum(98);
+        for(i=0;i<8;i++) {
+            game.players.get(1).diningRoom.addPawnToDiningRoom(ColorPawn.PINK, game.players.get(1), game);
+        }
         game.players.get(1).diningRoom.removePawnFromDiningRoom(ColorPawn.PINK, game.players.get(1), game);
         assertEquals(7, game.players.get(1).diningRoom.getNumPink());
-        assertEquals(21, game.studentBag.getPinkNum());
-        assertEquals(99, game.studentBag.getNum());
     }
     @Test
     public void testRemovePawnFromDiningRoom2(){
@@ -76,7 +75,7 @@ class DiningRoomTest {
         game.players.get(1).diningRoom.setNumPink(8);
         game.players.get(1).entrance.setPinkPawn(1);
         game.players.get(1).entrance.setNumPawn(4);
-        game.players.get(1).diningRoom.removePawnFromDiningRoom(ColorPawn.PINK,  game.players.get(1), game, game.players.get(1).entrance);
+        game.players.get(1).diningRoom.removePawnFromDiningRoomToEntrance(ColorPawn.PINK,  game.players.get(1), game);
         assertEquals(7, game.players.get(1).diningRoom.getNumPink());
         assertEquals(2, game.players.get(1).entrance.getPinkPawn());
         assertEquals(5, game.players.get(1).entrance.getNumPawn());
