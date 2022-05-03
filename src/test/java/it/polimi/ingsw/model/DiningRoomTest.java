@@ -31,7 +31,7 @@ class DiningRoomTest {
         game.players.get(0).diningRoom.position[1][0] = 1;
         game.players.get(0).diningRoom.position[1][1] = 1;
         game.players.get(0).setNumCoin(4);
-        game.players.get(0).diningRoom.addPawnToDiningRoom(ColorPawn.RED,  game.players.get(1), game);
+        game.players.get(0).diningRoom.addPawnToDiningRoom(ColorPawn.RED,  game.players.get(0), game);
         assertEquals(3, game.players.get(0).diningRoom.getNumRed());
         assertEquals(2, game.players.get(0).entrance.getRedPawn());
         assertEquals(5, game.players.get(0).getNumCoin());
