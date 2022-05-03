@@ -11,7 +11,7 @@ public class Maria extends UseEffect{
         int k;
         for(k=0; k<colorPawn.size(); k++)
             if(k<colorPawn.size()/2)
-                player.diningRoom.removePawnFromDiningRoom(colorPawn.get(k), player, game);
+                player.diningRoom.removePawnFromDiningRoomToEntrance(colorPawn.get(k), player, game);
             else
                 player.diningRoom.addPawnToDiningRoom(colorPawn.get(k), player, game);
         coinPrice++;
