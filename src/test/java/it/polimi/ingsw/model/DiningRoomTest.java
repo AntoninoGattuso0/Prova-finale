@@ -28,6 +28,8 @@ class DiningRoomTest {
         game.players.get(0).entrance.setNumPawn(7);
         game.players.get(0).entrance.setRedPawn(3);
         game.players.get(0).diningRoom.setNumRed(2);
+        game.players.get(0).diningRoom.position[1][0] = 1;
+        game.players.get(0).diningRoom.position[1][1] = 1;
         game.players.get(0).setNumCoin(4);
         game.players.get(0).diningRoom.addPawnToDiningRoom(ColorPawn.RED,  game.players.get(1), game);
         assertEquals(3, game.players.get(0).diningRoom.getNumRed());
