@@ -38,7 +38,7 @@ class DiningRoomTest {
 
     @Test
     public void testAddPawn(){
-        Game game = new Game(2, true);
+        Game game = new Game(2, true);-
         game.start(game);
         Game.newPlayer("Ezra", game);
         Game.newPlayer("Joshua", game);
