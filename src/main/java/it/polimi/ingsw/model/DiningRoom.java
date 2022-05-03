@@ -202,7 +202,7 @@ public class DiningRoom {
                 }
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(2)) && player.diningRoom.getNumYellow() > 0) {
-            for (j = 9; j > -1; j--) {-
+            for (j = 9; j > -1; j--) {
                 if (player.diningRoom.position[2][j] != 0) {
                     player.diningRoom.position[2][j] = 0;
                     player.diningRoom.setNumYellow(player.diningRoom.getNumYellow() - 1);
