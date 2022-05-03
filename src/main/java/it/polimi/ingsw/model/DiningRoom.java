@@ -120,20 +120,7 @@ public class DiningRoom {
             }
         }
     }
-    public void addPawn(int m, ArrayList<ColorPawn> colorPawn, Player player, Game game) {
-        if ((game.totPlayer == 2 || game.totPlayer == 4) && (m > 0 && m < 4)) {
-            while (m > 0) {
-                addPawnToDiningRoom(colorPawn.get(m - 1), player, game);
-                m--;
-            }
-        }
-        if (game.totPlayer == 3 && (m > 0 && m < 5)) {
-            while (m > 0) {
-                addPawnToDiningRoom(colorPawn.get(m - 1), player, game);
-                m--;
-            }
-        }
-    }
+
     public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player, Game game) { //le sposta da dining al sacchetto
         int j; //variabile che serve a iterare dentro le righe della sala
         if (Objects.equals(colorPawn.toString(), game.m.get(0)) ) {

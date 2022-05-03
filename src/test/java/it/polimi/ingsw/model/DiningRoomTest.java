@@ -36,25 +36,6 @@ class DiningRoomTest {
         assertEquals(5, game.players.get(0).getNumCoin());
     }
 
-    @Test
-    public void testAddPawn(){
-        Game game = new Game(2, true);
-        game.start(game);
-        Game.newPlayer("Ezra", game);
-        Game.newPlayer("Joshua", game);
-        game.players.get(1).entrance.setYellowPawn(1);
-        game.players.get(1).entrance.setBluePawn(3);
-        ArrayList<ColorPawn> colorPawn = new ArrayList<>();
-        colorPawn.add(ColorPawn.BLUE);
-        colorPawn.add(ColorPawn.YELLOW);
-        colorPawn.add(ColorPawn.BLUE);
-        game.players.get(1).diningRoom.setNumYellow(0);
-        game.players.get(1).diningRoom.setNumBlue(2);
-        int m = colorPawn.size();
-        game.players.get(1).diningRoom.addPawn(m, colorPawn, game.players.get(1), game);
-        assertEquals(1, game.players.get(1).diningRoom.getNumYellow());
-        assertEquals(4, game.players.get(1).diningRoom.getNumBlue());
-    }
 
     @Test
     public void testRemovePawnFromDiningRoom(){
