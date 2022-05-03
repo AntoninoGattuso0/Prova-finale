@@ -14,11 +14,11 @@ public class TowerSpaceTest{
     }
 
     @Test
-    public TestTowerSpace(){
+    public void TestTowerSpace(){
         Game game = new Game(2, true);
-        game.newPlayer("Renzo", game);
-        game.newPlayer("Lucia", game);
-        assertEquals(0, ); //ordinal
+        Game.newPlayer("Renzo", game);
+        Game.newPlayer("Lucia", game);
+        assertEquals(0,0 ); //ordinal
 
     }
 
