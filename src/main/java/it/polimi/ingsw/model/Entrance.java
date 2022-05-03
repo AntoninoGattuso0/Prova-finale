@@ -166,20 +166,20 @@ public class Entrance {
                 }
         }
     }
-    public void chooseCloud (Cloud cloud, Game game){
+    public void chooseCloud (Cloud cloud,Game game,Player player){
         if(cloud.getNumPawn()!=0 && !checkNum(game)){      //utile o no il controllo di numPawn? (controller)
-            setGreenPawn(getGreenPawn() + cloud.getGreenPawn());
-            setRedPawn(getRedPawn() + cloud.getRedPawn());
-            setYellowPawn(getYellowPawn() + cloud.getYellowPawn());
-            setPinkPawn(getPinkPawn() + cloud.getPinkPawn());
-            setBluePawn(getBluePawn() + cloud.getBluePawn());
+            player.entrance.setGreenPawn(player.entrance.getGreenPawn() + cloud.getGreenPawn());
+            player.entrance.setRedPawn(player.entrance.getRedPawn() + cloud.getRedPawn());
+            player.entrance.setYellowPawn(player.entrance.getYellowPawn() + cloud.getYellowPawn());
+            player.entrance.setPinkPawn(player.entrance.getPinkPawn() + cloud.getPinkPawn());
+            player.entrance.setBluePawn(player.entrance.getBluePawn() + cloud.getBluePawn());
             cloud.setNumPawn(0);
             cloud.setGreenPawn(0);
             cloud.setRedPawn(0);
             cloud.setYellowPawn(0);
             cloud.setPinkPawn(0);
             cloud.setBluePawn(0);
-            startNumPawn(game);
+            player.entrance.startNumPawn(game);
         }
     }
 }

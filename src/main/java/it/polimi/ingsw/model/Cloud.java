@@ -7,6 +7,12 @@ public class Cloud {
     private int yellowPawn;
     private int pinkPawn;
     private int bluePawn;
+    public Cloud(){
+        numPawn=0;
+        greenPawn=0;
+        redPawn=0;
+        yellowPawn=0;
+    }
     public int getNumPawn() {
         return numPawn;
     }

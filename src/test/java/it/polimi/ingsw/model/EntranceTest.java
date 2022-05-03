@@ -105,8 +105,17 @@ class EntranceTest {
         Game.newPlayer("Player1", game2);
         game2.players.get(0).entrance.setNumPawn(4);
         game2.players.get(0).entrance.setPinkPawn(2);
+        game2.players.get(0).entrance.setRedPawn(0);
+        game2.players.get(0).entrance.setYellowPawn(0);
+        game2.players.get(0).entrance.setBluePawn(2);
+        game2.players.get(0).entrance.setGreenPawn(0);
+        game2.clouds.get()
         game2.clouds.get(0).setPinkPawn(1);
-        game2.players.get(0).entrance.chooseCloud(game2.clouds.get(0), game2);
+        game2.clouds.get(0).setBluePawn(1);
+        game2.clouds.get(0).setGreenPawn(0);
+        game2.clouds.get(0).setRedPawn(1);
+        game2.clouds.get(0).setYellowPawn(0);
+        game2.players.get(0).entrance.chooseCloud(game2.clouds.get(0), game2,game2.players.get(0));
         assertEquals(7, game2.players.get(0).entrance.getNumPawn());
         assertEquals(3, game2.players.get(0).entrance.getPinkPawn());
         assertEquals(0, game2.clouds.get(0).getNumPawn());
