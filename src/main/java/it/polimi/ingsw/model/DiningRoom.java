@@ -134,7 +134,6 @@ public class DiningRoom {
                     player.diningRoom.setNumGreen(player.diningRoom.getNumGreen() - 1);
                     game.studentBag.setGreenNum(game.studentBag.getGreenNum() + 1);
                     game.studentBag.setNum(game.studentBag.getNum() + 1);
-                    break;
                 }
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(1))) {
