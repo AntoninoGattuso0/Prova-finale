@@ -42,7 +42,9 @@ class DiningRoomTest {
         game.start(game);
         Game.newPlayer("Ezra", game);
         Game.newPlayer("Joshua", game);
-        ArrayList<ColorPawn> colorPawn = new ArrayList<>(3);
+        game.players.get(1).entrance.setYellowPawn(1);
+        game.players.get(1).entrance.setBluePawn(3);
+        ArrayList<ColorPawn> colorPawn = new ArrayList<>();
         colorPawn.add(ColorPawn.BLUE);
         colorPawn.add(ColorPawn.YELLOW);
         colorPawn.add(ColorPawn.BLUE);
