@@ -27,12 +27,12 @@ class DiningRoomTest {
         Game.newPlayer("Tamar", game);
         game.players.get(0).entrance.setNumPawn(4);
         game.players.get(0).entrance.setRedPawn(3);
-        for(int i = 0; i < 2; i++){
+        game.players.get(0).setNumCoin(4);
+        for(int i = 0; i < 3; i++){
             game.players.get(0).diningRoom.addPawnToDiningRoom(ColorPawn.RED,  game.players.get(0), game);
         }
-        game.players.get(0).diningRoom.addPawnToDiningRoom(ColorPawn.RED,  game.players.get(0), game);
         assertEquals(3, game.players.get(0).diningRoom.getNumRed());
-        assertEquals(2, game.players.get(0).entrance.getRedPawn());
+        assertEquals(0, game.players.get(0).entrance.getRedPawn());
         assertEquals(5, game.players.get(0).getNumCoin());
     }
 
@@ -48,7 +48,7 @@ class DiningRoomTest {
         colorPawn.add(ColorPawn.BLUE);
         game.players.get(1).diningRoom.setNumYellow(0);
         game.players.get(1).diningRoom.setNumBlue(2);
-        int m = 3;
+        int m = colorPawn.size();
         game.players.get(1).diningRoom.addPawn(m, colorPawn, game.players.get(1), game);
         assertEquals(1, game.players.get(1).diningRoom.getNumYellow());
         assertEquals(4, game.players.get(1).diningRoom.getNumBlue());
