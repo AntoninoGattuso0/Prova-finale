@@ -198,7 +198,7 @@ public class DiningRoom {
                     player.diningRoom.setNumRed(player.diningRoom.getNumRed() - 1);
                     player.entrance.setRedPawn(player.entrance.getRedPawn() + 1);
                     player.entrance.setNumPawn(player.entrance.getNumPawn() + 1);
-                    break;-
+                    break;
                 }
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(2)) && player.diningRoom.getNumYellow() > 0) {
