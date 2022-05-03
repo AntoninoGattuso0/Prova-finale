@@ -49,8 +49,8 @@ class DiningRoomTest {
         game.players.get(1).diningRoom.setNumBlue(2);
         int m = 3;
         game.players.get(1).diningRoom.addPawn(m, colorPawn, game.players.get(1), game);
-        assertEquals(1, game.islands.get(4).getBluePawn());
-        assertEquals(4, game.islands.get(4).getYellowPawn());
+        assertEquals(1, game.players.get(1).diningRoom.getNumYellow());
+        assertEquals(4, game.players.get(1).diningRoom.getNumBlue());
     }
 
     @Test
