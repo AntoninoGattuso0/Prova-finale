@@ -10,6 +10,7 @@ public class ErnestoTest {
     @Test
     public void TestErnesto(){
         Game game = new Game(3, true);
+        game.start(game);
         String nick1 = "Rebeca";
         String nick2 = "Paolo";
         String nick3 = "Antonino";
@@ -23,6 +24,7 @@ public class ErnestoTest {
     @Test
     public void TestNotInfluence(){
         Game game = new Game(3, true);
+        game.start(game);
         String nick1 = "Rebeca";
         String nick2 = "Paolo";
         String nick3 = "Antonino";

@@ -1,11 +1,8 @@
 package it.polimi.ingsw.model;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-import java.io.Console;
 import java.util.ArrayList;
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -47,7 +44,7 @@ public class GameTest {
         for(i=0; !game.islands.get(i).getMotherNature(); i++);
         assertTrue(game.islands.get(i).getMotherNature());
         int j = i+3;
-        if(j>game.islands.size())j = j - game.islands.size();
+        if(j>=game.islands.size()) j = j - game.islands.size();
         assertFalse(game.islands.get(j).getMotherNature());
         game.moveMotherNature(3);
         assertFalse(game.islands.get(i).getMotherNature());
