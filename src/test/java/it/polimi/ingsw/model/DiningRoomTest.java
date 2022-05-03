@@ -51,7 +51,7 @@ class DiningRoomTest {
         int m = colorPawn.size();
         game.players.get(1).diningRoom.addPawn(m, colorPawn, game.players.get(1), game);
         assertEquals(1, game.players.get(1).diningRoom.getNumYellow());
-        assertEquals(4, game.players.get(1).diningRoom.getNumBlue());
+        assertEquals(4, game.players.get(1).diningRoom.getNumBlue());.
     }
 
     @Test
