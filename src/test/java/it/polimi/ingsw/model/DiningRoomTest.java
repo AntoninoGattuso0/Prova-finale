@@ -11,8 +11,9 @@ class DiningRoomTest {
     @Test
     public void testDiningRoom(){
         Game game = new Game(2, true);
-        game.newPlayer("Ezechiel",game);
-        game.newPlayer("Candace",game);
+        game.start(game);
+        Game.newPlayer("Ezechiel",game);
+        Game.newPlayer("Candace",game);
         assertEquals(0, game.players.get(1).diningRoom.getNumYellow());
         assertEquals(0, game.players.get(1).diningRoom.getNumBlue());
         assertEquals(0, game.players.get(0).diningRoom.getNumPink());
@@ -21,8 +22,9 @@ class DiningRoomTest {
     @Test
     public void testAddPawnToDiningRoom(){
         Game game = new Game(2, true);
-        game.newPlayer("Abner", game);
-        game.newPlayer("Tamar", game);
+        game.start(game);
+        Game.newPlayer("Abner", game);
+        Game.newPlayer("Tamar", game);
         game.players.get(1).entrance.setNumPawn(7);
         game.players.get(1).entrance.setRedPawn(3);
         game.players.get(1).diningRoom.setNumRed(2);
@@ -36,8 +38,9 @@ class DiningRoomTest {
     @Test
     public void testAddPawn(){
         Game game = new Game(2, true);
-        game.newPlayer("Ezra", game);
-        game.newPlayer("Joshua", game);
+        game.start(game);
+        Game.newPlayer("Ezra", game);
+        Game.newPlayer("Joshua", game);
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(3);
         colorPawn.add(ColorPawn.BLUE);
         colorPawn.add(ColorPawn.YELLOW);
@@ -53,8 +56,9 @@ class DiningRoomTest {
     @Test
     public void testRemovePawnFromDiningRoom(){
         Game game = new Game(2, true);
-        game.newPlayer("Ezra", game);
-        game.newPlayer("Joshua", game);
+        game.start(game);
+        Game.newPlayer("Ezra", game);
+        Game.newPlayer("Joshua", game);
         game.players.get(1).diningRoom.setNumPink(8);
         game.studentBag.setPinkNum(20);
         game.studentBag.setNum(98);
@@ -66,8 +70,9 @@ class DiningRoomTest {
     @Test
     public void testRemovePawnFromDiningRoom2(){
         Game game = new Game(2, true);
-        game.newPlayer("Ezra", game);
-        game.newPlayer("Joshua", game);
+        game.start(game);
+        Game.newPlayer("Ezra", game);
+        Game.newPlayer("Joshua", game);
         game.players.get(1).diningRoom.setNumPink(8);
         game.players.get(1).entrance.setPinkPawn(1);
         game.players.get(1).entrance.setNumPawn(4);

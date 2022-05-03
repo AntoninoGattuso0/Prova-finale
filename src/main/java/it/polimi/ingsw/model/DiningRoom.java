@@ -163,7 +163,7 @@ public class DiningRoom {
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(3))) {
             for (j = 9; j > -1; j--) {
-                for (j = 10; j > 0; j--) {
+                for (j = 9; j > -1; j--) {
                     if (position[3][j] != 0) {
                         position[3][j] = 0;
                         setNumPink(getNumPink() - 1);
@@ -175,7 +175,7 @@ public class DiningRoom {
             }
         } else if (Objects.equals(colorPawn.toString(), game.m.get(4))) { //metodo toString restituisce la rappresentazione di stringa delle costanti enum
             for (j = 9; j > -1; j--) {
-                for (j = 10; j > 0; j--) {
+                for (j = 9; j > -1; j--) {
                     if (position[4][j] != 0) {
                         position[4][j] = 0;
                         setNumBlue(getNumBlue() - 1);

@@ -8,6 +8,7 @@ class BarbaraTest {
     @Test
     public void TestUseEffectBarbara() {
         Game game = new Game(2, true);
+        game.start(game);
         Barbara barbara = new Barbara(game);
         ArrayList<ColorPawn> colorPawn= new ArrayList<>();
         colorPawn.add(ColorPawn.GREEN);

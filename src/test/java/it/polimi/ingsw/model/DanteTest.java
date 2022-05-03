@@ -10,6 +10,7 @@ class DanteTest {
 @Test
     public void TestUseEffectDante(){
     Game game= new Game(3,true);
+    game.start(game);
     Dante dante=new Dante();
     int i=0;
     ArrayList<ColorPawn> colorPawns= new ArrayList<>();

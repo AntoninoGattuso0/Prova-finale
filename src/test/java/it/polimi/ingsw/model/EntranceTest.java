@@ -10,8 +10,9 @@ class EntranceTest {
     @Test
     public void TestEntrance(){
         Game game = new Game(2, true);
-        game.newPlayer("Player0",game);
-        game.newPlayer("Player1",game);
+        game.start(game);
+        Game.newPlayer("Player0",game);
+        Game.newPlayer("Player1",game);
         StudentBag studentBag = new StudentBag();
         assertEquals(7, game.players.get(0).entrance.getNumPawn());
         System.out.println("Player0: ");
@@ -34,6 +35,7 @@ class EntranceTest {
     @Test
     public void TestStartNumPawn(){
         Game game3 = new Game(2, true);
+        game3.start(game3);
         game3.newPlayer("Player0", game3);
         game3.newPlayer("Player1", game3);
         game3.players.get(0).entrance.startNumPawn(game3);
@@ -43,6 +45,7 @@ class EntranceTest {
     @Test
     public void TestCheckNum(){
         Game game5 = new Game(2, true);
+        game5.start(game5);
         game5.newPlayer("Player0", game5);
         game5.newPlayer("Player1", game5);
         game5.players.get(0).entrance.setNumPawn(5);
@@ -54,6 +57,7 @@ class EntranceTest {
     @Test
     public void testMovePawnToIsland(){
         Game game1= new Game(3,true);
+        game1.start(game1);
         game1.newPlayer("Paolo", game1);
         game1.newPlayer("Rebeca", game1);
         game1.newPlayer("Antonino", game1);
@@ -78,6 +82,7 @@ class EntranceTest {
     @Test
     public void testMoveToIsland(){
         Game game4 = new Game(2, true);
+        game4.start(game4);
         game4.newPlayer("Player0", game4);
         game4.newPlayer("Player1", game4);
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(3);
@@ -95,8 +100,9 @@ class EntranceTest {
     @Test
     public void testChooseCloud(){
         Game game2 = new Game(2, true);
-        game2.newPlayer("Player0", game2);
-        game2.newPlayer("Player1", game2);
+        game2.start(game2);
+        Game.newPlayer("Player0", game2);
+        Game.newPlayer("Player1", game2);
         game2.players.get(0).entrance.setNumPawn(4);
         game2.players.get(0).entrance.setPinkPawn(2);
         game2.clouds.get(0).setPinkPawn(1);

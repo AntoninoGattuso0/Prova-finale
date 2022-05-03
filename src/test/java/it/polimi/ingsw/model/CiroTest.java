@@ -11,6 +11,7 @@ class CiroTest {
     public void TestCostruttoreCiro(){// DEVO CHECKARE QUANDO PAOLO RISOLVE LO SCAMBIO DI TORRI
         int i=0;
         Game game=new Game(3,true);
+        game.start(game);
         Game.newPlayer("a",game);
         Game.newPlayer("b",game);
         Game.newPlayer("c",game);

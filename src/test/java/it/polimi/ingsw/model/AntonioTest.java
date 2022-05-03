@@ -9,6 +9,7 @@ public class AntonioTest {
     @Test
     public void TestAntonio(){
         Game game=new Game(3,true);
+        game.start(game);
     Antonio antonio = new Antonio(game.studentBag);
     assertEquals(4,antonio.getNumPawnAntonio());
     assertEquals(4,antonio.getBluePawn()+antonio.getGreenPawn()+antonio.getPinkPawn()+antonio.getRedPawn()+antonio.getYellowPawn());
@@ -21,6 +22,7 @@ public class AntonioTest {
     public void TestUseEffectAntonio(){
         int i;
         Game game= new Game(3,true);
+        game.start(game);
         Antonio antonio=new Antonio(game.studentBag);
         while(antonio.getGreenPawn()==0){
             antonio=new Antonio(game.studentBag);

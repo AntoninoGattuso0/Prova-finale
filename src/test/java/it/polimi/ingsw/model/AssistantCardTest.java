@@ -9,6 +9,7 @@ class AssistantCardTest {
     public void TestAssistantCard() {
         int i,j;
         Game game = new Game(3, true);
+        game.start(game);
         Game.newPlayer("a", game);
         Game.newPlayer("b", game);
         Game.newPlayer("c", game);

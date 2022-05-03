@@ -24,6 +24,12 @@ public class Game {
     public Game(int giocatori, boolean expert) {
         totPlayer = giocatori;
         isExpert = expert;
+        //mappa che associa numeri a colori ("m.get(int)" per ricevere il colore in base al numero inserito in int)
+        m.put(0, "GREEN");
+        m.put(1, "RED");
+        m.put(2, "YELLOW");
+        m.put(3, "PINK");
+        m.put(4, "BLUE");
     }
     public void start (Game game){
         int i;
@@ -34,12 +40,6 @@ public class Game {
             Island island = new Island();
             islands.add(island);
         }
-//mappa che associa numeri a colori ("m.get(int)" per ricevere il colore in base al numero inserito in int)
-        m.put(0, "GREEN");
-        m.put(1, "RED");
-        m.put(2, "YELLOW");
-        m.put(3, "PINK");
-        m.put(4, "BLUE");
 //randomizza madre natura
         Random rnd = new Random();
         int n = rnd.nextInt(12);
