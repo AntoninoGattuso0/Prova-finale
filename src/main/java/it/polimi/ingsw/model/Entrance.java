@@ -122,30 +122,28 @@ public class Entrance {
     }
     public void movePawnToIsland(ColorPawn colorPawn, Island island, Game game){
             //tutti questi spostamenti sono possibili se il numero di pedine all'entrata è 4 o 5 in base ai giocatori
-            if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
-                island.setGreenPawn(island.getGreenPawn() + 1);
-                setGreenPawn(getGreenPawn() - 1);
-                setNumPawn(getNumPawn() - 1);
-            }else if(Objects.equals(colorPawn.toString(), "RED") && this.redPawn > 0){
-                island.setRedPawn(island.getRedPawn() + 1);
-                setRedPawn(getRedPawn() - 1);
-                setNumPawn(getNumPawn() - 1);
-            }else if(Objects.equals(colorPawn.toString(), "YELLOW") && this.yellowPawn > 0){
-                island.setYellowPawn(island.getYellowPawn() + 1);
-                setYellowPawn(getYellowPawn() - 1);
-                setNumPawn(getNumPawn() - 1);
-            }else if(Objects.equals(colorPawn.toString(), "PINK") && this.pinkPawn > 0){
-                island.setPinkPawn(island.getPinkPawn() + 1);
-                setPinkPawn(getPinkPawn() - 1);
-                setNumPawn(getNumPawn() - 1);
-            }else if(Objects.equals(colorPawn.toString(), "BLUE") && this.bluePawn > 0){
-                island.setBluePawn(island.getBluePawn() + 1);
-                setBluePawn(getBluePawn() - 1);
-                setNumPawn(getNumPawn() - 1);
-            }else {
-                System.out.println("Errore: non esistono pedine di questo colore nell'ingresso");  //penso sia una cosa del controller
+               if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
+                   island.setGreenPawn(island.getGreenPawn() + 1);
+                   setGreenPawn(getGreenPawn() - 1);
+                   setNumPawn(getNumPawn() - 1);
+               }else if(Objects.equals(colorPawn.toString(), "RED") && this.redPawn > 0){
+                   island.setRedPawn(island.getRedPawn() + 1);
+                   setRedPawn(getRedPawn() - 1);
+                   setNumPawn(getNumPawn() - 1);
+               }else if(Objects.equals(colorPawn.toString(), "YELLOW") && this.yellowPawn > 0){
+                   island.setYellowPawn(island.getYellowPawn() + 1);
+                   setYellowPawn(getYellowPawn() - 1);
+                   setNumPawn(getNumPawn() - 1);
+               }else if(Objects.equals(colorPawn.toString(), "PINK") && this.pinkPawn > 0){
+                   island.setPinkPawn(island.getPinkPawn() + 1);
+                   setPinkPawn(getPinkPawn() - 1);
+                   setNumPawn(getNumPawn() - 1);
+               }else if(Objects.equals(colorPawn.toString(), "BLUE") && this.bluePawn > 0){
+                   island.setBluePawn(island.getBluePawn() + 1);
+                   setBluePawn(getBluePawn() - 1);
+                   setNumPawn(getNumPawn() - 1);
+               }
             }
-        }
         //LEGGIMI :( non va bene il fatto che anche se la funzione viene chiamata n volte viene richiamata sempre su stessa isola e pedina
     public void moveToIsland(int n, ArrayList<ColorPawn> colorPawn, Island island,Game game) {
         //n = numero di pedine che si vogliono spostare da entrance a island
