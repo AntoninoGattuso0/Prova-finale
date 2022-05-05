@@ -36,7 +36,6 @@ class DiningRoomTest {
         assertEquals(5, game.players.get(0).getNumCoin());
     }
 
-
     @Test
     public void testRemovePawnFromDiningRoom(){
         int i;
