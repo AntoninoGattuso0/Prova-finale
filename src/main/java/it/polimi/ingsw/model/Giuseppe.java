@@ -2,15 +2,55 @@ package it.polimi.ingsw.model;
 import java.util.*;
 public class Giuseppe extends UseEffect{
     private int coinPrice;
-    protected int nPawn;
-    protected int numGreenPawn;
-    protected int numRedPawn;
-    protected int numYellowPawn;
-    protected int numPinkPawn;
-    protected int numBluePawn;
+    private int nPawn;
+    private int numGreenPawn;
+    private int numRedPawn;
+    private int numYellowPawn;
+    private int numPinkPawn;
+    private int numBluePawn;
+
+    public int getNumGreenPawn(){
+        return numGreenPawn;
+    }
+
+    public int getNumRedPawn() {
+        return numRedPawn;
+    }
+
+    public int getNumYellowPawn() {
+        return numYellowPawn;
+    }
+
+    public int getNumPinkPawn() {
+        return numPinkPawn;
+    }
+
+    public int getNumBluePawn() {
+        return numBluePawn;
+    }
 
     public int getCoinPrice(){
         return coinPrice;
+    }
+
+    public void setNumGreenPawn(int numGreenPawn) {
+        this.numGreenPawn = numGreenPawn;
+    }
+
+    public void setNumRedPawn(int numRedPawn) {
+        this.numRedPawn = numRedPawn;
+    }
+
+    public void setNumYellowPawn(int numYellowPawn) {
+        this.numYellowPawn = numYellowPawn;
+    }
+
+    public void setNumPinkPawn(int numPinkPawn) {
+        this.numPinkPawn = numPinkPawn;
+    }
+
+    public void setNumBluePawn(int numBluePawn) {
+        this.numBluePawn = numBluePawn;
     }
 
     public void setCoinPrice(int coin){
