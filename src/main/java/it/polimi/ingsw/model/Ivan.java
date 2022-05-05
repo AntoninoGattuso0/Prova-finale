@@ -7,8 +7,8 @@ public class Ivan extends UseEffect{
         return coinPrice;
     }
 
-    public void setCoinPrice(){
-        this.coinPrice++;
+    public void setCoinPrice(int coin){
+        this.coinPrice=coin;
     }
     Ivan(){
         coinPrice=2;
@@ -48,6 +48,6 @@ public class Ivan extends UseEffect{
         }
         if(!notunique) island.setColorTower(game.players.get(influence.indexOf(max)).towerSpace.colorTower);
         Game.unifyIsland(game.islands.indexOf(island), game);
-        setCoinPrice();
+        setCoinPrice(3);
     }
 }

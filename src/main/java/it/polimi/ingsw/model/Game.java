@@ -11,7 +11,6 @@ public class Game {
     protected ArrayList<CharacterCard> characterCards = new ArrayList<>(3);//insieme dei 3 characters usati
     protected Map<Integer, String> m = new HashMap<>();
     protected StudentBag studentBag;
-
     public void setTotPlayer(int i) {
         totPlayer = i;
     }

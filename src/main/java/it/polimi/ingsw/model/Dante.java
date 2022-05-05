@@ -11,7 +11,7 @@ public class Dante extends UseEffect {
         int step;
         step = player.getCurrentAssistant().getStep() + 2;
         player.getCurrentAssistant().setStep(step);
-        setCoinPrice(getCoinPrice()+1);
+        setCoinPrice(2);
     }
 
     public void setCoinPrice(int coinPrice) {

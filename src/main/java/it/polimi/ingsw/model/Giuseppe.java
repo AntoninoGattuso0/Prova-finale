@@ -13,8 +13,8 @@ public class Giuseppe extends UseEffect{
         return coinPrice;
     }
 
-    public void setCoinPrice(){
-        this.coinPrice++;
+    public void setCoinPrice(int coin){
+        this.coinPrice=coin;
     }
 
     public Giuseppe(StudentBag  studentBag, Game game){
@@ -105,6 +105,6 @@ public class Giuseppe extends UseEffect{
                 swapPawn(colorPawn.get(i), colorPawn.get(j), player.entrance);
             }
         }
-        setCoinPrice();
+        setCoinPrice(2);
     }
 }

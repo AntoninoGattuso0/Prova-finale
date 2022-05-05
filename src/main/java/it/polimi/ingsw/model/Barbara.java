@@ -80,6 +80,6 @@ public class Barbara extends UseEffect{
                 ProfTable.setYellowProf(i);
             }
         }
-            setCoinPrice(getCoinPrice()+1);
+            setCoinPrice(3);
         }
     }

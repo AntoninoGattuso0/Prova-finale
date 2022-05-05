@@ -140,7 +140,7 @@ public class Antonio extends UseEffect{
                     }
                 }
             }
-            setCoinPrice(getCoinPrice()+1);
+            setCoinPrice(2);
         }
     }
 

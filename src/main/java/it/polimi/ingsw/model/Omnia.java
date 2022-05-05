@@ -23,7 +23,7 @@ public class Omnia extends UseEffect{
                 if(game.players.get(j).diningRoom.getNumBlue() < 0) game.players.get(j).diningRoom.setNumBlue(0);
             }
         }
-        coinPrice++;
+        setCoinPrice(4);
     }
 }
 

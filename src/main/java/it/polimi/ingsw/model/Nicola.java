@@ -171,7 +171,7 @@ public class Nicola extends UseEffect {
                 if (game.studentBag.getBlueNum() == 0) cards.remove(random);
             }
         }
-        coinPrice++;
+        setCoinPrice(3);
     }
     static ArrayList<String> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
         ArrayList<String> arrayPawn = new ArrayList<>();
