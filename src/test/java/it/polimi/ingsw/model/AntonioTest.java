@@ -44,5 +44,3 @@ public class AntonioTest {
         assertEquals(2,antonio.getCoinPrice());
     }
 }
-
-

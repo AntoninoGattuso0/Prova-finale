@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DanteTest {
-@Test
+    @Test
     public void TestUseEffectDante(){
     Game game= new Game(3,true);
     game.start(game);
@@ -22,6 +22,6 @@ class DanteTest {
     CharacterCard characterCard=new CharacterCard(dante);
     characterCard.useEffect.useEffect(game,i,game.islands.get(0),game.players.get(0),colorPawns);
     assertEquals(4,game.players.get(0).getCurrentAssistant().getStep());
-}
+    }
 
 }
