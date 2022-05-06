@@ -33,3 +33,4 @@ public class FelixTest {
         assertEquals(ColorTower.WHITE, game.islands.get(7).getColorTower());
         System.out.println("Costo attuale carta Felix: " + felix.getCoinPrice());
     }
+}
