@@ -29,4 +29,23 @@ class ProfTableTest {
         assertEquals(1,game.profTable.checkProf(4));
     }
 
+    @Test
+    public void testCheckProf2(){
+        Game game = new Game(2, true);
+        game.start(game);
+        Game.newPlayer("Davide", game);
+        Game.newPlayer("Isaac", game);
+        game.profTable.setGreenProf(0);
+        game.profTable.setRedProf(0);
+        game.profTable.setYellowProf(1);
+        game.profTable.setPinkProf(1);
+        game.profTable.setBlueProf(1);
+
+        assertEquals(0, game.profTable.checkProf(0));
+        assertEquals(0, game.profTable.checkProf(1));
+        assertEquals(1, game.profTable.checkProf(2));
+        assertEquals(1, game.profTable.checkProf(3));
+        assertEquals(1, game.profTable.checkProf(4));
+    }
+
 }
