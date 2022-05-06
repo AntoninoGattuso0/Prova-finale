@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class IvanTest {
 
     @Test
-    public void TestIvanUseEFfect(){
+    public void TestIvanUseEffect(){
         Game game = new Game(2, true);
         game.start(game);
         Game.newPlayer("Nicky", game);
