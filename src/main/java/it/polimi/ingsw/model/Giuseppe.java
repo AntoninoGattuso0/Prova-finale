@@ -98,51 +98,51 @@ public class Giuseppe extends UseEffect{
         }
         nPawn = 6;
     }
-    public void swapPawn(ColorPawn colorPawnCard, ColorPawn colorPawnEntrance, Entrance entrance){
+    public void swapPawn(ColorPawn colorPawnCard, ColorPawn colorPawnEntrance, Player player){
         if(!Objects.equals(colorPawnCard, colorPawnEntrance) && this.nPawn > 3){
             if(Objects.equals(colorPawnCard.toString(), "GREEN")){
-                this.numGreenPawn--;
-                entrance.setGreenPawn(entrance.getGreenPawn() + 1);
+                setNumGreenPawn(getNumGreenPawn() - 1);
+                player.entrance.setGreenPawn(player.entrance.getGreenPawn() + 1);
             }else if(Objects.equals(colorPawnCard.toString(), "RED")){
-                this.numRedPawn--;
-                entrance.setRedPawn(entrance.getRedPawn() + 1);
+                setNumRedPawn(getNumRedPawn() - 1);
+                player.entrance.setRedPawn(player.entrance.getRedPawn() + 1);
             }else if(Objects.equals(colorPawnCard.toString(), "YELLOW")){
-                this.numYellowPawn--;
-                entrance.setYellowPawn(entrance.getYellowPawn() + 1);
+                setNumYellowPawn(getNumYellowPawn() - 1);
+                player.entrance.setYellowPawn(player.entrance.getYellowPawn() + 1);
             }else if(Objects.equals(colorPawnCard.toString(), "PINK")){
-                this.numPinkPawn--;
-                entrance.setPinkPawn(entrance.getPinkPawn() + 1);
+                setNumPinkPawn(getNumPinkPawn() - 1);
+                player.entrance.setPinkPawn(player.entrance.getPinkPawn() + 1);
             }else if(Objects.equals(colorPawnCard.toString(), "BLUE")){
-                this.numBluePawn--;
-                entrance.setBluePawn(entrance.getBluePawn() + 1);
+                setNumBluePawn(getNumBluePawn() - 1);
+                player.entrance.setBluePawn(player.entrance.getBluePawn() + 1);
             }
             if(Objects.equals(colorPawnEntrance.toString(), "GREEN")){
                 this.numGreenPawn++;
-                entrance.setGreenPawn(entrance.getGreenPawn() - 1);
+                player.entrance.setGreenPawn(player.entrance.getGreenPawn() - 1);
             }else if(Objects.equals(colorPawnEntrance.toString(), "RED")){
                 this.numRedPawn++;
-                entrance.setRedPawn(entrance.getRedPawn() - 1);
+                player.entrance.setRedPawn(player.entrance.getRedPawn() - 1);
             }else if(Objects.equals(colorPawnEntrance.toString(), "YELLOW")){
                 this.numYellowPawn++;
-                entrance.setYellowPawn(entrance.getYellowPawn() - 1);
+                player.entrance.setYellowPawn(player.entrance.getYellowPawn() - 1);
             }else if(Objects.equals(colorPawnEntrance.toString(), "PINK")){
                 this.numPinkPawn++;
-                entrance.setPinkPawn(entrance.getPinkPawn() - 1);
+                player.entrance.setPinkPawn(player.entrance.getPinkPawn() - 1);
             }else if(Objects.equals(colorPawnEntrance.toString(), "BLUE")){
                 this.numBluePawn++;
-                entrance.setBluePawn(entrance.getBluePawn() - 1);
+                player.entrance.setBluePawn(player.entrance.getBluePawn() - 1);
             }
         }
     }
     //LEGGIMI :( non va bene il fatto che anche se la funzione viene chiamata n volte viene richiamata sempre su stessa isola e pedina
-    public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){
+    public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){
         boolean swap = false;
         int j;
-        if(colorPawn.size()/2<4&&colorPawn.size()/2>0)
+        if(colorPawn.size()/2 < 4 && colorPawn.size()/2 > 0)
             swap = true;
         if(swap){
-            for(i=0,j=colorPawn.size();i<colorPawn.size()/2&&j>=colorPawn.size()/2;i++,j--){
-                swapPawn(colorPawn.get(i), colorPawn.get(j), player.entrance);
+            for(i = 0, j = colorPawn.size(); i < colorPawn.size()/2 && j >= colorPawn.size()/2; i++, j--){
+                swapPawn(colorPawn.get(i), colorPawn.get(j), player);
             }
         }
         setCoinPrice(2);
