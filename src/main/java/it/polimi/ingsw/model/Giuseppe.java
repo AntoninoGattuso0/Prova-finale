@@ -117,19 +117,19 @@ public class Giuseppe extends UseEffect{
                 player.entrance.setBluePawn(player.entrance.getBluePawn() + 1);
             }
             if(Objects.equals(colorPawnEntrance.toString(), "GREEN")){
-                this.numGreenPawn++;
+                setNumGreenPawn(getNumGreenPawn() + 1);
                 player.entrance.setGreenPawn(player.entrance.getGreenPawn() - 1);
             }else if(Objects.equals(colorPawnEntrance.toString(), "RED")){
-                this.numRedPawn++;
+                setNumRedPawn(getNumRedPawn() + 1);
                 player.entrance.setRedPawn(player.entrance.getRedPawn() - 1);
             }else if(Objects.equals(colorPawnEntrance.toString(), "YELLOW")){
-                this.numYellowPawn++;
+                setNumYellowPawn(getNumYellowPawn() + 1);
                 player.entrance.setYellowPawn(player.entrance.getYellowPawn() - 1);
             }else if(Objects.equals(colorPawnEntrance.toString(), "PINK")){
-                this.numPinkPawn++;
+                setNumPinkPawn(getNumPinkPawn() + 1);
                 player.entrance.setPinkPawn(player.entrance.getPinkPawn() - 1);
             }else if(Objects.equals(colorPawnEntrance.toString(), "BLUE")){
-                this.numBluePawn++;
+                setNumBluePawn(getNumBluePawn() + 1);
                 player.entrance.setBluePawn(player.entrance.getBluePawn() - 1);
             }
         }
