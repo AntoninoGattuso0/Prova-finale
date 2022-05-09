@@ -141,7 +141,7 @@ public class Giuseppe extends UseEffect{
         if(colorPawn.size()/2 < 4 && colorPawn.size()/2 > 0)
             swap = true;
         if(swap){
-            for(i = 0, j = colorPawn.size(); i < colorPawn.size()/2 && j >= colorPawn.size()/2; i++, j--){
+            for(i = 0, j = colorPawn.size() - 1; i < colorPawn.size()/2 && j >= colorPawn.size()/2; i++, j--){
                 swapPawn(colorPawn.get(i), colorPawn.get(j), player);
             }
         }
