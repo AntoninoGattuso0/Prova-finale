@@ -25,14 +25,24 @@ class GiuseppeTest {
        Game.newPlayer("Abner", game);
        Game.newPlayer("Tamar", game);
        game.players.get(0).entrance.setGreenPawn(2);
-       game.players.get(0).entrance.setBluePawn(1);
        game.players.get(0).entrance.setRedPawn(3);
+       game.players.get(0).entrance.setYellowPawn(3);
+       game.players.get(0).entrance.setPinkPawn(3);
+       game.players.get(0).entrance.setBluePawn(1);
        Giuseppe giuseppe = new Giuseppe(game.studentBag, game);
-       ArrayList<ColorPawn> colorPawn = new ArrayList<>(3);
+       giuseppe.setNumGreenPawn(1);
+       giuseppe.setNumRedPawn(1);
+       giuseppe.setNumYellowPawn(1);
+       giuseppe.setNumPinkPawn(2);
+       giuseppe.setNumBluePawn(1);
+       ArrayList<ColorPawn> colorPawn = new ArrayList<>(2);
        colorPawn.add(ColorPawn.GREEN);
        colorPawn.add(ColorPawn.BLUE);
-       colorPawn.add(ColorPawn.RED);
        giuseppe.useEffect(game, 7, game.islands.get(5), game.players.get(0), colorPawn);
+       assertEquals(3, game.players.get(0).entrance.getGreenPawn());
+       assertEquals(0, giuseppe.getNumGreenPawn());
+       assertEquals(0, game.players.get(0).entrance.getBluePawn());
+       assertEquals(2, giuseppe.getNumBluePawn());
     }
 
 }

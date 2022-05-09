@@ -99,36 +99,36 @@ public class Giuseppe extends UseEffect{
         nPawn = 6;
     }
     public void swapPawn(ColorPawn colorPawnCard, ColorPawn colorPawnEntrance, Player player){
-        if(!Objects.equals(colorPawnCard, colorPawnEntrance) && this.nPawn > 3){
-            if(Objects.equals(colorPawnCard.toString(), "GREEN")){
+        if(!Objects.equals(colorPawnCard, colorPawnEntrance) && this.nPawn > 2){
+            if(Objects.equals(colorPawnCard.toString(), "GREEN") && getNumGreenPawn() > 0){
                 setNumGreenPawn(getNumGreenPawn() - 1);
                 player.entrance.setGreenPawn(player.entrance.getGreenPawn() + 1);
-            }else if(Objects.equals(colorPawnCard.toString(), "RED")){
+            }else if(Objects.equals(colorPawnCard.toString(), "RED") && getNumRedPawn() > 0){
                 setNumRedPawn(getNumRedPawn() - 1);
                 player.entrance.setRedPawn(player.entrance.getRedPawn() + 1);
-            }else if(Objects.equals(colorPawnCard.toString(), "YELLOW")){
+            }else if(Objects.equals(colorPawnCard.toString(), "YELLOW") && getNumYellowPawn() > 0){
                 setNumYellowPawn(getNumYellowPawn() - 1);
                 player.entrance.setYellowPawn(player.entrance.getYellowPawn() + 1);
-            }else if(Objects.equals(colorPawnCard.toString(), "PINK")){
+            }else if(Objects.equals(colorPawnCard.toString(), "PINK") && getNumPinkPawn() > 0){
                 setNumPinkPawn(getNumPinkPawn() - 1);
                 player.entrance.setPinkPawn(player.entrance.getPinkPawn() + 1);
-            }else if(Objects.equals(colorPawnCard.toString(), "BLUE")){
+            }else if(Objects.equals(colorPawnCard.toString(), "BLUE") && getNumBluePawn() > 0){
                 setNumBluePawn(getNumBluePawn() - 1);
                 player.entrance.setBluePawn(player.entrance.getBluePawn() + 1);
             }
-            if(Objects.equals(colorPawnEntrance.toString(), "GREEN")){
+            if(Objects.equals(colorPawnEntrance.toString(), "GREEN") && player.entrance.getGreenPawn() > 0){
                 setNumGreenPawn(getNumGreenPawn() + 1);
                 player.entrance.setGreenPawn(player.entrance.getGreenPawn() - 1);
-            }else if(Objects.equals(colorPawnEntrance.toString(), "RED")){
+            }else if(Objects.equals(colorPawnEntrance.toString(), "RED") && player.entrance.getRedPawn() > 0){
                 setNumRedPawn(getNumRedPawn() + 1);
                 player.entrance.setRedPawn(player.entrance.getRedPawn() - 1);
-            }else if(Objects.equals(colorPawnEntrance.toString(), "YELLOW")){
+            }else if(Objects.equals(colorPawnEntrance.toString(), "YELLOW") && player.entrance.getYellowPawn() > 0){
                 setNumYellowPawn(getNumYellowPawn() + 1);
                 player.entrance.setYellowPawn(player.entrance.getYellowPawn() - 1);
-            }else if(Objects.equals(colorPawnEntrance.toString(), "PINK")){
+            }else if(Objects.equals(colorPawnEntrance.toString(), "PINK") && player.entrance.getPinkPawn() > 0){
                 setNumPinkPawn(getNumPinkPawn() + 1);
                 player.entrance.setPinkPawn(player.entrance.getPinkPawn() - 1);
-            }else if(Objects.equals(colorPawnEntrance.toString(), "BLUE")){
+            }else if(Objects.equals(colorPawnEntrance.toString(), "BLUE") && player.entrance.getBluePawn() > 0){
                 setNumBluePawn(getNumBluePawn() + 1);
                 player.entrance.setBluePawn(player.entrance.getBluePawn() - 1);
             }
