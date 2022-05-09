@@ -99,7 +99,7 @@ public class Giuseppe extends UseEffect{
         nPawn = 6;
     }
     public void swapPawn(ColorPawn colorPawnCard, ColorPawn colorPawnEntrance, Player player){
-        if(!Objects.equals(colorPawnCard, colorPawnEntrance) && this.nPawn > 2){
+        if(!Objects.equals(colorPawnCard, colorPawnEntrance) && this.nPawn > 3){
             if(Objects.equals(colorPawnCard.toString(), "GREEN") && getNumGreenPawn() > 0){
                 setNumGreenPawn(getNumGreenPawn() - 1);
                 player.entrance.setGreenPawn(player.entrance.getGreenPawn() + 1);
