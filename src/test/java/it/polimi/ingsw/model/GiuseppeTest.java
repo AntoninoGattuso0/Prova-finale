@@ -18,7 +18,7 @@ class GiuseppeTest {
         System.out.println("Numero pedine blue: " + giuseppe.getNumBluePawn());
     }
 
-   /*@Test
+   @Test
     public void TestUseGiuseppeEffect(){
        Game game = new Game(2,true);
        game.start(game);
@@ -33,6 +33,6 @@ class GiuseppeTest {
        colorPawn.add(ColorPawn.BLUE);
        colorPawn.add(ColorPawn.RED);
        giuseppe.useEffect(game, 7, game.islands.get(5), game.players.get(0), colorPawn);
-    }*/
+    }
 
 }
