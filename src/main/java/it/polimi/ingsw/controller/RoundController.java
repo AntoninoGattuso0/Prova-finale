@@ -7,8 +7,8 @@ public class RoundController {
     private TurnController turnController;
 
 
-    private void casualOrder(){
-
+    private ArrayList<Integer> casualOrder(){
+    return roundOrder;
     }
 
    /* private ArrayList<Integer> orderPlayer(){
