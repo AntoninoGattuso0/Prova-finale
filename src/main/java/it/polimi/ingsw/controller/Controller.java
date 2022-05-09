@@ -6,7 +6,10 @@ public class Controller {
     private RoundController roundController;
     private boolean isExpert;
     private Game game;
-
+    public Controller(Game game){
+        this.game=game;
+        game.start(game);
+    }
     public void checkNickname(String nickname){
 
     }
@@ -20,7 +23,6 @@ public class Controller {
     }
 
     public void checkEndGame(){
-
     }
 
     public void setIsExpert(boolean isExpert){

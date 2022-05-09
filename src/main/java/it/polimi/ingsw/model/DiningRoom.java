@@ -1,5 +1,5 @@
 package it.polimi.ingsw.model;
-import java.util.ArrayList;
+
 import java.util.Objects;
 public class DiningRoom {
     //modifiche all'UML: array di array: in cui gli elementi sono 0 o 1;

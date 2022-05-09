@@ -180,7 +180,6 @@ public class Game {
                 influence.set(i, 0);
                 influence.set(k, 0);
             }
-
             for (i = 0; i < game.totPlayer; i++) {
                 if (island.getTower() && island.getColorTower() == game.players.get(i).towerSpace.colorTower)
                     influence.set(i, influence.get(i) + island.getTotIsland());
@@ -196,10 +195,6 @@ public class Game {
             unifyIsland(game.islands.indexOf(island), game);
         }
     }
-        public boolean endGame () {
-            return studentBag.getNum() == 0;
-        }
-
         public void setCharacterCards (Game game) { //posiziona a caso dei personaggi (3)
             if (game.isExpert) {
                 Antonio antonio = new Antonio(game.studentBag);
