@@ -33,7 +33,7 @@ public class ErnestoTest {
         game.islands.get(9).setColorTower(ColorTower.BLACK);
         Ernesto ernesto = new Ernesto();
         ernesto.useEffect(game, 5, game.islands.get(9), game.players.get(0), colorPawn);
-        game.topInfluence(game.islands.get(9), game);
+        Game.topInfluence(game.islands.get(9), game);
         assertEquals(ColorTower.BLACK, game.islands.get(9).getColorTower());
     }
 }
