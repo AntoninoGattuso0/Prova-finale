@@ -9,6 +9,6 @@ public class LoginRefusedOtherPlayers extends Message{
     }
 
     public String getLoginRefusedFirstPlayer(){
-        return ErrorLoginRefused;
+        return LoginRefusedOtherPlayer;
     }
 }
