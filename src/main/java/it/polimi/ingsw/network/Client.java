@@ -5,8 +5,8 @@ import java.net.*;
 
 public class Client {
     Socket mySocket = null;
-    DataInputStream in;
-    DataOutputStream out;
+    ObjectInputStream in;
+    ObjectOutputStream out;
     int port = 6987;
     public void comunica(){
 
@@ -14,8 +14,8 @@ public class Client {
     public Socket connection() {
         try {
             Socket mySocket = new Socket(InetAddress.getLocalHost(), port);
-            in = new DataInputStream(mySocket.getInputStream());
-            out = new DataOutputStream(mySocket.getOutputStream());
+            in = new ObjectInputStream(mySocket.getInputStream());
+            out = new ObjectOutputStream(mySocket.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
