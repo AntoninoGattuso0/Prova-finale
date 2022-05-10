@@ -11,4 +11,4 @@ public class LoginOtherPlayers extends Message{
     public String getNickname() {
         return nickname;
     }
-}
+}.
