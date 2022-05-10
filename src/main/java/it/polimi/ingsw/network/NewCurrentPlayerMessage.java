@@ -1,4 +1,4 @@
 package it.polimi.ingsw.network;
 
-public class NewCurrentPlayerMessage {
+public class NewCurrentPlayerMessage extends Message{
 }

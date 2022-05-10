@@ -1,4 +1,4 @@
 package it.polimi.ingsw.network;
 
-public class ChooseCloudMessage {
+public class ChooseCloudMessage extends Message{
 }

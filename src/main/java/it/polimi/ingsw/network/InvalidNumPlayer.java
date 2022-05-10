@@ -1,4 +1,4 @@
 package it.polimi.ingsw.network;
 
-public class InvalidNumPlayer {
+public class InvalidNumPlayer extends Message{
 }

@@ -1,4 +1,4 @@
 package it.polimi.ingsw.network;
 
-public class NumPlayerAnswer {
+public class NumPlayerAnswer extends Message{
 }

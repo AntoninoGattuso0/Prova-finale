@@ -1,4 +1,4 @@
 package it.polimi.ingsw.network;
 
-public class LoginRefusedOtherPlayers {
+public class LoginRefusedOtherPlayers extends Message{
 }

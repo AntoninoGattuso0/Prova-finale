@@ -1,4 +1,4 @@
 package it.polimi.ingsw.network;
 
-public class EndTurnMessage {
+public class EndTurnMessage extends Message{
 }

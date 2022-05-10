@@ -1,4 +1,4 @@
 package it.polimi.ingsw.network;
 
-public class MatchCreated {
+public class MatchCreated extends Message{
 }

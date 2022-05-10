@@ -1,4 +1,4 @@
 package it.polimi.ingsw.network;
 
-public class EndGame {
+public class EndGame extends Message{
 }
