@@ -12,4 +12,3 @@ public class LoginOtherPlayers extends Message{
         return nickname;
     }
 }
-.
