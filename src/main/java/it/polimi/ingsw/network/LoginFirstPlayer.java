@@ -8,9 +8,9 @@ public class LoginFirstPlayer extends Message{
 
 
     public LoginFirstPlayer(String nickname, int numPlayers, boolean isExpert ){
+        this.nickname = nickname;
         this.numPlayers = numPlayers;
         this.isExpert = isExpert;
-        this.nickname = nickname;
     }
 
     public int getNumPlayers(){
