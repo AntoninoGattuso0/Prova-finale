@@ -5,8 +5,8 @@ import java.net.*;
 public class Server {
     ServerSocket server = null;
     Socket socketclient = null;
-    DataInputStream in;
-    DataOutputStream out;
+    ObjectInputStream in;
+    ObjectOutputStream out;
     int port = 6987;
     public void comunica(){
 
@@ -15,8 +15,8 @@ public class Server {
         try {
             server = new ServerSocket(port);
             socketclient = server.accept();
-            in = new DataInputStream(socketclient.getInputStream());
-            out = new DataOutputStream(socketclient.getOutputStream());
+            in = new ObjectInputStream(socketclient.getInputStream());
+            out = new ObjectOutputStream(socketclient.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
