@@ -1,6 +1,6 @@
 package it.polimi.ingsw.network;
 
-public class LoginOtherPlayers extends Message{
+public class LoginOtherPlayers extends ClientToServer{
 
     private String nickname;
 

@@ -1,4 +1,4 @@
 package it.polimi.ingsw.network;
 
-public class MoveMotherNatureMessage extends Message{
+public class MoveMotherNatureMessage extends ClientToServer{
 }

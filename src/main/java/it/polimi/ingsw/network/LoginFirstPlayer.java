@@ -1,7 +1,7 @@
 package it.polimi.ingsw.network;
 
-public class LoginFirstPlayer extends Message{
-
+public class LoginFirstPlayer extends ClientToServer{
+    private static final long serialVersionUID= -6929509489095279482L;
     private String nickname;
     private final int numPlayers;
     private final boolean isExpert;

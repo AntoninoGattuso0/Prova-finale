@@ -1,4 +1,4 @@
 package it.polimi.ingsw.network;
 
-public class MovePawnMessage extends Message{
+public class MovePawnMessage extends ClientToServer{
 }
