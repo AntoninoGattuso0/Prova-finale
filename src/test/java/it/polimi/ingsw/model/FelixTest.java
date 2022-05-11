@@ -29,7 +29,8 @@ public class FelixTest {
         game.islands.get(7).setTower(true);
         game.islands.get(7).setColorTower(ColorTower.BLACK);
         Felix felix = new Felix();
-        felix.useEffect(game, 6, game.islands.get(7), game.players.get(1), colorPawn);
+        CharacterCard card = new CharacterCard(felix);
+        card.useEffect.useEffect(game, 6, game.islands.get(7), game.players.get(1), colorPawn);
         assertEquals(ColorTower.WHITE, game.islands.get(7).getColorTower());
         System.out.println("Costo attuale carta Felix: " + felix.getCoinPrice());
     }

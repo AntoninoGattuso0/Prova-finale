@@ -28,7 +28,8 @@ class IvanTest {
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(1);
         colorPawn.add(ColorPawn.GREEN);
         Ivan ivan = new Ivan();
-        ivan.useEffect(game, 8, game.islands.get(3), game.players.get(1), colorPawn);
+        CharacterCard card = new CharacterCard(ivan);
+        card.useEffect.useEffect(game, 8, game.islands.get(3), game.players.get(1), colorPawn);
         Game.topInfluence(game.islands.get(3), game);
         assertEquals(ColorTower.BLACK, game.islands.get(3).getColorTower());
         System.out.println("Costo attuale carta Ivan: " + ivan.getCoinPrice());
