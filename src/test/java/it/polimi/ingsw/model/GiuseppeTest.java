@@ -30,6 +30,7 @@ class GiuseppeTest {
        game.players.get(0).entrance.setPinkPawn(3);
        game.players.get(0).entrance.setBluePawn(1);
        Giuseppe giuseppe = new Giuseppe(game.studentBag, game);
+       CharacterCard card = new CharacterCard(giuseppe);
        giuseppe.setNumGreenPawn(1);
        giuseppe.setNumRedPawn(1);
        giuseppe.setNumYellowPawn(1);
@@ -38,7 +39,7 @@ class GiuseppeTest {
        ArrayList<ColorPawn> colorPawn = new ArrayList<>(2);
        colorPawn.add(ColorPawn.GREEN);
        colorPawn.add(ColorPawn.BLUE);
-       giuseppe.useEffect(game, 7, game.islands.get(5), game.players.get(0), colorPawn);
+       card.useEffect.useEffect(game, 7, game.islands.get(5), game.players.get(0), colorPawn);
        assertEquals(3, game.players.get(0).entrance.getGreenPawn());
        assertEquals(0, giuseppe.getNumGreenPawn());
        assertEquals(0, game.players.get(0).entrance.getBluePawn());
