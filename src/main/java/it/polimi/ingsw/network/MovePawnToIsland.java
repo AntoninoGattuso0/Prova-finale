@@ -1,16 +1,14 @@
 package it.polimi.ingsw.network;
 
-import it.polimi.ingsw.model.Island;
-
 public class MovePawnToIsland extends ClientToServer{
-    public final Island island;
+    public final int island;
 
 
-    public MovePawnToIsland(Island island) {
+    public MovePawnToIsland(int island) {
         this.island = island;
     }
 
-    public Island getIsland() {
+    public int getIsland() {
         return island;
     }
 }
