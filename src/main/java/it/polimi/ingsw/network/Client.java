@@ -98,13 +98,13 @@ public class Client implements Handler {
                                 notifyAll();
                             }
                         } else {
-                            sendObject(//NON SO COSA VA QUI DENTRO);
+                            sendObject("wrong turn"); //NON SO COSA VA QUI DENTRO);
                         }
                     }
                 }catch (IOException |NullPointerException|IllegalArgumentException e){
                     System.out.println("SERVER: "+userNickname+" connection close by the client");
                     closeConnect();
-                    notifyDisconnection(this);
+                    sendObject(new DisconnectionMessage(userNickname));// NON SO SE è GIUSTO
                     break;
                 }
             }
