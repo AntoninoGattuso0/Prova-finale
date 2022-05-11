@@ -1,15 +1,13 @@
 package it.polimi.ingsw.network;
 
-import it.polimi.ingsw.model.Player;
-
 public class DisconnectionMessage extends ServerToClient{
-    private final Player playerDisconnected;
+    private final String playerDisconnected;
 
-    public DisconnectionMessage(Player playerDisconnected) {
+    public DisconnectionMessage(String playerDisconnected) {
         this.playerDisconnected = playerDisconnected;
     }
 
-    public Player getPlayerDisconnected() {
-        return playerDisconnected;
+    public String getPlayerDisconnected() {
+        return playerDisconnected+" is disconnected";
     }
 }

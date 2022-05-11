@@ -1,15 +1,12 @@
 package it.polimi.ingsw.network;
-
-import it.polimi.ingsw.model.CharacterCard;
-
 public class ChooseAssistantCard extends ClientToServer{
-    private final CharacterCard character;
+    private final int character;
 
-    public ChooseAssistantCard(CharacterCard character) {
+    public ChooseAssistantCard(int character) {
         this.character = character;
     }
 
-    public CharacterCard getCharacter() {
+    public int getCharacter() {
         return character;
     }
 }
