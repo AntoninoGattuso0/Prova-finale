@@ -3,7 +3,7 @@ package it.polimi.ingsw.network;
 import java.io.*;
 import java.net.*;
 
-public class Client {
+public class Client implements Client{
     Socket mySocket = null;
     ObjectInputStream in;
     ObjectOutputStream out;
