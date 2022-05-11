@@ -1,15 +1,13 @@
 package it.polimi.ingsw.network;
 
-import it.polimi.ingsw.model.Cloud;
-
 public class ChooseCloudMessage extends ClientToServer{
-    private final Cloud cloud;
+    private final int cloud;
 
-    public ChooseCloudMessage(Cloud cloud) {
+    public ChooseCloudMessage(int cloud) {
         this.cloud = cloud;
     }
 
-    public Cloud getCloud() {
+    public int getCloud() {
         return cloud;
     }
 }

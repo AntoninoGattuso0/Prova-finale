@@ -1,15 +1,13 @@
 package it.polimi.ingsw.network;
 
-import it.polimi.ingsw.model.Island;
-
 public class MoveMotherNatureMessage extends ClientToServer{
-    private final Island island;
+    private final int island;
 
-    public MoveMotherNatureMessage( Island island) {
+    public MoveMotherNatureMessage(int island) {
         this.island = island;
     }
 
-    public Island getIsland() {
+    public int getIsland() {
         return island;
     }
 }
