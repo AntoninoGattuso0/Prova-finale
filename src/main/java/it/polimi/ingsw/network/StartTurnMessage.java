@@ -1,7 +1,5 @@
 package it.polimi.ingsw.network;
 
-import it.polimi.ingsw.model.Player;
-
 public class StartTurnMessage extends ServerToClient{
     private final String currentPlayer;
 
