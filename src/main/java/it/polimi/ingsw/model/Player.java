@@ -11,7 +11,10 @@ public class Player {
     public void setNickame(String nick){
         this.nickname=nick;
     }
-    public Player(String nick,Game game) {
+    public String getNickname() {
+        return nickname;
+    }
+    public Player(String nick, Game game) {
         int j, k;
         setNickame(nick);
         if (game.isExpert) setNumCoin(1);
