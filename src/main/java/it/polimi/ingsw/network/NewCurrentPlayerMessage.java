@@ -1,15 +1,17 @@
 package it.polimi.ingsw.network;
 
-public class NewCurrentPlayerMessage extends ServerToClient{
-    private final String currentPlayer;
-    private final String nextPlayer;
+import it.polimi.ingsw.model.Player;
 
-    public NewCurrentPlayerMessage(String currentPlayer, String nextPlayer){
+public class NewCurrentPlayerMessage extends ServerToClient{
+    private final Player currentPlayer;
+    private final Player nextPlayer;
+
+    public NewCurrentPlayerMessage(Player currentPlayer, Player nextPlayer){
         this.currentPlayer = currentPlayer;
         this.nextPlayer = nextPlayer;
     }
 
     public String getNextPlayer() {
-        return currentPlayer + "is disconnected, " + nextPlayer + " it's your turn!";
+        return currentPlayer.get + "is disconnected, " + nextPlayer + " it's your turn!";
     }
 }
