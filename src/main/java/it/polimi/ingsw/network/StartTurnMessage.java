@@ -3,17 +3,17 @@ package it.polimi.ingsw.network;
 import it.polimi.ingsw.model.Player;
 
 public class StartTurnMessage extends ServerToClient{
-    private final Player currentPlayer;
+    private final String currentPlayer;
 
-    public StartTurnMessage(Player currentPlayer){
+    public StartTurnMessage(String currentPlayer){
         this.currentPlayer = currentPlayer;
     }
 
-    public Player getCurrentPlayer() {
+    public String getCurrentPlayer() {
         return currentPlayer;
     }
 
     public String getMessage(){
-        return currentPlayer.getNickname() + "it's your turn!";
+        return currentPlayer + "it's your turn!";
     }
 }
