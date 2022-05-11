@@ -3,7 +3,7 @@ import java.io.*;
 import java.net.*;
 
 
-public class Client implements ClientHandler {
+public class Client implements Handler {
     private final Socket mySocket;
     private String userNickname;
     private volatile boolean connected;
@@ -21,8 +21,11 @@ public class Client implements ClientHandler {
         this.messageReady = false;
         this.ping = new Ping();
     }
+    public String getUserNickname() {
+        return userNickname;
+    }
 
-    public void setMyTurn(boolean myTurn) {
+    public void setTurn(boolean myTurn) {
         this.myTurn = myTurn;
     }
 
@@ -77,7 +80,7 @@ public class Client implements ClientHandler {
         }
     }
     public void readFromClient(){
-        Thread thread= new Thread(()-> {
+        Thread thread= new Thread(()->{
             while (connected) {
                 try {
                     mySocket.setSoTimeout(30000);
@@ -95,7 +98,7 @@ public class Client implements ClientHandler {
                                 notifyAll();
                             }
                         } else {
-                            sendObject(new DisconnectionMessage());
+                            sendObject(//NON SO COSA VA QUI DENTRO);
                         }
                     }
                 }catch (IOException |NullPointerException|IllegalArgumentException e){
