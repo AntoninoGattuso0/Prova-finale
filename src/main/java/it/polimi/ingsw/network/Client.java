@@ -95,7 +95,7 @@ public class Client implements ClientHandler {
                                 notifyAll();
                             }
                         } else {
-                            sendObject(new DisconnectionMessage);
+                            sendObject(new DisconnectionMessage());
                         }
                     }
                 }catch (IOException |NullPointerException|IllegalArgumentException e){
