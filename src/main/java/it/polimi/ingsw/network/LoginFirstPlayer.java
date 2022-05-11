@@ -2,6 +2,7 @@ package it.polimi.ingsw.network;
 
 public class LoginFirstPlayer extends ClientToServer{
     private static final long serialVersionUID= -6929509489095279482L;
+
     private final String nickname;
     private final int numPlayers;
     private final boolean isExpert;
@@ -12,7 +13,7 @@ public class LoginFirstPlayer extends ClientToServer{
         this.nickname = nickname;
         this.numPlayers = numPlayers;
         this.isExpert = isExpert;
-        this.join=join;
+        this.join = join;
     }
 
     public int getNumPlayers(){
@@ -25,5 +26,9 @@ public class LoginFirstPlayer extends ClientToServer{
 
     public String getNickname() {
         return nickname;
+    }
+
+    public boolean isJoin() {
+        return join;
     }
 }
