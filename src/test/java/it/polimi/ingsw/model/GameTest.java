@@ -46,9 +46,9 @@ public class GameTest {
         int j = i+3;
         if(j>=game.islands.size()) j = j - game.islands.size();
         assertFalse(game.islands.get(j).getMotherNature());
-        game.moveMotherNature(3);
+        game.moveMotherNature(game.islands.get(3));
         assertFalse(game.islands.get(i).getMotherNature());
-        assertTrue(game.islands.get(j).getMotherNature());
+        assertTrue(game.islands.get(3).getMotherNature());
     }
     @Test
     public void testCheckIsland(){

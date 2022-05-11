@@ -115,14 +115,12 @@ public class Game {
         Player player = new Player(nick,game);//inizializzazione player fatta in player -NINO
         game.players.add(player);
     }
-    public void moveMotherNature(int num) {
+    public void moveMotherNature(Island island) {
         int i;
         int totIsland = islands.size();
         for (i = 0; !islands.get(i).getMotherNature(); i++) ;
         islands.get(i).setMotherNature(false);
-        num += i;
-        if (num >= totIsland) num -= totIsland;
-        islands.get(num).setMotherNature(true);
+        island.setMotherNature(true);
     }
     public static void unifyIsland(int i, Game game) { // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
         int j, k;

@@ -2,10 +2,13 @@ package it.polimi.ingsw.network;
 
 public class LoginOtherPlayers extends ClientToServer{
 
-    private String nickname;
+    private final String nickname;
+    private final boolean join;
 
-    public LoginOtherPlayers(String nickname){
+
+    public LoginOtherPlayers(String nickname,boolean join){
         this.nickname = nickname;
+        this.join=join;
     }
 
     public String getNickname() {
