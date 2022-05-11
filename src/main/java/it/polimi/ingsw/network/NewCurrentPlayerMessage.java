@@ -12,6 +12,6 @@ public class NewCurrentPlayerMessage extends ServerToClient{
     }
 
     public String getNextPlayer() {
-        return currentPlayer.get + "is disconnected, " + nextPlayer + " it's your turn!";
+        return currentPlayer.getNickname() + "is disconnected, " + nextPlayer.getNickname() + " it's your turn!";
     }
 }
