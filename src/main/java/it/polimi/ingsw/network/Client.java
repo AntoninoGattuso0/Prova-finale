@@ -3,7 +3,7 @@ import java.io.*;
 import java.net.*;
 
 
-public class Client implements Handler {
+public class Client implements HandlerClient {//DA RIVEDERE
     private final Socket mySocket;
     private String userNickname;
     private volatile boolean connected;

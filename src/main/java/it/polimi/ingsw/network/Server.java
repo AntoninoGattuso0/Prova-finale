@@ -2,7 +2,7 @@ package it.polimi.ingsw.network;
 import java.io.*;
 import java.net.*;
 
-public class Server implements Runnable {
+public class Server implements Runnable {//DA RIVEDERE
     private ServerSocket serverSocket;
     private final Lobby lobby;
     int port;
@@ -25,7 +25,7 @@ public class Server implements Runnable {
         System.out.println("SERVER: Waiting client connection.");
             Socket socket= serverSocket.accept();
             System.out.println("SERVER: Client connected.");
-            Handler client= new Client(socket);
+            HandlerClient client= new Client(socket);
             client.run();
             lobby.addClient(client);
         } catch (IOException e) {
