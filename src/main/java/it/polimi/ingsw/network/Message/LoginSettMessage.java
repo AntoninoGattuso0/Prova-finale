@@ -14,4 +14,5 @@ public class LoginSettMessage extends ClientToServer {
     public String getNickname() {
         return nickname;
     }
+    public boolean getJoin(){ return join;}
 }
