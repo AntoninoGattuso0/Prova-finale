@@ -34,8 +34,6 @@ public class Client implements HandlerClient {//DA RIVEDERE
     public void setTurn(boolean myTurn) {
         this.myTurn = myTurn;
     }
-
-    @Override
     public void setUserNickname(String userNickname) {
         this.userNickname=userNickname;
     }

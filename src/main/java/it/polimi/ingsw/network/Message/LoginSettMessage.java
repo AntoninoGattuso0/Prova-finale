@@ -1,12 +1,12 @@
 package it.polimi.ingsw.network.Message;
 
-public class LoginOtherPlayers extends ClientToServer {
+public class LoginSettMessage extends ClientToServer {
 
     private final String nickname;
     private final boolean join;
 
 
-    public LoginOtherPlayers(String nickname,boolean join){
+    public LoginSettMessage(String nickname, boolean join){
         this.nickname = nickname;
         this.join=join;
     }

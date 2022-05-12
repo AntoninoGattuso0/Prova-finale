@@ -1,6 +1,6 @@
 package it.polimi.ingsw.network.Message;
 
-public class LoginFirstPlayer extends ClientToServer {
+public class LoginNumPlayerIsExp extends ClientToServer {
     private static final long serialVersionUID= -6929509489095279482L;
 
     private final String nickname;
@@ -9,26 +9,14 @@ public class LoginFirstPlayer extends ClientToServer {
     private final boolean join;
 
 
-    public LoginFirstPlayer(String nickname, int numPlayers, boolean isExpert, boolean join ){
-        this.nickname = nickname;
+    public LoginNumPlayerIsExp(String nickname, int numPlayers, boolean isExpert, boolean join ){
         this.numPlayers = numPlayers;
         this.isExpert = isExpert;
-        this.join = join;
     }
-
     public int getNumPlayers(){
         return numPlayers;
     }
-
     public boolean isExpert(){
         return isExpert;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public boolean isJoin() {
-        return join;
     }
 }
