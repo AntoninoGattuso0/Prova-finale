@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 
-public class Client implements HandlerClient {//DA RIVEDERE
+public class Client implements ClientHandler {//DA RIVEDERE
     private final Socket mySocket;
     private String userNickname;
     private volatile boolean connected;
@@ -31,6 +31,7 @@ public class Client implements HandlerClient {//DA RIVEDERE
         return userNickname;
     }
 
+    @Override
     public void setTurn(boolean myTurn) {
         this.myTurn = myTurn;
     }
@@ -113,7 +114,7 @@ public class Client implements HandlerClient {//DA RIVEDERE
                 }catch (IOException |NullPointerException|IllegalArgumentException e){
                     System.out.println("SERVER: "+userNickname+" connection close by the client");
                     closeConnect();
-                    sendObject(new DisconnectionMessage(userNickname));// NON SO SE è GIUSTO
+
                     break;
                 }
             }

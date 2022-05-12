@@ -1,34 +1,38 @@
 package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.controller.Controller;
+import it.polimi.ingsw.controller.UserInput;
+import it.polimi.ingsw.network.Message.*;
+
 import java.util.ArrayList;
 
-import it.polimi.ingsw.network.Message.*;
-import it.polimi.ingsw.view.VirtualView;
-
 public class Lobby {//DA COMPLETARE
-    private ArrayList<String> name;
+    private ArrayList<String> namePlayer;
     private final VirtualView virtualView;
-    private final int numPlayer;
+    private final UserInput userInput;
+    private int numPlayer;
     private boolean lobbyOk;
-    private final ArrayList<HandlerClient> clients;
+    private final ArrayList<ClientHandler> clients;
     private boolean lobbySett;
     private boolean joinClient;
     private Controller controller;
+    private boolean isExpert;
 
     public Lobby() {
-        name = new ArrayList<>();
+        namePlayer = new ArrayList<>();
         virtualView = new VirtualView();
+        userInput=new UserInput();
         clients = new ArrayList<>();
         numPlayer = -1;
         lobbyOk = false;
         lobbySett = false;
         joinClient = false;
-        virtualView.addObserver(UserInput);
+        virtualView.addObserver(userInput);
+
     }
 
-    public void loginUser(HandlerClient loginClient) {
-        int i = 0;
+    public void loginUser(ClientHandler loginClient) {
+        int i;
         String nickname;
         Message nickMessage;
         loginClient.setTurn(true);
@@ -39,8 +43,8 @@ public class Lobby {//DA COMPLETARE
         }
         nickname = ((LoginSettMessage) nickMessage).getNickname();
         joinClient = ((LoginSettMessage) nickMessage).getJoin();
-        for (i = 0; i < name.size(); i++) {
-            while (name.get(i) == nickname) {
+        for (i = 0; i < namePlayer.size(); i++) {
+            while (namePlayer.get(i).equals(nickname)) {
                 loginClient.sendObject(new SetNickMessage());
                 nickMessage = loginClient.read();
                 if (nickMessage == null) {
@@ -50,16 +54,31 @@ public class Lobby {//DA COMPLETARE
                 joinClient = ((LoginSettMessage) nickMessage).getJoin();
             }
         }
-        name.add(nickname);
+        namePlayer.add(nickname);
         loginClient.setUserNickname(nickname);
+        if(namePlayer.size()==1){
+            loginClient.sendObject(new SetNumPlayers());
+            nickMessage=loginClient.read();
+            numPlayer=((LoginNumPlayerIsExp) nickMessage).getNumPlayers();
+            while(numPlayer<2||numPlayer>4){
+                loginClient.sendObject(new SetNumPlayers());
+                nickMessage=loginClient.read();
+                numPlayer=((LoginNumPlayerIsExp) nickMessage).getNumPlayers();
+            }
+                loginClient.sendObject(new SetIsExpert());
+                isExpert=((LoginNumPlayerIsExp) nickMessage).getIsExpert();
+        }
         System.out.println("SERVER: "+nickname+" is joining!\n");
         loginClient.sendObject(new LoginAccepted(nickname));
-        if(name.size()==1){
-            int num;
-            boolean isExpert;
-            loginClient.sendObject(new SetNumPlayers());
-            num=((LoginNumPlayerIsExp) nickMessage).getNumPlayers();
-        }
         loginClient.setTurn(false);
+    }
+    public void endGame(Lobby lobby){
+        for(String nickname: namePlayer){
+            namePlayer.remove(nickname);
+        }
+        lobby = null;
+    }
+    public void newGame(){
+        
     }
 }

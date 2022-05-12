@@ -13,7 +13,7 @@ public class LoginNumPlayerIsExp extends ClientToServer {
     public int getNumPlayers(){
         return numPlayers;
     }
-    public boolean isExpert(){
+    public boolean getIsExpert(){
         return isExpert;
     }
 }

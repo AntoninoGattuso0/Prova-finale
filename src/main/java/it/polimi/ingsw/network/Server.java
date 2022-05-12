@@ -25,9 +25,9 @@ public class Server implements Runnable {//DA RIVEDERE
         System.out.println("SERVER: Waiting client connection.");
             Socket socket= serverSocket.accept();
             System.out.println("SERVER: Client connected.");
-            HandlerClient client= new Client(socket);
+            ClientHandler client= new Client(socket);
             client.run();
-            lobby.addClient(client);
+            lobby.loginUser(client);
         } catch (IOException e) {
             System.out.println("SERVER: restarting server.");
         }
