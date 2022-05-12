@@ -1,6 +1,6 @@
 package it.polimi.ingsw.observer;
 
-import it.polimi.ingsw.network.Message;
+import it.polimi.ingsw.network.Message.Message;
 
 public interface ViewObserver {//DA COMPLETARE
     void updateNick(String nick);

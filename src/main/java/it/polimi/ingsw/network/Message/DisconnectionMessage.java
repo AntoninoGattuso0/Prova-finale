@@ -1,6 +1,6 @@
-package it.polimi.ingsw.network;
+package it.polimi.ingsw.network.Message;
 
-public class DisconnectionMessage extends ServerToClient{
+public class DisconnectionMessage extends ServerToClient {
     private final String playerDisconnected;
 
     public DisconnectionMessage(String playerDisconnected) {

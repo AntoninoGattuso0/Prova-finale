@@ -1,6 +1,6 @@
-package it.polimi.ingsw.network;
+package it.polimi.ingsw.network.Message;
 
-public class MoveMotherNatureMessage extends ClientToServer{
+public class MoveMotherNatureMessage extends ClientToServer {
     private final int island;
 
     public MoveMotherNatureMessage(int island) {

@@ -1,6 +1,6 @@
-package it.polimi.ingsw.network;
+package it.polimi.ingsw.network.Message;
 
-public class ChooseCloudMessage extends ClientToServer{
+public class ChooseCloudMessage extends ClientToServer {
     private final int cloud;
 
     public ChooseCloudMessage(int cloud) {

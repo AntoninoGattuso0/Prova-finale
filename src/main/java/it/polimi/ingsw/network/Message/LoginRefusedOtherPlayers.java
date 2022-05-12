@@ -1,6 +1,6 @@
-package it.polimi.ingsw.network;
+package it.polimi.ingsw.network.Message;
 
-public class LoginRefusedOtherPlayers extends ServerToClient{
+public class LoginRefusedOtherPlayers extends ServerToClient {
 
     private final String LoginRefusedOtherPlayer;
 

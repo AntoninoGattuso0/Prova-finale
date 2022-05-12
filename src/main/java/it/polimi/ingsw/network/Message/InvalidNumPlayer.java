@@ -1,6 +1,6 @@
-package it.polimi.ingsw.network;
+package it.polimi.ingsw.network.Message;
 
-public class InvalidNumPlayer extends ServerToClient{
+public class InvalidNumPlayer extends ServerToClient {
     private final int invalidNumPlayer;
 
 

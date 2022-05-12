@@ -1,6 +1,6 @@
-package it.polimi.ingsw.network;
+package it.polimi.ingsw.network.Message;
 
-public class LoginFirstPlayer extends ClientToServer{
+public class LoginFirstPlayer extends ClientToServer {
     private static final long serialVersionUID= -6929509489095279482L;
 
     private final String nickname;

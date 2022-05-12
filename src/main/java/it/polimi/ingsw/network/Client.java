@@ -1,6 +1,12 @@
 package it.polimi.ingsw.network;
-import java.io.*;
-import java.net.*;
+
+import it.polimi.ingsw.network.Message.Message;
+import it.polimi.ingsw.network.Message.Ping;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 
 
 public class Client implements HandlerClient {//DA RIVEDERE
@@ -27,6 +33,11 @@ public class Client implements HandlerClient {//DA RIVEDERE
 
     public void setTurn(boolean myTurn) {
         this.myTurn = myTurn;
+    }
+
+    @Override
+    public void setUserNickname(String userNickname) {
+        this.userNickname=userNickname;
     }
 
     public void sendObject(Object object) {

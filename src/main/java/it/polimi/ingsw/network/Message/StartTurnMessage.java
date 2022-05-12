@@ -1,6 +1,6 @@
-package it.polimi.ingsw.network;
+package it.polimi.ingsw.network.Message;
 
-public class StartTurnMessage extends ServerToClient{
+public class StartTurnMessage extends ServerToClient {
     private final String currentPlayer;
 
     public StartTurnMessage(String currentPlayer){

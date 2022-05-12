@@ -1,6 +1,6 @@
-package it.polimi.ingsw.network;
+package it.polimi.ingsw.network.Message;
 
-public class NewCurrentPlayerMessage extends ServerToClient{
+public class NewCurrentPlayerMessage extends ServerToClient {
     private final String currentPlayer;
     private final String nextPlayer;
 

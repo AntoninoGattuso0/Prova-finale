@@ -1,6 +1,6 @@
 package it.polimi.ingsw.controller;
 
-import it.polimi.ingsw.network.Message;
+import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.observer.ViewObserver;
 
 public class UserInput implements ViewObserver {//DA RIVEDERE

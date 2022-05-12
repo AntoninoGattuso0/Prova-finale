@@ -1,6 +1,6 @@
-package it.polimi.ingsw.network;
+package it.polimi.ingsw.network.Message;
 
-public class LoginOtherPlayers extends ClientToServer{
+public class LoginOtherPlayers extends ClientToServer {
 
     private final String nickname;
     private final boolean join;
