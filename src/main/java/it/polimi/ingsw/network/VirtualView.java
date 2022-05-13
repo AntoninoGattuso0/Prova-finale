@@ -6,19 +6,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VirtualView extends ViewObservable {//DA COMPLETARE
-    private final Map<String, ClientHandler>  clients= new HashMap<>();
+    private final Map<String, ClientHandlerIntefrace>  clients= new HashMap<>();
     private String actualPlayer;
     private final Object lock;
     public VirtualView(){
         this.lock=new Object();
     }
-    public void addClientInVirtualView(ClientHandler client, String nick){
+    public void addClientInVirtualView(ClientHandlerIntefrace client, String nick){
         synchronized (lock){
             clients.put(nick,client);
             lock.notifyAll();
         }
     }
-    public void removeClientInVirtualView(ClientHandler client, String nick){
+    public void removeClientInVirtualView(ClientHandlerIntefrace client, String nick){
         synchronized (lock){
             clients.remove(nick,client);
             lock.notifyAll();
