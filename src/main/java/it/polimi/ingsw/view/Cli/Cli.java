@@ -150,10 +150,50 @@ public class Cli implements Runnable, View{
             for(j=0; j<game.getPlayers().get(i).getDiningRoom().getNumYellow(); j++) out.print(ColorCli.YELLOW +"● ");
             for(j=0; j<game.getPlayers().get(i).getDiningRoom().getNumPink(); j++) out.print(ColorCli.PINK +"● ");
             for(j=0; j<game.getPlayers().get(i).getDiningRoom().getNumBlue(); j++) out.print(ColorCli.BLUE +"● ");
+            out.println();
             out.println("-------------------");
+            out.println();
         }
     }
 
+    @Override
+    public void displayEntrance(Game game){
+        int i, j;
+        for(i=0; i<game.getPlayers().size(); i++){
+            out.println("Player: " + game.getPlayers().get(i).getNickname());
+            for(j=0; j<game.getPlayers().get(i).getEntrance().getGreenPawn(); j++) out.print(ColorCli.GREEN +"● ");
+            for(j=0; j<game.getPlayers().get(i).getEntrance().getRedPawn(); j++) out.print(ColorCli.RED +"● ");
+            for(j=0; j<game.getPlayers().get(i).getEntrance().getYellowPawn(); j++) out.print(ColorCli.YELLOW +"● ");
+            for(j=0; j<game.getPlayers().get(i).getEntrance().getPinkPawn(); j++) out.print(ColorCli.PINK +"● ");
+            for(j=0; j<game.getPlayers().get(i).getEntrance().getBluePawn(); j++) out.print(ColorCli.BLUE +"● ");
+            out.println();
+            out.println("-------------------");
+            out.println();
+        }
+    }
+
+    @Override
+    public void displayIslands(Game game){
+        int i, j;
+        for(i=0; i<game.getIslands().size(); i++){
+            out.println("Isola numero " + i);
+            out.print("Pedine Verdi: ");
+            for(j=0; j<game.getIslands().get(i).getGreenPawn(); j++) out.print(ColorCli.GREEN +"● ");
+            out.print("Pedine Rosse: ");
+            for(j=0; j<game.getIslands().get(i).getRedPawn(); j++) out.print(ColorCli.RED +"● ");
+            out.print("Pedine Gialle: ");
+            for(j=0; j<game.getIslands().get(i).getYellowPawn(); j++) out.print(ColorCli.YELLOW +"● ");
+            out.print("Pedine Rosa: ");
+            for(j=0; j<game.getIslands().get(i).getPinkPawn(); j++) out.print(ColorCli.PINK +"● ");
+            out.print("Pedine Blu: ");
+            for(j=0; j<game.getIslands().get(i).getBluePawn(); j++) out.print(ColorCli.BLUE +"● ");
+        }
+    }
+
+    @Override
+    public void displayProfTable(Game game){
+        out.println("Il giocatore " + game.getPlayers().get(game.getProfTable().getGreenProf()).getNickname() + " ha il professore VERDE")
+    }//penso che dobbiamo togliere la staticità dei metodi "get...prof()" perché se no non me li fa usare... -Paul
 
 
     @Override

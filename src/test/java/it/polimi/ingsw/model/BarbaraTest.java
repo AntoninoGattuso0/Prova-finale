@@ -27,7 +27,7 @@ class BarbaraTest {
         game.players.get(1).diningRoom.setNumBlue(3);
         CharacterCard characterCard=new CharacterCard(barbara);
         characterCard.useEffect.useEffect(game,1,game.islands.get(0),game.players.get(0),colorPawn);
-        assertEquals(1, ProfTable.getGreenProf());
+        assertEquals(1, game.getProfTable().getGreenProf());
         assertEquals(3,barbara.getCoinPrice());
         assertEquals(0, ProfTable.getRedProf());
         assertEquals(1, ProfTable.getPinkProf());

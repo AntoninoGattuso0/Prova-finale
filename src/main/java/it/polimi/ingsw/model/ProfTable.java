@@ -6,7 +6,7 @@ public class ProfTable {
     private static int pinkProf;
     private static int blueProf;
 
-    public static int getGreenProf() {
+    public int getGreenProf() {
         return greenProf;
     }
 

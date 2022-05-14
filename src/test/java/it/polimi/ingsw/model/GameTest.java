@@ -121,7 +121,7 @@ public class GameTest {
         game.players.get(1).diningRoom.setNumBlue(2);
         game.players.get(2).diningRoom.setNumPink(1);
         game.moveProf();
-        assertEquals(0, ProfTable.getGreenProf());
+        assertEquals(0, game.getProfTable().getGreenProf());
         assertEquals(-1, ProfTable.getRedProf());
         assertEquals(0, ProfTable.getYellowProf());
         assertEquals(2, ProfTable.getPinkProf());

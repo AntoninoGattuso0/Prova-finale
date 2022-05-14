@@ -18,6 +18,9 @@ public class Player {
     public DiningRoom getDiningRoom(){
         return this.diningRoom;
     }
+    public Entrance getEntrance(){
+        return this.entrance;
+    }
 
     public ArrayList<AssistantCard> getDeckAssistant(){
 

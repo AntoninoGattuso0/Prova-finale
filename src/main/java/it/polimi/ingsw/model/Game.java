@@ -4,7 +4,7 @@ public class Game {
     protected ArrayList<Player> players = new ArrayList<>();
     protected int totPlayer;
     protected ArrayList<Cloud> clouds;
-    protected ProfTable profTable;
+    protected static ProfTable profTable;
     protected ArrayList<Island> islands = new ArrayList<>();
     protected boolean isExpert;
     protected ArrayList<CharacterCard> cards = new ArrayList<>(); //cambiato in arraylist;
@@ -14,9 +14,19 @@ public class Game {
     public void setTotPlayer(int i) {
         totPlayer = i;
     }
+
+    public ProfTable getProfTable() {
+        return profTable;
+    }
+
     public int getTotPlayer() {
         return totPlayer;
     }
+
+    public ArrayList<Island> getIslands(){
+        return this.islands;
+    }
+
     public ArrayList<Player> getPlayers() {
         return players;
     }

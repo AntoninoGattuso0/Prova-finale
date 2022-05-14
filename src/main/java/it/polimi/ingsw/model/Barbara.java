@@ -15,8 +15,8 @@ public class Barbara extends UseEffect{
         int j;
         int max;
         max = 0;
-        if (ProfTable.getGreenProf() != -1) {
-            if (game.players.get(i).diningRoom.getNumGreen() == game.players.get(ProfTable.getGreenProf()).diningRoom.getNumGreen())
+        if (game.getProfTable().getGreenProf() != -1) {
+            if (game.players.get(i).diningRoom.getNumGreen() == game.players.get(game.getProfTable().getGreenProf()).diningRoom.getNumGreen())
                 ProfTable.setGreenProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
