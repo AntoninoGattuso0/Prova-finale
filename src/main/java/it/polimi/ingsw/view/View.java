@@ -1,6 +1,7 @@
 package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.*;
 
 public interface View {
@@ -14,7 +15,7 @@ public interface View {
     void displayIsExpert(int isExpert);
     void waitForPlayers();
 
-    void displayAssistantCard();
+    void displayAssistantCard(Player player);
     void displayCloud();
     void displayDiningRoom();
     void displayEntrance();
@@ -37,7 +38,7 @@ public interface View {
 
 
     void displayTurn(StartTurnMessage startTurnMessage);  //mostra di chi è il turno
-    void displayWinner();
+    void displayWinner(String winner);
 
 }
 
