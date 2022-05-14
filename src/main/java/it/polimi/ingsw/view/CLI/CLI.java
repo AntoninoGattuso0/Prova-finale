@@ -1,5 +1,7 @@
 package it.polimi.ingsw.view.CLI;
 
+import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.*;
 import it.polimi.ingsw.view.View;
 
@@ -45,7 +47,7 @@ public class CLI implements Runnable, View{
         int isExpert = checkInteger();
 
 
-         while(isExpert !=  0 || numPlayers != 1){
+         while(isExpert !=  0 || numPlayers != 1){ //non ho capito cosa controlla questo -Paul
             System.out.println("ERROR: type 0 for normal mode or type 1 for expert mode \n");
             isExpert = checkInteger();
         }
@@ -67,8 +69,14 @@ public class CLI implements Runnable, View{
 
     @Override
     public void displayTurn(StartTurnMessage startTurnMessage){
+        System.out.println(startTurnMessage.getMessage());
+    }
 
-
+    @Override
+    public void displayNick(Game game){
+        int i;
+        for(i=0; i<game.getTotPlayer(); i++)
+            System.out.println(game.getPlayers().get(i).getNickname() + " è il giocatore numero " + (i+1));
     }
 
 

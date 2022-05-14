@@ -1,5 +1,6 @@
 package it.polimi.ingsw.view;
 
+import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.network.Message.*;
 
 public interface View {
@@ -7,7 +8,8 @@ public interface View {
     void startGame();
     void loginPlayers();
     void askNumPlayerIsExpert();
-    void displayNick();
+    void displayNick(Game game);
+
     void displayNumPlayers(int numPlayers);
     void displayIsExpert(int isExpert);
     void waitForPlayers();
