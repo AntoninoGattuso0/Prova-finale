@@ -14,6 +14,16 @@ public class Player {
     public String getNickname() {
         return nickname;
     }
+
+    public DiningRoom getDiningRoom(){
+        return this.diningRoom;
+    }
+
+    public ArrayList<AssistantCard> getDeckAssistant(){
+
+        return this.deckAssistant;
+    }
+
     public Player(String nick, Game game) {
         int j, k;
         setNickame(nick);

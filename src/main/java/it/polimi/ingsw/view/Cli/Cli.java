@@ -1,6 +1,7 @@
 package it.polimi.ingsw.view.Cli;
 
-import it.polimi.ingsw.model.Game;
+
+import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.Message.*;
 import it.polimi.ingsw.view.View;
 
@@ -75,9 +76,6 @@ public class Cli implements Runnable, View{
         } while (!validInput);
     }
 
-    public void clearCli(){
-        out.print("\033[H\033[2J");
-    }
 
     public int checkInteger(){
         boolean isInteger = false;
@@ -118,6 +116,47 @@ public class Cli implements Runnable, View{
     }
 
     @Override
+    public void displayAssistantCard(Player player){
+        int i;
+        for(i=0; i<player.getDeckAssistant().size(); i++){
+            out.println(i + "Valore: " +player.getDeckAssistant().get(i).getCardValue());
+            out.println(" " + "Passi: " + player.getDeckAssistant().get(i).getStep());
+            out.println("-----------------------");
+        }
+    }
+
+    @Override
+    public void displayCloud(Game game){
+        int i;
+        for(i=0; i<game.getClouds().size(); i++){
+            out.println("La Cloud numero " + i + " ha:");
+            out.println(" - " + game.getClouds().get(i).getGreenPawn() + " GreenPawn,");
+            out.println(" - " + game.getClouds().get(i).getRedPawn() + " RedPawn,");
+            out.println(" - " + game.getClouds().get(i).getYellowPawn() + " YelloPawn,");
+            out.println(" - " + game.getClouds().get(i).getPinkPawn() + " PinkPawn,");
+            out.println(" - " + game.getClouds().get(i).getBluePawn() + " BluePawn.");
+
+
+        }
+    }
+
+    @Override
+    public void displayDiningRoom(Game game){
+        int i, j;
+        for(i=0; i<game.getPlayers().size(); i++){
+            out.println("Player: " + game.getPlayers().get(i).getNickname());
+            for(j=0; j<game.getPlayers().get(i).getDiningRoom().getNumGreen(); j++) out.print(ColorCli.GREEN +"● ");
+            for(j=0; j<game.getPlayers().get(i).getDiningRoom().getNumRed(); j++) out.print(ColorCli.RED +"● ");
+            for(j=0; j<game.getPlayers().get(i).getDiningRoom().getNumYellow(); j++) out.print(ColorCli.YELLOW +"● ");
+            for(j=0; j<game.getPlayers().get(i).getDiningRoom().getNumPink(); j++) out.print(ColorCli.PINK +"● ");
+            for(j=0; j<game.getPlayers().get(i).getDiningRoom().getNumBlue(); j++) out.print(ColorCli.BLUE +"● ");
+            out.println("-------------------");
+        }
+    }
+
+
+
+    @Override
     public void displayNumPlayers(int numPlayers){
         System.out.println("The number of players is: " + numPlayers);
     }
@@ -145,6 +184,16 @@ public class Cli implements Runnable, View{
     @Override
     public void waitForPlayers(){
             System.out.println("Attendendo giocatori...");
+    }
+
+    @Override
+    public void displayWinner(String winner){
+        out.println("Game ended, " + winner + " WIN!")
+    }
+
+    public void clearCli(){
+        out.print(ColorCli.CLEAR);
+        out.flush();
     }
 
 
