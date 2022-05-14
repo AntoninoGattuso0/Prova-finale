@@ -125,6 +125,36 @@ public class Cli implements Runnable, View{
         }
     }
 
+    @Override
+    public void displayCloud(Game game){
+        int i;
+        for(i=0; i<game.getClouds().size(); i++){
+            out.println("La Cloud numero " + i + " ha:");
+            out.println(" - " + game.getClouds().get(i).getGreenPawn() + " GreenPawn,");
+            out.println(" - " + game.getClouds().get(i).getRedPawn() + " RedPawn,");
+            out.println(" - " + game.getClouds().get(i).getYellowPawn() + " YelloPawn,");
+            out.println(" - " + game.getClouds().get(i).getPinkPawn() + " PinkPawn,");
+            out.println(" - " + game.getClouds().get(i).getBluePawn() + " BluePawn.");
+
+
+        }
+    }
+
+    @Override
+    public void displayDiningRoom(Game game){
+        int i, j;
+        for(i=0; i<game.getPlayers().size(); i++){
+            out.println("Player: " + game.getPlayers().get(i).getNickname());
+            for(j=0; j<game.getPlayers().get(i).getDiningRoom().getNumGreen(); j++) out.print(ColorCli.GREEN +"● ");
+            for(j=0; j<game.getPlayers().get(i).getDiningRoom().getNumRed(); j++) out.print(ColorCli.RED +"● ");
+            for(j=0; j<game.getPlayers().get(i).getDiningRoom().getNumYellow(); j++) out.print(ColorCli.YELLOW +"● ");
+            for(j=0; j<game.getPlayers().get(i).getDiningRoom().getNumPink(); j++) out.print(ColorCli.PINK +"● ");
+            for(j=0; j<game.getPlayers().get(i).getDiningRoom().getNumBlue(); j++) out.print(ColorCli.BLUE +"● ");
+            out.println("-------------------");
+        }
+    }
+
+
 
     @Override
     public void displayNumPlayers(int numPlayers){

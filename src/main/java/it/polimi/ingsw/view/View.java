@@ -16,8 +16,8 @@ public interface View {
     void waitForPlayers();
 
     void displayAssistantCard(Player player);
-    void displayCloud();
-    void displayDiningRoom();
+    void displayCloud(Game game);
+    void displayDiningRoom(Game game);
     void displayEntrance();
     void displayIsland();
     void displayProfTable();

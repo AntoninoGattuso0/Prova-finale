@@ -20,6 +20,10 @@ public class Game {
     public ArrayList<Player> getPlayers() {
         return players;
     }
+
+    public ArrayList<Cloud> getClouds(){
+        return this.clouds;
+    }
     public Game(int giocatori, boolean expert) {
         totPlayer = giocatori;
         isExpert = expert;
