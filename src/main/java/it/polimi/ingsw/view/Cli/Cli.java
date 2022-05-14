@@ -1,19 +1,82 @@
-package it.polimi.ingsw.view.CLI;
+package it.polimi.ingsw.view.Cli;
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.*;
 import it.polimi.ingsw.view.View;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.io.*;
 
-public class CLI implements Runnable, View{
+public class Cli implements Runnable, View{
     Scanner scanner = new Scanner(System.in); //Per leggere input da tastiera
+    private final PrintStream out;
+    private Thread inputThread;
 
-    public CLI(){
+    public Cli(){
+        out = System.out;
+    }
 
+    public String readline() throws ExecutionException{
+        FutureTask<String> futureTask = new FutureTask<>(new InputReadTask());
+        inputThread = new Thread(futureTask);
+        inputThread.start();
+
+        String input = null;
+
+        try{
+            input = futureTask.get();
+        } catch (InterruptedException e){
+            futureTask.cancel(true);
+            Thread.currentThread().interrupt();
+        }
+        return input;
+    }
+
+    //start the cli
+    public void init() {
+        out.println("Benvenuto in Eryantis!");
+
+        try{
+            askServerInfo();
+        }catch (ExecutionException e){
+            out.println("User input canceled.");
+        }
+    }
+    public void askServerInfo() throws ExecutionException{
+        Map<String, String> serverInfo = new HashMap<>();
+        String defaultAddress = "localhost";
+        String defaultPort = "16847";
+        boolean validInput;
+
+        out.println("Seleziona una delle opzioni, il valore di default è tra le parentesi");
+
+        do{
+            out.print("Inserisci il server address [" +defaultAddress+ "]: ");
+
+            String address = readline();
+
+            if(address.equals("")){
+                serverInfo.put("address", defaultAddress);
+                validInput = true;
+            } else if (ClientcController.isValidIpAddress(address)){
+                serverInfo.put("address", address);
+                validInput= true;
+            } else{
+                out.println("Invalid Address!!!");
+                clearCli();
+                validInput = false;
+            }
+        } while (!validInput);
+    }
+
+    public void clearCli(){
+        out.print("\033[H\033[2J");
     }
 
     public int checkInteger(){
@@ -79,6 +142,10 @@ public class CLI implements Runnable, View{
             System.out.println(game.getPlayers().get(i).getNickname() + " è il giocatore numero " + (i+1));
     }
 
+    @Override
+    public void waitForPlayers(){
+            System.out.println("Attendendo giocatori...");
+    }
 
 
 
