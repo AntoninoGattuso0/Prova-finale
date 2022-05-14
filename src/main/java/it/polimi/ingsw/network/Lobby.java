@@ -23,12 +23,13 @@ public class Lobby {//DA COMPLETARE
     private final Object lock;
    private Game game;
     public Lobby() {
+        lock=new Object();
         namePlayer = new ArrayList<>();
         virtualView = new VirtualView();
         userInput=new UserInput();
         clients = new ArrayList<>();
         players=new ArrayList<>();
-        numPlayer = -1;
+        numPlayer =0;
         lobbyOk = false;
         lobbySett = false;
         joinClient = false;
@@ -48,17 +49,14 @@ public class Lobby {//DA COMPLETARE
         }
     }
     private void newLobby(ClientHandlerIntefrace client){
-        Thread thread =new Thread(()->{
             Lobby lobby=new Lobby();
             lobby.addClient(client);
-        });
-        thread.start();
     }
     public void addClient(ClientHandlerIntefrace client){
         synchronized (lock) {
             String nick;
-            client.addObserver();
-            client.add(client);
+            client.addObserver(this);
+            clients.add(client);
             nick = client.getUserNickname();
             virtualView.addClientInVirtualView(client, nick);
             players.add(new Player(nick, game));
@@ -75,19 +73,15 @@ public class Lobby {//DA COMPLETARE
         }
     }
     private void joiningInLobby(ClientHandlerIntefrace client, Lobby lobby){
-        Thread thread=new Thread(()->{
             int i;
             for(i=0;!namePlayer.get(i).equals(client.getUserNickname());i++);
             if(namePlayer.get(i).equals(client.getUserNickname())){
-                lobby.joinPlayer(client);
+                lobby.addClient(client);
             }
-        });
-        thread.start();
     }
-    public boolean isLobbyOk() {
-        return lobbyOk;
-    }
-    public void loginUser(ClientHandlerIntefrace loginClient) {
+    public boolean isLobbyOk(){return lobbyOk;}
+    //inserisco i player nell'array nomi, e li creo anche nel gioco
+    public void loginUser(ClientHandlerIntefrace loginClient){
         int i;
         String nickname;
         Message nickMessage;
