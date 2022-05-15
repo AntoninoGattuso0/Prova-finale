@@ -2,6 +2,7 @@ package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
+import it.polimi.ingsw.observer.ConnectionObservable;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -9,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 
-public class ClientHandler implements ClientHandlerIntefrace {//DA RIVEDERE
+public class ClientHandler extends ConnectionObservable implements ClientHandlerIntefrace {//DA RIVEDERE
     private final Socket mySocket;
     private String userNickname;
     private volatile boolean connected;
