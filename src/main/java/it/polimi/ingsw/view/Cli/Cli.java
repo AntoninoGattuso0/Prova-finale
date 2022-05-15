@@ -228,7 +228,7 @@ public class Cli implements Runnable, View{
 
     @Override
     public void displayWinner(String winner){
-        out.println("Game ended, " + winner + " WIN!")
+        out.println("Game ended, " + winner + " WIN!");
     }
 
     public void clearCli(){
