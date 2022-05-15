@@ -11,7 +11,7 @@ public class MessageManager {
         if(object instanceof Ping){
             return;
         }
-        if(object instanceof LoginAccepted){
+       if(object instanceof LoginAccepted){
             view.registerClient((LoginAccepted) object);
         }else if(object instanceof ChooseCloudMessage){
             view.

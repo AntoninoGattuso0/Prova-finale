@@ -1,5 +1,7 @@
 package it.polimi.ingsw.observer;
 
+import it.polimi.ingsw.network.Message.Message;
+
 import java.util.ArrayList;
 
 public class ViewObservable {
@@ -13,6 +15,13 @@ public class ViewObservable {
         synchronized (observers){
             for(ViewObserver observers:observers){
                 observers.updatePlayersNum(num);
+            }
+        }
+    }
+    public void sendNewMessage(Message message){
+        synchronized (observers){
+            for(ViewObserver observer: observers){
+                observers.updateMessage(message);
             }
         }
     }

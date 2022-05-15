@@ -1,4 +1,6 @@
 package it.polimi.ingsw.client;
 
-public class ServerNetworkHandler {
+import java.nio.channels.NetworkChannel;
+
+public class ServerNetworkHandler implements Runnable, SocketNetworkHandler {
 }

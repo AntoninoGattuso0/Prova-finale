@@ -5,6 +5,7 @@ import it.polimi.ingsw.controller.UserInput;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.*;
+import it.polimi.ingsw.observer.ConnectionObserver;
 
 import java.util.ArrayList;
 
