@@ -199,36 +199,56 @@ public class Cli implements Runnable, View {
     @Override
     public void displayDiningRoom(Game game) {
         clearCli();
-        int i, j;
 
-        for (i = 0; i < game.getPlayers().size(); i++) {
-            out.println("Player: " + game.getPlayers().get(i).getNickname());
-            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumGreen() && j < 5; j++){
-                out.println(ColorCli.GREEN + "● ");
-                out.println("\n");
-            }
-            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumRed(); j++){
-                out.print(ColorCli.RED + "● ");
-                out.println("\n");
-            }
-            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumYellow(); j++){
-                out.print(ColorCli.YELLOW + "● ");
-                out.println("\n");
-            }
-            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumPink(); j++){
-                out.print(ColorCli.PINK + "● ");
-                out.println("\n");
+        StringBuilder diningSpace = new StringBuilder();
+        out.println(" ");
+        out.println(" ");
+        diningSpace.append(ColorCli.BOLDCYAN);
+        int i, j, m;
+        diningSpace.append(ColorCli.BOLDCYAN);
+        for (i = 0; i < game.getPlayers().size() && i < 4; i++){
+            diningSpace.append(ColorCli.BOLDCYAN).append("Player: " + game.getPlayers().get(i).getNickname()).append("\n").append("+--------------+ \n");
 
+            for (j = 0; j < 5; j++) {
+                diningSpace.append(ColorCli.BOLDCYAN).append("|");
+                for (m = j; m < game.getPlayers().get(i).getDiningRoom().getNumGreen(); m++)
+                    diningSpace.append(color4DiningRoom(game.getPlayers().get(i), j)).append(ColorCli.BOLDCYAN);
+                for (m = j; m < game.getPlayers().get(i).getDiningRoom().getNumRed(); m++)
+                    diningSpace.append(color4DiningRoom(game.getPlayers().get(i), j)).append(ColorCli.BOLDCYAN);
+                for (m = j; m < game.getPlayers().get(i).getDiningRoom().getNumYellow(); m++)
+                    diningSpace.append(color4DiningRoom(game.getPlayers().get(i), j)).append(ColorCli.BOLDCYAN);
+                for (m = j; m < game.getPlayers().get(i).getDiningRoom().getNumPink(); m++)
+                    diningSpace.append(color4DiningRoom(game.getPlayers().get(i), j)).append(ColorCli.BOLDCYAN);
+                for (m = j; m < game.getPlayers().get(i).getDiningRoom().getNumBlue(); m++)
+                    diningSpace.append(color4DiningRoom(game.getPlayers().get(i), j)).append(ColorCli.BOLDCYAN);
+
+                diningSpace.append("|\n").append(ColorCli.RESET);
+                diningSpace.delete(0, diningSpace.capacity());
             }
-            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumBlue(); j++){
-                out.print(ColorCli.BLUE + "● ");
-                out.println("\n");
-            }
-            out.println();
-            out.println("-------------------");
-            out.println();
+            diningSpace.append(ColorCli.BOLDCYAN).append("+--------------+ \n");
         }
+        out.print(diningSpace);
+        diningSpace.delete(0, diningSpace.capacity());
+    }
 
+    private String color4DiningRoom(Player player, int color){
+        StringBuilder showColor = new StringBuilder();
+        if(color == 0){
+            showColor.append(ColorCli.GREEN).append("●  ");
+        }
+        else if(color == 1){
+            showColor.append(ColorCli.RED).append("●  ");
+        }
+        else if(color == 2){
+            showColor.append(ColorCli.YELLOW).append("●  ");
+        }
+        else if(color == 3){
+            showColor.append(ColorCli.PINK).append("●  ");
+        }
+        else if(color == 4){
+            showColor.append(ColorCli.BLUE).append("●  ");
+        }
+        return showColor.toString();
     }
 
 

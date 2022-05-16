@@ -16,7 +16,6 @@ class CliTest {
         cli.displayIslands(game);
         cli.displayEntrance(game);
         cli.displayCloud(game);
-
     }
 
 }
