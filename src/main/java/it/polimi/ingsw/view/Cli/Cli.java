@@ -191,48 +191,51 @@ public class Cli implements Runnable, View {
 
         int i;
         StringBuilder tabIslands = new StringBuilder();
-        out.print(print1_4Index(game.getIslands()));
+        out.println(print1_4Index(game.getIslands()));
         tabIslands.append(ColorCli.BOLDCYAN);
         for (i = 0; i < game.getIslands().size() && i < 4; i++)
-            tabIslands.append("+--------------");
-        tabIslands.append("+\n").append(ColorCli.RESET);
-        for (int j = 0; j < 5; j++)
+            tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
+        tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
+        for (int j = 0; j < 5; j++) {
             for (i = 0; i < game.getIslands().size() && i < 4; i++)
                 tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(game.getIslands(), i, j));
             tabIslands.append("|\n").append(ColorCli.RESET);
+        }
         for (i = 0; i < game.getIslands().size() && i < 4; i++)
-            tabIslands.append("+--------------");
-        tabIslands.append("+\n").append(ColorCli.RESET);
+            tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
+        tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
         out.print(tabIslands);
         tabIslands.delete(0, tabIslands.capacity());
 
-        out.print(print4_8Index(game.getIslands()));
+        out.println(print4_8Index(game.getIslands()));
         tabIslands.append(ColorCli.BOLDCYAN);
         for (i = 4; i < game.getIslands().size() && i < 8; i++)
-            tabIslands.append("+--------------");
-        tabIslands.append("+\n").append(ColorCli.RESET);
-        for (int j = 0; j < 5; j++)
+            tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
+        tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
+        for (int j = 0; j < 5; j++) {
             for (i = 4; i < game.getIslands().size() && i < 8; i++)
                 tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(game.getIslands(), i, j));
-            tabIslands.append("|\n").append(ColorCli.RESET);
+            tabIslands.append("|").append(ColorCli.RESET).append("\n");
+        }
         for (i = 4; i < game.getIslands().size() && i < 8; i++)
-            tabIslands.append("+--------------");
-        tabIslands.append("+\n").append(ColorCli.RESET);
+            tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
+        tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
         out.print(tabIslands);
         tabIslands.delete(0, tabIslands.capacity());
 
-        out.print(print8_12Index(game.getIslands()));
+        out.println(print8_12Index(game.getIslands()));
         tabIslands.append(ColorCli.BOLDCYAN);
         for (i = 8; i < game.getIslands().size(); i++)
-            tabIslands.append("+--------------");
-        tabIslands.append("+\n").append(ColorCli.RESET);
-        for (int j = 0; j < 5; j++)
+            tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
+        tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
+        for (int j = 0; j < 5; j++) {
             for (i = 8; i < game.getIslands().size(); i++)
                 tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(game.getIslands(), i, j));
-        tabIslands.append("|\n").append(ColorCli.RESET);
+            tabIslands.append("|\n").append(ColorCli.RESET);
+        }
         for (i = 8; i < game.getIslands().size(); i++)
-            tabIslands.append("+--------------");
-        tabIslands.append("+\n").append(ColorCli.RESET);
+            tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
+        tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
         out.print(tabIslands);
         tabIslands.delete(0, tabIslands.capacity());
 
@@ -249,19 +252,19 @@ public class Cli implements Runnable, View {
     private String color4Island(ArrayList<Island> islands, int island, int color){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
-            showColor.append(ColorCli.GREEN).append("●: ").append(islands.get(island).getGreenPawn()).append("          ");
+            showColor.append(ColorCli.GREEN).append("●: ").append(islands.get(island).getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 1){
-            showColor.append(ColorCli.RED).append("●: ").append(islands.get(island).getGreenPawn()).append("          ");
+            showColor.append(ColorCli.RED).append("●: ").append(islands.get(island).getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 2){
-            showColor.append(ColorCli.YELLOW).append("●: ").append(islands.get(island).getGreenPawn()).append("          ");
+            showColor.append(ColorCli.YELLOW).append("●: ").append(islands.get(island).getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 3){
-            showColor.append(ColorCli.PINK).append("●: ").append(islands.get(island).getGreenPawn()).append("          ");
+            showColor.append(ColorCli.PINK).append("●: ").append(islands.get(island).getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 4){
-            showColor.append(ColorCli.BLUE).append("●: ").append(islands.get(island).getGreenPawn()).append("          ");
+            showColor.append(ColorCli.BLUE).append("●: ").append(islands.get(island).getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         return showColor.toString();
     }
@@ -369,7 +372,7 @@ public class Cli implements Runnable, View {
     private String print1_4Index(ArrayList<Island> islands){
         StringBuilder index = new StringBuilder();
         for(int i = 0; i<islands.size() && i<4; i++)
-            index.append("    ").append("Isola: ").append(i).append("    ");
+            index.append("   ").append("Isola: ").append(i).append("   ");
         return index.toString();
     }
 
@@ -377,7 +380,7 @@ public class Cli implements Runnable, View {
         StringBuilder index = new StringBuilder();
         if(islands.size()>=4){
             for(int i = 4; i<islands.size() && i<8; i++)
-                index.append("    ").append("Isola: ").append(i).append("    ");
+                index.append("   ").append("Isola: ").append(i).append("   ");
         }
         return index.toString();
     }
@@ -386,7 +389,7 @@ public class Cli implements Runnable, View {
         StringBuilder index = new StringBuilder();
         if(islands.size()>=8){
             for(int i = 8; i<islands.size(); i++)
-                index.append("    ").append("Isola: ").append(i).append("    ");
+                index.append("   ").append("Isola: ").append(i).append("   ");
         }
         return index.toString();
     }

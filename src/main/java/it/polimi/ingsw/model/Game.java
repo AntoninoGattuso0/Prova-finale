@@ -72,36 +72,38 @@ public class Game {
         startingPawn.add(m.get(2));
         startingPawn.add(m.get(3));
         startingPawn.add(m.get(4));
+        System.out.println("N= " + n);
         i = n + 1;
         if (i == 12) i = 0;
-        Random rnd1 = new Random();
         while (!(islands.get(i).getMotherNature())&&startingPawn.size()>0){
-            int random = rnd1.nextInt(startingPawn.size());
-            if (Objects.equals(startingPawn.get(random), m.get(0))) {
-                g--;
-                islands.get(i).setGreenPawn(islands.get(i).getGreenPawn() + 1);
-                if (g == 0) startingPawn.remove(random);
-            } else if (Objects.equals(startingPawn.get(random), m.get(1))) {
-                r--;
-                islands.get(i).setRedPawn(islands.get(i).getRedPawn() + 1);
-                if (r == 0) startingPawn.remove(random);
-            } else if (Objects.equals(startingPawn.get(random), m.get(2))) {
-                y--;
-                islands.get(i).setYellowPawn(islands.get(i).getYellowPawn() + 1);
-                if (y == 0) startingPawn.remove(random);
-            } else if (Objects.equals(startingPawn.get(random), m.get(3))) {
-                p--;
-                islands.get(i).setPinkPawn(islands.get(i).getPinkPawn() + 1);
-                if (p == 0) startingPawn.remove(random);
-            } else if (Objects.equals(startingPawn.get(random), m.get(4))) {
-                b--;
-                islands.get(i).setBluePawn(islands.get(i).getBluePawn() + 1);
-                if (b == 0) startingPawn.remove(random);
+            if(i!=(n+6) && i!=(n-6)) {
+                Random rnd1 = new Random();
+                int random = rnd1.nextInt(startingPawn.size());
+                if (startingPawn.get(random).equals(m.get(0))) {
+                    g--;
+                    islands.get(i).setGreenPawn(islands.get(i).getGreenPawn() + 1);
+                    if (g == 0) startingPawn.remove(random);
+                } else if (startingPawn.get(random).equals(m.get(1))) {
+                    r--;
+                    islands.get(i).setRedPawn(islands.get(i).getRedPawn() + 1);
+                    if (r == 0) startingPawn.remove(random);
+                } else if (startingPawn.get(random).equals(m.get(2))) {
+                    y--;
+                    islands.get(i).setYellowPawn(islands.get(i).getYellowPawn() + 1);
+                    if (y == 0) startingPawn.remove(random);
+                } else if (startingPawn.get(random).equals(m.get(3))) {
+                    p--;
+                    islands.get(i).setPinkPawn(islands.get(i).getPinkPawn() + 1);
+                    if (p == 0) startingPawn.remove(random);
+                } else if (startingPawn.get(random).equals(m.get(4))) {
+                    b--;
+                    islands.get(i).setBluePawn(islands.get(i).getBluePawn() + 1);
+                    if (b == 0) startingPawn.remove(random);
+                }
             }
             i++;
-            if ((i == n + 6)) i++;
-            else if (i == n - 6) i++;
             if (i >= 12) i = 0;
+            System.out.println(i);
         }
         // creazione nuvole e inizializzazione
         clouds = new ArrayList<>();
