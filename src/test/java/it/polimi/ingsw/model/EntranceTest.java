@@ -29,7 +29,7 @@ class EntranceTest {
         System.out.println("Pink Pawns in entrance: " + game.players.get(1).entrance.getPinkPawn());
         System.out.println("Blue Pawns in entrance: " + game.players.get(1).entrance.getBluePawn());
         assertEquals(7, game.players.get(0).entrance.getGreenPawn() + game.players.get(0).entrance.getRedPawn() + game.players.get(0).entrance.getYellowPawn() + game.players.get(0).entrance.getPinkPawn() + game.players.get(0).entrance.getBluePawn());
-        assertEquals(106, game.studentBag.getNum());
+        assertEquals(100, game.studentBag.getNum());
     }
 
     @Test

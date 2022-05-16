@@ -22,12 +22,8 @@ public class GameTest {
         int r = game.islands.get(s).getRedPawn();
         System.out.println("Sull'isola " + s + " ci sono " + r + " pedine rosse");
         assertEquals(4, game.clouds.size());
-        assertEquals(24, game.studentBag.getGreenNum());
-        assertEquals(120, game.studentBag.getNum());
-        assertEquals(24, game.studentBag.getRedNum());
-        assertEquals(24, game.studentBag.getYellowNum());
-        assertEquals(24, game.studentBag.getPinkNum());
-        assertEquals(24, game.studentBag.getBlueNum());
+        assertEquals(108, game.studentBag.getNum());
+
     }
     @Test
     public void testCreateArrayPawn(){

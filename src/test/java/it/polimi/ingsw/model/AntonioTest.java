@@ -13,7 +13,7 @@ public class AntonioTest {
     Antonio antonio = new Antonio(game.studentBag);
     assertEquals(4,antonio.getNumPawnAntonio());
     assertEquals(4,antonio.getBluePawn()+antonio.getGreenPawn()+antonio.getPinkPawn()+antonio.getRedPawn()+antonio.getYellowPawn());
-    assertEquals(116,game.studentBag.getNum());
+    assertEquals(104,game.studentBag.getNum());
 
 
 
