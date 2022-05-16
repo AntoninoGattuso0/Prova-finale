@@ -14,6 +14,7 @@ class CliTest {
         game.start(game);
         Cli cli = new Cli();
         cli.displayIslands(game);
+        cli.displayCloud(game);
     }
 
 }

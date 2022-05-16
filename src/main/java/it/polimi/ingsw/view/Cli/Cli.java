@@ -255,16 +255,16 @@ public class Cli implements Runnable, View {
             showColor.append(ColorCli.GREEN).append("●: ").append(islands.get(island).getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 1){
-            showColor.append(ColorCli.RED).append("●: ").append(islands.get(island).getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.RED).append("●: ").append(islands.get(island).getRedPawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 2){
-            showColor.append(ColorCli.YELLOW).append("●: ").append(islands.get(island).getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.YELLOW).append("●: ").append(islands.get(island).getYellowPawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 3){
-            showColor.append(ColorCli.PINK).append("●: ").append(islands.get(island).getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.PINK).append("●: ").append(islands.get(island).getPinkPawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 4){
-            showColor.append(ColorCli.BLUE).append("●: ").append(islands.get(island).getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.BLUE).append("●: ").append(islands.get(island).getBluePawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         return showColor.toString();
     }

@@ -48,17 +48,21 @@ public class Game {
         int i;
         studentBag = new StudentBag();
         profTable = new ProfTable();
+
 //creazione isole
         for(i=0; i<12; i++){
             Island island = new Island();
             islands.add(island);
         }
+
 //randomizza madre natura
         Random rnd = new Random();
         int n = rnd.nextInt(12);
-        Island island = islands.get(n);
+        islands.get(n).setMotherNature(true);
+       /* Island island = islands.get(n);
         island.setMotherNature(true);
-        islands.set(n, island);
+        islands.set(n, island); */
+
 //randomizza pedine per ogni isola iniziale
         int g = 2;
         int r = 2;
@@ -72,11 +76,11 @@ public class Game {
         startingPawn.add(m.get(2));
         startingPawn.add(m.get(3));
         startingPawn.add(m.get(4));
-        System.out.println("N= " + n);
+        System.out.println("N = " + n);
         i = n + 1;
         if (i == 12) i = 0;
         while (!(islands.get(i).getMotherNature())&&startingPawn.size()>0){
-            if(i!=(n+6) && i!=(n-6)) {
+            if(i!=(n+6) && i!=(n+6)) {
                 Random rnd1 = new Random();
                 int random = rnd1.nextInt(startingPawn.size());
                 if (startingPawn.get(random).equals(m.get(0))) {
@@ -103,7 +107,7 @@ public class Game {
             }
             i++;
             if (i >= 12) i = 0;
-            System.out.println(i);
+
         }
         // creazione nuvole e inizializzazione
         clouds = new ArrayList<>();
