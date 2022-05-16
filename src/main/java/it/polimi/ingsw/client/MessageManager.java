@@ -33,6 +33,8 @@ public class MessageManager {
             view.
         }else if(object instanceof RemoveClient){
             view.
+       }else if(object instanceof ClientAcceptedMessage){
+               view.
         }else{
             throw new IllegalArgumentException();
         }
