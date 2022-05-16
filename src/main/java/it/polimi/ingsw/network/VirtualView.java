@@ -1,11 +1,13 @@
 package it.polimi.ingsw.network;
 
+import it.polimi.ingsw.network.Message.Message;
+import it.polimi.ingsw.network.Message.WinnerMessage;
 import it.polimi.ingsw.observer.ViewObservable;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class VirtualView extends ViewObservable {//DA COMPLETARE
+public class VirtualView extends ViewObservable /*implements*/ {//DA COMPLETARE
     private final Map<String, ClientHandlerIntefrace>  clients= new HashMap<>();
     private String actualPlayer;
     private final Object lock;
@@ -30,5 +32,28 @@ public class VirtualView extends ViewObservable {//DA COMPLETARE
     }
     public String getActualPlayer() {
         return actualPlayer;
+    }
+
+    public void playerWinForQuitting(String nick) {
+        System.out.println(nick + " is the last Player in lobby. ");
+        updateWin(nick);
+    }
+    public void updateWin(String nick){
+        System.out.println("The winner is "+ nick+", GameOver");
+        sendBroadcast(new WinnerMessage(nick));
+    }
+    public void sendBroadcast(Message message){
+        synchronized (lock){
+            for(ClientHandlerIntefrace clientHandler: clients.values()){
+                clientHandler.sendObject(message);
+            }
+        }
+    }
+
+    public void sendAllQuitPlayer(String userNickname) {
+    }
+
+    public void sendDisconectionInSet(String userNickname) {
+
     }
 }

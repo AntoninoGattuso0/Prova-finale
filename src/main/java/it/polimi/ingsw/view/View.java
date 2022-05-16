@@ -35,7 +35,15 @@ public interface View {
     void updateTowerSpace();
 
     void updateCharacterCard();
+    void registerClient(ClientAcceptedMessage m);
 
+    void dysplayNetError();
+
+    void requestNickname();
+
+    void requestNumPlayers();
+
+    void waitOtherPlayers(WaitMessage object) ;
 
     void displayTurn(StartTurnMessage startTurnMessage);  //mostra di chi è il turno
     void displayWinner(String winner);

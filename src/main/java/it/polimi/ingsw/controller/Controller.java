@@ -1,14 +1,23 @@
 package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.network.VirtualView;
+
+import java.util.ArrayList;
 
 public class Controller {
     private RoundController roundController;
+    private boolean endGame;
     private boolean isExpert;
     private Game game;
+    private final UserInput userInput;
+    private final VirtualView virtualView;
+    private final ArrayList<Player> players;
+    private final Player currentPlayer;
     public Controller(Game game){
         this.game=game;
         game.start(game);
+        this.endGame=false;
     }
     public void checkNickname(String nickname){
 
@@ -22,7 +31,8 @@ public class Controller {
         return this.game;
     }
 
-    public void checkEndGame(){
+    public boolean getEndGame(){
+        return endGame;
     }
 
     public void setIsExpert(boolean isExpert){
@@ -31,5 +41,22 @@ public class Controller {
 
     public boolean getIsExpert(){
         return this.isExpert;
+    }
+
+    public void administrEnd() {
+        String nick="";
+        int i;
+        endGame=true;
+        for(i=0;i<game.getPlayers().size();i++){
+            if(game.getPlayers().get(i).getActive()==true){
+                nick=game.getPlayers().get(i).getNickname();
+            }
+        }
+        virtualView.playerWinForQuitting(nick);
+    }
+
+    public void AdministrDisconnectionInSet(String userNickname) {
+        endGame= true;
+        virtualView.sendDisconectionInSet(userNickname);
     }
 }

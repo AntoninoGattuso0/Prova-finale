@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class NetworkHandlerObservable {
-    private final ArrayList<NetworkHandelr> observers = new ArrayList<>();
+    private final ArrayList<NetworkHandler> observers = new ArrayList<>();
 
-    public void addObserver(NetworkHandelr observer) {
+    public void addObserver(NetworkHandler observer) {
         synchronized (observer) {
             observers.add(observer);
         }
@@ -16,7 +16,7 @@ public class NetworkHandlerObservable {
 
     public void notifyMessage(Message message) {
         synchronized (observers) {
-            for (NetworkHandelr observer : observers) {
+            for (NetworkHandler observer : observers) {
                 try {
                     observer.updateMessage(message);
                 } catch (IOException e) {
@@ -27,7 +27,7 @@ public class NetworkHandlerObservable {
     }
     public void notifyConnection(String ip,String port){
         synchronized (observers){
-            for(NetworkHandelr observer:observers){
+            for(NetworkHandler observer:observers){
                 observer.updateConnection(ip,port);
             }
         }

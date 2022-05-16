@@ -1,6 +1,8 @@
-/*package it.polimi.ingsw.client;
+package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.network.Message.*;
+
+import java.util.ArrayList;
 
 public class MessageManager {
     private final View view;
@@ -11,32 +13,30 @@ public class MessageManager {
         if(object instanceof Ping){
             return;
         }
-       if(object instanceof LoginAccepted){
-            view.registerClient((LoginAccepted) object);
-        }else if(object instanceof ChooseCloudMessage){
-            view.
+        if(object instanceof ChooseCloudMessage){
+            view.requestCloud();
         }else if(object instanceof WaitMessage){
-            view.
+            view.waitOtherPlayers((WaitMessage) object).getMessage();
         }else if(object instanceof StartTurnMessage){
             view.
         }else if(object instanceof SetNumPlayers){
-            view.
+            view.requestNumPlayers();
         }else if(object instanceof SetNickMessage){
-            view.
+            view.requestNickname();
         }else if(object instanceof SetIsExpert){
             view.
         }else if(object instanceof MovePawnToDining){
-            view.
+            view.requestPawnToDining();
         }else if(object instanceof MovePawnToIsland){
-            view.
+            view.requestPawnToIsland();
         }else if(object instanceof MoveMotherNatureMessage){
-            view.
+            view.requestMoveMotherNature();
         }else if(object instanceof RemoveClient){
-            view.
+            view.removeClient();
        }else if(object instanceof ClientAcceptedMessage){
-               view.
+               view.registerClient((ClientAcceptedMessage) object );
         }else{
             throw new IllegalArgumentException();
         }
     }
-}*/
+}

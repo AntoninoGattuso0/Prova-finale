@@ -21,7 +21,7 @@ public class ViewObservable {
     public void sendNewMessage(Message message){
         synchronized (observers){
             for(ViewObserver observer: observers){
-                observers.updateMessage(message);
+                observer.updateMessage(message);
             }
         }
     }

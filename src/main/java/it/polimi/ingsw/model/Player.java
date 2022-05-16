@@ -2,6 +2,7 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 public class Player {
     private String nickname;
+    private boolean active;
     private int numCoin;
     protected ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10); //mi servirebbe protected o un metodo per accedervi
     private AssistantCard currentAssistant;
@@ -27,7 +28,14 @@ public class Player {
         return this.deckAssistant;
     }
 
+    public void setActive(boolean active) {
+        this.active=active;
+    }
+    public boolean getActive(){
+        return this.active;
+    }
     public Player(String nick, Game game) {
+        setActive(true);
         int j, k;
         setNickame(nick);
         if (game.isExpert) setNumCoin(1);

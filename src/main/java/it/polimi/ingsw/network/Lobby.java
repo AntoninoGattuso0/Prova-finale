@@ -1,4 +1,4 @@
-/*package it.polimi.ingsw.network;
+package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.controller.Controller;
 import it.polimi.ingsw.controller.UserInput;
@@ -6,20 +6,22 @@ import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.*;
 import it.polimi.ingsw.observer.ConnectionObserver;
+import it.polimi.ingsw.observer.EndGameObserver;
 
 import java.util.ArrayList;
 
-public class Lobby {//DA COMPLETARE
+public class Lobby implements ConnectionObserver {//DA COMPLETARE
+    private Controller controller;
     private ArrayList<String> namePlayer;
     private final ArrayList<Player> players;
     private final VirtualView virtualView;
     private final UserInput userInput;
+    private EndGameObserver endGame;
     private int numPlayer;
     private boolean lobbyOk;
     private final ArrayList<ClientHandlerIntefrace> clients;
     private boolean lobbySett;
     private boolean joinClient;
-    private Controller controller;
     private boolean isExpert;
     private final Object lock;
    private Game game;
@@ -35,8 +37,12 @@ public class Lobby {//DA COMPLETARE
         lobbySett = false;
         joinClient = false;
         virtualView.addObserver(userInput);
-
     }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
     public void addClientToList(ClientHandlerIntefrace client, Lobby lobby){
         String nickname;
         loginUser(client);
@@ -73,6 +79,67 @@ public class Lobby {//DA COMPLETARE
             newGame();
         }
     }
+    @Override
+    public void updateDisconnection(ClientHandlerIntefrace clientHandler){
+        if(controller.getEndGame()!=true){
+            if(lobbySett){
+                updateDisconnectionInSet(clientHandler);
+            }else if(lobbyOk){
+                updateDisconnectionInGame(clientHandler);}
+        }else{
+            CloseConnection(clientHandler);
+            if(clients.size()==1||clients.size()==0){
+                endGame.administrEndGame();
+            }
+        }
+    }
+
+    private void CloseConnection(ClientHandlerIntefrace clientHandler) {
+        System.out.println("Server unregistering client.");
+        virtualView.removeClientInVirtualView(clientHandler,clientHandler.getUserNickname());
+        players.remove(getPlayerByNick(clientHandler.getUserNickname()));
+        clients.remove(clientHandler);
+        System.out.println(clientHandler.getUserNickname()+"'s client unregistered\n");
+    }
+
+    private void updateDisconnectionInSet(ClientHandlerIntefrace clientHandler) {
+        System.out.println("A client disconnects in set-phase. The lobby is closed\n");
+        deregisterConn(clientHandler);
+        if(players.size()==1){
+            endGame.administrEndGame();
+        }else{
+            controller.AdministrDisconnectionInSet(clientHandler.getUserNickname());
+        }
+    }
+    private Player getPlayerByNick(String nick){
+        for(Player player: players) {
+            if (player.getNickname().equals(nick)) {
+                return player;
+            }
+        }
+        return null;
+    }
+    private void updateDisconnectionInGame(ClientHandlerIntefrace clientHandler) {
+        int i,c=0;
+        getPlayerByNick(clientHandler.getUserNickname()).setActive(false);
+        virtualView.sendAllQuitPlayer(clientHandler.getUserNickname());
+        for(i=0;i<players.size();i++){
+            if(players.get(i).getActive()==true){
+                c++;
+            }
+        }
+        if(c==0){
+            deregisterConn(clientHandler);
+            endGame.administrEndGame();
+        }else if(c==1){
+            System.out.println("Only one active player in start game");
+            controller.administrEnd();
+        }
+    }
+
+    private void deregisterConn(ClientHandlerIntefrace clientHandler) {
+    }
+
     private void joiningInLobby(ClientHandlerIntefrace client, Lobby lobby){
             int i;
             for(i=0;!namePlayer.get(i).equals(client.getUserNickname());i++);
@@ -119,6 +186,7 @@ public class Lobby {//DA COMPLETARE
                 loginClient.sendObject(new SetIsExpert());
                 isExpert=((LoginNumPlayerIsExp) nickMessage).getIsExpert();
                 game=new Game(numPlayer,isExpert);
+                controller=new Controller(game);
         }
         Game.newPlayer(nickname,game);
         System.out.println("SERVER: "+nickname+" is joining!\n");
@@ -134,4 +202,4 @@ public class Lobby {//DA COMPLETARE
     public void newGame(){
         
     }
-}*/
+}
