@@ -1,4 +1,4 @@
-package it.polimi.ingsw.network;
+/*package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.controller.Controller;
 import it.polimi.ingsw.controller.UserInput;
@@ -134,4 +134,4 @@ public class Lobby {//DA COMPLETARE
     public void newGame(){
         
     }
-}
+}*/

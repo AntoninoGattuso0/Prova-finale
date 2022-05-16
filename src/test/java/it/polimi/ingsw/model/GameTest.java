@@ -122,10 +122,10 @@ public class GameTest {
         game.players.get(2).diningRoom.setNumPink(1);
         game.moveProf();
         assertEquals(0, game.getProfTable().getGreenProf());
-        assertEquals(-1, ProfTable.getRedProf());
-        assertEquals(0, ProfTable.getYellowProf());
-        assertEquals(2, ProfTable.getPinkProf());
-        assertEquals(1, ProfTable.getBlueProf());
+        assertEquals(-1, game.getProfTable().getRedProf());
+        assertEquals(0, game.getProfTable().getYellowProf());
+        assertEquals(2, game.getProfTable().getPinkProf());
+        assertEquals(1, game.getProfTable().getBlueProf());
     }
     @Test
     public void testNewPlayer(){

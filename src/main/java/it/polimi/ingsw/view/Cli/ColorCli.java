@@ -15,7 +15,8 @@ public enum ColorCli {
     YELLOW("\033[0;33m"),
     PINK("\033[0;35m"),
     BLUE("\033[0;34m"),
-    BLACK("\033[0;30m");
+    BLACK("\033[0;30m"),
+    BOLDCYAN("\033[1;36m"); //Per tabelle
 
     private final String code;
 

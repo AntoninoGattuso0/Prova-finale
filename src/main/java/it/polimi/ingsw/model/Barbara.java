@@ -28,8 +28,8 @@ public class Barbara extends UseEffect{
             }
         }
         max = 0;
-        if (ProfTable.getRedProf() != -1) {
-            if (game.players.get(i).diningRoom.getNumRed() == game.players.get(ProfTable.getRedProf()).diningRoom.getNumRed())
+        if (game.getProfTable().getRedProf() != -1) {
+            if (game.players.get(i).diningRoom.getNumRed() == game.players.get(game.getProfTable().getRedProf()).diningRoom.getNumRed())
                 ProfTable.setRedProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
@@ -42,8 +42,8 @@ public class Barbara extends UseEffect{
             }
         }
         max = 0;
-        if (ProfTable.getBlueProf() != -1) {
-            if (game.players.get(i).diningRoom.getNumBlue() == game.players.get(ProfTable.getBlueProf()).diningRoom.getNumBlue())
+        if (game.getProfTable().getBlueProf() != -1) {
+            if (game.players.get(i).diningRoom.getNumBlue() == game.players.get(game.getProfTable().getBlueProf()).diningRoom.getNumBlue())
                 ProfTable.setBlueProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
@@ -55,8 +55,8 @@ public class Barbara extends UseEffect{
             }
         }
         max = 0;
-        if (ProfTable.getPinkProf() != -1) {
-            if (game.players.get(i).diningRoom.getNumPink() == game.players.get(ProfTable.getPinkProf()).diningRoom.getNumPink())
+        if (game.getProfTable().getPinkProf() != -1) {
+            if (game.players.get(i).diningRoom.getNumPink() == game.players.get(game.getProfTable().getPinkProf()).diningRoom.getNumPink())
                 ProfTable.setPinkProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
@@ -68,8 +68,8 @@ public class Barbara extends UseEffect{
             }
         }
         max = 0;
-        if (ProfTable.getYellowProf() != -1) {
-            if (game.players.get(i).diningRoom.getNumYellow() == game.players.get(ProfTable.getYellowProf()).diningRoom.getNumYellow())
+        if (game.getProfTable().getYellowProf() != -1) {
+            if (game.players.get(i).diningRoom.getNumYellow() == game.players.get(game.getProfTable().getYellowProf()).diningRoom.getNumYellow())
                 ProfTable.setYellowProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {

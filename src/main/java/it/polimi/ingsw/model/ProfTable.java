@@ -10,19 +10,19 @@ public class ProfTable {
         return greenProf;
     }
 
-    public static int getRedProf() {
+    public int getRedProf() {
         return redProf;
     }
 
-    public static int getYellowProf() {
+    public int getYellowProf() {
         return yellowProf;
     }
 
-    public static int getPinkProf() {
+    public int getPinkProf() {
         return pinkProf;
     }
 
-    public static int getBlueProf() {
+    public int getBlueProf() {
         return blueProf;
     }
 

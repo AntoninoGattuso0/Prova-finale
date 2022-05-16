@@ -1,4 +1,4 @@
-package it.polimi.ingsw.client;
+/*package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.network.Message.*;
 
@@ -39,4 +39,4 @@ public class MessageManager {
             throw new IllegalArgumentException();
         }
     }
-}
+}*/
