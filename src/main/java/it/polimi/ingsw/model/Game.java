@@ -80,7 +80,7 @@ public class Game {
         i = n + 1;
         if (i == 12) i = 0;
         while (!(islands.get(i).getMotherNature())&&startingPawn.size()>0){
-            if(i!=(n+6) && i!=(n+6)) {
+            if(i!=(n+6) && i!=(n-6)) {
                 Random rnd1 = new Random();
                 int random = rnd1.nextInt(startingPawn.size());
                 if (startingPawn.get(random).equals(m.get(0))) {
@@ -107,7 +107,6 @@ public class Game {
             }
             i++;
             if (i >= 12) i = 0;
-
         }
         // creazione nuvole e inizializzazione
         clouds = new ArrayList<>();
