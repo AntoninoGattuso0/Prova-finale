@@ -117,7 +117,7 @@ public class Cli implements Runnable, View {
         int isExpert = checkInteger();
 
 
-        while (isExpert != 0 || numPlayers != 1) { //non ho capito cosa controlla questo -Paul
+        while (isExpert != 0 || isExpert != 1) { //non ho capito cosa controlla questo -Paul
             System.out.println("ERROR: type 0 for normal mode or type 1 for expert mode \n");
             isExpert = checkInteger();
         }
@@ -136,18 +136,64 @@ public class Cli implements Runnable, View {
 
     @Override
     public void displayCloud(Game game) {
+        clearCli();
+
         int i;
-        for (i = 0; i < game.getClouds().size(); i++) {
-            out.println("La Cloud numero " + i + " ha:");
-            out.println(" - " + game.getClouds().get(i).getGreenPawn() + " GreenPawn,");
-            out.println(" - " + game.getClouds().get(i).getRedPawn() + " RedPawn,");
-            out.println(" - " + game.getClouds().get(i).getYellowPawn() + " YelloPawn,");
-            out.println(" - " + game.getClouds().get(i).getPinkPawn() + " PinkPawn,");
-            out.println(" - " + game.getClouds().get(i).getBluePawn() + " BluePawn.");
+        StringBuilder cloudCards = new StringBuilder();
+        out.println(" ");
+        out.println(" ");
+        cloudCards.append(ColorCli.BOLDCYAN);
+        for (i = 0; i < game.getClouds().size() && i < 4; i++)
+            cloudCards.append(ColorCli.BOLDCYAN).append("     ").append(" +*******+").append("        ");
 
+        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
+        for (i = 0; i < game.getIslands().size() && i < game.getTotPlayer() ; i++)
+            cloudCards.append(ColorCli.BOLDCYAN).append("   *            *      ");
+        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
+        for (i = 0; i < game.getIslands().size() && i < game.getTotPlayer(); i++)
+            cloudCards.append(ColorCli.BOLDCYAN).append(" *                *    ");
+        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
 
+        for (int j = 0; j < 5; j++) {
+            for (i = 0; i < game.getClouds().size() && i < 4; i++)
+                    cloudCards.append(ColorCli.BOLDCYAN).append("*").append(ColorCli.RESET).append(color4Clouds(game.getClouds(), i, j)).append(" *   ");
+            cloudCards.append("\n").append(ColorCli.RESET);
         }
+
+        for (i = 0; i < game.getIslands().size() && i < game.getTotPlayer(); i++)
+            cloudCards.append(ColorCli.BOLDCYAN).append(" *                *    ");
+        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
+        for (i = 0; i < game.getIslands().size() && i < game.getTotPlayer() ; i++)
+            cloudCards.append(ColorCli.BOLDCYAN).append("   *            *      ");
+        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
+
+        for (i = 0; i < game.getClouds().size() && i < 4; i++)
+            cloudCards.append(ColorCli.BOLDCYAN).append("     ").append(" +*******+").append("        ");
+        cloudCards.append(ColorCli.BOLDCYAN).append("\n").append(ColorCli.RESET);
+        out.print(cloudCards);
+        cloudCards.delete(0, cloudCards.capacity());
+
     }
+    private String color4Clouds(ArrayList<Cloud> clouds, int cloud, int color){
+        StringBuilder showColor = new StringBuilder();
+        if(color == 0){
+            showColor.append(ColorCli.GREEN).append("     ●: ").append(clouds.get(cloud).getGreenPawn()).append("        ").append(ColorCli.BOLDCYAN);
+        }
+        else if(color == 1){
+            showColor.append(ColorCli.RED).append("     ●: ").append(clouds.get(cloud).getRedPawn()).append("        ").append(ColorCli.BOLDCYAN);
+        }
+        else if(color == 2){
+            showColor.append(ColorCli.YELLOW).append("     ●: ").append(clouds.get(cloud).getYellowPawn()).append("        ").append(ColorCli.BOLDCYAN);
+        }
+        else if(color == 3){
+            showColor.append(ColorCli.PINK).append("     ●: ").append(clouds.get(cloud).getPinkPawn()).append("        ").append(ColorCli.BOLDCYAN);
+        }
+        else if(color == 4){
+            showColor.append(ColorCli.BLUE).append("     ●: ").append(clouds.get(cloud).getBluePawn()).append("        ").append(ColorCli.BOLDCYAN);
+        }
+        return showColor.toString();
+    }
+
 
     @Override
     public void displayDiningRoom(Game game) {
@@ -167,8 +213,10 @@ public class Cli implements Runnable, View {
         }
     }
 
+
     @Override
     public void displayEntrance(Game game) {
+        clearCli();
         int i, j;
         for (i = 0; i < game.getPlayers().size(); i++) {
             out.println("Player: " + game.getPlayers().get(i).getNickname());
@@ -184,6 +232,8 @@ public class Cli implements Runnable, View {
             out.println();
         }
     }
+
+
 
     @Override
     public void displayIslands(Game game) {
@@ -268,6 +318,7 @@ public class Cli implements Runnable, View {
         }
         return showColor.toString();
     }
+
 
     @Override
     public void displayProfTable(Game game){

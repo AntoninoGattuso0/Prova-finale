@@ -34,12 +34,12 @@ class EntranceTest {
 
     @Test
     public void TestStartNumPawn(){
-        Game game3 = new Game(2, true);
-        game3.start(game3);
-        game3.newPlayer("Player0", game3);
-        game3.newPlayer("Player1", game3);
-        game3.players.get(0).entrance.startNumPawn(game3);
-        assertEquals(7, game3.players.get(0).entrance.getNumPawn());
+        Game game = new Game(2, true);
+        game.start(game);
+        game.newPlayer("Player0", game);
+        game.newPlayer("Player1", game);
+        game.players.get(0).entrance.startNumPawn(game);
+        assertEquals(7, game.players.get(0).entrance.getNumPawn());
     }
 
     @Test

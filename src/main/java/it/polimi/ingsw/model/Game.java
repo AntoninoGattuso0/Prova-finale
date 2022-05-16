@@ -76,7 +76,6 @@ public class Game {
         startingPawn.add(m.get(2));
         startingPawn.add(m.get(3));
         startingPawn.add(m.get(4));
-        System.out.println("N = " + n);
         i = n + 1;
         if (i == 12) i = 0;
         while (!(islands.get(i).getMotherNature())&&startingPawn.size()>0){
