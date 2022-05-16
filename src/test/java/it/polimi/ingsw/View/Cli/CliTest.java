@@ -14,7 +14,7 @@ class CliTest {
         Game.newPlayer("Player1",game);
         Cli cli = new Cli();
         cli.displayIslands(game);
-        cli.displayDiningRoom(game);
+        cli.displayEntrance(game);
         cli.displayCloud(game);
 
     }

@@ -174,6 +174,7 @@ public class Cli implements Runnable, View {
         cloudCards.delete(0, cloudCards.capacity());
 
     }
+
     private String color4Clouds(ArrayList<Cloud> clouds, int cloud, int color){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
@@ -197,42 +198,81 @@ public class Cli implements Runnable, View {
 
     @Override
     public void displayDiningRoom(Game game) {
+        clearCli();
         int i, j;
+
         for (i = 0; i < game.getPlayers().size(); i++) {
             out.println("Player: " + game.getPlayers().get(i).getNickname());
-            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumGreen(); j++)
-                out.print(ColorCli.GREEN + "● ");
-            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumRed(); j++) out.print(ColorCli.RED + "● ");
-            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumYellow(); j++)
+            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumGreen() && j < 5; j++){
+                out.println(ColorCli.GREEN + "● ");
+                out.println("\n");
+            }
+            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumRed(); j++){
+                out.print(ColorCli.RED + "● ");
+                out.println("\n");
+            }
+            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumYellow(); j++){
                 out.print(ColorCli.YELLOW + "● ");
-            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumPink(); j++) out.print(ColorCli.PINK + "● ");
-            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumBlue(); j++) out.print(ColorCli.BLUE + "● ");
+                out.println("\n");
+            }
+            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumPink(); j++){
+                out.print(ColorCli.PINK + "● ");
+                out.println("\n");
+
+            }
+            for (j = 0; j < game.getPlayers().get(i).getDiningRoom().getNumBlue(); j++){
+                out.print(ColorCli.BLUE + "● ");
+                out.println("\n");
+            }
             out.println();
             out.println("-------------------");
             out.println();
         }
+
     }
 
 
     @Override
     public void displayEntrance(Game game) {
         clearCli();
+
+        StringBuilder entranceSpace = new StringBuilder();
+        out.println(" ");
+        out.println(" ");
+        entranceSpace.append(ColorCli.BOLDCYAN);
         int i, j;
-        for (i = 0; i < game.getPlayers().size(); i++) {
-            out.println("Player: " + game.getPlayers().get(i).getNickname());
-            for (j = 0; j < game.getPlayers().get(i).getEntrance().getGreenPawn(); j++)
-                out.print(ColorCli.GREEN + "● ");
-            for (j = 0; j < game.getPlayers().get(i).getEntrance().getRedPawn(); j++) out.print(ColorCli.RED + "● ");
-            for (j = 0; j < game.getPlayers().get(i).getEntrance().getYellowPawn(); j++)
-                out.print(ColorCli.YELLOW + "● ");
-            for (j = 0; j < game.getPlayers().get(i).getEntrance().getPinkPawn(); j++) out.print(ColorCli.PINK + "● ");
-            for (j = 0; j < game.getPlayers().get(i).getEntrance().getBluePawn(); j++) out.print(ColorCli.BLUE + "● ");
-            out.println();
-            out.println("-------------------");
-            out.println();
+        entranceSpace.append(ColorCli.BOLDCYAN);
+        for (i = 0; i < game.getPlayers().size() && i < 4; i++){
+            entranceSpace.append(ColorCli.BOLDCYAN).append("Player: " + game.getPlayers().get(i).getNickname()).append("\n").append("+--------------+ \n");
+            for (j = 0; j < 5; j++) {
+                entranceSpace.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(game.getPlayers().get(i), j));
+                entranceSpace.append("|\n").append(ColorCli.RESET);
+            }
+            entranceSpace.append(ColorCli.BOLDCYAN).append("+--------------+ \n");
         }
+        out.print(entranceSpace);
+        entranceSpace.delete(0, entranceSpace.capacity());
     }
 
+    private String color4Entrance(Player player, int color){
+        StringBuilder showColor = new StringBuilder();
+        if(color == 0){
+            showColor.append(ColorCli.GREEN).append("●: ").append(player.getEntrance().getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
+        }
+        else if(color == 1){
+            showColor.append(ColorCli.RED).append("●: ").append(player.getEntrance().getRedPawn()).append("          ").append(ColorCli.BOLDCYAN);
+        }
+        else if(color == 2){
+            showColor.append(ColorCli.YELLOW).append("●: ").append(player.getEntrance().getYellowPawn()).append("          ").append(ColorCli.BOLDCYAN);
+        }
+        else if(color == 3){
+            showColor.append(ColorCli.PINK).append("●: ").append(player.getEntrance().getPinkPawn()).append("          ").append(ColorCli.BOLDCYAN);
+        }
+        else if(color == 4){
+            showColor.append(ColorCli.BLUE).append("●: ").append(player.getEntrance().getBluePawn()).append("          ").append(ColorCli.BOLDCYAN);
+        }
+        return showColor.toString();
+    }
 
 
     @Override
@@ -450,4 +490,20 @@ public class Cli implements Runnable, View {
     public void run() {
 
     }
+
+  /*  public void displayNetError(){
+
+    }
+
+    public void requestNickname(){
+
+    }
+
+    public void requestNumPlayers(){
+
+    }
+
+    public void registerClient(ClientAcceptedMessage m){
+
+    }*/
 }
