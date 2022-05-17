@@ -22,6 +22,9 @@ public class Player {
     public Entrance getEntrance(){
         return this.entrance;
     }
+    public TowerSpace getTowerSpace(){
+        return this.towerSpace;
+    }
 
     public ArrayList<AssistantCard> getDeckAssistant(){
 
