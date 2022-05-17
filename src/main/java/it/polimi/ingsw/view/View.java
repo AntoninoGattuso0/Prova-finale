@@ -48,6 +48,7 @@ public interface View {
     void displayTurn(StartTurnMessage startTurnMessage);  //mostra di chi è il turno
     void displayWinner(String winner);
 
+    void requestCloud();
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

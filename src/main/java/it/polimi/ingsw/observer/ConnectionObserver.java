@@ -1,7 +1,7 @@
 package it.polimi.ingsw.observer;
 
-import it.polimi.ingsw.network.ClientHandlerIntefrace;
+import it.polimi.ingsw.network.ClientHandlerInterface;
 
 public interface ConnectionObserver {
-    void updateDisconnection(ClientHandlerIntefrace client);
+    void updateDisconnection(ClientHandlerInterface client);
 }
