@@ -1,7 +1,7 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.network.Message.*;
-
+import it.polimi.ingsw.view.*;
 import java.util.ArrayList;
 
 public class MessageManager {

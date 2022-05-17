@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 
-public class ClientHandler extends ConnectionObservable implements ClientHandlerIntefrace {//DA RIVEDERE
+public class ClientHandler extends ConnectionObservable implements ClientHandlerInterface {//DA RIVEDERE
     private final Socket mySocket;
     private String userNickname;
     private volatile boolean connected;
@@ -84,7 +84,7 @@ public class ClientHandler extends ConnectionObservable implements ClientHandler
             objectOutputStream.close();
             objectInputStream.close();
             mySocket.close();
-            System.out.println("SERVER:"+userNickname+"connection close by the server.\n");
+            System.out.println("SERVER: "+userNickname+" connection close by the server.\n");
         }catch (IOException e){
             System.out.println("SERVER: errore closing: "+userNickname+"\n");
             e.printStackTrace();

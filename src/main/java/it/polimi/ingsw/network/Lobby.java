@@ -19,7 +19,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     private EndGameObserver endGame;
     private int numPlayer;
     private boolean lobbyOk;
-    private final ArrayList<ClientHandlerIntefrace> clients;
+    private final ArrayList<ClientHandlerInterface> clients;
     private boolean lobbySett;
     private boolean joinClient;
     private boolean isExpert;
@@ -43,7 +43,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         return players;
     }
 
-    public void addClientToList(ClientHandlerIntefrace client, Lobby lobby){
+    public void addClientToList(ClientHandlerInterface client, Lobby lobby){
         String nickname;
         loginUser(client);
         nickname=client.getUserNickname();
@@ -55,11 +55,11 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
             }
         }
     }
-    private void newLobby(ClientHandlerIntefrace client){
+    private void newLobby(ClientHandlerInterface client){
             Lobby lobby=new Lobby();
             lobby.addClient(client);
     }
-    public void addClient(ClientHandlerIntefrace client){
+    public void addClient(ClientHandlerInterface client){
         synchronized (lock) {
             String nick;
             client.addObserver(this);
@@ -80,7 +80,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         }
     }
     @Override
-    public void updateDisconnection(ClientHandlerIntefrace clientHandler){
+    public void updateDisconnection(ClientHandlerInterface clientHandler){
         if(controller.getEndGame()!=true){
             if(lobbySett){
                 updateDisconnectionInSet(clientHandler);
@@ -94,7 +94,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         }
     }
 
-    private void CloseConnection(ClientHandlerIntefrace clientHandler) {
+    private void CloseConnection(ClientHandlerInterface clientHandler) {
         System.out.println("Server unregistering client.");
         virtualView.removeClientInVirtualView(clientHandler,clientHandler.getUserNickname());
         players.remove(getPlayerByNick(clientHandler.getUserNickname()));
@@ -102,7 +102,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         System.out.println(clientHandler.getUserNickname()+"'s client unregistered\n");
     }
 
-    private void updateDisconnectionInSet(ClientHandlerIntefrace clientHandler) {
+    private void updateDisconnectionInSet(ClientHandlerInterface clientHandler) {
         System.out.println("A client disconnects in set-phase. The lobby is closed\n");
         deregisterConn(clientHandler);
         if(players.size()==1){
@@ -119,7 +119,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         }
         return null;
     }
-    private void updateDisconnectionInGame(ClientHandlerIntefrace clientHandler) {
+    private void updateDisconnectionInGame(ClientHandlerInterface clientHandler) {
         int i,c=0;
         getPlayerByNick(clientHandler.getUserNickname()).setActive(false);
         virtualView.sendAllQuitPlayer(clientHandler.getUserNickname());
@@ -137,10 +137,10 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         }
     }
 
-    private void deregisterConn(ClientHandlerIntefrace clientHandler) {
+    private void deregisterConn(ClientHandlerInterface clientHandler) {
     }
 
-    private void joiningInLobby(ClientHandlerIntefrace client, Lobby lobby){
+    private void joiningInLobby(ClientHandlerInterface client, Lobby lobby){
             int i;
             for(i=0;!namePlayer.get(i).equals(client.getUserNickname());i++);
             if(namePlayer.get(i).equals(client.getUserNickname())){
@@ -149,7 +149,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     }
     public boolean isLobbyOk(){return lobbyOk;}
     //inserisco i player nell'array nomi, e li creo anche nel gioco
-    public void loginUser(ClientHandlerIntefrace loginClient){
+    public void loginUser(ClientHandlerInterface loginClient){
         int i;
         String nickname;
         Message nickMessage;

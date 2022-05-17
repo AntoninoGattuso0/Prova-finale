@@ -1,5 +1,5 @@
 package it.polimi.ingsw.client;
-
+import it.polimi.ingsw.view.*;
 import it.polimi.ingsw.network.Message.EndGame;
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;

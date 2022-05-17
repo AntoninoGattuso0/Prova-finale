@@ -8,19 +8,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VirtualView extends ViewObservable /*implements*/ {//DA COMPLETARE
-    private final Map<String, ClientHandlerIntefrace>  clients= new HashMap<>();
+    private final Map<String, ClientHandlerInterface>  clients= new HashMap<>();
     private String actualPlayer;
     private final Object lock;
     public VirtualView(){
         this.lock=new Object();
     }
-    public void addClientInVirtualView(ClientHandlerIntefrace client, String nick){
+    public void addClientInVirtualView(ClientHandlerInterface client, String nick){
         synchronized (lock){
             clients.put(nick,client);
             lock.notifyAll();
         }
     }
-    public void removeClientInVirtualView(ClientHandlerIntefrace client, String nick){
+    public void removeClientInVirtualView(ClientHandlerInterface client, String nick){
         synchronized (lock){
             clients.remove(nick,client);
             lock.notifyAll();
@@ -44,7 +44,7 @@ public class VirtualView extends ViewObservable /*implements*/ {//DA COMPLETARE
     }
     public void sendBroadcast(Message message){
         synchronized (lock){
-            for(ClientHandlerIntefrace clientHandler: clients.values()){
+            for(ClientHandlerInterface clientHandler: clients.values()){
                 clientHandler.sendObject(message);
             }
         }
