@@ -17,11 +17,11 @@ public interface View {
 
     void displayAssistantCard(Player player);
     void displayCloud(Game game);
-    void displayDiningRoom(Game game);
-    void displayEntrance(Game game);
+    String displayDiningRoom(Game game, Player player);
+    String displayEntrance(Game game, Player player);
     void displayIslands(Game game);
     void displayProfTable(Game game);
-    void displayTowerSpace();
+    String displayTowerSpace(Game game, int player);
 
     void displayCharacterCard();
 
@@ -37,7 +37,7 @@ public interface View {
     void updateCharacterCard();
     void registerClient(ClientAcceptedMessage m);
 
-    void dysplayNetError();
+    void displayNetError();
 
     void requestNickname();
 
