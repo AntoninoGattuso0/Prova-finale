@@ -16,6 +16,7 @@ public class Controller {
     private final Player currentPlayer;
     public Controller(Game game,UserInput userInput,VirtualView virtualView,ArrayList<Player> players){
         this.game=game;
+        this.isExpert=game.getIsExpert();
         this.virtualView=virtualView;
         this.userInput=userInput;
         this.players=players;

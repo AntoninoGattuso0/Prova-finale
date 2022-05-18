@@ -185,7 +185,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
                 loginClient.sendObject(new SetIsExpert());
                 isExpert=((LoginNumPlayerIsExp) nickMessage).getIsExpert();
                 game=new Game(numPlayer,isExpert);
-                controller=new Controller(game);
         }
         Game.newPlayer(nickname,game);
         System.out.println("SERVER: "+nickname+" is joining!\n");
@@ -199,6 +198,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         lobby = null;
     }
     public void newGame(){
-        
+        controller=new Controller(game,userInput,virtualView,players);
+       // controller.getRoundController()
     }
 }
