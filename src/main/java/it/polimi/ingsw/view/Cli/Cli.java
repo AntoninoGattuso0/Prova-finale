@@ -492,7 +492,7 @@ public class Cli implements Runnable, View {
             out.println(" ");
             schoolBoard.append(ColorCli.BOLDCYAN);
 
-            schoolBoard.append("Player: " + game.getPlayers().get(i).getNickname()).append("\n").append("+------------------------------------------------------+\n");
+            schoolBoard.append("Player: " + game.getPlayers().get(i).getNickname()).append("\n").append("+-------------------------------------------------------+\n");
 
             schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(game.getPlayers().get(i),  0));
             schoolBoard.append("| ").append(ColorCli.RESET);
@@ -501,14 +501,20 @@ public class Cli implements Runnable, View {
                 if(m==2||m==5||m==8) schoolBoard.append(ColorCli.GREEN).append("  ◎");
                 else schoolBoard.append(color4DiningRoom(0)).append(ColorCli.BOLDCYAN);
             }
-            if(game.getPlayers().get(i).getTowerSpace().getNumTower()>1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|");
-            }else if(game.getPlayers().get(i).getTowerSpace().getNumTower()==1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖      ").append(ColorCli.BOLDCYAN).append("|");
+            while(m < 10){
+                schoolBoard.append(ColorCli.GREEN).append("  ◌");
+                m++;
             }
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" |");
+
+            if(game.getPlayers().get(i).getTowerSpace().getNumTower()>1) {
+                schoolBoard.append(ColorCli.RESET).append("♖     ♖").append(ColorCli.BOLDCYAN).append("|");
+            }else if(game.getPlayers().get(i).getTowerSpace().getNumTower()==1) {
+                schoolBoard.append(ColorCli.RESET).append("♖     ☒").append(ColorCli.BOLDCYAN).append("|");
+            }else if(game.getPlayers().get(i).getTowerSpace().getNumTower() == 0)
+                schoolBoard.append(ColorCli.RESET).append("☒     ☒").append(ColorCli.BOLDCYAN).append("|");
             schoolBoard.append("\n");
-            int j;
-            j = game.getPlayers().get(i).getTowerSpace().getNumTower() - 2;
+            int j = game.getPlayers().get(i).getTowerSpace().getNumTower() - 2;
 
 
             schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(game.getPlayers().get(i),  1));
@@ -517,11 +523,18 @@ public class Cli implements Runnable, View {
                 if(m==2||m==5||m==8) schoolBoard.append(ColorCli.RED).append("  ◎");
                 else schoolBoard.append(color4DiningRoom(1)).append(ColorCli.BOLDCYAN);
             }
-            if(j >1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|");
-            }else if(j==1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖      ").append(ColorCli.BOLDCYAN).append("|");
+            while(m < 10){
+                schoolBoard.append(ColorCli.RED).append("  ◌");
+                m++;
             }
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" |");
+            if(j >1) {
+                schoolBoard.append(ColorCli.RESET).append("♖     ♖").append(ColorCli.BOLDCYAN).append("|");
+            }else if(j==1) {
+                schoolBoard.append(ColorCli.RESET).append("♖     ☒").append(ColorCli.BOLDCYAN).append("|");
+            }
+            else if(j <= 0)
+                schoolBoard.append(ColorCli.RESET).append("☒     ☒").append(ColorCli.BOLDCYAN).append("|");
             schoolBoard.append("\n");
             j = j - 2;
 
@@ -532,11 +545,17 @@ public class Cli implements Runnable, View {
                 if(m==2||m==5||m==8) schoolBoard.append(ColorCli.YELLOW).append("  ◎");
                 else schoolBoard.append(color4DiningRoom(2)).append(ColorCli.BOLDCYAN);
             }
-            if(j >1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|");
-            }else if(j==1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖      ").append(ColorCli.BOLDCYAN).append("|");
+            while(m < 10){
+                schoolBoard.append(ColorCli.YELLOW).append("  ◌");
+                m++;
             }
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" |");
+            if(j >1) {
+                schoolBoard.append(ColorCli.RESET).append("♖     ♖").append(ColorCli.BOLDCYAN).append("|");
+            }else if(j==1) {
+                schoolBoard.append(ColorCli.RESET).append("♖     ☒").append(ColorCli.BOLDCYAN).append("|");
+            }else if(j <= 0)
+                schoolBoard.append(ColorCli.RESET).append("☒     ☒").append(ColorCli.BOLDCYAN).append("|");
             schoolBoard.append("\n");
             j = j - 2;
 
@@ -547,11 +566,17 @@ public class Cli implements Runnable, View {
                 if(m==2||m==5||m==8) schoolBoard.append(ColorCli.PINK).append("  ◎");
                 else schoolBoard.append(color4DiningRoom(3)).append(ColorCli.BOLDCYAN);
             }
-            if(j >1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|");
-            }else if(j==1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖      ").append(ColorCli.BOLDCYAN).append("|");
+            while(m < 10){
+                schoolBoard.append(ColorCli.PINK).append("  ◌");
+                m++;
             }
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" |");
+            if(j >1) {
+                schoolBoard.append(ColorCli.RESET).append("♖     ♖").append(ColorCli.BOLDCYAN).append("|");
+            }else if(j==1) {
+                schoolBoard.append(ColorCli.RESET).append("♖     ☒").append(ColorCli.BOLDCYAN).append("|");
+            }else if(j <= 0)
+                schoolBoard.append(ColorCli.RESET).append("☒     ☒").append(ColorCli.BOLDCYAN).append("|");
             schoolBoard.append("\n");
 
 
@@ -561,9 +586,14 @@ public class Cli implements Runnable, View {
                     if(m==2||m==5||m==8) schoolBoard.append(ColorCli.BLUE).append("  ◎");
                     else schoolBoard.append(color4DiningRoom(4)).append(ColorCli.BOLDCYAN);
             }
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("       ").append(ColorCli.BOLDCYAN).append("|");
+            while(m < 10){
+                schoolBoard.append(ColorCli.BLUE).append("  ◌");
+                m++;
+            }
+
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" |").append(ColorCli.RESET).append("       ").append(ColorCli.BOLDCYAN).append("|");
             schoolBoard.append("\n");
-            schoolBoard.append(ColorCli.BOLDCYAN).append("+------------------------------------------------------+ \n");
+            schoolBoard.append(ColorCli.BOLDCYAN).append("+-------------------------------------------------------+ \n");
         }
 
         out.print(schoolBoard);

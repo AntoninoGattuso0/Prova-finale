@@ -17,11 +17,11 @@ class CliTest {
         cli.displayEntrance(game, game.getPlayers().get(0));
 
 
-        game.getPlayers().get(0).getDiningRoom().setNumGreen(10);
-        game.getPlayers().get(0).getDiningRoom().setNumRed(10);
-        game.getPlayers().get(0).getDiningRoom().setNumYellow(10);
-        game.getPlayers().get(0).getDiningRoom().setNumPink(10);
-        game.getPlayers().get(0).getDiningRoom().setNumBlue(10);
+        game.getPlayers().get(0).getDiningRoom().setNumGreen(7);
+        game.getPlayers().get(0).getDiningRoom().setNumRed(4);
+        game.getPlayers().get(0).getDiningRoom().setNumYellow(9);
+        game.getPlayers().get(0).getDiningRoom().setNumPink(2);
+        game.getPlayers().get(0).getDiningRoom().setNumBlue(0);
 
         game.getPlayers().get(1).getDiningRoom().setNumGreen(4);
         game.getPlayers().get(1).getDiningRoom().setNumRed(5);
@@ -32,7 +32,7 @@ class CliTest {
 
         cli.displayCloud(game);
 
-        game.getPlayers().get(0).getTowerSpace().setNumTower(7);
+        game.getPlayers().get(0).getTowerSpace().setNumTower(3);
         game.getPlayers().get(1).getTowerSpace().setNumTower(5);
         cli.displayTowerSpace(game, 0);
 
