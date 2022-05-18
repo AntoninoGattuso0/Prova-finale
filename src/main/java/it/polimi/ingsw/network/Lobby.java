@@ -38,7 +38,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         joinClient = false;
         virtualView.addObserver(userInput);
     }
-
     public ArrayList<Player> getPlayers() {
         return players;
     }
