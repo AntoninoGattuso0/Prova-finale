@@ -38,11 +38,12 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         joinClient = false;
         virtualView.addObserver(userInput);
     }
-
     public ArrayList<Player> getPlayers() {
         return players;
     }
-
+    public boolean isLobbySett() {
+        return lobbySett;
+    }
     public void addClientToList(ClientHandlerInterface client, Lobby lobby){
         String nickname;
         loginUser(client);
@@ -87,21 +88,19 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
             }else if(lobbyOk){
                 updateDisconnectionInGame(clientHandler);}
         }else{
-            CloseConnection(clientHandler);
+            closeConnection(clientHandler);
             if(clients.size()==1||clients.size()==0){
                 endGame.administrEndGame();
             }
         }
     }
-
-    private void CloseConnection(ClientHandlerInterface clientHandler) {
+    private synchronized void closeConnection(ClientHandlerInterface clientHandler) {
         System.out.println("Server unregistering client.");
         virtualView.removeClientInVirtualView(clientHandler,clientHandler.getUserNickname());
         players.remove(getPlayerByNick(clientHandler.getUserNickname()));
         clients.remove(clientHandler);
         System.out.println(clientHandler.getUserNickname()+"'s client unregistered\n");
     }
-
     private void updateDisconnectionInSet(ClientHandlerInterface clientHandler) {
         System.out.println("A client disconnects in set-phase. The lobby is closed\n");
         deregisterConn(clientHandler);
@@ -186,7 +185,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
                 loginClient.sendObject(new SetIsExpert());
                 isExpert=((LoginNumPlayerIsExp) nickMessage).getIsExpert();
                 game=new Game(numPlayer,isExpert);
-                controller=new Controller(game);
         }
         Game.newPlayer(nickname,game);
         System.out.println("SERVER: "+nickname+" is joining!\n");
@@ -200,6 +198,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         lobby = null;
     }
     public void newGame(){
-        
+        controller=new Controller(game,userInput,virtualView,players);
+       // controller.getRoundController()
     }
 }

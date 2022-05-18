@@ -30,7 +30,9 @@ public class Game {
     public ArrayList<Player> getPlayers() {
         return players;
     }
-
+    public boolean getIsExpert(){
+        return this.isExpert;
+    }
     public ArrayList<Cloud> getClouds(){
         return this.clouds;
     }

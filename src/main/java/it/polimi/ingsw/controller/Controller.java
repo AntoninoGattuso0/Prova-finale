@@ -14,10 +14,15 @@ public class Controller {
     private final VirtualView virtualView;
     private final ArrayList<Player> players;
     private final Player currentPlayer;
-    public Controller(Game game){
+    public Controller(Game game,UserInput userInput,VirtualView virtualView,ArrayList<Player> players){
         this.game=game;
-        game.start(game);
+        this.isExpert=game.getIsExpert();
+        this.virtualView=virtualView;
+        this.userInput=userInput;
+        this.players=players;
+        this.currentPlayer=players.get(0);
         this.endGame=false;
+        this.roundController=new RoundController(players);
     }
     public void checkNickname(String nickname){
 
