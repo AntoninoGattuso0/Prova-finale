@@ -42,7 +42,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     public ArrayList<Player> getPlayers() {
         return players;
     }
-
+    public boolean isLobbySett() {
+        return lobbySett;
+    }
     public void addClientToList(ClientHandlerInterface client, Lobby lobby){
         String nickname;
         loginUser(client);
@@ -87,21 +89,19 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
             }else if(lobbyOk){
                 updateDisconnectionInGame(clientHandler);}
         }else{
-            CloseConnection(clientHandler);
+            closeConnection(clientHandler);
             if(clients.size()==1||clients.size()==0){
                 endGame.administrEndGame();
             }
         }
     }
-
-    private void CloseConnection(ClientHandlerInterface clientHandler) {
+    private synchronized void closeConnection(ClientHandlerInterface clientHandler) {
         System.out.println("Server unregistering client.");
         virtualView.removeClientInVirtualView(clientHandler,clientHandler.getUserNickname());
         players.remove(getPlayerByNick(clientHandler.getUserNickname()));
         clients.remove(clientHandler);
         System.out.println(clientHandler.getUserNickname()+"'s client unregistered\n");
     }
-
     private void updateDisconnectionInSet(ClientHandlerInterface clientHandler) {
         System.out.println("A client disconnects in set-phase. The lobby is closed\n");
         deregisterConn(clientHandler);
