@@ -9,11 +9,14 @@ import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
 import it.polimi.ingsw.network.Message.StartTurnMessage;
 import it.polimi.ingsw.observer.NetworkHandlerObservable;
 import it.polimi.ingsw.view.View;
+import it.polimi.ingsw.observer.NetworkHandlerObservable;
 
 import java.io.PrintStream;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
+
+import java.io.*;
 
 public class Cli extends NetworkHandlerObservable implements Runnable, View {
     Scanner scanner = new Scanner(System.in); //Per leggere input da tastiera
@@ -42,7 +45,26 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     //start the cli
     public void init() {
-        out.println("Benvenuto in Eryantis!");
+        out.println( ColorCli.RED +
+
+                "EEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRR   IIIIIIIIII               AAA               NNNNNNNN        NNNNNNNNTTTTTTTTTTTTTTTTTTTTTTTYYYYYYY       YYYYYYY   SSSSSSSSSSSSSSS \n" +
+                "E::::::::::::::::::::ER::::::::::::::::R  I::::::::I              A:::A              N:::::::N       N::::::NT:::::::::::::::::::::TY:::::Y       Y:::::Y SS:::::::::::::::S \n" +
+                "E::::::::::::::::::::ER::::::RRRRRR:::::R I::::::::I             A:::::A             N::::::::N      N::::::NT:::::::::::::::::::::TY:::::Y       Y:::::YS:::::SSSSSS::::::S\n" +
+                "EE::::::EEEEEEEEE::::ERR:::::R     R:::::RII::::::II            A:::::::A            N:::::::::N     N::::::NT:::::TT:::::::TT:::::TY::::::Y     Y::::::YS:::::S     SSSSSSS \n" +
+                "E:::::E       EEEEEE  R::::R     R:::::R  I::::I               A:::::::::A           N::::::::::N    N::::::NTTTTTT  T:::::T  TTTTTTYYY:::::Y   Y:::::YYYS:::::S \n" +
+                "E:::::E               R::::R     R:::::R  I::::I              A:::::A:::::A          N:::::::::::N   N::::::N        T:::::T           Y:::::Y Y:::::Y   S:::::S\n" +
+                "E::::::EEEEEEEEEE     R::::RRRRRR:::::R   I::::I             A:::::A A:::::A         N:::::::N::::N  N::::::N        T:::::T            Y:::::Y:::::Y     S::::SSSS\n" +
+                "E:::::::::::::::E     R:::::::::::::RR    I::::I            A:::::A   A:::::A        N::::::N N::::N N::::::N        T:::::T             Y:::::::::Y       SS::::::SSSSS\n" +
+                "E:::::::::::::::E     R::::RRRRRR:::::R   I::::I           A:::::A     A:::::A       N::::::N  N::::N:::::::N        T:::::T              Y:::::::Y          SSS::::::::SS\n" +
+                "E::::::EEEEEEEEEE     R::::R     R:::::R  I::::I          A:::::AAAAAAAAA:::::A      N::::::N   N:::::::::::N        T:::::T               Y:::::Y              SSSSSS::::S\n" +
+                "E:::::E               R::::R      R:::::R I::::I         A:::::::::::::::::::::A     N::::::N    N::::::::::N        T:::::T               Y:::::Y                   S:::::S\n" +
+                "E:::::E       EEEEEE  R::::R       R:::::RI::::I        A:::::AAAAAAAAAAAAA:::::A    N::::::N     N:::::::::N        T:::::T               Y:::::Y                   S:::::S\n" +
+                "EE::::::EEEEEEEE:::::ERR:::::R     R:::::RII::::::II   A:::::A             A:::::A   N::::::N      N::::::::N      TT:::::::TT             Y:::::Y       SSSSSSS     S:::::S\n" +
+                "E::::::::::::::::::::ER::::::R     R:::::RI::::::::I  A:::::A               A:::::A  N::::::N       N:::::::N      T:::::::::T          YYYY:::::YYYY    S::::::SSSSSS:::::S\n" +
+                "E::::::::::::::::::::ER::::::R     R:::::RI::::::::I A:::::A                 A:::::A N::::::N        N::::::N      T:::::::::T          Y:::::::::::Y    S:::::::::::::::SS\n" +
+                "EEEEEEEEEEEEEEEEEEEEEERRRRRRRR     RRRRRRRIIIIIIIIIIAAAAAAA                   AAAAAAANNNNNNNN         NNNNNNN      TTTTTTTTTTT          YYYYYYYYYYYYY     SSSSSSSSSSSSSSS   \n"
+                 + ColorCli.RESET
+    );
 
         try {
             askServerInfo();
@@ -110,24 +132,34 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     */
     @Override
     public void askNumPlayerIsExpert() {
-        System.out.println("You are the first player logged. \n");
+        System.out.println("Welcome in Eriantys. You are the first player logged. \n");
+        System.out.println("Insert your NICKNAME: \n");
+        String nick = scanner.nextLine();
+
         System.out.println("Please insert the number of Players. It must be a number between 2 and 4. \n");
         int numPlayers = checkInteger();
 
+        out.println("\n");
         while (numPlayers < 2 || numPlayers > 4) {
             System.out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
             numPlayers = checkInteger();
         }
 
-        System.out.println("Choose the game mode: type 0 for normal mode or type 1 for expert mode \n");
-        int isExpert = checkInteger();
+        System.out.println("\n Choose the game mode: type false for normal mode or type true for expert mode \n");
+        boolean isExpert = scanner.nextBoolean();
 
 
-        while (isExpert != 0 || isExpert != 1) { //non ho capito cosa controlla questo -Paul
-            System.out.println("ERROR: type 0 for normal mode or type 1 for expert mode \n");
-            isExpert = checkInteger();
-        }//il controllo così non va bene, va fatto all'interno dello scambio dei messaggi e non nella CLI -NINO
+        while (!isExpert || isExpert) { //non ho capito cosa controlla questo -Paul
+            System.out.println("ERROR: type false for normal mode or type true for expert mode \n");
+            isExpert = scanner.nextBoolean();
+        }
+        notifyMessage(new LoginNumPlayerIsExp(numPlayers, isExpert));
+    }//il controllo così non va bene, va fatto all'interno dello scambio dei messaggi e non nella CLI -NINO
 
+    @Override
+    public void loginPlayers() {
+        System.out.println("Welcome in Eriantys. Insert your NICKNAME: \n");
+        String nick = scanner.nextLine();
     }
 
     @Override
@@ -236,7 +268,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         cloudCards.append(ColorCli.BOLDCYAN).append("\n");
 
         for (int j = 0; j < 5; j++) {
-            for (i = 0; i < game.getClouds().size() && i < 4; i++)
+            for (i = 0; i < game.getClouds().size(); i++)
                     cloudCards.append(ColorCli.BOLDCYAN).append("*").append(ColorCli.RESET).append(color4Clouds(game.getClouds(), i, j)).append(" *   ");
             cloudCards.append("\n").append(ColorCli.RESET);
         }
@@ -248,7 +280,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
             cloudCards.append(ColorCli.BOLDCYAN).append("   *            *      ");
         cloudCards.append(ColorCli.BOLDCYAN).append("\n");
 
-        for (i = 0; i < game.getClouds().size() && i < 4; i++)
+        for (i = 0; i < game.getClouds().size(); i++)
             cloudCards.append(ColorCli.BOLDCYAN).append("     ").append(" +*******+").append("        ");
         cloudCards.append(ColorCli.BOLDCYAN).append("\n").append(ColorCli.RESET);
 
@@ -278,29 +310,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         return showColor.toString();
     }
 
-    @Override
-    public String displayEntrance(Game game, Player player) {
-        clearCli();
-
-        StringBuilder entranceSpace = new StringBuilder();
-        out.println(" ");
-        out.println(" ");
-        entranceSpace.append(ColorCli.BOLDCYAN);
-        int j;
-        entranceSpace.append(ColorCli.BOLDCYAN);
-        //for (i = 0; i < game.getPlayers().size() && i < 4; i++){
-        entranceSpace.append(ColorCli.BOLDCYAN).append("Player: " + player.getNickname()).append("\n").append("+--------------+ \n");
-        for (j = 0; j < 5; j++) {
-            entranceSpace.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(player, j));
-            entranceSpace.append("|\n").append(ColorCli.RESET);
-        }
-        entranceSpace.append(ColorCli.BOLDCYAN).append("+--------------+");
-        // }
-        out.print(entranceSpace);
-        entranceSpace.delete(0, entranceSpace.capacity());
-        return entranceSpace.toString();
-    }
-
     private String color4Entrance(Player player, int color){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
@@ -320,56 +329,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         }
         return showColor.toString();
     }
-
-    @Override
-    public String displayDiningRoom(Game game, Player player) {
-        clearCli();
-
-        StringBuilder diningSpace = new StringBuilder();
-        out.println(" ");
-        out.println(" ");
-        diningSpace.append(ColorCli.BOLDCYAN);
-        int j, m;
-        diningSpace.append(ColorCli.BOLDCYAN);
-       // for (i = 0; i < game.getPlayers().size() && i < 4; i++){
-            diningSpace.append(ColorCli.BOLDCYAN).append("+------------------------------+ \n");
-            for (j = 0; j < 5; j++)
-
-                 diningSpace.append(ColorCli.BOLDCYAN);
-                for (m = 0; m < player.getDiningRoom().getNumGreen(); m++)
-                    if(m==2||m==5||m==8) diningSpace.append(ColorCli.GREEN).append("  ◎");
-                    else diningSpace.append(color4DiningRoom(0)).append(ColorCli.BOLDCYAN);
-                diningSpace.append("\n");
-                diningSpace.append(ColorCli.BOLDCYAN);
-                for (m = 0; m < player.getDiningRoom().getNumRed(); m++)
-                    if(m==2||m==5||m==8) diningSpace.append(ColorCli.RED).append("  ◎");
-                    else diningSpace.append(color4DiningRoom(1)).append(ColorCli.BOLDCYAN);
-                diningSpace.append("\n");
-                diningSpace.append(ColorCli.BOLDCYAN);
-                for (m = 0; m < player.getDiningRoom().getNumYellow(); m++)
-                    if(m==2||m==5||m==8) diningSpace.append(ColorCli.YELLOW).append("  ◎");
-                    else diningSpace.append(color4DiningRoom(2)).append(ColorCli.BOLDCYAN);
-                diningSpace.append("\n");
-                diningSpace.append(ColorCli.BOLDCYAN);
-                for (m = 0; m < player.getDiningRoom().getNumPink(); m++)
-                    if(m==2||m==5||m==8) diningSpace.append(ColorCli.PINK).append("  ◎");
-                    else diningSpace.append(color4DiningRoom(3)).append(ColorCli.BOLDCYAN);
-                diningSpace.append("\n");
-                diningSpace.append(ColorCli.BOLDCYAN);
-                for (m = 0; m < player.getDiningRoom().getNumBlue(); m++)
-                    if(m==2||m==5||m==8) diningSpace.append(ColorCli.BLUE).append("  ◎");
-                    else diningSpace.append(color4DiningRoom(4)).append(ColorCli.BOLDCYAN);
-                diningSpace.append("\n");
-
-                diningSpace.append(ColorCli.RESET);
-
-            diningSpace.append(ColorCli.BOLDCYAN).append("+------------------------------+ ");
-       // }
-        out.print(diningSpace);
-        diningSpace.delete(0, diningSpace.capacity());
-        return diningSpace.toString();
-    }
-
 
     private String color4DiningRoom(int color){
         StringBuilder showColor = new StringBuilder();
@@ -406,81 +365,62 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     private String color4ProfTable(Game game, int color, int profOfPlayer){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
-            if(game.getPlayers().get(game.getProfTable().getGreenProf()) == game.getPlayers().get(profOfPlayer))
-                showColor.append(ColorCli.GREEN).append("●");
-            else showColor.append(ColorCli.GREEN).append("✖︎︎");
+            if(game.getProfTable().getGreenProf() == profOfPlayer)
+                showColor.append(ColorCli.GREEN).append("❂");
+            else showColor.append(ColorCli.GREEN).append("︎︎◌");
         }
         else if(color == 1){
-            if(game.getPlayers().get(game.getProfTable().getRedProf()) == game.getPlayers().get(profOfPlayer))
-                showColor.append(ColorCli.RED).append("●");
-            else showColor.append(ColorCli.RED).append("✖︎︎");
+            if(game.getProfTable().getRedProf() == profOfPlayer)
+                showColor.append(ColorCli.RED).append("❂");
+            else showColor.append(ColorCli.RED).append("︎︎◌");
         }
         else if(color == 2){
-            if(game.getPlayers().get(game.getProfTable().getYellowProf()) == game.getPlayers().get(profOfPlayer))
-                showColor.append(ColorCli.YELLOW).append("●");
-            else showColor.append(ColorCli.YELLOW).append("✖︎︎");
+            if(game.getProfTable().getYellowProf() == profOfPlayer)
+                showColor.append(ColorCli.YELLOW).append("❂");
+            else showColor.append(ColorCli.YELLOW).append("◌");
         }
         else if(color == 3){
-            if(game.getPlayers().get(game.getProfTable().getPinkProf()) == game.getPlayers().get(profOfPlayer))
-                showColor.append(ColorCli.PINK).append("●");
-            else showColor.append(ColorCli.PINK).append("✖︎︎");
+            if(game.getProfTable().getPinkProf() == profOfPlayer)
+                showColor.append(ColorCli.PINK).append("❂");
+            else showColor.append(ColorCli.PINK).append("◌");
         }
         else if(color == 4){
-            if(game.getPlayers().get(game.getProfTable().getBlueProf()) == game.getPlayers().get(profOfPlayer))
-                showColor.append(ColorCli.BLUE).append("●");
-            else showColor.append(ColorCli.BLUE).append("✖︎︎");
+            if(game.getProfTable().getBlueProf() == profOfPlayer)
+                showColor.append(ColorCli.BLUE).append("❂");
+            else showColor.append(ColorCli.BLUE).append("◌");
         }
         return showColor.toString();
     }
 
-    @Override
-    public String displayTowerSpace(Game game, int player) {
-        clearCli();
-
-        StringBuilder towerSpace = new StringBuilder();
-        out.println(" ");
-        out.println(" ");
-
-        towerSpace.append(ColorCli.BOLDCYAN).append("+-------+ \n");
-        towerSpace.append(color4TowerSpace(game, player));
-        towerSpace.append(ColorCli.BOLDCYAN).append("+-------+ \n");
-        towerSpace.append("\n");
-        out.print(towerSpace);
-        towerSpace.delete(0, towerSpace.capacity());
-        return towerSpace.toString();
-    }
-
-    private String color4TowerSpace(Game game, int player){
+    private String color4TowerSpace(int player, int numTower){
         StringBuilder showColor = new StringBuilder();
         if(player == 0){
-            if(game.getPlayers().get(player).getTowerSpace().getNumTower()%2==0) {
-                for(int m = 0; m < game.getPlayers().get(player).getTowerSpace().getNumTower()/2; m++)
-                showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|\n");
-            }else if(game.getPlayers().get(player).getTowerSpace().getNumTower()%2==1) {
-                for(int m = 0; m < game.getPlayers().get(player).getTowerSpace().getNumTower()/2; m++)
-                    showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|\n");
-                showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖      ").append(ColorCli.BOLDCYAN).append("|\n");
-            }
+            if(numTower > 1) {
+                showColor.append(ColorCli.RESET).append("♖    ♖").append(ColorCli.BOLDCYAN).append("|");
+            }else if(numTower == 1) {
+                showColor.append(ColorCli.RESET).append("♖    ☒").append(ColorCli.BOLDCYAN).append("|");
+            }else if(numTower <= 0)
+                showColor.append(ColorCli.RESET).append("☒    ☒").append(ColorCli.BOLDCYAN).append("|");
+            showColor.append("\n");
         }
+
         else if(player == 1){
-            if(game.getPlayers().get(player).getTowerSpace().getNumTower()%2==0) {
-                for(int m = 0; m < game.getPlayers().get(player).getTowerSpace().getNumTower()/2; m++)
-            showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.BLACK).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|\n");
-            }else if(game.getPlayers().get(player).getTowerSpace().getNumTower()%2==1) {
-                for(int m = 0; m < game.getPlayers().get(player).getTowerSpace().getNumTower()/2; m++)
-                    showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.BLACK).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|\n");
-                showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.BLACK).append("♖      ").append(ColorCli.BOLDCYAN).append("|\n");
-            }
+            if(numTower > 1) {
+                showColor.append(ColorCli.BLACK).append("♖    ♖").append(ColorCli.BOLDCYAN).append("|");
+            }else if(numTower==1) {
+                showColor.append(ColorCli.BLACK).append("♖    ☒").append(ColorCli.BOLDCYAN).append("|");
+            }else if(numTower <= 0)
+                showColor.append(ColorCli.BLACK).append("☒    ☒").append(ColorCli.BOLDCYAN).append("|");
+            showColor.append("\n");
         }
         else if(player == 2){
-                if(game.getPlayers().get(player).getTowerSpace().getNumTower()%2==0) {
-                    for(int m = 0; m < game.getPlayers().get(player).getTowerSpace().getNumTower()/2; m++);
-                    showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.GREY).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|\n");
-                }else if(game.getPlayers().get(player).getTowerSpace().getNumTower()%2==1) {
-                    for(int m = 0; m < game.getPlayers().get(player).getTowerSpace().getNumTower()/2; m++)
-                        showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.GREY).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|\n");
-                    showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.GREY).append("♖      ").append(ColorCli.BOLDCYAN).append("|\n");
-                }
+            if(numTower > 1) {
+                showColor.append(ColorCli.GREY).append("♖    ♖").append(ColorCli.BOLDCYAN).append("|");
+            }else if(numTower==1) {
+                showColor.append(ColorCli.GREY).append("♖    ☒").append(ColorCli.BOLDCYAN).append("|");
+            }else if(numTower <= 0)
+                showColor.append(ColorCli.GREY).append("☒    ☒").append(ColorCli.BOLDCYAN).append("|");
+            showColor.append("\n");
         }
         return showColor.toString();
     }
@@ -505,13 +445,14 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                 if(m==2||m==5||m==8) schoolBoard.append(ColorCli.GREEN).append("  ◎");
                 else schoolBoard.append(color4DiningRoom(0)).append(ColorCli.BOLDCYAN);
             }
-            if(game.getPlayers().get(i).getTowerSpace().getNumTower()>1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|");
-            }else if(game.getPlayers().get(i).getTowerSpace().getNumTower()==1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖      ").append(ColorCli.BOLDCYAN).append("|");
+            while(m < 10){
+                schoolBoard.append(ColorCli.GREEN).append("  ◌");
+                m++;
             }
-            schoolBoard.append("\n");
-            int j;
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(game,0, i)).append(ColorCli.BOLDCYAN).append(" |");
+
+            int j = game.getPlayers().get(i).getTowerSpace().getNumTower();
+            schoolBoard.append(color4TowerSpace(i, j));
             j = game.getPlayers().get(i).getTowerSpace().getNumTower() - 2;
 
 
@@ -521,12 +462,12 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                 if(m==2||m==5||m==8) schoolBoard.append(ColorCli.RED).append("  ◎");
                 else schoolBoard.append(color4DiningRoom(1)).append(ColorCli.BOLDCYAN);
             }
-            if(j >1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|");
-            }else if(j==1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖      ").append(ColorCli.BOLDCYAN).append("|");
+            while(m < 10){
+                schoolBoard.append(ColorCli.RED).append("  ◌");
+                m++;
             }
-            schoolBoard.append("\n");
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(game,1, i)).append(ColorCli.BOLDCYAN).append(" |");
+            schoolBoard.append(color4TowerSpace(i, j));
             j = j - 2;
 
 
@@ -536,12 +477,12 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                 if(m==2||m==5||m==8) schoolBoard.append(ColorCli.YELLOW).append("  ◎");
                 else schoolBoard.append(color4DiningRoom(2)).append(ColorCli.BOLDCYAN);
             }
-            if(j >1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|");
-            }else if(j==1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖      ").append(ColorCli.BOLDCYAN).append("|");
+            while(m < 10){
+                schoolBoard.append(ColorCli.YELLOW).append("  ◌");
+                m++;
             }
-            schoolBoard.append("\n");
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(game,2, i)).append(ColorCli.BOLDCYAN).append(" |");
+            schoolBoard.append(color4TowerSpace(i, j));
             j = j - 2;
 
 
@@ -551,12 +492,12 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                 if(m==2||m==5||m==8) schoolBoard.append(ColorCli.PINK).append("  ◎");
                 else schoolBoard.append(color4DiningRoom(3)).append(ColorCli.BOLDCYAN);
             }
-            if(j >1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖    ♖ ").append(ColorCli.BOLDCYAN).append("|");
-            }else if(j==1) {
-                schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("♖      ").append(ColorCli.BOLDCYAN).append("|");
+            while(m < 10){
+                schoolBoard.append(ColorCli.PINK).append("  ◌");
+                m++;
             }
-            schoolBoard.append("\n");
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(game,3, i)).append(ColorCli.BOLDCYAN).append(" |");
+            schoolBoard.append(color4TowerSpace(i, j));
 
 
             schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(game.getPlayers().get(i),  4));
@@ -565,15 +506,22 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                     if(m==2||m==5||m==8) schoolBoard.append(ColorCli.BLUE).append("  ◎");
                     else schoolBoard.append(color4DiningRoom(4)).append(ColorCli.BOLDCYAN);
             }
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("       ").append(ColorCli.BOLDCYAN).append("|");
-            schoolBoard.append("\n");
-            schoolBoard.append(ColorCli.BOLDCYAN).append("+------------------------------------------------------+ \n");
+            while(m < 10){
+                schoolBoard.append(ColorCli.BLUE).append("  ◌");
+                m++;
+            }
+
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(game,4, i)).append(ColorCli.BOLDCYAN).append(" |");
+            schoolBoard.append("      ").append(ColorCli.BOLDCYAN).append("| \n");
+            schoolBoard.append(ColorCli.BOLDCYAN).append("+--------------+--------------------------------+---+------+\n");
+            schoolBoard.append(ColorCli.RESET);
         }
 
         out.print(schoolBoard);
         schoolBoard.delete(0, schoolBoard.capacity());
 
     }
+
 
     @Override
     public void displayCharacterCard() {
@@ -641,7 +589,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void waitOtherPlayers(String waitMessage) {
+    public void waitOtherPlayers(WaitMessage object) {
 
     }
 
@@ -724,20 +672,4 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     public void run() {
 
     }
-
-  /*  public void displayNetError(){
-
-    }
-
-    public void requestNickname(){
-
-    }
-
-    public void requestNumPlayers(){
-
-    }
-
-    public void registerClient(ClientAcceptedMessage m){
-
-    }*/
 }

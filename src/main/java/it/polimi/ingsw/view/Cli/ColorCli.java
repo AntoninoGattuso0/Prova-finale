@@ -1,7 +1,5 @@
 package it.polimi.ingsw.view.Cli;
 
-import it.polimi.ingsw.model.Nicola;
-
 public enum ColorCli {
 
     //color end string, color reset
