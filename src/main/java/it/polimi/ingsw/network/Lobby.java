@@ -68,7 +68,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
             virtualView.addClientInVirtualView(client, nick);
             players.add(new Player(nick, game));
             if (clients.size() != numPlayer) {
-                client.sendObject(new WaitMessage());
+                client.sendObject(new WaitMessage("Waiting other players"));
             } else {
                 client.sendObject(new GameStarted());
                 lobbyOk = true;

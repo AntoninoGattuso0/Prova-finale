@@ -1,17 +1,21 @@
 package it.polimi.ingsw.view.Cli;
 
 
-import it.polimi.ingsw.model.*;
-import it.polimi.ingsw.network.Message.*;
+import it.polimi.ingsw.model.Cloud;
+import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.Island;
+import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
+import it.polimi.ingsw.network.Message.StartTurnMessage;
+import it.polimi.ingsw.observer.NetworkHandlerObservable;
 import it.polimi.ingsw.view.View;
 
+import java.io.PrintStream;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
-import java.io.*;
-
-public class Cli implements Runnable, View {
+public class Cli extends NetworkHandlerObservable implements Runnable, View {
     Scanner scanner = new Scanner(System.in); //Per leggere input da tastiera
     private final PrintStream out;
     private Thread inputThread;
@@ -637,7 +641,7 @@ public class Cli implements Runnable, View {
     }
 
     @Override
-    public void waitOtherPlayers(WaitMessage object) {
+    public void waitOtherPlayers(String waitMessage) {
 
     }
 
@@ -654,12 +658,6 @@ public class Cli implements Runnable, View {
         if(isExpert == 0)
             System.out.println("The game mode will be normal.\n");
     }
-
-    @Override
-    public void displayTurn(StartTurnMessage startTurnMessage){
-        System.out.println(startTurnMessage.getMessage());
-    }
-
     @Override
     public void displayNick(Game game){
         int i;
@@ -684,6 +682,11 @@ public class Cli implements Runnable, View {
 
     @Override
     public void dysplayNetError() {
+    }
+
+    @Override
+    public void dysplayTurn(StartTurnMessage object) {
+        System.out.println(object.getMessage());
     }
 
     public void clearCli(){

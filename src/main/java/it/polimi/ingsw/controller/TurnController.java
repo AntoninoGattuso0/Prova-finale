@@ -29,10 +29,9 @@ public class TurnController {
     }
     public void exeAction(PhaseTurn currPhaseTurn){
         if(currPhaseTurn==PhaseTurn.MOVE_MOTHER_NATURE){
-
-        }else if(currPhaseTurn==PhaseTurn.MOVE_STUDENT_TO_ISLAND){
-
-        }else if(currPhaseTurn==PhaseTurn.MOVE_STUDENT_TO_DINDINGROOM){
+        }else if(currPhaseTurn==PhaseTurn.MOVE_STUDENT) {
+        }else if(currPhaseTurn==PhaseTurn.CHOOSE_CLOUD){
+        }else if(currPhaseTurn==PhaseTurn.END_TURN){
 
         }
     }

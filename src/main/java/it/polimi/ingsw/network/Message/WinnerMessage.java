@@ -5,4 +5,8 @@ public class WinnerMessage extends ServerToClient{
     public WinnerMessage(String nick){
         this.message= "The Winner is "+ nick;
     }
+
+    public String getMessage() {
+        return message;
+    }
 }

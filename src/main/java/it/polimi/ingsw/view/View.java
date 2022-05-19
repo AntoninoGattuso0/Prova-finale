@@ -36,21 +36,24 @@ public interface View {
 
     void updateCharacterCard();
     void registerClient(ClientAcceptedMessage m);
-
     void displayNetError();
 
     void requestNickname();
 
     void requestNumPlayers();
 
-    void waitOtherPlayers(WaitMessage object) ;
-
-    void displayTurn(StartTurnMessage startTurnMessage);  //mostra di chi è il turno
+    void waitOtherPlayers(String waitMessage);
     void displayWinner(String winner);
 
     void requestCloud();
 
     void dysplayNetError();
+
+    void dysplayTurn(StartTurnMessage object);
+
+    void requestIsExpert();
+
+    void dysplayWrongNickname();
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

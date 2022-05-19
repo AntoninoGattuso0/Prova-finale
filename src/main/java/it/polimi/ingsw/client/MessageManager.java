@@ -16,15 +16,15 @@ public class MessageManager {
         if(object instanceof ChooseCloudMessage){
             view.requestCloud();
         }else if(object instanceof WaitMessage){
-            view.waitOtherPlayers((WaitMessage) object).getMessage();
+            view.waitOtherPlayers(((WaitMessage) object).getMessage());
         }else if(object instanceof StartTurnMessage){
-            view.
+            view.dysplayTurn((StartTurnMessage) object);
         }else if(object instanceof SetNumPlayers){
             view.requestNumPlayers();
         }else if(object instanceof SetNickMessage){
             view.requestNickname();
         }else if(object instanceof SetIsExpert){
-            view.
+            view.requestIsExpert();
         }else if(object instanceof MovePawnToDining){
             view.requestPawnToDining();
         }else if(object instanceof MovePawnToIsland){
@@ -33,7 +33,14 @@ public class MessageManager {
             view.requestMoveMotherNature();
        }else if(object instanceof ClientAcceptedMessage){
                view.registerClient((ClientAcceptedMessage) object );
-        }else{
+        }else if(object instanceof WinnerMessage){
+            view.displayWinner(((WinnerMessage) object).getMessage());
+        }else if(object instanceof GameStarted){
+            view.startGame();
+        }else if(object instanceof WrongNickname){
+            view.dysplayWrongNickname();
+        }
+        else{
             throw new IllegalArgumentException();
         }
     }
