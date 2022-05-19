@@ -39,6 +39,7 @@ public class MessageManager {
             view.startGame();
         }else if(object instanceof WrongNickname){
             view.dysplayWrongNickname();
+
         }
         else{
             throw new IllegalArgumentException();
