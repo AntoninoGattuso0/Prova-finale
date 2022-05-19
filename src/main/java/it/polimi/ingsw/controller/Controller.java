@@ -1,4 +1,4 @@
-/* package it.polimi.ingsw.controller;
+package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.Lobby;
@@ -83,4 +83,3 @@ public class Controller {
         virtualView.updateWin(winnerIs);
     }                                        //3 CASI: CASO IN CUI PLAYER HA FINITO LE TORRI, CASO IN CUI FINISCONO LE PEDINE, CASO IN CUI FINISCONO GLI ASSSISTENTI
 }
-*/
