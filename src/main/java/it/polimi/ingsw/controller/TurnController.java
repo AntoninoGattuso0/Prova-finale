@@ -1,6 +1,8 @@
 package it.polimi.ingsw.controller;
+
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
+
 import java.util.ArrayList;
 
 public class TurnController {
@@ -14,17 +16,26 @@ public class TurnController {
         order.addAll(roundOrder);
         setCurrPlayer(roundOrder.get(0));
     }
-
+    //azione che può essere eseguita in qualsiasi momento (usecharactercard)
     public PhaseTurn getPhase(){
         return this.currPhaseTurn;
     }
     public void TurnOrder(RoundController roundController,Game game){
         order=roundController.newRoundOrder(order,game);
     }
+
     public void setCurrPhaseTurn(PhaseTurn currPhaseTurn) {
         this.currPhaseTurn = currPhaseTurn;
     }
+    public void exeAction(PhaseTurn currPhaseTurn){
+        if(currPhaseTurn==PhaseTurn.MOVE_MOTHER_NATURE){
 
+        }else if(currPhaseTurn==PhaseTurn.MOVE_STUDENT_TO_ISLAND){
+
+        }else if(currPhaseTurn==PhaseTurn.MOVE_STUDENT_TO_DINDINGROOM){
+
+        }
+    }
     public void setCurrPlayer(Player currPlayer) {
         this.currPlayer = currPlayer;
     }
@@ -33,9 +44,4 @@ public class TurnController {
     }
     public void nextPhase(){
     }
-    public void thisphase(Player player, PhaseTurn current){
-        if (current==PhaseTurn.MOVE_STUDENT){
-
-        }
     }
-}

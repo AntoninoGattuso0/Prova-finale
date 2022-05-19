@@ -14,7 +14,7 @@ public class Controller {
     private final UserInput userInput;
     private final VirtualView virtualView;
     private final ArrayList<Player> players;
-    private final Player currentPlayer;
+    private Player currentPlayer;
     public Controller(Game game,UserInput userInput,VirtualView virtualView,ArrayList<Player> players){
         this.game=game;
         this.isExpert=game.getIsExpert();
@@ -52,7 +52,9 @@ public class Controller {
         endGame=true;
         virtualView.playerWinForQuitting(nick);
     }
-
+    public void updateCurrentPlayer(){
+        currentPlayer=players.get((players.indexOf(currentPlayer)+1)%players.size());
+    }
     public void AdministrDisconnectionInSet(String userNickname) {
         endGame= true;
         virtualView.sendDisconectionInSet(userNickname);
