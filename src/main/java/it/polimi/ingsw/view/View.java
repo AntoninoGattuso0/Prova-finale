@@ -49,6 +49,8 @@ public interface View {
     void displayWinner(String winner);
 
     void requestCloud();
+
+    void dysplayNetError();
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

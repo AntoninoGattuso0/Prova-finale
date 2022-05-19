@@ -10,6 +10,5 @@ public interface ClientHandlerInterface extends Runnable {//MODIFICA NOME IN VIS
     void setUserNickname(String userNickname);
     String getUserNickname();
     Message read();
-
     void addObserver(ConnectionObserver observer);
 }

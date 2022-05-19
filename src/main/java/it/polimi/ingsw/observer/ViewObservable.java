@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class ViewObservable {
     private final ArrayList<ViewObserver> observers=new ArrayList<>();
+
     public void addObserver(ViewObserver observer){
         synchronized (observer){
             observers.add(observer);

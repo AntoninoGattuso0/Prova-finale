@@ -11,6 +11,7 @@ public class UserInput implements ViewObserver {//DA RIVEDERE
         nickName=null;
         playersNum=0;
     }
+
     public Message getMessage() {
         return message;
     }
@@ -22,7 +23,6 @@ public class UserInput implements ViewObserver {//DA RIVEDERE
     public void updateMessage(Message message){
         this.message=message;
     }
-
     public String getNickName() {
         return nickName;
     }

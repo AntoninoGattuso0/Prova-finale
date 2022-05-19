@@ -31,8 +31,6 @@ public class MessageManager {
             view.requestPawnToIsland();
         }else if(object instanceof MoveMotherNatureMessage){
             view.requestMoveMotherNature();
-        }else if(object instanceof RemoveClient){
-            view.removeClient();
        }else if(object instanceof ClientAcceptedMessage){
                view.registerClient((ClientAcceptedMessage) object );
         }else{

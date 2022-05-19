@@ -21,21 +21,20 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     private boolean lobbyOk;
     private final ArrayList<ClientHandlerInterface> clients;
     private boolean lobbySett;
-    private boolean joinClient;
     private boolean isExpert;
     private final Object lock;
    private Game game;
     public Lobby() {
-        lock=new Object();
+        lock = new Object();
         namePlayer = new ArrayList<>();
         virtualView = new VirtualView();
-        userInput=new UserInput();
+        userInput = new UserInput();
         clients = new ArrayList<>();
-        players=new ArrayList<>();
-        numPlayer =0;
+        players = new ArrayList<>();
+        players.get(0).setNickame(null);
+        numPlayer = 0;
         lobbyOk = false;
         lobbySett = false;
-        joinClient = false;
         virtualView.addObserver(userInput);
     }
     public ArrayList<Player> getPlayers() {
@@ -49,7 +48,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         loginUser(client);
         nickname=client.getUserNickname();
         if(nickname!=null){
-            if(!joinClient){
+            if(players.get(0).getNickname()==null){
                 newLobby(client);
             }else{
                 joiningInLobby(client,lobby);
@@ -159,7 +158,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
             return;
         }
         nickname = ((LoginSettMessage) nickMessage).getNickname();
-        joinClient = ((LoginSettMessage) nickMessage).getJoin();
         for (i = 0; i < namePlayer.size(); i++) {
             while (namePlayer.get(i).equals(nickname)) {
                 loginClient.sendObject(new SetNickMessage());
@@ -168,7 +166,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
                     return;
                 }
                 nickname = ((LoginSettMessage) nickMessage).getNickname();
-                joinClient = ((LoginSettMessage) nickMessage).getJoin();
             }
         }
         namePlayer.add(nickname);
