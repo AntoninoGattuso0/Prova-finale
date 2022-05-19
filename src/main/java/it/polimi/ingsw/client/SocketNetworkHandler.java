@@ -82,7 +82,7 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
     @Override
     public void run(){
         synchronized (this){
-            while(ready==false){
+            while(!ready){
                 try{
                     wait();
                 }catch (InterruptedException e){

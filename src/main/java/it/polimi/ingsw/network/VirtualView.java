@@ -1,6 +1,7 @@
 package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.network.Message.Message;
+import it.polimi.ingsw.network.Message.StartTurnMessage;
 import it.polimi.ingsw.network.Message.WinnerMessage;
 import it.polimi.ingsw.observer.ViewObservable;
 
@@ -24,6 +25,11 @@ public class VirtualView extends ViewObservable /*implements*/ {//DA COMPLETARE
         synchronized (lock){
             clients.remove(nick,client);
             lock.notifyAll();
+        }
+    }
+    public void startTurn(){
+        for(ClientHandlerInterface clientHandler: clients.values()){
+            clientHandler.sendObject(new StartTurnMessage(actualPlayer));
         }
     }
     public void setActualPlayer(String actualPlayer) {
@@ -55,5 +61,9 @@ public class VirtualView extends ViewObservable /*implements*/ {//DA COMPLETARE
 
     public void sendDisconectionInSet(String userNickname) {
 
+    }
+
+    public void endTurn() {
+        clients.get(actualPlayer).setTurn(false);
     }
 }

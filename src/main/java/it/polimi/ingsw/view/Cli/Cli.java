@@ -122,7 +122,7 @@ public class Cli implements Runnable, View {
         while (isExpert != 0 || isExpert != 1) { //non ho capito cosa controlla questo -Paul
             System.out.println("ERROR: type 0 for normal mode or type 1 for expert mode \n");
             isExpert = checkInteger();
-        }
+        }//il controllo così non va bene, va fatto all'interno dello scambio dei messaggi e non nella CLI -NINO
 
     }
 
@@ -680,6 +680,10 @@ public class Cli implements Runnable, View {
     @Override
     public void requestCloud() {
 
+    }
+
+    @Override
+    public void dysplayNetError() {
     }
 
     public void clearCli(){
