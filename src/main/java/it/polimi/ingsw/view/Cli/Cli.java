@@ -559,12 +559,20 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void requestNumPlayers() {
+        System.out.println("Please insert the number of Players. It must be a number between 2 and 4. \n");
+        int numPlayers = checkInteger();
 
+        out.println("\n");
+        while (numPlayers < 2 || numPlayers > 4) {
+            System.out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
+            numPlayers = checkInteger();
+        }
+        notifyMessage(new SetNumPlayers());
     }
 
     @Override
     public void waitOtherPlayers(String object) {
-        System.out.println("Waiting for other players...");
+        System.out.println(object);
     }
 
 

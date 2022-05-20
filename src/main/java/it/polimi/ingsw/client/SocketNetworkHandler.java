@@ -108,12 +108,12 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
                         break;
                     }
                 }catch (IOException|ClassNotFoundException e){
-                    view.dysplayNetError();
+                    view.displayNetError();
                     break;
                 }
             }
         }catch (NoSuchElementException e){
-            view.dysplayNetError();
+            view.displayNetError();
         }finally {
             closeConnection();
         }
