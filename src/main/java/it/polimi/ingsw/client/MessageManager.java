@@ -25,11 +25,14 @@ public class MessageManager {
         }else if(object instanceof SetIsExpertMessage){
             view.requestIsExpert();
         }else if(object instanceof MovePawnToDiningMessage){
-            view.requestPawnToDining(());
+            MovePawnToDiningMessage message=(MovePawnToDiningMessage) object;
+            view.requestPawnToDining(message.getNumDiningRoom(),message.getArrayPawn());
         }else if(object instanceof MovePawnToIslandMessage){
+            MovePawnToIslandMessage message = (MovePawnToIslandMessage) object;
             view.requestPawnToIsland();
         }else if(object instanceof MoveMotherNatureMessage){
-            view.requestMoveMotherNature();
+            MoveMotherNatureMessage step= (MoveMotherNatureMessage) object;
+            view.requestMoveMotherNature(step.getIsland());
        }else if(object instanceof ClientAcceptedMessage){
                view.registerClient((ClientAcceptedMessage) object );
         }else if(object instanceof WinnerMessage){
@@ -38,15 +41,14 @@ public class MessageManager {
             view.startGame();
         }else if(object instanceof WrongNicknameMessage){
             view.displayWrongNickname();
-
         }else if(object instanceof WrongTurnMessage){
             view.displayWrongTurn();
         }else if(object instanceof NicknameUpdateMessage){
             view.updateNickname((NicknameUpdateMessage) object);
         }else if(object instanceof ClientInputResponse){
             view.displayResponseMessage((ClientInputMessage) object).getErrorMessage());
-        }else if(object instanceof GameStartedMessage){
-
+        }else if(object instanceof FetchNameMessage){
+            view.displayFetchNameMessage();
         }
         else{
             throw new IllegalArgumentException();

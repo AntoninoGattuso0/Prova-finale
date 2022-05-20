@@ -1,13 +1,22 @@
 package it.polimi.ingsw.network.Message;
 
 
-public class MovePawnToDiningMessage extends ClientToServer {
-    public final int diningRoom;
+import it.polimi.ingsw.model.ColorPawn;
 
-    public MovePawnToDiningMessage(int diningRoom) {
-        this.diningRoom = diningRoom;
+import java.util.ArrayList;
+
+public class MovePawnToDiningMessage extends ClientToServer {
+    public final int num;
+    public final ArrayList<ColorPawn> arrayPawn;
+
+    public MovePawnToDiningMessage(int num, ArrayList<ColorPawn> arrayPawn) {
+        this.num = num;
+        this.arrayPawn=arrayPawn;
     }
-    public int getDiningRoom() {
-        return diningRoom;
+    public int getNumDiningRoom() {
+        return num;
+    }
+    public ArrayList<ColorPawn> getArrayPawn(){
+        return this.arrayPawn;
     }
 }

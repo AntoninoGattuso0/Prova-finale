@@ -54,7 +54,7 @@ public interface View {
 
     void requestPawnToIsland();
 
-    void requestMoveMotherNature();
+    void requestMoveMotherNature(int island);
 
     void displayWrongTurn();
 }
