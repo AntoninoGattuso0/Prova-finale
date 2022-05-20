@@ -1,10 +1,10 @@
 package it.polimi.ingsw.network.Message;
 
-public class MovePawnToIsland extends ClientToServer {
+public class MovePawnToIslandMessage extends ClientToServer {
     public final int island;
 
 
-    public MovePawnToIsland(int island) {
+    public MovePawnToIslandMessage(int island) {
         this.island = island;
     }
 

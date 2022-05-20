@@ -1,10 +1,10 @@
 package it.polimi.ingsw.network.Message;
 
 
-public class MovePawnToDining extends ClientToServer {
+public class MovePawnToDiningMessage extends ClientToServer {
     public final int diningRoom;
 
-    public MovePawnToDining(int diningRoom) {
+    public MovePawnToDiningMessage(int diningRoom) {
         this.diningRoom = diningRoom;
     }
     public int getDiningRoom() {

@@ -70,7 +70,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
             if (clients.size() != numPlayer) {
                 client.sendObject(new WaitMessage("Waiting other players"));
             } else {
-                client.sendObject(new GameStarted());
+                client.sendObject(new GameStartedMessage());
                 lobbyOk = true;
             }
             lock.notifyAll();
@@ -171,21 +171,21 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         namePlayer.add(nickname);
         loginClient.setUserNickname(nickname);
         if(namePlayer.size()==1){
-            loginClient.sendObject(new SetNumPlayers());
+            loginClient.sendObject(new SetNumPlayersMessage());
             nickMessage=loginClient.read();
-            numPlayer=((LoginNumPlayerIsExp) nickMessage).getNumPlayers();
+            numPlayer=((LoginNumPlayerIsExpMessage) nickMessage).getNumPlayers();
             while(numPlayer<2||numPlayer>4){
-                loginClient.sendObject(new SetNumPlayers());
+                loginClient.sendObject(new SetNumPlayersMessage());
                 nickMessage=loginClient.read();
-                numPlayer=((LoginNumPlayerIsExp) nickMessage).getNumPlayers();
+                numPlayer=((LoginNumPlayerIsExpMessage) nickMessage).getNumPlayers();
             }
-                loginClient.sendObject(new SetIsExpert());
-                isExpert=((LoginNumPlayerIsExp) nickMessage).getIsExpert();
+                loginClient.sendObject(new SetIsExpertMessage());
+                isExpert=((LoginNumPlayerIsExpMessage) nickMessage).getIsExpert();
                 game=new Game(numPlayer,isExpert);
         }
         Game.newPlayer(nickname,game);
         System.out.println("SERVER: "+nickname+" is joining!\n");
-        loginClient.sendObject(new LoginAccepted(nickname));
+        loginClient.sendObject(new LoginAcceptedMessage(nickname));
         loginClient.setTurn(false);
     }
     public void endGame(Lobby lobby){

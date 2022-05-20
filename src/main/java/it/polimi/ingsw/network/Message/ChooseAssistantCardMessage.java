@@ -1,9 +1,9 @@
 package it.polimi.ingsw.network.Message;
 
-public class ChooseAssistantCard extends ClientToServer {
+public class ChooseAssistantCardMessage extends ClientToServer {
     private final int character;
 
-    public ChooseAssistantCard(int character) {
+    public ChooseAssistantCardMessage(int character) {
         this.character = character;
     }
 

@@ -1,10 +1,10 @@
 package it.polimi.ingsw.network.Message;
 
-public class InvalidNumPlayer extends ServerToClient {
+public class InvalidNumPlayerMessage extends ServerToClient {
     private final String invalidNumPlayer;
 
 
-    public InvalidNumPlayer() {
+    public InvalidNumPlayerMessage() {
         this.invalidNumPlayer = "Number players Error";
     }
 

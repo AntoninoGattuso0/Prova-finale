@@ -2,7 +2,8 @@ package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
-import it.polimi.ingsw.network.Message.*;
+import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
+import it.polimi.ingsw.network.Message.StartTurnMessage;
 
 public interface View {
 
@@ -48,6 +49,14 @@ public interface View {
     void requestIsExpert();
 
     void displayWrongNickname();
+
+    void requestPawnToDining();
+
+    void requestPawnToIsland();
+
+    void requestMoveMotherNature();
+
+    void displayWrongTurn();
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

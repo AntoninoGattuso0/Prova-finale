@@ -1,6 +1,6 @@
 package it.polimi.ingsw.client;
 import it.polimi.ingsw.view.*;
-import it.polimi.ingsw.network.Message.EndGame;
+import it.polimi.ingsw.network.Message.EndGameMessage;
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
 import it.polimi.ingsw.observer.NetworkHandler;
@@ -104,7 +104,7 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
                     socket.setSoTimeout(30000);
                     Object input = in.readObject();
                     messageManager.manageInputToclient(input);
-                    if (input instanceof EndGame || input instanceof RemoveClient) {
+                    if (input instanceof EndGameMessage || input instanceof RemoveClient) {
                         break;
                     }
                 }catch (IOException|ClassNotFoundException e){

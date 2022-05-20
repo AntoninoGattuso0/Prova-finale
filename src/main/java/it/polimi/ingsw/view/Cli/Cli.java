@@ -16,8 +16,6 @@ import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
-import java.io.*;
-
 public class Cli extends NetworkHandlerObservable implements Runnable, View {
     Scanner scanner = new Scanner(System.in); //Per leggere input da tastiera
     private final PrintStream out;
@@ -148,7 +146,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
             System.out.println("ERROR: type false for normal mode or type true for expert mode \n");
             isExpert = scanner.nextBoolean();
         }
-        notifyMessage(new LoginNumPlayerIsExp(numPlayers, isExpert));
+        notifyMessage(new LoginNumPlayerIsExpMessage(numPlayers, isExpert));
     }//il controllo così non va bene, va fatto all'interno dello scambio dei messaggi e non nella CLI -NINO
 
     @Override
@@ -567,7 +565,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
             System.out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
             numPlayers = checkInteger();
         }
-        notifyMessage(new SetNumPlayers());
+        notifyMessage(new SetNumPlayersMessage());
     }
 
     @Override
@@ -605,7 +603,10 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     public void requestCloud() {
 
     }
-
+    @Override
+    public void displayWrongTurn(){
+        System.out.println("It's not your turn!");
+    }
     @Override
     public void displayNetError() {
     }

@@ -1,8 +1,8 @@
 package it.polimi.ingsw.network.Message;
 
-public class ChooseCharacterCard extends ClientToServer{
+public class ChooseCharacterCardMessage extends ClientToServer{
     private final int numCharacter;
-    public ChooseCharacterCard(int numCharacter){
+    public ChooseCharacterCardMessage(int numCharacter){
         this.numCharacter=numCharacter;
     }
     public int getNumCharacter(){
