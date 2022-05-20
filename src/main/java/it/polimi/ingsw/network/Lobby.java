@@ -31,7 +31,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         userInput = new UserInput();
         clients = new ArrayList<>();
         players = new ArrayList<>();
-        players.get(0).setNickame(null);
+        players.get(0).setNickname(null);
         numPlayer = 0;
         lobbyOk = false;
         lobbySett = false;

@@ -9,7 +9,7 @@ public class Player {
     protected Entrance entrance;
     protected DiningRoom diningRoom;
     protected TowerSpace towerSpace;
-    public void setNickame(String nick){
+    public void setNickname(String nick){
         this.nickname=nick;
     }
     public String getNickname() {
@@ -40,7 +40,7 @@ public class Player {
     public Player(String nick, Game game) {
         setActive(true);
         int j, k;
-        setNickame(nick);
+        setNickname(nick);
         if (game.isExpert) setNumCoin(1);
         else setNumCoin(-1);
         //creazione assistenti
