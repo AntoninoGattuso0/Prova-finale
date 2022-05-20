@@ -9,7 +9,7 @@ public class MessageManager {
     public MessageManager(View view){
         this.view=view;
     }
-    public void manageInputToclient(Object object){
+    public void manageInputToClient(Object object){
         if(object instanceof Ping){
             return;
         }
@@ -18,7 +18,7 @@ public class MessageManager {
         }else if(object instanceof WaitMessage){
             view.waitOtherPlayers(((WaitMessage) object).getMessage());
         }else if(object instanceof StartTurnMessage){
-            view.dysplayTurn((StartTurnMessage) object);
+            view.displayTurn((StartTurnMessage) object);
         }else if(object instanceof SetNumPlayers){
             view.requestNumPlayers();
         }else if(object instanceof SetNickMessage){
@@ -38,7 +38,7 @@ public class MessageManager {
         }else if(object instanceof GameStarted){
             view.startGame();
         }else if(object instanceof WrongNickname){
-            view.dysplayWrongNickname();
+            view.displayWrongNickname();
 
         }
         else{

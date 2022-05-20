@@ -13,7 +13,6 @@ public interface View {
 
     void displayNumPlayers(int numPlayers);
     void displayIsExpert(int isExpert);
-    void waitForPlayers();
 
     void displayAssistantCard(Player player);
     void displayCloud(Game game);
@@ -32,7 +31,6 @@ public interface View {
 
     void updateCharacterCard();
     void registerClient(ClientAcceptedMessage m);
-    void displayNetError();
 
     void requestNickname();
 
@@ -43,13 +41,13 @@ public interface View {
 
     void requestCloud();
 
-    void dysplayNetError();
+    void displayNetError();
 
-    void dysplayTurn(StartTurnMessage object);
+    void displayTurn(StartTurnMessage object);
 
     void requestIsExpert();
 
-    void dysplayWrongNickname();
+    void displayWrongNickname();
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

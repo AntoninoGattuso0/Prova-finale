@@ -9,7 +9,7 @@ import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
 import it.polimi.ingsw.network.Message.StartTurnMessage;
 import it.polimi.ingsw.observer.NetworkHandlerObservable;
 import it.polimi.ingsw.view.View;
-import it.polimi.ingsw.observer.NetworkHandlerObservable;
+import it.polimi.ingsw.network.Message.*;
 
 import java.io.PrintStream;
 import java.util.*;
@@ -45,21 +45,21 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     //start the cli
     public void init() {
-        out.println( ColorCli.RED +
+        out.println( ColorCli.GREEN +
 
                 "EEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRR   IIIIIIIIII               AAA               NNNNNNNN        NNNNNNNNTTTTTTTTTTTTTTTTTTTTTTTYYYYYYY       YYYYYYY   SSSSSSSSSSSSSSS \n" +
                 "E::::::::::::::::::::ER::::::::::::::::R  I::::::::I              A:::A              N:::::::N       N::::::NT:::::::::::::::::::::TY:::::Y       Y:::::Y SS:::::::::::::::S \n" +
-                "E::::::::::::::::::::ER::::::RRRRRR:::::R I::::::::I             A:::::A             N::::::::N      N::::::NT:::::::::::::::::::::TY:::::Y       Y:::::YS:::::SSSSSS::::::S\n" +
+                "E::::::::::::::::::::ER::::::RRRRRR:::::R I::::::::I             A:::::A             N::::::::N      N::::::NT:::::::::::::::::::::TY:::::Y       Y:::::YS:::::SSSSSS::::::S\n" + ColorCli.RED +
                 "EE::::::EEEEEEEEE::::ERR:::::R     R:::::RII::::::II            A:::::::A            N:::::::::N     N::::::NT:::::TT:::::::TT:::::TY::::::Y     Y::::::YS:::::S     SSSSSSS \n" +
                 "E:::::E       EEEEEE  R::::R     R:::::R  I::::I               A:::::::::A           N::::::::::N    N::::::NTTTTTT  T:::::T  TTTTTTYYY:::::Y   Y:::::YYYS:::::S \n" +
-                "E:::::E               R::::R     R:::::R  I::::I              A:::::A:::::A          N:::::::::::N   N::::::N        T:::::T           Y:::::Y Y:::::Y   S:::::S\n" +
+                "E:::::E               R::::R     R:::::R  I::::I              A:::::A:::::A          N:::::::::::N   N::::::N        T:::::T           Y:::::Y Y:::::Y   S:::::S\n" + ColorCli.YELLOW +
                 "E::::::EEEEEEEEEE     R::::RRRRRR:::::R   I::::I             A:::::A A:::::A         N:::::::N::::N  N::::::N        T:::::T            Y:::::Y:::::Y     S::::SSSS\n" +
                 "E:::::::::::::::E     R:::::::::::::RR    I::::I            A:::::A   A:::::A        N::::::N N::::N N::::::N        T:::::T             Y:::::::::Y       SS::::::SSSSS\n" +
-                "E:::::::::::::::E     R::::RRRRRR:::::R   I::::I           A:::::A     A:::::A       N::::::N  N::::N:::::::N        T:::::T              Y:::::::Y          SSS::::::::SS\n" +
+                "E:::::::::::::::E     R::::RRRRRR:::::R   I::::I           A:::::A     A:::::A       N::::::N  N::::N:::::::N        T:::::T              Y:::::::Y          SSS::::::::SS\n" +  ColorCli.PINK +
                 "E::::::EEEEEEEEEE     R::::R     R:::::R  I::::I          A:::::AAAAAAAAA:::::A      N::::::N   N:::::::::::N        T:::::T               Y:::::Y              SSSSSS::::S\n" +
                 "E:::::E               R::::R      R:::::R I::::I         A:::::::::::::::::::::A     N::::::N    N::::::::::N        T:::::T               Y:::::Y                   S:::::S\n" +
                 "E:::::E       EEEEEE  R::::R       R:::::RI::::I        A:::::AAAAAAAAAAAAA:::::A    N::::::N     N:::::::::N        T:::::T               Y:::::Y                   S:::::S\n" +
-                "EE::::::EEEEEEEE:::::ERR:::::R     R:::::RII::::::II   A:::::A             A:::::A   N::::::N      N::::::::N      TT:::::::TT             Y:::::Y       SSSSSSS     S:::::S\n" +
+                "EE::::::EEEEEEEE:::::ERR:::::R     R:::::RII::::::II   A:::::A             A:::::A   N::::::N      N::::::::N      TT:::::::TT             Y:::::Y       SSSSSSS     S:::::S\n" + ColorCli.BLUE +
                 "E::::::::::::::::::::ER::::::R     R:::::RI::::::::I  A:::::A               A:::::A  N::::::N       N:::::::N      T:::::::::T          YYYY:::::YYYY    S::::::SSSSSS:::::S\n" +
                 "E::::::::::::::::::::ER::::::R     R:::::RI::::::::I A:::::A                 A:::::A N::::::N        N::::::N      T:::::::::T          Y:::::::::::Y    S:::::::::::::::SS\n" +
                 "EEEEEEEEEEEEEEEEEEEEEERRRRRRRR     RRRRRRRIIIIIIIIIIAAAAAAA                   AAAAAAANNNNNNNN         NNNNNNN      TTTTTTTTTTT          YYYYYYYYYYYYY     SSSSSSSSSSSSSSS   \n"
@@ -119,11 +119,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void startGame() {
-
-    }
-
-    @Override
-    public void loginPlayers() {
 
     }
 
@@ -345,22 +340,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         return showColor.toString();
     }
 
-    @Override
-    public void displayProfTable(Game game){
-        StringBuilder profTable = new StringBuilder();
-        for(int i = 0; i < game.getPlayers().size(); i++){
-            profTable.append("+---+").append("\n");
-            for (int j = 0; j < 5; j++){
-                profTable.append(ColorCli.BOLDCYAN).append("| ").append(color4ProfTable(game, j, i)).append(ColorCli.BOLDCYAN).append(" |");
-                profTable.append("\n");
-            }
-            profTable.append("+---+").append("\n");
-
-        }
-        out.print(profTable);
-       profTable.delete(0, profTable.capacity());
-    }
-
 
     private String color4ProfTable(Game game, int color, int profOfPlayer){
         StringBuilder showColor = new StringBuilder();
@@ -574,11 +553,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void displayNetError() {
-
-    }
-
-    @Override
     public void requestNickname() {
 
     }
@@ -589,8 +563,8 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void waitOtherPlayers(WaitMessage object) {
-
+    public void waitOtherPlayers(String object) {
+        System.out.println("Waiting for other players...");
     }
 
 
@@ -613,10 +587,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
             System.out.println(game.getPlayers().get(i).getNickname() + " è il giocatore numero " + (i+1));
     }
 
-    @Override
-    public void waitForPlayers(){
-            System.out.println("Attendendo giocatori...");
-    }
 
    // @Override
     public void displayWinner(String winner){
@@ -629,11 +599,11 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void dysplayNetError() {
+    public void displayNetError() {
     }
 
     @Override
-    public void dysplayTurn(StartTurnMessage object) {
+    public void displayTurn(StartTurnMessage object) {
         System.out.println(object.getMessage());
     }
 
@@ -672,4 +642,15 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     public void run() {
 
     }
+
+    @Override
+    public void requestIsExpert(){
+
+    }
+
+    @Override
+    public void displayWrongNickname(){
+
+    }
+
 }
