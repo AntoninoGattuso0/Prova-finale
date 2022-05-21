@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class CliTest {
 
     @Test
-    public void testInterfaccia(){
+    public void testTitle(){
         Game game = new Game(2, true);
         game.start(game);
         Game.newPlayer("EZECHIEL",game);
@@ -15,9 +15,38 @@ class CliTest {
         Cli cli = new Cli();
 
         cli.init();
+    }
 
+    @Test
+    public void testIsland(){
+        Game game = new Game(2, true);
+        game.start(game);
+        Game.newPlayer("EZECHIEL",game);
+        Game.newPlayer("EZRA",game);
+        Cli cli = new Cli();
         cli.displayIslands(game);
 
+    }
+
+    @Test
+    public void testCloud(){
+        Game game = new Game(3, true);
+        game.start(game);
+        Game.newPlayer("EZECHIEL",game);
+        Game.newPlayer("EZRA",game);
+        Game.newPlayer("CANDACE",game);
+        Cli cli = new Cli();
+        cli.displayCloud(game);
+    }
+
+    @Test
+    public void testSchoolBoard(){
+        Game game = new Game(2, true);
+        game.start(game);
+        Game.newPlayer("EZECHIEL",game);
+        Game.newPlayer("EZRA",game);
+        Cli cli = new Cli();
+        //setter DiningRoom
         game.getPlayers().get(0).getDiningRoom().setNumGreen(7);
         game.getPlayers().get(0).getDiningRoom().setNumRed(4);
         game.getPlayers().get(0).getDiningRoom().setNumYellow(9);
@@ -30,21 +59,28 @@ class CliTest {
         game.getPlayers().get(1).getDiningRoom().setNumPink(2);
         game.getPlayers().get(1).getDiningRoom().setNumBlue(3);
 
-
-
-
-        game.getPlayers().get(0).getTowerSpace().setNumTower(1);
+        //setter TowerSpace
+        game.getPlayers().get(0).getTowerSpace().setNumTower(7);
         game.getPlayers().get(1).getTowerSpace().setNumTower(-1);
 
-
+        //setter ProfTable
         game.getProfTable().setGreenProf(1);
         game.getProfTable().setRedProf(0);
         game.getProfTable().setYellowProf(1);
         game.getProfTable().setPinkProf(0);
         game.getProfTable().setBlueProf(-1);
 
-
         cli.displaySchoolBoard(game);
     }
 
+    @Test
+    public void testAssistantCard(){
+        Game game = new Game(2, true);
+        game.start(game);
+        Game.newPlayer("EZECHIEL",game);
+        Game.newPlayer("EZRA",game);
+        Cli cli = new Cli();
+
+        cli.displayAssistantCard(game.getPlayers().get(0));
+    }
 }

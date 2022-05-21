@@ -4,22 +4,23 @@ import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
 import it.polimi.ingsw.network.Message.StartTurnMessage;
+import it.polimi.ingsw.network.Message.WaitMessage;
 
 public interface View {
 
     void startGame();
     void loginPlayers();
-    void askNumPlayerIsExpert();
-    void displayNick(Game game);
 
+    void askNumPlayer();
+
+    void displayNick(Game game);
     void displayNumPlayers(int numPlayers);
     void displayIsExpert(int isExpert);
-
     void displayAssistantCard(Player player);
     void displayCloud(Game game);
     void displayIslands(Game game);
     void displaySchoolBoard(Game game);
-    void displayCharacterCard();
+    void displayCharacterCard(Game game);
 
     //ogni volta che si cambia qualcosa di queste dobbiamo aggiornarle e poi richiamare display
     void updateAssistantCard();
@@ -29,32 +30,28 @@ public interface View {
     void updateIsland();
     void updateProfTable();
     void updateTowerSpace();
-
     void updateCharacterCard();
+
     void registerClient(ClientAcceptedMessage m);
 
     void requestNickname();
-
     void requestNumPlayers();
-
-    void waitOtherPlayers(String waitMessage);
-    void displayWinner(String winner);
-
-    void requestCloud();
-
-    void displayNetError();
-
-    void displayTurn(StartTurnMessage object);
-
+    void requestCloud(Game game);
     void requestIsExpert();
 
+
+    void waitOtherPlayers(WaitMessage object);
+
+    void displayWinner(String winner);
+    void displayNetError();
+    // void displayTurn(StartTurnMessage object);
     void displayWrongNickname();
 
-    void requestPawnToDining();
+    /*void requestPawnToDining();
 
     void requestPawnToIsland();
 
-    void requestMoveMotherNature(int island);
+    void requestMoveMotherNature(int island);*/
 
     void displayWrongTurn();
 }
