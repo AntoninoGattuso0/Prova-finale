@@ -64,6 +64,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                  + ColorCli.RESET
     );
 
+        out.println("\n \n \n \n");
         try {
             askServerInfo();
         } catch (ExecutionException e) {
@@ -120,14 +121,31 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     }
 
-    /* This method asks the first player the number of player
-        and if the game mode is expert or not
-    */
     @Override
-    public void askNumPlayerIsExpert() {
-        System.out.println("Welcome in Eriantys. You are the first player logged. \n");
-        System.out.println("Insert your NICKNAME: \n");
+    public void requestIsExpert() {
+
+        System.out.println("Choose the game mode: type false for normal mode or type true for expert mode \n");
+        boolean isExpert = scanner.nextBoolean();
+
+        while (!isExpert || isExpert) { //non ho capito cosa controlla questo -Paul
+            System.out.println("ERROR: type false for normal mode or type true for expert mode \n");
+            isExpert = scanner.nextBoolean();
+        }
+        notifyMessage(new RequestIsExpert(isExpert));
+    }//il controllo così non va bene, va fatto all'interno dello scambio dei messaggi e non nella CLI -NINO
+
+    @Override
+    public void loginPlayers() {
+        System.out.println("Welcome in Eriantys. Insert your NICKNAME: \n");
         String nick = scanner.nextLine();
+        System.out.println("Do you want to join. Inset 1 for Yes, 0 for No. \n");
+        boolean joinGame = scanner.nextBoolean();
+
+        notifyMessage(new LoginSettMessage(nick, joinGame));
+    }
+
+    @Override
+    public void askNumPlayer() {
 
         System.out.println("Please insert the number of Players. It must be a number between 2 and 4. \n");
         int numPlayers = checkInteger();
@@ -137,32 +155,26 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
             System.out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
             numPlayers = checkInteger();
         }
-
-        System.out.println("\n Choose the game mode: type false for normal mode or type true for expert mode \n");
-        boolean isExpert = scanner.nextBoolean();
-
-
-        while (!isExpert || isExpert) { //non ho capito cosa controlla questo -Paul
-            System.out.println("ERROR: type false for normal mode or type true for expert mode \n");
-            isExpert = scanner.nextBoolean();
-        }
-        notifyMessage(new LoginNumPlayerIsExpMessage(numPlayers, isExpert));
-    }//il controllo così non va bene, va fatto all'interno dello scambio dei messaggi e non nella CLI -NINO
-
-    @Override
-    public void loginPlayers() {
-        System.out.println("Welcome in Eriantys. Insert your NICKNAME: \n");
-        String nick = scanner.nextLine();
+        notifyMessage(new RequestNumPlayers(numPlayers));
     }
 
     @Override
     public void displayAssistantCard(Player player) {
+        clearCli();
+
         int i;
+        StringBuilder assistantCard = new StringBuilder();
         for (i = 0; i < player.getDeckAssistant().size(); i++) {
-            out.println(i + "Valore: " + player.getDeckAssistant().get(i).getCardValue());
-            out.println(" " + "Passi: " + player.getDeckAssistant().get(i).getStep());
-            out.println("-----------------------");
+            out.println(ColorCli.BOLDCYAN + "+-----------------------+");
+             if(player.getDeckAssistant().get(i).getCardValue() == 10)
+                out.println(ColorCli.BOLDCYAN +"| Card Value: " + ColorCli.RED + player.getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "        |");
+            else
+                 out.println(ColorCli.BOLDCYAN +"| Card Value: " + ColorCli.RED + player.getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "         |");
+
+            out.println(ColorCli.BOLDCYAN +"| MN steps: " + ColorCli.GREEN +player.getDeckAssistant().get(i).getStep() + ColorCli.BOLDCYAN + "           |");
+            out.println(ColorCli.BOLDCYAN + "+-----------------------+");
         }
+        out.println(assistantCard);
     }
 
     @Override
@@ -249,14 +261,14 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         out.println(" ");
         out.println(" ");
         cloudCards.append(ColorCli.BOLDCYAN);
-        for (i = 0; i < game.getClouds().size() && i < 4; i++)
+        for (i = 0; i < game.getClouds().size(); i++)
             cloudCards.append(ColorCli.BOLDCYAN).append("     ").append(" +*******+").append("        ");
 
         cloudCards.append(ColorCli.BOLDCYAN).append("\n");
-        for (i = 0; i < game.getIslands().size() && i < game.getTotPlayer() ; i++)
+        for (i = 0; i < game.getClouds().size(); i++)
             cloudCards.append(ColorCli.BOLDCYAN).append("   *            *      ");
         cloudCards.append(ColorCli.BOLDCYAN).append("\n");
-        for (i = 0; i < game.getIslands().size() && i < game.getTotPlayer(); i++)
+        for (i = 0; i < game.getClouds().size(); i++)
             cloudCards.append(ColorCli.BOLDCYAN).append(" *                *    ");
         cloudCards.append(ColorCli.BOLDCYAN).append("\n");
 
@@ -266,10 +278,10 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
             cloudCards.append("\n").append(ColorCli.RESET);
         }
 
-        for (i = 0; i < game.getIslands().size() && i < game.getTotPlayer(); i++)
+        for (i = 0; i < game.getClouds().size(); i++)
             cloudCards.append(ColorCli.BOLDCYAN).append(" *                *    ");
         cloudCards.append(ColorCli.BOLDCYAN).append("\n");
-        for (i = 0; i < game.getIslands().size() && i < game.getTotPlayer() ; i++)
+        for (i = 0; i < game.getClouds().size() ; i++)
             cloudCards.append(ColorCli.BOLDCYAN).append("   *            *      ");
         cloudCards.append(ColorCli.BOLDCYAN).append("\n");
 
@@ -413,7 +425,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
             out.println(" ");
             schoolBoard.append(ColorCli.BOLDCYAN);
 
-            schoolBoard.append("Player: " + game.getPlayers().get(i).getNickname()).append("\n").append("+------------------------------------------------------+\n");
+            schoolBoard.append("Player: " + game.getPlayers().get(i).getNickname()).append("\n").append("+--------------+--------------------------------+---+------+\n");
 
             schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(game.getPlayers().get(i),  0));
             schoolBoard.append("| ").append(ColorCli.RESET);
@@ -499,11 +511,11 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     }
 
-
     @Override
-    public void displayCharacterCard() {
+    public void displayCharacterCard(Game game) {
 
     }
+
 
     @Override
     public void updateAssistantCard() {
@@ -552,7 +564,11 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void requestNickname() {
+        System.out.println("Please insert your Nickname:  ");
+        String nick = scanner.nextLine();
+        out.println("\n");
 
+        notifyMessage(new RequestNickname(nick));
     }
 
     @Override
@@ -569,8 +585,8 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void waitOtherPlayers(String object) {
-        System.out.println(object);
+    public void waitOtherPlayers(WaitMessage object) {
+        out.println(object);
     }
 
 
@@ -594,15 +610,23 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
 
-   // @Override
+    @Override
     public void displayWinner(String winner){
-        out.println("Game ended, " + winner + " WIN!");
+        notifyMessage(new WinnerMessage(winner));
     }
 
     @Override
-    public void updateCloud() {
+    public void requestCloud(Game game) {
+        out.println("Please select a cloud between 0 and "+ game.getClouds().size() + ": ");
+        int cloud = checkInteger();
 
+        while(cloud < 0 || cloud > game.getClouds().size()){
+            out.println("Please select a cloud between 0 and "+ game.getClouds().size() + ": ");
+            cloud = checkInteger();
+        }
+        notifyMessage(new ChooseCloudMessage(cloud));
     }
+
     @Override
     public void displayWrongTurn(){
         System.out.println("It's not your turn!");
@@ -611,10 +635,10 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     public void displayNetError() {
     }
 
-    @Override
-    public void displayTurn(StartTurnMessage object) {
-        System.out.println(object.getMessage());
-    }
+   /* @Override
+    public void displayTurn(String object) {
+        notifyMessage(new StartTurnMessage());
+    }*/
 
     public void clearCli(){
         out.print(ColorCli.CLEAR);
@@ -649,11 +673,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void run() {
-
-    }
-
-    @Override
-    public void requestIsExpert(){
 
     }
 

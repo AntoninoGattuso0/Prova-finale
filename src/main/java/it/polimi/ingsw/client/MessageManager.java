@@ -2,18 +2,19 @@ package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.network.Message.*;
 import it.polimi.ingsw.view.View;
+import it.polimi.ingsw.model.*;
 
 public class MessageManager {
     private final View view;
     public MessageManager(View view){
         this.view=view;
     }
-    public void manageInputToClient(Object object){
+    public void manageInputToClient(Object object, Game game){   // ho aggiunto game per poterlo passare come parametro ad alcune funzioni
         if(object instanceof Ping){
             return;
         }
-        if(object instanceof ChooseCloudMessage){
-            view.updateCloud();
+        if(object instanceof ChooseCloudMessage){   // per esempio qui, prova a vedere se va bene - R
+            view.requestCloud(game);
         }else if(object instanceof WaitMessage){
             view.waitOtherPlayers(((WaitMessage) object).getMessage());
         }else if(object instanceof StartTurnMessage){
