@@ -15,7 +15,7 @@ public interface View {
 
     void askNumPlayer();
 
-    void displayNick(Game game);
+    void displayNick(Game game);// DA MODIFICARE TUTTI I GAME, VEDI COSA HO SCRITTO IN MESSAGE MANAGER
     void displayNumPlayers(int numPlayers);
     void displayIsExpert(int isExpert);
     void displayAssistantCard(Player player);

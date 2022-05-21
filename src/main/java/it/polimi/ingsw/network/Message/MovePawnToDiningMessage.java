@@ -6,6 +6,7 @@ import it.polimi.ingsw.model.ColorPawn;
 import java.util.ArrayList;
 
 public class MovePawnToDiningMessage extends ClientToServer {
+    private static final long serialVersionUID = -5298217876902603010L;
     public final int num;
     public final ArrayList<ColorPawn> arrayPawn;
 

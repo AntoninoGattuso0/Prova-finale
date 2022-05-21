@@ -9,7 +9,7 @@ public class MessageManager {
     public MessageManager(View view){
         this.view=view;
     }
-    public void manageInputToClient(Object object, Game game){   // ho aggiunto game per poterlo passare come parametro ad alcune funzioni
+    public void manageInputToClient(Object object){   // ho aggiunto game per poterlo passare come parametro ad alcune funzioni
         if(object instanceof Ping){                             //LEGGI LA MIA RISPOSTA SOTTO
             return;
         }
@@ -55,6 +55,8 @@ public class MessageManager {
         }else if(object instanceof ChooseAssistantCardMessage){
             ChooseAssistantCardMessage assistant= (ChooseAssistantCardMessage) object;
             view.updateAssistantCard(assistant.getAssistant());
+        }else if(object instanceof GameStartedMessage){
+            view.startGame();
         }
         else{
             throw new IllegalArgumentException();

@@ -5,6 +5,7 @@ import it.polimi.ingsw.model.ColorPawn;
 import java.util.ArrayList;
 
 public class MovePawnToIslandMessage extends ClientToServer {
+    private static final long serialVersionUID = 159102344896104559L;
     public final int island;
     public final ArrayList<ColorPawn> arrayPawn;
     public int numPawn;

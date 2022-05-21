@@ -1,7 +1,7 @@
 package it.polimi.ingsw.network.Message;
 
 public class LoginSettMessage extends ClientToServer {
-
+    private static final long serialVersionUID = 790152804682116373L;
     private final String nickname;
     private final boolean join;
 

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.network.Message;
 
 public class NewCurrentPlayerMessage extends ServerToClient {
+    private static final long serialVersionUID = 5174636856074373081L;
     private final String currentPlayer;
     private final String nextPlayer;
 
