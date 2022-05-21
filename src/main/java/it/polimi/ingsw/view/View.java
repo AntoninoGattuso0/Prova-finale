@@ -1,9 +1,12 @@
 package it.polimi.ingsw.view;
 
+import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
 import it.polimi.ingsw.network.Message.StartTurnMessage;
+
+import java.util.ArrayList;
 
 public interface View {
 
@@ -29,18 +32,17 @@ public interface View {
     void updateIsland();
     void updateProfTable();
     void updateTowerSpace();
-
+    void updateNickname(NickUpdateMessage m);
     void updateCharacterCard();
     void registerClient(ClientAcceptedMessage m);
 
-    void requestNickname();
 
-    void requestNumPlayers();
+    void updateNumPlayers();
 
     void waitOtherPlayers(String waitMessage);
     void displayWinner(String winner);
 
-    void requestCloud();
+    void updateCloud();
 
     void displayNetError();
 
@@ -50,13 +52,15 @@ public interface View {
 
     void displayWrongNickname();
 
-    void requestPawnToDining();
+    void updatePawnToDining(int numDiningRoom, ArrayList<ColorPawn> arrayPawn);
 
-    void requestPawnToIsland();
+    void updatePawnToIsland(int island, ArrayList<ColorPawn> arrayPawn);
 
-    void requestMoveMotherNature(int island);
+    void updateMoveMotherNature(int island);
 
     void displayWrongTurn();
+
+    void displayFetchNameMessage();
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

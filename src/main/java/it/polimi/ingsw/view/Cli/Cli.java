@@ -600,7 +600,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void requestCloud() {
+    public void updateCloud() {
 
     }
     @Override

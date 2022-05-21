@@ -13,7 +13,7 @@ public class MessageManager {
             return;
         }
         if(object instanceof ChooseCloudMessage){
-            view.requestCloud();
+            view.updateCloud();
         }else if(object instanceof WaitMessage){
             view.waitOtherPlayers(((WaitMessage) object).getMessage());
         }else if(object instanceof StartTurnMessage){
@@ -26,13 +26,13 @@ public class MessageManager {
             view.requestIsExpert();
         }else if(object instanceof MovePawnToDiningMessage){
             MovePawnToDiningMessage message=(MovePawnToDiningMessage) object;
-            view.requestPawnToDining(message.getNumDiningRoom(),message.getArrayPawn());
+            view.updatePawnToDining(message.getNumDiningRoom(),message.getArrayPawn());
         }else if(object instanceof MovePawnToIslandMessage){
             MovePawnToIslandMessage message = (MovePawnToIslandMessage) object;
-            view.requestPawnToIsland();
+            view.updatePawnToIsland(message.getIsland(),message.getArrayPawn());
         }else if(object instanceof MoveMotherNatureMessage){
             MoveMotherNatureMessage step= (MoveMotherNatureMessage) object;
-            view.requestMoveMotherNature(step.getIsland());
+            view.updateMoveMotherNature(step.getIsland());
        }else if(object instanceof ClientAcceptedMessage){
                view.registerClient((ClientAcceptedMessage) object );
         }else if(object instanceof WinnerMessage){
@@ -46,7 +46,7 @@ public class MessageManager {
         }else if(object instanceof NicknameUpdateMessage){
             view.updateNickname((NicknameUpdateMessage) object);
         }else if(object instanceof ClientInputResponse){
-            view.displayResponseMessage((ClientInputMessage) object).getErrorMessage());
+            view.displayResponseMessage(((ClientInputMessage) object).getErrorMessage());
         }else if(object instanceof FetchNameMessage){
             view.displayFetchNameMessage();
         }
