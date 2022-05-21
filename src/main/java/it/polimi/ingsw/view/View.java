@@ -1,9 +1,12 @@
 package it.polimi.ingsw.view;
 
+import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
 import it.polimi.ingsw.network.Message.StartTurnMessage;
+
+import java.util.ArrayList;
 
 public interface View {
 
@@ -22,8 +25,8 @@ public interface View {
     void displayCharacterCard(Game game);
 
     //ogni volta che si cambia qualcosa di queste dobbiamo aggiornarle e poi richiamare display
-    void updateAssistantCard();
-    void updateCloud();
+    void updateAssistantCard(int assistant);
+    void updateCloud(int cloud);
     void updateDiningRoom();
     void updateEntrance();
     void updateIsland();
@@ -42,7 +45,7 @@ public interface View {
     void requestIsExpert();
 
 
-    void waitOtherPlayers(WaitMessage object);
+    void waitOtherPlayers(String object);
 
     void displayWinner(String winner);
 
@@ -52,17 +55,18 @@ public interface View {
     // void displayTurn(StartTurnMessage object);
     void displayWrongNickname();
 
-    /*void requestPawnToDining();
     void updatePawnToDining(int numDiningRoom, ArrayList<ColorPawn> arrayPawn);
 
-    void updatePawnToIsland(int island, ArrayList<ColorPawn> arrayPawn);
+    void updatePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn);
 
-    void requestMoveMotherNature(int island);*/
+    void requestMoveMotherNature(int island);
     void updateMoveMotherNature(int island);
 
     void displayWrongTurn();
 
     void displayFetchNameMessage();
+
+    void displayTurn(StartTurnMessage object);
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

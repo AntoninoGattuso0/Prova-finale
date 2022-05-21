@@ -10,16 +10,18 @@ public class MessageManager {
         this.view=view;
     }
     public void manageInputToClient(Object object, Game game){   // ho aggiunto game per poterlo passare come parametro ad alcune funzioni
-        if(object instanceof Ping){
+        if(object instanceof Ping){                             //LEGGI LA MIA RISPOSTA SOTTO
             return;
         }
-        if(object instanceof ChooseCloudMessage){   // per esempio qui, prova a vedere se va bene - R
-            view.requestCloud(game);
+        if(object instanceof ChooseCloudMessage){// QUESTO MANAGER GESTISCE MESSAGGI, QUELLO CHE ARRVIA IN INGRESSO è UN TIPO DI MESSAGGIO. QUINDI CAPISCI CHE UN CLIENT NON PUò INVIARE UN "GAME"
+            ChooseCloudMessage cloud= (ChooseCloudMessage) object;
+            view.updateCloud(cloud.getCloud()); //QUESTO TI RESTITUISCE UN INTERO SU CUI DEVE LAVORARE LA FUNZIONE UPDATE
         }else if(object instanceof WaitMessage){
             view.waitOtherPlayers(((WaitMessage) object).getMessage());
         }else if(object instanceof StartTurnMessage){
             view.displayTurn((StartTurnMessage) object);
         }else if(object instanceof SetNumPlayersMessage){
+            SetNumPlayersMessage numPlayers = (SetNumPlayersMessage) object;
             view.requestNumPlayers();
         }else if(object instanceof SetNickMessage){
             view.requestNickname();
@@ -30,7 +32,7 @@ public class MessageManager {
             view.updatePawnToDining(message.getNumDiningRoom(),message.getArrayPawn());
         }else if(object instanceof MovePawnToIslandMessage){
             MovePawnToIslandMessage message = (MovePawnToIslandMessage) object;
-            view.updatePawnToIsland(message.getIsland(),message.getArrayPawn());
+            view.updatePawnToIsland(message.getIsland(),message.getNumPawn(),message.getArrayPawn());
         }else if(object instanceof MoveMotherNatureMessage){
             MoveMotherNatureMessage step= (MoveMotherNatureMessage) object;
             view.updateMoveMotherNature(step.getIsland());
@@ -50,6 +52,9 @@ public class MessageManager {
             view.displayResponseMessage(((ClientInputMessage) object).getErrorMessage());
         }else if(object instanceof FetchNameMessage){
             view.displayFetchNameMessage();
+        }else if(object instanceof ChooseAssistantCardMessage){
+            ChooseAssistantCardMessage assistant= (ChooseAssistantCardMessage) object;
+            view.updateAssistantCard(assistant.getAssistant());
         }
         else{
             throw new IllegalArgumentException();
