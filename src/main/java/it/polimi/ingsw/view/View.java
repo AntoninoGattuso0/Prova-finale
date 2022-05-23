@@ -5,6 +5,7 @@ import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
 import it.polimi.ingsw.network.Message.StartTurnMessage;
+import it.polimi.ingsw.network.Message.UpdateMessage.NicknameUpdateMessage;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ public interface View {
     void updateIsland();
     void updateProfTable();
     void updateTowerSpace();
-    void updateNickname(NickUpdateMessage m);
+    void updateNickname(NicknameUpdateMessage m);
     void updateCharacterCard();
 
     void registerClient(ClientAcceptedMessage m);
@@ -67,6 +68,8 @@ public interface View {
     void displayFetchNameMessage();
 
     void displayTurn(StartTurnMessage object);
+
+    void displayResponseMessage(String errorMessage);
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

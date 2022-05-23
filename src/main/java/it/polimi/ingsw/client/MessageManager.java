@@ -1,8 +1,8 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.network.Message.*;
+import it.polimi.ingsw.network.Message.UpdateMessage.NicknameUpdateMessage;
 import it.polimi.ingsw.view.View;
-import it.polimi.ingsw.model.*;
 
 public class MessageManager {
     private final View view;
@@ -48,7 +48,7 @@ public class MessageManager {
             view.displayWrongTurn();
         }else if(object instanceof NicknameUpdateMessage){
             view.updateNickname((NicknameUpdateMessage) object);
-        }else if(object instanceof ClientInputResponse){
+        }else if(object instanceof ClientInputMessage){
             view.displayResponseMessage(((ClientInputMessage) object).getErrorMessage());
         }else if(object instanceof ChooseAssistantCardMessage){
             ChooseAssistantCardMessage assistant= (ChooseAssistantCardMessage) object;
