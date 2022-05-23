@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client.ModelLight;
 
 import it.polimi.ingsw.model.AssistantCard;
+import it.polimi.ingsw.model.DiningRoom;
 
 import java.util.ArrayList;
 

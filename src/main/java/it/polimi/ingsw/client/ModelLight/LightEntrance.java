@@ -1,12 +1,12 @@
 package it.polimi.ingsw.client.ModelLight;
-import it.polimi.ingsw.model.Entrance;
+
 public class LightEntrance {
+
     private int greenPawn;
     private int bluePawn;
     private int pinkPawn;
     private int yellowPawn;
     private int redPawn;
-    private Entrance entrance;
 
     public LightEntrance(){
 
