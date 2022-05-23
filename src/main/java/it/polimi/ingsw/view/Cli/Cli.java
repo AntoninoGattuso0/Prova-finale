@@ -19,9 +19,12 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     Scanner scanner = new Scanner(System.in); //Per leggere input da tastiera
     private final PrintStream out;
     private Thread inputThread;
+    private String actualPlayer;
+    private boolean gameStart;
 
     public Cli() {
         out = System.out;
+        gameStart = false;
     }
 
     public String readLine() throws ExecutionException {
@@ -522,7 +525,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void updateCloud() {
+    public void updateCloud(int cloud) {
 
     }
 
@@ -563,7 +566,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void requestNickname() {
-        System.out.println("Please insert your Nickname:  ");
+        out.println("Please insert your Nickname:  ");
         String nick = scanner.nextLine();
         out.println("\n");
 
@@ -572,12 +575,12 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void requestNumPlayers() {
-        System.out.println("Please insert the number of Players. It must be a number between 2 and 4. \n");
+        out.println("Please insert the number of Players. It must be a number between 2 and 4. \n");
         int numPlayers = checkInteger();
 
         out.println("\n");
         while (numPlayers < 2 || numPlayers > 4) {
-            System.out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
+            out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
             numPlayers = checkInteger();
         }
         notifyMessage(new SetNumPlayersMessage());
@@ -597,15 +600,15 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     @Override
     public void displayIsExpert(int isExpert){
         if(isExpert == 1)
-            System.out.println("The game mode will be expert.\n");
+            out.println("The game mode will be expert.\n");
         if(isExpert == 0)
-            System.out.println("The game mode will be normal.\n");
+            out.println("The game mode will be normal.\n");
     }
     @Override
     public void displayNick(Game game){
         int i;
         for(i=0; i<game.getTotPlayer(); i++)
-            System.out.println(game.getPlayers().get(i).getNickname() + " è il giocatore numero " + (i+1));
+            out.println(game.getPlayers().get(i).getNickname() + " è il giocatore numero " + (i+1));
     }
 
 
@@ -628,16 +631,22 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void displayWrongTurn(){
-        System.out.println("It's not your turn!");
+        out.println("It's not your turn!");
     }
     @Override
     public void displayNetError() {
     }
 
-   /* @Override
-    public void displayTurn(String object) {
-        notifyMessage(new StartTurnMessage());
-    }*/
+    @Override
+    public void displayTurn(StartTurnMessage object) {
+        out.println("\n");
+        if(object.getCurrentPlayer().equals(actualPlayer)){
+            out.println("It is your turn!");
+            if(gameStart)
+                displaySchoolBoard();
+
+        }
+    }
 
     public void clearCli(){
         out.print(ColorCli.CLEAR);
@@ -677,6 +686,10 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void displayWrongNickname(){
+
+    }
+
+    void updateNickname(NickUpdateMessage m)
 
     }
 

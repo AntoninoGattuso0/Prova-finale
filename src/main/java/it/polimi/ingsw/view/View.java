@@ -19,7 +19,7 @@ public interface View {
     void displayNumPlayers(int numPlayers);
     void displayIsExpert(int isExpert);
     void displayAssistantCard(Player player);
-    void displayCloud(Game game);
+    void displayCloud();
     void displayIslands(Game game);
     void displaySchoolBoard(Game game);
     void displayCharacterCard(Game game);

@@ -36,7 +36,7 @@ class CliTest {
         Game.newPlayer("EZRA",game);
         Game.newPlayer("CANDACE",game);
         Cli cli = new Cli();
-        cli.displayCloud(game);
+        cli.displayCloud();
     }
 
     @Test
