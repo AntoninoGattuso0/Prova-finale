@@ -6,6 +6,10 @@ import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Island;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
+import it.polimi.ingsw.network.Message.UpdateMessage.AssistantCardUpdateMessage;
+import it.polimi.ingsw.network.Message.UpdateMessage.CloudUpdateMessage;
+import it.polimi.ingsw.network.Message.UpdateMessage.DiningRoomUpdateMessage;
+import it.polimi.ingsw.network.Message.UpdateMessage.IslandUpdateMessage;
 import it.polimi.ingsw.observer.NetworkHandlerObservable;
 import it.polimi.ingsw.view.View;
 import it.polimi.ingsw.network.Message.*;
@@ -520,17 +524,17 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
 
     @Override
-    public void updateAssistantCard(int assistant) {
+    public void updateAssistantCard(AssistantCardUpdateMessage assistant) {
 
     }
 
     @Override
-    public void updateCloud(int cloud) {
+    public void updateCloud(CloudUpdateMessage cloud) {
 
     }
 
     @Override
-    public void updateDiningRoom() {
+    public void updateDiningRoom(DiningRoomUpdateMessage object) {
 
     }
 
@@ -540,7 +544,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void updateIsland() {
+    public void updateIsland(IslandUpdateMessage m) {
 
     }
 

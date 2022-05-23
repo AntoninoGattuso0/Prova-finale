@@ -1,7 +1,7 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.network.Message.*;
-import it.polimi.ingsw.network.Message.UpdateMessage.NicknameUpdateMessage;
+import it.polimi.ingsw.network.Message.UpdateMessage.*;
 import it.polimi.ingsw.view.View;
 
 public class MessageManager {
@@ -15,7 +15,7 @@ public class MessageManager {
         }
         if(object instanceof ChooseCloudMessage){// QUESTO MANAGER GESTISCE MESSAGGI, QUELLO CHE ARRVIA IN INGRESSO è UN TIPO DI MESSAGGIO. QUINDI CAPISCI CHE UN CLIENT NON PUò INVIARE UN "GAME"
             ChooseCloudMessage cloud= (ChooseCloudMessage) object;
-            view.updateCloud(cloud.getCloud()); //QUESTO TI RESTITUISCE UN INTERO SU CUI DEVE LAVORARE LA FUNZIONE UPDATE
+            view.selectCloud(cloud.getCloud()); //QUESTO TI RESTITUISCE UN INTERO SU CUI DEVE LAVORARE LA FUNZIONE UPDATE
         }else if(object instanceof WaitMessage){
             view.waitOtherPlayers(((WaitMessage) object).getMessage());
         }else if(object instanceof StartTurnMessage){
@@ -52,7 +52,19 @@ public class MessageManager {
             view.displayResponseMessage(((ClientInputMessage) object).getErrorMessage());
         }else if(object instanceof ChooseAssistantCardMessage){
             ChooseAssistantCardMessage assistant= (ChooseAssistantCardMessage) object;
-            view.updateAssistantCard(assistant.getAssistant());
+            view.selectAssistantCard(assistant.getAssistant());
+        }else if(object instanceof IslandUpdateMessage){
+            view.updateIsland((IslandUpdateMessage) object);
+        }else if(object instanceof CloudUpdateMessage){
+            view.updateCloud((CloudUpdateMessage) object);
+        }else if(object instanceof AssistantCardUpdateMessage){
+            view.updateAssistantCard((AssistantCardUpdateMessage) object);
+        }else if(object instanceof DiningRoomUpdateMessage){
+            view.updateDiningRoom((DiningRoomUpdateMessage) object);
+        }else if(object instanceof EntranceUpdateMessage){
+            view.updateEntrance((EntranceUpdateMessage) object);
+        }else if(object instanceof TowerSpaceUpdateMessage){
+            view.updateTowerSpace((TowerSpaceUpdateMessage) object);
         }
         else{
             throw new IllegalArgumentException();

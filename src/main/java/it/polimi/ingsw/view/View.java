@@ -5,7 +5,7 @@ import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
 import it.polimi.ingsw.network.Message.StartTurnMessage;
-import it.polimi.ingsw.network.Message.UpdateMessage.NicknameUpdateMessage;
+import it.polimi.ingsw.network.Message.UpdateMessage.*;
 
 import java.util.ArrayList;
 
@@ -26,11 +26,11 @@ public interface View {
     void displayCharacterCard(Game game);
 
     //ogni volta che si cambia qualcosa di queste dobbiamo aggiornarle e poi richiamare display
-    void updateAssistantCard(int assistant);
-    void updateCloud(int cloud);
-    void updateDiningRoom();
+    void updateAssistantCard(AssistantCardUpdateMessage assistant);
+    void updateCloud(CloudUpdateMessage cloud);
+    void updateDiningRoom(DiningRoomUpdateMessage object);
     void updateEntrance();
-    void updateIsland();
+    void updateIsland(IslandUpdateMessage m);
     void updateProfTable();
     void updateTowerSpace();
     void updateNickname(NicknameUpdateMessage m);
@@ -42,7 +42,6 @@ public interface View {
     void updateNumPlayers();
     void requestNickname();
     void requestNumPlayers();
-    void requestCloud(Game game);
     void requestIsExpert();
 
 
@@ -50,7 +49,6 @@ public interface View {
 
     void displayWinner(String winner);
 
-    void updateCloud();
 
     void displayNetError();
     // void displayTurn(StartTurnMessage object);
@@ -70,6 +68,14 @@ public interface View {
     void displayTurn(StartTurnMessage object);
 
     void displayResponseMessage(String errorMessage);
+
+    void selectCloud(int cloud);
+
+    void selectAssistantCard(int assistant);
+
+    void updateTowerSpace(TowerSpaceUpdateMessage object);
+
+    void updateEntrance(EntranceUpdateMessage object);
 }
 
 //CLI E GUI dovranno implementare quest interfaccia
