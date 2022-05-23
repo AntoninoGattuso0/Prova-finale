@@ -329,4 +329,10 @@ public class Game {
                 }
             }
         }
+
+    public Player finish() {
+        Player player;
+        player=players.get(0);
+        return player;
     }
+}
