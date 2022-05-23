@@ -25,7 +25,6 @@ public class RoundController {
     public void setRoundOrder(Player player, int num) {
         roundOrder.set(num, player);
     }
-
     public ArrayList<Player> newRoundOrder(ArrayList<Player> players, Game game) {
         int i, j, k, w;
         for (i = 0; i < players.size(); i++) {

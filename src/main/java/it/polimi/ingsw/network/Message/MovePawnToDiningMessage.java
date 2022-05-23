@@ -14,7 +14,7 @@ public class MovePawnToDiningMessage extends ClientToServer {
         this.num = num;
         this.arrayPawn=arrayPawn;
     }
-    public int getNumDiningRoom() {
+    public int getNumPawn() {
         return num;
     }
     public ArrayList<ColorPawn> getArrayPawn(){

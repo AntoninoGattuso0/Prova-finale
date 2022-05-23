@@ -29,7 +29,7 @@ public class MessageManager {
             view.requestIsExpert();
         }else if(object instanceof MovePawnToDiningMessage){
             MovePawnToDiningMessage message=(MovePawnToDiningMessage) object;
-            view.updatePawnToDining(message.getNumDiningRoom(),message.getArrayPawn());
+            view.updatePawnToDining(message.getNumPawn(),message.getArrayPawn());
         }else if(object instanceof MovePawnToIslandMessage){
             MovePawnToIslandMessage message = (MovePawnToIslandMessage) object;
             view.updatePawnToIsland(message.getIsland(),message.getNumPawn(),message.getArrayPawn());
@@ -50,13 +50,9 @@ public class MessageManager {
             view.updateNickname((NicknameUpdateMessage) object);
         }else if(object instanceof ClientInputResponse){
             view.displayResponseMessage(((ClientInputMessage) object).getErrorMessage());
-        }else if(object instanceof FetchNameMessage){
-            view.displayFetchNameMessage();
         }else if(object instanceof ChooseAssistantCardMessage){
             ChooseAssistantCardMessage assistant= (ChooseAssistantCardMessage) object;
             view.updateAssistantCard(assistant.getAssistant());
-        }else if(object instanceof GameStartedMessage){
-            view.startGame();
         }
         else{
             throw new IllegalArgumentException();

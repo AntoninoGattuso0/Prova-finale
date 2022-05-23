@@ -103,7 +103,7 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
                 try {
                     socket.setSoTimeout(30000);
                     Object input = in.readObject();
-                    messageManager.manageInputToclient(input);
+                    messageManager.manageInputToClient(input);
                     if (input instanceof EndGameMessage || input instanceof RemoveClient) {
                         break;
                     }
