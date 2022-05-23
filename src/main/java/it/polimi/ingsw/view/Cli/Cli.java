@@ -693,7 +693,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     }
 
-    void updateNickname(NickUpdateMessage m)
+    void updateNickname(NickUpdateMessage m){
 
     }
 
