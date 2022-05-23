@@ -12,6 +12,10 @@ public class TowerSpace {
         this.numTower = numTower;
     }
 
+    public ColorTower getColorTower() {
+        return colorTower;
+    }
+
     public void setStartNumTower(Game game){
         if(game.totPlayer == 2 || game.totPlayer == 4) setNumTower(8);
         else if(game.totPlayer == 3) setNumTower(6);

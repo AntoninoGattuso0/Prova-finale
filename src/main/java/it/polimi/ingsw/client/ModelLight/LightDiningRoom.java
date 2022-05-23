@@ -11,12 +11,32 @@ public class LightDiningRoom {
     private int numPink;
     private int numBlue;
 
+    public int getNumGreen() {
+        return numGreen;
+    }
+
+    public int getNumRed() {
+        return numRed;
+    }
+
+    public int getNumYellow() {
+        return numYellow;
+    }
+
+    public int getNumPink() {
+        return numPink;
+    }
+
+    public int getNumBlue() {
+        return numBlue;
+    }
+
     public LightDiningRoom(){
-        numGreen = 0;
-        numRed = 0;
-        numYellow = 0;
-        numPink = 0;
-        numBlue = 0;
+        this.numGreen = 0;
+        this.numRed = 0;
+        this.numYellow = 0;
+        this.numPink = 0;
+        this.numBlue = 0;
         position = new int[5][10];
         for(int i = 0; i < 5; i++)
             for(int j = 0; j < 10; j++)

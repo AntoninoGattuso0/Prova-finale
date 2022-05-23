@@ -2,7 +2,7 @@ package it.polimi.ingsw.model;
 public class AssistantCard {
     private int cardValue;
     private int stepMotherNature;
-    AssistantCard(){
+    public AssistantCard(){
         cardValue=0;
         stepMotherNature=0;
     }
