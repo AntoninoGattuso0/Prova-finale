@@ -10,17 +10,7 @@ public class DiningRoom {
     private int numYellow;
     private int numPink;
     private int numBlue;
-    private int numPawns;
 
-
-
-    public void setNumPawns() {
-        numPawns = numGreen + numBlue + numYellow + numPink + numBlue;
-    }
-
-    public int getNumPawns(){
-        return numPawns;
-    }
     public int getNumGreen() {
         return numGreen;
     }
