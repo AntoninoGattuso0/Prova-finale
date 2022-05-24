@@ -8,7 +8,6 @@ public class Game {
     protected ProfTable profTable;
     protected ArrayList<Island> islands = new ArrayList<>();
     protected boolean isExpert;
-    protected ArrayList<CharacterCard> cards = new ArrayList<>(); //cambiato in arraylist;
     protected ArrayList<CharacterCard> characterCards = new ArrayList<>(3);//insieme dei 3 characters usati
     protected Map<Integer, String> m = new HashMap<>();
     protected StudentBag studentBag;
@@ -62,9 +61,6 @@ public class Game {
         Random rnd = new Random();
         int n = rnd.nextInt(12);
         islands.get(n).setMotherNature(true);
-       /* Island island = islands.get(n);
-        island.setMotherNature(true);
-        islands.set(n, island); */
 
 //randomizza pedine per ogni isola iniziale
         int g = 2;
