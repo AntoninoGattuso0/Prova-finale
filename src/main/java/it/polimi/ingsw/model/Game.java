@@ -61,9 +61,6 @@ public class Game {
         Random rnd = new Random();
         int n = rnd.nextInt(12);
         islands.get(n).setMotherNature(true);
-       /* Island island = islands.get(n);
-        island.setMotherNature(true);
-        islands.set(n, island); */
 
 //randomizza pedine per ogni isola iniziale
         int g = 2;
