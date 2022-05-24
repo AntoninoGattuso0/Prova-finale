@@ -6,13 +6,22 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class LightGame implements Serializable {
-    private final ArrayList<LightCloud> clouds;
-    private final ArrayList<LightPlayer> players;
-    private final ArrayList<Island> islands;
-    public LightGame(ArrayList<LightPlayer> players,ArrayList<LightCloud> clouds,ArrayList<Island> islands){
-        this.clouds=clouds;
-        this.players=players;
-        this.islands=islands;
+    private  ArrayList<LightCloud> clouds;
+    private  ArrayList<LightPlayer> players;
+    private  ArrayList<Island> islands;
+    public LightGame(){
+        this.clouds=new ArrayList<>();
+        this.players=new ArrayList<>();
+        this.islands=new ArrayList<>();
+    }
+    public void setIslands(ArrayList<Island> islands) {
+        this.islands = islands;
+    }
+    public void setClouds(ArrayList<LightCloud> clouds) {
+        this.clouds = clouds;
+    }
+    public void setPlayers(ArrayList<LightPlayer> players) {
+        this.players = players;
     }
     public ArrayList<Island> getIslands() {
         return islands;
