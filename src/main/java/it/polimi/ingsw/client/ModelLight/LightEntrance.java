@@ -41,4 +41,27 @@ public class LightEntrance {
         this.yellowPawn = yellowPawn;
     }
 
+    public int getNumPawn() {
+        return numPawn;
+    }
+
+    public int getBluePawn() {
+        return bluePawn;
+    }
+
+    public int getGreenPawn() {
+        return greenPawn;
+    }
+
+    public int getPinkPawn() {
+        return pinkPawn;
+    }
+
+    public int getRedPawn() {
+        return redPawn;
+    }
+
+    public int getYellowPawn() {
+        return yellowPawn;
+    }
 }

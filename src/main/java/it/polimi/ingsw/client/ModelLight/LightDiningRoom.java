@@ -34,4 +34,24 @@ public class LightDiningRoom {
     public void setNumYellow(int numYellow) {
         this.numYellow = numYellow;
     }
+
+    public int getNumBlue() {
+        return numBlue;
+    }
+
+    public int getNumGreen() {
+        return numGreen;
+    }
+
+    public int getNumPink() {
+        return numPink;
+    }
+
+    public int getNumRed() {
+        return numRed;
+    }
+
+    public int getNumYellow() {
+        return numYellow;
+    }
 }
