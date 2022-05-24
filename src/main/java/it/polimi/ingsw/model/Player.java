@@ -1,4 +1,7 @@
 package it.polimi.ingsw.model;
+
+import it.polimi.ingsw.client.ModelLight.LightPlayer;
+
 import java.util.ArrayList;
 public class Player {
     private String nickname;
@@ -30,7 +33,11 @@ public class Player {
 
         return this.deckAssistant;
     }
+    public LightPlayer getLightPlayer(){
+        LightPlayer lightPlayer=new LightPlayer();
 
+        return lightPlayer;
+    }
     public void setActive(boolean active) {
         this.active=active;
     }
