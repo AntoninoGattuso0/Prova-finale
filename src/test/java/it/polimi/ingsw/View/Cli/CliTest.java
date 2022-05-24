@@ -24,7 +24,7 @@ class CliTest {
         Game.newPlayer("EZECHIEL",game);
         Game.newPlayer("EZRA",game);
         Cli cli = new Cli();
-        cli.displayIslands(game);
+        cli.displayIslands();
 
     }
 
@@ -70,7 +70,7 @@ class CliTest {
         game.getProfTable().setPinkProf(0);
         game.getProfTable().setBlueProf(-1);
 
-        cli.displaySchoolBoard(game);
+        cli.displaySchoolBoard();
     }
 
     @Test

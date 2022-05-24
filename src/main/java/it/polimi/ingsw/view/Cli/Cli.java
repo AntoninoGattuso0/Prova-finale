@@ -1,6 +1,8 @@
 package it.polimi.ingsw.view.Cli;
 
 
+import it.polimi.ingsw.client.ModelLight.LightGame;
+import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.model.Cloud;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Island;
@@ -25,8 +27,8 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     private Thread inputThread;
     private String actualPlayer;
     private boolean isExpert;
-    private int numPlayers;
     private boolean gameStart;
+    private LightGame lightGame;
 
     public Cli() {
         out = System.out;
@@ -155,7 +157,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     public void requestNumPlayers(){
 
         System.out.println("Please insert the number of Players. It must be a number between 2 and 4. \n");
-        numPlayers = checkInteger();
+        int numPlayers = checkInteger();
         out.println("\n");
         while (numPlayers < 2 || numPlayers > 4) {
             System.out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
@@ -184,82 +186,82 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void displayIslands(Game game) {
+    public void displayIslands() {
         clearCli();
 
         int i;
         StringBuilder tabIslands = new StringBuilder();
-        out.println(print1_4Index(game.getIslands()));
+        out.println(print1_4Index(lightGame.getIslands()));
         tabIslands.append(ColorCli.BOLDCYAN);
-        for (i = 0; i < game.getIslands().size() && i < 4; i++)
+        for (i = 0; i < lightGame.getIslands().size() && i < 4; i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
         tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
         for (int j = 0; j < 5; j++) {
-            for (i = 0; i < game.getIslands().size() && i < 4; i++)
-                tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(game.getIslands(), i, j));
+            for (i = 0; i < lightGame.getIslands().size() && i < 4; i++)
+                tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(i, j));
             tabIslands.append("|\n").append(ColorCli.RESET);
         }
-        for (i = 0; i < game.getIslands().size() && i < 4; i++)
+        for (i = 0; i < lightGame.getIslands().size() && i < 4; i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
         tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
         out.print(tabIslands);
         tabIslands.delete(0, tabIslands.capacity());
 
-        out.println(print4_8Index(game.getIslands()));
+        out.println(print4_8Index(lightGame.getIslands()));
         tabIslands.append(ColorCli.BOLDCYAN);
-        for (i = 4; i < game.getIslands().size() && i < 8; i++)
+        for (i = 4; i < lightGame.getIslands().size() && i < 8; i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
         tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
         for (int j = 0; j < 5; j++) {
-            for (i = 4; i < game.getIslands().size() && i < 8; i++)
-                tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(game.getIslands(), i, j));
+            for (i = 4; i < lightGame.getIslands().size() && i < 8; i++)
+                tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(i, j));
             tabIslands.append("|").append(ColorCli.RESET).append("\n");
         }
-        for (i = 4; i < game.getIslands().size() && i < 8; i++)
+        for (i = 4; i < lightGame.getIslands().size() && i < 8; i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
         tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
         out.print(tabIslands);
         tabIslands.delete(0, tabIslands.capacity());
 
-        out.println(print8_12Index(game.getIslands()));
+        out.println(print8_12Index(lightGame.getIslands()));
         tabIslands.append(ColorCli.BOLDCYAN);
-        for (i = 8; i < game.getIslands().size(); i++)
+        for (i = 8; i < lightGame.getIslands().size(); i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
         tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
         for (int j = 0; j < 5; j++) {
-            for (i = 8; i < game.getIslands().size(); i++)
-                tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(game.getIslands(), i, j));
+            for (i = 8; i < lightGame.getIslands().size(); i++)
+                tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(i, j));
             tabIslands.append("|\n").append(ColorCli.RESET);
         }
-        for (i = 8; i < game.getIslands().size(); i++)
+        for (i = 8; i < lightGame.getIslands().size(); i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
         tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
         out.print(tabIslands);
         tabIslands.delete(0, tabIslands.capacity());
     }
 
-    private String color4Island(ArrayList<Island> islands, int island, int color){
+    private String color4Island(int island, int color){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
-            showColor.append(ColorCli.GREEN).append("●: ").append(islands.get(island).getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.GREEN).append("●: ").append(lightGame.getIslands().get(island).getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 1){
-            showColor.append(ColorCli.RED).append("●: ").append(islands.get(island).getRedPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.RED).append("●: ").append(lightGame.getIslands().get(island).getRedPawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 2){
-            showColor.append(ColorCli.YELLOW).append("●: ").append(islands.get(island).getYellowPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.YELLOW).append("●: ").append(lightGame.getIslands().get(island).getYellowPawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 3){
-            showColor.append(ColorCli.PINK).append("●: ").append(islands.get(island).getPinkPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.PINK).append("●: ").append(lightGame.getIslands().get(island).getPinkPawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 4){
-            showColor.append(ColorCli.BLUE).append("●: ").append(islands.get(island).getBluePawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.BLUE).append("●: ").append(lightGame.getIslands().get(island).getBluePawn()).append("          ").append(ColorCli.BOLDCYAN);
         }
         return showColor.toString();
     }
 
     @Override
-    public void displayCloud(Game game) {
+    public void displayCloud() {
         clearCli();
 
         int i;
@@ -267,31 +269,31 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         out.println(" ");
         out.println(" ");
         cloudCards.append(ColorCli.BOLDCYAN);
-        for (i = 0; i < game.getClouds().size(); i++)
+        for (i = 0; i < lightGame.getClouds().size(); i++)
             cloudCards.append(ColorCli.BOLDCYAN).append("     ").append(" +*******+").append("        ");
 
         cloudCards.append(ColorCli.BOLDCYAN).append("\n");
-        for (i = 0; i < game.getClouds().size(); i++)
+        for (i = 0; i < lightGame.getClouds().size(); i++)
             cloudCards.append(ColorCli.BOLDCYAN).append("   *            *      ");
         cloudCards.append(ColorCli.BOLDCYAN).append("\n");
-        for (i = 0; i < game.getClouds().size(); i++)
+        for (i = 0; i < lightGame.getClouds().size(); i++)
             cloudCards.append(ColorCli.BOLDCYAN).append(" *                *    ");
         cloudCards.append(ColorCli.BOLDCYAN).append("\n");
 
         for (int j = 0; j < 5; j++) {
-            for (i = 0; i < game.getClouds().size(); i++)
-                    cloudCards.append(ColorCli.BOLDCYAN).append("*").append(ColorCli.RESET).append(color4Clouds(game.getClouds(), i, j)).append(" *   ");
+            for (i = 0; i < lightGame.getClouds().size(); i++)
+                    cloudCards.append(ColorCli.BOLDCYAN).append("*").append(ColorCli.RESET).append(color4Clouds(i, j)).append(" *   ");
             cloudCards.append("\n").append(ColorCli.RESET);
         }
 
-        for (i = 0; i < game.getClouds().size(); i++)
+        for (i = 0; i < lightGame.getClouds().size(); i++)
             cloudCards.append(ColorCli.BOLDCYAN).append(" *                *    ");
         cloudCards.append(ColorCli.BOLDCYAN).append("\n");
-        for (i = 0; i < game.getClouds().size() ; i++)
+        for (i = 0; i < lightGame.getClouds().size() ; i++)
             cloudCards.append(ColorCli.BOLDCYAN).append("   *            *      ");
         cloudCards.append(ColorCli.BOLDCYAN).append("\n");
 
-        for (i = 0; i < game.getClouds().size(); i++)
+        for (i = 0; i < lightGame.getClouds().size(); i++)
             cloudCards.append(ColorCli.BOLDCYAN).append("     ").append(" +*******+").append("        ");
         cloudCards.append(ColorCli.BOLDCYAN).append("\n").append(ColorCli.RESET);
 
@@ -301,27 +303,27 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     }
 
-    private String color4Clouds(ArrayList<Cloud> clouds, int cloud, int color){
+    private String color4Clouds(int cloud, int color){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
-            showColor.append(ColorCli.GREEN).append("     ●: ").append(clouds.get(cloud).getGreenPawn()).append("        ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.GREEN).append("     ●: ").append(lightGame.getClouds().get(cloud).getGreenPawn()).append("        ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 1){
-            showColor.append(ColorCli.RED).append("     ●: ").append(clouds.get(cloud).getRedPawn()).append("        ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.RED).append("     ●: ").append(lightGame.getClouds().get(cloud).getRedPawn()).append("        ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 2){
-            showColor.append(ColorCli.YELLOW).append("     ●: ").append(clouds.get(cloud).getYellowPawn()).append("        ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.YELLOW).append("     ●: ").append(lightGame.getClouds().get(cloud).getYellowPawn()).append("        ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 3){
-            showColor.append(ColorCli.PINK).append("     ●: ").append(clouds.get(cloud).getPinkPawn()).append("        ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.PINK).append("     ●: ").append(lightGame.getClouds().get(cloud).getPinkPawn()).append("        ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 4){
-            showColor.append(ColorCli.BLUE).append("     ●: ").append(clouds.get(cloud).getBluePawn()).append("        ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.BLUE).append("     ●: ").append(lightGame.getClouds().get(cloud).getBluePawn()).append("        ").append(ColorCli.BOLDCYAN);
         }
         return showColor.toString();
     }
 
-    private String color4Entrance(Player player, int color){
+    private String color4Entrance(LightPlayer player, int color){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
             showColor.append(ColorCli.GREEN).append("●: ").append(player.getEntrance().getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
@@ -357,7 +359,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
 
-    private String color4ProfTable(Game game, int color, int profOfPlayer){
+    private String color4ProfTable(LightGame game, int color, int profOfPlayer){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
             if(game.getProfTable().getGreenProf() == profOfPlayer)
@@ -421,22 +423,22 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
 
-    public void displaySchoolBoard(Game game){
+    public void displaySchoolBoard(){
         clearCli();
         int i, m;
         StringBuilder schoolBoard = new StringBuilder();
 
-        for(i = 0; i < game.getTotPlayer(); i++ ){
+        for(i = 0; i < lightGame.getPlayers().size(); i++ ){
             out.println(" ");
             out.println(" ");
             schoolBoard.append(ColorCli.BOLDCYAN);
 
-            schoolBoard.append("Player: " + game.getPlayers().get(i).getNickname()).append("\n").append("+--------------+--------------------------------+---+------+\n");
+            schoolBoard.append("Player: " + lightGame.getPlayers().get(i).getNickname()).append("\n").append("+--------------+--------------------------------+---+------+\n");
 
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(game.getPlayers().get(i),  0));
+            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  0));
             schoolBoard.append("| ").append(ColorCli.RESET);
             schoolBoard.append(ColorCli.BOLDCYAN);
-            for (m = 0; m < game.getPlayers().get(i).getDiningRoom().getNumGreen(); m++){
+            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumGreen(); m++){
                 if(m==2||m==5||m==8) schoolBoard.append(ColorCli.GREEN).append("  ◎");
                 else schoolBoard.append(color4DiningRoom(0)).append(ColorCli.BOLDCYAN);
             }
@@ -444,16 +446,16 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                 schoolBoard.append(ColorCli.GREEN).append("  ◌");
                 m++;
             }
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(game,0, i)).append(ColorCli.BOLDCYAN).append(" |");
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,0, i)).append(ColorCli.BOLDCYAN).append(" |");
 
-            int j = game.getPlayers().get(i).getTowerSpace().getNumTower();
+            int j = lightGame.getPlayers().get(i).getTowerSpace().getNumTower();
             schoolBoard.append(color4TowerSpace(i, j));
-            j = game.getPlayers().get(i).getTowerSpace().getNumTower() - 2;
+            j = lightGame.getPlayers().get(i).getTowerSpace().getNumTower() - 2;
 
 
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(game.getPlayers().get(i),  1));
+            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  1));
             schoolBoard.append("| ").append(ColorCli.RESET);
-            for (m = 0; m < game.getPlayers().get(i).getDiningRoom().getNumRed(); m++){
+            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumRed(); m++){
                 if(m==2||m==5||m==8) schoolBoard.append(ColorCli.RED).append("  ◎");
                 else schoolBoard.append(color4DiningRoom(1)).append(ColorCli.BOLDCYAN);
             }
@@ -461,14 +463,14 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                 schoolBoard.append(ColorCli.RED).append("  ◌");
                 m++;
             }
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(game,1, i)).append(ColorCli.BOLDCYAN).append(" |");
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,1, i)).append(ColorCli.BOLDCYAN).append(" |");
             schoolBoard.append(color4TowerSpace(i, j));
             j = j - 2;
 
 
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(game.getPlayers().get(i),  2));
+            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  2));
             schoolBoard.append("| ").append(ColorCli.RESET);
-            for (m = 0; m < game.getPlayers().get(i).getDiningRoom().getNumYellow(); m++){
+            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumYellow(); m++){
                 if(m==2||m==5||m==8) schoolBoard.append(ColorCli.YELLOW).append("  ◎");
                 else schoolBoard.append(color4DiningRoom(2)).append(ColorCli.BOLDCYAN);
             }
@@ -476,14 +478,14 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                 schoolBoard.append(ColorCli.YELLOW).append("  ◌");
                 m++;
             }
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(game,2, i)).append(ColorCli.BOLDCYAN).append(" |");
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,2, i)).append(ColorCli.BOLDCYAN).append(" |");
             schoolBoard.append(color4TowerSpace(i, j));
             j = j - 2;
 
 
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(game.getPlayers().get(i),  3));
+            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  3));
             schoolBoard.append("| ").append(ColorCli.RESET);
-            for (m = 0; m < game.getPlayers().get(i).getDiningRoom().getNumPink(); m++){
+            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumPink(); m++){
                 if(m==2||m==5||m==8) schoolBoard.append(ColorCli.PINK).append("  ◎");
                 else schoolBoard.append(color4DiningRoom(3)).append(ColorCli.BOLDCYAN);
             }
@@ -491,13 +493,13 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                 schoolBoard.append(ColorCli.PINK).append("  ◌");
                 m++;
             }
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(game,3, i)).append(ColorCli.BOLDCYAN).append(" |");
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,3, i)).append(ColorCli.BOLDCYAN).append(" |");
             schoolBoard.append(color4TowerSpace(i, j));
 
 
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(game.getPlayers().get(i),  4));
+            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  4));
             schoolBoard.append("| ").append(ColorCli.RESET);
-            for (m = 0; m < game.getPlayers().get(i).getDiningRoom().getNumBlue(); m++){
+            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumBlue(); m++){
                     if(m==2||m==5||m==8) schoolBoard.append(ColorCli.BLUE).append("  ◎");
                     else schoolBoard.append(color4DiningRoom(4)).append(ColorCli.BOLDCYAN);
             }
@@ -506,7 +508,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                 m++;
             }
 
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(game,4, i)).append(ColorCli.BOLDCYAN).append(" |");
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,4, i)).append(ColorCli.BOLDCYAN).append(" |");
             schoolBoard.append("      ").append(ColorCli.BOLDCYAN).append("| \n");
             schoolBoard.append(ColorCli.BOLDCYAN).append("+--------------+--------------------------------+---+------+\n");
             schoolBoard.append(ColorCli.RESET);
@@ -681,8 +683,8 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     }
 
-    void updateNickname(NickUpdateMessage m){
+   /* void updateNickname(NickUpdateMessage m){
 
-    }
+    }*/
 
 }
