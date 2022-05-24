@@ -50,13 +50,12 @@ public class Player {
         lightDining.setNumYellow(diningRoom.getNumYellow());
         lightEntrance.setBluePawn(entrance.getBluePawn());
         lightEntrance.setGreenPawn(entrance.getGreenPawn());
-                lightEntrance.setPinkPawn(entrance.getPinkPawn());
-                lightEntrance.setRedPawn(entrance.getRedPawn());
-                lightEntrance.setYellowPawn(entrance.getYellowPawn());
-                lightEntrance.setNumPwan(entrance.getNumPawn());
-
-
-
+        lightEntrance.setPinkPawn(entrance.getPinkPawn());
+        lightEntrance.setRedPawn(entrance.getRedPawn());
+        lightEntrance.setYellowPawn(entrance.getYellowPawn());
+        lightEntrance.setNumPawn(entrance.getNumPawn());
+        lightTowerSpace.setColorTower(towerSpace.getColorTower());
+        lightTowerSpace.setNumTower(lightTowerSpace.getNumTower());
         return lightPlayer;
     }
     public void setActive(boolean active) {

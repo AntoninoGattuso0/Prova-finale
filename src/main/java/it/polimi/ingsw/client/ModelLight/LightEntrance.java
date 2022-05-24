@@ -1,7 +1,7 @@
 package it.polimi.ingsw.client.ModelLight;
 
 public class LightEntrance {
-    private int numPwan;
+    private int numPawn;
     private int greenPawn;
     private int bluePawn;
     private int pinkPawn;
@@ -9,7 +9,7 @@ public class LightEntrance {
     private int redPawn;
 
     public LightEntrance(){
-        this.numPwan=0;
+        this.numPawn=0;
         this.greenPawn =0;
         this.redPawn =0;
         this.yellowPawn =0;
@@ -17,8 +17,8 @@ public class LightEntrance {
         this.bluePawn =0;
     }
 
-    public void setNumPwan(int numPwan) {
-        this.numPwan = numPwan;
+    public void setNumPawn(int numPawn) {
+        this.numPawn = numPawn;
     }
 
     public void setBluePawn(int bluePawn) {
@@ -41,4 +41,27 @@ public class LightEntrance {
         this.yellowPawn = yellowPawn;
     }
 
+    public int getNumPawn() {
+        return numPawn;
+    }
+
+    public int getBluePawn() {
+        return bluePawn;
+    }
+
+    public int getGreenPawn() {
+        return greenPawn;
+    }
+
+    public int getPinkPawn() {
+        return pinkPawn;
+    }
+
+    public int getRedPawn() {
+        return redPawn;
+    }
+
+    public int getYellowPawn() {
+        return yellowPawn;
+    }
 }

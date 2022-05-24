@@ -19,8 +19,8 @@ public interface View {
     void displayIsExpert();
     void displayAssistantCard(Player player);
     void displayCloud();
-    void displayIslands(Game game);
-    void displaySchoolBoard(Game game);
+    void displayIslands();
+    void displaySchoolBoard();
     void displayCharacterCard(Game game);
 
     //ogni volta che si cambia qualcosa di queste dobbiamo aggiornarle e poi richiamare display
