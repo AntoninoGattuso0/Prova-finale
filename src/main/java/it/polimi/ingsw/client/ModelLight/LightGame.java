@@ -9,11 +9,18 @@ public class LightGame implements Serializable {
     private  ArrayList<LightCloud> clouds;
     private  ArrayList<LightPlayer> players;
     private  ArrayList<Island> islands;
+    private int numPlayers;
     public LightGame(){
         this.clouds=new ArrayList<>();
         this.players=new ArrayList<>();
         this.islands=new ArrayList<>();
+        this.numPlayers=-1;
     }
+
+    public void setNumPlayers(int numPlayers) {
+        this.numPlayers = numPlayers;
+    }
+
     public void setIslands(ArrayList<Island> islands) {
         this.islands = islands;
     }
@@ -22,6 +29,10 @@ public class LightGame implements Serializable {
     }
     public void setPlayers(ArrayList<LightPlayer> players) {
         this.players = players;
+    }
+
+    public int getNumPlayers() {
+        return numPlayers;
     }
     public ArrayList<Island> getIslands() {
         return islands;
