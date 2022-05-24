@@ -40,4 +40,28 @@ public class LightCloud{
     public void setNumPawn(int numPawn) {
         this.numPawn = numPawn;
     }
+
+    public int getRedPawn() {
+        return redPawn;
     }
+
+    public int getYellowPawn() {
+        return yellowPawn;
+    }
+
+    public int getPinkPawn() {
+        return pinkPawn;
+    }
+
+    public int getGreenPawn() {
+        return greenPawn;
+    }
+
+    public int getBluePawn() {
+        return bluePawn;
+    }
+
+    public int getNumPawn() {
+        return numPawn;
+    }
+}
