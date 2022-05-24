@@ -6,7 +6,6 @@ public class RequestIsExpert extends ClientToServer{
         private final boolean isExpert;
 
         public RequestIsExpert(boolean isExpert){
-
             this.isExpert = isExpert;
         }
 

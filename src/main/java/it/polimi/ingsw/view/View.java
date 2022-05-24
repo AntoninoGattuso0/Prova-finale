@@ -14,11 +14,9 @@ public interface View {
     void startGame();
     void loginPlayers();
 
-    void askNumPlayer();
-
-    void displayNick(Game game);// DA MODIFICARE TUTTI I GAME, VEDI COSA HO SCRITTO IN MESSAGE MANAGER
+    void displayNick();// DA MODIFICARE TUTTI I GAME, VEDI COSA HO SCRITTO IN MESSAGE MANAGER
     void displayNumPlayers(int numPlayers);
-    void displayIsExpert(int isExpert);
+    void displayIsExpert();
     void displayAssistantCard(Player player);
     void displayCloud();
     void displayIslands(Game game);

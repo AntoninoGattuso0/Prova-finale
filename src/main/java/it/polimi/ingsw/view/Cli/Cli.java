@@ -24,6 +24,8 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     private final PrintStream out;
     private Thread inputThread;
     private String actualPlayer;
+    private boolean isExpert;
+    private int numPlayers;
     private boolean gameStart;
 
     public Cli() {
@@ -129,16 +131,15 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void requestIsExpert() {
-
-        System.out.println("Choose the game mode: type false for normal mode or type true for expert mode \n");
-        boolean isExpert = scanner.nextBoolean();
-
-        while (!isExpert || isExpert) { //non ho capito cosa controlla questo -Paul
-            System.out.println("ERROR: type false for normal mode or type true for expert mode \n");
-            isExpert = scanner.nextBoolean();
-        }
+        int mode;
+        do{
+            System.out.println("Choose the game mode: type 0 for normal mode or type 1 for expert mode: \n");
+            mode = checkInteger();
+            if(mode==0) isExpert = false;
+            else if(mode==1) isExpert = true;
+        }while(mode!=0 || mode!=1);
         notifyMessage(new RequestIsExpert(isExpert));
-    }//il controllo così non va bene, va fatto all'interno dello scambio dei messaggi e non nella CLI -NINO
+    }
 
     @Override
     public void loginPlayers() {
@@ -151,11 +152,10 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void askNumPlayer() {
+    public void requestNumPlayers(){
 
         System.out.println("Please insert the number of Players. It must be a number between 2 and 4. \n");
-        int numPlayers = checkInteger();
-
+        numPlayers = checkInteger();
         out.println("\n");
         while (numPlayers < 2 || numPlayers > 4) {
             System.out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
@@ -578,19 +578,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void requestNumPlayers() {
-        out.println("Please insert the number of Players. It must be a number between 2 and 4. \n");
-        int numPlayers = checkInteger();
-
-        out.println("\n");
-        while (numPlayers < 2 || numPlayers > 4) {
-            out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
-            numPlayers = checkInteger();
-        }
-        notifyMessage(new SetNumPlayersMessage());
-    }
-
-    @Override
     public void waitOtherPlayers(String object) {
         out.println(object);
     }
@@ -602,17 +589,18 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void displayIsExpert(int isExpert){
-        if(isExpert == 1)
+    public void displayIsExpert(){
+        if(isExpert)
             out.println("The game mode will be expert.\n");
-        if(isExpert == 0)
+        if(!isExpert)
             out.println("The game mode will be normal.\n");
     }
+
     @Override
-    public void displayNick(Game game){
+    public void displayNick(){
         int i;
-        for(i=0; i<game.getTotPlayer(); i++)
-            out.println(game.getPlayers().get(i).getNickname() + " è il giocatore numero " + (i+1));
+        for(i=0; i<numPlayers; i++)
+            out.println(message.getNickname() + " è il giocatore numero " + (i+1)+ "\n");
     }
 
 
