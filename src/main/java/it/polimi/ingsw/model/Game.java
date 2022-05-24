@@ -1,4 +1,5 @@
 package it.polimi.ingsw.model;
+import java.awt.*;
 import java.util.*;
 public class Game {
     protected ArrayList<Player> players = new ArrayList<>();
@@ -331,8 +332,60 @@ public class Game {
         }
 
     public Player finish() {
-        Player player;
-        player=players.get(0);
-        return player;
+        ArrayList<Integer> numTower = new ArrayList<>();
+        numTower.add(0);
+        numTower.add(0);
+        numTower.add(0);
+        ArrayList<Integer> numProf = new ArrayList<>();
+        for(int i = 0; i<totPlayer; i++) numProf.add(0);
+        for(int i = 0; i<5; i++){
+            numProf.set(profTable.checkProf(i), numProf.get(profTable.checkProf(i) + 1));
+        }
+        for (Island island : islands) {
+            if (island.getColorTower() == ColorTower.BLACK)
+                numTower.set(0, numTower.get(0) + 1);
+            else if (island.getColorTower() == ColorTower.WHITE)
+                numTower.set(1, numTower.get(1) + 1);
+            else if (island.getColorTower() == ColorTower.GREY)
+                numTower.set(2, numTower.get(2) + 1);
+        }
+        int max = numTower.indexOf(Collections.max(numTower));
+
+        int max1 = -1;
+
+        for(int i = 0; i<numTower.size(); i++){
+            if((numTower.get(i) == numTower.indexOf(Collections.max(numTower)) && (i!= max)))
+                max1 = i;
+        }
+
+        if(max1 != -1 && (numProf.get(max) < numProf.get(max1))){
+            max = max1;
+        }
+
+        ColorTower maxColor = null;
+        if(max == 0) maxColor = ColorTower.BLACK;
+        else if (max == 1) maxColor = ColorTower.WHITE;
+        else if (max == 2) maxColor = ColorTower.GREY;
+
+        for(int i = 0; i<totPlayer; i++){
+            if(players.get(i).towerSpace.getNumTower() == 0){ //caso 1, torri finite
+                for(int k = 0; k<totPlayer; k++){
+                    if(players.get(k).towerSpace.getColorTower() == maxColor) return players.get(k);
+                }
+            }
+        }
+        if(islands.size() <= 3){
+            for(int k = 0; k<totPlayer; k++){ //caso 2, 3 gruppi di isole
+                if(players.get(k).towerSpace.getColorTower() == maxColor) return players.get(k);
+            }
+        }
+
+
+        if(studentBag.getNum() == 0) {
+            for (int k = 0; k < totPlayer; k++) { //caso 3, studenti finiti
+                if (players.get(k).towerSpace.getColorTower() == maxColor) return players.get(k);
+            }
+        }
+        return null;
     }
 }
