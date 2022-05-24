@@ -53,7 +53,7 @@ public class Player {
         lightEntrance.setPinkPawn(entrance.getPinkPawn());
         lightEntrance.setRedPawn(entrance.getRedPawn());
         lightEntrance.setYellowPawn(entrance.getYellowPawn());
-        lightEntrance.setNumPwan(entrance.getNumPawn());
+        lightEntrance.setNumPawn(entrance.getNumPawn());
         lightTowerSpace.setColorTower(towerSpace.getColorTower());
         lightTowerSpace.setNumTower(lightTowerSpace.getNumTower());
         return lightPlayer;
