@@ -46,4 +46,31 @@ public class LightPlayer implements Serializable {
         this.towerSpace = towerSpace;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public AssistantCard getCurrentAssistant() {
+        return currentAssistant;
+    }
+
+    public int getNumCoin() {
+        return numCoin;
+    }
+
+    public ArrayList<AssistantCard> getDeckAssistant() {
+        return deckAssistant;
+    }
+
+    public LightDiningRoom getDiningRoom() {
+        return diningRoom;
+    }
+
+    public LightEntrance getEntrance() {
+        return entrance;
+    }
+
+    public LightTowerSpace getTowerSpace() {
+        return towerSpace;
+    }
 }
