@@ -36,6 +36,19 @@ public class Game {
     public ArrayList<Cloud> getClouds(){
         return this.clouds;
     }
+
+    private Barbara barbara;
+    private Ciro ciro;
+    private Dante dante;
+    private Ernesto ernesto;
+    private Felix felix;
+    private Giuseppe giuseppe;
+    private Ivan ivan;
+    private Lancillotto lancillotto;
+    private Maria maria;
+    private Nicola nicola;
+    private Omnia omnia;
+
     public Game(int giocatori, boolean expert) {
         totPlayer = giocatori;
         isExpert = expert;
@@ -169,7 +182,7 @@ public class Game {
         int i, j, k, n, color, max;
         if (island.getProhibited()) {
             island.setProhibited(false);
-            //carte di ernesto +1
+            game.ernesto.setNumProhibitionCard(game.ernesto.getNumProhibitionCard() + 1);
         } else {
             boolean notunique = false;
             ArrayList<Integer> influence = new ArrayList<>();
@@ -212,18 +225,6 @@ public class Game {
     }
         public void setCharacterCards (Game game) { //posiziona a caso dei personaggi (3)
             if (game.isExpert) {
-                Antonio antonio = new Antonio(game.studentBag);
-                Barbara barbara = new Barbara(game);
-                Ciro ciro = new Ciro();
-                Dante dante = new Dante();
-                Ernesto ernesto = new Ernesto();
-                Felix felix = new Felix();
-                Giuseppe giuseppe = new Giuseppe(game.studentBag, game);
-                Ivan ivan = new Ivan();
-                Lancillotto lancillotto = new Lancillotto();
-                Maria maria = new Maria();
-                Nicola nicola = new Nicola(game.studentBag, game);
-                Omnia omnia = new Omnia();
 
                 Random rnd = new Random();
                 int random = rnd.nextInt(12);
@@ -235,50 +236,62 @@ public class Game {
                     random2 = rnd.nextInt(12);
                 }
                 if (random == 0 || random1 == 0 || random2 == 0) {
+                    Antonio antonio = new Antonio(game.studentBag);
                     CharacterCard card = new CharacterCard(antonio);
                     game.characterCards.add(card);
                 }
                 if (random == 1 || random1 == 1 || random2 == 1) {
+                    barbara = new Barbara(game);
                     CharacterCard card = new CharacterCard(barbara);
                     game.characterCards.add(card);
                 }
                 if (random == 2 || random1 == 2 || random2 == 2) {
+                    ciro = new Ciro();
                     CharacterCard card = new CharacterCard(ciro);
                     game.characterCards.add(card);
                 }
                 if (random == 3 || random1 == 3 || random2 == 3) {
+                    dante = new Dante();
                     CharacterCard card = new CharacterCard(dante);
                     game.characterCards.add(card);
                 }
                 if (random == 4 || random1 == 4 || random2 == 4) {
+                    ernesto = new Ernesto();
                     CharacterCard card = new CharacterCard(ernesto);
                     game.characterCards.add(card);
                 }
                 if (random == 5 || random1 == 5 || random2 == 5) {
+                    felix = new Felix();
                     CharacterCard card = new CharacterCard(felix);
                     game.characterCards.add(card);
                 }
                 if (random == 6 || random1 == 6 || random2 == 6) {
+                    giuseppe = new Giuseppe(game.studentBag, game);
                     CharacterCard card = new CharacterCard(giuseppe);
                     game.characterCards.add(card);
                 }
                 if (random == 7 || random1 == 7 || random2 == 7) {
+                    ivan = new Ivan();
                     CharacterCard card = new CharacterCard(ivan);
                     game.characterCards.add(card);
                 }
                 if (random == 8 || random1 == 8 || random2 == 8) {
+                    lancillotto = new Lancillotto();
                     CharacterCard card = new CharacterCard(lancillotto);
                     game.characterCards.add(card);
                 }
                 if (random == 9 || random1 == 9 || random2 == 9) {
+                    maria = new Maria();
                     CharacterCard card = new CharacterCard(maria);
                     game.characterCards.add(card);
                 }
                 if (random == 10 || random1 == 10 || random2 == 10) {
+                    nicola = new Nicola(game.studentBag, game);
                     CharacterCard card = new CharacterCard(nicola);
                     game.characterCards.add(card);
                 }
                 if (random == 11 || random1 == 11 || random2 == 11) {
+                    omnia = new Omnia();
                     CharacterCard card = new CharacterCard(omnia);
                     game.characterCards.add(card);
                 }
