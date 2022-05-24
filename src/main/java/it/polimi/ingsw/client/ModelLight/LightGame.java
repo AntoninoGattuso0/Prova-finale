@@ -1,11 +1,13 @@
 package it.polimi.ingsw.client.ModelLight;
 
 import it.polimi.ingsw.model.Island;
+import it.polimi.ingsw.model.ProfTable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class LightGame implements Serializable {
+    private ProfTable profTable;
     private  ArrayList<LightCloud> clouds;
     private  ArrayList<LightPlayer> players;
     private  ArrayList<Island> islands;
@@ -15,12 +17,19 @@ public class LightGame implements Serializable {
         this.players=new ArrayList<>();
         this.islands=new ArrayList<>();
         this.numPlayers=-1;
+        this.profTable=null;
     }
 
     public void setNumPlayers(int numPlayers) {
         this.numPlayers = numPlayers;
     }
 
+    public void setProfTable(ProfTable profTable) {
+        this.profTable = profTable;
+    }
+    public ProfTable getProfTable() {
+        return profTable;
+    }
     public void setIslands(ArrayList<Island> islands) {
         this.islands = islands;
     }
