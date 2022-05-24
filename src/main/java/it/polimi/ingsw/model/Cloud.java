@@ -1,7 +1,7 @@
 package it.polimi.ingsw.model;
 import java.util.*;
 public class Cloud {
-    private int numPawn;    //sono inizializzati da qualche parte?
+    private int numPawn;
     private int greenPawn;
     private int redPawn;
     private int yellowPawn;

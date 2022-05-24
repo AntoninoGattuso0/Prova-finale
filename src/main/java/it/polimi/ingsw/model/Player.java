@@ -1,6 +1,9 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.client.ModelLight.LightDiningRoom;
+import it.polimi.ingsw.client.ModelLight.LightEntrance;
 import it.polimi.ingsw.client.ModelLight.LightPlayer;
+import it.polimi.ingsw.client.ModelLight.LightTowerSpace;
 
 import java.util.ArrayList;
 public class Player {
@@ -35,6 +38,24 @@ public class Player {
     }
     public LightPlayer getLightPlayer(){
         LightPlayer lightPlayer=new LightPlayer();
+        LightDiningRoom lightDining=new LightDiningRoom();
+        LightTowerSpace lightTowerSpace= new LightTowerSpace();
+        LightEntrance lightEntrance= new LightEntrance();
+        lightPlayer.setCurrentAssistant(currentAssistant);
+        lightPlayer.setNickname(nickname);
+        lightDining.setNumBlue(diningRoom.getNumBlue());
+        lightDining.setNumGreen(diningRoom.getNumGreen());
+        lightDining.setNumPink(diningRoom.getNumPink());
+        lightDining.setNumRed(diningRoom.getNumRed());
+        lightDining.setNumYellow(diningRoom.getNumYellow());
+        lightEntrance.setBluePawn(entrance.getBluePawn());
+        lightEntrance.setGreenPawn(entrance.getGreenPawn());
+                lightEntrance.setPinkPawn(entrance.getPinkPawn());
+                lightEntrance.setRedPawn(entrance.getRedPawn());
+                lightEntrance.setYellowPawn(entrance.getYellowPawn());
+                lightEntrance.setNumPwan(entrance.getNumPawn());
+
+
 
         return lightPlayer;
     }
