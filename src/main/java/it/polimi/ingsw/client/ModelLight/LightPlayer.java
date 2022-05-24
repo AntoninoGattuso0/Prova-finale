@@ -14,17 +14,12 @@ public class LightPlayer implements Serializable {
     private LightEntrance entrance;
     private LightDiningRoom diningRoom;
     private LightTowerSpace towerSpace;
-    private final ArrayList<LightPlayer> clientsLight;
-    private ArrayList<LightCloud> clouds;
-    private ArrayList<Island> islands;
-
 
     public LightPlayer() {
         this.nickname=null;
         this.numCoin=-1;
         this.deckAssistant = new ArrayList<>();
         this.currentAssistant= new AssistantCard();
-        this.clientsLight = new ArrayList<>();
         this.entrance = new LightEntrance();
         this.diningRoom = new LightDiningRoom();
         this.towerSpace = new LightTowerSpace();
@@ -39,23 +34,16 @@ public class LightPlayer implements Serializable {
         this.currentAssistant = currentAssistant;
     }
 
-    public void setClouds(ArrayList<LightCloud> clouds) {
-        this.clouds = clouds;
-    }
-
-    public void setDiningRoom(LightDiningRoom diningRoom) {
+    public void setLightDiningRoom(LightDiningRoom diningRoom) {
         this.diningRoom = diningRoom;
     }
 
-    public void setEntrance(LightEntrance entrance) {
+    public void setLightEntrance(LightEntrance entrance) {
         this.entrance = entrance;
     }
 
-    public void setTowerSpace(LightTowerSpace towerSpace) {
+    public void setLightTowerSpace(LightTowerSpace towerSpace) {
         this.towerSpace = towerSpace;
     }
 
-    public void setIslands(ArrayList<Island> islands) {
-        this.islands = islands;
-    }
 }

@@ -1,25 +1,43 @@
 package it.polimi.ingsw.client.ModelLight;
 
-import it.polimi.ingsw.model.Cloud;
-import it.polimi.ingsw.network.Message.UpdateMessage.CloudUpdateMessage;
+public class LightCloud{
 
-import java.util.ArrayList;
-
-public class LightCloud {
-
-    private ArrayList<Cloud> clouds;
-
-    public LightCloud(Cloud cloud){
-        this.greenPawn = cloud.getGreenPawn();
-        this.redPawn = cloud.getRedPawn();
-        this.yellowPawn = cloud.getYellowPawn();
-        this.pinkPawn = cloud.getPinkPawn();
-        this.bluePawn = cloud.getBluePawn();
-        this.numPawn = cloud.getNumPawn();
+    private int numPawn;
+    private int greenPawn;
+    private int redPawn;
+    private int yellowPawn;
+    private int pinkPawn;
+    private int bluePawn;
+    public LightCloud(){
+        numPawn=0;
+        greenPawn=0;
+        redPawn=0;
+        yellowPawn=0;
+        pinkPawn=0;
+        bluePawn=0;
     }
 
-
-    public void update(CloudUpdateMessage message){
-        this.clouds = message.getClouds();
+    public void setYellowPawn(int yellowPawn) {
+        this.yellowPawn = yellowPawn;
     }
-}
+
+    public void setRedPawn(int redPawn) {
+        this.redPawn = redPawn;
+    }
+
+    public void setPinkPawn(int pinkPawn) {
+        this.pinkPawn = pinkPawn;
+    }
+
+    public void setGreenPawn(int greenPawn) {
+        this.greenPawn = greenPawn;
+    }
+
+    public void setBluePawn(int bluePawn) {
+        this.bluePawn = bluePawn;
+    }
+
+    public void setNumPawn(int numPawn) {
+        this.numPawn = numPawn;
+    }
+    }

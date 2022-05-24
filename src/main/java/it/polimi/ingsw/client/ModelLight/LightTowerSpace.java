@@ -1,7 +1,6 @@
 package it.polimi.ingsw.client.ModelLight;
 
 import it.polimi.ingsw.model.ColorTower;
-import it.polimi.ingsw.model.TowerSpace;
 import it.polimi.ingsw.network.Message.UpdateMessage.TowerSpaceUpdateMessage;
 
 public class LightTowerSpace {
@@ -9,9 +8,17 @@ public class LightTowerSpace {
     private int numTower;
 
 
-    public LightTowerSpace(TowerSpace towerSpace) {
-        this.colorTower = towerSpace.getColorTower();
-        this.numTower = towerSpace.getNumTower();
+    public LightTowerSpace() {
+        colorTower=null;
+        int numTower=-1;
+    }
+
+    public void setColorTower(ColorTower colorTower) {
+        this.colorTower = colorTower;
+    }
+
+    public void setNumTower(int numTower) {
+        this.numTower = numTower;
     }
 
     public ColorTower getColorTower() {

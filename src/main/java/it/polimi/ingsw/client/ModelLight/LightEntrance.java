@@ -1,49 +1,44 @@
 package it.polimi.ingsw.client.ModelLight;
 
-import it.polimi.ingsw.model.Entrance;
-import it.polimi.ingsw.network.Message.UpdateMessage.EntranceUpdateMessage;
-
 public class LightEntrance {
-
+    private int numPwan;
     private int greenPawn;
     private int bluePawn;
     private int pinkPawn;
     private int yellowPawn;
     private int redPawn;
 
-    public LightEntrance(Entrance entrance){
-        this.greenPawn = entrance.getGreenPawn();
-        this.redPawn = entrance.getRedPawn();
-        this.yellowPawn = entrance.getYellowPawn();
-        this.pinkPawn = entrance.getPinkPawn();
-        this.bluePawn = entrance.getBluePawn();
+    public LightEntrance(){
+        this.numPwan=0;
+        this.greenPawn =0;
+        this.redPawn =0;
+        this.yellowPawn =0;
+        this.pinkPawn =0;
+        this.bluePawn =0;
     }
 
-    public int getGreenPawn() {
-        return greenPawn;
+    public void setNumPwan(int numPwan) {
+        this.numPwan = numPwan;
     }
 
-    public int getRedPawn() {
-        return redPawn;
+    public void setBluePawn(int bluePawn) {
+        this.bluePawn = bluePawn;
     }
 
-    public int getYellowPawn() {
-        return yellowPawn;
+    public void setGreenPawn(int greenPawn) {
+        this.greenPawn = greenPawn;
     }
 
-    public int getPinkPawn() {
-        return pinkPawn;
+    public void setPinkPawn(int pinkPawn) {
+        this.pinkPawn = pinkPawn;
     }
 
-    public int getBluePawn() {
-        return bluePawn;
+    public void setRedPawn(int redPawn) {
+        this.redPawn = redPawn;
     }
 
-    public void update(EntranceUpdateMessage message){
-        this.greenPawn = message.getEntrance().getGreenPawn();
-        this.redPawn = message.getEntrance().getRedPawn();
-        this.yellowPawn = message.getEntrance().getYellowPawn();
-        this.pinkPawn = message.getEntrance().getPinkPawn();
-        this.bluePawn = message.getEntrance().getBluePawn();
+    public void setYellowPawn(int yellowPawn) {
+        this.yellowPawn = yellowPawn;
     }
+
 }
