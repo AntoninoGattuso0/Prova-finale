@@ -1,4 +1,6 @@
 package it.polimi.ingsw.model;
+import it.polimi.ingsw.client.ModelLight.LightCloud;
+
 import java.util.*;
 public class Cloud {
     private int numPawn;
@@ -111,5 +113,10 @@ public class Cloud {
                 }
             }
         }
+    }
+
+    public LightCloud getLightCloud(){
+        LightCloud lightCloud=new LightCloud(redPawn,bluePawn,numPawn,pinkPawn,yellowPawn,getGreenPawn());
+        return lightCloud;
     }
 }

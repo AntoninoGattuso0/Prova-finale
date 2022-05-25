@@ -61,7 +61,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
             lock.notifyAll();
         }
         if(lobbyOk){
-            newGame();
+            newGame(game);
         }
     }
     @Override
@@ -172,8 +172,8 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         }
         lobby = null;
     }
-    public void newGame(){
-        virtualView.setUp();
+    public void newGame(Game game){
         controller=new Controller(game,userInput,virtualView,players);
+        controller.sendUpdate();
     }
 }

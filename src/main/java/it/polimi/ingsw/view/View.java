@@ -74,6 +74,8 @@ public interface View {
     void updateTowerSpace(TowerSpaceUpdateMessage object);
 
     void updateEntrance(EntranceUpdateMessage object);
+
+    void updateAll(AllUpdateMessage object);
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

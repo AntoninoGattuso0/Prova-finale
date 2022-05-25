@@ -65,6 +65,8 @@ public class MessageManager {
             view.updateEntrance((EntranceUpdateMessage) object);
         }else if(object instanceof TowerSpaceUpdateMessage){
             view.updateTowerSpace((TowerSpaceUpdateMessage) object);
+        }else if(object instanceof AllUpdateMessage){
+            view.updateAll((AllUpdateMessage) object);
         }
         else{
             throw new IllegalArgumentException();

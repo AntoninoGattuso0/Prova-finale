@@ -9,42 +9,22 @@ public class LightPlayer implements Serializable {
 
     private String nickname;
     private int numCoin;
-    private final ArrayList<AssistantCard> deckAssistant;
+    private ArrayList<AssistantCard> deckAssistant;
     private AssistantCard currentAssistant;
     private LightEntrance entrance;
     private LightDiningRoom diningRoom;
     private LightTowerSpace towerSpace;
 
-    public LightPlayer() {
-        this.nickname=null;
-        this.numCoin=-1;
-        this.deckAssistant = new ArrayList<>();
-        this.currentAssistant= new AssistantCard();
-        this.entrance = new LightEntrance();
-        this.diningRoom = new LightDiningRoom();
-        this.towerSpace = new LightTowerSpace();
-    }
-    public void setNickname(String nickname){
+    public LightPlayer(String nickname,int numCoin,ArrayList<AssistantCard> deckAssistant,AssistantCard currentAssistant,LightEntrance lightEntrance, LightTowerSpace LightTowerSpace, LightDiningRoom lightDiningRoom) {
         this.nickname=nickname;
-    }
-    public void setNumCoin(int numCoin) {
-        this.numCoin = numCoin;
-    }
-    public void setCurrentAssistant(AssistantCard currentAssistant) {
-        this.currentAssistant = currentAssistant;
-    }
-
-    public void setLightDiningRoom(LightDiningRoom diningRoom) {
-        this.diningRoom = diningRoom;
+        this.numCoin=numCoin;
+        this.deckAssistant =deckAssistant;
+        this.currentAssistant=currentAssistant;
+        this.entrance =lightEntrance;
+        this.diningRoom =lightDiningRoom;
+        this.towerSpace =LightTowerSpace;
     }
 
-    public void setLightEntrance(LightEntrance entrance) {
-        this.entrance = entrance;
-    }
-
-    public void setLightTowerSpace(LightTowerSpace towerSpace) {
-        this.towerSpace = towerSpace;
-    }
 
     public String getNickname() {
         return nickname;

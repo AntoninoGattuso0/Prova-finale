@@ -8,17 +8,9 @@ public class LightTowerSpace {
     private int numTower;
 
 
-    public LightTowerSpace() {
-        colorTower=null;
-        int numTower=-1;
-    }
-
-    public void setColorTower(ColorTower colorTower) {
-        this.colorTower = colorTower;
-    }
-
-    public void setNumTower(int numTower) {
-        this.numTower = numTower;
+    public LightTowerSpace(ColorTower colorTower,int numTower) {
+        this.colorTower=colorTower;
+        this.numTower=numTower;
     }
 
     public ColorTower getColorTower() {

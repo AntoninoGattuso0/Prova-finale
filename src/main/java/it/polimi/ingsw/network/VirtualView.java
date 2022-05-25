@@ -1,5 +1,4 @@
 package it.polimi.ingsw.network;
-import it.polimi.ingsw.model.*;
 
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.StartTurnMessage;
@@ -76,7 +75,4 @@ public class VirtualView extends ViewObservable /*implements*/ {//DA COMPLETARE
         clients.get(actualPlayer).setTurn(false);
     }
 
-    public void setUp(Game game) {
-        updateLightGame(game);
-    }
 }
