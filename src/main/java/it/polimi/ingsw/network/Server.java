@@ -12,6 +12,10 @@ public class Server implements Runnable {//DA RIVEDERE
         lobby= new Lobby();
     }
 
+    public Lobby getLobby() {
+        return lobby;
+    }
+
     @Override
     public void run() {
         try {
