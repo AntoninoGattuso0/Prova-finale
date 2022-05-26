@@ -3,7 +3,6 @@ package it.polimi.ingsw.view.Cli;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.ModelLight.LightPlayer;
-import it.polimi.ingsw.model.Island;
 import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
 import it.polimi.ingsw.network.Message.UpdateMessage.AssistantCardUpdateMessage;
 import it.polimi.ingsw.network.Message.UpdateMessage.CloudUpdateMessage;
@@ -189,7 +188,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
         int i;
         StringBuilder tabIslands = new StringBuilder();
-        out.println(print1_4Index(lightGame.getIslands()));
+        out.println(print1_4Index());
         tabIslands.append(ColorCli.BOLDCYAN);
         for (i = 0; i < lightGame.getIslands().size() && i < 4; i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
@@ -205,7 +204,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         out.print(tabIslands);
         tabIslands.delete(0, tabIslands.capacity());
 
-        out.println(print4_8Index(lightGame.getIslands()));
+        out.println(print4_8Index());
         tabIslands.append(ColorCli.BOLDCYAN);
         for (i = 4; i < lightGame.getIslands().size() && i < 8; i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
@@ -221,7 +220,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         out.print(tabIslands);
         tabIslands.delete(0, tabIslands.capacity());
 
-        out.println(print8_12Index(lightGame.getIslands()));
+        out.println(print8_12Index());
         tabIslands.append(ColorCli.BOLDCYAN);
         for (i = 8; i < lightGame.getIslands().size(); i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
@@ -645,26 +644,26 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         out.flush();
     }
 
-    private String print1_4Index(ArrayList<Island> islands){
+    private String print1_4Index(){
         StringBuilder index = new StringBuilder();
-        for(int i = 0; i<islands.size() && i<4; i++)
+        for(int i = 0; i < lightGame.getIslands().size() && i<4; i++)
             index.append("   ").append("Isola: ").append(i).append("   ");
         return index.toString();
     }
 
-    private String print4_8Index(ArrayList<Island> islands){
+    private String print4_8Index(){
         StringBuilder index = new StringBuilder();
-        if(islands.size()>=4){
-            for(int i = 4; i<islands.size() && i<8; i++)
+        if(lightGame.getIslands().size()>=4){
+            for(int i = 4; i < lightGame.getIslands().size() && i<8; i++)
                 index.append("   ").append("Isola: ").append(i).append("   ");
         }
         return index.toString();
     }
 
-    private String print8_12Index(ArrayList<Island> islands){
+    private String print8_12Index(){
         StringBuilder index = new StringBuilder();
-        if(islands.size()>=8){
-            for(int i = 8; i<islands.size(); i++)
+        if(lightGame.getIslands().size()>=8){
+            for(int i = 8; i < lightGame.getIslands().size(); i++)
                 index.append("   ").append("Isola: ").append(i).append("   ");
         }
         return index.toString();
