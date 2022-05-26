@@ -7,4 +7,5 @@ public class ClientServerTest {
     @Test
     public void serverTest(){
         Server server=new Server(4000);
-}
+        server.run();
+}}:
