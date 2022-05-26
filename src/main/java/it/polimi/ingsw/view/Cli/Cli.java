@@ -177,6 +177,11 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
+    public void displayNumPlayers(){
+        System.out.println("The number of players is: " + lightGame.getNumPlayers());
+    }
+
+    @Override
     public void displayIsExpert(){
         if(isExpert)
             out.println("The game mode will be expert.\n");
@@ -495,12 +500,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     @Override
     public void waitOtherPlayers(String object) {
         out.println(object);
-    }
-
-
-    @Override
-    public void displayNumPlayers(){
-        System.out.println("The number of players is: " + lightGame.getNumPlayers());
     }
 
     @Override
