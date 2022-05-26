@@ -20,8 +20,8 @@ public class ClientHandler extends ConnectionObservable implements ClientHandler
     private Message message;
     private final Ping ping;
     private volatile boolean messageReady;
-    private ObjectInputStream objectInputStream;
-    private ObjectOutputStream objectOutputStream;
+    private ObjectInputStream objectInputStream=null;
+    private ObjectOutputStream objectOutputStream=null;
 
     public ClientHandler(Socket socket,Lobby lobby) {
         this.lobby=lobby;

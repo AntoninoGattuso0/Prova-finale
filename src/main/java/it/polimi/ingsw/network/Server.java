@@ -29,7 +29,7 @@ public class Server {//DA RIVEDERE
             Socket socket= serverSocket.accept();
             System.out.println("SERVER: Client connected.");
             ClientHandler client= new ClientHandler(socket,getLobby());
-            new Thread(client).start();
+            new Thread(client).run();
         } catch (IOException e) {
             System.out.println("SERVER: restarting server.");
         }

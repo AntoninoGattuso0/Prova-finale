@@ -129,15 +129,13 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     //inserisco i player nell'array nomi, e li creo anche nel gioco
     public void loginUser(ClientHandlerInterface loginClient){
         int i;
-        String nickname;
-        Message nickMessage;
         loginClient.setTurn(true);
         loginClient.sendObject(new SetNickMessage());
-        nickMessage = loginClient.read();
+        Message nickMessage = loginClient.read();
         if (nickMessage == null) {
             return;
         }
-        nickname = ((RequestNickname) nickMessage).getNickname();
+        String nickname = ((RequestNickname) nickMessage).getNickname();
         for (i = 0; i < namePlayer.size(); i++) {
             while (namePlayer.get(i).equals(nickname)) {
                 loginClient.sendObject(new SetNickMessage());

@@ -1,6 +1,10 @@
 package it.polimi.ingsw.network.Message.ServerToClient;
 
-public class NewCurrentPlayerMessage extends ServerToClient {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class NewCurrentPlayerMessage extends ServerToClient implements Serializable {
+    @Serial
     private static final long serialVersionUID = 5174636856074373081L;
     private final String currentPlayer;
     private final String nextPlayer;

@@ -1,6 +1,10 @@
 package it.polimi.ingsw.network.Message.ClientToServer;
 
-public class ChooseAssistantCardMessage extends ClientToServer {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class ChooseAssistantCardMessage extends ClientToServer implements Serializable {
+    @Serial
     private static final long serialVersionUID = 8398621548495004770L;
     private final int assistant;
 
