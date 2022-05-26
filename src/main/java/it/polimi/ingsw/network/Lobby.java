@@ -149,14 +149,14 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         if(namePlayer.size()==1){
             loginClient.sendObject(new SetNumPlayersMessage());
             nickMessage=loginClient.read();
-            numPlayer=((LoginNumPlayerIsExpMessage) nickMessage).getNumPlayers();
+            numPlayer=((RequestNumPlayers) nickMessage).getNumPlayers();
             while(numPlayer<2||numPlayer>4){
                 loginClient.sendObject(new SetNumPlayersMessage());
                 nickMessage=loginClient.read();
-                numPlayer=((LoginNumPlayerIsExpMessage) nickMessage).getNumPlayers();
+                numPlayer=((RequestNumPlayers) nickMessage).getNumPlayers();
             }
                 loginClient.sendObject(new SetIsExpertMessage());
-                isExpert=((LoginNumPlayerIsExpMessage) nickMessage).getIsExpert();
+                isExpert=((RequestIsExpert) nickMessage).getIsExpert();
                 game=new Game(numPlayer,isExpert);
         }
         Game.newPlayer(nickname,game);

@@ -2,6 +2,7 @@ package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
+import it.polimi.ingsw.network.Message.WrongTurnMessage;
 import it.polimi.ingsw.observer.ConnectionObservable;
 
 import java.io.IOException;
@@ -49,7 +50,7 @@ public class ClientHandler extends ConnectionObservable implements ClientHandler
             e.printStackTrace();
         }
     }
-    private void pingClient(){
+    private void pingToClient(){
         Thread thread= new Thread(()-> {
             int c = 0;
             while (connected) {
@@ -109,7 +110,7 @@ public class ClientHandler extends ConnectionObservable implements ClientHandler
                                 notifyAll();
                             }
                         } else {
-                            sendObject("wrong turn"); //NON SO COSA VA QUI DENTRO);
+                            sendObject(new WrongTurnMessage());
                         }
                     }
                 }catch (IOException |NullPointerException|IllegalArgumentException e){
@@ -140,11 +141,11 @@ public class ClientHandler extends ConnectionObservable implements ClientHandler
         try {
             objectOutputStream= new ObjectOutputStream(mySocket.getOutputStream());
             objectInputStream = new ObjectInputStream(mySocket.getInputStream());
-            System.out.println("SERVER: new Client Created.");
+            System.out.println("[SERVER] new Client Created.");
         } catch (IOException e) {
             e.printStackTrace();
         }
         readFromClient();
-        pingClient();
+        pingToClient();
     }
 }

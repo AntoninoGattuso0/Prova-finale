@@ -49,7 +49,6 @@ public class Controller {
 
     public void administrEnd() {
         String nick="";
-        int i;
         endGame=true;
         virtualView.playerWinForQuitting(nick);
     }
