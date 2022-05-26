@@ -2,6 +2,7 @@ package it.polimi.ingsw.view.Cli;
 
 
 import it.polimi.ingsw.client.ModelLight.*;
+import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.observer.NetworkHandlerObservable;
 import it.polimi.ingsw.view.View;
 import it.polimi.ingsw.network.Message.UpdateMessage.*;
@@ -407,6 +408,51 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
+    public void updateNickname(NicknameUpdateMessage m) {
+
+    }
+
+    @Override
+    public void updateNumPlayers() {
+
+    }
+
+    @Override
+    public void updateAll(AllUpdateMessage object) {
+
+    }
+
+    @Override
+    public void selectCloud(int cloud) {
+
+    }
+
+    @Override
+    public void selectAssistantCard(int assistant) {
+
+    }
+
+    @Override
+    public void requestMoveMotherNature(int island) {
+
+    }
+
+    @Override
+    public void updateMoveMotherNature(int island) {
+
+    }
+
+    @Override
+    public void updatePawnToDining(int numDiningRoom, ArrayList<ColorPawn> arrayPawn) {
+
+    }
+
+    @Override
+    public void updatePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn) {
+
+    }
+
+    @Override
     public void requestIsExpert() {
         int mode;
         do{
@@ -477,6 +523,12 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     public void displayWrongTurn(){
         out.println("It's not your turn!");
     }
+
+    @Override
+    public void displayFetchNameMessage() {
+
+    }
+
     @Override
     public void displayNetError() {
     }
@@ -490,6 +542,11 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                 displaySchoolBoard();
 
         }
+    }
+
+    @Override
+    public void displayResponseMessage(String errorMessage) {
+
     }
 
     public void clearCli(){
