@@ -106,7 +106,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         getPlayerByNick(clientHandler.getUserNickname()).setActive(false);
         virtualView.sendAllQuitPlayer(clientHandler.getUserNickname());
         for(i=0;i<players.size();i++){
-            if(players.get(i).getActive()==true){
+            if(players.get(i).getActive()){
                 c++;
             }
         }
@@ -133,7 +133,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         if (nickMessage == null) {
             return;
         }
-        nickname = ((LoginSettMessage) nickMessage).getNickname();
+        nickname = ((RequestNickname) nickMessage).getNickname();
         for (i = 0; i < namePlayer.size(); i++) {
             while (namePlayer.get(i).equals(nickname)) {
                 loginClient.sendObject(new SetNickMessage());
@@ -141,7 +141,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
                 if (nickMessage == null) {
                     return;
                 }
-                nickname = ((LoginSettMessage) nickMessage).getNickname();
+                nickname = ((RequestNickname) nickMessage).getNickname();
             }
         }
         namePlayer.add(nickname);

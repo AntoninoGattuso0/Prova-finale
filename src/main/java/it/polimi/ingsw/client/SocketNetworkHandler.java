@@ -19,14 +19,14 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
     private final View view;
     private volatile boolean connected;
     private volatile boolean ready;
-    private final MessageManager messageManager;
+    private final MessageManagerServer messageManagerServer;
     public SocketNetworkHandler(View view){
         connected=false;
         ready=false;
         this.view=view;
-        this.messageManager=new MessageManager(view);
+        this.messageManagerServer =new MessageManagerServer(view);
     }
-    private void pingClient(){
+    private void pingToServer(){
         Thread thread= new Thread(()->{
             int c=0;
             while (connected){
@@ -55,17 +55,17 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
         }
     }
     @Override
-    public void updateConnection(String ipAddress, String port){
+    public void updateConnection(String ipAddress,String port){
         try{
-            socket=new Socket(ipAddress,Integer.parseInt(port));
+            socket=new Socket(ipAddress, Integer.parseInt(port));
             ready=true;
             synchronized (this){
                 notifyAll();}
+            System.out.println("Connection up");
         }catch (IOException| IllegalArgumentException e){
             System.out.println("Server unavailable");
             System.exit(0);
         }
-        System.out.println("Connection up");
     }
     @Override
     public synchronized void closeConnection(){
@@ -98,13 +98,13 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
         }catch (IOException e){
             e.printStackTrace();
         }
-        pingClient();
+        pingToServer();
         try{
             while (true){
                 try {
                     socket.setSoTimeout(30000);
                     Object input = in.readObject();
-                    messageManager.manageInputToClient(input);
+                    messageManagerServer.manageInputToClient(input);
                     if (input instanceof EndGameMessage || input instanceof RemoveClientMessage) {
                         break;
                     }

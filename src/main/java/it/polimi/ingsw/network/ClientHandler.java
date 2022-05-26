@@ -11,7 +11,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 
-public class ClientHandler extends ConnectionObservable implements ClientHandlerInterface {//DA RIVEDERE
+public class ClientHandler extends ConnectionObservable implements ClientHandlerInterface,Runnable {//DA RIVEDERE
+    private final Lobby lobby;
     private final Socket mySocket;
     private String userNickname;
     private volatile boolean connected;
@@ -22,7 +23,8 @@ public class ClientHandler extends ConnectionObservable implements ClientHandler
     private ObjectInputStream objectInputStream;
     private ObjectOutputStream objectOutputStream;
 
-    public ClientHandler(Socket socket) {
+    public ClientHandler(Socket socket,Lobby lobby) {
+        this.lobby=lobby;
         this.mySocket = socket;
         this.connected = true;
         this.myTurn = false;
@@ -136,16 +138,16 @@ public class ClientHandler extends ConnectionObservable implements ClientHandler
         messageReady = false;
         return message;
     }
-
     public void run() {
         try {
-            objectOutputStream= new ObjectOutputStream(mySocket.getOutputStream());
-            objectInputStream = new ObjectInputStream(mySocket.getInputStream());
+            this.objectInputStream = new ObjectInputStream(mySocket.getInputStream());
+            this.objectOutputStream = new ObjectOutputStream(mySocket.getOutputStream());
             System.out.println("[SERVER] new Client Created.");
         } catch (IOException e) {
             e.printStackTrace();
-        }
         readFromClient();
         pingToClient();
+        lobby.loginUser(this);
+        }
     }
 }

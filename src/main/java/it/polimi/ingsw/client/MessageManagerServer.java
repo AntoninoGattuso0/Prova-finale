@@ -4,9 +4,9 @@ import it.polimi.ingsw.network.Message.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.*;
 import it.polimi.ingsw.view.View;
 
-public class MessageManager {
+public class MessageManagerServer {
     private final View view;
-    public MessageManager(View view){
+    public MessageManagerServer(View view){
         this.view=view;
     }
     public void manageInputToClient(Object object){   // ho aggiunto game per poterlo passare come parametro ad alcune funzioni

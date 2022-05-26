@@ -2,7 +2,7 @@ package it.polimi.ingsw.network;
 import java.io.*;
 import java.net.*;
 
-public class Server implements Runnable {//DA RIVEDERE
+public class Server {//DA RIVEDERE
     private ServerSocket serverSocket;
     private final Lobby lobby;
     int port;
@@ -16,8 +16,7 @@ public class Server implements Runnable {//DA RIVEDERE
         return lobby;
     }
 
-    @Override
-    public void run() {
+    public void start() {
         try {
             serverSocket = new ServerSocket(port);
         } catch (IOException e) {
@@ -29,9 +28,8 @@ public class Server implements Runnable {//DA RIVEDERE
         System.out.println("SERVER: Waiting client connection.");
             Socket socket= serverSocket.accept();
             System.out.println("SERVER: Client connected.");
-            ClientHandlerInterface client= new ClientHandler(socket);
-            client.run();
-            lobby.loginUser(client);
+            ClientHandler client= new ClientHandler(socket,getLobby());
+            new Thread(client).start();
         } catch (IOException e) {
             System.out.println("SERVER: restarting server.");
         }
