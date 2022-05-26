@@ -379,6 +379,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void updateIsland(IslandUpdateMessage island) {
+        lightGame.updateIsland(island);
     }
     @Override
     public void updateEntrance(EntranceUpdateMessage entrance) {
@@ -396,11 +397,12 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
     @Override
     public void updateTowerSpace(TowerSpaceUpdateMessage towerSpace) {
-
+        lightGame.updateTowerSpace(towerSpace);
     }
 
     @Override
     public void updateCharacterCard(CharacterCardUpdateMessage characterCard) {
+        lightGame.updateCharacterCard(characterCard);
 
     }
 
@@ -453,8 +455,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     public void displayNumPlayers(){
         System.out.println("The number of players is: " + lightGame.getNumPlayers());
     }
-
-
 
     @Override
     public void displayWinner(String winner){
