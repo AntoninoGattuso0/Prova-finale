@@ -1,9 +1,9 @@
 package it.polimi.ingsw.network;
 
-import it.polimi.ingsw.network.Message.Message;
-import it.polimi.ingsw.network.Message.StartTurnMessage;
+import it.polimi.ingsw.network.Message.*;
 import it.polimi.ingsw.network.Message.ServerToClient.WinnerMessage;
 import it.polimi.ingsw.observer.ViewObservable;
+import it.polimi.ingsw.network.Message.ServerToClient.*;
 
 import java.util.HashMap;
 import java.util.Map;

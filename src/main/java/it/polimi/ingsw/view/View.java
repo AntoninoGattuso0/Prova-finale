@@ -1,17 +1,12 @@
 package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.model.ColorPawn;
-import it.polimi.ingsw.network.Message.ServerToClient.ClientAcceptedMessage;
-import it.polimi.ingsw.network.Message.StartTurnMessage;
+import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.*;
-
 import java.util.ArrayList;
-
 public interface View {
-
     void startGame();
     //void loginPlayers(); // non serve piu perche il nome lo chiediamo con request
-
     void requestNickname();
     void requestNumPlayers();
     void requestIsExpert();
@@ -59,6 +54,7 @@ public interface View {
 
     void registerClient(ClientAcceptedMessage m);
     void waitOtherPlayers(String object);
+    
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

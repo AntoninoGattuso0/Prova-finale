@@ -8,9 +8,9 @@ import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.*;
 import it.polimi.ingsw.view.View;
 
-public class MessageManagerServer {
+public class MessageManager {
     private final View view;
-    public MessageManagerServer(View view){
+    public MessageManager(View view){
         this.view=view;
     }
     public void manageInputToClient(Object object){   // ho aggiunto game per poterlo passare come parametro ad alcune funzioni
@@ -72,11 +72,9 @@ public class MessageManagerServer {
             view.updateAll((AllUpdateMessage) object);
         }else if(object instanceof ProfTableUpdateMessage){
             view.updateProfTable((ProfTableUpdateMessage) object);
-        }else if(object instanceof CharacterCardUpdateMessage){
+        }else if(object instanceof CharacterCardUpdateMessage) {
             view.updateCharacterCard((CharacterCardUpdateMessage) object);
         }
-        else{
             throw new IllegalArgumentException();
         }
     }
-}

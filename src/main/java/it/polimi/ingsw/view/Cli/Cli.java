@@ -3,10 +3,11 @@ package it.polimi.ingsw.view.Cli;
 
 import it.polimi.ingsw.client.ModelLight.*;
 import it.polimi.ingsw.model.ColorPawn;
+import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
 import it.polimi.ingsw.observer.NetworkHandlerObservable;
 import it.polimi.ingsw.view.View;
 import it.polimi.ingsw.network.Message.UpdateMessage.*;
-import it.polimi.ingsw.network.Message.*;
+import it.polimi.ingsw.network.Message.ServerToClient.ClientAcceptedMessage;
 
 import java.io.PrintStream;
 import java.util.*;
@@ -44,7 +45,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     //start the cli
-    public void init() {
+    public void run(){
         try {
             askServerInfo();
         } catch (ExecutionException e) {
@@ -74,12 +75,11 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                 validInput= true;
             }*/ else {
                 out.println("Invalid Address!!!");
-                clearCli();
+              //  clearCli();
                 validInput = false;
             }
         } while (!validInput);
     }
-
 
     public int checkInteger() {
         boolean isInteger = false;
@@ -124,6 +124,191 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     }
 
+    @Override
+    public void requestNickname() {
+
+    }
+
+    @Override
+    public void requestNumPlayers() {
+
+    }
+
+    @Override
+    public void requestIsExpert() {
+
+    }
+
+    @Override
+    public void displayNick() {
+
+    }
+
+    @Override
+    public void displayNumPlayers() {
+
+    }
+
+    @Override
+    public void displayIsExpert() {
+
+    }
+
+    @Override
+    public void displayAssistantCard() {
+
+    }
+
+    @Override
+    public void displayCloud() {
+
+    }
+
+    @Override
+    public void displayIslands() {
+
+    }
+
+    @Override
+    public void displaySchoolBoard() {
+
+    }
+
+    @Override
+    public void displayCharacterCard() {
+
+    }
+
+    @Override
+    public void displayWinner(String winner) {
+
+    }
+
+    @Override
+    public void displayNetError() {
+
+    }
+
+    @Override
+    public void displayWrongNickname() {
+
+    }
+
+    @Override
+    public void displayWrongTurn() {
+
+    }
+
+    @Override
+    public void displayFetchNameMessage() {
+
+    }
+
+    @Override
+    public void displayTurn(StartTurnMessage object) {
+
+    }
+
+    @Override
+    public void displayResponseMessage(String errorMessage) {
+
+    }
+
+    @Override
+    public void updateAssistantCard(AssistantCardUpdateMessage message) {
+
+    }
+
+    @Override
+    public void updateCloud(CloudUpdateMessage message) {
+
+    }
+
+    @Override
+    public void updateIsland(IslandUpdateMessage message) {
+
+    }
+
+    @Override
+    public void updateEntrance(EntranceUpdateMessage message) {
+
+    }
+
+    @Override
+    public void updateDiningRoom(DiningRoomUpdateMessage message) {
+
+    }
+
+    @Override
+    public void updateProfTable(ProfTableUpdateMessage message) {
+
+    }
+
+    @Override
+    public void updateTowerSpace(TowerSpaceUpdateMessage message) {
+
+    }
+
+    @Override
+    public void updateCharacterCard(CharacterCardUpdateMessage message) {
+
+    }
+
+    @Override
+    public void updateNickname(NicknameUpdateMessage m) {
+
+    }
+
+    @Override
+    public void updateNumPlayers() {
+
+    }
+
+    @Override
+    public void updateAll(AllUpdateMessage object) {
+
+    }
+
+    @Override
+    public void selectCloud(int cloud) {
+
+    }
+
+    @Override
+    public void selectAssistantCard(int assistant) {
+
+    }
+
+    @Override
+    public void requestMoveMotherNature(int island) {
+
+    }
+
+    @Override
+    public void updateMoveMotherNature(int island) {
+
+    }
+
+    @Override
+    public void updatePawnToDining(int numDiningRoom, ArrayList<ColorPawn> arrayPawn) {
+
+    }
+
+    @Override
+    public void updatePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn) {
+
+    }
+
+    @Override
+    public void registerClient(ClientAcceptedMessage m) {
+
+    }
+
+    @Override
+    public void waitOtherPlayers(String object) {
+
+    }
+
    /* @Override
     public void loginPlayers() {
         System.out.println("Welcome in Eriantys. Insert your NICKNAME: ");
@@ -133,7 +318,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         notifyMessage(new LoginSettMessage(nick, joinGame));
         System.out.println("\n");
     }*/
-
+/*
     @Override
     public void requestNickname() {
         out.println("Please insert your Nickname:  ");
