@@ -1,5 +1,6 @@
 package it.polimi.ingsw.view;
 
+import it.polimi.ingsw.model.CharacterCard;
 import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
@@ -24,20 +25,20 @@ public interface View {
     void displayCharacterCard();
 
     //ogni volta che si cambia qualcosa di queste dobbiamo aggiornarle e poi richiamare display
-    void updateAssistantCard(AssistantCardUpdateMessage assistant);
-    void updateCloud(CloudUpdateMessage cloud);
-    void updateDiningRoom(DiningRoomUpdateMessage object);
-    void updateEntrance();
-    void updateIsland(IslandUpdateMessage m);
+    void updateAssistantCard(AssistantCardUpdateMessage message);
+    void updateCloud(CloudUpdateMessage message);
+    void updateIsland(IslandUpdateMessage message);
+    void updateEntrance(EntranceUpdateMessage message);
+    void updateDiningRoom(DiningRoomUpdateMessage message);
     void updateProfTable();
-    void updateTowerSpace();
+    void updateTowerSpace(TowerSpaceUpdateMessage message);
+    void updateCharacterCard(CharacterCardUpdateMessage message);
+
     void updateNickname(NicknameUpdateMessage m);
-    void updateCharacterCard();
+    void updateNumPlayers();
 
     void registerClient(ClientAcceptedMessage m);
 
-
-    void updateNumPlayers();
     void requestNickname();
     void requestNumPlayers();
     void requestIsExpert();
@@ -49,7 +50,6 @@ public interface View {
 
 
     void displayNetError();
-    // void displayTurn(StartTurnMessage object);
     void displayWrongNickname();
 
     void updatePawnToDining(int numDiningRoom, ArrayList<ColorPawn> arrayPawn);
@@ -70,10 +70,6 @@ public interface View {
     void selectCloud(int cloud);
 
     void selectAssistantCard(int assistant);
-
-    void updateTowerSpace(TowerSpaceUpdateMessage object);
-
-    void updateEntrance(EntranceUpdateMessage object);
 
     void updateAll(AllUpdateMessage object);
 }

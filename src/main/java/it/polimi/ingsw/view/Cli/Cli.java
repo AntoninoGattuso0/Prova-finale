@@ -1,15 +1,10 @@
 package it.polimi.ingsw.view.Cli;
 
 
-import it.polimi.ingsw.client.ModelLight.LightGame;
-import it.polimi.ingsw.client.ModelLight.LightPlayer;
-import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
-import it.polimi.ingsw.network.Message.UpdateMessage.AssistantCardUpdateMessage;
-import it.polimi.ingsw.network.Message.UpdateMessage.CloudUpdateMessage;
-import it.polimi.ingsw.network.Message.UpdateMessage.DiningRoomUpdateMessage;
-import it.polimi.ingsw.network.Message.UpdateMessage.IslandUpdateMessage;
+import it.polimi.ingsw.client.ModelLight.*;
 import it.polimi.ingsw.observer.NetworkHandlerObservable;
 import it.polimi.ingsw.view.View;
+import it.polimi.ingsw.network.Message.UpdateMessage.*;
 import it.polimi.ingsw.network.Message.*;
 
 import java.io.PrintStream;
@@ -129,18 +124,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void requestIsExpert() {
-        int mode;
-        do{
-            System.out.println("Choose the game mode: type 0 for normal mode or type 1 for expert mode: \n");
-            mode = checkInteger();
-            if(mode==0) isExpert = false;
-            else if(mode==1) isExpert = true;
-        }while(mode!=0 || mode!=1);
-        notifyMessage(new RequestIsExpert(isExpert));
-    }
-
-    @Override
     public void loginPlayers() {
         System.out.println("Welcome in Eriantys. Insert your NICKNAME: ");
         String nick = scanner.nextLine();
@@ -151,16 +134,18 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void requestNumPlayers(){
+    public void displayNick(){
+        int i;
+        for(i = 0; i < lightGame.getNumPlayers(); i++)
+            out.println(lightGame.getPlayers().get(i).getNickname() + " è il giocatore numero " + (i+1)+ "\n");
+    }
 
-        System.out.println("Please insert the number of Players. It must be a number between 2 and 4. \n");
-        int numPlayers = checkInteger();
-        out.println("\n");
-        while (numPlayers < 2 || numPlayers > 4) {
-            System.out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
-            numPlayers = checkInteger();
-        }
-        notifyMessage(new RequestNumPlayers(numPlayers));
+    @Override
+    public void displayIsExpert(){
+        if(isExpert)
+            out.println("The game mode will be expert.\n");
+        if(!isExpert)
+            out.println("The game mode will be normal.\n");
     }
 
     @Override
@@ -171,15 +156,58 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         StringBuilder assistantCard = new StringBuilder();
         for (i = 0; i < lightGame.getPlayers().get(i).getDeckAssistant().size(); i++) {
             out.println(ColorCli.BOLDCYAN + "+-----------------------+");
-             if(lightGame.getPlayers().get(i).getDeckAssistant().get(i).getCardValue() == 10)
+            if(lightGame.getPlayers().get(i).getDeckAssistant().get(i).getCardValue() == 10)
                 out.println(ColorCli.BOLDCYAN +"| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(i).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "        |");
             else
-                 out.println(ColorCli.BOLDCYAN +"| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(i).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "         |");
+                out.println(ColorCli.BOLDCYAN +"| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(i).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "         |");
 
             out.println(ColorCli.BOLDCYAN +"| MN steps: " + ColorCli.GREEN + lightGame.getPlayers().get(i).getDeckAssistant().get(i).getStep() + ColorCli.BOLDCYAN + "           |");
             out.println(ColorCli.BOLDCYAN + "+-----------------------+");
         }
         out.println(assistantCard);
+    }
+
+    @Override
+    public void displayCloud() {
+        clearCli();
+
+        int i;
+        StringBuilder cloudCards = new StringBuilder();
+        out.println(" ");
+        out.println(" ");
+        cloudCards.append(ColorCli.BOLDCYAN);
+        for (i = 0; i < lightGame.getClouds().size(); i++)
+            cloudCards.append(ColorCli.BOLDCYAN).append("     ").append(" +*******+").append("        ");
+
+        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
+        for (i = 0; i < lightGame.getClouds().size(); i++)
+            cloudCards.append(ColorCli.BOLDCYAN).append("   *            *      ");
+        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
+        for (i = 0; i < lightGame.getClouds().size(); i++)
+            cloudCards.append(ColorCli.BOLDCYAN).append(" *                *    ");
+        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
+
+        for (int j = 0; j < 5; j++) {
+            for (i = 0; i < lightGame.getClouds().size(); i++)
+                cloudCards.append(ColorCli.BOLDCYAN).append("*").append(ColorCli.RESET).append(color4Clouds(i, j)).append(" *   ");
+            cloudCards.append("\n").append(ColorCli.RESET);
+        }
+
+        for (i = 0; i < lightGame.getClouds().size(); i++)
+            cloudCards.append(ColorCli.BOLDCYAN).append(" *                *    ");
+        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
+        for (i = 0; i < lightGame.getClouds().size() ; i++)
+            cloudCards.append(ColorCli.BOLDCYAN).append("   *            *      ");
+        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
+
+        for (i = 0; i < lightGame.getClouds().size(); i++)
+            cloudCards.append(ColorCli.BOLDCYAN).append("     ").append(" +*******+").append("        ");
+        cloudCards.append(ColorCli.BOLDCYAN).append("\n").append(ColorCli.RESET);
+
+
+        out.print(cloudCards);
+        cloudCards.delete(0, cloudCards.capacity());
+
     }
 
     @Override
@@ -237,6 +265,238 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         tabIslands.delete(0, tabIslands.capacity());
     }
 
+    public void displaySchoolBoard(){
+        clearCli();
+        int i, m;
+        StringBuilder schoolBoard = new StringBuilder();
+
+        for(i = 0; i < lightGame.getPlayers().size(); i++ ){
+            out.println(" ");
+            out.println(" ");
+            schoolBoard.append(ColorCli.BOLDCYAN);
+
+            schoolBoard.append("Player: " + lightGame.getPlayers().get(i).getNickname()).append("\n").append("+--------------+--------------------------------+---+------+\n");
+
+            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  0));
+            schoolBoard.append("| ").append(ColorCli.RESET);
+            schoolBoard.append(ColorCli.BOLDCYAN);
+            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumGreen(); m++){
+                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.GREEN).append("  ◎");
+                else schoolBoard.append(color4DiningRoom(0)).append(ColorCli.BOLDCYAN);
+            }
+            while(m < 10){
+                schoolBoard.append(ColorCli.GREEN).append("  ◌");
+                m++;
+            }
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,0, i)).append(ColorCli.BOLDCYAN).append(" |");
+
+            int j = lightGame.getPlayers().get(i).getTowerSpace().getNumTower();
+            schoolBoard.append(color4TowerSpace(i, j));
+            j = lightGame.getPlayers().get(i).getTowerSpace().getNumTower() - 2;
+
+
+            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  1));
+            schoolBoard.append("| ").append(ColorCli.RESET);
+            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumRed(); m++){
+                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.RED).append("  ◎");
+                else schoolBoard.append(color4DiningRoom(1)).append(ColorCli.BOLDCYAN);
+            }
+            while(m < 10){
+                schoolBoard.append(ColorCli.RED).append("  ◌");
+                m++;
+            }
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,1, i)).append(ColorCli.BOLDCYAN).append(" |");
+            schoolBoard.append(color4TowerSpace(i, j));
+            j = j - 2;
+
+
+            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  2));
+            schoolBoard.append("| ").append(ColorCli.RESET);
+            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumYellow(); m++){
+                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.YELLOW).append("  ◎");
+                else schoolBoard.append(color4DiningRoom(2)).append(ColorCli.BOLDCYAN);
+            }
+            while(m < 10){
+                schoolBoard.append(ColorCli.YELLOW).append("  ◌");
+                m++;
+            }
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,2, i)).append(ColorCli.BOLDCYAN).append(" |");
+            schoolBoard.append(color4TowerSpace(i, j));
+            j = j - 2;
+
+
+            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  3));
+            schoolBoard.append("| ").append(ColorCli.RESET);
+            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumPink(); m++){
+                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.PINK).append("  ◎");
+                else schoolBoard.append(color4DiningRoom(3)).append(ColorCli.BOLDCYAN);
+            }
+            while(m < 10){
+                schoolBoard.append(ColorCli.PINK).append("  ◌");
+                m++;
+            }
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,3, i)).append(ColorCli.BOLDCYAN).append(" |");
+            schoolBoard.append(color4TowerSpace(i, j));
+
+
+            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  4));
+            schoolBoard.append("| ").append(ColorCli.RESET);
+            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumBlue(); m++){
+                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.BLUE).append("  ◎");
+                else schoolBoard.append(color4DiningRoom(4)).append(ColorCli.BOLDCYAN);
+            }
+            while(m < 10){
+                schoolBoard.append(ColorCli.BLUE).append("  ◌");
+                m++;
+            }
+
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,4, i)).append(ColorCli.BOLDCYAN).append(" |");
+            schoolBoard.append("      ").append(ColorCli.BOLDCYAN).append("| \n");
+            schoolBoard.append(ColorCli.BOLDCYAN).append("+--------------+--------------------------------+---+------+\n");
+            schoolBoard.append(ColorCli.RESET);
+        }
+
+        out.print(schoolBoard);
+        schoolBoard.delete(0, schoolBoard.capacity());
+
+    }
+
+    @Override
+    public void displayCharacterCard() {
+
+    }
+
+
+    @Override
+    public void updateAssistantCard(AssistantCardUpdateMessage assistant) {
+        lightGame.updateAssistantCard(assistant);
+    }
+
+    @Override
+    public void updateCloud(CloudUpdateMessage cloud) {
+        lightGame.updateCloud(cloud);
+    }
+
+    @Override
+    public void updateIsland(IslandUpdateMessage island) {
+    }
+    @Override
+    public void updateEntrance(EntranceUpdateMessage entrance) {
+        lightGame.updateEntrance(entrance);
+    }
+
+    @Override
+    public void updateDiningRoom(DiningRoomUpdateMessage diningRoom) {
+        lightGame.updateDiningRoom(diningRoom);
+    }
+
+    @Override
+    public void updateProfTable() {
+
+    }
+    @Override
+    public void updateTowerSpace() {
+
+    }
+
+    @Override
+    public void updateCharacterCard() {
+
+    }
+
+    @Override
+    public void requestIsExpert() {
+        int mode;
+        do{
+            System.out.println("Choose the game mode: type 0 for normal mode or type 1 for expert mode: \n");
+            mode = checkInteger();
+            if(mode==0) isExpert = false;
+            else if(mode==1) isExpert = true;
+        }while(mode!=0 || mode!=1);
+        notifyMessage(new RequestIsExpert(isExpert));
+    }
+
+    @Override
+    public void requestNumPlayers(){
+
+        System.out.println("Please insert the number of Players. It must be a number between 2 and 4. \n");
+        int numPlayers = checkInteger();
+        out.println("\n");
+        while (numPlayers < 2 || numPlayers > 4) {
+            System.out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
+            numPlayers = checkInteger();
+        }
+        notifyMessage(new RequestNumPlayers(numPlayers));
+    }
+
+    @Override
+    public void registerClient(ClientAcceptedMessage m) {
+
+    }
+
+    @Override
+    public void requestNickname() {
+        out.println("Please insert your Nickname:  ");
+        String nick = scanner.nextLine();
+        out.println("\n");
+
+        notifyMessage(new RequestNickname(nick));
+    }
+
+    @Override
+    public void waitOtherPlayers(String object) {
+        out.println(object);
+    }
+
+
+    @Override
+    public void displayNumPlayers(){
+        System.out.println("The number of players is: " + lightGame.getNumPlayers());
+    }
+
+
+
+    @Override
+    public void displayWinner(String winner){
+        notifyMessage(new WinnerMessage(winner));
+    }
+
+    @Override
+    public void requestCloud() {
+        out.println("Please select a cloud between 0 and "+ lightGame.getClouds().size() + ": ");
+        int cloud = checkInteger();
+
+        while(cloud < 0 || cloud > lightGame.getClouds().size()){
+            out.println("Please select a cloud between 0 and "+ lightGame.getClouds().size() + ": ");
+            cloud = checkInteger();
+        }
+        notifyMessage(new ChooseCloudMessage(cloud));
+    }
+
+    @Override
+    public void displayWrongTurn(){
+        out.println("It's not your turn!");
+    }
+    @Override
+    public void displayNetError() {
+    }
+
+    @Override
+    public void displayTurn(StartTurnMessage object) {
+        out.println("\n");
+        if(object.getCurrentPlayer().equals(actualPlayer)){
+            out.println("It is your turn!");
+            if(gameStart)
+                displaySchoolBoard();
+
+        }
+    }
+
+    public void clearCli(){
+        out.print(ColorCli.CLEAR);
+        out.flush();
+    }
+
     private String color4Island(int island, int color){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
@@ -257,48 +517,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         return showColor.toString();
     }
 
-    @Override
-    public void displayCloud() {
-        clearCli();
-
-        int i;
-        StringBuilder cloudCards = new StringBuilder();
-        out.println(" ");
-        out.println(" ");
-        cloudCards.append(ColorCli.BOLDCYAN);
-        for (i = 0; i < lightGame.getClouds().size(); i++)
-            cloudCards.append(ColorCli.BOLDCYAN).append("     ").append(" +*******+").append("        ");
-
-        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
-        for (i = 0; i < lightGame.getClouds().size(); i++)
-            cloudCards.append(ColorCli.BOLDCYAN).append("   *            *      ");
-        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
-        for (i = 0; i < lightGame.getClouds().size(); i++)
-            cloudCards.append(ColorCli.BOLDCYAN).append(" *                *    ");
-        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
-
-        for (int j = 0; j < 5; j++) {
-            for (i = 0; i < lightGame.getClouds().size(); i++)
-                    cloudCards.append(ColorCli.BOLDCYAN).append("*").append(ColorCli.RESET).append(color4Clouds(i, j)).append(" *   ");
-            cloudCards.append("\n").append(ColorCli.RESET);
-        }
-
-        for (i = 0; i < lightGame.getClouds().size(); i++)
-            cloudCards.append(ColorCli.BOLDCYAN).append(" *                *    ");
-        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
-        for (i = 0; i < lightGame.getClouds().size() ; i++)
-            cloudCards.append(ColorCli.BOLDCYAN).append("   *            *      ");
-        cloudCards.append(ColorCli.BOLDCYAN).append("\n");
-
-        for (i = 0; i < lightGame.getClouds().size(); i++)
-            cloudCards.append(ColorCli.BOLDCYAN).append("     ").append(" +*******+").append("        ");
-        cloudCards.append(ColorCli.BOLDCYAN).append("\n").append(ColorCli.RESET);
-
-
-        out.print(cloudCards);
-        cloudCards.delete(0, cloudCards.capacity());
-
-    }
 
     private String color4Clouds(int cloud, int color){
         StringBuilder showColor = new StringBuilder();
@@ -417,231 +635,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
             showColor.append("\n");
         }
         return showColor.toString();
-    }
-
-
-    public void displaySchoolBoard(){
-        clearCli();
-        int i, m;
-        StringBuilder schoolBoard = new StringBuilder();
-
-        for(i = 0; i < lightGame.getPlayers().size(); i++ ){
-            out.println(" ");
-            out.println(" ");
-            schoolBoard.append(ColorCli.BOLDCYAN);
-
-            schoolBoard.append("Player: " + lightGame.getPlayers().get(i).getNickname()).append("\n").append("+--------------+--------------------------------+---+------+\n");
-
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  0));
-            schoolBoard.append("| ").append(ColorCli.RESET);
-            schoolBoard.append(ColorCli.BOLDCYAN);
-            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumGreen(); m++){
-                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.GREEN).append("  ◎");
-                else schoolBoard.append(color4DiningRoom(0)).append(ColorCli.BOLDCYAN);
-            }
-            while(m < 10){
-                schoolBoard.append(ColorCli.GREEN).append("  ◌");
-                m++;
-            }
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,0, i)).append(ColorCli.BOLDCYAN).append(" |");
-
-            int j = lightGame.getPlayers().get(i).getTowerSpace().getNumTower();
-            schoolBoard.append(color4TowerSpace(i, j));
-            j = lightGame.getPlayers().get(i).getTowerSpace().getNumTower() - 2;
-
-
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  1));
-            schoolBoard.append("| ").append(ColorCli.RESET);
-            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumRed(); m++){
-                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.RED).append("  ◎");
-                else schoolBoard.append(color4DiningRoom(1)).append(ColorCli.BOLDCYAN);
-            }
-            while(m < 10){
-                schoolBoard.append(ColorCli.RED).append("  ◌");
-                m++;
-            }
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,1, i)).append(ColorCli.BOLDCYAN).append(" |");
-            schoolBoard.append(color4TowerSpace(i, j));
-            j = j - 2;
-
-
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  2));
-            schoolBoard.append("| ").append(ColorCli.RESET);
-            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumYellow(); m++){
-                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.YELLOW).append("  ◎");
-                else schoolBoard.append(color4DiningRoom(2)).append(ColorCli.BOLDCYAN);
-            }
-            while(m < 10){
-                schoolBoard.append(ColorCli.YELLOW).append("  ◌");
-                m++;
-            }
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,2, i)).append(ColorCli.BOLDCYAN).append(" |");
-            schoolBoard.append(color4TowerSpace(i, j));
-            j = j - 2;
-
-
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  3));
-            schoolBoard.append("| ").append(ColorCli.RESET);
-            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumPink(); m++){
-                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.PINK).append("  ◎");
-                else schoolBoard.append(color4DiningRoom(3)).append(ColorCli.BOLDCYAN);
-            }
-            while(m < 10){
-                schoolBoard.append(ColorCli.PINK).append("  ◌");
-                m++;
-            }
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,3, i)).append(ColorCli.BOLDCYAN).append(" |");
-            schoolBoard.append(color4TowerSpace(i, j));
-
-
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  4));
-            schoolBoard.append("| ").append(ColorCli.RESET);
-            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumBlue(); m++){
-                    if(m==2||m==5||m==8) schoolBoard.append(ColorCli.BLUE).append("  ◎");
-                    else schoolBoard.append(color4DiningRoom(4)).append(ColorCli.BOLDCYAN);
-            }
-            while(m < 10){
-                schoolBoard.append(ColorCli.BLUE).append("  ◌");
-                m++;
-            }
-
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,4, i)).append(ColorCli.BOLDCYAN).append(" |");
-            schoolBoard.append("      ").append(ColorCli.BOLDCYAN).append("| \n");
-            schoolBoard.append(ColorCli.BOLDCYAN).append("+--------------+--------------------------------+---+------+\n");
-            schoolBoard.append(ColorCli.RESET);
-        }
-
-        out.print(schoolBoard);
-        schoolBoard.delete(0, schoolBoard.capacity());
-
-    }
-
-    @Override
-    public void displayCharacterCard() {
-
-    }
-
-
-    @Override
-    public void updateAssistantCard(AssistantCardUpdateMessage assistant) {
-
-    }
-
-    @Override
-    public void updateCloud(CloudUpdateMessage cloud) {
-
-    }
-
-    @Override
-    public void updateDiningRoom(DiningRoomUpdateMessage object) {
-
-    }
-
-    @Override
-    public void updateEntrance() {
-
-    }
-
-    @Override
-    public void updateIsland(IslandUpdateMessage m) {
-
-    }
-
-    @Override
-    public void updateProfTable() {
-
-    }
-
-    @Override
-    public void updateTowerSpace() {
-
-    }
-
-    @Override
-    public void updateCharacterCard() {
-
-    }
-
-    @Override
-    public void registerClient(ClientAcceptedMessage m) {
-
-    }
-
-    @Override
-    public void requestNickname() {
-        out.println("Please insert your Nickname:  ");
-        String nick = scanner.nextLine();
-        out.println("\n");
-
-        notifyMessage(new RequestNickname(nick));
-    }
-
-    @Override
-    public void waitOtherPlayers(String object) {
-        out.println(object);
-    }
-
-
-    @Override
-    public void displayNumPlayers(){
-        System.out.println("The number of players is: " + lightGame.getNumPlayers());
-    }
-
-    @Override
-    public void displayIsExpert(){
-        if(isExpert)
-            out.println("The game mode will be expert.\n");
-        if(!isExpert)
-            out.println("The game mode will be normal.\n");
-    }
-
-    @Override
-    public void displayNick(){
-        int i;
-        for(i = 0; i < lightGame.getNumPlayers(); i++)
-            out.println(lightGame.getPlayers().get(i).getNickname() + " è il giocatore numero " + (i+1)+ "\n");
-    }
-
-
-    @Override
-    public void displayWinner(String winner){
-        notifyMessage(new WinnerMessage(winner));
-    }
-
-    @Override
-    public void requestCloud() {
-        out.println("Please select a cloud between 0 and "+ lightGame.getClouds().size() + ": ");
-        int cloud = checkInteger();
-
-        while(cloud < 0 || cloud > lightGame.getClouds().size()){
-            out.println("Please select a cloud between 0 and "+ lightGame.getClouds().size() + ": ");
-            cloud = checkInteger();
-        }
-        notifyMessage(new ChooseCloudMessage(cloud));
-    }
-
-    @Override
-    public void displayWrongTurn(){
-        out.println("It's not your turn!");
-    }
-    @Override
-    public void displayNetError() {
-    }
-
-    @Override
-    public void displayTurn(StartTurnMessage object) {
-        out.println("\n");
-        if(object.getCurrentPlayer().equals(actualPlayer)){
-            out.println("It is your turn!");
-            if(gameStart)
-                displaySchoolBoard();
-
-        }
-    }
-
-    public void clearCli(){
-        out.print(ColorCli.CLEAR);
-        out.flush();
     }
 
     private String print1_4Index(){
