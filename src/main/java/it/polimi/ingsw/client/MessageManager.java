@@ -1,5 +1,7 @@
 package it.polimi.ingsw.client;
 
+import it.polimi.ingsw.model.CharacterCard;
+import it.polimi.ingsw.model.ProfTable;
 import it.polimi.ingsw.network.Message.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.*;
 import it.polimi.ingsw.view.View;
@@ -21,7 +23,6 @@ public class MessageManager {
         }else if(object instanceof StartTurnMessage){
             view.displayTurn((StartTurnMessage) object);
         }else if(object instanceof SetNumPlayersMessage){
-            SetNumPlayersMessage numPlayers = (SetNumPlayersMessage) object;
             view.requestNumPlayers();
         }else if(object instanceof SetNickMessage){
             view.requestNickname();
@@ -67,6 +68,10 @@ public class MessageManager {
             view.updateTowerSpace((TowerSpaceUpdateMessage) object);
         }else if(object instanceof AllUpdateMessage){
             view.updateAll((AllUpdateMessage) object);
+        }else if(object instanceof ProfTableUpdateMessage){
+            view.updateProfTable((ProfTableUpdateMessage) object);
+        }else if(object instanceof CharacterCardUpdateMessage){
+            view.updateCharacterCard((CharacterCardUpdateMessage) object);
         }
         else{
             throw new IllegalArgumentException();
