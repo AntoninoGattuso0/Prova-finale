@@ -1,7 +1,5 @@
 package it.polimi.ingsw.client;
 
-import it.polimi.ingsw.model.CharacterCard;
-import it.polimi.ingsw.model.ProfTable;
 import it.polimi.ingsw.network.Message.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.*;
 import it.polimi.ingsw.view.View;
