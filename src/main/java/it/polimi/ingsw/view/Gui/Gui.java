@@ -8,6 +8,7 @@ import it.polimi.ingsw.network.Message.StartTurnMessage;
 import it.polimi.ingsw.network.Message.UpdateMessage.*;
 import it.polimi.ingsw.observer.ViewObservable;
 import it.polimi.ingsw.view.View;
+import javafx.application.Platform;
 
 import java.util.ArrayList;
 
@@ -119,6 +120,7 @@ public class Gui extends ViewObservable implements View {
 
     @Override
     public void requestNickname() {
+        Platform.runLater(()->SceneController.changeRootPane);
 
     }
 
@@ -209,6 +211,11 @@ public class Gui extends ViewObservable implements View {
 
     @Override
     public void updateEntrance(EntranceUpdateMessage object) {
+
+    }
+
+    @Override
+    public void updateAll(AllUpdateMessage object) {
 
     }
 }
