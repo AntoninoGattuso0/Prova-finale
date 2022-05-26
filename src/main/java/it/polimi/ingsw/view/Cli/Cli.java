@@ -3,10 +3,7 @@ package it.polimi.ingsw.view.Cli;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.ModelLight.LightPlayer;
-import it.polimi.ingsw.model.Cloud;
-import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Island;
-import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
 import it.polimi.ingsw.network.Message.UpdateMessage.AssistantCardUpdateMessage;
 import it.polimi.ingsw.network.Message.UpdateMessage.CloudUpdateMessage;
@@ -168,19 +165,19 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void displayAssistantCard(Player player) {
+    public void displayAssistantCard() {
         clearCli();
 
         int i;
         StringBuilder assistantCard = new StringBuilder();
-        for (i = 0; i < player.getDeckAssistant().size(); i++) {
+        for (i = 0; i < lightGame.getPlayers().get(i).getDeckAssistant().size(); i++) {
             out.println(ColorCli.BOLDCYAN + "+-----------------------+");
-             if(player.getDeckAssistant().get(i).getCardValue() == 10)
-                out.println(ColorCli.BOLDCYAN +"| Card Value: " + ColorCli.RED + player.getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "        |");
+             if(lightGame.getPlayers().get(i).getDeckAssistant().get(i).getCardValue() == 10)
+                out.println(ColorCli.BOLDCYAN +"| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(i).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "        |");
             else
-                 out.println(ColorCli.BOLDCYAN +"| Card Value: " + ColorCli.RED + player.getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "         |");
+                 out.println(ColorCli.BOLDCYAN +"| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(i).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "         |");
 
-            out.println(ColorCli.BOLDCYAN +"| MN steps: " + ColorCli.GREEN +player.getDeckAssistant().get(i).getStep() + ColorCli.BOLDCYAN + "           |");
+            out.println(ColorCli.BOLDCYAN +"| MN steps: " + ColorCli.GREEN + lightGame.getPlayers().get(i).getDeckAssistant().get(i).getStep() + ColorCli.BOLDCYAN + "           |");
             out.println(ColorCli.BOLDCYAN + "+-----------------------+");
         }
         out.println(assistantCard);
@@ -521,7 +518,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void displayCharacterCard(Game game) {
+    public void displayCharacterCard() {
 
     }
 
