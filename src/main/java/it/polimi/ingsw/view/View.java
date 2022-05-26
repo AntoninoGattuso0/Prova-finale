@@ -14,8 +14,8 @@ public interface View {
     void startGame();
     void loginPlayers();
 
-    void displayNick();// DA MODIFICARE TUTTI I GAME, VEDI COSA HO SCRITTO IN MESSAGE MANAGER
-    void displayNumPlayers(int numPlayers);
+    void displayNick();
+    void displayNumPlayers();
     void displayIsExpert();
     void displayAssistantCard(Player player);
     void displayCloud();
