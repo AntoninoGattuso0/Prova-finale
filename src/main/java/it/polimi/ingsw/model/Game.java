@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model;
-import java.awt.*;
+
+import it.polimi.ingsw.client.ModelLight.*;
+
 import java.util.*;
 public class Game {
     protected ArrayList<Player> players = new ArrayList<>();
@@ -17,6 +19,25 @@ public class Game {
 
     public ProfTable getProfTable() {
         return profTable;
+    }
+
+    public LightGame getLightGame(){
+        int i;
+        ArrayList<LightCloud> lightClouds=new ArrayList<>();
+        for(i=0;i<clouds.size();i++) {
+            LightCloud cloud = new LightCloud(clouds.get(i).getRedPawn(),clouds.get(i).getBluePawn(),clouds.get(i).getNumPawn(),clouds.get(i).getPinkPawn(),clouds.get(i).getYellowPawn(),clouds.get(i).getGreenPawn());
+            lightClouds.add(cloud);
+        }
+        ArrayList<LightPlayer> lightPlayers= new ArrayList<>();
+        for(i=0;i<players.size();i++){
+            LightDiningRoom lightDiningRoom=new LightDiningRoom(players.get(i).getDiningRoom().getNumBlue(),players.get(i).getDiningRoom().getNumGreen(),players.get(i).getDiningRoom().getNumPink(),players.get(i).getDiningRoom().getNumRed(),players.get(i).getDiningRoom().getNumYellow());
+            LightTowerSpace lightTowerSpace=new LightTowerSpace(players.get(0).getTowerSpace().getColorTower(),players.get(0).getTowerSpace().getNumTower());
+            LightEntrance lightEntrance=new LightEntrance(players.get(i).getEntrance().getNumPawn(),players.get(i).getEntrance().getGreenPawn(),players.get(i).getEntrance().getRedPawn(),players.get(i).getEntrance().getYellowPawn(),players.get(i).getEntrance().getPinkPawn(),players.get(i).getEntrance().getBluePawn());
+            LightPlayer lightPlayer=new LightPlayer(players.get(i).getNickname(),players.get(i).getNumCoin(),players.get(i).getDeckAssistant(),players.get(i).getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDiningRoom );
+            lightPlayers.add(lightPlayer);
+        }
+        LightGame lightgame= new LightGame(lightClouds,lightPlayers,islands,totPlayer,profTable);
+        return lightgame;
     }
 
     public int getTotPlayer() {

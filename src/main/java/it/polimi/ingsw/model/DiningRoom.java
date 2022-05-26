@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.client.ModelLight.LightDiningRoom;
+
 import java.util.Objects;
 public class DiningRoom {
     //modifiche all'UML: array di array: in cui gli elementi sono 0 o 1;
@@ -227,5 +229,9 @@ public class DiningRoom {
                 }
             }
         }
+    }
+    public LightDiningRoom getLightDiningRoom(){
+        LightDiningRoom lightDiningRoom=new LightDiningRoom(getNumBlue(),getNumGreen(),getNumPink(),getNumRed(),getNumYellow());
+        return lightDiningRoom;
     }
 }

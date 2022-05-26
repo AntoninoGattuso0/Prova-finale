@@ -1,6 +1,7 @@
 package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
 import it.polimi.ingsw.network.Lobby;
 import it.polimi.ingsw.network.VirtualView;
 
@@ -54,6 +55,10 @@ public class Controller {
     }
     public void updateCurrentPlayer(){
         currentPlayer=players.get((players.indexOf(currentPlayer)+1)%players.size());
+    }
+
+    public void sendUpdate(){
+        virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
     }
     public void AdministrDisconnectionInSet(String userNickname) {
         endGame= true;

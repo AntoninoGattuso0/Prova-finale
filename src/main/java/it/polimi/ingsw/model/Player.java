@@ -37,26 +37,10 @@ public class Player {
         return this.deckAssistant;
     }
     public LightPlayer getLightPlayer(){
-        LightPlayer lightPlayer=new LightPlayer();
-        LightDiningRoom lightDining=new LightDiningRoom();
-        LightTowerSpace lightTowerSpace= new LightTowerSpace();
-        LightEntrance lightEntrance= new LightEntrance();
-        lightPlayer.setCurrentAssistant(currentAssistant);
-        lightPlayer.setNickname(nickname);
-        lightDining.setNumBlue(diningRoom.getNumBlue());
-        lightDining.setNumGreen(diningRoom.getNumGreen());
-        lightDining.setNumPink(diningRoom.getNumPink());
-        lightDining.setNumRed(diningRoom.getNumRed());
-        lightDining.setNumYellow(diningRoom.getNumYellow());
-        lightEntrance.setBluePawn(entrance.getBluePawn());
-        lightEntrance.setGreenPawn(entrance.getGreenPawn());
-        lightEntrance.setPinkPawn(entrance.getPinkPawn());
-        lightEntrance.setRedPawn(entrance.getRedPawn());
-        lightEntrance.setYellowPawn(entrance.getYellowPawn());
-        lightEntrance.setNumPawn(entrance.getNumPawn());
-        lightTowerSpace.setColorTower(towerSpace.getColorTower());
-        lightTowerSpace.setNumTower(lightTowerSpace.getNumTower());
-        return lightPlayer;
+        LightDiningRoom lightDining=new LightDiningRoom(getDiningRoom().getNumBlue(),getDiningRoom().getNumGreen(),getDiningRoom().getNumPink(),getDiningRoom().getNumRed(),getDiningRoom().getNumYellow());
+        LightTowerSpace lightTowerSpace= new LightTowerSpace(getTowerSpace().getColorTower(),getTowerSpace().getNumTower());
+        LightEntrance lightEntrance= new LightEntrance(getEntrance().getNumPawn(),getEntrance().getGreenPawn(),getEntrance().getRedPawn(),getEntrance().getYellowPawn(),getEntrance().getPinkPawn(),getEntrance().getBluePawn());
+        return new LightPlayer(getNickname(),getNumCoin(),getDeckAssistant(),getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDining);
     }
     public void setActive(boolean active) {
         this.active=active;

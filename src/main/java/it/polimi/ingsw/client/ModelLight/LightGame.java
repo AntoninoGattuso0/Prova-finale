@@ -12,34 +12,16 @@ public class LightGame implements Serializable {
     private  ArrayList<LightPlayer> players;
     private  ArrayList<Island> islands;
     private int numPlayers;
-    public LightGame(){
-        this.clouds=new ArrayList<>();
-        this.players=new ArrayList<>();
-        this.islands=new ArrayList<>();
-        this.numPlayers=-1;
-        this.profTable=null;
-    }
-
-    public void setNumPlayers(int numPlayers) {
-        this.numPlayers = numPlayers;
-    }
-
-    public void setProfTable(ProfTable profTable) {
-        this.profTable = profTable;
+    public LightGame(ArrayList<LightCloud> clouds,ArrayList<LightPlayer> players,ArrayList<Island> islands, int numPlayers, ProfTable profTable){
+        this.clouds=clouds;
+        this.players=players;
+        this.islands=islands;
+        this.numPlayers=numPlayers;
+        this.profTable=profTable;
     }
     public ProfTable getProfTable() {
         return profTable;
     }
-    public void setIslands(ArrayList<Island> islands) {
-        this.islands = islands;
-    }
-    public void setClouds(ArrayList<LightCloud> clouds) {
-        this.clouds = clouds;
-    }
-    public void setPlayers(ArrayList<LightPlayer> players) {
-        this.players = players;
-    }
-
     public int getNumPlayers() {
         return numPlayers;
     }

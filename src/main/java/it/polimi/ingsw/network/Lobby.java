@@ -31,7 +31,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         userInput = new UserInput();
         clients = new ArrayList<>();
         players = new ArrayList<>();
-        players.get(0).setNickname(null);
         numPlayer = 0;
         lobbyOk = false;
         lobbySett = false;
@@ -43,22 +42,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     public boolean isLobbySett() {
         return lobbySett;
     }
-    public void addClientToList(ClientHandlerInterface client, Lobby lobby){
-        String nickname;
-        loginUser(client);
-        nickname=client.getUserNickname();
-        if(nickname!=null){
-            if(players.get(0).getNickname()==null){
-                newLobby(client);
-            }else{
-                joiningInLobby(client,lobby);
-            }
-        }
-    }
-    private void newLobby(ClientHandlerInterface client){
-            Lobby lobby=new Lobby();
-            lobby.addClient(client);
-    }
+
     public void addClient(ClientHandlerInterface client){
         synchronized (lock) {
             String nick;
@@ -76,7 +60,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
             lock.notifyAll();
         }
         if(lobbyOk){
-            newGame();
+            newGame(game);
         }
     }
     @Override
@@ -137,14 +121,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
 
     private void deregisterConn(ClientHandlerInterface clientHandler) {
     }
-
-    private void joiningInLobby(ClientHandlerInterface client, Lobby lobby){
-            int i;
-            for(i=0;!namePlayer.get(i).equals(client.getUserNickname());i++);
-            if(namePlayer.get(i).equals(client.getUserNickname())){
-                lobby.addClient(client);
-            }
-    }
     public boolean isLobbyOk(){return lobbyOk;}
     //inserisco i player nell'array nomi, e li creo anche nel gioco
     public void loginUser(ClientHandlerInterface loginClient){
@@ -187,6 +163,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         System.out.println("SERVER: "+nickname+" is joining!\n");
         loginClient.sendObject(new LoginAcceptedMessage(nickname));
         loginClient.setTurn(false);
+        addClient(loginClient);
     }
     public void endGame(Lobby lobby){
         for(String nickname: namePlayer){
@@ -194,8 +171,8 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         }
         lobby = null;
     }
-    public void newGame(){
+    public void newGame(Game game){
         controller=new Controller(game,userInput,virtualView,players);
-       // controller.getRoundController()
+        controller.sendUpdate();
     }
 }

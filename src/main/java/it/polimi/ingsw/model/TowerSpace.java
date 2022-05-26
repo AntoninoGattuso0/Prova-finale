@@ -1,4 +1,7 @@
 package it.polimi.ingsw.model;
+
+import it.polimi.ingsw.client.ModelLight.LightTowerSpace;
+
 public class TowerSpace {
 
     protected ColorTower colorTower;
@@ -45,6 +48,8 @@ public class TowerSpace {
                 }
             }
         }
-
-
+    public LightTowerSpace getLightTowerSpace(){
+        LightTowerSpace lightTowerSpace=new LightTowerSpace(getColorTower(),getNumTower());
+        return lightTowerSpace;
+    }
 }

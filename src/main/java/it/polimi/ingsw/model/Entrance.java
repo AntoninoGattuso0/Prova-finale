@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.client.ModelLight.LightEntrance;
+
 import java.util.*;
 public class Entrance {
     private int numPawn;       //numero di pedine totali presenti all'entrata della plancia
@@ -179,5 +181,9 @@ public class Entrance {
             cloud.setBluePawn(0);
             player.entrance.startNumPawn(game);
         }
+    }
+    public LightEntrance getLightEntrance(){
+        LightEntrance lightEntrance=new LightEntrance(getNumPawn(),getGreenPawn(),getRedPawn(),getYellowPawn(),getPinkPawn(),getBluePawn());
+        return lightEntrance;
     }
 }
