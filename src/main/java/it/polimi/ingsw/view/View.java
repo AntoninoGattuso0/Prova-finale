@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public interface View {
 
     void startGame();
-    void loginPlayers();
+    //void loginPlayers(); // non serve piu perche il nome lo chiediamo con request
 
     void requestNickname();
     void requestNumPlayers();
@@ -22,6 +22,7 @@ public interface View {
     void displayNick();
     void displayNumPlayers();
     void displayIsExpert();
+
     void displayAssistantCard();
     void displayCloud();
     void displayIslands();

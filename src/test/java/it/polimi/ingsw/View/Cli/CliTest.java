@@ -81,6 +81,6 @@ class CliTest {
         Game.newPlayer("EZRA",game);
         Cli cli = new Cli();
 
-        cli.displayAssistantCard(game.getPlayers().get(0));
+        cli.displayAssistantCard();
     }
 }
