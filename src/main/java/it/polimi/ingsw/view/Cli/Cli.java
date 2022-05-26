@@ -391,16 +391,16 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void updateProfTable() {
-
+    public void updateProfTable(ProfTableUpdateMessage profTable) {
+        lightGame.updateProfTable(profTable);
     }
     @Override
-    public void updateTowerSpace() {
+    public void updateTowerSpace(TowerSpaceUpdateMessage towerSpace) {
 
     }
 
     @Override
-    public void updateCharacterCard() {
+    public void updateCharacterCard(CharacterCardUpdateMessage characterCard) {
 
     }
 

@@ -43,7 +43,7 @@ public interface View {
     void updateIsland(IslandUpdateMessage message);
     void updateEntrance(EntranceUpdateMessage message);
     void updateDiningRoom(DiningRoomUpdateMessage message);
-    void updateProfTable();
+    void updateProfTable(ProfTableUpdateMessage message);
     void updateTowerSpace(TowerSpaceUpdateMessage message);
     void updateCharacterCard(CharacterCardUpdateMessage message);
 

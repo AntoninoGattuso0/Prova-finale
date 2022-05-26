@@ -42,7 +42,7 @@ public class LightGame implements Serializable {
     public void updateIsland(IslandUpdateMessage message){}
     public void updateEntrance(EntranceUpdateMessage message){}
     public void updateDiningRoom(DiningRoomUpdateMessage message){}
-    public void updateProfTable(ProfTableUpdate message){}
+    public void updateProfTable(ProfTableUpdateMessage message){}
     public void updateTowerSpace(TowerSpaceUpdateMessage message){}
     public void updateCharacterCard(CharacterCardUpdateMessage message){}
 }
