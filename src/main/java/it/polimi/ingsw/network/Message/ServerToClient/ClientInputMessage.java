@@ -1,6 +1,6 @@
-package it.polimi.ingsw.network.Message;
+package it.polimi.ingsw.network.Message.ServerToClient;
 
-public class ClientInputMessage extends ServerToClient{
+public class ClientInputMessage extends ServerToClient {
     private final String error;
     public ClientInputMessage(String error){
         this.error=error;

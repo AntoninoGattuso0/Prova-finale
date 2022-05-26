@@ -1,4 +1,4 @@
-package it.polimi.ingsw.network.Message;
+package it.polimi.ingsw.network.Message.ServerToClient;
 
 public class DisconnectionMessage extends ServerToClient {
     private static final long serialVersionUID = 4161698569112307980L;

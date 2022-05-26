@@ -1,4 +1,4 @@
-package it.polimi.ingsw.network.Message;
+package it.polimi.ingsw.network.Message.ServerToClient;
 
 public class InvalidNumPlayerMessage extends ServerToClient {
     private static final long serialVersionUID = -8586276804689416722L;

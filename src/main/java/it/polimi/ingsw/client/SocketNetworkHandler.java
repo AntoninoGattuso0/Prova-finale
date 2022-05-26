@@ -1,7 +1,7 @@
 package it.polimi.ingsw.client;
 import it.polimi.ingsw.network.Message.RemoveClientMessage;
 import it.polimi.ingsw.view.*;
-import it.polimi.ingsw.network.Message.EndGameMessage;
+import it.polimi.ingsw.network.Message.ServerToClient.EndGameMessage;
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
 import it.polimi.ingsw.observer.NetworkHandler;

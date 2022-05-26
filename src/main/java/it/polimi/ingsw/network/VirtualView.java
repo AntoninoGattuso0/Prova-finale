@@ -2,7 +2,7 @@ package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.StartTurnMessage;
-import it.polimi.ingsw.network.Message.WinnerMessage;
+import it.polimi.ingsw.network.Message.ServerToClient.WinnerMessage;
 import it.polimi.ingsw.observer.ViewObservable;
 
 import java.util.HashMap;

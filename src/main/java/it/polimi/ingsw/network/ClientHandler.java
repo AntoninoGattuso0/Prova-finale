@@ -2,7 +2,7 @@ package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
-import it.polimi.ingsw.network.Message.WrongTurnMessage;
+import it.polimi.ingsw.network.Message.ServerToClient.WrongTurnMessage;
 import it.polimi.ingsw.observer.ConnectionObservable;
 
 import java.io.IOException;

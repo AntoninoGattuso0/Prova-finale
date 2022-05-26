@@ -1,10 +1,7 @@
 package it.polimi.ingsw.view;
 
-import it.polimi.ingsw.model.CharacterCard;
 import it.polimi.ingsw.model.ColorPawn;
-import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.Player;
-import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
+import it.polimi.ingsw.network.Message.ServerToClient.ClientAcceptedMessage;
 import it.polimi.ingsw.network.Message.StartTurnMessage;
 import it.polimi.ingsw.network.Message.UpdateMessage.*;
 

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.network.Message;
+package it.polimi.ingsw.network.Message.ClientToServer;
 
 import it.polimi.ingsw.model.ColorPawn;
 

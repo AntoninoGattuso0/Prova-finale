@@ -1,4 +1,4 @@
-package it.polimi.ingsw.network.Message;
+package it.polimi.ingsw.network.Message.ServerToClient;
 
 public class LoginRefusedMessage extends ServerToClient {
     private static final long serialVersionUID = -5604170525970363492L;

@@ -1,6 +1,10 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.network.Message.*;
+import it.polimi.ingsw.network.Message.ClientToServer.MoveMotherNatureMessage;
+import it.polimi.ingsw.network.Message.ClientToServer.MovePawnToDiningMessage;
+import it.polimi.ingsw.network.Message.ClientToServer.*;
+import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.*;
 import it.polimi.ingsw.view.View;
 

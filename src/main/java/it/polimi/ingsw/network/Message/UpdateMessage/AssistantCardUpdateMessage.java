@@ -1,7 +1,7 @@
 package it.polimi.ingsw.network.Message.UpdateMessage;
 
 import it.polimi.ingsw.model.AssistantCard;
-import it.polimi.ingsw.network.Message.ServerToClient;
+import it.polimi.ingsw.network.Message.ServerToClient.ServerToClient;
 
 import java.util.ArrayList;
 public class AssistantCardUpdateMessage extends ServerToClient {

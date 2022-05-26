@@ -1,7 +1,7 @@
 package it.polimi.ingsw.network.Message.UpdateMessage;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
-import it.polimi.ingsw.network.Message.ServerToClient;
+import it.polimi.ingsw.network.Message.ServerToClient.ServerToClient;
 
 public class AllUpdateMessage extends ServerToClient {
     private static final long serialVersionUID= 8105229548955203739L;

@@ -5,6 +5,10 @@ import it.polimi.ingsw.controller.UserInput;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.*;
+import it.polimi.ingsw.network.Message.ClientToServer.RequestIsExpert;
+import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
+import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayers;
+import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.observer.ConnectionObserver;
 import it.polimi.ingsw.observer.EndGameObserver;
 

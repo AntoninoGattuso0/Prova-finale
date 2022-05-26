@@ -1,4 +1,4 @@
-package it.polimi.ingsw.network.Message;
+package it.polimi.ingsw.network.Message.ClientToServer;
 
 public class LoginSettMessage extends ClientToServer {
     private static final long serialVersionUID = 790152804682116373L;

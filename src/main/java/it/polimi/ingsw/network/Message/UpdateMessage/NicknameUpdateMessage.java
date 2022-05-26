@@ -1,6 +1,6 @@
 package it.polimi.ingsw.network.Message.UpdateMessage;
 
-import it.polimi.ingsw.network.Message.ServerToClient;
+import it.polimi.ingsw.network.Message.ServerToClient.ServerToClient;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.network.Message;
+package it.polimi.ingsw.network.Message.ClientToServer;
 
 public class ChooseCloudMessage extends ClientToServer {
     private static final long serialVersionUID = -2263736350397053763L;

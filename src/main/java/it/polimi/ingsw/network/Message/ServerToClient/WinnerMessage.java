@@ -1,6 +1,6 @@
-package it.polimi.ingsw.network.Message;
+package it.polimi.ingsw.network.Message.ServerToClient;
 
-public class WinnerMessage extends ServerToClient{
+public class WinnerMessage extends ServerToClient {
     private static final long serialVersionUID = -2356374239620830380L;
     private final String message;
     public WinnerMessage(String nick){
