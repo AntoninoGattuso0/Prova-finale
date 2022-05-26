@@ -15,6 +15,10 @@ public interface View {
     void startGame();
     void loginPlayers();
 
+    void requestNickname();
+    void requestNumPlayers();
+    void requestIsExpert();
+
     void displayNick();
     void displayNumPlayers();
     void displayIsExpert();
@@ -23,6 +27,15 @@ public interface View {
     void displayIslands();
     void displaySchoolBoard();
     void displayCharacterCard();
+
+    void displayWinner(String winner);
+    void displayNetError();
+    void displayWrongNickname();
+    void displayWrongTurn();
+    void displayFetchNameMessage();
+    void displayTurn(StartTurnMessage object);
+    void displayResponseMessage(String errorMessage);
+
 
     //ogni volta che si cambia qualcosa di queste dobbiamo aggiornarle e poi richiamare display
     void updateAssistantCard(AssistantCardUpdateMessage message);
@@ -36,42 +49,18 @@ public interface View {
 
     void updateNickname(NicknameUpdateMessage m);
     void updateNumPlayers();
-
-    void registerClient(ClientAcceptedMessage m);
-
-    void requestNickname();
-    void requestNumPlayers();
-    void requestIsExpert();
-
-
-    void waitOtherPlayers(String object);
-
-    void displayWinner(String winner);
-
-
-    void displayNetError();
-    void displayWrongNickname();
-
-    void updatePawnToDining(int numDiningRoom, ArrayList<ColorPawn> arrayPawn);
-
-    void updatePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn);
-
-    void requestMoveMotherNature(int island);
-    void updateMoveMotherNature(int island);
-
-    void displayWrongTurn();
-
-    void displayFetchNameMessage();
-
-    void displayTurn(StartTurnMessage object);
-
-    void displayResponseMessage(String errorMessage);
+    void updateAll(AllUpdateMessage object);
 
     void selectCloud(int cloud);
-
     void selectAssistantCard(int assistant);
+    void requestMoveMotherNature(int island);
 
-    void updateAll(AllUpdateMessage object);
+    void updateMoveMotherNature(int island);
+    void updatePawnToDining(int numDiningRoom, ArrayList<ColorPawn> arrayPawn);
+    void updatePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn);
+
+    void registerClient(ClientAcceptedMessage m);
+    void waitOtherPlayers(String object);
 }
 
 //CLI E GUI dovranno implementare quest interfaccia
