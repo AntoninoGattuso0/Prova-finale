@@ -124,15 +124,50 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     }
 
-    @Override
+   /* @Override
     public void loginPlayers() {
         System.out.println("Welcome in Eriantys. Insert your NICKNAME: ");
         String nick = scanner.nextLine();
         System.out.println("\n Do you want to join. Inset 1 for Yes, 0 for No: ");
         boolean joinGame = scanner.nextBoolean();
-        System.out.println("\n");
         notifyMessage(new LoginSettMessage(nick, joinGame));
+        System.out.println("\n");
+    }*/
+
+    @Override
+    public void requestNickname() {
+        out.println("Please insert your Nickname:  ");
+        String nick = scanner.nextLine();
+        out.println("\n");
+
+        notifyMessage(new RequestNickname(nick));
     }
+
+    @Override
+    public void requestNumPlayers(){
+
+        System.out.println("Please insert the number of Players. It must be a number between 2 and 4. \n");
+        int numPlayers = checkInteger();
+        out.println("\n");
+        while (numPlayers < 2 || numPlayers > 4) {
+            System.out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
+            numPlayers = checkInteger();
+        }
+        notifyMessage(new RequestNumPlayers(numPlayers));
+    }
+
+    @Override
+    public void requestIsExpert() {
+        int mode;
+        do{
+            System.out.println("Choose the game mode: type 0 for normal mode or type 1 for expert mode: \n");
+            mode = checkInteger();
+        }while(mode!=0 || mode!=1);
+        if(mode==0) isExpert = false;
+        else if(mode==1) isExpert = true;
+        notifyMessage(new RequestIsExpert(isExpert));
+    }
+
 
     @Override
     public void displayNick(){
@@ -453,42 +488,8 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void requestIsExpert() {
-        int mode;
-        do{
-            System.out.println("Choose the game mode: type 0 for normal mode or type 1 for expert mode: \n");
-            mode = checkInteger();
-            if(mode==0) isExpert = false;
-            else if(mode==1) isExpert = true;
-        }while(mode!=0 || mode!=1);
-        notifyMessage(new RequestIsExpert(isExpert));
-    }
-
-    @Override
-    public void requestNumPlayers(){
-
-        System.out.println("Please insert the number of Players. It must be a number between 2 and 4. \n");
-        int numPlayers = checkInteger();
-        out.println("\n");
-        while (numPlayers < 2 || numPlayers > 4) {
-            System.out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
-            numPlayers = checkInteger();
-        }
-        notifyMessage(new RequestNumPlayers(numPlayers));
-    }
-
-    @Override
     public void registerClient(ClientAcceptedMessage m) {
 
-    }
-
-    @Override
-    public void requestNickname() {
-        out.println("Please insert your Nickname:  ");
-        String nick = scanner.nextLine();
-        out.println("\n");
-
-        notifyMessage(new RequestNickname(nick));
     }
 
     @Override
@@ -507,7 +508,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         notifyMessage(new WinnerMessage(winner));
     }
 
-    @Override
     public void requestCloud() {
         out.println("Please select a cloud between 0 and "+ lightGame.getClouds().size() + ": ");
         int cloud = checkInteger();
