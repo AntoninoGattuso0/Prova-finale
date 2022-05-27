@@ -19,12 +19,12 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
     private final View view;
     private volatile boolean connected;
     private volatile boolean ready;
-    private final MessageManager messageManager;
+    private final ClientMessageManager clientMessageManager;
     public SocketNetworkHandler(View view){
         connected=false;
         ready=false;
         this.view=view;
-        this.messageManager =new MessageManager(view);
+        this.clientMessageManager =new ClientMessageManager(view);
     }
     private void pingToServer(){
         Thread thread= new Thread(()->{
@@ -104,7 +104,7 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
                 try {
                     socket.setSoTimeout(30000);
                     Object input = in.readObject();
-                    messageManager.manageInputToClient(input);
+                    clientMessageManager.manageInputToClient(input);
                     if (input instanceof EndGameMessage || input instanceof RemoveClientMessage) {
                         break;
                     }

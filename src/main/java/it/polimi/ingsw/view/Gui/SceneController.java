@@ -1,4 +1,4 @@
-package it.polimi.ingsw.view.Gui;
+/*package it.polimi.ingsw.view.Gui;
 
 import it.polimi.ingsw.observer.ViewObservable;
 import it.polimi.ingsw.view.Gui.scene.GenericSceneController;
@@ -21,3 +21,4 @@ public class SceneController extends ViewObservable {
 
     public static <T> T changeRootPane(List<ViewObservable>)
 }
+*/

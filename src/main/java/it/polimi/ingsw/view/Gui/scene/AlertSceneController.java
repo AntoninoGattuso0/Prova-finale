@@ -1,4 +1,4 @@
-package it.polimi.ingsw.view.Gui.scene;
+/*package it.polimi.ingsw.view.Gui.scene;
 
 import it.polimi.ingsw.view.Gui.SceneController;
 import javafx.fxml.FXML;
@@ -57,3 +57,4 @@ public class AlertSceneController implements GenericSceneController{
         stage.close();
     }
 }
+*/

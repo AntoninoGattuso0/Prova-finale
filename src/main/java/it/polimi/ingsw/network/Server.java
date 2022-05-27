@@ -28,8 +28,8 @@ public class Server {//DA RIVEDERE
         System.out.println("SERVER: Waiting client connection.");
             Socket socket= serverSocket.accept();
             System.out.println("SERVER: Client connected.");
-            ClientHandler client= new ClientHandler(socket,getLobby());
-            new Thread(client).run();
+            ClientHandlerInterface client= new ClientHandler(socket,getLobby());
+            client.run();
         } catch (IOException e) {
             System.out.println("SERVER: restarting server.");
         }

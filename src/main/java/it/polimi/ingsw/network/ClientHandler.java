@@ -18,18 +18,17 @@ public class ClientHandler extends ConnectionObservable implements ClientHandler
     private volatile boolean connected;
     private volatile boolean myTurn;
     private Message message;
-    private final Ping ping;
+    private final Ping ping = new Ping();
     private volatile boolean messageReady;
-    private ObjectInputStream objectInputStream=null;
-    private ObjectOutputStream objectOutputStream=null;
+    private ObjectInputStream objectInputStream;
+    private ObjectOutputStream objectOutputStream;
 
-    public ClientHandler(Socket socket,Lobby lobby) {
-        this.lobby=lobby;
+    public ClientHandler(Socket socket, Lobby lobby) {
+        this.lobby= lobby;
         this.mySocket = socket;
         this.connected = true;
         this.myTurn = false;
         this.messageReady = false;
-        this.ping = new Ping();
     }
     public String getUserNickname() {
         return userNickname;
@@ -43,10 +42,10 @@ public class ClientHandler extends ConnectionObservable implements ClientHandler
         this.userNickname=userNickname;
     }
 
-    public void sendObject(Object object) {
+    public void sendObject(Message object) {
         try {
-            objectOutputStream.reset();
             objectOutputStream.writeObject(object);
+            objectOutputStream.reset();
             objectOutputStream.flush();
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
@@ -140,14 +139,15 @@ public class ClientHandler extends ConnectionObservable implements ClientHandler
     }
     public void run() {
         try {
-            this.objectInputStream = new ObjectInputStream(mySocket.getInputStream());
+            System.out.println("c");
             this.objectOutputStream = new ObjectOutputStream(mySocket.getOutputStream());
+            this.objectInputStream = new ObjectInputStream(mySocket.getInputStream());
             System.out.println("[SERVER] new Client Created.");
+            readFromClient();
+            pingToClient();
+            lobby.loginUser(this);
         } catch (IOException e) {
             e.printStackTrace();
-        readFromClient();
-        pingToClient();
-        lobby.loginUser(this);
         }
     }
 }

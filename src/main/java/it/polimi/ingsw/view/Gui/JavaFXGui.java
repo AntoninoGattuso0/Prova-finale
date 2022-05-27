@@ -1,4 +1,4 @@
-package it.polimi.ingsw.view.Gui;
+/*package it.polimi.ingsw.view.Gui;
 
 import it.polimi.ingsw.network.ClientHandler;
 import javafx.application.Application;
@@ -46,3 +46,4 @@ public class JavaFXGui extends Application {
         System.exit(0);
     }
 }
+*/

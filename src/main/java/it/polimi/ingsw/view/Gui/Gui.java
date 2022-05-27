@@ -1,4 +1,4 @@
-package it.polimi.ingsw.view.Gui;
+/*package it.polimi.ingsw.view.Gui;
 
 import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.model.Game;
@@ -219,3 +219,4 @@ public class Gui extends ViewObservable implements View {
 
     }
 }
+*/

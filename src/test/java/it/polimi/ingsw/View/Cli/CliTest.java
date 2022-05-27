@@ -1,4 +1,4 @@
-package it.polimi.ingsw.View.Cli;
+/*package it.polimi.ingsw.View.Cli;
 
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.view.Cli.Cli;
@@ -83,4 +83,4 @@ class CliTest {
 
         cli.displayAssistantCard();
     }
-}
+}*/
