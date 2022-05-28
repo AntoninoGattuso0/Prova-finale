@@ -9,7 +9,7 @@ class BarbaraTest {
     public void TestUseEffectBarbara() {
         Game game = new Game(2, true);
         game.start(game);
-        Barbara barbara = new Barbara(game);
+        Barbara barbara = new Barbara();
         ArrayList<ColorPawn> colorPawn= new ArrayList<>();
         colorPawn.add(ColorPawn.GREEN);
         Game.newPlayer("a",game);//0

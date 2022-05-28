@@ -10,7 +10,7 @@ public class Antonio extends UseEffect{
     private int yellowPawn;
     private int pinkPawn;
     private int bluePawn;
-    public Antonio(StudentBag studentBag){ //COSTRUTTORE ANTONIO: manca l'inizializzazione del prezzo. Non so come fare visto che CharacterCard è una classe astratta -Nino
+    public Antonio(StudentBag studentBag){//COSTRUTTORE ANTONIO: manca l'inizializzazione del prezzo. Non so come fare visto che CharacterCard è una classe astratta -Nino
         coinPrice=1;
         numPawnAntonio=0;
         greenPawn=0;
@@ -68,7 +68,8 @@ public class Antonio extends UseEffect{
         }
     }
 
-    public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn) {
+
+    public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
         Random rnd = new Random();
         ArrayList<String> refillPawn = Game.createArrayPawn(game.studentBag);
         if (colorPawn.get(0).toString().equals("GREEN") && getGreenPawn() > 0) {  //altrimenti cosa succede se la pedina verde non c'è?

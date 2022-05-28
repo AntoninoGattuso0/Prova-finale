@@ -18,7 +18,7 @@ public class ServerMessageMenager {
         if (object instanceof ChooseCloudMessage) {
         } else if (object instanceof ChooseCharacterCardMessage) {
             ChooseCharacterCardMessage c = (ChooseCharacterCardMessage) object;
-            lobby.useCharacter(c.getNumCharacter(),clientHandler);
+            lobby.useCharacter(c.getNumCharacter(),c.getNumPawn(),c.getNumIsland(),c.getColorPawns(),clientHandler);
         }else if(object instanceof ChooseCloudMessage) {
             ChooseCloudMessage cloud = (ChooseCloudMessage) object;
             lobby.selectCloud(cloud.getCloud(),clientHandler);

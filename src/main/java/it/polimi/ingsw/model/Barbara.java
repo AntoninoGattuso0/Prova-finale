@@ -2,9 +2,10 @@ package it.polimi.ingsw.model;
 import java.util.ArrayList;
 public class Barbara extends UseEffect{
     private int coinPrice;
-    public Barbara(Game game){
+    public Barbara(){
         coinPrice=2;
     }
+
     public void setCoinPrice(int coinPrice) {
         this.coinPrice = coinPrice;
     }

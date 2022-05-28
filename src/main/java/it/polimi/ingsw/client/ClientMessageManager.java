@@ -1,9 +1,8 @@
 package it.polimi.ingsw.client;
 
-import it.polimi.ingsw.client.ModelLight.LightGame;
-import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.network.Message.Ping;
 import it.polimi.ingsw.network.Message.ServerToClient.*;
-import it.polimi.ingsw.network.Message.UpdateMessage.*;
+import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
 import it.polimi.ingsw.view.View;
 
 public class ClientMessageManager {
@@ -11,8 +10,8 @@ public class ClientMessageManager {
     public ClientMessageManager(View view){
         this.view=view;
     }
-    public void manageInputToClient(Object object){   // ho aggiunto game per poterlo passare come parametro ad alcune funzioni
-        if(object instanceof Ping){                             //LEGGI LA MIA RISPOSTA SOTTO
+    public void manageInputToClient(Object object){
+        if(object instanceof Ping){
             return;
         }
         if(object instanceof WaitMessage){
@@ -23,8 +22,6 @@ public class ClientMessageManager {
             view.requestNumPlayers();
         }else if(object instanceof SetNickMessage){
             view.requestNickname();
-        }else if(object instanceof SetIsExpertMessage){
-            view.requestIsExpert();
        }else if(object instanceof ClientAcceptedMessage){
                view.registerClient((ClientAcceptedMessage) object );
         }else if(object instanceof WinnerMessage){
@@ -40,9 +37,6 @@ public class ClientMessageManager {
         }else if(object instanceof AllUpdateMessage){
             AllUpdateMessage game=(AllUpdateMessage) object;
             view.updateAll(game.getLightGame());
-
-        }else if(object instanceof CharacterCardUpdateMessage) {
-            view.updateCharacterCard();
         }
          else   throw new IllegalArgumentException();
         }

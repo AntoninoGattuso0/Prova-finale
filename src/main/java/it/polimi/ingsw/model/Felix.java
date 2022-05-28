@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Felix extends UseEffect{
     private int coinPrice;
-
+    private int numEffect;
     public int getCoinPrice(){
         return coinPrice;
     }

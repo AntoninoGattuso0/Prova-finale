@@ -4,4 +4,8 @@ public class CharacterCard {
     public CharacterCard(UseEffect useeffect){
         useEffect=useeffect;
     }
+
+    public UseEffect getUseEffect() {
+        return useEffect;
+    }
 }

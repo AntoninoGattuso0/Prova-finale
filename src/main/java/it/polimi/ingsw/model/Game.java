@@ -10,11 +10,12 @@ public class Game {
     protected ProfTable profTable;
     protected ArrayList<Island> islands = new ArrayList<>();
     protected boolean isExpert;
-    protected ArrayList<CharacterCard> characterCards = new ArrayList<>(3);//insieme dei 3 characters usati
+    protected ArrayList<CharacterCard> characterCards = new ArrayList<>();//insieme dei 3 characters usati
     protected Map<Integer, String> m = new HashMap<>();
     protected StudentBag studentBag;
-    public void setTotPlayer(int i) {
-        totPlayer = i;
+
+    public ArrayList<CharacterCard> getCharacterCards() {
+        return characterCards;
     }
 
     public ProfTable getProfTable() {
@@ -262,7 +263,7 @@ public class Game {
                     game.characterCards.add(card);
                 }
                 if (random == 1 || random1 == 1 || random2 == 1) {
-                    barbara = new Barbara(game);
+                    barbara = new Barbara();
                     CharacterCard card = new CharacterCard(barbara);
                     game.characterCards.add(card);
                 }
