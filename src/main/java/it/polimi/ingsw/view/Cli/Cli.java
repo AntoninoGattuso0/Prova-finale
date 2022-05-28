@@ -306,8 +306,8 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void updateAll(AllUpdateMessage object) {
-
+    public void updateAll(LightGame object) {
+        this.lightGame=object;
     }
 
     @Override

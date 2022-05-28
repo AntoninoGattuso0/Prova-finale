@@ -1,5 +1,7 @@
 package it.polimi.ingsw.client;
 
+import it.polimi.ingsw.client.ModelLight.LightGame;
+import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.*;
 import it.polimi.ingsw.view.View;
@@ -14,53 +16,33 @@ public class ClientMessageManager {
             return;
         }
         if(object instanceof WaitMessage){
-            view.waitOtherPlayers(((WaitMessage) object).getMessage());
+            view.waitOtherPlayers();
         }else if(object instanceof StartTurnMessage){
-            view.displayTurn((StartTurnMessage) object);
-        }else if(object instanceof SetNumPlayersMessage){
+            view.displayTurn();
+        }else if(object instanceof SetNumPlayersIsExpertMessage){
             view.requestNumPlayers();
         }else if(object instanceof SetNickMessage){
             view.requestNickname();
         }else if(object instanceof SetIsExpertMessage){
             view.requestIsExpert();
-        }else if(object instanceof MovePawnToDiningMessage){
-            MovePawnToDiningMessage message=(MovePawnToDiningMessage) object;
-            view.updatePawnToDining(message.getNumPawn(),message.getArrayPawn());
-        }else if(object instanceof MoveMotherNatureMessage){
-            MoveMotherNatureMessage step= (MoveMotherNatureMessage) object;
-            view.updateMoveMotherNature(step.getIsland());
        }else if(object instanceof ClientAcceptedMessage){
                view.registerClient((ClientAcceptedMessage) object );
         }else if(object instanceof WinnerMessage){
-            view.displayWinner(((WinnerMessage) object).getMessage());
+            view.displayWinner();
         }else if(object instanceof GameStartedMessage){
             view.startGame();
         }else if(object instanceof WrongNicknameMessage){
             view.displayWrongNickname();
         }else if(object instanceof WrongTurnMessage){
             view.displayWrongTurn();
-        }else if(object instanceof NicknameUpdateMessage){
-            view.updateNickname((NicknameUpdateMessage) object);
         }else if(object instanceof ClientInputMessage){
-            view.displayResponseMessage(((ClientInputMessage) object).getErrorMessage());
-        }else if(object instanceof IslandUpdateMessage){
-            view.updateIsland((IslandUpdateMessage) object);
-        }else if(object instanceof CloudUpdateMessage){
-            view.updateCloud((CloudUpdateMessage) object);
-        }else if(object instanceof AssistantCardUpdateMessage){
-            view.updateAssistantCard((AssistantCardUpdateMessage) object);
-        }else if(object instanceof DiningRoomUpdateMessage){
-            view.updateDiningRoom((DiningRoomUpdateMessage) object);
-        }else if(object instanceof EntranceUpdateMessage){
-            view.updateEntrance((EntranceUpdateMessage) object);
-        }else if(object instanceof TowerSpaceUpdateMessage){
-            view.updateTowerSpace((TowerSpaceUpdateMessage) object);
+            view.displayResponseMessage();
         }else if(object instanceof AllUpdateMessage){
-            view.updateAll((AllUpdateMessage) object);
-        }else if(object instanceof ProfTableUpdateMessage){
-            view.updateProfTable((ProfTableUpdateMessage) object);
+            AllUpdateMessage game=(AllUpdateMessage) object;
+            view.updateAll(game.getLightGame());
+
         }else if(object instanceof CharacterCardUpdateMessage) {
-            view.updateCharacterCard((CharacterCardUpdateMessage) object);
+            view.updateCharacterCard();
         }
          else   throw new IllegalArgumentException();
         }

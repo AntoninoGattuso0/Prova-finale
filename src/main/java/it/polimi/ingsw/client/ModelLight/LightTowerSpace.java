@@ -1,7 +1,6 @@
 package it.polimi.ingsw.client.ModelLight;
 
 import it.polimi.ingsw.model.ColorTower;
-import it.polimi.ingsw.network.Message.UpdateMessage.TowerSpaceUpdateMessage;
 
 public class LightTowerSpace {
     private ColorTower colorTower;

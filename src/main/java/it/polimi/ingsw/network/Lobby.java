@@ -4,11 +4,8 @@ import it.polimi.ingsw.controller.Controller;
 import it.polimi.ingsw.controller.UserInput;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
-import it.polimi.ingsw.network.Message.*;
-import it.polimi.ingsw.network.Message.ClientToServer.RequestIsExpert;
-import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
-import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayers;
 import it.polimi.ingsw.network.Message.ServerToClient.*;
+import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
 import it.polimi.ingsw.observer.ConnectionObserver;
 import it.polimi.ingsw.observer.EndGameObserver;
 
@@ -21,7 +18,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     private final VirtualView virtualView;
     private final UserInput userInput;
     private EndGameObserver endGame;
-    private final ServerMessageMenager serverMessageMenager;
     private int numPlayer;
     private boolean lobbyOk;
     private final ArrayList<ClientHandlerInterface> clients;
@@ -132,41 +128,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         int i;
         loginClient.setTurn(true);
         loginClient.sendObject(new SetNickMessage());
-        Message nickMessage = loginClient.read();
-        if (nickMessage == null) {
-            return;
-        }
-        String nickname = ((RequestNickname) nickMessage).getNickname();
-        for (i = 0; i < namePlayer.size(); i++) {
-            while (namePlayer.get(i).equals(nickname)) {
-                loginClient.sendObject(new SetNickMessage());
-                nickMessage = loginClient.read();
-                if (nickMessage == null) {
-                    return;
-                }
-                nickname = ((RequestNickname) nickMessage).getNickname();
-            }
-        }
-        namePlayer.add(nickname);
-        loginClient.setUserNickname(nickname);
-        if(namePlayer.size()==1){
-            loginClient.sendObject(new SetNumPlayersMessage());
-            nickMessage=loginClient.read();
-            numPlayer=((RequestNumPlayers) nickMessage).getNumPlayers();
-            while(numPlayer<2||numPlayer>4){
-                loginClient.sendObject(new SetNumPlayersMessage());
-                nickMessage=loginClient.read();
-                numPlayer=((RequestNumPlayers) nickMessage).getNumPlayers();
-            }
-                loginClient.sendObject(new SetIsExpertMessage());
-                isExpert=((RequestIsExpert) nickMessage).getIsExpert();
-                game=new Game(numPlayer,isExpert);
-        }
-        Game.newPlayer(nickname,game);
-        System.out.println("SERVER: "+nickname+" is joining!\n");
-        loginClient.sendObject(new LoginAcceptedMessage(nickname));
-        loginClient.setTurn(false);
-        addClient(loginClient);
     }
     public void endGame(Lobby lobby){
         for(String nickname: namePlayer){
@@ -178,4 +139,73 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         controller=new Controller(game,userInput,virtualView,players);
         controller.sendUpdate();
     }
+
+    public void insertNickname(String nickname, ClientHandler clientHandler) {
+        if(nickname==null){
+            clientHandler.sendObject(new WrongNicknameMessage());
+            clientHandler.sendObject(new SetNickMessage());
+            return;
+        }else{
+            int i;
+            for(i=0;i<namePlayer.size();i++){
+                if(nickname==namePlayer.get(i)){
+                    clientHandler.sendObject(new WrongNicknameMessage());
+                    clientHandler.sendObject(new SetNickMessage());
+                    return;
+                }
+            }
+            namePlayer.add(nickname);
+            clientHandler.setUserNickname(nickname);
+            if(namePlayer.size()==1){
+                clientHandler.sendObject(new SetNumPlayersIsExpertMessage());
+                return;
+            }
+            Game.newPlayer(nickname,game);
+            System.out.println("SERVER: "+nickname+" is joining!\n");
+            clientHandler.sendObject(new LoginAcceptedMessage());
+            clientHandler.setTurn(false);
+            addClient(clientHandler);
+        }
+    }
+
+    public void insertNumPlayersIsExpert(int numPlayers, boolean isExpert, ClientHandler clientHandler) {
+        if(numPlayer<2||numPlayer>4){
+            clientHandler.sendObject(new WrongNumPlayerIsExpertMessage());
+            clientHandler.sendObject(new SetNumPlayersIsExpertMessage());
+            return;
+        }
+        game=new Game(numPlayer,isExpert);
+        Game.newPlayer(namePlayer.get(0),game);
+        System.out.println("SERVER: "+namePlayer.get(0)+" is joining!\n");
+        clientHandler.sendObject(new LoginAcceptedMessage());
+        clientHandler.setTurn(false);
+        addClient(clientHandler);
+    }
+
+    public void selectAssistantCard(int assistant, ClientHandler clientHandler) {
+        int i;
+        int contr = -1;
+        for(i=0;i<namePlayer.size();i++){
+            if(game.getPlayers().get(i).getNickname()==clientHandler.getUserNickname()){
+                contr=game.getPlayers().get(i).useAssistant(game,game.getPlayers().get(i),game.getPlayers().get(i).getDeckAssistant().get(assistant));
+            }
+        }
+        if(contr==0){
+            clientHandler.sendObject(new WrongNotAssistantMessage());
+        }else if(contr==1){
+            clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+        }else if(contr==2){
+            clientHandler.sendObject(new WrongSameAssistantMessage());
+        }
+    }
 }
+/*
+  while(numPlayer<2||numPlayer>4){
+                loginClient.sendObject(new SetNumPlayersMessage());
+                nickMessage=loginClient.read();
+                numPlayer=((RequestNumPlayers) nickMessage).getNumPlayers();
+            }
+                loginClient.sendObject(new SetIsExpertMessage());
+                isExpert=((RequestIsExpert) nickMessage).getIsExpert();
+                game=new Game(numPlayer,isExpert);
+ */

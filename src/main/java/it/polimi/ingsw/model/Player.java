@@ -92,9 +92,9 @@ public class Player {
     }
     // modifica UML: chooseCloud dovrebbe scegliere una nuvola  e spostare le pedine in entrance. quindi va fatto nella classe entrance.
     // public void chooseCloud(Cloud cloud){}//
-    public void useAssistant(Game game,Player player,AssistantCard currentAssistant) {
+    public int useAssistant(Game game,Player player,AssistantCard currentAssistant) {
         int i, contr = 0;
-        for (i = 0; i < game.getPlayers().size(); i++) {
+        for (i = 0; i < game.getPlayers().size()&&contr==0; i++) {
             if (game.getPlayers().get(i) != player) {
                 if (game.getPlayers().get(i).currentAssistant!=null && game.getPlayers().get(i).currentAssistant== player.currentAssistant) {
                     contr = 2;
@@ -103,13 +103,14 @@ public class Player {
         }
         if (contr == 0) {
             for (i = 0; i < player.deckAssistant.size() && contr == 0; i++) {
-                if (player.deckAssistant.size() != 1 && player.deckAssistant.get(i).getCardValue() == currentAssistant.getCardValue()) {
+                if (player.deckAssistant.size() == 1 || player.deckAssistant.get(i).getCardValue() == currentAssistant.getCardValue()) {
                     player.setCurrentAssistant(currentAssistant);
                     player.deckAssistant.remove(i);
                     contr = 1;
                 }
             }
         }
+        return contr;
     }
     public void chooseNick(String nickname){
     }

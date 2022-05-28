@@ -1,5 +1,6 @@
 package it.polimi.ingsw.view;
 
+import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.*;
@@ -42,7 +43,7 @@ public interface View {
 
     void updateNickname(NicknameUpdateMessage m);
     void updateNumPlayers();
-    void updateAll(AllUpdateMessage object);
+    void updateAll(LightGame object);
 
     void selectCloud(int cloud);
     void selectAssistantCard(int assistant);
