@@ -198,7 +198,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void displayAssistantCard() {
-
     }
 
     @Override
@@ -218,27 +217,27 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void displayCharacterCard() {
-
+        //ndo stanno salvate le character card?
     }
 
     @Override
     public void displayWinner(String winner) {
-
+        out.println("The winner is: " + winner);
     }
 
     @Override
     public void displayNetError() {
-
+        out.println("NET ERROR");
     }
 
     @Override
-    public void displayWrongNickname() {
+    public void displayWrongNickname() { //Serve davvero? il controllo non lo si fa già?
 
     }
 
     @Override
     public void displayWrongTurn() {
-
+        out.println("Wrong turn bro, just wait...");
     }
 
     @Override
