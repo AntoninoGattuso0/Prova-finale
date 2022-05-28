@@ -164,6 +164,10 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
                 out.println("Per modalità esperta digita 1, altrimenti 0: ");
                 isExpert = parseInt(readLine());
             }
+            if(isExpert == 1)
+                this.isExpert = true;
+            else
+                this.isExpert = false;
             //invio messaggio
         } catch (ExecutionException e){
             out.println("ERRORE");
@@ -172,16 +176,22 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void displayNick() {
-
+        for(int i = 0; i < lightGame.getNumPlayers(); i++){
+            out.println("Giocatore " + i+1 + " ha il nickname: " + lightGame.getPlayers().get(i).getNickname());
+        }
     }
 
     @Override
     public void displayNumPlayers() {
-
+        out.println("Player totali: " + lightGame.getNumPlayers());
     }
 
     @Override
     public void displayIsExpert() {
+        if(isExpert)
+            out.println("Il gioco è in modalità esperta");
+        else
+            out.println("Il gioco è in modalità normale");
 
     }
 
