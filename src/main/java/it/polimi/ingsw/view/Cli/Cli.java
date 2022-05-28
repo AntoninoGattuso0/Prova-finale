@@ -4,7 +4,8 @@ package it.polimi.ingsw.view.Cli;
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.model.ColorPawn;
-import it.polimi.ingsw.network.Message.ClientToServer.RequestIsExpert;
+import it.polimi.ingsw.network.ClientHandler;
+import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.ServerToClient.ClientAcceptedMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
 import it.polimi.ingsw.network.Message.UpdateMessage.*;
@@ -137,6 +138,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         } catch(ExecutionException e){
             out.println("ERRORE");
         }
+        ClientHandler.sendObject((Message) nickname); //come stracatzo si fa??
     }
 
     @Override
@@ -192,7 +194,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
             out.println("Il gioco è in modalità esperta");
         else
             out.println("Il gioco è in modalità normale");
-
     }
 
     @Override
@@ -354,7 +355,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     public void loginPlayers() {
         System.out.println("Welcome in Eriantys. Insert your NICKNAME: ");
         String nick = scanner.nextLine();
-        System.out.println("\n Do you want to join. Inset 1 for Yes, 0 for No: ");
+        System.out.println("\n Do you want to join. Insert 1 for Yes, 0 for No: ");
         boolean joinGame = scanner.nextBoolean();
         notifyMessage(new LoginSettMessage(nick, joinGame));
         System.out.println("\n");
@@ -411,7 +412,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     public void displayIsExpert(){
         if(isExpert)
             out.println("The game mode will be expert.\n");
-        if(!isExpert)
+        else
             out.println("The game mode will be normal.\n");
     }
 
