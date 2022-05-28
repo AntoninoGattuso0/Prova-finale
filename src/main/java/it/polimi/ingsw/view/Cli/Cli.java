@@ -1,18 +1,22 @@
 package it.polimi.ingsw.view.Cli;
 
 
-import it.polimi.ingsw.client.ModelLight.*;
+import it.polimi.ingsw.client.ModelLight.LightGame;
+import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.model.ColorPawn;
+import it.polimi.ingsw.network.Message.ClientToServer.RequestIsExpert;
+import it.polimi.ingsw.network.Message.ServerToClient.ClientAcceptedMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
+import it.polimi.ingsw.network.Message.UpdateMessage.*;
 import it.polimi.ingsw.observer.NetworkHandlerObservable;
 import it.polimi.ingsw.view.View;
-import it.polimi.ingsw.network.Message.UpdateMessage.*;
-import it.polimi.ingsw.network.Message.ServerToClient.ClientAcceptedMessage;
 
 import java.io.PrintStream;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
+
+import static java.lang.Integer.parseInt;
 
 public class Cli extends NetworkHandlerObservable implements Runnable, View {
     Scanner scanner = new Scanner(System.in); //Per leggere input da tastiera
@@ -126,16 +130,44 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void requestNickname() {
+        out.println("Digita il tuo nickname: ");
+        try{
+            String nickname = readLine();
+            SocketNetworkHandler.sendObject(nickname);
+        } catch(ExecutionException e){
+            out.println("ERRORE");
+        }
     }
 
     @Override
     public void requestNumPlayers() {
+        out.println("Inserisci il numero di giocatori (puoi inserire 2, 3 o 4 giocatori): ");
+        try{
+            int numPlayer = parseInt(readLine());
+            while(numPlayer != 2 && numPlayer != 3 && numPlayer != 4){
+                out.println("Inserisci il numero di giocatori (puoi inserire 2, 3 o 4 giocatori): ");
+                numPlayer = parseInt(readLine());
+            }
+            //invio messaggio
+        } catch (ExecutionException e){
+            out.println("ERRORE");
+        }
 
     }
 
     @Override
     public void requestIsExpert() {
-
+        out.println("Per modalità esperta digita 1, altrimenti 0: ");
+        try{
+            int isExpert = parseInt(readLine());
+            while(isExpert != 0 && isExpert != 1){
+                out.println("Per modalità esperta digita 1, altrimenti 0: ");
+                isExpert = parseInt(readLine());
+            }
+            //invio messaggio
+        } catch (ExecutionException e){
+            out.println("ERRORE");
+        }
     }
 
     @Override
