@@ -169,7 +169,6 @@ public class Game {
     }
     public void moveMotherNature(Island island) {
         int i;
-        int totIsland = islands.size();
         for (i = 0; !islands.get(i).getMotherNature(); i++) ;
         islands.get(i).setMotherNature(false);
         island.setMotherNature(true);

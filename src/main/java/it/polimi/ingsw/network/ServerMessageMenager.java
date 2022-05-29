@@ -15,8 +15,7 @@ public class ServerMessageMenager {
         if (object instanceof Ping) {
             return;
         }
-        if (object instanceof ChooseCloudMessage) {
-        } else if (object instanceof ChooseCharacterCardMessage) {
+         if (object instanceof ChooseCharacterCardMessage) {
             ChooseCharacterCardMessage c = (ChooseCharacterCardMessage) object;
             lobby.useCharacter(c.getNumCharacter(),c.getNumPawn(),c.getNumIsland(),c.getColorPawns(),clientHandler);
         }else if(object instanceof ChooseCloudMessage) {

@@ -1,13 +1,8 @@
 package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
-import it.polimi.ingsw.model.ColorPawn;
-import it.polimi.ingsw.network.Message.ServerToClient.*;
-import it.polimi.ingsw.network.Message.UpdateMessage.*;
-import java.util.ArrayList;
 public interface View {
     void startGame();
-    //void loginPlayers(); // non serve piu perche il nome lo chiediamo con request
     void requestNickname();
     void requestNumPlayers();
     void requestIsExpert();
@@ -22,40 +17,28 @@ public interface View {
     void displaySchoolBoard();
     void displayCharacterCard();
 
-    void displayWinner(String winner);
+    void displayWinner();
     void displayNetError();
     void displayWrongNickname();
     void displayWrongTurn();
     void displayFetchNameMessage();
-    void displayTurn(StartTurnMessage object);
-    void displayResponseMessage(String errorMessage);
+    void displayTurn();
+    void displayResponseMessage();
 
 
     //ogni volta che si cambia qualcosa di queste dobbiamo aggiornarle e poi richiamare display
-    void updateAssistantCard(AssistantCardUpdateMessage message);
-    void updateCloud(CloudUpdateMessage message);
-    void updateIsland(IslandUpdateMessage message);
-    void updateEntrance(EntranceUpdateMessage message);
-    void updateDiningRoom(DiningRoomUpdateMessage message);
-    void updateProfTable(ProfTableUpdateMessage message);
-    void updateTowerSpace(TowerSpaceUpdateMessage message);
-    void updateCharacterCard(CharacterCardUpdateMessage message);
+    void updateAssistantCard();
+    void updateCloud();
+    void updateIsland();
+    void updateEntrance();
+    void updateDiningRoom();
+    void updateProfTable();
+    void updateTowerSpace();
+    void updateCharacterCard();
 
-    void updateNickname(NicknameUpdateMessage m);
-    void updateNumPlayers();
     void updateAll(LightGame object);
-
-    void selectCloud(int cloud);
-    void selectAssistantCard(int assistant);
-    void requestMoveMotherNature(int island);
-
-    void updateMoveMotherNature(int island);
-    void updatePawnToDining(int numDiningRoom, ArrayList<ColorPawn> arrayPawn);
-    void updatePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn);
-
-    void registerClient(ClientAcceptedMessage m);
-    void waitOtherPlayers(String object);
-    
+    void registerClient();
+    void waitOtherPlayers();
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

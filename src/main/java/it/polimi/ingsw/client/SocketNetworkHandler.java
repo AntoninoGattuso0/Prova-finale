@@ -4,7 +4,6 @@ import it.polimi.ingsw.view.*;
 import it.polimi.ingsw.network.Message.ServerToClient.EndGameMessage;
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
-import it.polimi.ingsw.observer.NetworkHandler;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -12,7 +11,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.NoSuchElementException;
 
-public class SocketNetworkHandler implements Runnable, NetworkHandler {
+public class SocketNetworkHandler implements Runnable {
     private Socket socket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
@@ -44,7 +43,6 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
         });
         thread.start();
     }
-    @Override
     public void updateMessage(Message message){
         try{
             out.reset();
@@ -54,7 +52,6 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
             e.printStackTrace();
         }
     }
-    @Override
     public void updateConnection(String ipAddress,String port){
         try{
             socket=new Socket(ipAddress, Integer.parseInt(port));
@@ -67,7 +64,6 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
             System.exit(0);
         }
     }
-    @Override
     public synchronized void closeConnection(){
         connected=false;
         try {

@@ -33,7 +33,7 @@ public class VirtualView extends ViewObservable /*implements*/ {//DA COMPLETARE
 
     public void startTurn() {
         for (ClientHandlerInterface clientHandler : clients.values()) {
-            clientHandler.sendObject(new StartTurnMessage(actualPlayer));
+            clientHandler.sendObject(new StartTurnMessage());
         }
     }
 
@@ -53,7 +53,7 @@ public class VirtualView extends ViewObservable /*implements*/ {//DA COMPLETARE
 
     public void updateWin(String nick) {
         System.out.println("The winner is " + nick + ", GameOver");
-        sendBroadcast(new WinnerMessage(nick));
+        sendBroadcast(new WinnerMessage());
     }
 
     public void sendBroadcast(Message message) {

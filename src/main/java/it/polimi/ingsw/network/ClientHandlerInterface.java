@@ -1,7 +1,6 @@
 package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.network.Message.Message;
-import it.polimi.ingsw.observer.ConnectionObserver;
 
 public interface ClientHandlerInterface extends Runnable{//MODIFICA NOME IN VISTA DI ALTRI HANDLER, DA RIVEDERE
     void sendObject(Message object);

@@ -8,7 +8,6 @@ import it.polimi.ingsw.model.Island;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
-import it.polimi.ingsw.observer.ConnectionObserver;
 import it.polimi.ingsw.observer.EndGameObserver;
 
 import java.util.ArrayList;
@@ -224,8 +223,8 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         if (numIsland != -1) {
             island = game.getIslands().get(numIsland);
         }
-        game.getCharacterCards().get(num - 1).getUseEffect().useEffect(game, numberPawn, island,game.getPlayers().get(findPlayer(game,clientHandler)), colorPawn);
-
+        game.getCharacterCards().get(num - 1).getUseEffect().useEffect(game, numberPawn, island, game.getPlayers().get(findPlayer(game, clientHandler)), colorPawn);
+        clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
     }
 
     public int findPlayer(Game game, ClientHandler clientHandler) {
@@ -235,21 +234,36 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
                 return i;
             }
         }
-        return i=-1;
+        return i = -1;
     }
 
     public void selectCloud(int cloud, ClientHandler clientHandler) {
         int i;
         game.getPlayers().get(findPlayer(game, clientHandler)).getEntrance().chooseCloud(game.getClouds().get(cloud), game, game.getPlayers().get(findPlayer(game, clientHandler)));
+        clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
     }
+
+    public void moveMotherNature(int island, ClientHandler clientHandler) {
+        Island island1 = game.getIslands().get(island);
+        game.moveMotherNature(island1);
+        clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
     }
-/*
-  while(numPlayer<2||numPlayer>4){
-                loginClient.sendObject(new SetNumPlayersMessage());
-                nickMessage=loginClient.read();
-                numPlayer=((RequestNumPlayers) nickMessage).getNumPlayers();
-            }
-                loginClient.sendObject(new SetIsExpertMessage());
-                isExpert=((RequestIsExpert) nickMessage).getIsExpert();
-                game=new Game(numPlayer,isExpert);
- */
+
+    public void movePawnToDining(int numPawn, ArrayList<ColorPawn> arrayPawn, ClientHandler clientHandler) {
+        int i;
+        int numplayer = findPlayer(game, clientHandler);
+        for (i = 0; i < numPawn; i++) {
+            game.getPlayers().get(numplayer).getDiningRoom().addPawnToDiningRoom(arrayPawn.get(i), game.getPlayers().get(numplayer), game);
+        }
+        clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+    }
+
+    public void movePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn, ClientHandler clientHandler) {
+        int numPlayer = findPlayer(game, clientHandler);
+        int i;
+        for (i = 0; i < numPawn; i++) {
+            game.getPlayers().get(numPlayer).getEntrance().movePawnToIsland(arrayPawn.get(i), game.getIslands().get(island), game);
+        }
+        clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+    }
+}

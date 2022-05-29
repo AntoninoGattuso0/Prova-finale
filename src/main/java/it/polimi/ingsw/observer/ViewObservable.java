@@ -26,6 +26,9 @@ public class ViewObservable {
             }
         }
     }
+    public void updatePlayersNum(int num){
+
+    }
 }
 //virtualView observable dal controller
 //networkHandler Obserevable di eventi del model

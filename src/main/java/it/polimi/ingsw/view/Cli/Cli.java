@@ -2,14 +2,8 @@ package it.polimi.ingsw.view.Cli;
 
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
-import it.polimi.ingsw.client.SocketNetworkHandler;
-import it.polimi.ingsw.model.ColorPawn;
-import it.polimi.ingsw.network.ClientHandler;
-import it.polimi.ingsw.network.Message.Message;
-import it.polimi.ingsw.network.Message.ServerToClient.ClientAcceptedMessage;
+import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
 import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
-import it.polimi.ingsw.network.Message.UpdateMessage.*;
-import it.polimi.ingsw.observer.NetworkHandlerObservable;
 import it.polimi.ingsw.view.View;
 
 import java.io.PrintStream;
@@ -134,11 +128,11 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         out.println("Digita il tuo nickname: ");
         try{
             String nickname = readLine();
-            SocketNetworkHandler.sendObject(nickname);
+            notifyMessage(new RequestNickname(nickname));
         } catch(ExecutionException e){
             out.println("ERRORE");
         }
-        ClientHandler.sendObject((Message) nickname); //come stracatzo si fa??
+        //NON SO SE COSI FUNZIONA -NINO
     }
 
     @Override
@@ -221,6 +215,11 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
+    public void displayWinner() {
+
+    }
+
+    @Override
     public void displayWinner(String winner) {
         out.println("The winner is: " + winner);
     }
@@ -246,6 +245,16 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
+    public void displayTurn() {
+
+    }
+
+    @Override
+    public void displayResponseMessage() {
+
+    }
+
+    @Override
     public void displayTurn(StartTurnMessage object) {
 
     }
@@ -256,47 +265,47 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void updateAssistantCard(AssistantCardUpdateMessage message) {
+    public void updateAssistantCard() {
 
     }
 
     @Override
-    public void updateCloud(CloudUpdateMessage message) {
+    public void updateCloud() {
 
     }
 
     @Override
-    public void updateIsland(IslandUpdateMessage message) {
+    public void updateIsland() {
 
     }
 
     @Override
-    public void updateEntrance(EntranceUpdateMessage message) {
+    public void updateEntrance() {
 
     }
 
     @Override
-    public void updateDiningRoom(DiningRoomUpdateMessage message) {
+    public void updateDiningRoom() {
 
     }
 
     @Override
-    public void updateProfTable(ProfTableUpdateMessage message) {
+    public void updateProfTable() {
 
     }
 
     @Override
-    public void updateTowerSpace(TowerSpaceUpdateMessage message) {
+    public void updateTowerSpace() {
 
     }
 
     @Override
-    public void updateCharacterCard(CharacterCardUpdateMessage message) {
+    public void updateCharacterCard() {
 
     }
 
     @Override
-    public void updateNickname(NicknameUpdateMessage m) {
+    public void updateNickname() {
 
     }
 
@@ -311,42 +320,28 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     }
 
     @Override
-    public void selectCloud(int cloud) {
+    public void selectCloud() {
 
     }
 
     @Override
-    public void selectAssistantCard(int assistant) {
+    public void selectAssistantCard() {
 
     }
 
     @Override
-    public void requestMoveMotherNature(int island) {
+    public void requestMoveMotherNature() {
+
+    }
+
+
+    @Override
+    public void registerClient() {
 
     }
 
     @Override
-    public void updateMoveMotherNature(int island) {
-
-    }
-
-    @Override
-    public void updatePawnToDining(int numDiningRoom, ArrayList<ColorPawn> arrayPawn) {
-
-    }
-
-    @Override
-    public void updatePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn) {
-
-    }
-
-    @Override
-    public void registerClient(ClientAcceptedMessage m) {
-
-    }
-
-    @Override
-    public void waitOtherPlayers(String object) {
+    public void waitOtherPlayers() {
 
     }
 

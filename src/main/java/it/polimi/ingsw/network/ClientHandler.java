@@ -3,7 +3,6 @@ package it.polimi.ingsw.network;
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
 import it.polimi.ingsw.network.Message.ServerToClient.WrongTurnMessage;
-import it.polimi.ingsw.observer.ConnectionObservable;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -11,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 
-public class ClientHandler extends ConnectionObservable implements ClientHandlerInterface,Runnable {//DA RIVEDERE
+public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVEDERE
     private final Lobby lobby;
     private final Socket mySocket;
     private String userNickname;

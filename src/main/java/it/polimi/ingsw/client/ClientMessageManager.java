@@ -23,7 +23,7 @@ public class ClientMessageManager {
         }else if(object instanceof SetNickMessage){
             view.requestNickname();
        }else if(object instanceof ClientAcceptedMessage){
-               view.registerClient((ClientAcceptedMessage) object );
+               view.registerClient();
         }else if(object instanceof WinnerMessage){
             view.displayWinner();
         }else if(object instanceof GameStartedMessage){
