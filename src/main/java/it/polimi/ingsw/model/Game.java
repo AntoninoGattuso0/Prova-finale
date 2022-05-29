@@ -194,7 +194,7 @@ public class Game {
             game.islands.get(i).setRedPawn(game.islands.get(i).getRedPawn() + game.islands.get(j).getRedPawn());
             game.islands.get(i).setYellowPawn(game.islands.get(i).getYellowPawn() + game.islands.get(j).getYellowPawn());
             game.islands.get(i).setBluePawn(game.islands.get(i).getBluePawn() + game.islands.get(j).getBluePawn());
-            game.islands.get(i).setTotIsland(game.islands.get(i).getTotIsland() + 1);
+            game.islands.get(i).setTotIsland(game.islands.get(i).getTotIsland() - 1);
             return true;
         }
         return false;
