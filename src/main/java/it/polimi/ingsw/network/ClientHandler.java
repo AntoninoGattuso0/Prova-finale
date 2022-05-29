@@ -3,6 +3,7 @@ package it.polimi.ingsw.network;
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
 import it.polimi.ingsw.network.Message.ServerToClient.WrongTurnMessage;
+import it.polimi.ingsw.observer.ConnectionObserver;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -136,6 +137,13 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
         messageReady = false;
         return message;
     }
+
+    @Override
+    public void addObserver(ConnectionObserver observer) {
+
+    }
+
+
     public void run() {
         try {
             System.out.println("c");
@@ -148,5 +156,10 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void updateDisconnection(ClientHandlerInterface client) {
+
     }
 }

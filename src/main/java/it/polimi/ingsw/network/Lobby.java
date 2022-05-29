@@ -8,6 +8,7 @@ import it.polimi.ingsw.model.Island;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
+import it.polimi.ingsw.observer.ConnectionObserver;
 import it.polimi.ingsw.observer.EndGameObserver;
 
 import java.util.ArrayList;
