@@ -25,7 +25,8 @@ public class ClientMessageManager {
        }else if(object instanceof ClientAcceptedMessage){
                view.registerClient();
         }else if(object instanceof WinnerMessage){
-            view.displayWinner();
+            WinnerMessage m= (WinnerMessage) object;
+            view.displayWinner(m.getNickname());
         }else if(object instanceof GameStartedMessage){
             view.startGame();
         }else if(object instanceof WrongNicknameMessage){

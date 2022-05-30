@@ -6,4 +6,11 @@ import java.io.Serializable;
 public class WinnerMessage extends ServerToClient implements Serializable {
     @Serial
     private static final long serialVersionUID = -2356374239620830380L;
+    String nickname;
+    public WinnerMessage(String nickname){
+        this.nickname=nickname;
+    }
+    public String getNickname() {
+        return nickname;
+    }
 }

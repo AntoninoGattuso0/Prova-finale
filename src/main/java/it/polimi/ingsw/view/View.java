@@ -21,7 +21,7 @@ public interface View {
     void displaySchoolBoard();
     void displayCharacterCard();
 
-    void displayWinner(String winner);
+    void displayWinner(String nickname);
 
     void displayNetError();
     void displayWrongNickname();

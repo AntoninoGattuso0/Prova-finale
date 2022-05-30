@@ -75,7 +75,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
 
     @Override
     public void updateDisconnection(ClientHandlerInterface clientHandler) {
-        if (controller.getEndGame() != true) {
+        if (!controller.getEndGame()) {
             if (lobbySett) {
                 updateDisconnectionInSet(clientHandler);
             } else if (lobbyOk) {

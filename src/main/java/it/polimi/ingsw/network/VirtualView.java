@@ -50,7 +50,7 @@ public class VirtualView {
 
     public void updateWin(String nick) {
         System.out.println("The winner is " + nick + ", GameOver");
-        sendBroadcast(new WinnerMessage());
+        sendBroadcast(new WinnerMessage(nick));
     }
 
     public void sendBroadcast(Message message) {
