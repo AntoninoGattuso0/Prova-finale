@@ -1,10 +1,8 @@
 package it.polimi.ingsw.client;
-import it.polimi.ingsw.network.Message.RemoveClientMessage;
-import it.polimi.ingsw.observer.NetworkHandler;
-import it.polimi.ingsw.view.*;
-import it.polimi.ingsw.network.Message.ServerToClient.EndGameMessage;
+
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
+import it.polimi.ingsw.view.View;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -12,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.NoSuchElementException;
 
-public class SocketNetworkHandler implements Runnable, NetworkHandler {
+public class SocketNetworkHandler implements Runnable{
     private Socket socket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
@@ -47,7 +45,7 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
                 }
                 if(c>100){
                     c=0;
-                    updateMessage(new Ping());
+                    sendMessage(new Ping());
                 }
             }
         });

@@ -5,8 +5,6 @@ import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.WinnerMessage;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class VirtualView {
     private final ArrayList<ClientHandlerInterface> clients = new ArrayList<>();
@@ -61,7 +59,7 @@ public class VirtualView {
 
     public void sendBroadcast(Message message) {
         synchronized (lock) {
-            for (ClientHandlerInterface clientHandler : clients.values()) {
+            for (ClientHandlerInterface clientHandler : clients) {
                 clientHandler.sendObject(message);
             }
             lock.notifyAll();
@@ -76,7 +74,11 @@ public class VirtualView {
     }
 
     public void endTurn() {
-        clients.get(actualPlayer).setTurn(false);
+        int i;
+        for (i=0;i<clients.size();i++){
+        if(clients.get(i).getUserNickname().equals(getActualPlayer())){
+            clients.get(i).setTurn(false);
+        }
     }
-
+}
 }

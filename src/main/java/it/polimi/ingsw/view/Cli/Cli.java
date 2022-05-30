@@ -11,7 +11,6 @@ import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
 import it.polimi.ingsw.network.Message.ServerToClient.InvalidNumPlayerMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.WrongNicknameMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.WrongTurnMessage;
-import it.polimi.ingsw.observer.NetworkHandlerObservable;
 import it.polimi.ingsw.view.View;
 
 import java.io.PrintStream;
