@@ -109,7 +109,7 @@ public class SocketNetworkHandler implements Runnable{
                     socket.setSoTimeout(30000);
                     Object input = in.readObject();
                     clientMessageManager.manageInputToClient(input);
-                }catch (IOException|ClassNotFoundException e){
+                }catch (IOException|ClassNotFoundException|InterruptedException e){
                     view.displayNetError();
                     break;
                 }

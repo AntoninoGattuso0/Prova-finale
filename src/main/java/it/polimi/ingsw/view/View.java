@@ -2,7 +2,6 @@ package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
-import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
 
 public interface View {
     void startGame();
@@ -28,16 +27,8 @@ public interface View {
     void displayWrongTurn();
     void displayTurn();
     void displayResponseMessage();
-
-
-    void displayTurn(StartTurnMessage object);
-
-    void displayResponseMessage(String errorMessage);
-
     void updateAll(LightGame object);
-
     void selectCloud();
-
     void selectAssistantCard();
 
     void requestMoveMotherNature();
@@ -46,6 +37,8 @@ public interface View {
     void waitOtherPlayers();
 
     void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler);
+
+    void playerWait();
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

@@ -10,7 +10,7 @@ public class ClientMessageManager {
     public ClientMessageManager(View view){
         this.view=view;
     }
-    public void manageInputToClient(Object object){
+    public void manageInputToClient(Object object) throws InterruptedException {
         if(object instanceof Ping){
             return;
         }
@@ -36,6 +36,8 @@ public class ClientMessageManager {
             view.displayResponseMessage();
         }else if(object instanceof AllUpdateMessage m){
             view.updateAll(m.getLightGame());
+        }else if (object instanceof LoginAcceptedMessage) {
+            view.playerWait();
         }
          else   throw new IllegalArgumentException();
         }

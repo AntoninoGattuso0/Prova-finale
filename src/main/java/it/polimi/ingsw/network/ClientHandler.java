@@ -2,7 +2,6 @@ package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
-import it.polimi.ingsw.network.Message.ServerToClient.WrongTurnMessage;
 import it.polimi.ingsw.observer.ConnectionObserver;
 
 import java.io.IOException;
@@ -104,19 +103,12 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
                         e.printStackTrace();
                     }
                     if (!(toServer instanceof Ping)) {
-
-                        if (myTurn) {
                             lobby.processMessage(this,toServer);
-                          //  lobby.getServerMessageManager().manageInputServer(this,toServer);
-                            message = toServer;
                             messageReady = true;
                             synchronized (this) {
                                 notifyAll();
                             }
-                        } else {
-                            sendObject(new WrongTurnMessage());
                         }
-                    }
                 }catch (IOException |NullPointerException|IllegalArgumentException e){
                     System.out.println("SERVER: "+userNickname+" connection close by the client");
                     closeConnect();

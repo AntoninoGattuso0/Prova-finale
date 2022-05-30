@@ -142,10 +142,11 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     }
 
     //inserisco i player nell'array nomi, e li creo anche nel gioco
-    public void loginUser(ClientHandlerInterface loginClient) {
-        int i;
+    public synchronized void loginUser(ClientHandlerInterface loginClient) {
         loginClient.setTurn(true);
-        loginClient.sendObject(new SetNickMessage());
+        if(numPlayer==0) {
+            loginClient.sendObject(new SetNickMessage());
+        }
     }
 
     public void endGame(Lobby lobby) {
@@ -160,35 +161,35 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         controller.sendUpdate();
     }
 
-    public void insertNickname(String nickname, ClientHandler clientHandler) {
-        if (nickname == null) {
-            clientHandler.sendObject(new WrongNicknameMessage());
-            clientHandler.sendObject(new SetNickMessage());
-            return;
-        } else {
-            int i;
-            for (i = 0; i < namePlayer.size(); i++) {
-                if (nickname == namePlayer.get(i)) {
-                    clientHandler.sendObject(new WrongNicknameMessage());
-                    clientHandler.sendObject(new SetNickMessage());
+    public synchronized void insertNickname(String nickname, ClientHandler clientHandler) {
+            if (nickname == null) {
+                clientHandler.sendObject(new WrongNicknameMessage());
+                clientHandler.sendObject(new SetNickMessage());
+                return;
+            } else {
+                int i;
+                for (i = 0; i < namePlayer.size(); i++) {
+                    if (nickname == namePlayer.get(i)) {
+                        clientHandler.sendObject(new WrongNicknameMessage());
+                        clientHandler.sendObject(new SetNickMessage());
+                        return;
+                    }
+                }
+                namePlayer.add(nickname);
+                clientHandler.setUserNickname(nickname);
+                if (namePlayer.size() == 1) {
+                    clientHandler.sendObject(new SetNumPlayersIsExpertMessage());
                     return;
                 }
+                Game.newPlayer(nickname, game);
+                System.out.println("SERVER: " + nickname + " is joining!\n");
+                clientHandler.sendObject(new LoginAcceptedMessage());
+                clientHandler.setTurn(false);
+                addClient(clientHandler);
             }
-            namePlayer.add(nickname);
-            clientHandler.setUserNickname(nickname);
-            if (namePlayer.size() == 1) {
-                clientHandler.sendObject(new SetNumPlayersIsExpertMessage());
-                return;
-            }
-            Game.newPlayer(nickname, game);
-            System.out.println("SERVER: " + nickname + " is joining!\n");
-            clientHandler.sendObject(new LoginAcceptedMessage());
-            clientHandler.setTurn(false);
-            addClient(clientHandler);
         }
-    }
 
-    public void insertNumPlayersIsExpert(int numPlayers, boolean isExpert, ClientHandler clientHandler) {
+    public synchronized void insertNumPlayersIsExpert(int numPlayers, boolean isExpert, ClientHandler clientHandler) {
         if (numPlayer < 2 || numPlayer > 4) {
             clientHandler.sendObject(new WrongNumPlayerIsExpertMessage());
             clientHandler.sendObject(new SetNumPlayersIsExpertMessage());
@@ -245,7 +246,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         game.getPlayers().get(findPlayer(game, clientHandler)).getEntrance().chooseCloud(game.getClouds().get(cloud), game, game.getPlayers().get(findPlayer(game, clientHandler)));
         clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
     }
-
     public void moveMotherNature(int island, ClientHandler clientHandler) {
         Island island1 = game.getIslands().get(island);
         game.moveMotherNature(island1);
@@ -272,7 +272,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
 
     public void processMessage(ClientHandler clientHandler, Message m) {
         if(!lobbyOk){
-            serverMessageMenager.ManageInputToServer(clientHandler,m);
+                serverMessageMenager.ManageInputToServer(clientHandler, m);
         }else{
             if(Objects.equals(clientHandler.getUserNickname(), controller.getRoundController().getTurnController().getCurrPlayer().getNickname())){
                 serverMessageMenager.ManageInputToServer(clientHandler,m);

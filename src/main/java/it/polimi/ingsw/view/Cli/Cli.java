@@ -18,9 +18,7 @@ import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
-import static java.lang.Integer.parseInt;
-
-public class Cli extends NetworkHandlerObservable implements Runnable, View {
+public class Cli implements Runnable, View {
     Scanner scanner = new Scanner(System.in); //Per leggere input da tastiera
     private final PrintStream out;
     private Thread inputThread;
@@ -152,23 +150,29 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     public void requestNumPlayersIsExpert() {
         out.println("Inserisci il numero di giocatori (puoi inserire 2, 3 o 4 giocatori): ");
         try {
-            int numPlayer = parseInt(readLine());
-            while (numPlayer != 2 && numPlayer != 3 && numPlayer != 4) {
+            int num=0;
+            String numPlayer = readLine();
+            while (!Objects.equals(numPlayer, "2") && !Objects.equals(numPlayer, "3") && !Objects.equals(numPlayer, "4")) {
                 out.println("Inserisci il numero di giocatori (puoi inserire 2, 3 o 4 giocatori): ");
-                numPlayer = parseInt(readLine());
+                numPlayer = readLine();
             }
             out.println("Inserisci E per variante esperta o B base");
-            String isExpert = readLine();
+            Object isExpert = readLine();
             boolean expert = false;
             while (!Objects.equals(isExpert, "B") && !Objects.equals(isExpert, "E")) {
                 out.println("Inserisci E per variante esperta o B base");
             }
             if (isExpert.equals("E")) {
                 expert = true;
-            } else if (isExpert.equals("B")) {
-                expert = false;
             }
-            socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(numPlayer, expert));
+            if(numPlayer.equals("2")){
+                num=2;
+            }else if(numPlayer.equals("3")){
+                num=3;
+            }else if(numPlayer.equals("4")){
+                num=4;
+            }
+            socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(num, expert));
         } catch (ExecutionException e) {
             out.println("ERRORE");
             socketNetworkHandler.sendMessage(new InvalidNumPlayerMessage());
@@ -199,6 +203,10 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         for (int i = 0; i < lightGame.getNumPlayers(); i++) {
             out.println("Giocatore " + i + 1 + " ha il nickname: " + lightGame.getPlayers().get(i).getNickname());
         }
+    }
+    @Override
+    public void playerWait(){
+
     }
 
     @Override
@@ -466,7 +474,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     public void displayResponseMessage() {
 
     }
-
     /*@Override
     public void displayTurn(StartTurnMessage object) {
 
