@@ -1,14 +1,13 @@
 package it.polimi.ingsw.network;
 
-import it.polimi.ingsw.network.Message.*;
+import it.polimi.ingsw.network.Message.Message;
+import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.WinnerMessage;
-import it.polimi.ingsw.observer.ViewObservable;
-import it.polimi.ingsw.network.Message.ServerToClient.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class VirtualView extends ViewObservable /*implements*/ {//DA COMPLETARE
+public class VirtualView  /*implements*/ {//DA COMPLETARE
     private final Map<String, ClientHandlerInterface> clients = new HashMap<>();
     private String actualPlayer;
     private final Object lock;
@@ -23,14 +22,12 @@ public class VirtualView extends ViewObservable /*implements*/ {//DA COMPLETARE
             lock.notifyAll();
         }
     }
-
     public void removeClientInVirtualView(ClientHandlerInterface client, String nick) {
         synchronized (lock) {
             clients.remove(nick, client);
             lock.notifyAll();
         }
     }
-
     public void startTurn() {
         for (ClientHandlerInterface clientHandler : clients.values()) {
             clientHandler.sendObject(new StartTurnMessage());
@@ -61,6 +58,7 @@ public class VirtualView extends ViewObservable /*implements*/ {//DA COMPLETARE
             for (ClientHandlerInterface clientHandler : clients.values()) {
                 clientHandler.sendObject(message);
             }
+            lock.notifyAll();
         }
     }
 

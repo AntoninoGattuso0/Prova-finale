@@ -1,9 +1,8 @@
 package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.network.Message.Message;
-import it.polimi.ingsw.observer.ViewObserver;
 
-public class UserInput implements ViewObserver {//DA RIVEDERE
+public class UserInput {//DA RIVEDERE
     private Message message;
     private String nickName;
     private int playersNum;
@@ -15,12 +14,10 @@ public class UserInput implements ViewObserver {//DA RIVEDERE
     public Message getMessage() {
         return message;
     }
-    @Override
     public void updateNick(String nick){
         this.nickName=nick;
     }
-    @Override
-    public void updateMessage(Message message){
+    public void updateNewMessage(Message message){
         this.message=message;
     }
     public String getNickName() {
@@ -29,7 +26,6 @@ public class UserInput implements ViewObserver {//DA RIVEDERE
     public int getPlayersNum() {
         return playersNum;
     }
-    @Override
     public void updatePlayersNum(int num){
         this.playersNum=num;
     }

@@ -84,8 +84,8 @@ public class Controller {
             }
             updateCurrentPlayer();
         }
-        winnerIs=game.finish().getNickname();//CREARE IN GAME UNA FUNZIONE CHE CALCOLA IL VICITORE ALLA FINE DEL GIOCO (DEVE RITORNARE UN PLAYER)
+        winnerIs=game.finish().getNickname();
         endGame=true;
         virtualView.updateWin(winnerIs);
-    }                                        //3 CASI: CASO IN CUI PLAYER HA FINITO LE TORRI, CASO IN CUI FINISCONO LE PEDINE, CASO IN CUI FINISCONO GLI ASSSISTENTI
+    }
 }

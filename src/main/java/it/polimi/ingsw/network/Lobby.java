@@ -28,6 +28,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     private boolean isExpert;
     private final Object lock;
     private Game game;
+    private final ServerMessageMenager serverMessageMenager;
 
     public Lobby() {
         lock = new Object();
@@ -39,7 +40,8 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         numPlayer = 0;
         lobbyOk = false;
         lobbySett = false;
-        virtualView.addObserver(userInput);
+        serverMessageMenager=new ServerMessageMenager(this);
+        virtualView.addUserInput(userInput);
     }
 
     public ArrayList<Player> getPlayers() {

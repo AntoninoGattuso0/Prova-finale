@@ -104,7 +104,10 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
                         e.printStackTrace();
                     }
                     if (!(toServer instanceof Ping)) {
+
                         if (myTurn) {
+                            lobby.processMessage(this,toServer);
+                          //  lobby.getServerMessageManager().manageInputServer(this,toServer);
                             message = toServer;
                             messageReady = true;
                             synchronized (this) {
@@ -146,7 +149,6 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
 
     public void run() {
         try {
-            System.out.println("c");
             this.objectOutputStream = new ObjectOutputStream(mySocket.getOutputStream());
             this.objectInputStream = new ObjectInputStream(mySocket.getInputStream());
             System.out.println("[SERVER] new Client Created.");

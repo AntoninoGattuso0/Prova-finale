@@ -2,12 +2,17 @@ package it.polimi.ingsw.view.Cli;
 
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
+import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
 import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
+import it.polimi.ingsw.observer.NetworkHandlerObservable;
 import it.polimi.ingsw.view.View;
 
 import java.io.PrintStream;
-import java.util.*;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Map;
+import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
@@ -21,10 +26,15 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
     private boolean isExpert;
     private boolean gameStart;
     private LightGame lightGame;
+    private SocketNetworkHandler socketNetworkHandler;
 
     public Cli() {
         out = System.out;
         gameStart = false;
+    }
+
+    public void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler){
+        this.socketNetworkHandler=socketNetworkHandler;
     }
 
     public String readLine() throws ExecutionException {

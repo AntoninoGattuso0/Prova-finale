@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client;
 import it.polimi.ingsw.network.Message.RemoveClientMessage;
+import it.polimi.ingsw.observer.NetworkHandler;
 import it.polimi.ingsw.view.*;
 import it.polimi.ingsw.network.Message.ServerToClient.EndGameMessage;
 import it.polimi.ingsw.network.Message.Message;
@@ -11,19 +12,28 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.NoSuchElementException;
 
-public class SocketNetworkHandler implements Runnable {
+public class SocketNetworkHandler implements Runnable, NetworkHandler {
     private Socket socket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
     private final View view;
+    private String nicknameThisPlayer;
     private volatile boolean connected;
     private volatile boolean ready;
+
     private final ClientMessageManager clientMessageManager;
     public SocketNetworkHandler(View view){
         connected=false;
         ready=false;
         this.view=view;
         this.clientMessageManager =new ClientMessageManager(view);
+        view.setSocketNetworkHandler(this);
+    }
+    public String getNicknameThisPlayer() {
+        return nicknameThisPlayer;
+    }
+    public void setNicknameThisPlayer(String nicknameThisPlayer) {
+        this.nicknameThisPlayer = nicknameThisPlayer;
     }
     private void pingToServer(){
         Thread thread= new Thread(()->{

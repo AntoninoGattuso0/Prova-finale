@@ -19,9 +19,4 @@ public class LightTowerSpace {
     public int getNumTower() {
         return numTower;
     }
-
-    public void update(TowerSpaceUpdateMessage message){
-        this.colorTower = message.getTowerSpace().getColorTower();
-        this.numTower = message.getTowerSpace().getNumTower();
     }
-}

@@ -2,8 +2,6 @@ package it.polimi.ingsw.client.ModelLight;
 
 import it.polimi.ingsw.model.Island;
 import it.polimi.ingsw.model.ProfTable;
-import it.polimi.ingsw.network.Message.UpdateMessage.*;
-
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -36,13 +34,4 @@ public class LightGame implements Serializable {
     public ArrayList<LightPlayer> getPlayers() {
         return players;
     }
-
-    public void updateAssistantCard(AssistantCardUpdateMessage message){}
-    public void updateCloud(CloudUpdateMessage message){}
-    public void updateIsland(IslandUpdateMessage message){}
-    public void updateEntrance(EntranceUpdateMessage message){}
-    public void updateDiningRoom(DiningRoomUpdateMessage message){}
-    public void updateProfTable(ProfTableUpdateMessage message){}
-    public void updateTowerSpace(TowerSpaceUpdateMessage message){}
-    public void updateCharacterCard(CharacterCardUpdateMessage message){}
 }
