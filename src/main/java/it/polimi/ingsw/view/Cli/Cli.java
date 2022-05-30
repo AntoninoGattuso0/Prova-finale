@@ -164,7 +164,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
             }else if(isExpert.equals("B")){
                 expert=false;
             }
-                socketNetworkHandler.updateMessage(new RequestNumPlayersIsExpert(numPlayer, expert));
+                socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(numPlayer, expert));
         } catch (ExecutionException e) {
            out.println("ERRORE");
         }

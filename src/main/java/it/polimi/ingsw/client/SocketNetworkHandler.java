@@ -53,7 +53,7 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
         });
         thread.start();
     }
-    public void updateMessage(Message message){
+    public void sendMessage(Message message){
         try{
             out.reset();
             out.writeObject(message);
@@ -111,9 +111,6 @@ public class SocketNetworkHandler implements Runnable, NetworkHandler {
                     socket.setSoTimeout(30000);
                     Object input = in.readObject();
                     clientMessageManager.manageInputToClient(input);
-                    if (input instanceof EndGameMessage || input instanceof RemoveClientMessage) {
-                        break;
-                    }
                 }catch (IOException|ClassNotFoundException e){
                     view.displayNetError();
                     break;
