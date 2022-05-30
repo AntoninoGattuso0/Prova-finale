@@ -8,6 +8,9 @@ public interface View {
     void startGame();
     void requestNickname();
     void requestNumPlayers();
+
+    void requestNumPlayersIsExpert();
+
     void requestIsExpert();
 
     void displayNick();

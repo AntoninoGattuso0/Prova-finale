@@ -19,7 +19,7 @@ public class ClientMessageManager {
         }else if(object instanceof StartTurnMessage){
             view.displayTurn();
         }else if(object instanceof SetNumPlayersIsExpertMessage){
-            view.requestNumPlayers();
+            view.requestNumPlayersIsExpert();
         }else if(object instanceof SetNickMessage){
             view.requestNickname();
        }else if(object instanceof ClientAcceptedMessage){
