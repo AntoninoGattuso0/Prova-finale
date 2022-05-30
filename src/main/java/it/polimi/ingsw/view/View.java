@@ -7,11 +7,9 @@ import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
 public interface View {
     void startGame();
     void requestNickname();
-    void requestNumPlayers();
 
     void requestNumPlayersIsExpert();
 
-    void requestIsExpert();
 
     void displayNick();
     void displayNumPlayers();
@@ -23,14 +21,11 @@ public interface View {
     void displaySchoolBoard();
     void displayCharacterCard();
 
-    void displayWinner();
-
     void displayWinner(String winner);
 
     void displayNetError();
     void displayWrongNickname();
     void displayWrongTurn();
-    void displayFetchNameMessage();
     void displayTurn();
     void displayResponseMessage();
 

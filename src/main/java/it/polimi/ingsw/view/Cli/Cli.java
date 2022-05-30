@@ -433,6 +433,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         //ndo stanno salvate le character card?
     }
 
+
     @Override
     public void displayWinner(String winner) {
         out.println("The winner is: " + winner);
@@ -455,10 +456,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
         socketNetworkHandler.sendMessage(new WrongTurnMessage());
     }
 
-    @Override
-    public void displayFetchNameMessage() {
-
-    }
 
     @Override
     public void displayTurn() {
