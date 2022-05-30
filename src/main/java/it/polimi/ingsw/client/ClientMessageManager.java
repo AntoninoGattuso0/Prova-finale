@@ -24,9 +24,8 @@ public class ClientMessageManager {
             view.requestNickname();
        }else if(object instanceof ClientAcceptedMessage){
                view.registerClient();
-        }else if(object instanceof WinnerMessage){
-            WinnerMessage m= (WinnerMessage) object;
-            view.displayWinner(m.getNickname());
+        }else if(object instanceof WinnerMessage message){
+            view.displayWinner(message.getNickname());
         }else if(object instanceof GameStartedMessage){
             view.startGame();
         }else if(object instanceof WrongNicknameMessage){
@@ -35,11 +34,8 @@ public class ClientMessageManager {
             view.displayWrongTurn();
         }else if(object instanceof ClientInputMessage){
             view.displayResponseMessage();
-        }else if(object instanceof AllUpdateMessage){
-            AllUpdateMessage game=(AllUpdateMessage) object;
-            view.updateAll(game.getLightGame());
-        }else if(object instanceof WrongTurnMessage){
-            view.displayWrongTurn();
+        }else if(object instanceof AllUpdateMessage m){
+            view.updateAll(m.getLightGame());
         }
          else   throw new IllegalArgumentException();
         }

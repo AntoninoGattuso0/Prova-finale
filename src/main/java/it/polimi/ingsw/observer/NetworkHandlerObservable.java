@@ -18,7 +18,7 @@ public class NetworkHandlerObservable {
         synchronized (observers) {
             for (NetworkHandler observer : observers) {
                 try {
-                    observer.updateMessage(message);
+                    observer.sendMessage(message);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

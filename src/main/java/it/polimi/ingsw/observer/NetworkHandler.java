@@ -5,7 +5,7 @@ import it.polimi.ingsw.network.Message.Message;
 import java.io.IOException;
 
 public interface NetworkHandler extends Runnable {
-    void updateMessage(Message message) throws IOException;
+    void sendMessage(Message message) throws IOException;
     void updateConnection(String ip,String port);
     void closeConnection();
 }

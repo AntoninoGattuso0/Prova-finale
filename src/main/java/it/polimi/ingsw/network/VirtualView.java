@@ -4,11 +4,12 @@ import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.WinnerMessage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class VirtualView {
-    private final Map<String, ClientHandlerInterface> clients = new HashMap<>();
+    private final ArrayList<ClientHandlerInterface> clients = new ArrayList<>();
     private String actualPlayer;
     private final Object lock;
 
@@ -18,25 +19,30 @@ public class VirtualView {
 
     public void addClientInVirtualView(ClientHandlerInterface client, String nick) {
         synchronized (lock) {
-            clients.put(nick, client);
+            clients.add(client);
             lock.notifyAll();
         }
     }
     public void removeClientInVirtualView(ClientHandlerInterface client, String nick) {
         synchronized (lock) {
-            clients.remove(nick, client);
+            clients.remove(client);
             lock.notifyAll();
         }
     }
     public void startTurn() {
-        for (ClientHandlerInterface clientHandler : clients.values()) {
+        for (ClientHandlerInterface clientHandler :clients) {
             clientHandler.sendObject(new StartTurnMessage());
         }
     }
 
     public void setActualPlayer(String actualPlayer) {
         this.actualPlayer = actualPlayer;
-        clients.get(actualPlayer).setTurn(true);
+        int i;
+        for(i=0;i<clients.size();i++){
+            if(clients.get(i).getUserNickname().equals(actualPlayer)){
+                clients.get(i).setTurn(true);
+            }
+        }
     }
 
     public String getActualPlayer() {
