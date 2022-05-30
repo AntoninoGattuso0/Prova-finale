@@ -1,25 +1,27 @@
-/*package it.polimi.ingsw.view.Gui;
+package it.polimi.ingsw.view.GUI;
 
-import it.polimi.ingsw.model.ColorPawn;
-import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.Player;
-import it.polimi.ingsw.network.Message.ClientAcceptedMessage;
-import it.polimi.ingsw.network.Message.StartTurnMessage;
-import it.polimi.ingsw.network.Message.UpdateMessage.*;
-import it.polimi.ingsw.observer.ViewObservable;
+import it.polimi.ingsw.client.ModelLight.LightGame;
+import it.polimi.ingsw.client.SocketNetworkHandler;
+import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
+
 import it.polimi.ingsw.view.View;
-import javafx.application.Platform;
 
-import java.util.ArrayList;
 
-public class Gui extends ViewObservable implements View {
+public class Gui implements View {
+
+
     @Override
     public void startGame() {
 
     }
 
     @Override
-    public void loginPlayers() {
+    public void requestNickname() {
+
+    }
+
+    @Override
+    public void requestNumPlayersIsExpert() {
 
     }
 
@@ -29,7 +31,7 @@ public class Gui extends ViewObservable implements View {
     }
 
     @Override
-    public void displayNumPlayers(int numPlayers) {
+    public void displayNumPlayers() {
 
     }
 
@@ -39,7 +41,7 @@ public class Gui extends ViewObservable implements View {
     }
 
     @Override
-    public void displayAssistantCard(Player player) {
+    public void displayAssistantCard() {
 
     }
 
@@ -59,88 +61,12 @@ public class Gui extends ViewObservable implements View {
     }
 
     @Override
-    public void displayCharacterCard(Game game) {
+    public void displayCharacterCard() {
 
     }
 
     @Override
-    public void updateAssistantCard(AssistantCardUpdateMessage assistant) {
-
-    }
-
-    @Override
-    public void updateCloud(CloudUpdateMessage cloud) {
-
-    }
-
-    @Override
-    public void updateDiningRoom(DiningRoomUpdateMessage object) {
-
-    }
-
-    @Override
-    public void updateEntrance() {
-
-    }
-
-    @Override
-    public void updateIsland(IslandUpdateMessage m) {
-
-    }
-
-    @Override
-    public void updateProfTable() {
-
-    }
-
-    @Override
-    public void updateTowerSpace() {
-
-    }
-
-    @Override
-    public void updateNickname(NicknameUpdateMessage m) {
-
-    }
-
-    @Override
-    public void updateCharacterCard() {
-
-    }
-
-    @Override
-    public void registerClient(ClientAcceptedMessage m) {
-
-    }
-
-    @Override
-    public void updateNumPlayers() {
-
-    }
-
-    @Override
-    public void requestNickname() {
-        Platform.runLater(()->SceneController.changeRootPane);
-
-    }
-
-    @Override
-    public void requestNumPlayers() {
-
-    }
-
-    @Override
-    public void requestIsExpert() {
-
-    }
-
-    @Override
-    public void waitOtherPlayers(String object) {
-
-    }
-
-    @Override
-    public void displayWinner(String winner) {
+    public void displayWinner(String nickname) {
 
     }
 
@@ -155,68 +81,53 @@ public class Gui extends ViewObservable implements View {
     }
 
     @Override
-    public void updatePawnToDining(int numDiningRoom, ArrayList<ColorPawn> arrayPawn) {
-
-    }
-
-    @Override
-    public void updatePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn) {
-
-    }
-
-    @Override
-    public void requestMoveMotherNature(int island) {
-
-    }
-
-    @Override
-    public void updateMoveMotherNature(int island) {
-
-    }
-
-    @Override
     public void displayWrongTurn() {
 
     }
 
     @Override
-    public void displayFetchNameMessage() {
+    public void displayTurn() {
 
     }
 
     @Override
-    public void displayTurn(StartTurnMessage object) {
+    public void displayResponseMessage() {
+
+    }
+
+
+    @Override
+    public void updateAll(LightGame object) {
 
     }
 
     @Override
-    public void displayResponseMessage(String errorMessage) {
+    public void selectCloud() {
 
     }
 
     @Override
-    public void selectCloud(int cloud) {
+    public void selectAssistantCard() {
 
     }
 
     @Override
-    public void selectAssistantCard(int assistant) {
+    public void requestMoveMotherNature() {
 
     }
 
     @Override
-    public void updateTowerSpace(TowerSpaceUpdateMessage object) {
+    public void registerClient() {
 
     }
 
     @Override
-    public void updateEntrance(EntranceUpdateMessage object) {
+    public void waitOtherPlayers() {
 
     }
 
     @Override
-    public void updateAll(AllUpdateMessage object) {
+    public void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler) {
 
     }
 }
-*/
