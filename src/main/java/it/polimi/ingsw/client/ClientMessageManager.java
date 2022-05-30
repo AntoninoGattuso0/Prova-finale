@@ -37,6 +37,8 @@ public class ClientMessageManager {
         }else if(object instanceof AllUpdateMessage){
             AllUpdateMessage game=(AllUpdateMessage) object;
             view.updateAll(game.getLightGame());
+        }else if(object instanceof WrongTurnMessage){
+            view.displayWrongTurn();
         }
          else   throw new IllegalArgumentException();
         }

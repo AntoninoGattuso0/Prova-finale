@@ -7,7 +7,7 @@ import it.polimi.ingsw.network.Message.ServerToClient.WinnerMessage;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VirtualView  /*implements*/ {//DA COMPLETARE
+public class VirtualView {
     private final Map<String, ClientHandlerInterface> clients = new HashMap<>();
     private String actualPlayer;
     private final Object lock;

@@ -6,6 +6,7 @@ import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Island;
 import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
 import it.polimi.ingsw.observer.ConnectionObserver;
@@ -41,7 +42,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         lobbyOk = false;
         lobbySett = false;
         serverMessageMenager=new ServerMessageMenager(this);
-        virtualView.addUserInput(userInput);
     }
 
     public ArrayList<Player> getPlayers() {
@@ -268,5 +268,17 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
             game.getPlayers().get(numPlayer).getEntrance().movePawnToIsland(arrayPawn.get(i), game.getIslands().get(island), game);
         }
         clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+    }
+
+    public void processMessage(ClientHandler clientHandler, Message m) {
+        if(!lobbyOk){
+            serverMessageMenager.ManageInputToServer(clientHandler,m);
+        }else{
+            if(Objects.equals(clientHandler.getUserNickname(), controller.getRoundController().getTurnController().getCurrPlayer().getNickname())){
+                serverMessageMenager.ManageInputToServer(clientHandler,m);
+            }else{
+                clientHandler.sendObject(new WrongTurnMessage());
+            }
+        }
     }
 }

@@ -2,7 +2,7 @@ package it.polimi.ingsw.network;
 import java.io.*;
 import java.net.*;
 
-public class Server {//DA RIVEDERE
+public class Server {
     private ServerSocket serverSocket;
     private final Lobby lobby;
     int port;

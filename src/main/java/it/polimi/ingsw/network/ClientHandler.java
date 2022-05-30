@@ -127,6 +127,7 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
         });
         thread.start();
     }
+    @Override
     public Message read() {
         synchronized (this) {
             while (!messageReady) {
