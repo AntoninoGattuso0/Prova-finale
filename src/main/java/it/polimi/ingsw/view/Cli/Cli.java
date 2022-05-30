@@ -5,6 +5,7 @@ import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
+import it.polimi.ingsw.network.Message.ClientToServer.MoveMotherNatureMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
 import it.polimi.ingsw.network.Message.ServerToClient.InvalidNumPlayerMessage;
@@ -480,55 +481,6 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     }*/
 
-    @Override
-    public void updateAssistantCard() {
-
-    }
-
-    @Override
-    public void updateCloud() {
-
-    }
-
-    @Override
-    public void updateIsland() {
-
-    }
-
-    @Override
-    public void updateEntrance() {
-
-    }
-
-    @Override
-    public void updateDiningRoom() {
-
-    }
-
-    @Override
-    public void updateProfTable() {
-
-    }
-
-    @Override
-    public void updateTowerSpace() {
-
-    }
-
-    @Override
-    public void updateCharacterCard() {
-
-    }
-
-    @Override
-    public void updateNickname() {
-
-    }
-
-    @Override
-    public void updateNumPlayers() {
-
-    }
 
     @Override
     public void updateAll(LightGame object) {
@@ -547,7 +499,14 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void requestMoveMotherNature() {
-
+        out.println("Inserisci i passi da far fare a Madre Natura: ");
+        //dunque dovrei capire come trovare il giocatore che vuole muovere MN, per ora ho messo 2 a caso ma non saprei
+        int step = scanner.nextInt();
+        while (step <= 0 || step > lightGame.getPlayers().get(2).getCurrentAssistant().getStep()) {
+            out.println("Numero Errato! Inserisci i passi da far fare a Madre Natura: ");
+            step = scanner.nextInt();
+            socketNetworkHandler.sendMessage(new MoveMotherNatureMessage(step));
+        }
     }
 
 
@@ -558,7 +517,7 @@ public class Cli extends NetworkHandlerObservable implements Runnable, View {
 
     @Override
     public void waitOtherPlayers() {
-
+        out.println("Aspettando uteriori giocatori...");
     }
 
     public void clearCli() {
