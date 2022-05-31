@@ -4,11 +4,11 @@ import java.util.Objects;
 import java.util.Random;
 public class Nicola extends UseEffect {
     protected int coinPrice;
-    private static int greenPawn;
-    private static int redPawn;
-    private static int yellowPawn;
-    private static int pinkPawn;
-    private static int bluePawn;
+    private int greenPawn;
+    private int redPawn;
+    private int yellowPawn;
+    private int pinkPawn;
+    private int bluePawn;
     Nicola(StudentBag studentBag, Game game) {
         coinPrice = 2;
         Random rnd = new Random();
@@ -43,34 +43,34 @@ public class Nicola extends UseEffect {
             }
         }
     }
-    public static void setGreenPawn(int i) {
+    public void setGreenPawn(int i) {
         greenPawn = i;
     }
-    public static int getGreenPawn() {
+    public int getGreenPawn() {
         return greenPawn;
     }
-    public static void setRedPawn(int i) {
+    public void setRedPawn(int i) {
         redPawn = i;
     }
-    public static int getRedPawn() {
+    public int getRedPawn() {
         return redPawn;
     }
-    public static void setYellowPawn(int i) {
+    public void setYellowPawn(int i) {
         yellowPawn = i;
     }
-    public static int getYellowPawn() {
+    public int getYellowPawn() {
         return yellowPawn;
     }
-    public static void setPinkPawn(int i) {
+    public void setPinkPawn(int i) {
         pinkPawn = i;
     }
-    public static int getPinkPawn() {
+    public int getPinkPawn() {
         return pinkPawn;
     }
-    public static void setBluePawn(int i) {
+    public void setBluePawn(int i) {
         bluePawn = i;
     }
-    public static int getBluePawn() {
+    public int getBluePawn() {
         return bluePawn;
     }
 

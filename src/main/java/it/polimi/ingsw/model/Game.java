@@ -14,6 +14,19 @@ public class Game {
     protected Map<Integer, String> m = new HashMap<>();
     protected StudentBag studentBag;
 
+    private Antonio antonio;
+    private Barbara barbara;
+    private Ciro ciro;
+    private Dante dante;
+    private Ernesto ernesto;
+    private Felix felix;
+    private Giuseppe giuseppe;
+    private Ivan ivan;
+    private Lancillotto lancillotto;
+    private Maria maria;
+    private Nicola nicola;
+    private Omnia omnia;
+
     public ArrayList<CharacterCard> getCharacterCards() {
         return characterCards;
     }
@@ -37,7 +50,7 @@ public class Game {
             LightPlayer lightPlayer=new LightPlayer(players.get(i).getNickname(),players.get(i).getNumCoin(),players.get(i).getDeckAssistant(),players.get(i).getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDiningRoom );
             lightPlayers.add(lightPlayer);
         }
-        return new LightGame(characterCards, lightClouds,lightPlayers,islands,totPlayer,profTable);
+        return new LightGame(characterCards, lightClouds,lightPlayers,islands,totPlayer,profTable, antonio, barbara, ciro, dante, ernesto, felix, giuseppe, ivan, lancillotto, maria, nicola, omnia);
     }
 
     public int getTotPlayer() {
@@ -58,17 +71,7 @@ public class Game {
         return this.clouds;
     }
 
-    private Barbara barbara;
-    private Ciro ciro;
-    private Dante dante;
-    private Ernesto ernesto;
-    private Felix felix;
-    private Giuseppe giuseppe;
-    private Ivan ivan;
-    private Lancillotto lancillotto;
-    private Maria maria;
-    private Nicola nicola;
-    private Omnia omnia;
+
 
     public Game(int giocatori, boolean expert) {
         totPlayer = giocatori;
@@ -256,7 +259,7 @@ public class Game {
                     random2 = rnd.nextInt(12);
                 }
                 if (random == 0 || random1 == 0 || random2 == 0) {
-                    Antonio antonio = new Antonio(game.studentBag);
+                    antonio = new Antonio(game.studentBag);
                     CharacterCard card = new CharacterCard(antonio, 0);
                     game.characterCards.add(card);
                 }

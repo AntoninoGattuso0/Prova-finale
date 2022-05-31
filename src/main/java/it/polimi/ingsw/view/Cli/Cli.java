@@ -4,7 +4,6 @@ package it.polimi.ingsw.view.Cli;
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.client.SocketNetworkHandler;
-import it.polimi.ingsw.model.Antonio;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.MoveMotherNatureMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
@@ -415,13 +414,91 @@ public class Cli implements Runnable, View {
 
     @Override
     public void displayCharacterCard() {
-        for(int i = 0; i < lightGame.getCharacterCards().size(); i++){
-            if(lightGame.getCharacterCards().get(i).getNumCard() == 0){
+        for(int i = 0; i < lightGame.getCharacterCards().size(); i++) {
+            if (lightGame.getCharacterCards().get(i).getNumCard() == 0) {
                 out.println("EFFETTO: Prendi 1 studente dalla carta e piazzalo su un'Isola a tua scelta. Poi pesca 1 studente dal sacchetto e mettilo su questa carta");
-                out.println(Antonio.getBluePawn());
+                out.println("Prezzo carta: " + lightGame.getAntonio().getCoinPrice() + "✪");
+                out.println(ColorCli.GREEN + "●: " + lightGame.getAntonio().getGreenPawn());
+                out.println(ColorCli.RED + "●: " + lightGame.getAntonio().getRedPawn());
+                out.println(ColorCli.YELLOW + "●: " + lightGame.getAntonio().getYellowPawn());
+                out.println(ColorCli.BLUE + "●: " + lightGame.getAntonio().getBluePawn());
+                out.println(ColorCli.PINK + "●: " + lightGame.getAntonio().getPinkPawn() + ColorCli.RESET);
+                out.println("+-----------------------------------------------------+");
+                out.println("");
+            } else if (lightGame.getCharacterCards().get(i).getNumCard() == 1) {
+                out.println("EFFETTO: Durante questo turno, prendi il controllo dei professori anche se nella tua Sala hai lo stesso numero di Studenti del giocatore che li controlla in quel momento");
+                out.println("Prezzo carta: " + lightGame.getBarbara().getCoinPrice() + "✪");
+                out.println("+-----------------------------------------------------+");
+                out.println("");
+            } else if (lightGame.getCharacterCards().get(i).getNumCard() == 2) {
+                out.println("EFFETTO: Scegli un'isola e calcola la maggioranza come se Madre Natura avesse terminato il suo movimento lì. In questo turno madre natura si muoverà come di consueto");
+                out.println("Prezzo carta: " + lightGame.getCiro().getCoinPrice() + "✪");
+                out.println("+-----------------------------------------------------+");
+                out.println("");
+            } else if (lightGame.getCharacterCards().get(i).getNumCard() == 3) {
+                out.println("Puoi muovere Madre Natura fino a 2 isole addizionali");
+                out.println("Prezzo carta: " + lightGame.getDante().getCoinPrice() + "✪");
+                out.println("+-----------------------------------------------------+");
+                out.println("");
+            } else if (lightGame.getCharacterCards().get(i).getNumCard() == 4) {
+                out.println("EFFETTO: Piazza una tessera Divieto su un'Isola a tua scelta. La prima volta che Madre Natura termina lì il suo movimento rimuovete la tessera Divieto SENZA calcolare l'influenza su quell'isola");
+                out.println("Prezzo carta: " + lightGame.getErnesto().getCoinPrice() + "✪");
+                out.println("Numero carte Divieto rimanenti: " + lightGame.getErnesto().getNumProhibitionCard());
+                out.println("+-----------------------------------------------------+");
+                out.println("");
+            } else if (lightGame.getCharacterCards().get(i).getNumCard() == 5) {
+                out.println("EFFETTO: Durante il conteggio dell'influenza su in'Isola , le Torri presenti non vengono calcolate");
+                out.println("Prezzo carta: " + lightGame.getFelix().getCoinPrice() + "✪");
+                out.println("+-----------------------------------------------------+");
+                out.println("");
+            } else if (lightGame.getCharacterCards().get(i).getNumCard() == 6) {
+                out.println("EFFETTO: Poi prendere fino a 3 Studenti da questa carta e scambiarli con altrettanti Studenti presenti nel tuo Ingresso");
+                out.println("Prezzo carta: " + lightGame.getGiuseppe().getCoinPrice() + "✪");
+                out.println(ColorCli.GREEN + "●: " + lightGame.getGiuseppe().getNumGreenPawn());
+                out.println(ColorCli.RED + "●: " + lightGame.getGiuseppe().getNumRedPawn());
+                out.println(ColorCli.YELLOW + "●: " + lightGame.getGiuseppe().getNumYellowPawn());
+                out.println(ColorCli.BLUE + "●: " + lightGame.getGiuseppe().getNumBluePawn());
+                out.println(ColorCli.PINK + "●: " + lightGame.getGiuseppe().getNumPinkPawn() + ColorCli.RESET);
+                out.println("+-----------------------------------------------------+");
+                out.println("");
+            } else if (lightGame.getCharacterCards().get(i).getNumCard() == 7) {
+                out.println("EFFETTO: in questo turno, durante il calcolo dell'influenza, hai 2 punti addizionali");
+                out.println("Prezzo carta: " + lightGame.getIvan().getCoinPrice() + "✪");
+                out.println("+-----------------------------------------------------+");
+                out.println("");
+            } else if (lightGame.getCharacterCards().get(i).getNumCard() == 8) {
+                out.println("EFFETTO: Scegli un colore Studente; in questo turno quel colore non fornisce influenza");
+                out.println("Prezzo carta: " + lightGame.getLancillotto().getCoinPrice() + "✪");
+                out.println("+-----------------------------------------------------+");
+                out.println("");
+            } else if (lightGame.getCharacterCards().get(i).getNumCard() == 9) {
+                out.println("EFFETTO: Puoi scabiare fino a 2 Studenti presenti nella tua Sala e nel tuo Ingresso");
+                out.println("Prezzo carta: " + lightGame.getMaria().getCoinPrice() + "✪");
+                out.println("+-----------------------------------------------------+");
+                out.println("");
+            } else if (lightGame.getCharacterCards().get(i).getNumCard() == 10) {
+                out.println("EFFETTO: Prendi 1 Studente da questa carta e piazzalo nella tua Sala. Poi pesca un nuovo Studente e posizionalo su questa carta");
+                out.println("Prezzo carta: " + lightGame.getNicola().getCoinPrice() + "✪");
+                out.println(ColorCli.GREEN + "●: " + lightGame.getNicola().getGreenPawn());
+                out.println(ColorCli.RED + "●: " + lightGame.getNicola().getRedPawn());
+                out.println(ColorCli.YELLOW + "●: " + lightGame.getNicola().getYellowPawn());
+                out.println(ColorCli.BLUE + "●: " + lightGame.getNicola().getBluePawn());
+                out.println(ColorCli.PINK + "●: " + lightGame.getNicola().getPinkPawn() + ColorCli.RESET);
+                out.println("+-----------------------------------------------------+");
+                out.println("");
+            } else if (lightGame.getCharacterCards().get(i).getNumCard() == 11) {
+                out.println("EFFETTO: Scegli un colore di Studente; ogni giocatore (incluso te) deve rimettere nel sacchetto 3 studenti di quel colore presenti nella sua Sala");
+                out.println("Prezzo carta: " + lightGame.getOmnia().getCoinPrice() + "✪");
+                out.println("+-----------------------------------------------------+");
+                out.println("");
             }
+
         }
-    }
+
+
+
+
+            }
 
 
     @Override
