@@ -1,11 +1,11 @@
 package it.polimi.ingsw.controller;
 
-import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.ClientHandlerInterface;
-import it.polimi.ingsw.network.Message.ClientToServer.ChooseAssistantCardMessage;
+import it.polimi.ingsw.network.Lobby;
 import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
-import it.polimi.ingsw.network.Lobby;
 import it.polimi.ingsw.network.VirtualView;
 
 import java.util.ArrayList;
@@ -80,15 +80,7 @@ public class Controller {
         }
         virtualView.startRound();
         players=roundController.getRoundOrder();
-        for(i=0;i<players.size();i++){
-            while (players.get(i).getCurrentPhase()==PhaseTurn.MOVE_STUDENT) {
-                for (ClientHandlerInterface client : clients) {
-                    if (players.get(i).getNickname().equals(client.getUserNickname())) {
-                        client.sendObject(new RequestAssistantMessage());
-                    }
-                }
-            }
-        }
+
         players=roundController.newRoundOrder(players,game);
         virtualView.sendBroadcast(new TurnOrderMessage(players));
         for(Player player: players){
@@ -99,29 +91,29 @@ public class Controller {
     }
     public void startTurn(Player player) {
         boolean e = false;
-        while (player.getCurrentPhase() == PhaseTurn.END_TURN && e) {
+        while (player.getCurrentPhase() != PhaseTurn.END_TURN && e) {
             if (player.getCurrentPhase() == PhaseTurn.MOVE_STUDENT) {
                 for (ClientHandlerInterface client : clients) {
                     if (player.getNickname().equals(client.getUserNickname())) {
-                        virtualView.sendMessage(client, new RequestMovePawn());
+                        virtualView.sendMessage(client, new SetMovePawnMessage());
                     }
                 }
             } else if (player.getCurrentPhase() == PhaseTurn.MOVE_MOTHER_NATURE) {
                 for (ClientHandlerInterface client : clients) {
                     if (player.getNickname().equals(client.getUserNickname())) {
-                        virtualView.sendMessage(client, );
+                        virtualView.sendMessage(client, new SetMoveMotherNature());
                     }
                 }
             } else if (player.getCurrentPhase() == PhaseTurn.CHOOSE_CLOUD) {
                 for (ClientHandlerInterface client : clients) {
                     if (player.getNickname().equals(client.getUserNickname())) {
-                        virtualView.sendMessage(client, );
+                        virtualView.sendMessage(client, new SetCloudMessage());
                     }
                 }
             } else if (player.getCurrentPhase() == PhaseTurn.END_TURN) {
                 for (ClientHandlerInterface client : clients) {
                     if (player.getNickname().equals(client.getUserNickname())) {
-                        virtualView.sendMessage(client, );
+                        virtualView.sendMessage(client, new EndTurnMessage());
                     }
                 }
             }

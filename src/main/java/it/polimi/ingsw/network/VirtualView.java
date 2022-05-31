@@ -1,6 +1,7 @@
 package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.network.Message.Message;
+import it.polimi.ingsw.network.Message.ServerToClient.SetAssistantMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.WinnerMessage;
 
@@ -62,11 +63,8 @@ public class VirtualView {
     }
 
     public void sendBroadcast(Message message) {
-        synchronized (lock) {
             for (ClientHandlerInterface clientHandler : clients) {
                 clientHandler.sendObject(message);
-            }
-            lock.notifyAll();
         }
     }
 
@@ -85,4 +83,8 @@ public class VirtualView {
         }
     }
 }
-}
+
+    public void startRound() {
+        sendBroadcast(new SetAssistantMessage());
+        }
+    }
