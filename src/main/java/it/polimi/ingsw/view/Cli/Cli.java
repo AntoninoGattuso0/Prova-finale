@@ -10,7 +10,6 @@ import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
 import it.polimi.ingsw.network.Message.ServerToClient.InvalidNumPlayerMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.WrongNicknameMessage;
-import it.polimi.ingsw.network.Message.ServerToClient.WrongTurnMessage;
 import it.polimi.ingsw.view.View;
 
 import java.io.PrintStream;
@@ -415,7 +414,6 @@ public class Cli implements Runnable, View {
 
     @Override
     public void displayCharacterCard() {
-        //ndo stanno salvate le character card?
     }
 
 
@@ -432,20 +430,16 @@ public class Cli implements Runnable, View {
     @Override
     public void displayWrongNickname() {
         out.println("Nickname Errato o Già Presente!");
-        socketNetworkHandler.sendMessage(new WrongNicknameMessage());
     }
 
     @Override
     public void displayWrongTurn() {
-        out.println("Non è il tuo turno, aspetta...");
-        socketNetworkHandler.sendMessage(new WrongTurnMessage());
-    }
+        out.println("Non è il tuo turno, aspetta...");}
 
 
     @Override
     public void displayTurn() {
-        //dove li abbiamo salvati i turni del gioco?
-
+        out.println("È il tuo turno! Puoi fare le tue mosse:");
     }
 
     @Override
@@ -470,7 +464,14 @@ public class Cli implements Runnable, View {
 
     @Override
     public void selectCloud() {
-
+        displayCloud();
+        out.println("Scegli una delle nuvole presenti: ");
+        int cloud = scanner.nextInt();
+        while(cloud<1 || cloud > (lightGame.getClouds().size() + 1)){
+            out.println("Numero nuvola errato. Inserisci un numero valido: ");
+            cloud = scanner.nextInt();
+        }
+        socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloud - 1)); //Penso sia carino che scelga le cloud partendo da 1 e non da 0
     }
 
     @Override
