@@ -4,10 +4,7 @@ package it.polimi.ingsw.view.Cli;
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.client.SocketNetworkHandler;
-import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
-import it.polimi.ingsw.network.Message.ClientToServer.MoveMotherNatureMessage;
-import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
-import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
+import it.polimi.ingsw.network.Message.ClientToServer.*;
 import it.polimi.ingsw.network.Message.ServerToClient.InvalidNumPlayerMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.WrongNicknameMessage;
 import it.polimi.ingsw.view.View;
@@ -25,6 +22,7 @@ public class Cli implements Runnable, View {
     private boolean gameStart;
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;
+    private String actualPlayer;
 
     public Cli() {
         out = System.out;
@@ -200,22 +198,15 @@ public class Cli implements Runnable, View {
     }
 
     @Override
-    public void displayAssistantCard() {
+    public void displayAssistantCard(int player) {
         clearCli();
-
         int i;
-        StringBuilder assistantCard = new StringBuilder();
-        for (i = 0; i < lightGame.getPlayers().get(i).getDeckAssistant().size(); i++) {
-            out.println(ColorCli.BOLDCYAN + "+-----------------------+");
-            if (lightGame.getPlayers().get(i).getDeckAssistant().get(i).getCardValue() == 10)
-                out.println(ColorCli.BOLDCYAN + "| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(i).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "        |");
-            else
-                out.println(ColorCli.BOLDCYAN + "| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(i).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "         |");
-
-            out.println(ColorCli.BOLDCYAN + "| MN steps: " + ColorCli.GREEN + lightGame.getPlayers().get(i).getDeckAssistant().get(i).getStep() + ColorCli.BOLDCYAN + "           |");
+        for (i = 0; i < lightGame.getPlayers().get(player).getDeckAssistant().size(); i++) {
+            out.println(ColorCli.BOLDCYAN + "| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "         |");
+            out.println(ColorCli.BOLDCYAN + "| MN steps: " + ColorCli.GREEN + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getStep() + ColorCli.BOLDCYAN + "           |");
             out.println(ColorCli.BOLDCYAN + "+-----------------------+");
         }
-        out.println(assistantCard);
+        out.println("");
     }
 
     @Override
@@ -492,13 +483,8 @@ public class Cli implements Runnable, View {
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             }
-
         }
-
-
-
-
-            }
+    }
 
 
     @Override
@@ -560,10 +546,20 @@ public class Cli implements Runnable, View {
 
     @Override
     public void selectAssistantCard() {
-        displayAssistantCard();
-        out.println("Scegli uno degli Assistenti presenti: ");
-        int assistant = scanner.nextInt();
-        //DA COMPLETARE PER IL GIOCATORE SPECIFICATO
+        int player, assistant = -1;
+        for(player = 0; lightGame.getPlayers().get(player).getNickname().equals(actualPlayer); player++);
+        displayAssistantCard(player);
+        boolean check = false;
+        while(!check){
+            out.println("Scegli uno degli Assistenti presenti: ");
+            assistant = scanner.nextInt();
+            for(int i = 0; i < lightGame.getPlayers().get(player).getDeckAssistant().size(); i++){
+                if(lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() == assistant)
+                    check = true;
+            }
+        }
+        out.println("Hai scelto correttamente l'assistente numero: " + assistant);
+        socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(assistant));//VIENE PASSATO IL VALORE DELLA CARTA, GIUSTO?
     }
 
     @Override

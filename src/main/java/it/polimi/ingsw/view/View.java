@@ -14,7 +14,7 @@ public interface View {
     void displayNumPlayers();
     void displayIsExpert();
 
-    void displayAssistantCard();
+    void displayAssistantCard(int player);
     void displayCloud();
     void displayIslands();
     void displaySchoolBoard();

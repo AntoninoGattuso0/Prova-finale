@@ -39,7 +39,7 @@ public class Gui implements View {
     }
 
     @Override
-    public void displayAssistantCard() {
+    public void displayAssistantCard(int player) {
 
     }
 
