@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+      <ImageView fitHeight="488.0" fitWidth="494.0" layoutX="-2.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="105.0" layoutY="222.0" text="NICKNAME:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <TextField layoutX="244.0" layoutY="222.0" />
+      <Label layoutX="102.0" layoutY="127.0" text="FIRST PLAYER IS ALREADY LOGGED" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="111.0" layoutY="150.0" text="PLEASE INSERT YOUR NICKNAME:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="47.0" fitWidth="108.0" layoutX="193.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/JoinButton.png" />
+         </image>
+      </ImageView>
+</Pane>
