@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client.ModelLight;
 
+import it.polimi.ingsw.model.CharacterCard;
 import it.polimi.ingsw.model.Island;
 import it.polimi.ingsw.model.ProfTable;
 
@@ -12,7 +13,9 @@ public class LightGame implements Serializable {
     private  ArrayList<LightPlayer> players;
     private  ArrayList<Island> islands;
     private int numPlayers;
-    public LightGame(ArrayList<LightCloud> clouds,ArrayList<LightPlayer> players,ArrayList<Island> islands, int numPlayers, ProfTable profTable){
+    private ArrayList<CharacterCard> characterCards;
+    public LightGame(ArrayList<CharacterCard> characterCards, ArrayList<LightCloud> clouds, ArrayList<LightPlayer> players, ArrayList<Island> islands, int numPlayers, ProfTable profTable){
+        this.characterCards = characterCards;
         this.clouds=clouds;
         this.players=players;
         this.islands=islands;
@@ -33,5 +36,9 @@ public class LightGame implements Serializable {
     }
     public ArrayList<LightPlayer> getPlayers() {
         return players;
+    }
+
+    public ArrayList<CharacterCard> getCharacterCards() {
+        return characterCards;
     }
 }

@@ -4,6 +4,7 @@ package it.polimi.ingsw.view.Cli;
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.client.SocketNetworkHandler;
+import it.polimi.ingsw.model.Antonio;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.MoveMotherNatureMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
@@ -414,6 +415,12 @@ public class Cli implements Runnable, View {
 
     @Override
     public void displayCharacterCard() {
+        for(int i = 0; i < lightGame.getCharacterCards().size(); i++){
+            if(lightGame.getCharacterCards().get(i).getNumCard() == 0){
+                out.println("EFFETTO: Prendi 1 studente dalla carta e piazzalo su un'Isola a tua scelta. Poi pesca 1 studente dal sacchetto e mettilo su questa carta");
+                out.println(Antonio.getBluePawn());
+            }
+        }
     }
 
 
@@ -467,8 +474,8 @@ public class Cli implements Runnable, View {
         displayCloud();
         out.println("Scegli una delle nuvole presenti: ");
         int cloud = scanner.nextInt();
-        while(cloud<1 || cloud > (lightGame.getClouds().size() + 1)){
-            out.println("Numero nuvola errato. Inserisci un numero valido: ");
+        while(cloud<1 || cloud > (lightGame.getClouds().size() + 1) || lightGame.getClouds().get(cloud - 1).getNumPawn() == 0){
+            out.println("Numero nuvola errato OPPURE Nuvola Vuota. Inserisci un numero valido: ");
             cloud = scanner.nextInt();
         }
         socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloud - 1)); //Penso sia carino che scelga le cloud partendo da 1 e non da 0
@@ -476,7 +483,10 @@ public class Cli implements Runnable, View {
 
     @Override
     public void selectAssistantCard() {
-
+        displayAssistantCard();
+        out.println("Scegli uno degli Assistenti presenti: ");
+        int assistant = scanner.nextInt();
+        //DA COMPLETARE PER IL GIOCATORE SPECIFICATO
     }
 
     @Override
