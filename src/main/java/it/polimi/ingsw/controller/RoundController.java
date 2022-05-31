@@ -21,7 +21,9 @@ public class RoundController {
     public TurnController getTurnController() {
         return turnController;
     }
-
+    public ArrayList<Player> getRoundOrder() {
+        return roundOrder;
+    }
     public void setRoundOrder(Player player, int num) {
         roundOrder.set(num, player);
     }

@@ -38,6 +38,8 @@ public class ClientMessageManager {
             view.updateAll(m.getLightGame());
         }else if (object instanceof LoginAcceptedMessage) {
             view.playerWait();
+        }else if(object instanceof RequestAssistantMessage){
+            view.selectAssistantCard();
         }
          else   throw new IllegalArgumentException();
         }

@@ -1,6 +1,9 @@
 package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.network.ClientHandlerInterface;
+import it.polimi.ingsw.network.Message.ClientToServer.ChooseAssistantCardMessage;
+import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
 import it.polimi.ingsw.network.Lobby;
 import it.polimi.ingsw.network.VirtualView;
@@ -14,9 +17,10 @@ public class Controller {
     private Game game;
     private final UserInput userInput;
     private final VirtualView virtualView;
-    private final ArrayList<Player> players;
+    private ArrayList<Player> players;
     private Player currentPlayer;
-    public Controller(Game game,UserInput userInput,VirtualView virtualView,ArrayList<Player> players){
+    private ArrayList<ClientHandlerInterface> clients;
+    public Controller(Game game, UserInput userInput, VirtualView virtualView, ArrayList<Player> players, ArrayList<ClientHandlerInterface> clients){
         this.game=game;
         this.isExpert=game.getIsExpert();
         this.virtualView=virtualView;
@@ -26,6 +30,7 @@ public class Controller {
         this.currentPlayer=players.get(0);
         this.endGame=false;
         this.roundController=new RoundController(players);
+        this.clients=clients;
     }
     public RoundController getRoundController(){
         return this.roundController;
@@ -37,10 +42,6 @@ public class Controller {
 
     public boolean getEndGame(){
         return endGame;
-    }
-
-    public void setIsExpert(boolean isExpert){
-        this.isExpert = isExpert;
     }
 
     public boolean getIsExpert(){
@@ -70,15 +71,67 @@ public class Controller {
         }
         return i;
     }
-    public void startTurn(Player currentPlayer){
-        virtualView.setActualPlayer(currentPlayer.getNickname());
-        virtualView.startTurn();
-        //FUNZIONE CHE GESTISCE TUTTO IL TURNO FINO ALLA FINE
-        virtualView.endTurn();
+    public void startRound(){
+        virtualView.setActualPlayer(roundController.getRoundOrder().get(0).getNickname());
+        currentPlayer=roundController.getRoundOrder().get(0);
+        int i;
+        for(i=0;i<players.size();i++) {
+            players.get(i).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
+        }
+        virtualView.startRound();
+        players=roundController.getRoundOrder();
+        for(i=0;i<players.size();i++){
+            while (players.get(i).getCurrentPhase()==PhaseTurn.MOVE_STUDENT) {
+                for (ClientHandlerInterface client : clients) {
+                    if (players.get(i).getNickname().equals(client.getUserNickname())) {
+                        client.sendObject(new RequestAssistantMessage());
+                    }
+                }
+            }
+        }
+        players=roundController.newRoundOrder(players,game);
+        virtualView.sendBroadcast(new TurnOrderMessage(players));
+        for(Player player: players){
+            synchronized (players) {
+                startTurn(player);
+            }
+        }
+    }
+    public void startTurn(Player player) {
+        boolean e = false;
+        while (player.getCurrentPhase() == PhaseTurn.END_TURN && e) {
+            if (player.getCurrentPhase() == PhaseTurn.MOVE_STUDENT) {
+                for (ClientHandlerInterface client : clients) {
+                    if (player.getNickname().equals(client.getUserNickname())) {
+                        virtualView.sendMessage(client, new RequestMovePawn());
+                    }
+                }
+            } else if (player.getCurrentPhase() == PhaseTurn.MOVE_MOTHER_NATURE) {
+                for (ClientHandlerInterface client : clients) {
+                    if (player.getNickname().equals(client.getUserNickname())) {
+                        virtualView.sendMessage(client, );
+                    }
+                }
+            } else if (player.getCurrentPhase() == PhaseTurn.CHOOSE_CLOUD) {
+                for (ClientHandlerInterface client : clients) {
+                    if (player.getNickname().equals(client.getUserNickname())) {
+                        virtualView.sendMessage(client, );
+                    }
+                }
+            } else if (player.getCurrentPhase() == PhaseTurn.END_TURN) {
+                for (ClientHandlerInterface client : clients) {
+                    if (player.getNickname().equals(client.getUserNickname())) {
+                        virtualView.sendMessage(client, );
+                    }
+                }
+            }
+            roundController.getTurnController().setPhaseTurn(player, e, roundController, game);
+        }
     }
     public void play(Game game, Lobby lobby){
         String winnerIs;
         while (players.size()==game.getTotPlayer()&&!lastTurn()){
+            startRound();
             if(currentPlayer.getActive()){
                 startTurn(currentPlayer);
             }

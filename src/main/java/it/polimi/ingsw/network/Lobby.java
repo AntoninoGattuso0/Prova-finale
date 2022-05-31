@@ -157,7 +157,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     }
 
     public void newGame(Game game) {
-        controller = new Controller(game, userInput, virtualView, players);
+        controller = new Controller(game, userInput, virtualView, players,clients);
         controller.sendUpdate();
     }
 

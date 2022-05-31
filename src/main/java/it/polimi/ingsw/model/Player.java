@@ -4,6 +4,7 @@ import it.polimi.ingsw.client.ModelLight.LightDiningRoom;
 import it.polimi.ingsw.client.ModelLight.LightEntrance;
 import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.client.ModelLight.LightTowerSpace;
+import it.polimi.ingsw.controller.PhaseTurn;
 
 import java.util.ArrayList;
 public class Player {
@@ -15,13 +16,19 @@ public class Player {
     protected Entrance entrance;
     protected DiningRoom diningRoom;
     protected TowerSpace towerSpace;
+    protected PhaseTurn currentPhase;
     public void setNickname(String nick){
         this.nickname=nick;
     }
     public String getNickname() {
         return nickname;
     }
-
+    public PhaseTurn getCurrentPhase() {
+        return currentPhase;
+    }
+    public void setCurrentPhase(PhaseTurn currentPhase) {
+        this.currentPhase = currentPhase;
+    }
     public DiningRoom getDiningRoom(){
         return this.diningRoom;
     }

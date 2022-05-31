@@ -21,6 +21,10 @@ public class VirtualView {
             lock.notifyAll();
         }
     }
+    public void sendMessage(ClientHandlerInterface clientHandlerInterface,Message message){
+        clientHandlerInterface.sendObject(message);
+
+    }
     public void removeClientInVirtualView(ClientHandlerInterface client, String nick) {
         synchronized (lock) {
             clients.remove(client);
@@ -29,7 +33,7 @@ public class VirtualView {
     }
     public void startTurn() {
         for (ClientHandlerInterface clientHandler :clients) {
-            clientHandler.sendObject(new StartTurnMessage());
+            clientHandler.sendObject(new StartTurnMessage(getActualPlayer()));
         }
     }
 

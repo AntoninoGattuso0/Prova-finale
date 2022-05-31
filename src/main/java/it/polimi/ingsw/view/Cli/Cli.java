@@ -22,7 +22,6 @@ public class Cli implements Runnable, View {
     Scanner scanner = new Scanner(System.in); //Per leggere input da tastiera
     private final PrintStream out;
     private Thread inputThread;
-    private String actualPlayer;
     private boolean isExpert;
     private boolean gameStart;
     private LightGame lightGame;
@@ -66,7 +65,7 @@ public class Cli implements Runnable, View {
     public void askServerInfo() throws ExecutionException {
         Map<String, String> serverInfo = new HashMap<>();
         String defaultAddress = "localhost";
-        String defaultPort = "16847";
+        String defaultPort = "5555";
         boolean validInput;
 
         out.println("Seleziona una delle opzioni, il valore di default è tra le parentesi");
@@ -143,7 +142,6 @@ public class Cli implements Runnable, View {
             out.println("ERRORE");
             socketNetworkHandler.sendMessage(new WrongNicknameMessage());
         }
-        //NON SO SE COSI FUNZIONA -NINO
     }
 
     @Override
@@ -157,13 +155,13 @@ public class Cli implements Runnable, View {
                 numPlayer = readLine();
             }
             out.println("Inserisci E per variante esperta o B base");
-            Object isExpert = readLine();
-            boolean expert = false;
-            while (!Objects.equals(isExpert, "B") && !Objects.equals(isExpert, "E")) {
+            Object exp = readLine();
+            isExpert=false;
+            while (!Objects.equals(exp, "B") && !Objects.equals(exp, "E")) {
                 out.println("Inserisci E per variante esperta o B base");
             }
-            if (isExpert.equals("E")) {
-                expert = true;
+            if (exp.equals("E")) {
+                isExpert=true;
             }
             if(numPlayer.equals("2")){
                 num=2;
@@ -172,32 +170,12 @@ public class Cli implements Runnable, View {
             }else if(numPlayer.equals("4")){
                 num=4;
             }
-            socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(num, expert));
+            socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(num, isExpert));
         } catch (ExecutionException e) {
             out.println("ERRORE");
             socketNetworkHandler.sendMessage(new InvalidNumPlayerMessage());
         }
     }
-
-    /*@Override
-    public void requestIsExpert() {
-        out.println("Per modalità esperta digita 1, altrimenti 0: ");
-        try{
-            int isExpert = parseInt(readLine());
-            while(isExpert != 0 && isExpert != 1){
-                out.println("Per modalità esperta digita 1, altrimenti 0: ");
-                isExpert = parseInt(readLine());
-            }
-            if(isExpert == 1)
-                this.isExpert = true;
-            else
-                this.isExpert = false;
-            socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert());
-        } catch (ExecutionException e){
-            out.println("ERRORE");
-        }
-    } NON SERVE A UN TOPOCAZZO, LA FUNZIONE È PRESENTE SOPRA */
-
     @Override
     public void displayNick() {
         for (int i = 0; i < lightGame.getNumPlayers(); i++) {
@@ -206,7 +184,7 @@ public class Cli implements Runnable, View {
     }
     @Override
     public void playerWait(){
-
+        System.out.println("Aspetta, qualcuno deve rispondere prima di te");
     }
 
     @Override
@@ -714,41 +692,6 @@ public class Cli implements Runnable, View {
         System.out.println("\n");
     }*/
 /*
-    @Override
-    public void requestNickname() {
-        out.println("Please insert your Nickname:  ");
-        String nick = scanner.nextLine();
-        out.println("\n");
-
-        notifyMessage(new RequestNickname(nick));
-    }
-
-    @Override
-    public void requestNumPlayers(){
-
-        System.out.println("Please insert the number of Players. It must be a number between 2 and 4. \n");
-        int numPlayers = checkInteger();
-        out.println("\n");
-        while (numPlayers < 2 || numPlayers > 4) {
-            System.out.println("Please insert the number of Players again. It must be a number between 2 and 4. \n");
-            numPlayers = checkInteger();
-        }
-        notifyMessage(new RequestNumPlayers(numPlayers));
-    }
-
-    @Override
-    public void requestIsExpert() {
-        int mode;
-        do{
-            System.out.println("Choose the game mode: type 0 for normal mode or type 1 for expert mode: \n");
-            mode = checkInteger();
-        }while(mode!=0 || mode!=1);
-        if(mode==0) isExpert = false;
-        else if(mode==1) isExpert = true;
-        notifyMessage(new RequestIsExpert(isExpert));
-    }
-
-
     @Override
     public void displayNick(){
         int i;
