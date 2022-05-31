@@ -2,8 +2,6 @@ package it.polimi.ingsw.view.GUI;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
-import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
-
 import it.polimi.ingsw.view.View;
 
 
@@ -128,6 +126,11 @@ public class Gui implements View {
 
     @Override
     public void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler) {
+
+    }
+
+    @Override
+    public void playerWait() {
 
     }
 }

@@ -1,9 +1,8 @@
-package it.polimi.ingsw.view.GUI;
+package it.polimi.ingsw.View.GUI;
 
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
-import it.polimi.ingsw.observer.NetworkHandlerObservable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,7 +18,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 
-public class NumOfPlayerIsExpert extends NetworkHandlerObservable{
+public class NumOfPlayerIsExpert{
     private SocketNetworkHandler socketNetworkHandler;
     private Pane rootFXML;
     private final ImageView readyButton;
