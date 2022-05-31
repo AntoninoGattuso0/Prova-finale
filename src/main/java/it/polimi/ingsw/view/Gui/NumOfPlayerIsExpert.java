@@ -3,11 +3,13 @@ package it.polimi.ingsw.view.GUI;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
+import it.polimi.ingsw.view.GUI.warnings.WarningNickname;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+import javafx.scene.Cursor;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.ImageView;
@@ -46,8 +48,12 @@ public class NumOfPlayerIsExpert{
         ObservableList<String> numPlayers = FXCollections.observableArrayList("2","3","4");
         numPlayerBox.setItems(numPlayers);
 
+        joinButton.setOnMouseEntered(mouseEvent -> joinButton.setCursor(javafx.scene.Cursor.HAND));
+        joinButton.setOnMouseExited(mouseEvent -> joinButton.setCursor(Cursor.DEFAULT));
+
         nickname = nickPlayer.getText();
-        socketNetworkHandler.sendMessage(new RequestNickname(nickname));
+        if(nickname!=null) socketNetworkHandler.sendMessage(new RequestNickname(nickname));
+        else new WarningNickname();
 
         if (expertMode.isSelected()) expert = true;
         else expert = false;
