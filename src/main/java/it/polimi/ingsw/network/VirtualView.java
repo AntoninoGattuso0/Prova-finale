@@ -17,10 +17,7 @@ public class VirtualView {
     }
 
     public void addClientInVirtualView(ClientHandlerInterface client, String nick) {
-        synchronized (lock) {
             clients.add(client);
-            lock.notifyAll();
-        }
     }
     public void sendMessage(ClientHandlerInterface clientHandlerInterface,Message message){
         clientHandlerInterface.sendObject(message);
@@ -84,7 +81,7 @@ public class VirtualView {
     }
 }
 
-    public void startRound() {
-        sendBroadcast(new SetAssistantMessage());
+    public void startRound(String nickname) {
+        sendBroadcast(new SetAssistantMessage(nickname));
         }
     }

@@ -1,9 +1,10 @@
 package it.polimi.ingsw.model;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GiuseppeTest {
     @Test
@@ -22,15 +23,15 @@ class GiuseppeTest {
     public void TestUseGiuseppeEffect(){
        Game game = new Game(2,true);
        game.start(game);
-       Game.newPlayer("Abner", game);
-       Game.newPlayer("Tamar", game);
+       game.newPlayer("Abner", game);
+       game.newPlayer("Tamar", game);
        game.players.get(0).entrance.setGreenPawn(2);
        game.players.get(0).entrance.setRedPawn(3);
        game.players.get(0).entrance.setYellowPawn(3);
        game.players.get(0).entrance.setPinkPawn(3);
        game.players.get(0).entrance.setBluePawn(1);
        Giuseppe giuseppe = new Giuseppe(game.studentBag, game);
-       CharacterCard card = new CharacterCard(giuseppe);
+       CharacterCard card = new CharacterCard(giuseppe,6);
        giuseppe.setNumGreenPawn(1);
        giuseppe.setNumRedPawn(1);
        giuseppe.setNumYellowPawn(1);

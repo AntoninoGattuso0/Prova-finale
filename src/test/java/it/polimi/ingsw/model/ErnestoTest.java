@@ -14,9 +14,9 @@ public class ErnestoTest {
         String nick1 = "Rebeca";
         String nick2 = "Paolo";
         String nick3 = "Antonino";
-        Game.newPlayer(nick1, game);
-        Game.newPlayer(nick2, game);
-        Game.newPlayer(nick3, game);
+        game.newPlayer(nick1, game);
+        game.newPlayer(nick2, game);
+        game.newPlayer(nick3, game);
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(1);
         colorPawn.add(ColorPawn.GREEN);
         ProfTable.setGreenProf(0);
@@ -32,7 +32,7 @@ public class ErnestoTest {
         game.islands.get(9).setTower(true);
         game.islands.get(9).setColorTower(ColorTower.BLACK);
         Ernesto ernesto = new Ernesto();
-        CharacterCard card = new CharacterCard(ernesto);
+        CharacterCard card = new CharacterCard(ernesto,4);
         card.useEffect.useEffect(game, 5, game.islands.get(9), game.players.get(0), colorPawn);
         Game.topInfluence(game.islands.get(9), game);
         assertEquals(ColorTower.BLACK, game.islands.get(9).getColorTower());

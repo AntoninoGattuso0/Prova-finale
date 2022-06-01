@@ -6,11 +6,11 @@ public class Server {
     private ServerSocket serverSocket;
     private final Lobby lobby;
     int port;
-    private final ServerMessageMenager serverMessageMenager;
+    private ServerMessageMenager serverMessageMenager;
     public Server(int port) {
         this.port = port;
         lobby= new Lobby();
-        this.serverMessageMenager = new ServerMessageMenager(lobby);
+        serverMessageMenager= new ServerMessageMenager(lobby);
 
     }
 

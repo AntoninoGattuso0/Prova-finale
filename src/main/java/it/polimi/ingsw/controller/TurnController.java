@@ -13,7 +13,6 @@ public class TurnController {
         order.addAll(roundOrder);
         setCurrPlayer(roundOrder.get(0));
     }
-    //azione che può essere eseguita in qualsiasi momento (usecharactercard)
     public PhaseTurn getPhase(){
         return this.currPlayer.getCurrentPhase();
     }

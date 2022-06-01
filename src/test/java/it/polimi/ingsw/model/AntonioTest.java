@@ -34,10 +34,10 @@ public class AntonioTest {
             if(i==1)
                 colorPawn.add(ColorPawn.RED);
         }
-        Game.newPlayer("a",game);
-        Game.newPlayer("b",game);
-        Game.newPlayer("c",game);
-        CharacterCard characterCard=new CharacterCard(antonio);
+        game.newPlayer("a",game);
+        game.newPlayer("b",game);
+        game.newPlayer("c",game);
+        CharacterCard characterCard=new CharacterCard(antonio,0);
         characterCard.useEffect.useEffect(game,2,game.islands.get(0),game.players.get(0),colorPawn);
         assertEquals(4,antonio.getBluePawn()+antonio.getGreenPawn()+antonio.getPinkPawn()+antonio.getRedPawn()+antonio.getYellowPawn());
         assertEquals(4,antonio.getNumPawnAntonio());

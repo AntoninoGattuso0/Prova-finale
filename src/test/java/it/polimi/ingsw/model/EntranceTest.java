@@ -11,8 +11,8 @@ class EntranceTest {
     public void TestEntrance(){
         Game game = new Game(2, true);
         game.start(game);
-        Game.newPlayer("Player0",game);
-        Game.newPlayer("Player1",game);
+        game.newPlayer("Player0",game);
+        game.newPlayer("Player1",game);
         StudentBag studentBag = new StudentBag();
         assertEquals(7, game.players.get(0).entrance.getNumPawn());
         System.out.println("Player0: ");
@@ -83,8 +83,8 @@ class EntranceTest {
     public void testMoveToIsland(){
         Game game4 = new Game(2, true);
         game4.start(game4);
-        Game.newPlayer("Player0", game4);
-        Game.newPlayer("Player1", game4);
+        game4.newPlayer("Player0", game4);
+        game4.newPlayer("Player1", game4);
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(3);
         colorPawn.add(ColorPawn.GREEN);
         colorPawn.add(ColorPawn.GREEN);
@@ -103,8 +103,8 @@ class EntranceTest {
     public void testChooseCloud(){
         Game game2 = new Game(2, true);
         game2.start(game2);
-        Game.newPlayer("Player0", game2);
-        Game.newPlayer("Player1", game2);
+        game2.newPlayer("Player0", game2);
+        game2.newPlayer("Player1", game2);
         game2.players.get(0).entrance.setNumPawn(4);
         game2.players.get(0).entrance.setPinkPawn(2);
         game2.players.get(0).entrance.setRedPawn(0);

@@ -29,7 +29,7 @@ public interface View {
     void displayResponseMessage();
     void updateAll(LightGame object);
     void selectCloud();
-    void selectAssistantCard();
+    void selectAssistantCard(String nickname);
 
     void requestMoveMotherNature();
 
@@ -39,6 +39,8 @@ public interface View {
     void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler);
 
     void playerWait();
+
+    void newGameStart();
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

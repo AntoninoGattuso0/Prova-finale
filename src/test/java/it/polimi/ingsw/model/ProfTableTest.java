@@ -9,8 +9,8 @@ class ProfTableTest {
     public void testCheckProf(){
         Game game = new Game(2, true);
         game.start(game);
-        Game.newPlayer("Davide", game);
-        Game.newPlayer("Isaac", game);
+        game.newPlayer("Davide", game);
+        game.newPlayer("Isaac", game);
         game.players.get(0).diningRoom.setNumGreen(3);
         game.players.get(1).diningRoom.setNumGreen(1);
         game.players.get(0).diningRoom.setNumRed(4);
@@ -33,8 +33,8 @@ class ProfTableTest {
     public void testCheckProf2(){
         Game game = new Game(2, true);
         game.start(game);
-        Game.newPlayer("Davide", game);
-        Game.newPlayer("Isaac", game);
+        game.newPlayer("Davide", game);
+        game.newPlayer("Isaac", game);
         ProfTable.setGreenProf(0);
         ProfTable.setRedProf(0);
         ProfTable.setYellowProf(1);

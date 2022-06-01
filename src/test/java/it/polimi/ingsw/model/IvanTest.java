@@ -12,8 +12,8 @@ class IvanTest {
     public void TestIvanUseEffect(){
         Game game = new Game(2, true);
         game.start(game);
-        Game.newPlayer("Nicky", game);
-        Game.newPlayer("Gabi", game);
+        game.newPlayer("Nicky", game);
+        game.newPlayer("Gabi", game);
         ProfTable.setGreenProf(0);
         ProfTable.setRedProf(0);
         ProfTable.setYellowProf(1);
@@ -28,7 +28,7 @@ class IvanTest {
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(1);
         colorPawn.add(ColorPawn.GREEN);
         Ivan ivan = new Ivan();
-        CharacterCard card = new CharacterCard(ivan);
+        CharacterCard card = new CharacterCard(ivan,7);
         card.useEffect.useEffect(game, 8, game.islands.get(3), game.players.get(1), colorPawn);
         Game.topInfluence(game.islands.get(3), game);
         assertEquals(ColorTower.BLACK, game.islands.get(3).getColorTower());

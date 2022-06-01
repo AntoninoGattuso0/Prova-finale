@@ -83,9 +83,9 @@ public class GameTest {
         String nick1 = "Franco";
         String nick2 = "Giovanni";
         String nick3 = "Raviolo";
-        Game.newPlayer(nick1, game);
-        Game.newPlayer(nick2, game);
-        Game.newPlayer(nick3, game);
+        game.newPlayer(nick1, game);
+        game.newPlayer(nick2, game);
+        game.newPlayer(nick3, game);
         game.players.get(0).towerSpace.colorTower = ColorTower.BLACK;
         ProfTable.setGreenProf(0);
         ProfTable.setRedProf(0);
@@ -108,9 +108,9 @@ public class GameTest {
         String nick1 = "Franco";
         String nick2 = "Giovanni";
         String nick3 = "Raviolo";
-        Game.newPlayer(nick1, game);
-        Game.newPlayer(nick2, game);
-        Game.newPlayer(nick3, game);
+        game.newPlayer(nick1, game);
+        game.newPlayer(nick2, game);
+        game.newPlayer(nick3, game);
         game.players.get(0).diningRoom.setNumGreen(3);
         game.players.get(0).diningRoom.setNumYellow(2);
         game.players.get(1).diningRoom.setNumGreen(2);
@@ -129,7 +129,7 @@ public class GameTest {
         game.start(game);
         int i;
         for(i=0; i < game.getTotPlayer(); i++){
-            Game.newPlayer("Franco", game);
+            game.newPlayer("Franco", game);
         }
         assertEquals(4, game.players.size());
         assertEquals(10, game.players.get(0).deckAssistant.size());

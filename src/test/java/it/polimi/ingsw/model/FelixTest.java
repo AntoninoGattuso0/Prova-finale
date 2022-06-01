@@ -12,8 +12,8 @@ public class FelixTest {
     public void testFelix(){
         Game game = new Game(2, true);
         game.start(game);
-        Game.newPlayer("Andre", game);
-        Game.newPlayer("John", game);
+        game.newPlayer("Andre", game);
+        game.newPlayer("John", game);
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(1);
         colorPawn.add(ColorPawn.GREEN);
         ProfTable.setGreenProf(0);
@@ -29,7 +29,7 @@ public class FelixTest {
         game.islands.get(7).setTower(true);
         game.islands.get(7).setColorTower(ColorTower.BLACK);
         Felix felix = new Felix();
-        CharacterCard card = new CharacterCard(felix);
+        CharacterCard card = new CharacterCard(felix,5);
         card.useEffect.useEffect(game, 6, game.islands.get(7), game.players.get(1), colorPawn);
         assertEquals(ColorTower.WHITE, game.islands.get(7).getColorTower());
         System.out.println("Costo attuale carta Felix: " + felix.getCoinPrice());

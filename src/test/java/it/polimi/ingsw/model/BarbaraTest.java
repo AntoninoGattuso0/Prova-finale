@@ -12,8 +12,8 @@ class BarbaraTest {
         Barbara barbara = new Barbara();
         ArrayList<ColorPawn> colorPawn= new ArrayList<>();
         colorPawn.add(ColorPawn.GREEN);
-        Game.newPlayer("a",game);//0
-        Game.newPlayer("b",game);//1
+        game.newPlayer("a",game);//0
+        game.newPlayer("b",game);//1
         ProfTable.setGreenProf(0);
         ProfTable.setRedProf(0);
         ProfTable.setPinkProf(0);
@@ -25,7 +25,7 @@ class BarbaraTest {
         game.players.get(1).diningRoom.setNumYellow(4);
         game.players.get(0).diningRoom.setNumBlue(8);
         game.players.get(1).diningRoom.setNumBlue(3);
-        CharacterCard characterCard=new CharacterCard(barbara);
+        CharacterCard characterCard=new CharacterCard(barbara,1);
         characterCard.useEffect.useEffect(game,1,game.islands.get(0),game.players.get(0),colorPawn);
         assertEquals(1, game.getProfTable().getGreenProf());
         assertEquals(3,barbara.getCoinPrice());

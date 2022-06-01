@@ -53,8 +53,8 @@ public class SocketNetworkHandler implements Runnable{
     }
     public void sendMessage(Message message){
         try{
-            out.reset();
             out.writeObject(message);
+            out.reset();
             out.flush();
         }catch (IOException e){
             e.printStackTrace();
@@ -64,8 +64,6 @@ public class SocketNetworkHandler implements Runnable{
         try{
             socket=new Socket(ipAddress, Integer.parseInt(port));
             ready=true;
-            synchronized (this){
-                notifyAll();}
             System.out.println("Connection up");
         }catch (IOException| IllegalArgumentException e){
             System.out.println("Server unavailable");

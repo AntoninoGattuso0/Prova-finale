@@ -9,8 +9,8 @@ public class CloudTest {
     public void testRefillCloud() {
         Game game = new Game(2, true);
         game.start(game);
-        Game.newPlayer("Player0",game);
-        Game.newPlayer("Player1",game);
+        game.newPlayer("Player0",game);
+        game.newPlayer("Player1",game);
         StudentBag studentBag = new StudentBag();
         System.out.println("numero pedine dentro StudentBag: " + studentBag.getNum());
         game.clouds.get(0).refillCloud(studentBag, game);

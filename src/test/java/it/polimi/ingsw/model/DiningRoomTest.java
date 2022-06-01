@@ -3,17 +3,15 @@ package it.polimi.ingsw.model;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DiningRoomTest {
     @Test
     public void testDiningRoom(){
         Game game = new Game(2, true);
         game.start(game);
-        Game.newPlayer("Ezechiel",game);
-        Game.newPlayer("Candace",game);
+        game.newPlayer("Ezechiel",game);
+        game.newPlayer("Candace",game);
         assertEquals(0, game.players.get(1).diningRoom.getNumYellow());
         assertEquals(0, game.players.get(1).diningRoom.getNumBlue());
         assertEquals(0, game.players.get(0).diningRoom.getNumPink());
@@ -23,8 +21,8 @@ class DiningRoomTest {
     public void testAddPawnToDiningRoom(){
         Game game = new Game(2, true);
         game.start(game);
-        Game.newPlayer("Abner", game);
-        Game.newPlayer("Tamar", game);
+        game.newPlayer("Abner", game);
+        game.newPlayer("Tamar", game);
         game.players.get(0).entrance.setNumPawn(4);
         game.players.get(0).entrance.setRedPawn(3);
         game.players.get(0).setNumCoin(4);
@@ -41,8 +39,8 @@ class DiningRoomTest {
         int i;
         Game game = new Game(2, true);
         game.start(game);
-        Game.newPlayer("Ezra", game);
-        Game.newPlayer("Joshua", game);
+        game.newPlayer("Ezra", game);
+        game.newPlayer("Joshua", game);
         game.players.get(1).entrance.setNumPawn(8);
         game.players.get(1).entrance.setPinkPawn(8);
         for(i=0;i<8;i++) {
@@ -55,8 +53,8 @@ class DiningRoomTest {
     public void testRemovePawnFromDiningRoom2(){
         Game game = new Game(2, true);
         game.start(game);
-        Game.newPlayer("Ezra", game);
-        Game.newPlayer("Joshua", game);
+        game.newPlayer("Ezra", game);
+        game.newPlayer("Joshua", game);
         int i;
         game.players.get(1).entrance.setGreenPawn(5);
         game.players.get(1).entrance.setNumPawn(5);
