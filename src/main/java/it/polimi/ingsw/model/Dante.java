@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
+import java.io.Serializable;
 import java.util.ArrayList;
-public class Dante extends UseEffect {
+public class Dante extends UseEffect implements Serializable {
     private int coinPrice;
     public Dante() {
         coinPrice = 1;

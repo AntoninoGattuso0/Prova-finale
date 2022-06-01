@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
+import java.io.Serializable;
 import java.util.*;
-public class Giuseppe extends UseEffect{
+public class Giuseppe extends UseEffect implements Serializable {
     private int coinPrice;
     private int nPawn;
     private int numGreenPawn;

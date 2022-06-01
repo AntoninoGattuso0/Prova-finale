@@ -1,8 +1,9 @@
 package it.polimi.ingsw.model;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
-public class Antonio extends UseEffect{
+public class Antonio extends UseEffect implements Serializable{
     private int coinPrice;
     private int numPawnAntonio;
     private int greenPawn;

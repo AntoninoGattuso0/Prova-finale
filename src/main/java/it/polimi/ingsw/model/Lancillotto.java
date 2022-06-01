@@ -1,7 +1,8 @@
 package it.polimi.ingsw.model;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
-public class Lancillotto extends UseEffect{
+public class Lancillotto extends UseEffect implements Serializable {
     private int coinPrice;
     public Lancillotto(){
         coinPrice=3;

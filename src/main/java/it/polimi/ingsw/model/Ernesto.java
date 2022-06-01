@@ -1,8 +1,9 @@
 package it.polimi.ingsw.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Ernesto extends UseEffect{
+public class Ernesto extends UseEffect implements Serializable {
     private int coinPrice;
     public int getCoinPrice(){ return coinPrice;}
     public void setCoinPrice(int coin){ this.coinPrice=coin;}

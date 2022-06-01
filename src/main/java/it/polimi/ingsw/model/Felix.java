@@ -1,9 +1,10 @@
 package it.polimi.ingsw.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Felix extends UseEffect{
+public class Felix extends UseEffect implements Serializable {
     private int coinPrice;
     private int numEffect;
     public int getCoinPrice(){

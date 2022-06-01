@@ -1,9 +1,10 @@
 package it.polimi.ingsw.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Ivan extends UseEffect{
+public class Ivan extends UseEffect implements Serializable {
     private int coinPrice;
 
     public int getCoinPrice(){

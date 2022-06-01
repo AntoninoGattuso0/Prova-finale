@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
+import java.io.Serializable;
 import java.util.ArrayList;
-public class Ciro extends UseEffect{
+public class Ciro extends UseEffect implements Serializable {
     private int coinPrice;
     Ciro(){
         coinPrice=3;

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
+import java.io.Serializable;
 import java.util.ArrayList;
-public class Barbara extends UseEffect{
+public class Barbara extends UseEffect implements Serializable {
     private int coinPrice;
     public Barbara(){
         coinPrice=2;
