@@ -18,6 +18,9 @@ public interface View {
     void displayCloud();
     void displayIslands();
     void displaySchoolBoard();
+
+    void sendNick(String nickname);
+
     void displayCharacterCard();
 
     void displayWinner(String nickname);
@@ -41,6 +44,8 @@ public interface View {
     void playerWait();
 
     void newGameStart();
+
+    void lobbyFull();
 }
 
 //CLI E GUI dovranno implementare quest interfaccia

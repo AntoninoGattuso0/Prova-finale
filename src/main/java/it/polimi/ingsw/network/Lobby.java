@@ -22,11 +22,13 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     private final VirtualView virtualView;
     private final UserInput userInput;
     private EndGameObserver endGame;
+    private boolean contr;
     private int numPlayer;
     private boolean lobbyOk;
     private final ArrayList<ClientHandlerInterface> clients;
     private boolean lobbySett;
     private boolean isExpert;
+    private boolean numinsert;
     private final Object lock;
     private Game game;
     private final ServerMessageMenager serverMessageMenager;
@@ -38,7 +40,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         userInput = new UserInput();
         clients = new ArrayList<>();
         players = new ArrayList<>();
+        numinsert=false;
         numPlayer = 0;
+        contr=false;
         lobbyOk = false;
         lobbySett = false;
         serverMessageMenager=new ServerMessageMenager(this);
@@ -145,8 +149,8 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     //inserisco i player nell'array nomi, e li creo anche nel gioco
     public synchronized void loginUser(ClientHandlerInterface loginClient) {
         synchronized (clients) {
-            loginClient.setTurn(true);
-            loginClient.sendObject(new SetNickMessage());
+                loginClient.setTurn(true);
+                loginClient.sendObject(new SetNickMessage());
             clients.notifyAll();
         }
     }
@@ -164,12 +168,19 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     }
 
     public synchronized void insertNickname(String nickname, ClientHandler clientHandler) {
+        if (!contr||numinsert) {
             if (nickname == null) {
                 clientHandler.sendObject(new WrongNicknameMessage());
                 clientHandler.sendObject(new SetNickMessage());
                 return;
             } else {
+                contr=true;
                 int i;
+                if(numinsert&&namePlayer.size()==numPlayer){
+                    clientHandler.sendObject(new LobbyFullMessage());
+                    clientHandler.closeConnect();
+                    return;
+                }
                 for (i = 0; i < namePlayer.size(); i++) {
                     if (nickname.equals(namePlayer.get(i))) {
                         clientHandler.sendObject(new WrongNicknameMessage());
@@ -188,9 +199,12 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
                 System.out.println("SERVER: " + nickname + " is joining!\n");
                 clientHandler.setTurn(false);
                 addClient(clientHandler);
-                }
-
             }
+
+        }else{
+            clientHandler.sendObject(new WaitLoginMessage(nickname));
+        }
+    }
 
     public synchronized void insertNumPlayersIsExpert(int numPlayers, boolean isExpert, ClientHandler clientHandler) {
         if (numPlayers < 2 || numPlayers > 4) {
@@ -206,6 +220,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         System.out.println("SERVER: " + namePlayer.get(0) + " is joining!\n");
         clientHandler.setTurn(false);
         addClient(clientHandler);
+        numinsert=true;
     }
 
     public void selectAssistantCard(int assistant, ClientHandler clientHandler) {
@@ -279,10 +294,21 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
         if(!lobbyOk){
                 serverMessageMenager.ManageInputToServer(clientHandler, m);
         }else{
-            if(Objects.equals(clientHandler.getUserNickname(), controller.getRoundController().getTurnController().getCurrPlayer().getNickname())){
-                serverMessageMenager.ManageInputToServer(clientHandler,m);
+            int i;
+            for(i=0;i<clients.size();i++){
+                if(Objects.equals(clientHandler.getUserNickname(), clients.get(i).getUserNickname())){
+                    i=6;
+                }
+            }
+            if(i==6) {
+                if (Objects.equals(clientHandler.getUserNickname(), controller.getRoundController().getTurnController().getCurrPlayer().getNickname())) {
+                    serverMessageMenager.ManageInputToServer(clientHandler, m);
+                } else {
+                    clientHandler.sendObject(new WrongTurnMessage());
+                }
             }else{
-                clientHandler.sendObject(new WrongTurnMessage());
+                clientHandler.sendObject(new LobbyFullMessage());
+                clientHandler.closeConnect();
             }
         }
     }

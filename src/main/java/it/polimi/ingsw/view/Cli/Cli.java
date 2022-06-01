@@ -399,7 +399,12 @@ public class Cli implements Runnable, View {
         out.print(schoolBoard);
         schoolBoard.delete(0, schoolBoard.capacity());
     }
-
+    @Override
+    public void sendNick(String nickname){
+        String nick = nickname;
+        if(nick!=null)
+            socketNetworkHandler.sendMessage(new RequestNickname(nick));
+        }
     @Override
     public void displayCharacterCard() {
         for(int i = 0; i < lightGame.getCharacterCards().size(); i++) {
@@ -512,6 +517,10 @@ public class Cli implements Runnable, View {
     @Override
     public void displayResponseMessage() {
 
+    }
+    @Override
+    public void lobbyFull(){
+        System.out.println("Sorry,lobby is full");
     }
 
     @Override

@@ -53,8 +53,8 @@ public class SocketNetworkHandler implements Runnable{
     }
     public void sendMessage(Message message){
         try{
-            out.writeObject(message);
             out.reset();
+            out.writeObject(message);
             out.flush();
         }catch (IOException e){
             e.printStackTrace();

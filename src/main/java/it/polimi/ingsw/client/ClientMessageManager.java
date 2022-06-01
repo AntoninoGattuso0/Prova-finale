@@ -64,6 +64,10 @@ public class ClientMessageManager {
             //view.
         }else if(object instanceof WrongSameAssistantMessage){
            // view.
+        }else if(object instanceof WaitLoginMessage){
+            view.sendNick(((WaitLoginMessage) object).getNickname());
+        }else if(object instanceof LobbyFullMessage){
+            view.lobbyFull();
         }
         else throw new IllegalArgumentException();
     }

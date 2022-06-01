@@ -11,7 +11,7 @@ public class RoundController {
     public RoundController(ArrayList<Player> players) {
         this.roundOrder = players;
         this.turnController=new TurnController(players);
-        lastPlayer=players.get(players.size());
+        lastPlayer=players.get(players.size()-1);
     }
 
     public Player getLastPlayer() {

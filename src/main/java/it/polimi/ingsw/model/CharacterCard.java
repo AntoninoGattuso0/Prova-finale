@@ -1,5 +1,8 @@
 package it.polimi.ingsw.model;
-public class CharacterCard {
+
+import java.io.Serializable;
+
+public class CharacterCard implements Serializable {
     UseEffect useEffect;
     public int numCard;
     public CharacterCard(UseEffect useEffect, int numCard){

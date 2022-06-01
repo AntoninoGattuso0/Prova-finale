@@ -1,5 +1,8 @@
 package it.polimi.ingsw.model;
-public class Island {
+
+import java.io.Serializable;
+
+public class Island implements Serializable {
     private boolean isMotherNature;
     private int greenPawn;
     private int redPawn;

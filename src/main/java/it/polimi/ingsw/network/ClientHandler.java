@@ -32,7 +32,9 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
     public String getUserNickname() {
         return userNickname;
     }
-
+    public boolean getMyTurn(){
+        return myTurn;
+    }
     @Override
     public void setTurn(boolean myTurn) {
         this.myTurn = myTurn;
