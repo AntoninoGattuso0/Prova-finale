@@ -1,5 +1,8 @@
 package it.polimi.ingsw.model;
-public class ProfTable {
+
+import java.io.Serializable;
+
+public class ProfTable implements Serializable {
     private static int greenProf;
     private static int redProf;
     private static int yellowProf;

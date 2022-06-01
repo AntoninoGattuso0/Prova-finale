@@ -150,7 +150,8 @@ public class Game {
             cloud.refillCloud(studentBag, game);
             clouds.add(cloud);
         }
-    }
+        setCharacterCards(game);
+        }
     static ArrayList<String> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
         ArrayList<String> arrayPawn = new ArrayList<>(5);
         if (studentBag.getGreenNum() > 0)
@@ -165,8 +166,8 @@ public class Game {
             arrayPawn.add("BLUE");
         return arrayPawn;
     }
-    public static void newPlayer(String nick,Game game) {
-        Player player = new Player(nick,game);//inizializzazione player fatta in player -NINO
+    public void newPlayer(String nick,Game game) {
+        Player player = new Player(nick,game);
         game.players.add(player);
     }
     public void moveMotherNature(Island island) {

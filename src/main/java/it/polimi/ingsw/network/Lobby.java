@@ -18,7 +18,7 @@ import java.util.Objects;
 public class Lobby implements ConnectionObserver {//DA COMPLETARE
     private Controller controller;
     private ArrayList<String> namePlayer;
-    private final ArrayList<Player> players;
+    private ArrayList<Player> players;
     private final VirtualView virtualView;
     private final UserInput userInput;
     private EndGameObserver endGame;
@@ -53,20 +53,21 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
     }
 
     public void addClient(ClientHandlerInterface client) {
-        synchronized (lock) {
             String nick;
             client.addObserver(this);
             clients.add(client);
             nick = client.getUserNickname();
             virtualView.addClientInVirtualView(client, nick);
-            players.add(new Player(nick, game));
             if (clients.size() != numPlayer) {
+                client.sendObject(new ClientAcceptedMessage());
                 client.sendObject(new WaitMessage());
             } else {
-                client.sendObject(new GameStartedMessage());
+                this.players=game.getPlayers();
+                client.sendObject(new ClientAcceptedMessage());
+                client.sendObject(new LoginAcceptedMessage());
+                client.sendObject(new AllUpdateMessage(game.getLightGame()));
+                virtualView.sendBroadcast(new GameStartedMessage());
                 lobbyOk = true;
-            }
-            lock.notifyAll();
         }
         if (lobbyOk) {
             newGame(game);
@@ -143,9 +144,10 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
 
     //inserisco i player nell'array nomi, e li creo anche nel gioco
     public synchronized void loginUser(ClientHandlerInterface loginClient) {
-        loginClient.setTurn(true);
-        if(numPlayer==0) {
+        synchronized (clients) {
+            loginClient.setTurn(true);
             loginClient.sendObject(new SetNickMessage());
+            clients.notifyAll();
         }
     }
 
@@ -169,7 +171,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
             } else {
                 int i;
                 for (i = 0; i < namePlayer.size(); i++) {
-                    if (nickname == namePlayer.get(i)) {
+                    if (nickname.equals(namePlayer.get(i))) {
                         clientHandler.sendObject(new WrongNicknameMessage());
                         clientHandler.sendObject(new SetNickMessage());
                         return;
@@ -179,26 +181,29 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE
                 clientHandler.setUserNickname(nickname);
                 if (namePlayer.size() == 1) {
                     clientHandler.sendObject(new SetNumPlayersIsExpertMessage());
+
                     return;
                 }
-                Game.newPlayer(nickname, game);
+                game.newPlayer(nickname, game);
                 System.out.println("SERVER: " + nickname + " is joining!\n");
-                clientHandler.sendObject(new LoginAcceptedMessage());
                 clientHandler.setTurn(false);
                 addClient(clientHandler);
+                }
+
             }
-        }
 
     public synchronized void insertNumPlayersIsExpert(int numPlayers, boolean isExpert, ClientHandler clientHandler) {
-        if (numPlayer < 2 || numPlayer > 4) {
+        if (numPlayers < 2 || numPlayers > 4) {
             clientHandler.sendObject(new WrongNumPlayerIsExpertMessage());
             clientHandler.sendObject(new SetNumPlayersIsExpertMessage());
             return;
         }
-        game = new Game(numPlayer, isExpert);
-        Game.newPlayer(namePlayer.get(0), game);
+        this.numPlayer=numPlayers;
+        this.isExpert=isExpert;
+        game = new Game(numPlayers, isExpert);
+        game.start(game);
+        game.newPlayer(namePlayer.get(0), game);
         System.out.println("SERVER: " + namePlayer.get(0) + " is joining!\n");
-        clientHandler.sendObject(new LoginAcceptedMessage());
         clientHandler.setTurn(false);
         addClient(clientHandler);
     }

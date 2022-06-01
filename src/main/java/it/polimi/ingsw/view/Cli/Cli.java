@@ -51,11 +51,6 @@ public class Cli implements Runnable, View {
 
     //start the cli
     public void run() {
-        try {
-            askServerInfo();
-        } catch (ExecutionException e) {
-            out.println("User input canceled.");
-        }
         startGame();
     }
 
@@ -125,7 +120,7 @@ public class Cli implements Runnable, View {
                 + ColorCli.RESET
         );
 
-        out.println("\n \n \n \n");
+        out.println("\n \n");
 
     }
 
@@ -140,7 +135,10 @@ public class Cli implements Runnable, View {
             socketNetworkHandler.sendMessage(new WrongNicknameMessage());
         }
     }
-
+    @Override
+    public void newGameStart(){
+        System.out.println("Siete tutti in lobby. il Game inizia!");
+    }
     @Override
     public void requestNumPlayersIsExpert() {
         out.println("Inserisci il numero di giocatori (puoi inserire 2, 3 o 4 giocatori): ");
@@ -152,20 +150,19 @@ public class Cli implements Runnable, View {
                 numPlayer = readLine();
             }
             out.println("Inserisci E per variante esperta o B base");
-            Object exp = readLine();
+            String exp = readLine();
             isExpert=false;
             while (!Objects.equals(exp, "B") && !Objects.equals(exp, "E")) {
                 out.println("Inserisci E per variante esperta o B base");
+                exp=readLine();
             }
             if (exp.equals("E")) {
                 isExpert=true;
             }
-            if(numPlayer.equals("2")){
-                num=2;
-            }else if(numPlayer.equals("3")){
-                num=3;
-            }else if(numPlayer.equals("4")){
-                num=4;
+            switch (numPlayer) {
+                case "2" -> num = 2;
+                case "3" -> num = 3;
+                case "4" -> num = 4;
             }
             socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(num, isExpert));
         } catch (ExecutionException e) {
@@ -181,7 +178,7 @@ public class Cli implements Runnable, View {
     }
     @Override
     public void playerWait(){
-        System.out.println("Aspetta, qualcuno deve rispondere prima di te");
+        System.out.println("sei l'ultimo ad entrare in lobby!");
     }
 
     @Override
@@ -516,16 +513,6 @@ public class Cli implements Runnable, View {
     public void displayResponseMessage() {
 
     }
-    /*@Override
-    public void displayTurn(StartTurnMessage object) {
-
-    }*/
-
-    /*@Override
-    public void displayResponseMessage(String errorMessage) {
-
-    }*/
-
 
     @Override
     public void updateAll(LightGame object) {
@@ -545,21 +532,25 @@ public class Cli implements Runnable, View {
     }
 
     @Override
-    public void selectAssistantCard() {
-        int player, assistant = -1;
-        for(player = 0; lightGame.getPlayers().get(player).getNickname().equals(actualPlayer); player++);
-        displayAssistantCard(player);
-        boolean check = false;
-        while(!check){
-            out.println("Scegli uno degli Assistenti presenti: ");
-            assistant = scanner.nextInt();
-            for(int i = 0; i < lightGame.getPlayers().get(player).getDeckAssistant().size(); i++){
-                if(lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() == assistant)
-                    check = true;
+    public void selectAssistantCard(String nickname) {
+        if (nickname == socketNetworkHandler.getNicknameThisPlayer()) {
+            int player, assistant = -1;
+            for (player = 0; lightGame.getPlayers().get(player).getNickname().equals(actualPlayer); player++) ;
+            displayAssistantCard(player);
+            boolean check = false;
+            while (!check) {
+                out.println("Scegli uno degli Assistenti presenti: ");
+                assistant = scanner.nextInt();
+                for (int i = 0; i < lightGame.getPlayers().get(player).getDeckAssistant().size(); i++) {
+                    if (lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() == assistant)
+                        check = true;
+                }
             }
+            out.println("Hai scelto correttamente l'assistente numero: " + assistant);
+            socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(assistant));
+        }else{
+            System.out.println(nickname+ "deve scegliere l'AssistantCard");
         }
-        out.println("Hai scelto correttamente l'assistente numero: " + assistant);
-        socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(assistant));//VIENE PASSATO IL VALORE DELLA CARTA, GIUSTO?
     }
 
     @Override
@@ -577,12 +568,12 @@ public class Cli implements Runnable, View {
 
     @Override
     public void registerClient() {
-
+        out.println("Il client è stato accettato");
     }
 
     @Override
     public void waitOtherPlayers() {
-        out.println("Aspettando uteriori giocatori...");
+        out.println("Aspettando ulteriori giocatori...");
     }
 
     public void clearCli() {

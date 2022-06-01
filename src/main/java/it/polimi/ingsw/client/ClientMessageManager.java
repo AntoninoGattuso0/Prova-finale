@@ -24,12 +24,12 @@ public class ClientMessageManager {
             view.requestNumPlayersIsExpert();
         } else if (object instanceof SetNickMessage) {
             view.requestNickname();
-        } else if (object instanceof ClientAcceptedMessage) {
+        } else if (object instanceof ClientAcceptedMessage) { //Serve per dire al player che è entrato in lobby
             view.registerClient();
         } else if (object instanceof WinnerMessage message) {
             view.displayWinner(message.getNickname());
-        } else if (object instanceof GameStartedMessage) {
-            view.startGame();
+        } else if (object instanceof GameStartedMessage) { //Serve a dire che il game è iniziato
+            view.newGameStart();
         } else if (object instanceof WrongNicknameMessage) {
             view.displayWrongNickname();
         } else if (object instanceof WrongTurnMessage) {
@@ -38,32 +38,32 @@ public class ClientMessageManager {
             view.displayResponseMessage();
         } else if (object instanceof AllUpdateMessage m) {
             view.updateAll(m.getLightGame());
-        } else if (object instanceof LoginAcceptedMessage) {
+        } else if (object instanceof LoginAcceptedMessage) {// serve a dire all' ultimo player che è entrato in lobby e che era l'ultimo player che mancava
             view.playerWait();
         } else if (object instanceof SetAssistantMessage) {
-            view.selectAssistantCard();
+            view.selectAssistantCard(((SetAssistantMessage) object).getNickname());
         } else if (object instanceof SetMovePawnMessage) {
-            view.
+           // view.
         } else if (object instanceof SetMoveMotherNature) {
-            view.
+          //  view.
         } else if (object instanceof SetCloudMessage) {
-            view.
+           // view.
         } else if (object instanceof DisconnectionMessage) {
-            view.
+            //view.
         } else if (object instanceof EndGameMessage) {
-            view.
+          //  view.
         } else if (object instanceof EndTurnMessage) {
-            view.
+          //  view.
         } else if (object instanceof InvalidNumPlayerMessage) {
-            view.
+           // view.
         } else if (object instanceof NewCurrentPlayerMessage) {
-            view.
+           // view.
         } else if (object instanceof TurnOrderMessage) {
-            view.
+           // view.
         }else if(object instanceof WrongNumPlayerIsExpertMessage){
-            view.
+            //view.
         }else if(object instanceof WrongSameAssistantMessage){
-            view.
+           // view.
         }
         else throw new IllegalArgumentException();
     }

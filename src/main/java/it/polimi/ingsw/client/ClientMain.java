@@ -7,9 +7,9 @@ import java.io.IOException;
 public class ClientMain {
     public static void main(String[] args) throws IOException {
         Cli cli=new Cli();
-        String ip;
         SocketNetworkHandler socketNetworkHandler=new SocketNetworkHandler(cli);
         socketNetworkHandler.updateConnection("localhost", String.valueOf(4000));
+        cli.run();
         socketNetworkHandler.run();
     }
 }

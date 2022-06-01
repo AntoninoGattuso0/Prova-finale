@@ -1,6 +1,8 @@
 package it.polimi.ingsw.client.ModelLight;
 
-public class LightDiningRoom {
+import java.io.Serializable;
+
+public class LightDiningRoom implements Serializable {
     private int numGreen;
     private int numRed;
     private int numYellow;

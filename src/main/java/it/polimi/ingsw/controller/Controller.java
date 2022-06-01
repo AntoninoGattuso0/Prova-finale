@@ -72,24 +72,25 @@ public class Controller {
         return i;
     }
     public void startRound(){
+        boolean finish;
+        players=roundController.getRoundOrder();
         virtualView.setActualPlayer(roundController.getRoundOrder().get(0).getNickname());
         currentPlayer=roundController.getRoundOrder().get(0);
         int i;
         for(i=0;i<players.size();i++) {
             players.get(i).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
         }
-        virtualView.startRound();
-        players=roundController.getRoundOrder();
-
+        virtualView.startRound(currentPlayer.getNickname());
         players=roundController.newRoundOrder(players,game);
         virtualView.sendBroadcast(new TurnOrderMessage(players));
-        for(Player player: players){
-            synchronized (players) {
-                startTurn(player);
+        for(i=0;i<players.size();){
+                finish=startTurn(players.get(i));
+                if(finish){
+                    i++;
+                }
             }
         }
-    }
-    public void startTurn(Player player) {
+    public boolean startTurn(Player player) {
         boolean e = false;
         while (player.getCurrentPhase() != PhaseTurn.END_TURN && e) {
             if (player.getCurrentPhase() == PhaseTurn.MOVE_STUDENT) {
@@ -119,6 +120,7 @@ public class Controller {
             }
             roundController.getTurnController().setPhaseTurn(player, e, roundController, game);
         }
+        return e;
     }
     public void play(Game game, Lobby lobby){
         String winnerIs;

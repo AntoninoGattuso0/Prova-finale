@@ -1,6 +1,8 @@
 package it.polimi.ingsw.client.ModelLight;
 
-public class LightCloud{
+import java.io.Serializable;
+
+public class LightCloud implements Serializable {
     private final int numPawn;
     private final int greenPawn;
     private final int redPawn;

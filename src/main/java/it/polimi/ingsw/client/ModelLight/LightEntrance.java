@@ -1,6 +1,8 @@
 package it.polimi.ingsw.client.ModelLight;
 
-public class LightEntrance {
+import java.io.Serializable;
+
+public class LightEntrance implements Serializable {
     private final int numPawn;
     private final int greenPawn;
     private final int bluePawn;

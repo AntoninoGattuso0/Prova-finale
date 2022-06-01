@@ -2,7 +2,9 @@ package it.polimi.ingsw.client.ModelLight;
 
 import it.polimi.ingsw.model.ColorTower;
 
-public class LightTowerSpace {
+import java.io.Serializable;
+
+public class LightTowerSpace implements Serializable {
     private ColorTower colorTower;
     private int numTower;
 
