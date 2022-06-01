@@ -105,9 +105,10 @@ public class Gui implements View {
     }
 
     @Override
-    public void selectAssistantCard() {
+    public void selectAssistantCard(String nickname) {
 
     }
+
 
     @Override
     public void requestMoveMotherNature() {
@@ -131,6 +132,11 @@ public class Gui implements View {
 
     @Override
     public void playerWait() {
+
+    }
+
+    @Override
+    public void newGameStart() {
 
     }
 }
