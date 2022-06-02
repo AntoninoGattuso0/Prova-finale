@@ -188,7 +188,7 @@ public class Cli implements Runnable, View {
 
     @Override
     public void displayIsExpert() {
-        if (isExpert)
+        if (lightGame.getIsExpert())
             out.println("Il gioco è in modalità esperta");
         else
             out.println("Il gioco è in modalità normale");
@@ -526,6 +526,13 @@ public class Cli implements Runnable, View {
     @Override
     public void updateAll(LightGame object) {
         this.lightGame = object;
+        displayIslands();
+        displayCloud();
+        displayCharacterCard();
+        displayNick();
+        displaySchoolBoard();
+        displayIsExpert();
+        displayNumPlayers();
     }
 
     @Override
@@ -555,10 +562,9 @@ public class Cli implements Runnable, View {
                         check = true;
                 }
             }
-            out.println("Hai scelto correttamente l'assistente numero: " + assistant);
             socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(assistant));
         }else{
-            System.out.println(nickname+ "deve scegliere l'AssistantCard");
+            System.out.println(nickname+" sta scegliendo l'AssistantCard");
         }
     }
 

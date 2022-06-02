@@ -4,6 +4,7 @@ import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TurnController {
     private ArrayList<Player> order;
@@ -21,7 +22,7 @@ public class TurnController {
     }
     public void setPhaseTurn(Player player,boolean e,RoundController roundController,Game game){
         if(player.getCurrentPhase()==PhaseTurn.USE_ASSISTANT&&e){
-            if(player.getNickname()==order.get(order.size()).getNickname()){
+            if(Objects.equals(player.getNickname(), order.get(order.size()-1).getNickname())){
                 TurnOrder(roundController,game);
             }
             player.setCurrentPhase(PhaseTurn.MOVE_STUDENT);

@@ -2,15 +2,19 @@ package it.polimi.ingsw.client.ModelLight;
 
 import it.polimi.ingsw.model.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class LightGame implements Serializable {
+    @Serial
+    private static final long serialVersionUID= 3353043693680634940L;
     private ProfTable profTable;
     private  ArrayList<LightCloud> clouds;
     private  ArrayList<LightPlayer> players;
     private  ArrayList<Island> islands;
     private int numPlayers;
+    private boolean isExpert;
     private ArrayList<CharacterCard> characterCards;
     private Antonio antonio;
     private Barbara barbara;
@@ -24,11 +28,12 @@ public class LightGame implements Serializable {
     private Maria maria;
     private Nicola nicola;
     private Omnia omnia;
-    public LightGame(ArrayList<CharacterCard> characterCards, ArrayList<LightCloud> clouds, ArrayList<LightPlayer> players, ArrayList<Island> islands, int numPlayers, ProfTable profTable, Antonio antonio, Barbara barbara, Ciro ciro, Dante dante, Ernesto ernesto, Felix felix, Giuseppe giuseppe, Ivan ivan, Lancillotto lancillotto, Maria maria, Nicola nicola, Omnia omnia){
+    public LightGame(ArrayList<CharacterCard> characterCards,boolean isExpert, ArrayList<LightCloud> clouds, ArrayList<LightPlayer> players, ArrayList<Island> islands, int numPlayers, ProfTable profTable, Antonio antonio, Barbara barbara, Ciro ciro, Dante dante, Ernesto ernesto, Felix felix, Giuseppe giuseppe, Ivan ivan, Lancillotto lancillotto, Maria maria, Nicola nicola, Omnia omnia){
         this.characterCards = characterCards;
         this.clouds=clouds;
         this.players=players;
         this.islands=islands;
+        this.isExpert=isExpert;
         this.numPlayers=numPlayers;
         this.profTable=profTable;
         this.antonio = antonio;
@@ -43,6 +48,9 @@ public class LightGame implements Serializable {
         this.maria = maria;
         this.nicola = nicola;
         this.omnia = omnia;
+    }
+    public boolean getIsExpert(){
+        return isExpert;
     }
     public ProfTable getProfTable() {
         return profTable;

@@ -22,7 +22,8 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     private final VirtualView virtualView;
     private final UserInput userInput;
     private boolean contr;
-    private int numPlayer;
+    private int numPlayers;
+    private int numPawnExe;
     private EndGameObserver endGame;
     private boolean lobbyOk;
     private final ArrayList<ClientHandlerInterface> clients;
@@ -41,11 +42,12 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         clients = new ArrayList<>();
         players = new ArrayList<>();
         numinsert=false;
-        numPlayer = 0;
+        numPlayers = 0;
         contr=false;
         lobbyOk = false;
         lobbySett = false;
         serverMessageMenager=new ServerMessageMenager(this);
+        numPawnExe=0;
     }
 
     public ArrayList<Player> getPlayers() {
@@ -66,7 +68,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             client.setUserNickname(namePlayer.get(i));
             nick = client.getUserNickname();
             virtualView.addClientInVirtualView(client, nick);
-            if (clients.size() != numPlayer) {
+            if (clients.size() != numPlayers) {
                 client.sendObject(new ClientAcceptedMessage());
                 client.sendObject(new WaitMessage());
             } else {
@@ -167,9 +169,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     public void newGame(Game game) {
         controller = new Controller(game, userInput, virtualView, players,clients);
         controller.sendUpdate();
-        while (!controller.getEndGame()){
-            controller.startRound();
-        }
+        controller.startRound();
     }
 
     public synchronized void insertNickname(String nickname, ClientHandler clientHandler) {
@@ -181,7 +181,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 } else {
                     contr = true;
                     int i;
-                    if (numinsert && namePlayer.size() == numPlayer) {
+                    if (numinsert && namePlayer.size() == numPlayers) {
                         clientHandler.sendObject(new LobbyFullMessage());
                         clientHandler.closeConnect(nickname);
                         return;
@@ -216,7 +216,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 clientHandler.sendObject(new SetNumPlayersIsExpertMessage());
                 return;
             }
-            this.numPlayer = numPlayers;
+            this.numPlayers = numPlayers;
             this.isExpert = isExpert;
             game = new Game(numPlayers, isExpert);
             game.start(game);
@@ -228,19 +228,25 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         }
 
     public void selectAssistantCard(int assistant, ClientHandler clientHandler) {
+        int j;
         int i;
         int contr = -1;
-        for (i = 0; i < namePlayer.size(); i++) {
-            if (game.getPlayers().get(i).getNickname() == clientHandler.getUserNickname()) {
-                contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant));
+        for(j=0; controller.getRoundController().getExeAssistantPhase().get(j); j++);
+        if(Objects.equals(controller.getRoundController().getRoundOrder().get(j).getNickname(), clientHandler.getUserNickname())){
+            if(controller.getRoundController().getExeAssistantPhase().get(clientHandler.getUserNickname()))
+            for (i = 0; i < namePlayer.size(); i++) {
+                if (Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname())) {
+                    contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant));
+                }
             }
-        }
-        if (contr == 0) {
-            clientHandler.sendObject(new WrongNotAssistantMessage());
-        } else if (contr == 1) {
-            clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
-        } else if (contr == 2) {
-            clientHandler.sendObject(new WrongSameAssistantMessage());
+            if (contr == 0) {
+                clientHandler.sendObject(new WrongNotAssistantMessage());
+            } else if (contr == 1) {
+                controller.getRoundController().setExeAssistantPhase(clientHandler.getUserNickname(), true);
+                clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+            } else if (contr == 2) {
+                clientHandler.sendObject(new WrongSameAssistantMessage());
+            }
         }
     }
 
@@ -253,6 +259,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         }
         game.getCharacterCards().get(num - 1).getUseEffect().useEffect(game, numberPawn, island, game.getPlayers().get(findPlayer(game, clientHandler)), colorPawn);
         clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+        controller.getRoundController().setExeCharacterCard(true);
     }
 
     public int findPlayer(Game game, ClientHandler clientHandler) {
@@ -268,12 +275,16 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     public void selectCloud(int cloud, ClientHandler clientHandler) {
         int i;
         game.getPlayers().get(findPlayer(game, clientHandler)).getEntrance().chooseCloud(game.getClouds().get(cloud), game, game.getPlayers().get(findPlayer(game, clientHandler)));
+        controller.getRoundController().setExeChooseCloud(true);
         clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+
     }
     public void moveMotherNature(int island, ClientHandler clientHandler) {
         Island island1 = game.getIslands().get(island);
         game.moveMotherNature(island1);
+        controller.getRoundController().setExeMoveMotherNature(true);
         clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+
     }
 
     public void movePawnToDining(int numPawn, ArrayList<ColorPawn> arrayPawn, ClientHandler clientHandler) {
@@ -283,8 +294,23 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             game.getPlayers().get(numplayer).getDiningRoom().addPawnToDiningRoom(arrayPawn.get(i), game.getPlayers().get(numplayer), game);
         }
         clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
-    }
-
+        numPawnExe=numPawnExe+numPawn;
+        if(numPlayers==2||numPlayers==4){
+            if(numPawnExe==3){
+                controller.getRoundController().setExeMoveStudent(true);
+                numPawnExe=0;
+            }else{
+                clientHandler.sendObject(new SetMovePawnMessage(numPawnExe));
+            }
+        } else if(numPlayers==3) {
+            if(numPawnExe==4) {
+                controller.getRoundController().setExeMoveStudent(true);
+                numPawnExe=0;
+            }else {
+                clientHandler.sendObject(new SetMovePawnMessage(numPawnExe));
+            }
+        }
+        }
     public void movePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn, ClientHandler clientHandler) {
         int numPlayer = findPlayer(game, clientHandler);
         int i;
@@ -292,6 +318,22 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             game.getPlayers().get(numPlayer).getEntrance().movePawnToIsland(arrayPawn.get(i), game.getIslands().get(island), game);
         }
         clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+        numPawnExe=numPawnExe+numPawn;
+        if(numPlayers==2||numPlayers==4){
+            if(numPawnExe==3){
+                controller.getRoundController().setExeMoveStudent(true);
+                numPawnExe=0;
+            }else{
+                clientHandler.sendObject(new SetMovePawnMessage(numPawnExe));
+            }
+        } else if(numPlayers==3) {
+            if (numPawnExe == 4) {
+                controller.getRoundController().setExeMoveStudent(true);
+                numPawnExe=0;
+            }else{
+                clientHandler.sendObject(new SetMovePawnMessage(numPawnExe));
+            }
+        }
     }
 
     public void processMessage(ClientHandler clientHandler, Message m) {
@@ -299,7 +341,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 serverMessageMenager.ManageInputToServer(clientHandler, m);
         }else{
             int i;
-            for(i=0;i<numPlayer;i++){
+            for(i=0;i<numPlayers;i++){
                 if(Objects.equals(clientHandler.getUserNickname(), clients.get(i).getUserNickname())){
                     i=6;
                 }

@@ -1,8 +1,11 @@
 package it.polimi.ingsw.client.ModelLight;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class LightEntrance implements Serializable {
+    @Serial
+    private static final long serialVersionUID= -4779606610459309810L;
     private final int numPawn;
     private final int greenPawn;
     private final int bluePawn;

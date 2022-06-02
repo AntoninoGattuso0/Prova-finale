@@ -2,10 +2,13 @@ package it.polimi.ingsw.client.ModelLight;
 
 import it.polimi.ingsw.model.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class LightPlayer implements Serializable {
+    @Serial
+    private static final long serialVersionUID= 6825325939760723288L;
 
     private String nickname;
     private int numCoin;

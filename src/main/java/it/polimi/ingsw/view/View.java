@@ -5,18 +5,24 @@ import it.polimi.ingsw.client.SocketNetworkHandler;
 
 public interface View {
     void startGame();
+
     void requestNickname();
 
     void requestNumPlayersIsExpert();
 
 
     void displayNick();
+
     void displayNumPlayers();
+
     void displayIsExpert();
 
     void displayAssistantCard(int player);
+
     void displayCloud();
+
     void displayIslands();
+
     void displaySchoolBoard();
 
     void sendNick(String nickname);
@@ -26,17 +32,25 @@ public interface View {
     void displayWinner(String nickname);
 
     void displayNetError();
+
     void displayWrongNickname();
+
     void displayWrongTurn();
+
     void displayTurn();
+
     void displayResponseMessage();
+
     void updateAll(LightGame object);
+
     void selectCloud();
+
     void selectAssistantCard(String nickname);
 
     void requestMoveMotherNature();
 
     void registerClient();
+
     void waitOtherPlayers();
 
     void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler);
@@ -47,5 +61,4 @@ public interface View {
 
     void lobbyFull();
 }
-
 //CLI E GUI dovranno implementare quest interfaccia

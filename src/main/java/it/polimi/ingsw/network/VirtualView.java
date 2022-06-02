@@ -59,10 +59,10 @@ public class VirtualView {
         sendBroadcast(new WinnerMessage(nick));
     }
 
-    public void sendBroadcast(Message message) {
+    public synchronized void sendBroadcast(Message message) {
             for (ClientHandlerInterface clientHandler : clients) {
                 clientHandler.sendObject(message);
-        }
+            }
     }
 
     public void sendAllQuitPlayer(String userNickname) {

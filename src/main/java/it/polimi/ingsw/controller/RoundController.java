@@ -2,32 +2,50 @@ package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class RoundController {
     private ArrayList<Player> roundOrder;
     private TurnController turnController;
     private Player lastPlayer;
     private boolean exeChooseCloud;
-    private boolean exeAssistantPhase;
+    private HashMap<String,Boolean> exeAssistantPhase=new HashMap<>();
     private boolean exeEndTurn;
     private boolean exeMoveStudent;
     private boolean exeMoveMotherNature;
+    private boolean exeCharacterCard;
     public RoundController(ArrayList<Player> players) {
         this.roundOrder = players;
         this.turnController=new TurnController(players);
         lastPlayer=players.get(players.size()-1);
         this.exeChooseCloud=false;
-        this.exeAssistantPhase=false;
+        int i;
+        for(i=0;i<roundOrder.size();i++){
+            exeAssistantPhase.put(roundOrder.get(i).getNickname(),false);
+        }
         this.exeEndTurn=false;
         this.exeMoveStudent=false;
         this.exeMoveMotherNature=false;
+        this.exeCharacterCard=false;
     }
 
     public void setExeEndTurn(boolean exeEndTurn) {
         this.exeEndTurn = exeEndTurn;
     }
-    public void setExeAssistantPhase(boolean exeAssistantPhase) {
-        this.exeAssistantPhase = exeAssistantPhase;
+
+    public void setExeCharacterCard(boolean exeCharacterCard) {
+        this.exeCharacterCard = exeCharacterCard;
+    }
+    public boolean getExeCharacterCard(){
+        return exeCharacterCard;
+    }
+    public void setExeAssistantPhase(String nickname,boolean ciao) {
+       for(int i=0;i<roundOrder.size();i++){
+           if(Objects.equals(nickname, roundOrder.get(i).getNickname())){
+               exeAssistantPhase.put(nickname,true);
+           }
+       }
     }
     public void setExeChooseCloud(boolean exeChooseCloud) {
         this.exeChooseCloud = exeChooseCloud;
@@ -47,7 +65,7 @@ public class RoundController {
     public boolean getExeMoveMotherNature(){
         return exeMoveMotherNature;
     }
-    public boolean getExeAssistantPhase(){
+    public HashMap<String, Boolean> getExeAssistantPhase(){
         return exeAssistantPhase;
     }
     public boolean getExeChooseCloud(){

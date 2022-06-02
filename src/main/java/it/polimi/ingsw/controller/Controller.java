@@ -1,5 +1,6 @@
 package it.polimi.ingsw.controller;
 
+import it.polimi.ingsw.client.ModelLight.*;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.ClientHandlerInterface;
@@ -18,6 +19,7 @@ public class Controller {
     private final UserInput userInput;
     private final VirtualView virtualView;
     private ArrayList<Player> players;
+    private ArrayList<LightPlayer> playersLight;
     private Player currentPlayer;
     private ArrayList<ClientHandlerInterface> clients;
     public Controller(Game game, UserInput userInput, VirtualView virtualView, ArrayList<Player> players, ArrayList<ClientHandlerInterface> clients){
@@ -29,8 +31,12 @@ public class Controller {
         this.players.addAll(players);
         this.currentPlayer=players.get(0);
         this.endGame=false;
+        this.playersLight=new ArrayList<>();
         this.roundController=new RoundController(players);
         this.clients=clients;
+    }
+    public ArrayList<Player> getPlayers() {
+        return players;
     }
     public RoundController getRoundController(){
         return this.roundController;
@@ -72,19 +78,36 @@ public class Controller {
         }
         return i;
     }
+
+    public void updateThisPlayersLight() {
+        for(Player player: players){
+            LightDiningRoom lightDining=new LightDiningRoom(player.getDiningRoom().getNumBlue(),player.getDiningRoom().getNumGreen(),player.getDiningRoom().getNumPink(),player.getDiningRoom().getNumRed(),player.getDiningRoom().getNumYellow());
+            LightTowerSpace lightTowerSpace= new LightTowerSpace(player.getTowerSpace().getColorTower(),player.getTowerSpace().getNumTower());
+            LightEntrance lightEntrance= new LightEntrance(player.getEntrance().getNumPawn(),player.getEntrance().getGreenPawn(),player.getEntrance().getRedPawn(),player.getEntrance().getYellowPawn(),player.getEntrance().getPinkPawn(),player.getEntrance().getBluePawn());
+            playersLight.add(new LightPlayer(player.getNickname(),player.getNumCoin(),player.getDeckAssistant(),player.getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDining));
+        }
+    }
+
     public void startRound(){
 
         boolean finish;
         players=roundController.getRoundOrder();
+        updateThisPlayersLight();
         virtualView.setActualPlayer(roundController.getRoundOrder().get(0).getNickname());
         currentPlayer=roundController.getRoundOrder().get(0);
+        virtualView.sendBroadcast(new TurnOrderMessage(playersLight));
         int i;
         for(i=0;i<players.size();i++) {
             players.get(i).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
         }
-        virtualView.startRound(currentPlayer.getNickname());
+        for(i=0;i<players.size();i++){
+            if(!(getRoundController().getExeAssistantPhase().get(players.get(i).getNickname()))){
+                virtualView.startRound(players.get(i).getNickname());
+            }
+        }
         players=roundController.newRoundOrder(players,game);
-        virtualView.sendBroadcast(new TurnOrderMessage(players));
+        updateThisPlayersLight();
+        virtualView.sendBroadcast(new TurnOrderMessage(playersLight));
         for(i=0;i<players.size();){
                 finish=startTurn(players.get(i));
                 if(finish){
@@ -99,7 +122,7 @@ public class Controller {
             if (player.getCurrentPhase() == PhaseTurn.MOVE_STUDENT) {
                 for (ClientHandlerInterface client : clients) {
                     if (player.getNickname().equals(client.getUserNickname())) {
-                        virtualView.sendMessage(client, new SetMovePawnMessage());
+                        virtualView.sendMessage(client, new SetMovePawnMessage(0));
                     }
                 }
                  e= roundController.getExeMoveStudent();
