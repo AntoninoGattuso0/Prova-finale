@@ -1,7 +1,10 @@
 package it.polimi.ingsw.network.Message.ClientToServer;
 
+import java.io.Serial;
+
 public class RequestNickname extends ClientToServer {
-    private static final long serialVersionUID= -6929509489095279482L;
+    @Serial
+    private static final long serialVersionUID= 5123207096423101693L;
 
     private final String nickName;
 

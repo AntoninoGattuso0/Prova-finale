@@ -5,5 +5,5 @@ import java.io.Serializable;
 
 public class LoginRefusedMessage extends ServerToClient implements Serializable {
     @Serial
-    private static final long serialVersionUID = -5604170525970363492L;
+    private static final long serialVersionUID = -1242328143032650324L;
 }

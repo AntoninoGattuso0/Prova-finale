@@ -5,5 +5,5 @@ import java.io.Serializable;
 
 public class WrongTurnMessage extends ServerToClient implements Serializable {
     @Serial
-    private static final long serialVersionUID = -9116043505813593296L;
+    private static final long serialVersionUID = 7448204087325393644L;
 }

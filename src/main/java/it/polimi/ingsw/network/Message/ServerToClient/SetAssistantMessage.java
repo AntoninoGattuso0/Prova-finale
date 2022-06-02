@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class SetAssistantMessage extends ServerToClient implements Serializable{
     @Serial
-    private static final long serialVersionUID= 3128446875864454635L;
+    private static final long serialVersionUID= -7670862571469110376L;
     private final String nickname;
     public SetAssistantMessage(String nickname){
         this.nickname=nickname;

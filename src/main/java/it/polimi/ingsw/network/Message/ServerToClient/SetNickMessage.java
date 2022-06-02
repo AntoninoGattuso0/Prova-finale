@@ -5,5 +5,5 @@ import java.io.Serializable;
 
 public class SetNickMessage extends ServerToClient implements Serializable {
     @Serial
-    private static final long serialVersionUID= -6395071198017174131L;
+    private static final long serialVersionUID= 8606207455667433697L;
 }

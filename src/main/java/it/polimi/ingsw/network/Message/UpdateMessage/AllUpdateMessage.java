@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class AllUpdateMessage extends ServerToClient implements Serializable {
     @Serial
-    private static final long serialVersionUID= 8105229548955203739L;
+    private static final long serialVersionUID= 8897338037071499069L;
     LightGame lightGame;
     public AllUpdateMessage(LightGame lightGame){
         this.lightGame=lightGame;

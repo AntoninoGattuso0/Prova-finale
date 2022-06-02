@@ -31,6 +31,10 @@ public class ServerMessageMenager {
             lobby.insertNumPlayersIsExpert(((RequestNumPlayersIsExpert) object).getNumPlayers(), ((RequestNumPlayersIsExpert) object).getIsExpert(), clientHandler);
         }else if(object instanceof ChooseAssistantCardMessage m) {
              lobby.selectAssistantCard(m.getAssistant(), clientHandler);
+         }else if(object instanceof RequestNicknameAfterFirstLoginMessage){
+             lobby.insertNickname(((RequestNicknameAfterFirstLoginMessage) object).getNickname(),clientHandler);
+         }else if(object instanceof Ping){
+
          }
         else throw new IllegalArgumentException();
     }

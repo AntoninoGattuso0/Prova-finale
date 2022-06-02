@@ -5,5 +5,5 @@ import java.io.Serializable;
 
 public class WrongNotAssistantMessage extends ServerToClient implements Serializable {
     @Serial
-    private static final long serialVersionUID= -840670952984902908L;
+    private static final long serialVersionUID= -4739875377736622173L;
 }

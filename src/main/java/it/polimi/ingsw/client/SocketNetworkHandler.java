@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client;
 
+import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
 import it.polimi.ingsw.view.View;
@@ -18,7 +19,7 @@ public class SocketNetworkHandler implements Runnable{
     private String nicknameThisPlayer;
     private volatile boolean connected;
     private volatile boolean ready;
-
+    private final Ping ping;
     private final ClientMessageManager clientMessageManager;
     public SocketNetworkHandler(View view){
         connected=false;
@@ -26,7 +27,12 @@ public class SocketNetworkHandler implements Runnable{
         this.view=view;
         this.clientMessageManager =new ClientMessageManager(view);
         view.setSocketNetworkHandler(this);
+        ping=new Ping();
     }
+    public View getView() {
+        return view;
+    }
+
     public String getNicknameThisPlayer() {
         return nicknameThisPlayer;
     }
@@ -43,17 +49,19 @@ public class SocketNetworkHandler implements Runnable{
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
-                if(c>100){
+                if(c>=100){
                     c=0;
-                    sendMessage(new Ping());
+                    sendMessage(ping);
                 }
             }
         });
         thread.start();
     }
-    public void sendMessage(Message message){
+    public synchronized void sendMessage(Message message){
         try{
-            out.reset();
+            if(!(message instanceof RequestNicknameAfterFirstLoginMessage)) {
+                out.reset();
+            }
             out.writeObject(message);
             out.flush();
         }catch (IOException e){
@@ -64,6 +72,7 @@ public class SocketNetworkHandler implements Runnable{
         try{
             socket=new Socket(ipAddress, Integer.parseInt(port));
             ready=true;
+            connected=true;
             System.out.println("Connection up");
         }catch (IOException| IllegalArgumentException e){
             System.out.println("Server unavailable");
@@ -106,16 +115,17 @@ public class SocketNetworkHandler implements Runnable{
                 try {
                     socket.setSoTimeout(30000);
                     Object input = in.readObject();
-                    clientMessageManager.manageInputToClient(input);
+                    clientMessageManager.manageInputToClient(input,this);
                 }catch (IOException|ClassNotFoundException|InterruptedException e){
+                   if(!connected)
                     view.displayNetError();
+                    closeConnection();
                     break;
                 }
             }
         }catch (NoSuchElementException e){
             view.displayNetError();
-        }finally {
             closeConnection();
         }
+        }
     }
-}

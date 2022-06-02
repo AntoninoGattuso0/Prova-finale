@@ -5,5 +5,5 @@ import java.io.Serializable;
 
 public class WrongSameAssistantMessage extends ServerToClient implements Serializable {
     @Serial
-    private final static long serialVersionUID= -5916436827478634108L;
+    private final static long serialVersionUID= -4348716159877235751L;
 }

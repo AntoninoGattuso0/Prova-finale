@@ -12,62 +12,63 @@ public class ClientMessageManager {
         this.view = view;
     }
 
-    public void manageInputToClient(Object object) throws InterruptedException {
+    public void manageInputToClient(Object object, SocketNetworkHandler socketNetworkHandler) throws InterruptedException {
         if (object instanceof Ping) {
             return;
         }
         if (object instanceof WaitMessage) {
-            view.waitOtherPlayers();
+            socketNetworkHandler.getView().waitOtherPlayers();
         } else if (object instanceof StartTurnMessage) {
-            view.displayTurn();
+            socketNetworkHandler.getView().displayTurn();
         } else if (object instanceof SetNumPlayersIsExpertMessage) {
-            view.requestNumPlayersIsExpert();
+            socketNetworkHandler.getView().requestNumPlayersIsExpert();
         } else if (object instanceof SetNickMessage) {
-            view.requestNickname();
+            socketNetworkHandler.getView().requestNickname();
         } else if (object instanceof ClientAcceptedMessage) { //Serve per dire al player che è entrato in lobby
-            view.registerClient();
+            socketNetworkHandler.getView().registerClient();
         } else if (object instanceof WinnerMessage message) {
-            view.displayWinner(message.getNickname());
+            socketNetworkHandler.getView().displayWinner(message.getNickname());
         } else if (object instanceof GameStartedMessage) { //Serve a dire che il game è iniziato
-            view.newGameStart();
+            socketNetworkHandler.getView().newGameStart();
         } else if (object instanceof WrongNicknameMessage) {
-            view.displayWrongNickname();
+            socketNetworkHandler.getView().displayWrongNickname();
         } else if (object instanceof WrongTurnMessage) {
-            view.displayWrongTurn();
+            socketNetworkHandler.getView().displayWrongTurn();
         } else if (object instanceof ClientInputMessage) {
-            view.displayResponseMessage();
+            socketNetworkHandler.getView().displayResponseMessage();
         } else if (object instanceof AllUpdateMessage m) {
-            view.updateAll(m.getLightGame());
+            socketNetworkHandler.getView().updateAll(m.getLightGame());
         } else if (object instanceof LoginAcceptedMessage) {// serve a dire all' ultimo player che è entrato in lobby e che era l'ultimo player che mancava
-            view.playerWait();
+            socketNetworkHandler.getView().playerWait();
         } else if (object instanceof SetAssistantMessage) {
-            view.selectAssistantCard(((SetAssistantMessage) object).getNickname());
-        } else if (object instanceof SetMovePawnMessage) {
-           // view.
+            socketNetworkHandler.getView().selectAssistantCard(((SetAssistantMessage) object).getNickname());
+        }/* else if (object instanceof SetMovePawnMessage) {
+            // socketNetworkHandler.getView().
         } else if (object instanceof SetMoveMotherNature) {
-          //  view.
+           // socketNetworkHandler.getView().
         } else if (object instanceof SetCloudMessage) {
-           // view.
+           // socketNetworkHandler.getView().
         } else if (object instanceof DisconnectionMessage) {
-            //view.
+            // socketNetworkHandler.getView().
         } else if (object instanceof EndGameMessage) {
-          //  view.
+           // socketNetworkHandler.getView().
         } else if (object instanceof EndTurnMessage) {
-          //  view.
+          // socketNetworkHandler.getView().
         } else if (object instanceof InvalidNumPlayerMessage) {
-           // view.
+            // socketNetworkHandler.getView().
         } else if (object instanceof NewCurrentPlayerMessage) {
-           // view.
+            // socketNetworkHandler.getView().
         } else if (object instanceof TurnOrderMessage) {
-           // view.
+           // socketNetworkHandler.getView().
         }else if(object instanceof WrongNumPlayerIsExpertMessage){
-            //view.
+             // socketNetworkHandler.getView().
         }else if(object instanceof WrongSameAssistantMessage){
-           // view.
-        }else if(object instanceof WaitLoginMessage){
-            view.sendNick(((WaitLoginMessage) object).getNickname());
+           // socketNetworkHandler.getView().
+        }*/else if(object instanceof WaitLoginMessage){
+            socketNetworkHandler.getView().sendNick(((WaitLoginMessage) object).getNickname());
         }else if(object instanceof LobbyFullMessage){
-            view.lobbyFull();
+            socketNetworkHandler.getView().lobbyFull();
+        }else if(object instanceof Ping){
         }
         else throw new IllegalArgumentException();
     }

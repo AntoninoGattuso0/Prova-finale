@@ -403,7 +403,7 @@ public class Cli implements Runnable, View {
     public void sendNick(String nickname){
         String nick = nickname;
         if(nick!=null)
-            socketNetworkHandler.sendMessage(new RequestNickname(nick));
+            socketNetworkHandler.sendMessage(new RequestNicknameAfterFirstLoginMessage(nick));
         }
     @Override
     public void displayCharacterCard() {

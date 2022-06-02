@@ -2,6 +2,7 @@ package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
+import it.polimi.ingsw.network.Message.ServerToClient.WaitLoginMessage;
 import it.polimi.ingsw.observer.ConnectionObserver;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
     private volatile boolean connected;
     private volatile boolean myTurn;
     private Message message;
-    private final Ping ping = new Ping();
+    private Ping ping;
     private volatile boolean messageReady;
     private ObjectInputStream objectInputStream;
     private ObjectOutputStream objectOutputStream;
@@ -28,6 +29,7 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
         this.connected = true;
         this.myTurn = false;
         this.messageReady = false;
+        ping=new Ping();
     }
     public String getUserNickname() {
         return userNickname;
@@ -43,10 +45,12 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
         this.userNickname=userNickname;
     }
 
-    public void sendObject(Message object) {
+    public synchronized void sendObject(Message object) {
         try {
+            if (!(object instanceof WaitLoginMessage)) {
+                objectOutputStream.reset();
+            }
             objectOutputStream.writeObject(object);
-            objectOutputStream.reset();
             objectOutputStream.flush();
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
@@ -62,31 +66,22 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                try {
-                    if(c>100){
-                        c=0;
-                        objectOutputStream.writeObject(ping);
-                    }
-                }catch (IOException e){
-                    e.printStackTrace();
+                if (c > 100) {
+                    c = 0;
+                    sendObject(ping);
                 }
             }
         });
         thread.start();
     }
-    public void closeConnect(){
-        if(userNickname==null){
-            synchronized (this){
-                messageReady=true;
-                message=null;
-                notifyAll();
-            }
-        }
-        connected=false;
+
+    public void closeConnect(String userNickname){
         try{
+            connected=false;
+            mySocket.close();
             objectOutputStream.close();
             objectInputStream.close();
-            mySocket.close();
+            updateDisconnection(this);
             System.out.println("SERVER: "+userNickname+" connection close by the server.\n");
         }catch (IOException e){
             System.out.println("SERVER: errore closing: "+userNickname+"\n");
@@ -113,7 +108,7 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
                         }
                 }catch (IOException |NullPointerException|IllegalArgumentException e){
                     System.out.println("SERVER: "+userNickname+" connection close by the client");
-                    closeConnect();
+                    closeConnect(userNickname);
 
                     break;
                 }
@@ -157,6 +152,6 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
 
     @Override
     public void updateDisconnection(ClientHandlerInterface client) {
-
+        client=null;
     }
 }

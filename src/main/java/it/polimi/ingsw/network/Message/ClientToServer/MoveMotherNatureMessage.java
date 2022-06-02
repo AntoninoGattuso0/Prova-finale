@@ -1,7 +1,10 @@
 package it.polimi.ingsw.network.Message.ClientToServer;
 
+import java.io.Serial;
+
 public class MoveMotherNatureMessage extends ClientToServer {
-    private static final long serialVersionUID = 3281504012596996411L;
+    @Serial
+    private static final long serialVersionUID = 8471854035572910652L;
     private final int island;
 
     public MoveMotherNatureMessage(int island) {

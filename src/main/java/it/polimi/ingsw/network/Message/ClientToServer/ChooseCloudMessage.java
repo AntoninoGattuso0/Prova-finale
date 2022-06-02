@@ -1,7 +1,10 @@
 package it.polimi.ingsw.network.Message.ClientToServer;
 
+import java.io.Serial;
+
 public class ChooseCloudMessage extends ClientToServer {
-    private static final long serialVersionUID = -2263736350397053763L;
+    @Serial
+    private static final long serialVersionUID = 5696698093812135553L;
     private final int cloud;
 
     public ChooseCloudMessage(int cloud) {

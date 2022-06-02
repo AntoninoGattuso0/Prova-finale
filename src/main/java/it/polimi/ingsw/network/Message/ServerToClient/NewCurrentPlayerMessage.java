@@ -5,5 +5,5 @@ import java.io.Serializable;
 
 public class NewCurrentPlayerMessage extends ServerToClient implements Serializable {
     @Serial
-    private static final long serialVersionUID = 5174636856074373081L;
+    private static final long serialVersionUID = 6921473828172451340L;
     }

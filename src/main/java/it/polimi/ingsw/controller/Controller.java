@@ -22,7 +22,7 @@ public class Controller {
     private ArrayList<ClientHandlerInterface> clients;
     public Controller(Game game, UserInput userInput, VirtualView virtualView, ArrayList<Player> players, ArrayList<ClientHandlerInterface> clients){
         this.game=game;
-        this.isExpert=game.getIsExpert();
+        this.isExpert=game.getIsExpert();//Manca il controllo della assistantphase nello startround DA NINO PER NINO
         this.virtualView=virtualView;
         this.userInput=userInput;
         this.players=new ArrayList<>();
@@ -53,6 +53,7 @@ public class Controller {
         endGame=true;
         virtualView.playerWinForQuitting(nick);
     }
+
     public void updateCurrentPlayer(){
         currentPlayer=players.get((players.indexOf(currentPlayer)+1)%players.size());
     }
@@ -72,6 +73,7 @@ public class Controller {
         return i;
     }
     public void startRound(){
+
         boolean finish;
         players=roundController.getRoundOrder();
         virtualView.setActualPlayer(roundController.getRoundOrder().get(0).getNickname());
@@ -86,31 +88,35 @@ public class Controller {
         for(i=0;i<players.size();){
                 finish=startTurn(players.get(i));
                 if(finish){
+                    roundController.setExeEndTurn(false);
                     i++;
                 }
             }
         }
     public boolean startTurn(Player player) {
-        boolean e = false;
-        while (player.getCurrentPhase() != PhaseTurn.END_TURN && e) {
+            boolean e=false;
+            while (player.getCurrentPhase() != PhaseTurn.END_TURN) {
             if (player.getCurrentPhase() == PhaseTurn.MOVE_STUDENT) {
                 for (ClientHandlerInterface client : clients) {
                     if (player.getNickname().equals(client.getUserNickname())) {
                         virtualView.sendMessage(client, new SetMovePawnMessage());
                     }
                 }
+                 e= roundController.getExeMoveStudent();
             } else if (player.getCurrentPhase() == PhaseTurn.MOVE_MOTHER_NATURE) {
                 for (ClientHandlerInterface client : clients) {
                     if (player.getNickname().equals(client.getUserNickname())) {
                         virtualView.sendMessage(client, new SetMoveMotherNature());
                     }
                 }
+                e=roundController.getExeMoveMotherNature();
             } else if (player.getCurrentPhase() == PhaseTurn.CHOOSE_CLOUD) {
                 for (ClientHandlerInterface client : clients) {
                     if (player.getNickname().equals(client.getUserNickname())) {
                         virtualView.sendMessage(client, new SetCloudMessage());
                     }
                 }
+                e=roundController.getExeChooseCloud();
             } else if (player.getCurrentPhase() == PhaseTurn.END_TURN) {
                 for (ClientHandlerInterface client : clients) {
                     if (player.getNickname().equals(client.getUserNickname())) {
@@ -119,8 +125,12 @@ public class Controller {
                 }
             }
             roundController.getTurnController().setPhaseTurn(player, e, roundController, game);
+            e=false;
         }
-        return e;
+            roundController.setExeChooseCloud(false);
+            roundController.setExeMoveStudent(false);
+            roundController.setExeMoveMotherNature(false);
+        return roundController.getExeEndTurn();
     }
     public void play(Game game, Lobby lobby){
         String winnerIs;

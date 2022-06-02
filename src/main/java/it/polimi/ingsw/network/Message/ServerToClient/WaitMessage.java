@@ -5,5 +5,5 @@ import java.io.Serializable;
 
 public class WaitMessage extends ServerToClient implements Serializable {
     @Serial
-    private static final long serialVersionUID = 6996567351995052545L;
+    private static final long serialVersionUID = 5759788297984679349L;
 }

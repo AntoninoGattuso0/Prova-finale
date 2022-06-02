@@ -5,5 +5,5 @@ import java.io.Serializable;
 
 public class SetCloudMessage extends ServerToClient implements Serializable {
     @Serial
-    private final static long serialVersionUID= 2805728587131775387L;
+    private final static long serialVersionUID= 5641881049533251384L;
 }

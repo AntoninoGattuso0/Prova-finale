@@ -7,13 +7,52 @@ public class RoundController {
     private ArrayList<Player> roundOrder;
     private TurnController turnController;
     private Player lastPlayer;
-
+    private boolean exeChooseCloud;
+    private boolean exeAssistantPhase;
+    private boolean exeEndTurn;
+    private boolean exeMoveStudent;
+    private boolean exeMoveMotherNature;
     public RoundController(ArrayList<Player> players) {
         this.roundOrder = players;
         this.turnController=new TurnController(players);
         lastPlayer=players.get(players.size()-1);
+        this.exeChooseCloud=false;
+        this.exeAssistantPhase=false;
+        this.exeEndTurn=false;
+        this.exeMoveStudent=false;
+        this.exeMoveMotherNature=false;
     }
 
+    public void setExeEndTurn(boolean exeEndTurn) {
+        this.exeEndTurn = exeEndTurn;
+    }
+    public void setExeAssistantPhase(boolean exeAssistantPhase) {
+        this.exeAssistantPhase = exeAssistantPhase;
+    }
+    public void setExeChooseCloud(boolean exeChooseCloud) {
+        this.exeChooseCloud = exeChooseCloud;
+    }
+    public void setExeMoveMotherNature(boolean exeMoveMotherNature) {
+        this.exeMoveMotherNature = exeMoveMotherNature;
+    }
+    public void setExeMoveStudent(boolean exeMoveStudent) {
+        this.exeMoveStudent = exeMoveStudent;
+    }
+    public boolean getExeEndTurn(){
+        return exeEndTurn;
+    }
+    public boolean getExeMoveStudent(){
+        return exeMoveStudent;
+    }
+    public boolean getExeMoveMotherNature(){
+        return exeMoveMotherNature;
+    }
+    public boolean getExeAssistantPhase(){
+        return exeAssistantPhase;
+    }
+    public boolean getExeChooseCloud(){
+        return exeChooseCloud;
+    }
     public Player getLastPlayer() {
         return lastPlayer;
     }

@@ -5,5 +5,5 @@ import java.io.Serializable;
 
 public class ClientInputMessage extends ServerToClient implements Serializable {
     @Serial
-    private static final long serialVersionUID= -4560553615619388577L;
+    private static final long serialVersionUID= -7251772040400720558L;
 }

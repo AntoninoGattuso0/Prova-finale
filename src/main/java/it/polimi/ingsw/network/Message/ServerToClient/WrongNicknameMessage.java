@@ -5,5 +5,5 @@ import java.io.Serializable;
 
 public class WrongNicknameMessage extends ServerToClient implements Serializable {
     @Serial
-    private static final long serialVersionUID = -3214531731193190481L;
+    private static final long serialVersionUID = 2478035688175931596L;
 }
