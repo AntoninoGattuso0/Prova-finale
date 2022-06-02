@@ -5,8 +5,6 @@ import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.*;
-import it.polimi.ingsw.network.Message.ServerToClient.InvalidNumPlayerMessage;
-import it.polimi.ingsw.network.Message.ServerToClient.WrongNicknameMessage;
 import it.polimi.ingsw.view.View;
 
 import java.io.PrintStream;
@@ -132,7 +130,6 @@ public class Cli implements Runnable, View {
             socketNetworkHandler.sendMessage(new RequestNickname(nickname));
         } catch (ExecutionException e) {
             out.println("ERRORE");
-            socketNetworkHandler.sendMessage(new WrongNicknameMessage());
         }
     }
     @Override
@@ -167,7 +164,6 @@ public class Cli implements Runnable, View {
             socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(num, isExpert));
         } catch (ExecutionException e) {
             out.println("ERRORE");
-            socketNetworkHandler.sendMessage(new InvalidNumPlayerMessage());
         }
     }
     @Override
