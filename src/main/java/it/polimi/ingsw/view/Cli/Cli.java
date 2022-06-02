@@ -542,7 +542,7 @@ public class Cli implements Runnable, View {
 
     @Override
     public void selectAssistantCard(String nickname) {
-        if (nickname == socketNetworkHandler.getNicknameThisPlayer()) {
+        if (nickname.equals(socketNetworkHandler.getNicknameThisPlayer())) {
             int player, assistant = -1;
             for (player = 0; lightGame.getPlayers().get(player).getNickname().equals(actualPlayer); player++) ;
             displayAssistantCard(player);

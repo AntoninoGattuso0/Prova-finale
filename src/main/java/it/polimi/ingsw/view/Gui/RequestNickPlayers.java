@@ -1,4 +1,4 @@
-package it.polimi.ingsw.view.GUI;
+package it.polimi.ingsw.view.Gui;
 
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;

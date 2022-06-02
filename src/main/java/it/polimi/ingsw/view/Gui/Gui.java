@@ -139,4 +139,9 @@ public class Gui implements View {
     public void newGameStart() {
 
     }
+
+    @Override
+    public void lobbyFull() {
+
+    }
 }
