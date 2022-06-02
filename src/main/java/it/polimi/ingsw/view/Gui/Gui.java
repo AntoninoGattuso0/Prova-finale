@@ -59,6 +59,11 @@ public class Gui implements View {
     }
 
     @Override
+    public void sendNick(String nickname) {
+
+    }
+
+    @Override
     public void displayCharacterCard() {
 
     }
