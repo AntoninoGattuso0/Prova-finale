@@ -26,7 +26,7 @@
       </Text>
       <ImageView fx:id="exitButton" fitHeight="57.0" fitWidth="76.0" layoutX="510.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
          <image>
-
+            <Image url="@../images/ExitButton.png" />
          </image>
       </ImageView>
    </children>

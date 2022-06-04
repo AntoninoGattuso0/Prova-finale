@@ -17,7 +17,7 @@ public class Winner {
     private Pane rootFXML;
     private final ImageView exitButton;
 
-    public Winner(String nick){
+    public Winner(String nickPlayerWinner){
         try{
             rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/RequestNickPlayers.fxml")));
         }catch(
@@ -25,7 +25,8 @@ public class Winner {
             e.printStackTrace();
         }
 
-        Text NickWinner = (Text) rootFXML.lookup("#nickPlayer");
+        Text nickWinner = (Text) rootFXML.lookup("#nickPlayer");
+        nickWinner.setText(nickPlayerWinner);
         exitButton = (ImageView) rootFXML.lookup("#exitButton");
         exitButton.setOnMouseEntered(mouseEvent -> exitButton.setCursor(Cursor.HAND));
         exitButton.setOnMouseExited(mouseEvent -> exitButton.setCursor(Cursor.DEFAULT));
@@ -35,4 +36,7 @@ public class Winner {
         });
     }
 
+    public Pane getRootFXML() {
+        return rootFXML;
+    }
 }

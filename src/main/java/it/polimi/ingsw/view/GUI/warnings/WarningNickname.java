@@ -23,7 +23,6 @@ public class WarningNickname {
 
         okButton = (ImageView) rootFXML.lookup("#okButton");
         okButton.setOnMouseEntered(mouseEvent -> okButton.setCursor(Cursor.HAND));
-
         okButton.setOnMouseExited(mouseEvent ->  okButton.setCursor(Cursor.DEFAULT));
 
 
