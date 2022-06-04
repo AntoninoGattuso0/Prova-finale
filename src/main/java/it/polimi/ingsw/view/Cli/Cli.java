@@ -142,12 +142,13 @@ public class Cli implements Runnable, View {
             out.println("Digita 2 per spostare delle pedine verso la DiningRoom");
             out.println("Digita 1 per spostare delle pedine verso un'Isola");
             int scelta = scanner.nextInt();
-            while(scelta < 0 || scelta > 3)
+            while(scelta < 0 || scelta > 3) {
                 out.println("Numero Errato!");
                 out.println("Digita 1 per usare una Character Card");
                 out.println("Digita 2 per spostare delle pedine verso la DiningRoom");
                 out.println("Digita 1 per spostare delle pedine verso un'Isola");
                 scelta = scanner.nextInt();
+            }
             if(scelta == 1) requestCharacterCard();
             else if(scelta == 2) requestMovePawnToDiningRoom();
             else if(scelta == 3) requestMovePawnToIsland();
