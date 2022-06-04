@@ -523,7 +523,283 @@ public class Cli implements Runnable, View {
             out.println("Numero errato, per favore inserisci un numero valido: ");
             selected = scanner.nextInt();
         }
-        socketNetworkHandler.sendMessage(new c);
+        selected = selected - 1;
+        int numPawn = 0, numIsland = -1, i;
+        ArrayList<ColorPawn> colori = new ArrayList<>();
+        for(i = 0; i < lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(actualPlayer)); i++);
+        int player = i;
+
+        if (lightGame.getCharacterCards().get(selected).getNumCard() == 0) {
+            if(lightGame.getPlayers().get(player).getNumCoin() < lightGame.getAntonio().getCoinPrice()) {
+                out.println("Non hai abbastanza Coin per usare questa carta");
+                requestMovePawn();
+            }
+            else {
+                lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getAntonio().getCoinPrice());
+                out.println("Scegli il colore di uno studente presente sulla carta  da spostare su un'Isola ");
+                out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                int colore = scanner.nextInt();
+                ColorPawn nomeColore = null;
+                boolean check = false;
+                while (!check) {
+                    if (colore == 1 && lightGame.getAntonio().getGreenPawn() > 0) {
+                        nomeColore = ColorPawn.GREEN;
+                        check = true;
+                    } else if (colore == 2 && lightGame.getAntonio().getRedPawn() > 0) {
+                        nomeColore = ColorPawn.RED;
+                        check = true;
+                    } else if (colore == 3 && lightGame.getAntonio().getYellowPawn() > 0) {
+                        nomeColore = ColorPawn.YELLOW;
+                        check = true;
+                    } else if (colore == 4 && lightGame.getAntonio().getPinkPawn() > 0) {
+                        nomeColore = ColorPawn.PINK;
+                        check = true;
+                    } else if (colore == 5 && lightGame.getAntonio().getBluePawn() > 0) {
+                        nomeColore = ColorPawn.BLUE;
+                        check = true;
+                    } else {
+                        out.println("Non ci sono pedine di questo colore, inserisci un altro colore: ");
+                        colore = scanner.nextInt();
+                    }
+                }
+                colori.add(nomeColore);
+                numPawn = 1;
+                socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+            }
+
+        } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 1) {
+            if(lightGame.getPlayers().get(player).getNumCoin() < lightGame.getBarbara().getCoinPrice()) {
+                out.println("Non hai abbastanza Coin per usare questa carta");
+                requestMovePawn();
+            }
+            else {
+                lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getBarbara().getCoinPrice());
+                socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+            }
+
+        } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 2) {
+            if(lightGame.getPlayers().get(player).getNumCoin() < lightGame.getCiro().getCoinPrice()) {
+                out.println("Non hai abbastanza Coin per usare questa carta");
+                requestMovePawn();
+            }
+            else{
+                lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getCiro().getCoinPrice());
+                out.println("Scegli un'Isola");
+                numIsland = scanner.nextInt();
+                while(numIsland<0||numIsland>numPawn+1){
+                    out.println("Numero isola inesistente, inserisci un numero valido: ");
+                    numIsland = scanner.nextInt();
+                }
+                socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+            }
+
+        } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 3) {
+            if(lightGame.getPlayers().get(player).getNumCoin() < lightGame.getDante().getCoinPrice()) {
+                out.println("Non hai abbastanza Coin per usare questa carta");
+                requestMovePawn();
+            }
+            else{
+                lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getDante().getCoinPrice());
+                socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+            }
+
+        } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 4) {
+            if(lightGame.getPlayers().get(player).getNumCoin() < lightGame.getErnesto().getCoinPrice()) {
+                out.println("Non hai abbastanza Coin per usare questa carta");
+                requestMovePawn();
+            }
+            else{
+                lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getErnesto().getCoinPrice());
+                out.println("Scegli l'Isola su cui piazzare una tessera Divieto: ");
+                numIsland = scanner.nextInt();
+                while(numIsland<0||numIsland>numPawn+1){
+                    out.println("Numero isola inesistente, inserisci un numero valido: ");
+                    numIsland = scanner.nextInt();
+                }
+                socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+            }
+
+        } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 5) {
+            if(lightGame.getPlayers().get(player).getNumCoin() < lightGame.getFelix().getCoinPrice()) {
+                out.println("Non hai abbastanza Coin per usare questa carta");
+                requestMovePawn();
+            }
+            else{
+                lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getFelix().getCoinPrice());
+                socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+            }
+
+        } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 6) {
+            if(lightGame.getPlayers().get(player).getNumCoin() < lightGame.getGiuseppe().getCoinPrice()) {
+                out.println("Non hai abbastanza Coin per usare questa carta");
+                requestMovePawn();
+            }
+            else{
+                lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getGiuseppe().getCoinPrice());
+                out.println("Quanti studenti vuoi spostare da questa Carta al tuo Ingresso e viceversa? Puoi scegliere un numero tra 1 e 3");
+                int num = scanner.nextInt();
+                while(num<0||num>3){
+                    out.println("Numero errato, inserisci un numero tra 1 e 3: ");
+                    num = scanner.nextInt();
+                }
+                for(int j = 0; j < num; j++){
+                    out.println("Seleziona il colore dello studente " + (i+1) + "/" + num + " da spostare da questa Carta al tuo Ingresso");
+                    out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                    int colore = scanner.nextInt();
+                    ColorPawn nomeColore = null;
+                    boolean check = false;
+                    while (!check) {
+                        if (colore == 1 && lightGame.getGiuseppe().getNumGreenPawn() > 0) {
+                            nomeColore = ColorPawn.GREEN;
+                            check = true;
+                        } else if (colore == 2 && lightGame.getGiuseppe().getNumRedPawn() > 0) {
+                            nomeColore = ColorPawn.RED;
+                            check = true;
+                        } else if (colore == 3 && lightGame.getGiuseppe().getNumYellowPawn() > 0) {
+                            nomeColore = ColorPawn.YELLOW;
+                            check = true;
+                        } else if (colore == 4 && lightGame.getGiuseppe().getNumPinkPawn() > 0) {
+                            nomeColore = ColorPawn.PINK;
+                            check = true;
+                        } else if (colore == 5 && lightGame.getGiuseppe().getNumBluePawn() > 0) {
+                            nomeColore = ColorPawn.BLUE;
+                            check = true;
+                        } else {
+                            out.println("Non ci sono pedine di questo colore, inserisci un altro colore: ");
+                            colore = scanner.nextInt();
+                        }
+                    }
+                    colori.add(nomeColore);
+                }
+                for(int j = 0; j < num; j++){
+                    out.println("Seleziona il colore dello studente " + (i+1) + "/" + num + " da spostare dal tuo Ingresso su questa Carta");
+                    out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                    int colore = scanner.nextInt();
+                    ColorPawn nomeColore = null;
+                    boolean check = false;
+                    while (!check) {
+                        if (colore == 1 && lightGame.getPlayers().get(player).getDiningRoom().getNumGreen() > 0) {
+                            nomeColore = ColorPawn.GREEN;
+                            check = true;
+                        } else if (colore == 2 && lightGame.getPlayers().get(player).getDiningRoom().getNumRed() > 0) {
+                            nomeColore = ColorPawn.RED;
+                            check = true;
+                        } else if (colore == 3 && lightGame.getPlayers().get(player).getDiningRoom().getNumYellow() > 0) {
+                            nomeColore = ColorPawn.YELLOW;
+                            check = true;
+                        } else if (colore == 4 && lightGame.getPlayers().get(player).getDiningRoom().getNumPink() > 0) {
+                            nomeColore = ColorPawn.PINK;
+                            check = true;
+                        } else if (colore == 5 && lightGame.getPlayers().get(player).getDiningRoom().getNumBlue() > 0) {
+                            nomeColore = ColorPawn.BLUE;
+                            check = true;
+                        } else {
+                            out.println("Non ci sono pedine di questo colore, inserisci un altro colore: ");
+                            colore = scanner.nextInt();
+                        }
+                    }
+                    colori.add(nomeColore);
+                }
+                socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+            }
+
+        } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 7) {
+            if(lightGame.getPlayers().get(player).getNumCoin() < lightGame.getIvan().getCoinPrice()) {
+                out.println("Non hai abbastanza Coin per usare questa carta");
+                requestMovePawn();
+            }
+            else{
+                lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getIvan().getCoinPrice());
+                socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+            }
+        } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 8) {
+            if(lightGame.getPlayers().get(player).getNumCoin() < lightGame.getLancillotto().getCoinPrice()) {
+                out.println("Non hai abbastanza Coin per usare questa carta");
+                requestMovePawn();
+            }
+            else {
+                lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getLancillotto().getCoinPrice());
+                out.println("Scegli un colore da non conteggiare nell'influenza di questo turno: ");
+                out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                int colore = scanner.nextInt();
+                ColorPawn nomeColore = null;
+                if (colore == 1 && lightGame.getAntonio().getGreenPawn() > 0) {
+                    nomeColore = ColorPawn.GREEN;
+                } else if (colore == 2 && lightGame.getAntonio().getRedPawn() > 0) {
+                    nomeColore = ColorPawn.RED;
+                } else if (colore == 3 && lightGame.getAntonio().getYellowPawn() > 0) {
+                    nomeColore = ColorPawn.YELLOW;
+                } else if (colore == 4 && lightGame.getAntonio().getPinkPawn() > 0) {
+                    nomeColore = ColorPawn.PINK;
+                } else if (colore == 5 && lightGame.getAntonio().getBluePawn() > 0) {
+                    nomeColore = ColorPawn.BLUE;
+                }
+                colori.add(nomeColore);
+                socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+            }
+        } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 9) {
+            if(lightGame.getPlayers().get(player).getNumCoin() < lightGame.getMaria().getCoinPrice()) {
+                out.println("Non hai abbastanza Coin per usare questa carta");
+                requestMovePawn();
+            }
+            else {
+                lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getMaria().getCoinPrice());
+                out.println("Scegli quanti studenti vuoi scambiare tra il tuo Ingresso e la tua Diningroom (puoi scegliere un numero tra 1 e 2): ");
+                int num = scanner.nextInt();
+                while(num<0||num>2){
+                    out.println("Numero errato, inserisci un numero tra 1 e 2: ");
+                    num = scanner.nextInt();
+                }
+                for(i = 0; i<num; i++){
+                    out.println("Scegli il colore di uno studente da spostare dall'Ingresso alla DiningRoom");
+                    out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                    int colore = scanner.nextInt();
+                    ColorPawn nomeColore = null;
+                    boolean check = false;
+                    while (!check) {
+                        if (colore == 1 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > 0) {
+                            nomeColore = ColorPawn.GREEN;
+                            check = true;
+                        } else if (colore == 2 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > 0) {
+                            nomeColore = ColorPawn.RED;
+                            check = true;
+                        } else if (colore == 3 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > 0) {
+                            nomeColore = ColorPawn.YELLOW;
+                            check = true;
+                        } else if (colore == 4 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > 0) {
+                            nomeColore = ColorPawn.PINK;
+                            check = true;
+                        } else if (colore == 5 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > 0) {
+                            nomeColore = ColorPawn.BLUE;
+                            check = true;
+                        } else {
+                            out.println("Non ci sono pedine di questo colore, inserisci un altro colore: ");
+                            colore = scanner.nextInt();
+                        }
+                    }
+                    colori.add(nomeColore);
+                }
+
+            }
+        } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 10) {
+            out.println("");
+            out.println("EFFETTO: Prendi 1 Studente da questa carta e piazzalo nella tua Sala. Poi pesca un nuovo Studente e posizionalo su questa carta");
+            out.println("Prezzo carta: " + lightGame.getNicola().getCoinPrice() + "✪");
+            out.println(ColorCli.GREEN + "●: " + lightGame.getNicola().getGreenPawn());
+            out.println(ColorCli.RED + "●: " + lightGame.getNicola().getRedPawn());
+            out.println(ColorCli.YELLOW + "●: " + lightGame.getNicola().getYellowPawn());
+            out.println(ColorCli.BLUE + "●: " + lightGame.getNicola().getBluePawn());
+            out.println(ColorCli.PINK + "●: " + lightGame.getNicola().getPinkPawn() + ColorCli.RESET);
+            out.println("+-----------------------------------------------------+");
+            out.println("");
+        } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 11) {
+            out.println("");
+            out.println("EFFETTO: Scegli un colore di Studente; ogni giocatore (incluso te) deve rimettere nel sacchetto 3 studenti di quel colore presenti nella sua Sala");
+            out.println("Prezzo carta: " + lightGame.getOmnia().getCoinPrice() + "✪");
+            out.println("+-----------------------------------------------------+");
+            out.println("");
+        }
+        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected-1));
 
     }
     @Override

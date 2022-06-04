@@ -40,6 +40,7 @@ public class LightPlayer implements Serializable {
     public int getNumCoin() {
         return numCoin;
     }
+    public void setNumCoin(int numCoin){this.numCoin = numCoin;}
 
     public ArrayList<AssistantCard> getDeckAssistant() {
         return deckAssistant;
