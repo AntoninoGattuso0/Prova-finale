@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class Winner {
-    private SocketNetworkHandler socketNetworkHandler;
     private Pane rootFXML;
     private final ImageView exitButton;
 
