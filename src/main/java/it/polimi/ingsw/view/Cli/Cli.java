@@ -169,7 +169,7 @@ public class Cli implements Runnable, View {
     @Override
     public void displayNick() {
         for (int i = 0; i < lightGame.getNumPlayers(); i++) {
-            out.println("Giocatore " + i + 1 + " ha il nickname: " + lightGame.getPlayers().get(i).getNickname());
+            out.println("Giocatore " + (i + 1) + " ha il nickname: " + lightGame.getPlayers().get(i).getNickname());
         }
     }
     @Override
