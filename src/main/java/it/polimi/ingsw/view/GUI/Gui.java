@@ -33,6 +33,26 @@ public class Gui extends Application implements View {
     }
 
     @Override
+    public void requestMovePawnToDiningRoom() {
+
+    }
+
+    @Override
+    public void requestMovePawnToIsland() {
+
+    }
+
+    @Override
+    public void requestMovePawn() {
+
+    }
+
+    @Override
+    public void requestCharacterCard() {
+
+    }
+
+    @Override
     public void displayNick() {
 
     }
