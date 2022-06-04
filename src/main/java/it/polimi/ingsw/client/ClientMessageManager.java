@@ -42,27 +42,27 @@ public class ClientMessageManager {
             socketNetworkHandler.getView().playerWait();
         } else if (object instanceof SetAssistantMessage) {
             socketNetworkHandler.getView().selectAssistantCard(((SetAssistantMessage) object).getNickname());
-        }/* else if (object instanceof SetMovePawnMessage) {
-            // socketNetworkHandler.getView().
-        } else if (object instanceof SetMoveMotherNature) {
-           // socketNetworkHandler.getView().
+        } /*else if (object instanceof SetMovePawnMessage) {
+           socketNetworkHandler.getView().
+        }*/ else if (object instanceof SetMoveMotherNature) {
+           socketNetworkHandler.getView().requestMoveMotherNature();
         } else if (object instanceof SetCloudMessage) {
-           // socketNetworkHandler.getView().
+           socketNetworkHandler.getView().selectCloud();
         } else if (object instanceof DisconnectionMessage) {
             // socketNetworkHandler.getView().
-        } else if (object instanceof EndGameMessage) {
-           // socketNetworkHandler.getView().
-        } else if (object instanceof EndTurnMessage) {
+        } /*else if (object instanceof EndGameMessage) {
+           //socketNetworkHandler.getView().
+        }*/ else if (object instanceof EndTurnMessage) {
           // socketNetworkHandler.getView().
         } else if (object instanceof InvalidNumPlayerMessage) {
             // socketNetworkHandler.getView().
         } else if (object instanceof NewCurrentPlayerMessage) {
             // socketNetworkHandler.getView().
         } else if (object instanceof TurnOrderMessage) {
-           // socketNetworkHandler.getView().
+           socketNetworkHandler.getView().displayTurn();
         }else if(object instanceof WrongNumPlayerIsExpertMessage){
-             // socketNetworkHandler.getView().
-        }else if(object instanceof WrongSameAssistantMessage){
+             socketNetworkHandler.getView().displayWrongNickname();
+        }/*else if(object instanceof WrongSameAssistantMessage){
            // socketNetworkHandler.getView().
         }*/else if(object instanceof WaitLoginMessage){
             socketNetworkHandler.getView().sendNick(((WaitLoginMessage) object).getNickname());

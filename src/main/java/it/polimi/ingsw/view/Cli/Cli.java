@@ -4,6 +4,7 @@ package it.polimi.ingsw.view.Cli;
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.client.SocketNetworkHandler;
+import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.network.Message.ClientToServer.*;
 import it.polimi.ingsw.view.View;
 
@@ -21,6 +22,7 @@ public class Cli implements Runnable, View {
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;
     private String actualPlayer;
+    private int pedineDaSpostare = 3;
 
     public Cli() {
         out = System.out;
@@ -132,6 +134,115 @@ public class Cli implements Runnable, View {
             out.println("ERRORE");
         }
     }
+
+    @Override
+    public void requestMovePawn(){
+        while(pedineDaSpostare>0) {
+            out.println("Digita 1 per usare una Character Card");
+            out.println("Digita 2 per spostare delle pedine verso la DiningRoom");
+            out.println("Digita 1 per spostare delle pedine verso un'Isola");
+            int scelta = scanner.nextInt();
+            if(scelta == 1)
+        }
+    }
+
+    @Override
+    public void requestMovePawnToDiningRoom() {
+        out.println("Quante pedine vuoi spostare verso la DiningRoom?");
+        int numDining = scanner.nextInt();
+        out.println("Sposterai " + numDining + " pedine verso la DiningRoom");
+        out.println("");
+        ArrayList<ColorPawn> colori = new ArrayList<>();
+        ColorPawn nomeColore = null;
+        int i;
+        for(i = 0; i<lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(actualPlayer)); i++);
+        int player = i;
+        for (i = 0; i < numDining; i++) {
+            out.print("Scegli la pedina numero " + (i + 1) + " da spostare nella DiningRoom");
+            out.println("Digita il nome corrispondente al colore: ");
+            out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+            int colore = scanner.nextInt();
+            boolean check = false;
+            while(!check) {
+                if (colore == 1 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > 0) {
+                    nomeColore = ColorPawn.GREEN;
+                    check = true;
+                } else if (colore == 2 && lightGame.getPlayers().get(player).getEntrance().getRedPawn() > 0) {
+                    nomeColore = ColorPawn.RED;
+                    check = true;
+                } else if (colore == 3 && lightGame.getPlayers().get(player).getEntrance().getYellowPawn() > 0) {
+                    nomeColore = ColorPawn.YELLOW;
+                    check = true;
+                } else if (colore == 4 && lightGame.getPlayers().get(player).getEntrance().getPinkPawn() > 0) {
+                    nomeColore = ColorPawn.PINK;
+                    check = true;
+                } else if (colore == 5 && lightGame.getPlayers().get(player).getEntrance().getBluePawn() > 0) {
+                    nomeColore = ColorPawn.BLUE;
+                    check = true;
+                } else {
+                    out.println("Non hai pedine di questo colore, inserisci un altro colore: ");
+                    colore = scanner.nextInt();
+                }
+            }
+            colori.add(nomeColore);
+            out.println("Hai spostato correttamente una pedina, ne rimangono: " + (i + 1) + "/" + numDining);
+        }
+        socketNetworkHandler.sendMessage(new MovePawnToDiningMessage(numDining, colori));
+        out.println("");
+    }
+
+    @Override
+    public void requestMovePawnToIsland() {
+        out.println("Quante pedine vuoi spostare verso un'Isola?");
+        int numPawn = scanner.nextInt();
+        out.println("Verso quale isola vuoi spostarle? ");
+        int numIsland = scanner.nextInt();
+        while(numIsland<0 || numIsland>lightGame.getIslands().size()+1){
+            out.println("Isola inesistente, inserisci un numero dell'isola corretto");
+            numIsland = scanner.nextInt();
+        }
+        out.println("Sposterai " + numPawn + " pedine verso l'Isola numero " + numIsland);
+        out.println();
+        ArrayList<ColorPawn> colori = new ArrayList<>();
+        ColorPawn nomeColore = null;
+        int i;
+        for(i = 0; i<lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(actualPlayer)); i++);
+        int player = i;
+        for (i = 0; i < numPawn; i++) {
+            out.print("Scegli la pedina numero " + (i + 1) + " da spostare sull'Isola numero " + numIsland);
+            out.println("Digita il nome corrispondente al colore: ");
+            out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+            int colore = scanner.nextInt();
+            boolean check = false;
+            while(!check) {
+                if (colore == 1 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > 0) {
+                    nomeColore = ColorPawn.GREEN;
+                    check = true;
+                } else if (colore == 2 && lightGame.getPlayers().get(player).getEntrance().getRedPawn() > 0) {
+                    nomeColore = ColorPawn.RED;
+                    check = true;
+                } else if (colore == 3 && lightGame.getPlayers().get(player).getEntrance().getYellowPawn() > 0) {
+                    nomeColore = ColorPawn.YELLOW;
+                    check = true;
+                } else if (colore == 4 && lightGame.getPlayers().get(player).getEntrance().getPinkPawn() > 0) {
+                    nomeColore = ColorPawn.PINK;
+                    check = true;
+                } else if (colore == 5 && lightGame.getPlayers().get(player).getEntrance().getBluePawn() > 0) {
+                    nomeColore = ColorPawn.BLUE;
+                    check = true;
+                } else {
+                    out.println("Non hai pedine di questo colore, inserisci un altro colore: ");
+                    colore = scanner.nextInt();
+                }
+            }
+            colori.add(nomeColore);
+            out.println("Hai spostato correttamente una pedina, ne rimangono: " + (i + 1) + "/" + numPawn);
+        }
+        socketNetworkHandler.sendMessage(new MovePawnToIslandMessage(numIsland, numPawn, colori));
+        out.println("");
+    }
+
+
     @Override
     public void newGameStart(){
         System.out.println("Siete tutti in lobby. il Game inizia!");
@@ -401,10 +512,26 @@ public class Cli implements Runnable, View {
         if(nick!=null)
             socketNetworkHandler.sendMessage(new RequestNicknameAfterFirstLoginMessage(nick));
         }
+
     @Override
-    public void displayCharacterCard() {
+    public void requestCharacterCard(){
+        for(int i = 0; i < 3; i++)
+            displayCharacterCard(i);
+        out.println("Scegli il CharacterCard da utilizzare: (inserisci un numero compreso tra 1 e 3)");
+        int selected = scanner.nextInt();
+        while(selected<0||selected>3){
+            out.println("Numero errato, per favore inserisci un numero valido: ");
+            selected = scanner.nextInt();
+        }
+        socketNetworkHandler.sendMessage(new );
+
+    }
+    @Override
+    public void displayCharacterCard(int num) {
         for(int i = 0; i < lightGame.getCharacterCards().size(); i++) {
+            out.println("CharacterCard numero " + num + ":");
             if (lightGame.getCharacterCards().get(i).getNumCard() == 0) {
+                out.println("");
                 out.println("EFFETTO: Prendi 1 studente dalla carta e piazzalo su un'Isola a tua scelta. Poi pesca 1 studente dal sacchetto e mettilo su questa carta");
                 out.println("Prezzo carta: " + lightGame.getAntonio().getCoinPrice() + "✪");
                 out.println(ColorCli.GREEN + "●: " + lightGame.getAntonio().getGreenPawn());
@@ -415,32 +542,38 @@ public class Cli implements Runnable, View {
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 1) {
+                out.println("");
                 out.println("EFFETTO: Durante questo turno, prendi il controllo dei professori anche se nella tua Sala hai lo stesso numero di Studenti del giocatore che li controlla in quel momento");
                 out.println("Prezzo carta: " + lightGame.getBarbara().getCoinPrice() + "✪");
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 2) {
+                out.println("");
                 out.println("EFFETTO: Scegli un'isola e calcola la maggioranza come se Madre Natura avesse terminato il suo movimento lì. In questo turno madre natura si muoverà come di consueto");
                 out.println("Prezzo carta: " + lightGame.getCiro().getCoinPrice() + "✪");
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 3) {
+                out.println("");
                 out.println("Puoi muovere Madre Natura fino a 2 isole addizionali");
                 out.println("Prezzo carta: " + lightGame.getDante().getCoinPrice() + "✪");
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 4) {
+                out.println("");
                 out.println("EFFETTO: Piazza una tessera Divieto su un'Isola a tua scelta. La prima volta che Madre Natura termina lì il suo movimento rimuovete la tessera Divieto SENZA calcolare l'influenza su quell'isola");
                 out.println("Prezzo carta: " + lightGame.getErnesto().getCoinPrice() + "✪");
                 out.println("Numero carte Divieto rimanenti: " + lightGame.getErnesto().getNumProhibitionCard());
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 5) {
+                out.println("");
                 out.println("EFFETTO: Durante il conteggio dell'influenza su in'Isola , le Torri presenti non vengono calcolate");
                 out.println("Prezzo carta: " + lightGame.getFelix().getCoinPrice() + "✪");
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 6) {
+                out.println("");
                 out.println("EFFETTO: Poi prendere fino a 3 Studenti da questa carta e scambiarli con altrettanti Studenti presenti nel tuo Ingresso");
                 out.println("Prezzo carta: " + lightGame.getGiuseppe().getCoinPrice() + "✪");
                 out.println(ColorCli.GREEN + "●: " + lightGame.getGiuseppe().getNumGreenPawn());
@@ -451,21 +584,25 @@ public class Cli implements Runnable, View {
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 7) {
+                out.println("");
                 out.println("EFFETTO: in questo turno, durante il calcolo dell'influenza, hai 2 punti addizionali");
                 out.println("Prezzo carta: " + lightGame.getIvan().getCoinPrice() + "✪");
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 8) {
+                out.println("");
                 out.println("EFFETTO: Scegli un colore Studente; in questo turno quel colore non fornisce influenza");
                 out.println("Prezzo carta: " + lightGame.getLancillotto().getCoinPrice() + "✪");
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 9) {
+                out.println("");
                 out.println("EFFETTO: Puoi scabiare fino a 2 Studenti presenti nella tua Sala e nel tuo Ingresso");
                 out.println("Prezzo carta: " + lightGame.getMaria().getCoinPrice() + "✪");
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 10) {
+                out.println("");
                 out.println("EFFETTO: Prendi 1 Studente da questa carta e piazzalo nella tua Sala. Poi pesca un nuovo Studente e posizionalo su questa carta");
                 out.println("Prezzo carta: " + lightGame.getNicola().getCoinPrice() + "✪");
                 out.println(ColorCli.GREEN + "●: " + lightGame.getNicola().getGreenPawn());
@@ -476,6 +613,7 @@ public class Cli implements Runnable, View {
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 11) {
+                out.println("");
                 out.println("EFFETTO: Scegli un colore di Studente; ogni giocatore (incluso te) deve rimettere nel sacchetto 3 studenti di quel colore presenti nella sua Sala");
                 out.println("Prezzo carta: " + lightGame.getOmnia().getCoinPrice() + "✪");
                 out.println("+-----------------------------------------------------+");
@@ -524,7 +662,8 @@ public class Cli implements Runnable, View {
         this.lightGame = object;
         displayIslands();
         displayCloud();
-        displayCharacterCard();
+        for(int i = 0; i < 3; i++)
+            displayCharacterCard(i);
         displayNick();
         displaySchoolBoard();
         displayIsExpert();
@@ -766,6 +905,8 @@ public class Cli implements Runnable, View {
         }
         return index.toString();
     }
+
+
 }
 
    /* @Override

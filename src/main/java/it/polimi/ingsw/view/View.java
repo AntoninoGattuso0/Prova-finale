@@ -10,6 +10,11 @@ public interface View {
 
     void requestNumPlayersIsExpert();
 
+    void requestMovePawnToDiningRoom();
+    void requestMovePawnToIsland();
+    void requestMovePawn();
+
+    void requestCharacterCard();
 
     void displayNick();
 
@@ -27,7 +32,7 @@ public interface View {
 
     void sendNick(String nickname);
 
-    void displayCharacterCard();
+    void displayCharacterCard(int num);
 
     void displayWinner(String nickname);
 
