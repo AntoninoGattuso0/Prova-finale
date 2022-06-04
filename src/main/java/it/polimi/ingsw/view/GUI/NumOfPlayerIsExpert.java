@@ -25,6 +25,7 @@ import java.util.Objects;
 public class NumOfPlayerIsExpert{
     private SocketNetworkHandler socketNetworkHandler;
     private Pane rootFXML;
+    @FXML
     private final ImageView joinButton;
     private int numPlayer;
     private final boolean expert;
@@ -39,7 +40,7 @@ public class NumOfPlayerIsExpert{
 
     public NumOfPlayerIsExpert(){
         try{
-            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/NumOfPlayerIsExpert.fxml")));
+            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/NumOfPlayerIsExpert.fxml")));
         }catch(IOException e){
             e.printStackTrace();
         }

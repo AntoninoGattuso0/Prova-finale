@@ -26,7 +26,7 @@ public class RequestNickPlayers {
     public RequestNickPlayers(){
 
         try{
-            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/RequestNickPlayers.fxml")));
+            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/RequestNickPlayers.fxml")));
         }catch(IOException e){
             e.printStackTrace();
         }

@@ -16,14 +16,13 @@ public class WarningNickname {
 
     public WarningNickname(){
         try{
-            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/WarningNickname.fxml")));
+            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/WarningNickname.fxml")));
         }catch(IOException e){
             e.printStackTrace();
         }
 
         okButton = (ImageView) rootFXML.lookup("#okButton");
         okButton.setOnMouseEntered(mouseEvent -> okButton.setCursor(Cursor.HAND));
-
         okButton.setOnMouseExited(mouseEvent ->  okButton.setCursor(Cursor.DEFAULT));
 
 

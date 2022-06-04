@@ -1,6 +1,7 @@
 package it.polimi.ingsw.view.GUI;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
+import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.view.View;
 import javafx.application.Application;
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class Gui extends Application implements View {
@@ -27,6 +29,26 @@ public class Gui extends Application implements View {
 
     @Override
     public void requestNumPlayersIsExpert() {
+
+    }
+
+    @Override
+    public void requestMovePawnToDiningRoom() {
+
+    }
+
+    @Override
+    public void requestMovePawnToIsland() {
+
+    }
+
+    @Override
+    public void requestMovePawn() {
+
+    }
+
+    @Override
+    public void requestCharacterCard() {
 
     }
 
@@ -156,6 +178,12 @@ public class Gui extends Application implements View {
     public void lobbyFull() {
 
     }
+
+    @Override
+    public void turnOrder(ArrayList<LightPlayer> players) {
+
+    }
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(

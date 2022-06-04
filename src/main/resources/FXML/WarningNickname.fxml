@@ -13,7 +13,7 @@
             <Image url="@../images/Warning.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="34.0" fitWidth="80.0" layoutX="253.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="okButton" fitHeight="34.0" fitWidth="80.0" layoutX="253.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/OkButton.png" />
          </image>

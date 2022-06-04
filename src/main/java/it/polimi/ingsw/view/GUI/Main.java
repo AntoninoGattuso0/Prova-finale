@@ -1,4 +1,4 @@
-package it.polimi.ingsw.view.GUI;
+/*package it.polimi.ingsw.view.GUI;
 
 import javafx.application.Application;
 
@@ -9,4 +9,4 @@ public class Main{
         Application.launch(Gui.class, args);
     }
 
-}
+}*/
