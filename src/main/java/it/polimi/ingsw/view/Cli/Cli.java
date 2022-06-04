@@ -152,7 +152,9 @@ public class Cli implements Runnable, View {
             if(scelta == 1) requestCharacterCard();
             else if(scelta == 2) requestMovePawnToDiningRoom();
             else if(scelta == 3) requestMovePawnToIsland();
+            pedineDaSpostare = pedineDaSpostare - 1;
         }
+        pedineDaSpostare = 3;
     }
 
     @Override
