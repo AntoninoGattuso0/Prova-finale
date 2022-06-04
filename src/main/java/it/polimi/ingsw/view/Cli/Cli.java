@@ -523,7 +523,7 @@ public class Cli implements Runnable, View {
             out.println("Numero errato, per favore inserisci un numero valido: ");
             selected = scanner.nextInt();
         }
-        socketNetworkHandler.sendMessage(new );
+        socketNetworkHandler.sendMessage(new c);
 
     }
     @Override
