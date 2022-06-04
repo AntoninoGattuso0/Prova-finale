@@ -58,8 +58,6 @@ public class ClientMessageManager {
             // socketNetworkHandler.getView().
         } else if (object instanceof NewCurrentPlayerMessage) {
             // socketNetworkHandler.getView().
-        } else if (object instanceof TurnOrderMessage) {
-           socketNetworkHandler.getView().displayTurn();
         }else if(object instanceof WrongNumPlayerIsExpertMessage){
              socketNetworkHandler.getView().displayWrongNickname();
         }/*else if(object instanceof WrongSameAssistantMessage){
