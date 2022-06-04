@@ -1,7 +1,10 @@
 package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
+import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.client.SocketNetworkHandler;
+
+import java.util.ArrayList;
 
 public interface View {
     void startGame();
@@ -65,5 +68,7 @@ public interface View {
     void newGameStart();
 
     void lobbyFull();
+
+    void turnOrder(ArrayList<LightPlayer> players);
 }
 //CLI E GUI dovranno implementare quest interfaccia

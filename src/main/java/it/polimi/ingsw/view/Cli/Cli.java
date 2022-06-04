@@ -280,7 +280,7 @@ public class Cli implements Runnable, View {
     @Override
     public void displayNick() {
         for (int i = 0; i < lightGame.getNumPlayers(); i++) {
-            out.println("Giocatore " + i + 1 + " ha il nickname: " + lightGame.getPlayers().get(i).getNickname());
+            out.println("Giocatore " + (i + 1) + " ha il nickname: " + lightGame.getPlayers().get(i).getNickname());
         }
     }
     @Override
@@ -642,7 +642,10 @@ public class Cli implements Runnable, View {
     public void displayWrongTurn() {
         out.println("Non è il tuo turno, aspetta...");}
 
-
+    @Override
+    public void turnOrder(ArrayList<LightPlayer> players){
+        //Funzione che stampa al player l'ordine di turno (ese: l'ordine di turno è: paolo, antonino, rebeca)
+    }
     @Override
     public void displayTurn() {
         out.println("È il tuo turno! Puoi fare le tue mosse:");
