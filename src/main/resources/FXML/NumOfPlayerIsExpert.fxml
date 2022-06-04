@@ -15,7 +15,7 @@
             <Image url="@../images/Logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="34.0" fitWidth="135.0" layoutX="207.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="joinButton" fitHeight="34.0" fitWidth="135.0" layoutX="207.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/JoinButton.png" />
          </image>

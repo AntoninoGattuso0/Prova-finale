@@ -29,7 +29,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="47.0" fitWidth="108.0" layoutX="193.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="joinButton" fitHeight="47.0" fitWidth="108.0" layoutX="193.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/JoinButton.png" />
          </image>
