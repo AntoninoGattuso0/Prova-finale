@@ -16,13 +16,14 @@ public class VirtualView {
         this.lock = new Object();
     }
 
-    public void addClientInVirtualView(ClientHandlerInterface client, String nick) {
+    public void addClientInVirtualView(ClientHandlerInterface client) {
             clients.add(client);
     }
     public void sendMessage(ClientHandlerInterface clientHandlerInterface,Message message){
         clientHandlerInterface.sendObject(message);
 
     }
+
     public void removeClientInVirtualView(ClientHandlerInterface client, String nick) {
         synchronized (lock) {
             clients.remove(client);
@@ -60,9 +61,12 @@ public class VirtualView {
     }
 
     public synchronized void sendBroadcast(Message message) {
+        synchronized (lock) {
             for (ClientHandlerInterface clientHandler : clients) {
                 clientHandler.sendObject(message);
             }
+            lock.notifyAll();
+        }
     }
 
     public void sendAllQuitPlayer(String userNickname) {

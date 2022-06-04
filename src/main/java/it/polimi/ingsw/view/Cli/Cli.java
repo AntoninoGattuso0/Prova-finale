@@ -504,7 +504,10 @@ public class Cli implements Runnable, View {
     public void displayWrongTurn() {
         out.println("Non è il tuo turno, aspetta...");}
 
-
+    @Override
+    public void turnOrder(ArrayList<LightPlayer> players){
+        //Funzione che stampa al player l'ordine di turno (ese: l'ordine di turno è: paolo, antonino, rebeca)
+    }
     @Override
     public void displayTurn() {
         out.println("È il tuo turno! Puoi fare le tue mosse:");

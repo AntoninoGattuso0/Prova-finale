@@ -59,15 +59,14 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     }
 
     public void addClient(ClientHandlerInterface client) {
-        synchronized (lock){
+        synchronized (lock) {
             String nick;
             client.addObserver(this);
             clients.add(client);
             int i;
-            for(i=0;i<clients.size()&&clients.get(i)!=client;i++);
+            for (i = 0; i < clients.size() && clients.get(i) != client; i++) ;
             client.setUserNickname(namePlayer.get(i));
-            nick = client.getUserNickname();
-            virtualView.addClientInVirtualView(client, nick);
+            virtualView.addClientInVirtualView(client);
             if (clients.size() != numPlayers) {
                 client.sendObject(new ClientAcceptedMessage());
                 client.sendObject(new WaitMessage());
@@ -78,10 +77,10 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 virtualView.sendBroadcast(new GameStartedMessage());
                 lobbyOk = true;
             }
+            if (lobbyOk) {
+                newGame(game);
+            }
             lock.notifyAll();
-        }
-        if (lobbyOk) {
-            newGame(game);
         }
     }
 

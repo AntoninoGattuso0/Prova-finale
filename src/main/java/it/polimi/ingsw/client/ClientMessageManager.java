@@ -69,6 +69,8 @@ public class ClientMessageManager {
         }else if(object instanceof LobbyFullMessage){
             socketNetworkHandler.getView().lobbyFull();
         }else if(object instanceof Ping){
+        }else if(object instanceof TurnOrderMessage){
+            socketNetworkHandler.getView().turnOrder(((TurnOrderMessage) object).getPlayers());
         }
         else throw new IllegalArgumentException();
     }
