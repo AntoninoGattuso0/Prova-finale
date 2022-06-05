@@ -23,8 +23,10 @@ public class VirtualView {
         clientHandlerInterface.sendObject(message);
 
     }
-
-    public void removeClientInVirtualView(ClientHandlerInterface client, String nick) {
+    public ArrayList<ClientHandlerInterface> getClients() {
+        return clients;
+    }
+    public void removeClientInVirtualView(ClientHandlerInterface client) {
         synchronized (lock) {
             clients.remove(client);
             lock.notifyAll();

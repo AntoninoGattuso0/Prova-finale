@@ -35,7 +35,7 @@ public interface View {
 
     void sendNick(String nickname);
 
-    void displayCharacterCard(int num);
+    void displayCharacterCard();
 
     void displayWinner(String nickname);
 

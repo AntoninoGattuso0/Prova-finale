@@ -130,6 +130,7 @@ public class Cli implements Runnable, View {
         try {
             String nickname = readLine();
             socketNetworkHandler.sendMessage(new RequestNickname(nickname));
+            actualPlayer=nickname;
         } catch (ExecutionException e) {
             out.println("ERRORE");
         }
@@ -526,8 +527,7 @@ public class Cli implements Runnable, View {
 
     @Override
     public void requestCharacterCard() {
-        for (int i = 0; i < 3; i++)
-            displayCharacterCard(i);
+            displayCharacterCard();
         out.println("Scegli il CharacterCard da utilizzare: (inserisci un numero compreso tra 1 e 3)");
         int selected = scanner.nextInt();
         while (selected < 0 || selected > 3) {
@@ -876,9 +876,9 @@ public class Cli implements Runnable, View {
         }
     }
     @Override
-    public void displayCharacterCard(int num) {
+    public void displayCharacterCard() {
         for(int i = 0; i < lightGame.getCharacterCards().size(); i++) {
-            out.println("CharacterCard numero " + num + ":");
+            out.println("CharacterCard numero " + i + ":");
             if (lightGame.getCharacterCards().get(i).getNumCard() == 0) {
                 out.println("");
                 out.println("EFFETTO: Prendi 1 studente dalla carta e piazzalo su un'Isola a tua scelta. Poi pesca 1 studente dal sacchetto e mettilo su questa carta");
@@ -1014,8 +1014,7 @@ public class Cli implements Runnable, View {
         this.lightGame = object;
         displayIslands();
         displayCloud();
-        for(int i = 0; i < 3; i++)
-            displayCharacterCard(i);
+        displayCharacterCard();
         displayNick();
         displaySchoolBoard();
         displayIsExpert();
@@ -1036,7 +1035,7 @@ public class Cli implements Runnable, View {
 
     @Override
     public void selectAssistantCard(String nickname) {
-        if (nickname.equals(socketNetworkHandler.getNicknameThisPlayer())) {
+        if (nickname.equals(nickname)) {
             int player, assistant = -1;
             for (player = 0; lightGame.getPlayers().get(player).getNickname().equals(actualPlayer); player++) ;
             displayAssistantCard(player);

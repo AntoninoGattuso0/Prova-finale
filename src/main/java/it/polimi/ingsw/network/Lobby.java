@@ -60,7 +60,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
 
     public void addClient(ClientHandlerInterface client) {
         synchronized (lock) {
-            String nick;
             client.addObserver(this);
             clients.add(client);
             int i;
@@ -79,6 +78,12 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             }
             if (lobbyOk) {
                 newGame(game);
+                for(i=clients.size();i==numPlayers;)
+                clients.remove(i-1);
+                for(i=namePlayer.size();i==numPlayers;)
+                namePlayer.remove(i-1);
+                for(i=virtualView.getClients().size();i==numPlayers;)
+                    virtualView.getClients().remove(i-1);
             }
             lock.notifyAll();
         }
@@ -102,7 +107,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
 
     private synchronized void closeConnection(ClientHandlerInterface clientHandler) {
         System.out.println("Server unregistering client.");
-        virtualView.removeClientInVirtualView(clientHandler, clientHandler.getUserNickname());
+        virtualView.removeClientInVirtualView(clientHandler);
         players.remove(getPlayerByNick(clientHandler.getUserNickname()));
         clients.remove(clientHandler);
         System.out.println(clientHandler.getUserNickname() + "'s client unregistered\n");
@@ -339,9 +344,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         if(!lobbyOk){
                 serverMessageMenager.ManageInputToServer(clientHandler, m);
         }else{
-            int i;
+            int i=0;
             for(i=0;i<numPlayers;i++){
-                if(Objects.equals(clientHandler.getUserNickname(), clients.get(i).getUserNickname())){
+                if(Objects.equals(clientHandler.getUserNickname(), namePlayer.get(i))){
                     i=6;
                 }
             }

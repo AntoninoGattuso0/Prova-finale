@@ -93,7 +93,7 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public void displayCharacterCard(int num) {
+    public void displayCharacterCard() {
 
     }
 
