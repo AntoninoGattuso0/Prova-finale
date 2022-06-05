@@ -344,13 +344,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         if(!lobbyOk){
                 serverMessageMenager.ManageInputToServer(clientHandler, m);
         }else{
-            int i=0;
-            for(i=0;i<numPlayers;i++){
-                if(Objects.equals(clientHandler.getUserNickname(), namePlayer.get(i))){
-                    i=6;
-                }
-            }
-            if(i==6) {
+            int i;
+            i=findPlayer(game,clientHandler);
+            if(i!=-1) {
                 if (Objects.equals(clientHandler.getUserNickname(), controller.getRoundController().getTurnController().getCurrPlayer().getNickname())) {
                     serverMessageMenager.ManageInputToServer(clientHandler, m);
                 } else {

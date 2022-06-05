@@ -1035,16 +1035,18 @@ public class Cli implements Runnable, View {
 
     @Override
     public void selectAssistantCard(String nickname) {
-        if (nickname.equals(nickname)) {
-            int player, assistant = -1;
-            for (player = 0; lightGame.getPlayers().get(player).getNickname().equals(actualPlayer); player++) ;
-            displayAssistantCard(player);
+        int i;
+        for(i=0;lightGame.getPlayers().get(i).getCurrentAssistant()!=null;i++);
+        if(Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname)){
+            int assistant = -1;
+            displayAssistantCard(i);
             boolean check = false;
             while (!check) {
                 out.println("Scegli uno degli Assistenti presenti: ");
                 assistant = scanner.nextInt();
-                for (int i = 0; i < lightGame.getPlayers().get(player).getDeckAssistant().size(); i++) {
-                    if (lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() == assistant)
+                int j;
+                for (j = 0; j < lightGame.getPlayers().get(i).getDeckAssistant().size(); j++) {
+                    if (lightGame.getPlayers().get(i).getDeckAssistant().get(j).getCardValue() == assistant)
                         check = true;
                 }
             }

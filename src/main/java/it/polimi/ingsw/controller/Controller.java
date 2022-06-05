@@ -103,7 +103,6 @@ public class Controller {
         for(i=0;i<players.size();i++) {
                 if (!(getRoundController().getExeAssistantPhase().get(players.get(i).getNickname()))) {
                     virtualView.startRound(players.get(i).getNickname());
-                    while (!getRoundController().getExeAssistantPhase().get(players.get(i).getNickname()));
                 }
         }
         players=roundController.newRoundOrder(players,game);
