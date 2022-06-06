@@ -16,6 +16,7 @@ public class Controller {
     private boolean endGame;
     private boolean isExpert;
     private Game game;
+    private final ArrayList<String> orderNamePlayers;
     private final UserInput userInput;
     private final VirtualView virtualView;
     private ArrayList<Player> players;
@@ -27,6 +28,7 @@ public class Controller {
         this.isExpert=game.getIsExpert();//Manca il controllo della assistantphase nello startround DA NINO PER NINO
         this.virtualView=virtualView;
         this.userInput=userInput;
+        this.orderNamePlayers=new ArrayList<>();
         this.players=new ArrayList<>();
         this.players.addAll(players);
         this.currentPlayer=players.get(0);
@@ -80,43 +82,46 @@ public class Controller {
     }
 
     public void updateThisPlayersLight() {
-        for(Player player: players){
+        for(Player player: game.getPlayers()){
+            PhaseTurn phaseTurn=player.getCurrentPhase();
             LightDiningRoom lightDining=new LightDiningRoom(player.getDiningRoom().getNumBlue(),player.getDiningRoom().getNumGreen(),player.getDiningRoom().getNumPink(),player.getDiningRoom().getNumRed(),player.getDiningRoom().getNumYellow());
             LightTowerSpace lightTowerSpace= new LightTowerSpace(player.getTowerSpace().getColorTower(),player.getTowerSpace().getNumTower());
             LightEntrance lightEntrance= new LightEntrance(player.getEntrance().getNumPawn(),player.getEntrance().getGreenPawn(),player.getEntrance().getRedPawn(),player.getEntrance().getYellowPawn(),player.getEntrance().getPinkPawn(),player.getEntrance().getBluePawn());
-            playersLight.add(new LightPlayer(player.getNickname(),player.getNumCoin(),player.getDeckAssistant(),player.getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDining));
+            playersLight.add(new LightPlayer(player.getNickname(),player.getNumCoin(),player.getDeckAssistant(),player.getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDining,phaseTurn));
         }
     }
 
-    public void startRound(){
-
+    public synchronized void startRound() {
         boolean finish;
-        players=roundController.getRoundOrder();
+        players = roundController.getRoundOrder();
         updateThisPlayersLight();
+        for(int i=0;i<players.size();i++){
+            orderNamePlayers.add(players.get(i).getNickname());
+        }
         virtualView.setActualPlayer(roundController.getRoundOrder().get(0).getNickname());
-        currentPlayer=roundController.getRoundOrder().get(0);
-        virtualView.sendBroadcast(new TurnOrderMessage(playersLight));
+        currentPlayer = roundController.getRoundOrder().get(0);
+        virtualView.sendBroadcast(new TurnOrderMessage(orderNamePlayers));
         int i;
-        for(i=0;i<players.size();i++) {
-            players.get(i).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
+        for (i = 0; i < players.size(); i++) {
+            game.getPlayers().get(i).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
+            roundController.setExeAssistantPhase(game.getPlayers().get(i).getNickname());
         }
-        for(i=0;i<players.size();i++){
-            if(!(getRoundController().getExeAssistantPhase().get(players.get(i).getNickname()))){
-                virtualView.startRound(players.get(i).getNickname());
-            }
-        }
-        players=roundController.newRoundOrder(players,game);
-        updateThisPlayersLight();
-        virtualView.sendBroadcast(new TurnOrderMessage(playersLight));
-        for(i=0;i<players.size();){
-                finish=startTurn(players.get(i));
-                if(finish){
-                    roundController.setExeEndTurn(false);
-                    i++;
-                }
-            }
+        i = 0;
+        virtualView.sendBroadcast(new SetAssistantMessage(players.get(i).getNickname()));
         }
     public boolean startTurn(Player player) {
+        int i;
+        boolean finish;
+        players = roundController.newRoundOrder(players, game);
+        updateThisPlayersLight();
+        virtualView.sendBroadcast(new TurnOrderMessage(orderNamePlayers));
+        for (i = 0; i < players.size(); ) {
+            finish = startTurn(players.get(i));
+            if (finish) {
+                roundController.setExeEndTurn(false);
+                i++;
+            }
+        }
             boolean e=false;
             while (player.getCurrentPhase() != PhaseTurn.END_TURN) {
             if (player.getCurrentPhase() == PhaseTurn.MOVE_STUDENT) {

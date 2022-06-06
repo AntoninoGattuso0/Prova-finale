@@ -20,6 +20,7 @@ public class TurnController {
     public void TurnOrder(RoundController roundController,Game game){
         order=roundController.newRoundOrder(order,game);
     }
+
     public void setPhaseTurn(Player player,boolean e,RoundController roundController,Game game){
         if(player.getCurrentPhase()==PhaseTurn.USE_ASSISTANT&&e){
             if(Objects.equals(player.getNickname(), order.get(order.size()-1).getNickname())){

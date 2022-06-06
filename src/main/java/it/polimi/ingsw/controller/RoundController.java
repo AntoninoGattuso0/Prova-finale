@@ -1,9 +1,10 @@
 package it.polimi.ingsw.controller;
 
-import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.Player;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class RoundController {
     private ArrayList<Player> roundOrder;
@@ -40,12 +41,8 @@ public class RoundController {
     public boolean getExeCharacterCard(){
         return exeCharacterCard;
     }
-    public void setExeAssistantPhase(String nickname,boolean ciao) {
-       for(int i=0;i<roundOrder.size();i++){
-           if(Objects.equals(nickname, roundOrder.get(i).getNickname())){
+    public void setExeAssistantPhase(String nickname) {
                exeAssistantPhase.put(nickname,true);
-           }
-       }
     }
     public void setExeChooseCloud(boolean exeChooseCloud) {
         this.exeChooseCloud = exeChooseCloud;
@@ -90,13 +87,12 @@ public class RoundController {
             w = 0;
             for (k = 0; players.get(i).equals(game.getPlayers().get(k)); k++) ;
             for (j = 0; j < players.size(); j++) {
-                if (game.getPlayers().get(k).getCurrentAssistant().getCardValue() > game.getPlayers().get(j).getCurrentAssistant().getCardValue()) {
+                if (j != k && game.getPlayers().get(k).getCurrentAssistant().getCardValue() > game.getPlayers().get(j).getCurrentAssistant().getCardValue()) {
                     w++;
                 }
             }
-            if(i==0){roundOrder.clear();}
             setRoundOrder(players.get(i), w);
-            if(w==game.getTotPlayer()){
+            if(w==game.getTotPlayer()-1){
                 lastPlayer=players.get(i);
             }
         }

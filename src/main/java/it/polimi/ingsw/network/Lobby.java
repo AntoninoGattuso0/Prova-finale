@@ -60,7 +60,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
 
     public void addClient(ClientHandlerInterface client) {
         synchronized (lock) {
-            String nick;
             client.addObserver(this);
             clients.add(client);
             int i;
@@ -74,10 +73,11 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 this.players = game.getPlayers();
                 client.sendObject(new ClientAcceptedMessage());
                 client.sendObject(new LoginAcceptedMessage());
-                virtualView.sendBroadcast(new GameStartedMessage());
                 lobbyOk = true;
             }
             if (lobbyOk) {
+                virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+                virtualView.sendBroadcast(new GameStartedMessage());
                 newGame(game);
             }
             lock.notifyAll();
@@ -102,7 +102,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
 
     private synchronized void closeConnection(ClientHandlerInterface clientHandler) {
         System.out.println("Server unregistering client.");
-        virtualView.removeClientInVirtualView(clientHandler, clientHandler.getUserNickname());
+        virtualView.removeClientInVirtualView(clientHandler);
         players.remove(getPlayerByNick(clientHandler.getUserNickname()));
         clients.remove(clientHandler);
         System.out.println(clientHandler.getUserNickname() + "'s client unregistered\n");
@@ -227,26 +227,27 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         }
 
     public void selectAssistantCard(int assistant, ClientHandler clientHandler) {
-        int j;
         int i;
         int contr = -1;
-        for(j=0; controller.getRoundController().getExeAssistantPhase().get(j); j++);
-        if(Objects.equals(controller.getRoundController().getRoundOrder().get(j).getNickname(), clientHandler.getUserNickname())){
-            if(controller.getRoundController().getExeAssistantPhase().get(clientHandler.getUserNickname()))
-            for (i = 0; i < namePlayer.size(); i++) {
-                if (Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname())) {
-                    contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant));
-                }
-            }
+        //POTREI METTERE UN CONTROLLO LATO SERVER MA NON SERVE DATO CHE C'è GIà LATO CLIENT NINO PER NINO
+                for (i=0;!Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname());i++);
+                    if (Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname())) {
+                        contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant));
+                    }
             if (contr == 0) {
                 clientHandler.sendObject(new WrongNotAssistantMessage());
             } else if (contr == 1) {
-                controller.getRoundController().setExeAssistantPhase(clientHandler.getUserNickname(), true);
+                if(controller.getRoundController().getLastPlayer()!=controller.getRoundController().getRoundOrder().get(i))
+                controller.getRoundController().getTurnController().setCurrPlayer(controller.getRoundController().getRoundOrder().get(i+1));
+                controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(i),true,controller.getRoundController(),game);
                 clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+                if(i==numPlayers-1){
+                            return;
+                }else
+                virtualView.sendBroadcast(new SetAssistantMessage(controller.getRoundController().getRoundOrder().get(i+1).getNickname()));
             } else if (contr == 2) {
                 clientHandler.sendObject(new WrongSameAssistantMessage());
             }
-        }
     }
 
     public void useCharacter(int num, int numberPawn, int numIsland, ArrayList<ColorPawn> colorPawn, ClientHandler clientHandler) {
@@ -340,12 +341,8 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 serverMessageMenager.ManageInputToServer(clientHandler, m);
         }else{
             int i;
-            for(i=0;i<numPlayers;i++){
-                if(Objects.equals(clientHandler.getUserNickname(), clients.get(i).getUserNickname())){
-                    i=6;
-                }
-            }
-            if(i==6) {
+            i=findPlayer(game,clientHandler);
+            if(i!=-1) {
                 if (Objects.equals(clientHandler.getUserNickname(), controller.getRoundController().getTurnController().getCurrPlayer().getNickname())) {
                     serverMessageMenager.ManageInputToServer(clientHandler, m);
                 } else {

@@ -23,6 +23,7 @@ public class Cli implements Runnable, View {
     private SocketNetworkHandler socketNetworkHandler;
     private String actualPlayer;
     private int pedineDaSpostare = 3;
+    private ArrayList<String> orderPlayer;
 
     public Cli() {
         out = System.out;
@@ -64,7 +65,6 @@ public class Cli implements Runnable, View {
 
         do {
             out.print("Inserisci il server address [" + defaultAddress + "]: ");
-
             String address = readLine();
 
             if (address.equals("")) {
@@ -130,6 +130,7 @@ public class Cli implements Runnable, View {
         try {
             String nickname = readLine();
             socketNetworkHandler.sendMessage(new RequestNickname(nickname));
+            socketNetworkHandler.setNicknameThisPlayer(nickname);
         } catch (ExecutionException e) {
             out.println("ERRORE");
         }
@@ -142,16 +143,19 @@ public class Cli implements Runnable, View {
             out.println("Digita 2 per spostare delle pedine verso la DiningRoom");
             out.println("Digita 1 per spostare delle pedine verso un'Isola");
             int scelta = scanner.nextInt();
-            while(scelta < 0 || scelta > 3)
+            while(scelta < 0 || scelta > 3) {
                 out.println("Numero Errato!");
                 out.println("Digita 1 per usare una Character Card");
                 out.println("Digita 2 per spostare delle pedine verso la DiningRoom");
                 out.println("Digita 1 per spostare delle pedine verso un'Isola");
                 scelta = scanner.nextInt();
+            }
             if(scelta == 1) requestCharacterCard();
             else if(scelta == 2) requestMovePawnToDiningRoom();
             else if(scelta == 3) requestMovePawnToIsland();
+            pedineDaSpostare = pedineDaSpostare - 1;
         }
+        pedineDaSpostare = 3;
     }
 
     @Override
@@ -254,6 +258,7 @@ public class Cli implements Runnable, View {
     @Override
     public void newGameStart(){
         System.out.println("Siete tutti in lobby. il Game inizia!");
+        displayAll();
     }
     @Override
     public void requestNumPlayersIsExpert() {
@@ -523,8 +528,7 @@ public class Cli implements Runnable, View {
 
     @Override
     public void requestCharacterCard() {
-        for (int i = 0; i < 3; i++)
-            displayCharacterCard(i);
+            displayCharacterCard();
         out.println("Scegli il CharacterCard da utilizzare: (inserisci un numero compreso tra 1 e 3)");
         int selected = scanner.nextInt();
         while (selected < 0 || selected > 3) {
@@ -873,9 +877,9 @@ public class Cli implements Runnable, View {
         }
     }
     @Override
-    public void displayCharacterCard(int num) {
+    public void displayCharacterCard() {
         for(int i = 0; i < lightGame.getCharacterCards().size(); i++) {
-            out.println("CharacterCard numero " + num + ":");
+            out.println("CharacterCard numero " + i + ":");
             if (lightGame.getCharacterCards().get(i).getNumCard() == 0) {
                 out.println("");
                 out.println("EFFETTO: Prendi 1 studente dalla carta e piazzalo su un'Isola a tua scelta. Poi pesca 1 studente dal sacchetto e mettilo su questa carta");
@@ -989,7 +993,8 @@ public class Cli implements Runnable, View {
         out.println("Non è il tuo turno, aspetta...");}
 
     @Override
-    public void turnOrder(ArrayList<LightPlayer> players){
+    public void turnOrder(ArrayList<String> orderNamePlayers){
+        orderPlayer=orderNamePlayers;
         //Funzione che stampa al player l'ordine di turno (ese: l'ordine di turno è: paolo, antonino, rebeca)
     }
     @Override
@@ -1002,21 +1007,22 @@ public class Cli implements Runnable, View {
 
     }
     @Override
-    public void lobbyFull(){
-        System.out.println("Sorry,lobby is full");
-    }
-
-    @Override
-    public void updateAll(LightGame object) {
-        this.lightGame = object;
+    public void displayAll(){
         displayIslands();
         displayCloud();
-        for(int i = 0; i < 3; i++)
-            displayCharacterCard(i);
+        displayCharacterCard();
         displayNick();
         displaySchoolBoard();
         displayIsExpert();
         displayNumPlayers();
+    }
+    @Override
+    public void lobbyFull(){
+        System.out.println("Sorry,lobby is full");
+    }
+    @Override
+    public void updateAll(LightGame object) {
+        this.lightGame = object;
     }
 
     @Override
@@ -1030,26 +1036,82 @@ public class Cli implements Runnable, View {
         }
         socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloud - 1)); //Penso sia carino che scelga le cloud partendo da 1 e non da 0
     }
-
     @Override
     public void selectAssistantCard(String nickname) {
-        if (nickname.equals(socketNetworkHandler.getNicknameThisPlayer())) {
-            int player, assistant = -1;
-            for (player = 0; lightGame.getPlayers().get(player).getNickname().equals(actualPlayer); player++) ;
-            displayAssistantCard(player);
+        int i;
+        int numAssistant = -1;
+        if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
+            for (i = 0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++) ;
+            displayAssistantCard(i);
             boolean check = false;
             while (!check) {
                 out.println("Scegli uno degli Assistenti presenti: ");
-                assistant = scanner.nextInt();
-                for (int i = 0; i < lightGame.getPlayers().get(player).getDeckAssistant().size(); i++) {
-                    if (lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() == assistant)
+                String assistant = null;
+                try {
+                    assistant = readLine();
+                    numAssistant = convertStringToNumber(assistant);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                int j;
+                for (j = 0; j < lightGame.getPlayers().get(i).getDeckAssistant().size(); j++) {
+                    if (lightGame.getPlayers().get(i).getDeckAssistant().get(j).getCardValue() == numAssistant) {
                         check = true;
+                        System.out.println("ciao");
+                        j = lightGame.getPlayers().get(i).getDeckAssistant().size();
+                    }
                 }
             }
-            socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(assistant));
-        }else{
-            System.out.println(nickname+" sta scegliendo l'AssistantCard");
+                System.out.println("ciao");
+                socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(numAssistant));
+                orderPlayer.remove(0);
+            }else{
+                System.out.println(orderPlayer.get(0) + " sta scegliendo l'AssistantCard");
+            }
         }
+    public int convertStringToNumber(String num){
+        int c=-1;
+        if(Objects.equals(num, "0")){
+            c=0;
+            return c;
+        } if(Objects.equals(num, "1")){
+            c=1;
+            return c;
+        } if(Objects.equals(num, "2")) {
+            c = 2;
+            return c;
+        } if(Objects.equals(num, "3")){
+            c=3;
+            return c;
+        } if(Objects.equals(num, "4")){
+            c=4;
+            return c;
+        } if(Objects.equals(num, "5")){
+            c=5;
+            return c;
+        } if(Objects.equals(num, "6")){
+            c=6;
+            return c;
+        } if(Objects.equals(num, "7")){
+            c=7;
+            return c;
+        } if(Objects.equals(num, "8")){
+            c=8;
+            return c;
+        } if(Objects.equals(num, "9")){
+            c=9;
+            return c;
+        } if(Objects.equals(num, "10")){
+            c=10;
+            return c;
+        } if(Objects.equals(num, "11")){
+            c=11;
+            return c;
+        } if(Objects.equals(num, "12")){
+            c=12;
+            return c;
+        }
+        return c;
     }
 
     @Override

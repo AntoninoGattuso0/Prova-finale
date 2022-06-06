@@ -1,7 +1,6 @@
 package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.network.Message.Message;
-import it.polimi.ingsw.network.Message.ServerToClient.SetAssistantMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.WinnerMessage;
 
@@ -23,8 +22,10 @@ public class VirtualView {
         clientHandlerInterface.sendObject(message);
 
     }
-
-    public void removeClientInVirtualView(ClientHandlerInterface client, String nick) {
+    public ArrayList<ClientHandlerInterface> getClients() {
+        return clients;
+    }
+    public void removeClientInVirtualView(ClientHandlerInterface client) {
         synchronized (lock) {
             clients.remove(client);
             lock.notifyAll();
@@ -84,8 +85,4 @@ public class VirtualView {
         }
     }
 }
-
-    public void startRound(String nickname) {
-        sendBroadcast(new SetAssistantMessage(nickname));
-        }
     }

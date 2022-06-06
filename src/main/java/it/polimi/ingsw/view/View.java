@@ -1,7 +1,6 @@
 package it.polimi.ingsw.view;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
-import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 
 import java.util.ArrayList;
@@ -35,7 +34,7 @@ public interface View {
 
     void sendNick(String nickname);
 
-    void displayCharacterCard(int num);
+    void displayCharacterCard();
 
     void displayWinner(String nickname);
 
@@ -50,7 +49,7 @@ public interface View {
     void displayResponseMessage();
 
     void updateAll(LightGame object);
-
+    void displayAll();
     void selectCloud();
 
     void selectAssistantCard(String nickname);
@@ -69,6 +68,6 @@ public interface View {
 
     void lobbyFull();
 
-    void turnOrder(ArrayList<LightPlayer> players);
+    void turnOrder(ArrayList<String> orderNamePLayers);
 }
 //CLI E GUI dovranno implementare quest interfaccia

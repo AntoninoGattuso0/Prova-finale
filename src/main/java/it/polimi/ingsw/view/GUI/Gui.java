@@ -1,7 +1,6 @@
 package it.polimi.ingsw.view.GUI;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
-import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.view.View;
 import javafx.application.Application;
@@ -93,7 +92,7 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public void displayCharacterCard(int num) {
+    public void displayCharacterCard() {
 
     }
 
@@ -130,6 +129,11 @@ public class Gui extends Application implements View {
 
     @Override
     public void updateAll(LightGame object) {
+
+    }
+
+    @Override
+    public void displayAll() {
 
     }
 
@@ -180,7 +184,7 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public void turnOrder(ArrayList<LightPlayer> players) {
+    public void turnOrder(ArrayList<String> players) {
 
     }
 

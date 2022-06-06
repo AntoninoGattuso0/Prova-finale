@@ -40,14 +40,13 @@ public class Player {
     }
 
     public ArrayList<AssistantCard> getDeckAssistant(){
-
         return this.deckAssistant;
     }
     public LightPlayer getLightPlayer(){
         LightDiningRoom lightDining=new LightDiningRoom(getDiningRoom().getNumBlue(),getDiningRoom().getNumGreen(),getDiningRoom().getNumPink(),getDiningRoom().getNumRed(),getDiningRoom().getNumYellow());
         LightTowerSpace lightTowerSpace= new LightTowerSpace(getTowerSpace().getColorTower(),getTowerSpace().getNumTower());
         LightEntrance lightEntrance= new LightEntrance(getEntrance().getNumPawn(),getEntrance().getGreenPawn(),getEntrance().getRedPawn(),getEntrance().getYellowPawn(),getEntrance().getPinkPawn(),getEntrance().getBluePawn());
-        return new LightPlayer(getNickname(),getNumCoin(),getDeckAssistant(),getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDining);
+        return new LightPlayer(getNickname(),getNumCoin(),getDeckAssistant(),getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDining,currentPhase);
     }
     public void setActive(boolean active) {
         this.active=active;
