@@ -80,30 +80,38 @@ public class Controller {
     }
 
     public void updateThisPlayersLight() {
-        for(Player player: players){
+        for(Player player: game.getPlayers()){
+            PhaseTurn phaseTurn=player.getCurrentPhase();
             LightDiningRoom lightDining=new LightDiningRoom(player.getDiningRoom().getNumBlue(),player.getDiningRoom().getNumGreen(),player.getDiningRoom().getNumPink(),player.getDiningRoom().getNumRed(),player.getDiningRoom().getNumYellow());
             LightTowerSpace lightTowerSpace= new LightTowerSpace(player.getTowerSpace().getColorTower(),player.getTowerSpace().getNumTower());
             LightEntrance lightEntrance= new LightEntrance(player.getEntrance().getNumPawn(),player.getEntrance().getGreenPawn(),player.getEntrance().getRedPawn(),player.getEntrance().getYellowPawn(),player.getEntrance().getPinkPawn(),player.getEntrance().getBluePawn());
-            playersLight.add(new LightPlayer(player.getNickname(),player.getNumCoin(),player.getDeckAssistant(),player.getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDining));
+            playersLight.add(new LightPlayer(player.getNickname(),player.getNumCoin(),player.getDeckAssistant(),player.getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDining,phaseTurn));
         }
     }
 
-    public void startRound(){
-
+    public void startRound() {
         boolean finish;
-        players=roundController.getRoundOrder();
+        players = roundController.getRoundOrder();
         updateThisPlayersLight();
         virtualView.setActualPlayer(roundController.getRoundOrder().get(0).getNickname());
-        currentPlayer=roundController.getRoundOrder().get(0);
+        currentPlayer = roundController.getRoundOrder().get(0);
         virtualView.sendBroadcast(new TurnOrderMessage(playersLight));
         int i;
-        for(i=0;i<players.size();i++) {
-            players.get(i).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
+        for (i = 0; i < players.size(); i++) {
+            game.getPlayers().get(i).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
         }
-        for(i=0;i<players.size();i++) {
-                if (!(getRoundController().getExeAssistantPhase().get(players.get(i).getNickname()))) {
-                    virtualView.startRound(players.get(i).getNickname());
-                }
+        i = 0;
+        int j;
+        boolean contr=false;
+        while (i<players.size()) {
+            if(!contr)
+                virtualView.sendBroadcast(new SetAssistantMessage(players.get(i).getNickname(), currentPlayer.getNickname()));
+            if(!roundController.getExeAssistantPhase().get(currentPlayer.getNickname())){
+                i++;
+                if(i<players.size()-1)
+                currentPlayer=players.get(i);
+            }else
+                contr = true;
         }
         players=roundController.newRoundOrder(players,game);
         updateThisPlayersLight();

@@ -258,6 +258,7 @@ public class Cli implements Runnable, View {
     @Override
     public void newGameStart(){
         System.out.println("Siete tutti in lobby. il Game inizia!");
+        displayAll();
     }
     @Override
     public void requestNumPlayersIsExpert() {
@@ -1005,13 +1006,7 @@ public class Cli implements Runnable, View {
 
     }
     @Override
-    public void lobbyFull(){
-        System.out.println("Sorry,lobby is full");
-    }
-
-    @Override
-    public void updateAll(LightGame object) {
-        this.lightGame = object;
+    public void displayAll(){
         displayIslands();
         displayCloud();
         displayCharacterCard();
@@ -1019,6 +1014,14 @@ public class Cli implements Runnable, View {
         displaySchoolBoard();
         displayIsExpert();
         displayNumPlayers();
+    }
+    @Override
+    public void lobbyFull(){
+        System.out.println("Sorry,lobby is full");
+    }
+    @Override
+    public void updateAll(LightGame object) {
+        this.lightGame = object;
     }
 
     @Override
@@ -1034,10 +1037,10 @@ public class Cli implements Runnable, View {
     }
 
     @Override
-    public void selectAssistantCard(String nickname) {
+    public void selectAssistantCard(String nickname,String currentPlayer) {
         int i;
-        for(i=0;lightGame.getPlayers().get(i).getCurrentAssistant()!=null;i++);
-        if(Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname)){
+        if(Objects.equals(nickname, currentPlayer)){
+            for(i=0; Objects.equals(lightGame.getPlayers().get(i).getNickname(), currentPlayer); i++);
             int assistant = -1;
             displayAssistantCard(i);
             boolean check = false;
@@ -1052,7 +1055,7 @@ public class Cli implements Runnable, View {
             }
             socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(assistant));
         }else{
-            System.out.println(nickname+" sta scegliendo l'AssistantCard");
+            System.out.println(currentPlayer+" sta scegliendo l'AssistantCard");
         }
     }
 

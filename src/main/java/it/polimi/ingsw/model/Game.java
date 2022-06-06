@@ -47,7 +47,7 @@ public class Game {
             LightDiningRoom lightDiningRoom=new LightDiningRoom(players.get(i).getDiningRoom().getNumBlue(),players.get(i).getDiningRoom().getNumGreen(),players.get(i).getDiningRoom().getNumPink(),players.get(i).getDiningRoom().getNumRed(),players.get(i).getDiningRoom().getNumYellow());
             LightTowerSpace lightTowerSpace=new LightTowerSpace(players.get(0).getTowerSpace().getColorTower(),players.get(0).getTowerSpace().getNumTower());
             LightEntrance lightEntrance=new LightEntrance(players.get(i).getEntrance().getNumPawn(),players.get(i).getEntrance().getGreenPawn(),players.get(i).getEntrance().getRedPawn(),players.get(i).getEntrance().getYellowPawn(),players.get(i).getEntrance().getPinkPawn(),players.get(i).getEntrance().getBluePawn());
-            LightPlayer lightPlayer=new LightPlayer(players.get(i).getNickname(),players.get(i).getNumCoin(),players.get(i).getDeckAssistant(),players.get(i).getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDiningRoom );
+            LightPlayer lightPlayer=new LightPlayer(players.get(i).getNickname(),players.get(i).getNumCoin(),players.get(i).getDeckAssistant(),players.get(i).getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDiningRoom,players.get(i).getCurrentPhase() );
             lightPlayers.add(lightPlayer);
         }
         return new LightGame(characterCards,isExpert, lightClouds,lightPlayers,islands,totPlayer,profTable, antonio, barbara, ciro, dante, ernesto, felix, giuseppe, ivan, lancillotto, maria, nicola, omnia);

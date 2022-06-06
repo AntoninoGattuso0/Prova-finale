@@ -1,9 +1,10 @@
 package it.polimi.ingsw.controller;
 
-import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.Player;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class RoundController {
     private ArrayList<Player> roundOrder;
@@ -40,12 +41,8 @@ public class RoundController {
     public boolean getExeCharacterCard(){
         return exeCharacterCard;
     }
-    public void setExeAssistantPhase(String nickname,boolean ciao) {
-       for(int i=0;i<roundOrder.size();i++){
-           if(Objects.equals(nickname, roundOrder.get(i).getNickname())){
+    public void setExeAssistantPhase(String nickname) {
                exeAssistantPhase.put(nickname,true);
-           }
-       }
     }
     public void setExeChooseCloud(boolean exeChooseCloud) {
         this.exeChooseCloud = exeChooseCloud;

@@ -50,10 +50,10 @@ public interface View {
     void displayResponseMessage();
 
     void updateAll(LightGame object);
-
+    void displayAll();
     void selectCloud();
 
-    void selectAssistantCard(String nickname);
+    void selectAssistantCard(String nickname,String currentPlayer);
 
     void requestMoveMotherNature();
 

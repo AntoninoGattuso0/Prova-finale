@@ -87,7 +87,7 @@ public class VirtualView {
     }
 }
 
-    public void startRound(String nickname) {
-        sendBroadcast(new SetAssistantMessage(nickname));
+    public void startRound(String nickname,String currentPlayer) {
+        sendBroadcast(new SetAssistantMessage(nickname,currentPlayer));
         }
     }

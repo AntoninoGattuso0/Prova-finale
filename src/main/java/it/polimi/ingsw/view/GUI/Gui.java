@@ -134,12 +134,17 @@ public class Gui extends Application implements View {
     }
 
     @Override
+    public void displayAll() {
+
+    }
+
+    @Override
     public void selectCloud() {
 
     }
 
     @Override
-    public void selectAssistantCard(String nickname) {
+    public void selectAssistantCard(String nickname,String currentPlayer) {
 
     }
 

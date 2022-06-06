@@ -41,7 +41,7 @@ public class ClientMessageManager {
         } else if (object instanceof LoginAcceptedMessage) {// serve a dire all' ultimo player che è entrato in lobby e che era l'ultimo player che mancava
             socketNetworkHandler.getView().playerWait();
         } else if (object instanceof SetAssistantMessage) {
-            socketNetworkHandler.getView().selectAssistantCard(((SetAssistantMessage) object).getNickname());
+            socketNetworkHandler.getView().selectAssistantCard(((SetAssistantMessage) object).getNickname(),((SetAssistantMessage) object).getCurrentPlayer());
         } /*else if (object instanceof SetMovePawnMessage) {
            socketNetworkHandler.getView().
         }*/ else if (object instanceof SetMoveMotherNature) {

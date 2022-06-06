@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client.ModelLight;
 
+import it.polimi.ingsw.controller.PhaseTurn;
 import it.polimi.ingsw.model.*;
 
 import java.io.Serial;
@@ -17,8 +18,9 @@ public class LightPlayer implements Serializable {
     private LightEntrance entrance;
     private LightDiningRoom diningRoom;
     private LightTowerSpace towerSpace;
+    private PhaseTurn currentPhase;
 
-    public LightPlayer(String nickname,int numCoin,ArrayList<AssistantCard> deckAssistant,AssistantCard currentAssistant,LightEntrance lightEntrance, LightTowerSpace LightTowerSpace, LightDiningRoom lightDiningRoom) {
+    public LightPlayer(String nickname,int numCoin,ArrayList<AssistantCard> deckAssistant,AssistantCard currentAssistant,LightEntrance lightEntrance, LightTowerSpace LightTowerSpace, LightDiningRoom lightDiningRoom,PhaseTurn currentPhase) {
         this.nickname=nickname;
         this.numCoin=numCoin;
         this.deckAssistant =deckAssistant;
@@ -26,8 +28,12 @@ public class LightPlayer implements Serializable {
         this.entrance =lightEntrance;
         this.diningRoom =lightDiningRoom;
         this.towerSpace =LightTowerSpace;
+        this.currentPhase=currentPhase;
     }
 
+    public PhaseTurn getCurrentPhase() {
+        return currentPhase;
+    }
 
     public String getNickname() {
         return nickname;

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.controller.Controller;
+import it.polimi.ingsw.controller.PhaseTurn;
 import it.polimi.ingsw.controller.UserInput;
 import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.model.Game;
@@ -73,10 +74,11 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 this.players = game.getPlayers();
                 client.sendObject(new ClientAcceptedMessage());
                 client.sendObject(new LoginAcceptedMessage());
-                virtualView.sendBroadcast(new GameStartedMessage());
                 lobbyOk = true;
             }
             if (lobbyOk) {
+                virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+                virtualView.sendBroadcast(new GameStartedMessage());
                 newGame(game);
                 for(i=clients.size();i==numPlayers;)
                 clients.remove(i-1);
@@ -232,26 +234,25 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         }
 
     public void selectAssistantCard(int assistant, ClientHandler clientHandler) {
-        int j;
         int i;
         int contr = -1;
-        for(j=0; controller.getRoundController().getExeAssistantPhase().get(j); j++);
-        if(Objects.equals(controller.getRoundController().getRoundOrder().get(j).getNickname(), clientHandler.getUserNickname())){
-            if(controller.getRoundController().getExeAssistantPhase().get(clientHandler.getUserNickname()))
-            for (i = 0; i < namePlayer.size(); i++) {
-                if (Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname())) {
-                    contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant));
+        int j=contr;
+            if(!controller.getRoundController().getExeAssistantPhase().get(clientHandler.getUserNickname())) {
+                for (i = 0;Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname()); i++) {
+                    if (Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname())) {
+                        j=i;
+                        contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant));
+                    }
                 }
             }
             if (contr == 0) {
                 clientHandler.sendObject(new WrongNotAssistantMessage());
             } else if (contr == 1) {
-                controller.getRoundController().setExeAssistantPhase(clientHandler.getUserNickname(), true);
+                game.getPlayers().get(j).setCurrentPhase(PhaseTurn.MOVE_STUDENT);
                 clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
             } else if (contr == 2) {
                 clientHandler.sendObject(new WrongSameAssistantMessage());
             }
-        }
     }
 
     public void useCharacter(int num, int numberPawn, int numIsland, ArrayList<ColorPawn> colorPawn, ClientHandler clientHandler) {
