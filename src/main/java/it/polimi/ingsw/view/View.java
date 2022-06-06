@@ -12,11 +12,11 @@ public interface View {
 
     void requestNumPlayersIsExpert();
 
-    void requestMovePawnToDiningRoom();
-    void requestMovePawnToIsland();
-    void requestMovePawn();
+    void requestMovePawnToDiningRoom(int pawn);
+    void requestMovePawnToIsland(int pawn);
+    void requestMovePawn(String nickname,int numPawnMoved);
 
-    void requestCharacterCard();
+    void requestCharacterCard(String nickname);
 
     void displayNick();
 
@@ -50,11 +50,11 @@ public interface View {
 
     void updateAll(LightGame object);
     void displayAll();
-    void selectCloud();
+    void selectCloud(String nickname);
 
     void selectAssistantCard(String nickname);
 
-    void requestMoveMotherNature();
+    void requestMoveMotherNature(String nickname);
 
     void registerClient();
 

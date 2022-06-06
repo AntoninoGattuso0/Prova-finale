@@ -32,22 +32,21 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public void requestMovePawnToDiningRoom() {
+    public void requestMovePawnToDiningRoom(int pawn) {
 
     }
 
     @Override
-    public void requestMovePawnToIsland() {
+    public void requestMovePawnToIsland(int pawn) {
 
     }
 
     @Override
-    public void requestMovePawn() {
+    public void requestMovePawn(String nickname, int numPawnMoved) {
 
     }
-
     @Override
-    public void requestCharacterCard() {
+    public void requestCharacterCard(String nickname) {
 
     }
 
@@ -138,7 +137,7 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public void selectCloud() {
+    public void selectCloud(String nickname) {
 
     }
 
@@ -149,7 +148,7 @@ public class Gui extends Application implements View {
 
 
     @Override
-    public void requestMoveMotherNature() {
+    public void requestMoveMotherNature(String nickname) {
 
     }
 

@@ -92,7 +92,6 @@ public class Controller {
     }
 
     public synchronized void startRound() {
-        boolean finish;
         players = roundController.getRoundOrder();
         updateThisPlayersLight();
         for(int i=0;i<players.size();i++){
@@ -110,38 +109,26 @@ public class Controller {
         virtualView.sendBroadcast(new SetAssistantMessage(players.get(i).getNickname()));
         }
     public boolean startTurn(Player player) {
-        int i;
-        boolean finish;
-        players = roundController.newRoundOrder(players, game);
-        updateThisPlayersLight();
-        virtualView.sendBroadcast(new TurnOrderMessage(orderNamePlayers));
-        for (i = 0; i < players.size(); ) {
-            finish = startTurn(players.get(i));
-            if (finish) {
-                roundController.setExeEndTurn(false);
-                i++;
-            }
-        }
             boolean e=false;
             while (player.getCurrentPhase() != PhaseTurn.END_TURN) {
             if (player.getCurrentPhase() == PhaseTurn.MOVE_STUDENT) {
                 for (ClientHandlerInterface client : clients) {
                     if (player.getNickname().equals(client.getUserNickname())) {
-                        virtualView.sendMessage(client, new SetMovePawnMessage(0));
+                        virtualView.sendMessage(client, new SetMovePawnMessage(player.getNickname(),0));
                     }
                 }
                  e= roundController.getExeMoveStudent();
             } else if (player.getCurrentPhase() == PhaseTurn.MOVE_MOTHER_NATURE) {
                 for (ClientHandlerInterface client : clients) {
                     if (player.getNickname().equals(client.getUserNickname())) {
-                        virtualView.sendMessage(client, new SetMoveMotherNature());
+                        virtualView.sendMessage(client, new SetMoveMotherNature(player.getNickname()));
                     }
                 }
                 e=roundController.getExeMoveMotherNature();
             } else if (player.getCurrentPhase() == PhaseTurn.CHOOSE_CLOUD) {
                 for (ClientHandlerInterface client : clients) {
                     if (player.getNickname().equals(client.getUserNickname())) {
-                        virtualView.sendMessage(client, new SetCloudMessage());
+                        virtualView.sendMessage(client, new SetCloudMessage(player.getNickname()));
                     }
                 }
                 e=roundController.getExeChooseCloud();

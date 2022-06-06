@@ -42,12 +42,12 @@ public class ClientMessageManager {
             socketNetworkHandler.getView().playerWait();
         } else if (object instanceof SetAssistantMessage) {
             socketNetworkHandler.getView().selectAssistantCard(((SetAssistantMessage) object).getNickname());
-        } /*else if (object instanceof SetMovePawnMessage) {
-           socketNetworkHandler.getView().
-        }*/ else if (object instanceof SetMoveMotherNature) {
-           socketNetworkHandler.getView().requestMoveMotherNature();
+        }else if(object instanceof SetMovePawnMessage) {
+            socketNetworkHandler.getView().requestMovePawn(((SetMovePawnMessage) object).getNickname(),((SetMovePawnMessage) object).getNumPawnMoved());
+        } else if (object instanceof SetMoveMotherNature) {
+           socketNetworkHandler.getView().requestMoveMotherNature(((SetMoveMotherNature) object).getNickname());
         } else if (object instanceof SetCloudMessage) {
-           socketNetworkHandler.getView().selectCloud();
+           socketNetworkHandler.getView().selectCloud(((SetCloudMessage) object).getNickname());
         } else if (object instanceof DisconnectionMessage) {
             // socketNetworkHandler.getView().
         } /*else if (object instanceof EndGameMessage) {

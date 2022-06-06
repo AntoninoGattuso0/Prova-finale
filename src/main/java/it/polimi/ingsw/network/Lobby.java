@@ -168,7 +168,18 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     public void newGame(Game game) {
         controller = new Controller(game, userInput, virtualView, players,clients);
         controller.sendUpdate();
-        controller.startRound();
+        String winnerIs;
+        while (!controller.getEndGame()&&!controller.lastTurn()) {
+            controller.startRound();
+            int i;
+            for (i = 0; i < controller.getRoundController().getRoundOrder().size(); i++)
+                controller.startTurn(controller.getRoundController().getTurnController().getCurrPlayer());
+            controller.administrEnd();
+            if(controller.getEndGame()){
+                winnerIs=game.finish().getNickname();
+                virtualView.updateWin(winnerIs);
+            }
+        }
     }
 
     public synchronized void insertNickname(String nickname, ClientHandler clientHandler) {
@@ -300,14 +311,14 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 controller.getRoundController().setExeMoveStudent(true);
                 numPawnExe=0;
             }else{
-                clientHandler.sendObject(new SetMovePawnMessage(numPawnExe));
+                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));
             }
         } else if(numPlayers==3) {
             if(numPawnExe==4) {
                 controller.getRoundController().setExeMoveStudent(true);
                 numPawnExe=0;
             }else {
-                clientHandler.sendObject(new SetMovePawnMessage(numPawnExe));
+                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));
             }
         }
         }
@@ -324,14 +335,14 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 controller.getRoundController().setExeMoveStudent(true);
                 numPawnExe=0;
             }else{
-                clientHandler.sendObject(new SetMovePawnMessage(numPawnExe));
+                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));
             }
         } else if(numPlayers==3) {
             if (numPawnExe == 4) {
                 controller.getRoundController().setExeMoveStudent(true);
                 numPawnExe=0;
             }else{
-                clientHandler.sendObject(new SetMovePawnMessage(numPawnExe));
+                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));
             }
         }
     }
