@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="407.0" fitWidth="453.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/Logo.png" />
+            <Image url="@../images/Background.png" />
          </image>
       </ImageView>
       <Text fill="WHITE" layoutX="114.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ALL THE PLAYERS">
