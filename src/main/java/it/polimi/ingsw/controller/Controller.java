@@ -16,6 +16,7 @@ public class Controller {
     private boolean endGame;
     private boolean isExpert;
     private Game game;
+    private final ArrayList<String> orderNamePlayers;
     private final UserInput userInput;
     private final VirtualView virtualView;
     private ArrayList<Player> players;
@@ -27,6 +28,7 @@ public class Controller {
         this.isExpert=game.getIsExpert();//Manca il controllo della assistantphase nello startround DA NINO PER NINO
         this.virtualView=virtualView;
         this.userInput=userInput;
+        this.orderNamePlayers=new ArrayList<>();
         this.players=new ArrayList<>();
         this.players.addAll(players);
         this.currentPlayer=players.get(0);
@@ -89,42 +91,37 @@ public class Controller {
         }
     }
 
-    public void startRound() {
+    public synchronized void startRound() {
         boolean finish;
         players = roundController.getRoundOrder();
         updateThisPlayersLight();
+        for(int i=0;i<players.size();i++){
+            orderNamePlayers.add(players.get(i).getNickname());
+        }
         virtualView.setActualPlayer(roundController.getRoundOrder().get(0).getNickname());
         currentPlayer = roundController.getRoundOrder().get(0);
-        virtualView.sendBroadcast(new TurnOrderMessage(playersLight));
+        virtualView.sendBroadcast(new TurnOrderMessage(orderNamePlayers));
         int i;
         for (i = 0; i < players.size(); i++) {
             game.getPlayers().get(i).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
+            roundController.setExeAssistantPhase(game.getPlayers().get(i).getNickname());
         }
         i = 0;
-        int j;
-        boolean contr=false;
-        while (i<players.size()) {
-            if(!contr)
-                virtualView.sendBroadcast(new SetAssistantMessage(players.get(i).getNickname(), currentPlayer.getNickname()));
-            if(!roundController.getExeAssistantPhase().get(currentPlayer.getNickname())){
-                i++;
-                if(i<players.size()-1)
-                currentPlayer=players.get(i);
-            }else
-                contr = true;
-        }
-        players=roundController.newRoundOrder(players,game);
-        updateThisPlayersLight();
-        virtualView.sendBroadcast(new TurnOrderMessage(playersLight));
-        for(i=0;i<players.size();){
-                finish=startTurn(players.get(i));
-                if(finish){
-                    roundController.setExeEndTurn(false);
-                    i++;
-                }
-            }
+        virtualView.sendBroadcast(new SetAssistantMessage(players.get(i).getNickname()));
         }
     public boolean startTurn(Player player) {
+        int i;
+        boolean finish;
+        players = roundController.newRoundOrder(players, game);
+        updateThisPlayersLight();
+        virtualView.sendBroadcast(new TurnOrderMessage(orderNamePlayers));
+        for (i = 0; i < players.size(); ) {
+            finish = startTurn(players.get(i));
+            if (finish) {
+                roundController.setExeEndTurn(false);
+                i++;
+            }
+        }
             boolean e=false;
             while (player.getCurrentPhase() != PhaseTurn.END_TURN) {
             if (player.getCurrentPhase() == PhaseTurn.MOVE_STUDENT) {

@@ -1,7 +1,6 @@
 package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.network.Message.Message;
-import it.polimi.ingsw.network.Message.ServerToClient.SetAssistantMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.WinnerMessage;
 
@@ -86,8 +85,4 @@ public class VirtualView {
         }
     }
 }
-
-    public void startRound(String nickname,String currentPlayer) {
-        sendBroadcast(new SetAssistantMessage(nickname,currentPlayer));
-        }
     }

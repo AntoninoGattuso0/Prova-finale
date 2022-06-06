@@ -41,7 +41,7 @@ public class ClientMessageManager {
         } else if (object instanceof LoginAcceptedMessage) {// serve a dire all' ultimo player che è entrato in lobby e che era l'ultimo player che mancava
             socketNetworkHandler.getView().playerWait();
         } else if (object instanceof SetAssistantMessage) {
-            socketNetworkHandler.getView().selectAssistantCard(((SetAssistantMessage) object).getNickname(),((SetAssistantMessage) object).getCurrentPlayer());
+            socketNetworkHandler.getView().selectAssistantCard(((SetAssistantMessage) object).getNickname());
         } /*else if (object instanceof SetMovePawnMessage) {
            socketNetworkHandler.getView().
         }*/ else if (object instanceof SetMoveMotherNature) {
@@ -68,7 +68,7 @@ public class ClientMessageManager {
             socketNetworkHandler.getView().lobbyFull();
         }else if(object instanceof Ping){
         }else if(object instanceof TurnOrderMessage){
-            socketNetworkHandler.getView().turnOrder(((TurnOrderMessage) object).getPlayers());
+            socketNetworkHandler.getView().turnOrder(((TurnOrderMessage) object).getPlayersOrder());
         }
         else throw new IllegalArgumentException();
     }

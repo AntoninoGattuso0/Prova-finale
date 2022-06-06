@@ -1,7 +1,6 @@
 package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.controller.Controller;
-import it.polimi.ingsw.controller.PhaseTurn;
 import it.polimi.ingsw.controller.UserInput;
 import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.model.Game;
@@ -80,12 +79,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
                 virtualView.sendBroadcast(new GameStartedMessage());
                 newGame(game);
-                for(i=clients.size();i==numPlayers;)
-                clients.remove(i-1);
-                for(i=namePlayer.size();i==numPlayers;)
-                namePlayer.remove(i-1);
-                for(i=virtualView.getClients().size();i==numPlayers;)
-                    virtualView.getClients().remove(i-1);
             }
             lock.notifyAll();
         }
@@ -237,19 +230,21 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         int i;
         int contr = -1;
         int j=contr;
-            if(!controller.getRoundController().getExeAssistantPhase().get(clientHandler.getUserNickname())) {
-                for (i = 0;Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname()); i++) {
+        //POTREI METTERE UN CONTROLLO LATO SERVER MA NON SERVE DATO CHE C'è GIà LATO CLIENT NINO PER NINO
+                for (i=0;!Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname());i++);
+                j=i;
                     if (Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname())) {
-                        j=i;
                         contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant));
                     }
-                }
-            }
             if (contr == 0) {
                 clientHandler.sendObject(new WrongNotAssistantMessage());
             } else if (contr == 1) {
-                game.getPlayers().get(j).setCurrentPhase(PhaseTurn.MOVE_STUDENT);
+                if(controller.getRoundController().getLastPlayer()!=controller.getRoundController().getRoundOrder().get(i))
+                controller.getRoundController().getTurnController().setCurrPlayer(controller.getRoundController().getRoundOrder().get(i+1));
+                controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(j),true,controller.getRoundController(),game);
                 clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+                for(i=0;!controller.getRoundController().getRoundOrder().get(i).getNickname().equals(clientHandler.getUserNickname());i++);
+                virtualView.sendBroadcast(new SetAssistantMessage(controller.getRoundController().getRoundOrder().get(i+1).getNickname()));
             } else if (contr == 2) {
                 clientHandler.sendObject(new WrongSameAssistantMessage());
             }

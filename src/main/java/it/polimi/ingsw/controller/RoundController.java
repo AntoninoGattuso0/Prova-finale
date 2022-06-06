@@ -87,13 +87,13 @@ public class RoundController {
             w = 0;
             for (k = 0; players.get(i).equals(game.getPlayers().get(k)); k++) ;
             for (j = 0; j < players.size(); j++) {
-                if (game.getPlayers().get(k).getCurrentAssistant().getCardValue() > game.getPlayers().get(j).getCurrentAssistant().getCardValue()) {
+                if (j!=k&&game.getPlayers().get(k).getCurrentAssistant().getCardValue() > game.getPlayers().get(j).getCurrentAssistant().getCardValue()) {
                     w++;
                 }
             }
             if(i==0){roundOrder.clear();}
             setRoundOrder(players.get(i), w);
-            if(w==game.getTotPlayer()){
+            if(w==game.getTotPlayer()-1){
                 lastPlayer=players.get(i);
             }
         }

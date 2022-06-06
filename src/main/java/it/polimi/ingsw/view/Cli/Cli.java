@@ -23,6 +23,7 @@ public class Cli implements Runnable, View {
     private SocketNetworkHandler socketNetworkHandler;
     private String actualPlayer;
     private int pedineDaSpostare = 3;
+    private ArrayList<String> orderPlayer;
 
     public Cli() {
         out = System.out;
@@ -64,7 +65,6 @@ public class Cli implements Runnable, View {
 
         do {
             out.print("Inserisci il server address [" + defaultAddress + "]: ");
-
             String address = readLine();
 
             if (address.equals("")) {
@@ -130,7 +130,7 @@ public class Cli implements Runnable, View {
         try {
             String nickname = readLine();
             socketNetworkHandler.sendMessage(new RequestNickname(nickname));
-            actualPlayer=nickname;
+            socketNetworkHandler.setNicknameThisPlayer(nickname);
         } catch (ExecutionException e) {
             out.println("ERRORE");
         }
@@ -993,7 +993,8 @@ public class Cli implements Runnable, View {
         out.println("Non è il tuo turno, aspetta...");}
 
     @Override
-    public void turnOrder(ArrayList<LightPlayer> players){
+    public void turnOrder(ArrayList<String> orderNamePlayers){
+        orderPlayer=orderNamePlayers;
         //Funzione che stampa al player l'ordine di turno (ese: l'ordine di turno è: paolo, antonino, rebeca)
     }
     @Override
@@ -1035,28 +1036,82 @@ public class Cli implements Runnable, View {
         }
         socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloud - 1)); //Penso sia carino che scelga le cloud partendo da 1 e non da 0
     }
-
     @Override
-    public void selectAssistantCard(String nickname,String currentPlayer) {
+    public void selectAssistantCard(String nickname) {
         int i;
-        if(Objects.equals(nickname, currentPlayer)){
-            for(i=0; Objects.equals(lightGame.getPlayers().get(i).getNickname(), currentPlayer); i++);
-            int assistant = -1;
+        int numAssistant = -1;
+        if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
+            for (i = 0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++) ;
             displayAssistantCard(i);
             boolean check = false;
             while (!check) {
                 out.println("Scegli uno degli Assistenti presenti: ");
-                assistant = scanner.nextInt();
+                String assistant = null;
+                try {
+                    assistant = readLine();
+                    numAssistant = convertStringToNumber(assistant);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
                 int j;
                 for (j = 0; j < lightGame.getPlayers().get(i).getDeckAssistant().size(); j++) {
-                    if (lightGame.getPlayers().get(i).getDeckAssistant().get(j).getCardValue() == assistant)
+                    if (lightGame.getPlayers().get(i).getDeckAssistant().get(j).getCardValue() == numAssistant) {
                         check = true;
+                        System.out.println("ciao");
+                        j = lightGame.getPlayers().get(i).getDeckAssistant().size();
+                    }
                 }
             }
-            socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(assistant));
-        }else{
-            System.out.println(currentPlayer+" sta scegliendo l'AssistantCard");
+                System.out.println("ciao");
+                socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(numAssistant));
+                orderPlayer.remove(0);
+            }else{
+                System.out.println(orderPlayer.get(0) + " sta scegliendo l'AssistantCard");
+            }
         }
+    public int convertStringToNumber(String num){
+        int c=-1;
+        if(Objects.equals(num, "0")){
+            c=0;
+            return c;
+        } if(Objects.equals(num, "1")){
+            c=1;
+            return c;
+        } if(Objects.equals(num, "2")) {
+            c = 2;
+            return c;
+        } if(Objects.equals(num, "3")){
+            c=3;
+            return c;
+        } if(Objects.equals(num, "4")){
+            c=4;
+            return c;
+        } if(Objects.equals(num, "5")){
+            c=5;
+            return c;
+        } if(Objects.equals(num, "6")){
+            c=6;
+            return c;
+        } if(Objects.equals(num, "7")){
+            c=7;
+            return c;
+        } if(Objects.equals(num, "8")){
+            c=8;
+            return c;
+        } if(Objects.equals(num, "9")){
+            c=9;
+            return c;
+        } if(Objects.equals(num, "10")){
+            c=10;
+            return c;
+        } if(Objects.equals(num, "11")){
+            c=11;
+            return c;
+        } if(Objects.equals(num, "12")){
+            c=12;
+            return c;
+        }
+        return c;
     }
 
     @Override

@@ -40,7 +40,6 @@ public class Player {
     }
 
     public ArrayList<AssistantCard> getDeckAssistant(){
-
         return this.deckAssistant;
     }
     public LightPlayer getLightPlayer(){
