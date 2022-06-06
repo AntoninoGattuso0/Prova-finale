@@ -166,20 +166,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     }
 
     public void newGame(Game game) {
-        controller = new Controller(game, userInput, virtualView, players,clients);
+        controller = new Controller(game, userInput, virtualView, players, clients);
         controller.sendUpdate();
-        String winnerIs;
-        while (!controller.getEndGame()&&!controller.lastTurn()) {
-            controller.startRound();
-            int i;
-            for (i = 0; i < controller.getRoundController().getRoundOrder().size(); i++)
-                controller.startTurn(controller.getRoundController().getTurnController().getCurrPlayer());
-            controller.administrEnd();
-            if(controller.getEndGame()){
-                winnerIs=game.finish().getNickname();
-                virtualView.updateWin(winnerIs);
-            }
-        }
+        controller.startRound();
     }
 
     public synchronized void insertNickname(String nickname, ClientHandler clientHandler) {

@@ -22,7 +22,8 @@ public class Cli implements Runnable, View {
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;
     private String actualPlayer;
-    private int pedineDaSpostare = 3;
+    private int pedineDaSpostare;
+    private int numPawnMove;
     private ArrayList<String> orderPlayer;
 
     public Cli() {
@@ -139,7 +140,6 @@ public class Cli implements Runnable, View {
     @Override
     public void requestMovePawn(String nickname,int numPawnMoved){
         pedineDaSpostare=pedineDaSpostare-numPawnMoved;
-        while(pedineDaSpostare>0) {
             out.println("Digita 1 per usare una Character Card");
             out.println("Digita 2 per spostare delle pedine verso la DiningRoom");
             out.println("Digita 1 per spostare delle pedine verso un'Isola");
@@ -154,12 +154,11 @@ public class Cli implements Runnable, View {
             if(scelta == 1) requestCharacterCard(nickname);
             else if(scelta == 2) requestMovePawnToDiningRoom(pedineDaSpostare);
             else if(scelta == 3) requestMovePawnToIsland(pedineDaSpostare);
-        }
-        pedineDaSpostare = 3;
+        pedineDaSpostare=numPawnMoved;
     }
 
     @Override
-    public void requestMovePawnToDiningRoom(int pedineDaSpostare) {
+    public int requestMovePawnToDiningRoom(int pedineDaSpostare) {
         out.println("Quante pedine vuoi spostare verso la DiningRoom?");
         int numDining = scanner.nextInt();
         out.println("Sposterai " + numDining + " pedine verso la DiningRoom");
@@ -201,10 +200,11 @@ public class Cli implements Runnable, View {
         }
         socketNetworkHandler.sendMessage(new MovePawnToDiningMessage(numDining, colori));
         out.println("");
+        return pedineDaSpostare;
     }
 
     @Override
-    public void requestMovePawnToIsland(int pedineDaSpostare) {
+    public int requestMovePawnToIsland(int pedineDaSpostare) {
         out.println("Quante pedine vuoi spostare verso un'Isola?");
         int numPawn = scanner.nextInt();
         out.println("Verso quale isola vuoi spostarle? ");
@@ -248,10 +248,11 @@ public class Cli implements Runnable, View {
                 }
             }
             colori.add(nomeColore);
-            out.println("Hai spostato correttamente una pedina, ne rimangono: " + (i + 1) + "/" + numPawn);
+            out.println("Hai scelto correttamente una pedina, ne rimangono: " + (i + 1) + "/" + numPawn);
         }
         socketNetworkHandler.sendMessage(new MovePawnToIslandMessage(numIsland, numPawn, colori));
         out.println("");
+        return pedineDaSpostare;
     }
 
 
@@ -259,6 +260,13 @@ public class Cli implements Runnable, View {
     public void newGameStart(){
         System.out.println("Siete tutti in lobby. il Game inizia!");
         displayAll();
+        if(lightGame.getNumPlayers()==2||lightGame.getNumPlayers()==4){
+            pedineDaSpostare=3;
+            numPawnMove=3;
+        }else{
+            pedineDaSpostare=4;
+            numPawnMove=4;
+        }
     }
     @Override
     public void requestNumPlayersIsExpert() {
