@@ -244,6 +244,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(j),true,controller.getRoundController(),game);
                 clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
                 for(i=0;!controller.getRoundController().getRoundOrder().get(i).getNickname().equals(clientHandler.getUserNickname());i++);
+                if(i==numPlayers-1){
+                            return;
+                }else
                 virtualView.sendBroadcast(new SetAssistantMessage(controller.getRoundController().getRoundOrder().get(i+1).getNickname()));
             } else if (contr == 2) {
                 clientHandler.sendObject(new WrongSameAssistantMessage());
