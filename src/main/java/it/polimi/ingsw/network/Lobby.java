@@ -229,10 +229,8 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     public void selectAssistantCard(int assistant, ClientHandler clientHandler) {
         int i;
         int contr = -1;
-        int j=contr;
         //POTREI METTERE UN CONTROLLO LATO SERVER MA NON SERVE DATO CHE C'è GIà LATO CLIENT NINO PER NINO
                 for (i=0;!Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname());i++);
-                j=i;
                     if (Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname())) {
                         contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant));
                     }
@@ -241,9 +239,8 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             } else if (contr == 1) {
                 if(controller.getRoundController().getLastPlayer()!=controller.getRoundController().getRoundOrder().get(i))
                 controller.getRoundController().getTurnController().setCurrPlayer(controller.getRoundController().getRoundOrder().get(i+1));
-                controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(j),true,controller.getRoundController(),game);
+                controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(i),true,controller.getRoundController(),game);
                 clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
-                for(i=0;!controller.getRoundController().getRoundOrder().get(i).getNickname().equals(clientHandler.getUserNickname());i++);
                 if(i==numPlayers-1){
                             return;
                 }else
