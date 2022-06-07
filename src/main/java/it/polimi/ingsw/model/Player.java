@@ -7,6 +7,8 @@ import it.polimi.ingsw.client.ModelLight.LightTowerSpace;
 import it.polimi.ingsw.controller.PhaseTurn;
 
 import java.util.ArrayList;
+import java.util.Objects;
+
 public class Player {
     private String nickname;
     private boolean active;
@@ -70,6 +72,7 @@ public class Player {
             assistant.setStep(k);
             this.deckAssistant.add(assistant);
         }
+        this.currentAssistant=null;
             //collegamento a tower, dining and entrance
             this.entrance = new Entrance(game);
             this.diningRoom = new DiningRoom();
@@ -89,35 +92,30 @@ public class Player {
     }
     public boolean checkNumStepMotherNature(int num){
         boolean b;
-        if(currentAssistant.getStep()<num){
-            b=false;
-        }else{
-            b=true;
-        }
+        if (currentAssistant.getStep() >= num) b = true;
+        else b = false;
         return b;
     }
     // modifica UML: chooseCloud dovrebbe scegliere una nuvola  e spostare le pedine in entrance. quindi va fatto nella classe entrance.
     // public void chooseCloud(Cloud cloud){}//
-    public int useAssistant(Game game,Player player,AssistantCard currentAssistant) {
+    public int useAssistant(Game game,Player player,AssistantCard Assistant) {
         int i, contr = 0;
-        for (i = 0; i < game.getPlayers().size()&&contr==0; i++) {
-            if (game.getPlayers().get(i) != player) {
-                if (game.getPlayers().get(i).currentAssistant!=null && game.getPlayers().get(i).currentAssistant== player.currentAssistant) {
+        for (i = 0; (i < game.getPlayers().size()) && (contr == 0); i++) {
+            if (!Objects.equals(game.getPlayers().get(i).getNickname(), player.getNickname())) {
+                if ((game.getPlayers().get(i).currentAssistant != null) && Objects.equals(game.getPlayers().get(i).currentAssistant, Assistant)) {
                     contr = 2;
                 }
             }
         }
-        if (contr == 0) {
-            for (i = 0; i < player.deckAssistant.size() && contr == 0; i++) {
-                if (player.deckAssistant.size() == 1 || player.deckAssistant.get(i).getCardValue() == currentAssistant.getCardValue()) {
-                    player.setCurrentAssistant(currentAssistant);
+        if (contr==0) {
+            for (i = 0; (i < player.deckAssistant.size()) && (contr == 0); i++) {
+                if (player.deckAssistant.size() == 1 || player.deckAssistant.get(i).getCardValue() == Assistant.getCardValue()) {
+                    player.setCurrentAssistant(player.deckAssistant.get(i));
                     player.deckAssistant.remove(i);
                     contr = 1;
                 }
             }
         }
         return contr;
-    }
-    public void chooseNick(String nickname){
     }
 }

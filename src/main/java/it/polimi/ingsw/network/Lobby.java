@@ -230,30 +230,25 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     public synchronized void selectAssistantCard(int assistant, ClientHandler clientHandler) {
             int i;
             int contr = -1;
-            //POTREI METTERE UN CONTROLLO LATO SERVER MA NON SERVE DATO CHE C'è GIà LATO CLIENT NINO PER NINO
             i = findPlayer(game, clientHandler);
             contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant));
             if (contr == 0) {
-                clientHandler.sendObject(new WrongNotAssistantMessage());
+                clientHandler.sendObject(new WrongNotAssistantMessage(controller.getRoundController().getRoundOrder().get(i).getNickname()));
             } else if (contr == 1) {
-                if (i != numPlayers - 1) {
-                    controller.getRoundController().getTurnController().setCurrPlayer(controller.getRoundController().getRoundOrder().get(i + 1));
-                }
                 controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(i), true, controller.getRoundController(), game);
-                System.out.println("ciao");
-                if (Objects.equals(controller.getRoundController().getRoundOrder().get(numPlayers - 1).getNickname(), clientHandler.getUserNickname())) {
-                    System.out.println("eo");
-                    controller.getRoundController().newRoundOrder(game);
+                virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+                System.out.println("fatto");
+                if (Objects.equals(controller.getOrderNamePlayers().get(controller.getPlayers().size()-1), clientHandler.getUserNickname())) {
+                    System.out.println("fatto");
                     controller.setOrderNamePlayers(controller.getRoundController().getRoundOrder());
-                    virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
                     virtualView.sendBroadcast(new TurnOrderMessage(controller.getOrderNamePlayers()));
                     controller.startTurn(players.get(0));
                 } else {
-                    System.out.println("beee");
+
                     virtualView.sendBroadcast(new SetAssistantMessage(controller.getRoundController().getRoundOrder().get(i + 1).getNickname()));
                 }
             } else if (contr == 2) {
-                clientHandler.sendObject(new WrongSameAssistantMessage());
+                clientHandler.sendObject(new WrongSameAssistantMessage(controller.getRoundController().getRoundOrder().get(i).getNickname()));
             }
     }
 
@@ -269,7 +264,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
 
     public int findPlayer(Game game, ClientHandler clientHandler) {
         int i;
-        for (i = 0; i < namePlayer.size(); i++) {
+        for (i = 0; i < game.getPlayers().size(); i++) {
             if (Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname())) {
                 return i;
             }
@@ -356,12 +351,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             int i;
             i=findPlayer(game,clientHandler);
             if(i!=-1) {
-                if (Objects.equals(clientHandler.getUserNickname(), controller.getRoundController().getTurnController().getCurrPlayer().getNickname())) {
                     serverMessageMenager.ManageInputToServer(clientHandler, m);
-                    System.out.println("ciao,"+i);
-                } else {
-                    clientHandler.sendObject(new WrongTurnMessage());
-                }
             }else{
                 clientHandler.sendObject(new LobbyFullMessage());
                 clientHandler.closeConnect(clientHandler.getUserNickname());

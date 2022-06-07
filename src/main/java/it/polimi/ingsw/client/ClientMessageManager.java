@@ -66,6 +66,8 @@ public class ClientMessageManager {
         }else if(object instanceof Ping){
         }else if(object instanceof TurnOrderMessage){
             socketNetworkHandler.getView().turnOrder(((TurnOrderMessage) object).getPlayersOrder());
+        }else if(object instanceof WrongSameAssistantMessage){
+           // socketNetworkHandler.getView().
         }
         else throw new IllegalArgumentException();
     }
