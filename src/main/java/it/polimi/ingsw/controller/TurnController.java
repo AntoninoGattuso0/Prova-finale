@@ -17,11 +17,12 @@ public class TurnController {
     public PhaseTurn getPhase(){
         return this.currPlayer.getCurrentPhase();
     }
-    public void TurnOrder(RoundController roundController,Game game){
-        order=roundController.newRoundOrder(order,game);
+    public synchronized void TurnOrder(RoundController roundController,Game game){
+        roundController.newRoundOrder(game);
+        order=roundController.getRoundOrder();
     }
 
-    public void setPhaseTurn(Player player,boolean e,RoundController roundController,Game game){
+    public synchronized void setPhaseTurn(Player player,boolean e,RoundController roundController,Game game){
         if(player.getCurrentPhase()==PhaseTurn.USE_ASSISTANT&&e){
             if(Objects.equals(player.getNickname(), order.get(order.size()-1).getNickname())){
                 TurnOrder(roundController,game);

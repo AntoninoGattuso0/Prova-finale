@@ -1,6 +1,7 @@
 package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.controller.Controller;
+import it.polimi.ingsw.controller.PhaseTurn;
 import it.polimi.ingsw.controller.UserInput;
 import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.model.Game;
@@ -166,7 +167,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     }
 
     public void newGame(Game game) {
-        controller = new Controller(game, userInput, virtualView, players, clients);
+        controller = new Controller(game, userInput, virtualView, clients);
         controller.sendUpdate();
         controller.startRound();
     }
@@ -226,33 +227,37 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             numinsert = true;
         }
 
-    public void selectAssistantCard(int assistant, ClientHandler clientHandler) {
-        int i;
-        int contr = -1;
-        //POTREI METTERE UN CONTROLLO LATO SERVER MA NON SERVE DATO CHE C'è GIà LATO CLIENT NINO PER NINO
-                for (i=0;!Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname());i++);
-                    if (Objects.equals(game.getPlayers().get(i).getNickname(), clientHandler.getUserNickname())) {
-                        contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant));
-                    }
+    public synchronized void selectAssistantCard(int assistant, ClientHandler clientHandler) {
+            int i;
+            int contr = -1;
+            //POTREI METTERE UN CONTROLLO LATO SERVER MA NON SERVE DATO CHE C'è GIà LATO CLIENT NINO PER NINO
+            i = findPlayer(game, clientHandler);
+            contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant));
             if (contr == 0) {
                 clientHandler.sendObject(new WrongNotAssistantMessage());
             } else if (contr == 1) {
-                if(controller.getRoundController().getLastPlayer()!=controller.getRoundController().getRoundOrder().get(i))
-                controller.getRoundController().getTurnController().setCurrPlayer(controller.getRoundController().getRoundOrder().get(i+1));
-                controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(i),true,controller.getRoundController(),game);
-                clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
-                if(i==numPlayers-1){
-                            return;
-                }else
-                virtualView.sendBroadcast(new SetAssistantMessage(controller.getRoundController().getRoundOrder().get(i+1).getNickname()));
+                if (i != numPlayers - 1) {
+                    controller.getRoundController().getTurnController().setCurrPlayer(controller.getRoundController().getRoundOrder().get(i + 1));
+                }
+                controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(i), true, controller.getRoundController(), game);
+                System.out.println("ciao");
+                if (Objects.equals(controller.getRoundController().getRoundOrder().get(numPlayers - 1).getNickname(), clientHandler.getUserNickname())) {
+                    System.out.println("eo");
+                    controller.getRoundController().newRoundOrder(game);
+                    controller.setOrderNamePlayers(controller.getRoundController().getRoundOrder());
+                    virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+                    virtualView.sendBroadcast(new TurnOrderMessage(controller.getOrderNamePlayers()));
+                    controller.startTurn(players.get(0));
+                } else {
+                    System.out.println("beee");
+                    virtualView.sendBroadcast(new SetAssistantMessage(controller.getRoundController().getRoundOrder().get(i + 1).getNickname()));
+                }
             } else if (contr == 2) {
                 clientHandler.sendObject(new WrongSameAssistantMessage());
             }
     }
 
-    public void useCharacter(int num, int numberPawn, int numIsland, ArrayList<ColorPawn> colorPawn, ClientHandler clientHandler) {
-        int i;
-        int c;
+    public synchronized void useCharacter(int num, int numberPawn, int numIsland, ArrayList<ColorPawn> colorPawn, ClientHandler clientHandler) {
         Island island = null;
         if (numIsland != -1) {
             island = game.getIslands().get(numIsland);
@@ -272,56 +277,62 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         return i = -1;
     }
 
-    public void selectCloud(int cloud, ClientHandler clientHandler) {
-        int i;
-        game.getPlayers().get(findPlayer(game, clientHandler)).getEntrance().chooseCloud(game.getClouds().get(cloud), game, game.getPlayers().get(findPlayer(game, clientHandler)));
-        controller.getRoundController().setExeChooseCloud(true);
-        clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+    public synchronized void selectCloud(int cloud, ClientHandler clientHandler) {
+        if(game.getPlayers().get(findPlayer(game,clientHandler)).getCurrentPhase()==PhaseTurn.CHOOSE_CLOUD) {
+            game.getPlayers().get(findPlayer(game, clientHandler)).getEntrance().chooseCloud(game.getClouds().get(cloud), game, game.getPlayers().get(findPlayer(game, clientHandler)));
+            controller.getRoundController().setExeChooseCloud(true);
+            controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(findPlayer(game, clientHandler)), true, controller.getRoundController(), game);
+            controller.startTurn(game.getPlayers().get(findPlayer(game, clientHandler)));
+            virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+        }else{
+            clientHandler.sendObject(new WrongTurnMessage());
+        }
 
     }
-    public void moveMotherNature(int island, ClientHandler clientHandler) {
-        Island island1 = game.getIslands().get(island);
-        game.moveMotherNature(island1);
-        controller.getRoundController().setExeMoveMotherNature(true);
-        clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
-
+    public synchronized void moveMotherNature(int island, ClientHandler clientHandler) {
+        if(game.getPlayers().get(findPlayer(game,clientHandler)).getCurrentPhase()== PhaseTurn.MOVE_MOTHER_NATURE) {
+            game.getPlayers().get(findPlayer(game, clientHandler));
+            Island island1 = game.getIslands().get(island);
+            game.moveMotherNature(island1);
+            controller.getRoundController().setExeMoveMotherNature(true);
+            controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(findPlayer(game,clientHandler)),true,controller.getRoundController(),game);
+            controller.startTurn(game.getPlayers().get(findPlayer(game,clientHandler)));
+            virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+        }else{
+            clientHandler.sendObject(new WrongTurnMessage());
+        }
     }
 
-    public void movePawnToDining(int numPawn, ArrayList<ColorPawn> arrayPawn, ClientHandler clientHandler) {
+    public synchronized void movePawnToDining(int numPawn, ArrayList<ColorPawn> arrayPawn, ClientHandler clientHandler) {
         int i;
-        int numplayer = findPlayer(game, clientHandler);
-        for (i = 0; i < numPawn; i++) {
-            game.getPlayers().get(numplayer).getDiningRoom().addPawnToDiningRoom(arrayPawn.get(i), game.getPlayers().get(numplayer), game);
-        }
-        clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
-        numPawnExe=numPawnExe+numPawn;
-        if(numPlayers==2||numPlayers==4){
-            if(numPawnExe==3){
-                controller.getRoundController().setExeMoveStudent(true);
-                numPawnExe=0;
-            }else{
-                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));
+        int numPlayer = findPlayer(game, clientHandler);
+        if(game.getPlayers().get(numPlayer).getCurrentPhase()==PhaseTurn.MOVE_STUDENT) {
+            for (i = 0; i < numPawn; i++) {
+                game.getPlayers().get(numPlayer).getDiningRoom().addPawnToDiningRoom(arrayPawn.get(i), game.getPlayers().get(numPlayer), game);
             }
-        } else if(numPlayers==3) {
-            if(numPawnExe==4) {
-                controller.getRoundController().setExeMoveStudent(true);
-                numPawnExe=0;
-            }else {
-                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));
-            }
+            clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+            movement(numPawn, clientHandler, numPlayer);
+        }else{
+            clientHandler.sendObject(new WrongTurnMessage());
         }
-        }
-    public void movePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn, ClientHandler clientHandler) {
+    }
+    public synchronized void movePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn, ClientHandler clientHandler) {
         int numPlayer = findPlayer(game, clientHandler);
         int i;
         for (i = 0; i < numPawn; i++) {
             game.getPlayers().get(numPlayer).getEntrance().movePawnToIsland(arrayPawn.get(i), game.getIslands().get(island), game);
         }
-        clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+        virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+        movement(numPawn, clientHandler, numPlayer);
+    }
+
+    public synchronized void movement(int numPawn, ClientHandler clientHandler, int numPlayer) {
         numPawnExe=numPawnExe+numPawn;
         if(numPlayers==2||numPlayers==4){
             if(numPawnExe==3){
                 controller.getRoundController().setExeMoveStudent(true);
+                controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(numPlayer),true,controller.getRoundController(),game);
+                controller.startTurn(game.getPlayers().get(numPlayer));
                 numPawnExe=0;
             }else{
                 clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));
@@ -329,6 +340,8 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         } else if(numPlayers==3) {
             if (numPawnExe == 4) {
                 controller.getRoundController().setExeMoveStudent(true);
+                controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(numPlayer),true,controller.getRoundController(),game);
+                controller.startTurn(game.getPlayers().get(numPlayer));
                 numPawnExe=0;
             }else{
                 clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));
@@ -345,6 +358,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             if(i!=-1) {
                 if (Objects.equals(clientHandler.getUserNickname(), controller.getRoundController().getTurnController().getCurrPlayer().getNickname())) {
                     serverMessageMenager.ManageInputToServer(clientHandler, m);
+                    System.out.println("ciao,"+i);
                 } else {
                     clientHandler.sendObject(new WrongTurnMessage());
                 }

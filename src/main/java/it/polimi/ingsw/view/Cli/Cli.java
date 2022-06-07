@@ -1065,16 +1065,13 @@ public class Cli implements Runnable, View {
                 for (j = 0; j < lightGame.getPlayers().get(i).getDeckAssistant().size(); j++) {
                     if (lightGame.getPlayers().get(i).getDeckAssistant().get(j).getCardValue() == numAssistant) {
                         check = true;
-                        System.out.println("ciao");
-                        j = lightGame.getPlayers().get(i).getDeckAssistant().size();
+                        j = lightGame.getPlayers().get(i).getDeckAssistant().size()+2;
                     }
                 }
             }
-                System.out.println("ciao");
                 socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(numAssistant));
-                orderPlayer.remove(0);
             }else{
-                System.out.println(orderPlayer.get(0) + " sta scegliendo l'AssistantCard");
+                System.out.println(nickname + " sta scegliendo l'AssistantCard");
             }
         }
     public int convertStringToNumber(String num){

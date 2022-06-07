@@ -13,9 +13,6 @@ public class ClientMessageManager {
     }
 
     public void manageInputToClient(Object object, SocketNetworkHandler socketNetworkHandler) throws InterruptedException {
-        if (object instanceof Ping) {
-            return;
-        }
         if (object instanceof WaitMessage) {
             socketNetworkHandler.getView().waitOtherPlayers();
         } else if (object instanceof StartTurnMessage) {
