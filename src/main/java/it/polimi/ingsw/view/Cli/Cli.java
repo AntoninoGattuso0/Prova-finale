@@ -258,7 +258,7 @@ public class Cli implements Runnable, View {
 
     @Override
     public void newGameStart(){
-        System.out.println("Siete tutti in lobby. il Game inizia!");
+        System.out.println("Siete tutti in lobby. Il Game inizia!");
         displayAll();
         if(lightGame.getNumPlayers()==2||lightGame.getNumPlayers()==4){
             pedineDaSpostare=3;
@@ -1008,13 +1008,14 @@ public class Cli implements Runnable, View {
 
     @Override
     public void turnOrder(ArrayList<String> orderNamePlayers){
+        out.println(ColorCli.RESET);
         out.println("L'ordine dei giocatori per questo round è: ");
         for(int i = 0; i<orderNamePlayers.size(); i++){
             out.println((i+1) + ") " + orderNamePlayers.get(i));
         }
     }
     @Override
-    public void displayTurn() {
+    public void displayStartTurn() {
         out.println("È il tuo turno! Puoi fare le tue mosse:");
     }
 
@@ -1060,8 +1061,8 @@ public class Cli implements Runnable, View {
             for (i = 0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++) ;
             displayAssistantCard(i);
             boolean check = false;
+            out.println("Scegli uno degli Assistenti presenti: ");
             while (!check) {
-                out.println("Scegli uno degli Assistenti presenti: ");
                 String assistant = null;
                 try {
                     assistant = readLine();
@@ -1070,18 +1071,33 @@ public class Cli implements Runnable, View {
                     e.printStackTrace();
                 }
                 int j;
-                for (j = 0; j < lightGame.getPlayers().get(i).getDeckAssistant().size()&&!check; j++) {
+                boolean check1 = false;
+                for (j = 0; j < lightGame.getPlayers().get(i).getDeckAssistant().size() && !check1; j++) {
                     if (lightGame.getPlayers().get(i).getDeckAssistant().get(j).getCardValue() == numAssistant) {
-                        check = true;
+                        check1 = true;
                     }
                 }
-            }
-            System.out.println(numAssistant);
-                socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(numAssistant));
-            }else{
-                System.out.println(nickname + " sta scegliendo l'AssistantCard");
+                boolean check2 = false;
+                if(check1) {
+                    check2 = true;
+                    for (j = 0; j < lightGame.getPlayers().size() && check2; j++) {
+                        if (!Objects.equals(lightGame.getPlayers().get(i).getNickname(), lightGame.getPlayers().get(j).getNickname())) {
+                            if ((lightGame.getPlayers().get(j).getCurrentAssistant() != null) && Objects.equals(lightGame.getPlayers().get(i).getCurrentAssistant(), lightGame.getPlayers().get(j).getCurrentAssistant()) && (lightGame.getPlayers().get(i).getDeckAssistant().size() > 1)) {
+                                check2 = false;
+                            }
+                            System.out.println(numAssistant);
+                            socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(numAssistant));
+                        } else {
+                            System.out.println(nickname + " sta scegliendo l'AssistantCard");
+                        }
+                    }
+                }
+                check = check1 && check2;
+                if(!check)
+                    out.println("Assistente errato o già utilizzato, inserisci un numero valido: ");
             }
         }
+    }
     public int convertStringToNumber(String num){
         int c=-1;
         if(Objects.equals(num, "0")){

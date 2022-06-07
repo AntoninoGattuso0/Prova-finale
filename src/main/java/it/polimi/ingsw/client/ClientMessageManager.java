@@ -16,7 +16,7 @@ public class ClientMessageManager {
         if (object instanceof WaitMessage) {
             socketNetworkHandler.getView().waitOtherPlayers();
         } else if (object instanceof StartTurnMessage) {
-            socketNetworkHandler.getView().displayTurn();
+            socketNetworkHandler.getView().displayStartTurn();
         } else if (object instanceof SetNumPlayersIsExpertMessage) {
             socketNetworkHandler.getView().requestNumPlayersIsExpert();
         } else if (object instanceof SetNickMessage) {

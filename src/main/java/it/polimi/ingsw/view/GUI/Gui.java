@@ -116,7 +116,7 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public void displayTurn() {
+    public void displayStartTurn() {
 
     }
 

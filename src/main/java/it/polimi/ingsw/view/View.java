@@ -44,7 +44,7 @@ public interface View {
 
     void displayWrongTurn();
 
-    void displayTurn();
+    void displayStartTurn();
 
     void displayResponseMessage();
 
