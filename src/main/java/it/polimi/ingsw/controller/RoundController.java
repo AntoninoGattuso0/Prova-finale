@@ -78,19 +78,27 @@ public class RoundController {
     public ArrayList<Player> getRoundOrder() {
         return roundOrder;
     }
-    public synchronized void newRoundOrder(Game game) {
+    public synchronized ArrayList<Player> newRoundOrder(Game game) {
         int i, j, w;
+        ArrayList<Player> tempArray= new ArrayList<>(game.getTotPlayer());
         for (i = 0; i < game.getPlayers().size(); i++) {
             w = 0;
             for (j = 0; j < game.getPlayers().size(); j++) {
-                if ( (j!=i) && game.getPlayers().get(i).getCurrentAssistant().getCardValue() > game.getPlayers().get(j).getCurrentAssistant().getCardValue()) {
+                if ((j != i) && (game.getPlayers().get(i).getCurrentAssistant().getCardValue() > game.getPlayers().get(j).getCurrentAssistant().getCardValue())) {
                     w++;
                 }
             }
-            roundOrder.add(w,game.getPlayers().get(i));
-            if(w==game.getTotPlayer()-1){
-                lastPlayer=game.getPlayers().get(i);
+            if(tempArray.size()==0){
+                int k;
+                for(k=0;k<game.getPlayers().size();k++)
+                tempArray.add(k,game.getPlayers().get(i));
+            }
+            tempArray.set(w, game.getPlayers().get(i));
+            if ((game.getTotPlayer() - 1) == w) {
+                this.lastPlayer = game.getPlayers().get(i);
             }
         }
+        this.roundOrder=tempArray;
+        return roundOrder;
     }
 }

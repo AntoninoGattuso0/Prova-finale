@@ -104,8 +104,9 @@ public class Controller {
         this.players = players;
     }
     public void setOrderNamePlayers(ArrayList<Player> players){
+        orderNamePlayers.clear();
         for (int i = 0; i < players.size(); i++) {
-            orderNamePlayers.add(players.get(i).getNickname());
+           orderNamePlayers.add(players.get(i).getNickname());
         }
     }
     public ArrayList<String> getOrderNamePlayers() {

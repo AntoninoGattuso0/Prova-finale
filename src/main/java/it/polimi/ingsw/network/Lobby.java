@@ -237,7 +237,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             } else if (contr == 1) {
                 virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
                 if (Objects.equals(controller.getOrderNamePlayers().get(game.getTotPlayer()-1), clientHandler.getUserNickname())) {
-                    controller.getRoundController().getTurnController().TurnOrder(controller.getRoundController(),game);
+                   players= controller.getRoundController().getTurnController().TurnOrder(controller.getRoundController(),game);
                     controller.setOrderNamePlayers(controller.getRoundController().getRoundOrder());
                     virtualView.sendBroadcast(new TurnOrderMessage(controller.getOrderNamePlayers()));
                     controller.startTurn(players.get(0));

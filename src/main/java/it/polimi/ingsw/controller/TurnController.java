@@ -16,9 +16,9 @@ public class TurnController {
     public PhaseTurn getPhase(){
         return this.currPlayer.getCurrentPhase();
     }
-    public synchronized void TurnOrder(RoundController roundController,Game game){
-        roundController.newRoundOrder(game);
-        order=roundController.getRoundOrder();
+    public synchronized ArrayList<Player> TurnOrder(RoundController roundController,Game game){
+       order= roundController.newRoundOrder(game);
+       return order;
     }
 
     public synchronized void setPhaseTurn(Player player,boolean e,RoundController roundController,Game game){
