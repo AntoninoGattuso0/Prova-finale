@@ -231,29 +231,22 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             int i;
             int contr = -1;
             i = findPlayer(game, clientHandler);
-        System.out.println(i);
             contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant-1));
             if (contr == 0) {
-                System.out.println("yee0");
                 clientHandler.sendObject(new WrongNotAssistantMessage(controller.getRoundController().getRoundOrder().get(i).getNickname()));
             } else if (contr == 1) {
-
-                controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(i), true, controller.getRoundController(), game);
                 virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
                 if (Objects.equals(controller.getOrderNamePlayers().get(game.getTotPlayer()-1), clientHandler.getUserNickname())) {
-                    System.out.println("yee");
+                    controller.getRoundController().getTurnController().TurnOrder(controller.getRoundController(),game);
                     controller.setOrderNamePlayers(controller.getRoundController().getRoundOrder());
                     virtualView.sendBroadcast(new TurnOrderMessage(controller.getOrderNamePlayers()));
                     controller.startTurn(players.get(0));
                 } else {
-                    System.out.println("ciaooooo");
                     virtualView.sendBroadcast(new SetAssistantMessage(controller.getRoundController().getRoundOrder().get(i + 1).getNickname()));
                 }
             } else if (contr == 2) {
-                System.out.println("yee2");
                 clientHandler.sendObject(new WrongSameAssistantMessage(controller.getRoundController().getRoundOrder().get(i).getNickname()));
             }
-        System.out.println(contr);
     }
 
     public synchronized void useCharacter(int num, int numberPawn, int numIsland, ArrayList<ColorPawn> colorPawn, ClientHandler clientHandler) {
