@@ -79,11 +79,11 @@ public class RoundController {
         return roundOrder;
     }
     public synchronized void newRoundOrder(Game game) {
-        int i, j, k, w;
+        int i, j, w;
         for (i = 0; i < game.getPlayers().size(); i++) {
             w = 0;
             for (j = 0; j < game.getPlayers().size(); j++) {
-                if (j !=i && game.getPlayers().get(i).getCurrentAssistant().getCardValue() > game.getPlayers().get(j).getCurrentAssistant().getCardValue()) {
+                if ( (j!=i) && game.getPlayers().get(i).getCurrentAssistant().getCardValue() > game.getPlayers().get(j).getCurrentAssistant().getCardValue()) {
                     w++;
                 }
             }

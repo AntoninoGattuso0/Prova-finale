@@ -122,7 +122,6 @@ public class Controller {
         int i;
         for (i = 0; i < players.size(); i++) {
             game.getPlayers().get(i).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
-            roundController.setExeAssistantPhase(game.getPlayers().get(i).getNickname());
         }
         virtualView.sendBroadcast(new SetAssistantMessage(players.get(0).getNickname()));
     }

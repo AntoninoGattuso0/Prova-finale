@@ -1062,13 +1062,13 @@ public class Cli implements Runnable, View {
                     e.printStackTrace();
                 }
                 int j;
-                for (j = 0; j < lightGame.getPlayers().get(i).getDeckAssistant().size(); j++) {
+                for (j = 0; j < lightGame.getPlayers().get(i).getDeckAssistant().size()&&!check; j++) {
                     if (lightGame.getPlayers().get(i).getDeckAssistant().get(j).getCardValue() == numAssistant) {
                         check = true;
-                        j = lightGame.getPlayers().get(i).getDeckAssistant().size()+2;
                     }
                 }
             }
+            System.out.println(numAssistant);
                 socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(numAssistant));
             }else{
                 System.out.println(nickname + " sta scegliendo l'AssistantCard");

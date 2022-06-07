@@ -100,20 +100,20 @@ public class Player {
     // public void chooseCloud(Cloud cloud){}//
     public int useAssistant(Game game,Player player,AssistantCard Assistant) {
         int i, contr = 0;
-        for (i = 0; (i < game.getPlayers().size()) && (contr == 0); i++) {
+        for (i = 0; i < game.getPlayers().size(); i++) {
             if (!Objects.equals(game.getPlayers().get(i).getNickname(), player.getNickname())) {
-                if ((game.getPlayers().get(i).currentAssistant != null) && Objects.equals(game.getPlayers().get(i).currentAssistant, Assistant)) {
+                if ((game.getPlayers().get(i).currentAssistant != null) && Objects.equals(game.getPlayers().get(i).currentAssistant, Assistant) && (player.deckAssistant.size()>1)) {
                     contr = 2;
+                    return contr;
                 }
             }
         }
-        if (contr==0) {
-            for (i = 0; (i < player.deckAssistant.size()) && (contr == 0); i++) {
-                if (player.deckAssistant.size() == 1 || player.deckAssistant.get(i).getCardValue() == Assistant.getCardValue()) {
-                    player.setCurrentAssistant(player.deckAssistant.get(i));
-                    player.deckAssistant.remove(i);
-                    contr = 1;
-                }
+        for (i = 0; i < player.deckAssistant.size(); i++) {
+            if (player.deckAssistant.size() == 1 || player.deckAssistant.get(i).getCardValue() == Assistant.getCardValue()) {
+                player.setCurrentAssistant(player.deckAssistant.get(i));
+                player.deckAssistant.remove(i);
+                contr = 1;
+                return contr;
             }
         }
         return contr;

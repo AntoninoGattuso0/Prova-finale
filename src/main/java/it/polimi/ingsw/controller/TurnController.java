@@ -27,6 +27,7 @@ public class TurnController {
             if(Objects.equals(player.getNickname(), order.get(order.size()-1).getNickname())){
                 TurnOrder(roundController,game);
             }
+            roundController.setExeAssistantPhase(player.getNickname());
             player.setCurrentPhase(PhaseTurn.MOVE_STUDENT);
         } else if(player.getCurrentPhase()==PhaseTurn.MOVE_MOTHER_NATURE&&e){
             player.setCurrentPhase(PhaseTurn.CHOOSE_CLOUD);
