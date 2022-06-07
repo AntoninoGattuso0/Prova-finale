@@ -327,11 +327,17 @@ public class Cli implements Runnable, View {
         clearCli();
         int i;
         for (i = 0; i < lightGame.getPlayers().get(player).getDeckAssistant().size(); i++) {
-            out.println(ColorCli.BOLDCYAN + "| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "         |");
-            out.println(ColorCli.BOLDCYAN + "| MN steps: " + ColorCli.GREEN + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getStep() + ColorCli.BOLDCYAN + "           |");
-            out.println(ColorCli.BOLDCYAN + "+-----------------------+");
+            if (lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() == 10) {
+                out.println(ColorCli.BOLDCYAN + "| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "        |");
+                out.println(ColorCli.BOLDCYAN + "| MN steps: " + ColorCli.GREEN + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getStep() + ColorCli.BOLDCYAN + "           |");
+                out.println(ColorCli.BOLDCYAN + "+-----------------------+");
+            } else {
+                out.println(ColorCli.BOLDCYAN + "| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "         |");
+                out.println(ColorCli.BOLDCYAN + "| MN steps: " + ColorCli.GREEN + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getStep() + ColorCli.BOLDCYAN + "           |");
+                out.println(ColorCli.BOLDCYAN + "+-----------------------+");
+            }
+            out.println("");
         }
-        out.println("");
     }
 
     @Override
@@ -1002,8 +1008,10 @@ public class Cli implements Runnable, View {
 
     @Override
     public void turnOrder(ArrayList<String> orderNamePlayers){
-        orderPlayer=orderNamePlayers;
-        //Funzione che stampa al player l'ordine di turno (ese: l'ordine di turno è: paolo, antonino, rebeca)
+        out.println("L'ordine dei giocatori per questo round è: ");
+        for(int i = 0; i<orderNamePlayers.size(); i++){
+            out.println((i+1) + ") " + orderNamePlayers.get(i));
+        }
     }
     @Override
     public void displayTurn() {
