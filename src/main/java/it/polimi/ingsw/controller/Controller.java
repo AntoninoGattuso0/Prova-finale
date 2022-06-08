@@ -91,7 +91,7 @@ public class Controller {
     }
 
     public void updateThisPlayersLight() {
-        for (Player player : game.getPlayers()) {
+        for (Player player : players) {
             PhaseTurn phaseTurn = player.getCurrentPhase();
             LightDiningRoom lightDining = new LightDiningRoom(player.getDiningRoom().getNumBlue(), player.getDiningRoom().getNumGreen(), player.getDiningRoom().getNumPink(), player.getDiningRoom().getNumRed(), player.getDiningRoom().getNumYellow());
             LightTowerSpace lightTowerSpace = new LightTowerSpace(player.getTowerSpace().getColorTower(), player.getTowerSpace().getNumTower());
@@ -138,7 +138,8 @@ public class Controller {
         } else if (player.getCurrentPhase() == PhaseTurn.CHOOSE_CLOUD) {
             virtualView.sendBroadcast( new SetCloudMessage(player.getNickname()));
         } else if (player.getCurrentPhase() == PhaseTurn.END_TURN) {
-            virtualView.sendBroadcast( new EndTurnMessage());
+            updateThisPlayersLight();
+            virtualView.sendBroadcast( new EndTurnMessage(playersLight,player.getNickname()));
         }
     }
 }

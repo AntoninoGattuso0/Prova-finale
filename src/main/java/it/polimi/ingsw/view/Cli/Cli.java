@@ -139,34 +139,45 @@ public class Cli implements Runnable, View {
 
     @Override
     public void requestMovePawn(String nickname,int numPawnMoved){
-        pedineDaSpostare=pedineDaSpostare-numPawnMoved;//pedine che rimangono da spostare
+        if(Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
+            displayIslands();
+            displaySchoolBoard();
+            pedineDaSpostare = pedineDaSpostare - numPawnMoved;//pedine che rimangono da spostare
             out.println("Digita 1 per usare una Character Card");
             out.println("Digita 2 per spostare delle pedine verso la DiningRoom");
             out.println("Digita 1 per spostare delle pedine verso un'Isola");
             int scelta = scanner.nextInt();
-            while(scelta < 0 || scelta > 3) {
+            while (scelta < 0 || scelta > 3) {
                 out.println("Numero Errato!");
                 out.println("Digita 1 per usare una Character Card");
                 out.println("Digita 2 per spostare delle pedine verso la DiningRoom");
-                out.println("Digita 1 per spostare delle pedine verso un'Isola");
+                out.println("Digita 3 per spostare delle pedine verso un'Isola");
                 scelta = scanner.nextInt();
             }
-            if(scelta == 1) requestCharacterCard(nickname);
-            else if(scelta == 2) requestMovePawnToDiningRoom(pedineDaSpostare);//mando in ingresso il numero di pedine così controlli il numero che ti da in ingresso
-            else if(scelta == 3) requestMovePawnToIsland(pedineDaSpostare);
-            pedineDaSpostare=numPawnMove;
+            if (scelta == 1) requestCharacterCard(nickname);
+            else if (scelta == 2)
+                requestMovePawnToDiningRoom(pedineDaSpostare);//mando in ingresso il numero di pedine così controlli il numero che ti da in ingresso
+            else if (scelta == 3) requestMovePawnToIsland(pedineDaSpostare);
+            pedineDaSpostare = numPawnMove;
+        }else{
+            System.out.println(nickname+" sta spostando le pedine");
+        }
     }
 
     @Override
     public void requestMovePawnToDiningRoom(int pedineDaSpostare) {
-        out.println("Quante pedine vuoi spostare verso la DiningRoom?");// va fatto il controllo sul numero di pedine possibili da spostare
+        out.println("Quante pedine vuoi spostare verso la DiningRoom? puoi spostare fino a " + pedineDaSpostare +" pedine.");// va fatto il controllo sul numero di pedine possibili da spostare
         int numDining = scanner.nextInt();
+        while(numDining<1||numDining>pedineDaSpostare){
+            out.println("stai cercando di spostare più pedine di quante sono consentite. inserisci un numero valido");
+            numDining= scanner.nextInt();
+        }
         out.println("Sposterai " + numDining + " pedine verso la DiningRoom");
         out.println("");
         ArrayList<ColorPawn> colori = new ArrayList<>();
         ColorPawn nomeColore = null;
         int i;
-        for(i = 0; i<lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(actualPlayer)); i++);
+        for(i = 0; i<lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(socketNetworkHandler.getNicknameThisPlayer())); i++);
         int player = i;
         for (i = 0; i < numDining; i++) {
             out.print("Scegli la pedina numero " + (i + 1) + " da spostare nella DiningRoom");
@@ -204,8 +215,12 @@ public class Cli implements Runnable, View {
 
     @Override
     public void requestMovePawnToIsland(int pedineDaSpostare) {
-        out.println("Quante pedine vuoi spostare verso un'Isola?");// serve il controllo sulle pedine possibili da spostare (pedinedaspostate)
+        out.println("Quante pedine vuoi spostare verso un'Isola? puoi spostare fino a" + pedineDaSpostare +"pedine.");// serve il controllo sulle pedine possibili da spostare (pedinedaspostate)
         int numPawn = scanner.nextInt();
+        while (numPawn<1||numPawn>pedineDaSpostare){
+            out.println("stai cercando di spostare più pedine di quante sono consentite. inserisci un numero valido");
+            numPawn=scanner.nextInt();
+        }
         out.println("Verso quale isola vuoi spostarle? ");
         int numIsland = scanner.nextInt();
         while(numIsland<0 || numIsland>lightGame.getIslands().size()+1){
@@ -217,7 +232,7 @@ public class Cli implements Runnable, View {
         ArrayList<ColorPawn> colori = new ArrayList<>();
         ColorPawn nomeColore = null;
         int i;
-        for(i = 0; i<lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(actualPlayer)); i++);
+        for(i = 0; i<lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(socketNetworkHandler.getNicknameThisPlayer())); i++);
         int player = i;
         for (i = 0; i < numPawn; i++) {
             out.print("Scegli la pedina numero " + (i + 1) + " da spostare sull'Isola numero " + numIsland);
@@ -250,7 +265,6 @@ public class Cli implements Runnable, View {
             out.println("Hai scelto correttamente una pedina, ne rimangono: " + (i + 1) + "/" + numPawn);
         }
         socketNetworkHandler.sendMessage(new MovePawnToIslandMessage(numIsland, numPawn, colori));
-        out.println("");
     }
 
 
@@ -459,9 +473,9 @@ public class Cli implements Runnable, View {
             while(m < 10){
                 schoolBoard.append(ColorCli.GREEN).append("  ◌");
                 m++;
-            }
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,0, i)).append(ColorCli.BOLDCYAN).append(" |");
-
+            }//questa funzione è da modificare: consiglio di passare in ingresso il player (lightgame.getplayers.get(i)) al posto del terzo parametro e "checkare su quello"
+            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,0,-1 )).append(ColorCli.BOLDCYAN).append(" |");
+            //si potrebbe anche sostituire il lightgame direttamente con lightgame.getproftable(). NINO
             int j = lightGame.getPlayers().get(i).getTowerSpace().getNumTower();
             schoolBoard.append(color4TowerSpace(i, j));
             j = lightGame.getPlayers().get(i).getTowerSpace().getNumTower() - 2;
@@ -1042,14 +1056,18 @@ public class Cli implements Runnable, View {
 
     @Override
     public void selectCloud(String nickname) {
-        displayCloud();
-        out.println("Scegli una delle nuvole presenti: ");
-        int cloud = scanner.nextInt();
-        while(cloud<1 || cloud > (lightGame.getClouds().size() + 1) || lightGame.getClouds().get(cloud - 1).getNumPawn() == 0){
-            out.println("Numero nuvola errato OPPURE Nuvola Vuota. Inserisci un numero valido: ");
-            cloud = scanner.nextInt();
+        if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
+            displayCloud();
+            out.println("Scegli una delle nuvole presenti: ");
+            int cloud = scanner.nextInt();
+            while (cloud < 1 || cloud > (lightGame.getClouds().size() + 1) || lightGame.getClouds().get(cloud - 1).getNumPawn() == 0) {
+                out.println("Numero nuvola errato OPPURE Nuvola Vuota. Inserisci un numero valido: ");
+                cloud = scanner.nextInt();
+            }
+            socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloud - 1)); //Penso sia carino che scelga le cloud partendo da 1 e non da 0
+        }else{
+            out.println(nickname +" sta scegliendo la cloud");
         }
-        socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloud - 1)); //Penso sia carino che scelga le cloud partendo da 1 e non da 0
     }
     @Override
     public void selectAssistantCard(String nickname) {
@@ -1141,13 +1159,18 @@ public class Cli implements Runnable, View {
 
     @Override
     public void requestMoveMotherNature(String nickname) {
-        out.println("Inserisci i passi da far fare a Madre Natura: ");
-        //dunque dovrei capire come trovare il giocatore che vuole muovere MN, per ora ho messo 2 a caso ma non saprei
-        int step = scanner.nextInt();
-        while (step <= 0 || step > lightGame.getPlayers().get(2).getCurrentAssistant().getStep()) {
-            out.println("Numero Errato! Inserisci i passi da far fare a Madre Natura: ");
-            step = scanner.nextInt();
+        if(Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
+            int i;
+            for (i = 0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++) ;
+            out.println("Inserisci i passi da far fare a Madre Natura: puoi inserire massimo "+ lightGame.getPlayers().get(i).getCurrentAssistant().getStep() +" step");
+            int step = scanner.nextInt();
+            while (step < 1 || step > lightGame.getPlayers().get(i).getCurrentAssistant().getStep()) {
+                out.println("Numero Errato! Inserisci i passi da far fare a Madre Natura. Massimo di step" +lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
+                step = scanner.nextInt();
+            }
             socketNetworkHandler.sendMessage(new MoveMotherNatureMessage(step));
+        }else{
+            System.out.println(nickname+" sta spostando madre natura");
         }
     }
 

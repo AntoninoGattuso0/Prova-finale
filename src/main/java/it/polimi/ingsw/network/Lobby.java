@@ -272,10 +272,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     public synchronized void selectCloud(int cloud, ClientHandler clientHandler) {
         if(game.getPlayers().get(findPlayer(game,clientHandler)).getCurrentPhase()==PhaseTurn.CHOOSE_CLOUD) {
             game.getPlayers().get(findPlayer(game, clientHandler)).getEntrance().chooseCloud(game.getClouds().get(cloud), game, game.getPlayers().get(findPlayer(game, clientHandler)));
-            controller.getRoundController().setExeChooseCloud(true);
-            controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(findPlayer(game, clientHandler)), true, controller.getRoundController(), game);
-            controller.startTurn(game.getPlayers().get(findPlayer(game, clientHandler)));
+            game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.END_TURN);
             virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+            controller.startTurn(game.getPlayers().get(findPlayer(game, clientHandler)));
         }else{
             clientHandler.sendObject(new WrongTurnMessage());
         }
@@ -286,10 +285,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             game.getPlayers().get(findPlayer(game, clientHandler));
             Island island1 = game.getIslands().get(island);
             game.moveMotherNature(island1);
-            controller.getRoundController().setExeMoveMotherNature(true);
-            controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(findPlayer(game,clientHandler)),true,controller.getRoundController(),game);
-            controller.startTurn(game.getPlayers().get(findPlayer(game,clientHandler)));
             virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+            game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.CHOOSE_CLOUD);
+            controller.startTurn(game.getPlayers().get(findPlayer(game,clientHandler)));
         }else{
             clientHandler.sendObject(new WrongTurnMessage());
         }
@@ -311,11 +309,15 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     public synchronized void movePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn, ClientHandler clientHandler) {
         int numPlayer = findPlayer(game, clientHandler); //questa funzione è praticamente la "copia" parallela della funzione sopra, solo che sposta le pedine verso una specifica isola
         int i;
-        for (i = 0; i < numPawn; i++) {
-            game.getPlayers().get(numPlayer).getEntrance().movePawnToIsland(arrayPawn.get(i), game.getIslands().get(island), game);
+        if(game.getPlayers().get(numPlayer).getCurrentPhase()==PhaseTurn.MOVE_STUDENT) {
+            for (i = 0; i < numPawn; i++) {
+                game.getPlayers().get(numPlayer).getEntrance().movePawnToIsland(arrayPawn.get(i), game.getIslands().get(island), game);
+            }
+            virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+            movement(numPawn, clientHandler, numPlayer);
+        }else{
+            clientHandler.sendObject(new WrongTurnMessage());
         }
-        virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
-        movement(numPawn, clientHandler, numPlayer);
     }
 
     public synchronized void movement(int numPawn, ClientHandler clientHandler, int numPlayer) {

@@ -3,9 +3,10 @@ package it.polimi.ingsw.network.Message.ClientToServer;
 import it.polimi.ingsw.model.ColorPawn;
 
 import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MovePawnToIslandMessage extends ClientToServer {
+public class MovePawnToIslandMessage extends ClientToServer implements Serializable{
     @Serial
     private static final long serialVersionUID = 8736574405034849035L;
     public final int island;

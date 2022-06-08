@@ -109,8 +109,6 @@ public class RoundController {
                     w++;
                 }
             }
-            if (tempArray.get(w).getCurrentAssistant().equals(game.getPlayers().get(i).getCurrentAssistant()) && w < game.getTotPlayer() - 1)
-                w++;
             tempArray.set(w, game.getPlayers().get(i));
             if ((game.getTotPlayer() - 1) == w) {
                 this.lastPlayer = game.getPlayers().get(i);

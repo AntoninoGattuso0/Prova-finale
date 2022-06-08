@@ -49,7 +49,7 @@ public class ClientMessageManager {
             // socketNetworkHandler.getView().
         } /*else if (object instanceof EndGameMessage) {
            //socketNetworkHandler.getView().
-        }*/ else if (object instanceof EndTurnMessage) {
+        }*/ else if (object instanceof EndTurnMessage) {//dice a tutti che il turno di "giocatore che gioca" è finito e che tocca a "giocatore successivo"
           // socketNetworkHandler.getView().
         } else if (object instanceof InvalidNumPlayerMessage) {
             // socketNetworkHandler.getView().

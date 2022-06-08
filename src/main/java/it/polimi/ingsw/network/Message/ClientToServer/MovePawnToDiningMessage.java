@@ -4,9 +4,10 @@ package it.polimi.ingsw.network.Message.ClientToServer;
 import it.polimi.ingsw.model.ColorPawn;
 
 import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MovePawnToDiningMessage extends ClientToServer {
+public class MovePawnToDiningMessage extends ClientToServer implements Serializable {
     @Serial
     private static final long serialVersionUID = -2605058722239890514L;
     public final int num;
