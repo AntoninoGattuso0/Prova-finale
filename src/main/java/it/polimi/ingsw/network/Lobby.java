@@ -296,20 +296,20 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     }
 
     public synchronized void movePawnToDining(int numPawn, ArrayList<ColorPawn> arrayPawn, ClientHandler clientHandler) {
-        int i;
+        int i;//questa funzione muove le pedine verso la diningroom attraverso la funzione addPawnToDiningRoom (riga 303), fa l'update di tutto e poi chiama la funzione movement (riga 306), se non è il suo turno manda un messaggio di errore (non pensarci per adesso)
         int numPlayer = findPlayer(game, clientHandler);
         if(game.getPlayers().get(numPlayer).getCurrentPhase()==PhaseTurn.MOVE_STUDENT) {
             for (i = 0; i < numPawn; i++) {
                 game.getPlayers().get(numPlayer).getDiningRoom().addPawnToDiningRoom(arrayPawn.get(i), game.getPlayers().get(numPlayer), game);
             }
-            clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
+            virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
             movement(numPawn, clientHandler, numPlayer);
         }else{
             clientHandler.sendObject(new WrongTurnMessage());
         }
     }
     public synchronized void movePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn, ClientHandler clientHandler) {
-        int numPlayer = findPlayer(game, clientHandler);
+        int numPlayer = findPlayer(game, clientHandler); //questa funzione è praticamente la "copia" parallela della funzione sopra, solo che sposta le pedine verso una specifica isola
         int i;
         for (i = 0; i < numPawn; i++) {
             game.getPlayers().get(numPlayer).getEntrance().movePawnToIsland(arrayPawn.get(i), game.getIslands().get(island), game);
@@ -319,24 +319,22 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     }
 
     public synchronized void movement(int numPawn, ClientHandler clientHandler, int numPlayer) {
-        numPawnExe=numPawnExe+numPawn;
+        numPawnExe=numPawnExe+numPawn;// questa funzione gestisce le pedine spostate. ogni volta che arriva un messaggio di movimento, somma le pedine spostate alla variabile numpawnexe.
         if(numPlayers==2||numPlayers==4){
-            if(numPawnExe==3){
-                controller.getRoundController().setExeMoveStudent(true);
-                controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(numPlayer),true,controller.getRoundController(),game);
-                controller.startTurn(game.getPlayers().get(numPlayer));
-                numPawnExe=0;
+            if(numPawnExe==3){// le pedine sono 3 se i player sono 2 o 4 (ho pensato io a questo sulla CLI riga 264)
+                game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.MOVE_MOTHER_NATURE);//setto la fase successiva
+                controller.startTurn(game.getPlayers().get(numPlayer));//mando il messaggio broadcast della mothernature
+                numPawnExe=0;//setto a zero per permettere lo spostamento al prossimo player
             }else{
-                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));
+                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));//se le pedine totali spostate non sono 3 reinvio il messaggio
             }
         } else if(numPlayers==3) {
-            if (numPawnExe == 4) {
-                controller.getRoundController().setExeMoveStudent(true);
-                controller.getRoundController().getTurnController().setPhaseTurn(game.getPlayers().get(numPlayer),true,controller.getRoundController(),game);
+            if (numPawnExe == 4) {//le pedine sono 4 se i player sono 3 (ho pensato io a questo sulla CLI riga 267)
+                game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.MOVE_MOTHER_NATURE);
                 controller.startTurn(game.getPlayers().get(numPlayer));
                 numPawnExe=0;
             }else{
-                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));
+                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));//se le pedine totali spostate non sono 4 reinvio il messaggio
             }
         }
     }

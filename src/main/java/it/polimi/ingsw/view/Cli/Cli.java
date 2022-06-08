@@ -139,7 +139,7 @@ public class Cli implements Runnable, View {
 
     @Override
     public void requestMovePawn(String nickname,int numPawnMoved){
-        pedineDaSpostare=pedineDaSpostare-numPawnMoved;
+        pedineDaSpostare=pedineDaSpostare-numPawnMoved;//pedine che rimangono da spostare
             out.println("Digita 1 per usare una Character Card");
             out.println("Digita 2 per spostare delle pedine verso la DiningRoom");
             out.println("Digita 1 per spostare delle pedine verso un'Isola");
@@ -152,14 +152,14 @@ public class Cli implements Runnable, View {
                 scelta = scanner.nextInt();
             }
             if(scelta == 1) requestCharacterCard(nickname);
-            else if(scelta == 2) requestMovePawnToDiningRoom(pedineDaSpostare);
+            else if(scelta == 2) requestMovePawnToDiningRoom(pedineDaSpostare);//mando in ingresso il numero di pedine così controlli il numero che ti da in ingresso
             else if(scelta == 3) requestMovePawnToIsland(pedineDaSpostare);
-        pedineDaSpostare=numPawnMoved;
+            pedineDaSpostare=numPawnMove;
     }
 
     @Override
-    public int requestMovePawnToDiningRoom(int pedineDaSpostare) {
-        out.println("Quante pedine vuoi spostare verso la DiningRoom?");
+    public void requestMovePawnToDiningRoom(int pedineDaSpostare) {
+        out.println("Quante pedine vuoi spostare verso la DiningRoom?");// va fatto il controllo sul numero di pedine possibili da spostare
         int numDining = scanner.nextInt();
         out.println("Sposterai " + numDining + " pedine verso la DiningRoom");
         out.println("");
@@ -196,16 +196,15 @@ public class Cli implements Runnable, View {
                 }
             }
             colori.add(nomeColore);
-            out.println("Hai spostato correttamente una pedina, ne rimangono: " + (i + 1) + "/" + numDining);
+            out.println("Hai spostato correttamente una pedina, ne rimangono: " + (i + 1) + "/" + numDining);//??? non lo fai qui lo spostamento!! se ci sono errori non li sposto!
         }
         socketNetworkHandler.sendMessage(new MovePawnToDiningMessage(numDining, colori));
         out.println("");
-        return pedineDaSpostare;
     }
 
     @Override
-    public int requestMovePawnToIsland(int pedineDaSpostare) {
-        out.println("Quante pedine vuoi spostare verso un'Isola?");
+    public void requestMovePawnToIsland(int pedineDaSpostare) {
+        out.println("Quante pedine vuoi spostare verso un'Isola?");// serve il controllo sulle pedine possibili da spostare (pedinedaspostate)
         int numPawn = scanner.nextInt();
         out.println("Verso quale isola vuoi spostarle? ");
         int numIsland = scanner.nextInt();
@@ -252,7 +251,6 @@ public class Cli implements Runnable, View {
         }
         socketNetworkHandler.sendMessage(new MovePawnToIslandMessage(numIsland, numPawn, colori));
         out.println("");
-        return pedineDaSpostare;
     }
 
 
@@ -1055,7 +1053,7 @@ public class Cli implements Runnable, View {
     }
     @Override
     public void selectAssistantCard(String nickname) {
-        int i;
+        int i,m=-1;
         int numAssistant = -1;
         if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
             for (i = 0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++) ;
@@ -1075,27 +1073,25 @@ public class Cli implements Runnable, View {
                 for (j = 0; j < lightGame.getPlayers().get(i).getDeckAssistant().size() && !check1; j++) {
                     if (lightGame.getPlayers().get(i).getDeckAssistant().get(j).getCardValue() == numAssistant) {
                         check1 = true;
+                        m=j;
                     }
                 }
-                boolean check2 = false;
-                if(check1) {
-                    check2 = true;
-                    for (j = 0; j < lightGame.getPlayers().size() && check2; j++) {
-                        if (!Objects.equals(lightGame.getPlayers().get(i).getNickname(), lightGame.getPlayers().get(j).getNickname())) {
-                            if ((lightGame.getPlayers().get(j).getCurrentAssistant() != null) && Objects.equals(lightGame.getPlayers().get(i).getCurrentAssistant(), lightGame.getPlayers().get(j).getCurrentAssistant()) && (lightGame.getPlayers().get(i).getDeckAssistant().size() > 1)) {
+                boolean check2 = true;
+                if (check1) {
+                    for (j = 0; j < lightGame.getPlayers().size()&& check2; j++) {
+                            if ((lightGame.getPlayers().get(j).getCurrentAssistant()!=null)&&Objects.equals(lightGame.getPlayers().get(i).getDeckAssistant().get(m).getCardValue(), lightGame.getPlayers().get(j).getCurrentAssistant().getCardValue()) && (lightGame.getPlayers().get(i).getDeckAssistant().size() > 1)) {
                                 check2 = false;
                             }
-                            System.out.println(numAssistant);
-                            socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(numAssistant));
-                        } else {
-                            System.out.println(nickname + " sta scegliendo l'AssistantCard");
                         }
                     }
-                }
                 check = check1 && check2;
-                if(!check)
+                if (!check) {
                     out.println("Assistente errato o già utilizzato, inserisci un numero valido: ");
+                }
             }
+            socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(numAssistant));
+        } else {
+            System.out.println(nickname + " sta scegliendo l'AssistantCard");
         }
     }
     public int convertStringToNumber(String num){

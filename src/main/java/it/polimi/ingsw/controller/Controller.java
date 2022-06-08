@@ -103,12 +103,14 @@ public class Controller {
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;
     }
-    public void setOrderNamePlayers(ArrayList<Player> players){
+
+    public void setOrderNamePlayers(ArrayList<Player> players) {
         orderNamePlayers.clear();
         for (int i = 0; i < players.size(); i++) {
-           orderNamePlayers.add(players.get(i).getNickname());
+            orderNamePlayers.add(players.get(i).getNickname());
         }
     }
+
     public ArrayList<String> getOrderNamePlayers() {
         return orderNamePlayers;
     }
@@ -123,37 +125,20 @@ public class Controller {
         int i;
         for (i = 0; i < players.size(); i++) {
             game.getPlayers().get(i).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
+            game.getPlayers().get(i).setCurrentAssistant(null);
         }
         virtualView.sendBroadcast(new SetAssistantMessage(players.get(0).getNickname()));
     }
 
-    public synchronized void startTurn( Player player) {
-        System.out.println("ci sono");
-            if (player.getCurrentPhase() == PhaseTurn.MOVE_STUDENT) {
-                for (ClientHandlerInterface client : clients) {
-                    if (player.getNickname().equals(client.getUserNickname())) {
-                        virtualView.sendMessage(client, new SetMovePawnMessage(player.getNickname(), 0));
-                    }
-                }
-            } else if (player.getCurrentPhase() == PhaseTurn.MOVE_MOTHER_NATURE) {
-                for (ClientHandlerInterface client : clients) {
-                    if (player.getNickname().equals(client.getUserNickname())) {
-                        virtualView.sendMessage(client, new SetMoveMotherNature(player.getNickname()));
-                    }
-                }
-            } else if (player.getCurrentPhase() == PhaseTurn.CHOOSE_CLOUD) {
-                for (ClientHandlerInterface client : clients) {
-                    if (player.getNickname().equals(client.getUserNickname())) {
-                        virtualView.sendMessage(client, new SetCloudMessage(player.getNickname()));
-                    }
-                }
-            } else if (player.getCurrentPhase() == PhaseTurn.END_TURN) {
-                for (ClientHandlerInterface client : clients) {
-                    if (player.getNickname().equals(client.getUserNickname())) {
-                        virtualView.sendMessage(client, new EndTurnMessage());
-                    }
-                }
+    public synchronized void startTurn(Player player) {
+        if (player.getCurrentPhase() == PhaseTurn.MOVE_STUDENT) {
+            virtualView.sendBroadcast(new SetMovePawnMessage(player.getNickname(), 0));
+        } else if (player.getCurrentPhase() == PhaseTurn.MOVE_MOTHER_NATURE) {
+            virtualView.sendBroadcast( new SetMoveMotherNature(player.getNickname()));
+        } else if (player.getCurrentPhase() == PhaseTurn.CHOOSE_CLOUD) {
+            virtualView.sendBroadcast( new SetCloudMessage(player.getNickname()));
+        } else if (player.getCurrentPhase() == PhaseTurn.END_TURN) {
+            virtualView.sendBroadcast( new EndTurnMessage());
         }
     }
-
 }

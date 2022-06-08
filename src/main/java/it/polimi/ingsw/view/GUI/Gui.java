@@ -32,13 +32,11 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public int requestMovePawnToDiningRoom(int pawn) {
-    return pawn;
+    public void requestMovePawnToDiningRoom(int pawn) {
     }
 
     @Override
-    public int requestMovePawnToIsland(int pawn) {
-    return pawn;
+    public void requestMovePawnToIsland(int pawn) {
     }
 
     @Override

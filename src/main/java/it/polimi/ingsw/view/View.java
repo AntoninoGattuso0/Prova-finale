@@ -12,8 +12,8 @@ public interface View {
 
     void requestNumPlayersIsExpert();
 
-    int requestMovePawnToDiningRoom(int pawn);
-    int requestMovePawnToIsland(int pawn);
+    void requestMovePawnToDiningRoom(int pawn);
+    void requestMovePawnToIsland(int pawn);
     void requestMovePawn(String nickname,int numPawnMoved);
 
     void requestCharacterCard(String nickname);
