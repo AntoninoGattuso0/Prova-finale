@@ -61,8 +61,8 @@ public class Entrance {
         else if(game.totPlayer == 3)
             setNumPawn(9);
         int i,k;
+        ArrayList<ColorPawn> entrancePawn = Game.createArrayPawn(game.studentBag);
         for(i = 0; i < getNumPawn(); i++){
-            ArrayList<ColorPawn> entrancePawn = Game.createArrayPawn(game.studentBag);
             if (game.studentBag.getNum() > 0 && entrancePawn.size() > 0) {
                 int random = rnd.nextInt(entrancePawn.size());
                 if (Objects.equals(entrancePawn.get(random), ColorPawn.GREEN) && game.studentBag.getGreenNum() > 0) {//verde
