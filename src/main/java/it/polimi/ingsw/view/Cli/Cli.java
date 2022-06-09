@@ -2,7 +2,6 @@ package it.polimi.ingsw.view.Cli;
 
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
-import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.network.Message.ClientToServer.*;
@@ -334,20 +333,22 @@ public class Cli implements Runnable, View {
     }
 
     @Override
-    public void displayAssistantCard(int player) {//Va modificato perchè rimuovere l'assistente creava problemi. ora quando un assistente è usato imposto il suo value e step a -1. quindi quando è -1 non va stampato
+    public void displayAssistantCard(int player) {
         clearCli();
         int i;
         for (i = 0; i < lightGame.getPlayers().get(player).getDeckAssistant().size(); i++) {
-            if (lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() == 10) {
-                out.println(ColorCli.BOLDCYAN + "| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "        |");
-                out.println(ColorCli.BOLDCYAN + "| MN steps: " + ColorCli.GREEN + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getStep() + ColorCli.BOLDCYAN + "           |");
-                out.println(ColorCli.BOLDCYAN + "+-----------------------+");
-            } else {
-                out.println(ColorCli.BOLDCYAN + "| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "         |");
-                out.println(ColorCli.BOLDCYAN + "| MN steps: " + ColorCli.GREEN + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getStep() + ColorCli.BOLDCYAN + "           |");
-                out.println(ColorCli.BOLDCYAN + "+-----------------------+");
+            if (lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() != -1) {
+                if (lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() == 10) {
+                    out.println(ColorCli.BOLDCYAN + "| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "        |");
+                    out.println(ColorCli.BOLDCYAN + "| MN steps: " + ColorCli.GREEN + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getStep() + ColorCli.BOLDCYAN + "           |");
+                    out.println(ColorCli.BOLDCYAN + "+-----------------------+");
+                } else {
+                    out.println(ColorCli.BOLDCYAN + "| Card Value: " + ColorCli.RED + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue() + ColorCli.BOLDCYAN + "         |");
+                    out.println(ColorCli.BOLDCYAN + "| MN steps: " + ColorCli.GREEN + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getStep() + ColorCli.BOLDCYAN + "           |");
+                    out.println(ColorCli.BOLDCYAN + "+-----------------------+");
+                }
+                out.println("");
             }
-            out.println("");
         }
     }
 
@@ -395,7 +396,7 @@ public class Cli implements Runnable, View {
     }
 
     @Override
-    public void displayIslands() {//manca madre natura
+    public void displayIslands() {
         clearCli();
 
         int i;
@@ -405,7 +406,7 @@ public class Cli implements Runnable, View {
         for (i = 0; i < lightGame.getIslands().size() && i < 4; i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
         tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < 6; j++) {
             for (i = 0; i < lightGame.getIslands().size() && i < 4; i++)
                 tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(i, j));
             tabIslands.append("|\n").append(ColorCli.RESET);
@@ -421,7 +422,7 @@ public class Cli implements Runnable, View {
         for (i = 4; i < lightGame.getIslands().size() && i < 8; i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
         tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < 6; j++) {
             for (i = 4; i < lightGame.getIslands().size() && i < 8; i++)
                 tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(i, j));
             tabIslands.append("|").append(ColorCli.RESET).append("\n");
@@ -437,7 +438,7 @@ public class Cli implements Runnable, View {
         for (i = 8; i < lightGame.getIslands().size(); i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
         tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < 6; j++) {
             for (i = 8; i < lightGame.getIslands().size(); i++)
                 tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(i, j));
             tabIslands.append("|\n").append(ColorCli.RESET);
@@ -453,96 +454,19 @@ public class Cli implements Runnable, View {
     public void displaySchoolBoard() {// problema con i professori: vengono aggiunti alla schoolboard del primo e no vengono più modificati
         clearCli();
         int i, m;
-        StringBuilder schoolBoard = new StringBuilder();
 
-        for(i = 0; i < lightGame.getPlayers().size(); i++ ){
+        for(i = 0; i < lightGame.getNumPlayers(); i++ ) {
+            StringBuilder schoolBoard = new StringBuilder();
             out.println(" ");
             out.println(" ");
             schoolBoard.append(ColorCli.BOLDCYAN);
 
-            schoolBoard.append("Player: " + lightGame.getPlayers().get(i).getNickname()).append("\n").append("+--------------+--------------------------------+---+------+\n");
-
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  0));
-            schoolBoard.append("| ").append(ColorCli.RESET);
-            schoolBoard.append(ColorCli.BOLDCYAN);
-            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumGreen(); m++){
-                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.GREEN).append("  ◎");
-                else schoolBoard.append(color4DiningRoom(0)).append(ColorCli.BOLDCYAN);
-            }
-            while(m < 10){
-                schoolBoard.append(ColorCli.GREEN).append("  ◌");
-                m++;
-            }//questa funzione è da modificare: consiglio di passare in ingresso il player (lightgame.getplayers.get(i)) al posto del terzo parametro e "checkare su quello"
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,0,-1 )).append(ColorCli.BOLDCYAN).append(" |");
-            //si potrebbe anche sostituire il lightgame direttamente con lightgame.getproftable(). NINO
-            int j = lightGame.getPlayers().get(i).getTowerSpace().getNumTower();
-            schoolBoard.append(color4TowerSpace(i, j));
-            j = lightGame.getPlayers().get(i).getTowerSpace().getNumTower() - 2;
-
-
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  1));
-            schoolBoard.append("| ").append(ColorCli.RESET);
-            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumRed(); m++){
-                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.RED).append("  ◎");
-                else schoolBoard.append(color4DiningRoom(1)).append(ColorCli.BOLDCYAN);
-            }
-            while(m < 10){
-                schoolBoard.append(ColorCli.RED).append("  ◌");
-                m++;
-            }
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,1, i)).append(ColorCli.BOLDCYAN).append(" |");
-            schoolBoard.append(color4TowerSpace(i, j));
-            j = j - 2;
-
-
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  2));
-            schoolBoard.append("| ").append(ColorCli.RESET);
-            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumYellow(); m++){
-                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.YELLOW).append("  ◎");
-                else schoolBoard.append(color4DiningRoom(2)).append(ColorCli.BOLDCYAN);
-            }
-            while(m < 10){
-                schoolBoard.append(ColorCli.YELLOW).append("  ◌");
-                m++;
-            }
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,2, i)).append(ColorCli.BOLDCYAN).append(" |");
-            schoolBoard.append(color4TowerSpace(i, j));
-            j = j - 2;
-
-
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  3));
-            schoolBoard.append("| ").append(ColorCli.RESET);
-            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumPink(); m++){
-                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.PINK).append("  ◎");
-                else schoolBoard.append(color4DiningRoom(3)).append(ColorCli.BOLDCYAN);
-            }
-            while(m < 10){
-                schoolBoard.append(ColorCli.PINK).append("  ◌");
-                m++;
-            }
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,3, i)).append(ColorCli.BOLDCYAN).append(" |");
-            schoolBoard.append(color4TowerSpace(i, j));
-
-
-            schoolBoard.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Entrance(lightGame.getPlayers().get(i),  4));
-            schoolBoard.append("| ").append(ColorCli.RESET);
-            for (m = 0; m < lightGame.getPlayers().get(i).getDiningRoom().getNumBlue(); m++){
-                if(m==2||m==5||m==8) schoolBoard.append(ColorCli.BLUE).append("  ◎");
-                else schoolBoard.append(color4DiningRoom(4)).append(ColorCli.BOLDCYAN);
-            }
-            while(m < 10){
-                schoolBoard.append(ColorCli.BLUE).append("  ◌");
-                m++;
-            }
-
-            schoolBoard.append(ColorCli.BOLDCYAN).append(" | ").append(color4ProfTable(lightGame,4, i)).append(ColorCli.BOLDCYAN).append(" |");
-            schoolBoard.append("      ").append(ColorCli.BOLDCYAN).append("| \n");
-            schoolBoard.append(ColorCli.BOLDCYAN).append("+--------------+--------------------------------+---+------+\n");
-            schoolBoard.append(ColorCli.RESET);
+            schoolBoard.append("Player: " + lightGame.getPlayers().get(i).getNickname()).append("\n").append("+--------------+--------------------------------+---+\n");
+            for (int j = 0; j < 5; j++)
+                schoolBoard.append("|").append(color4Entrance(i, j));
+            out.println(schoolBoard);
+            out.println();
         }
-
-        out.print(schoolBoard);
-        schoolBoard.delete(0, schoolBoard.capacity());
     }
     @Override
     public void sendNick(String nickname){
@@ -933,7 +857,7 @@ public class Cli implements Runnable, View {
     @Override
     public void displayCharacterCard() {
         for(int i = 0; i < lightGame.getCharacterCards().size(); i++) {
-            out.println("CharacterCard numero " + i + ":");
+            out.println("CharacterCard numero " + (i+1) + ":");
             if (lightGame.getCharacterCards().get(i).getNumCard() == 0) {
                 out.println("");
                 out.println("EFFETTO: Prendi 1 studente dalla carta e piazzalo su un'Isola a tua scelta. Poi pesca 1 studente dal sacchetto e mettilo su questa carta");
@@ -943,24 +867,28 @@ public class Cli implements Runnable, View {
                 out.println(ColorCli.YELLOW + "●: " + lightGame.getAntonio().getYellowPawn());
                 out.println(ColorCli.BLUE + "●: " + lightGame.getAntonio().getBluePawn());
                 out.println(ColorCli.PINK + "●: " + lightGame.getAntonio().getPinkPawn() + ColorCli.RESET);
+                out.println();
                 out.println("+-----------------------------------------------------+");
-                out.println("");
+                out.println();
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 1) {
                 out.println("");
                 out.println("EFFETTO: Durante questo turno, prendi il controllo dei professori anche se nella tua Sala hai lo stesso numero di Studenti del giocatore che li controlla in quel momento");
                 out.println("Prezzo carta: " + lightGame.getBarbara().getCoinPrice() + "✪");
+                out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 2) {
                 out.println("");
                 out.println("EFFETTO: Scegli un'isola e calcola la maggioranza come se Madre Natura avesse terminato il suo movimento lì. In questo turno madre natura si muoverà come di consueto");
                 out.println("Prezzo carta: " + lightGame.getCiro().getCoinPrice() + "✪");
+                out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 3) {
                 out.println("");
                 out.println("Puoi muovere Madre Natura fino a 2 isole addizionali");
                 out.println("Prezzo carta: " + lightGame.getDante().getCoinPrice() + "✪");
+                out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 4) {
@@ -968,12 +896,14 @@ public class Cli implements Runnable, View {
                 out.println("EFFETTO: Piazza una tessera Divieto su un'Isola a tua scelta. La prima volta che Madre Natura termina lì il suo movimento rimuovete la tessera Divieto SENZA calcolare l'influenza su quell'isola");
                 out.println("Prezzo carta: " + lightGame.getErnesto().getCoinPrice() + "✪");
                 out.println("Numero carte Divieto rimanenti: " + lightGame.getErnesto().getNumProhibitionCard());
+                out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 5) {
                 out.println("");
                 out.println("EFFETTO: Durante il conteggio dell'influenza su in'Isola , le Torri presenti non vengono calcolate");
                 out.println("Prezzo carta: " + lightGame.getFelix().getCoinPrice() + "✪");
+                out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 6) {
@@ -985,24 +915,28 @@ public class Cli implements Runnable, View {
                 out.println(ColorCli.YELLOW + "●: " + lightGame.getGiuseppe().getNumYellowPawn());
                 out.println(ColorCli.BLUE + "●: " + lightGame.getGiuseppe().getNumBluePawn());
                 out.println(ColorCli.PINK + "●: " + lightGame.getGiuseppe().getNumPinkPawn() + ColorCli.RESET);
+                out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 7) {
                 out.println("");
                 out.println("EFFETTO: in questo turno, durante il calcolo dell'influenza, hai 2 punti addizionali");
                 out.println("Prezzo carta: " + lightGame.getIvan().getCoinPrice() + "✪");
+                out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 8) {
                 out.println("");
                 out.println("EFFETTO: Scegli un colore Studente; in questo turno quel colore non fornisce influenza");
                 out.println("Prezzo carta: " + lightGame.getLancillotto().getCoinPrice() + "✪");
+                out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 9) {
                 out.println("");
                 out.println("EFFETTO: Puoi scabiare fino a 2 Studenti presenti nella tua Sala e nel tuo Ingresso");
                 out.println("Prezzo carta: " + lightGame.getMaria().getCoinPrice() + "✪");
+                out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 10) {
@@ -1014,12 +948,14 @@ public class Cli implements Runnable, View {
                 out.println(ColorCli.YELLOW + "●: " + lightGame.getNicola().getYellowPawn());
                 out.println(ColorCli.BLUE + "●: " + lightGame.getNicola().getBluePawn());
                 out.println(ColorCli.PINK + "●: " + lightGame.getNicola().getPinkPawn() + ColorCli.RESET);
+                out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 11) {
                 out.println("");
                 out.println("EFFETTO: Scegli un colore di Studente; ogni giocatore (incluso te) deve rimettere nel sacchetto 3 studenti di quel colore presenti nella sua Sala");
                 out.println("Prezzo carta: " + lightGame.getOmnia().getCoinPrice() + "✪");
+                out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             }
@@ -1094,8 +1030,11 @@ public class Cli implements Runnable, View {
     public void displayAll(){
         displayIslands();
         displayCloud();
+        out.println();
+        out.println();
         displayCharacterCard();
         displayNick();
+        out.println();
         displaySchoolBoard();
         displayIsExpert();
         displayNumPlayers();
@@ -1247,19 +1186,25 @@ public class Cli implements Runnable, View {
     private String color4Island(int island, int color){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
-            showColor.append(ColorCli.GREEN).append("●: ").append(lightGame.getIslands().get(island).getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.GREEN).append("    ●: ").append(lightGame.getIslands().get(island).getGreenPawn()).append("      ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 1){
-            showColor.append(ColorCli.RED).append("●: ").append(lightGame.getIslands().get(island).getRedPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.RED).append("    ●: ").append(lightGame.getIslands().get(island).getRedPawn()).append("      ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 2){
-            showColor.append(ColorCli.YELLOW).append("●: ").append(lightGame.getIslands().get(island).getYellowPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.YELLOW).append("    ●: ").append(lightGame.getIslands().get(island).getYellowPawn()).append("      ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 3){
-            showColor.append(ColorCli.PINK).append("●: ").append(lightGame.getIslands().get(island).getPinkPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.PINK).append("    ●: ").append(lightGame.getIslands().get(island).getPinkPawn()).append("      ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 4){
-            showColor.append(ColorCli.BLUE).append("●: ").append(lightGame.getIslands().get(island).getBluePawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.BLUE).append("    ●: ").append(lightGame.getIslands().get(island).getBluePawn()).append("      ").append(ColorCli.BOLDCYAN);
+        }
+        else if(color == 5){
+            if(lightGame.getIslands().get(island).getMotherNature())
+                showColor.append(ColorCli.GREEN).append("   MN: ").append("OK     ").append(ColorCli.BOLDCYAN);
+            else
+                showColor.append(ColorCli.RED).append("   MN: ").append("NO     ").append(ColorCli.BOLDCYAN);
         }
         return showColor.toString();
     }
@@ -1285,22 +1230,128 @@ public class Cli implements Runnable, View {
         return showColor.toString();
     }
 
-    private String color4Entrance(LightPlayer player, int color){
+    private String color4Entrance(int player, int color){
+        int m;
         StringBuilder showColor = new StringBuilder();
+
         if(color == 0){
-            showColor.append(ColorCli.GREEN).append("●: ").append(player.getEntrance().getGreenPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.GREEN).append("●: ").append(lightGame.getPlayers().get(player).getEntrance().getGreenPawn()).append("          ");
+            showColor.append(ColorCli.BOLDCYAN).append("|  ").append(ColorCli.GREEN);
+            for (m = 0; m < lightGame.getPlayers().get(player).getDiningRoom().getNumGreen(); m++) {
+                if (m == 2 || m == 5 || m == 8)
+                    showColor.append(" ◎ ");
+                else
+                    showColor.append(" ● " );
+            }
+            while (m < 10) {
+                showColor.append(" ◌ ");
+                m++;
+            }
+            showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.GREEN);
+            if(lightGame.getProfTable().getGreenProf() == player) {
+                showColor.append(" ❂ ");
+                /*out.println(lightGame.getProfTable().getGreenProf());
+                out.println(lightGame.getProfTable().getRedProf());
+                out.println(lightGame.getProfTable().getYellowProf());
+                out.println(lightGame.getProfTable().getPinkProf());
+                out.println(lightGame.getProfTable().getBlueProf()); DEBUG */
+            }
+            else
+                showColor.append(" ◌ ");
+            showColor.append(ColorCli.BOLDCYAN).append("|");
+            showColor.append("\n");
         }
+
+
         else if(color == 1){
-            showColor.append(ColorCli.RED).append("●: ").append(player.getEntrance().getRedPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.RED).append("●: ").append(lightGame.getPlayers().get(player).getEntrance().getRedPawn()).append("          ");
+            showColor.append(ColorCli.BOLDCYAN).append("|  ").append(ColorCli.RED);
+            for (m = 0; m < lightGame.getPlayers().get(player).getDiningRoom().getNumRed(); m++) {
+                if (m == 2 || m == 5 || m == 8)
+                    showColor.append(" ◎ ");
+                else
+                    showColor.append(" ● " );
+            }
+            while (m < 10) {
+                showColor.append(" ◌ ");
+                m++;
+            }
+            showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RED);
+            if(lightGame.getProfTable().getRedProf() == player)
+                showColor.append(" ❂ ");
+            else
+                showColor.append(" ◌ ");
+            showColor.append(ColorCli.BOLDCYAN).append("|");
+            showColor.append("\n");
         }
+
         else if(color == 2){
-            showColor.append(ColorCli.YELLOW).append("●: ").append(player.getEntrance().getYellowPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.YELLOW).append("●: ").append(lightGame.getPlayers().get(player).getEntrance().getYellowPawn()).append("          ");
+            showColor.append(ColorCli.BOLDCYAN).append("|  ").append(ColorCli.YELLOW);
+            for (m = 0; m < lightGame.getPlayers().get(player).getDiningRoom().getNumYellow(); m++) {
+                if (m == 2 || m == 5 || m == 8)
+                    showColor.append(" ◎ ");
+                else
+                    showColor.append(" ● " );
+            }
+            while (m < 10) {
+                showColor.append(" ◌ ");
+                m++;
+            }
+            showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.YELLOW);
+            if(lightGame.getProfTable().getYellowProf() == player)
+                showColor.append(" ❂ ");
+            else
+                showColor.append(" ◌ ");
+            showColor.append(ColorCli.BOLDCYAN).append("|");
+            showColor.append("\n");
         }
+
         else if(color == 3){
-            showColor.append(ColorCli.PINK).append("●: ").append(player.getEntrance().getPinkPawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.PINK).append("●: ").append(lightGame.getPlayers().get(player).getEntrance().getPinkPawn()).append("          ");
+            showColor.append(ColorCli.BOLDCYAN).append("|  ").append(ColorCli.PINK);
+            for (m = 0; m < lightGame.getPlayers().get(player).getDiningRoom().getNumPink(); m++) {
+                if (m == 2 || m == 5 || m == 8)
+                    showColor.append(" ◎ ");
+                else
+                    showColor.append(" ● " );
+            }
+            while (m < 10) {
+                showColor.append(" ◌ ");
+                m++;
+            }
+            showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.PINK);
+            if(lightGame.getProfTable().getPinkProf() == player)
+                showColor.append(" ❂ ");
+
+            else
+                showColor.append(" ◌ ");
+            showColor.append(ColorCli.BOLDCYAN).append("|");
+            showColor.append("\n");
         }
+
         else if(color == 4){
-            showColor.append(ColorCli.BLUE).append("●: ").append(player.getEntrance().getBluePawn()).append("          ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.BLUE).append("●: ").append(lightGame.getPlayers().get(player).getEntrance().getBluePawn()).append("          ");
+            showColor.append(ColorCli.BOLDCYAN).append("|  ").append(ColorCli.BLUE);
+            for (m = 0; m < lightGame.getPlayers().get(player).getDiningRoom().getNumBlue(); m++) {
+                if (m == 2 || m == 5 || m == 8)
+                    showColor.append(" ◎ ");
+                else
+                    showColor.append(" ● " );
+            }
+            while (m < 10) {
+                showColor.append(" ◌ ");
+                m++;
+            }
+            showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.BLUE);
+            if(lightGame.getProfTable().getBlueProf() == player)
+                showColor.append(" ❂ ");
+            else
+                showColor.append(" ◌ ");
+            showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("\n");
+            showColor.append("Il numero totale di torri ").append(lightGame.getPlayers().get(player).getTowerSpace().getColorTower()).append(" disponibili è: ").append(ColorCli.BOLDWITE).append(lightGame.getPlayers().get(player).getTowerSpace().getNumTower()).append("\n");
+            showColor.append(ColorCli.BOLDCYAN).append("+---------------------------------------------------+\n").append(ColorCli.RESET);
+            showColor.append("\n");
         }
         return showColor.toString();
     }

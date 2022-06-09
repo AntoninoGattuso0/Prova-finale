@@ -7,7 +7,7 @@ public class Game {
     protected ArrayList<Player> players = new ArrayList<>();
     protected int totPlayer;
     protected ArrayList<Cloud> clouds;
-    protected ProfTable profTable;
+    protected ProfTable profTable = new ProfTable();
     protected ArrayList<Island> islands = new ArrayList<>();
     protected boolean isExpert;
     protected ArrayList<CharacterCard> characterCards = new ArrayList<>();//insieme dei 3 characters usati
@@ -50,7 +50,7 @@ public class Game {
             LightPlayer lightPlayer=new LightPlayer(players.get(i).getNickname(),players.get(i).getNumCoin(),players.get(i).getDeckAssistant(),players.get(i).getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDiningRoom,players.get(i).getCurrentPhase() );
             lightPlayers.add(lightPlayer);
         }
-        return new LightGame(characterCards,isExpert, lightClouds,lightPlayers,islands,totPlayer,profTable, antonio, barbara, ciro, dante, ernesto, felix, giuseppe, ivan, lancillotto, maria, nicola, omnia);
+        return new LightGame(characterCards,isExpert, lightClouds, lightPlayers, islands, totPlayer, profTable, antonio, barbara, ciro, dante, ernesto, felix, giuseppe, ivan, lancillotto, maria, nicola, omnia);
     }
 
     public int getTotPlayer() {
