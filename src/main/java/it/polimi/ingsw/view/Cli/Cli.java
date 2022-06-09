@@ -1046,6 +1046,7 @@ public class Cli implements Runnable, View {
     @Override
     public void updateAll(LightGame object) {
         this.lightGame = object;
+        System.out.println(lightGame.getProfTable().getGreenProf());
     }
 
     @Override
