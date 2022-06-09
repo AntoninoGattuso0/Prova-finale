@@ -20,25 +20,23 @@ public class Controller {
     private boolean isExpert;
     private Game game;
     private boolean contr;
+    private int c;
     private final ArrayList<String> orderNamePlayers;
-    private final UserInput userInput;
     private final VirtualView virtualView;
     private ArrayList<Player> players;
     private ArrayList<LightPlayer> playersLight;
-    private Player currentPlayer;
     private ArrayList<ClientHandlerInterface> clients;
 
-    public Controller(Game game, UserInput userInput, VirtualView virtualView, ArrayList<ClientHandlerInterface> clients) {
+    public Controller(Game game, VirtualView virtualView, ArrayList<ClientHandlerInterface> clients) {
         this.game = game;
         this.isExpert = game.getIsExpert();//Manca il controllo della assistantphase nello startround DA NINO PER NINO
         this.virtualView = virtualView;
-        this.userInput = userInput;
         this.orderNamePlayers = new ArrayList<>();
         this.players = new ArrayList<>();
         this.players.addAll(game.getPlayers());
-        this.currentPlayer = game.getPlayers().get(0);
         this.endGame = false;
         this.contr = false;
+        this.c=0;
         this.playersLight = new ArrayList<>();
         this.roundController = new RoundController(game.getPlayers());
         this.clients = clients;
@@ -70,9 +68,6 @@ public class Controller {
         virtualView.playerWinForQuitting(nick);
     }
 
-    public void updateCurrentPlayer() {
-        currentPlayer = players.get((players.indexOf(currentPlayer) + 1) % players.size());
-    }
 
     public void sendUpdate() {
         virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
@@ -85,7 +80,7 @@ public class Controller {
 
     public boolean lastTurn() {
         boolean i = false;
-        if (roundController.getTurnController().getCurrPlayer().equals(roundController.getLastPlayer()) && roundController.getLastPlayer().getDeckAssistant().size() == 0) {
+        if (roundController.getLastPlayer().getDeckAssistant().size() == 0) {
             i = true;
         }
         return i;
@@ -121,7 +116,6 @@ public class Controller {
         updateThisPlayersLight();
         setOrderNamePlayers(players);
         virtualView.setActualPlayer(roundController.getRoundOrder().get(0).getNickname());
-        currentPlayer = roundController.getRoundOrder().get(0);
         virtualView.sendBroadcast(new TurnOrderMessage(orderNamePlayers));
         int i;
         for (i = 0; i < players.size(); i++) {
@@ -139,12 +133,17 @@ public class Controller {
         } else if (player.getCurrentPhase() == PhaseTurn.CHOOSE_CLOUD) {
             virtualView.sendBroadcast( new SetCloudMessage(player.getNickname()));
         } else if (player.getCurrentPhase() == PhaseTurn.END_TURN) {
-            updateThisPlayersLight();
-            virtualView.sendBroadcast(new SetCharacterCardMessage(player.getNickname(),false));
-            virtualView.sendBroadcast( new EndTurnMessage(orderNamePlayers,player.getNickname()));
+            setOrderNamePlayers(getRoundController().getRoundOrder());
+            virtualView.sendBroadcast( new EndTurnMessage(getOrderNamePlayers(),player.getNickname()));
             if(Objects.equals(player.getNickname(), getRoundController().getLastPlayer().getNickname())){
                 startRound();
+                this.c=0;
+            }else{
+                this.c=this.c+1;
+                virtualView.sendBroadcast(new SetMovePawnMessage(roundController.getRoundOrder().get(this.c).getNickname(),0));
             }
+        }else if(player.getCurrentPhase()==PhaseTurn.USE_CHARACTER){
+            virtualView.sendBroadcast(new SetCharacterCardMessage(player.getNickname(),false));
         }
     }
 }

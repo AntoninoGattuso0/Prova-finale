@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 public class Cli implements Runnable, View {
-    Scanner scanner = new Scanner(System.in); //Per leggere input da tastiera
+    Scanner scanner = new Scanner(System.in); //PER PAUL: QUI CI SONO LE RIGHE A CUI DEVI ANDARE IN LOBBY, LI' TI DIRO' COSA MODIFICARE:
     private final PrintStream out;
     private Thread inputThread;
     private boolean isExpert;
@@ -552,23 +552,24 @@ public class Cli implements Runnable, View {
         }
 
     @Override
-    public void requestCharacterCard(String nickname,boolean bool) {
-        int numPawn = 1, numIsland = -1, i;
+    public void requestCharacterCard(String nickname,boolean bool) {//Gestire il fatto di dirgli quante pedine ha e che in caso le sue monete non bastino non gli fa proprio scegliere le character, se invece c'è qualche carta che costa meno e qualcuna che costa di più fargli inserire la possibilità di non giocarne nessuna o inserirne una nuova
+        ArrayList<ColorPawn> colori=new ArrayList<>();
+        int numPawn = 1, numIsland = -1, i;//gestire il fatto che alcune carachter non possono essere giocate se non ci sono abbastanza pedine in sla/isole/diningroom. in questo caso devi inviare un messaggio tipo "non ci sono abbastanza pedine " e poi gestire come la riga sopra
         if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
             if (!bool) {
                 boolean check = false;
+                String b = null;
                 System.out.println("vuoi giocare un CharacterCard? SI per giocarlo, NO per saltare questa fase");
                 while (!check) {
-                    String b = null;
                     try {
                         b = readLine();
                     } catch (ExecutionException e) {
                         e.printStackTrace();
                     }
-                    if (b == "SI") {
+                    if (Objects.equals(b, "SI")) {
                         check = true;
                         bool = true;
-                    } else if (b == "NO") {
+                    } else if (Objects.equals(b, "NO")) {
                         check = true;
                     } else {
                         System.out.println("Errore in inserimento: inserire SI o NO");
@@ -585,7 +586,6 @@ public class Cli implements Runnable, View {
                     selected = scanner.nextInt();
                 }
                 selected = selected - 1;
-                ArrayList<ColorPawn> colori = new ArrayList<>();
                 for (i = 0; i < lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(nickname)); i++)
                     ;
                 int player = i;
@@ -624,7 +624,7 @@ public class Cli implements Runnable, View {
                         }
                         colori.add(nomeColore);
                         numPawn = 1;
-                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori,bool));
                     }
 
                 } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 1) {
@@ -633,7 +633,7 @@ public class Cli implements Runnable, View {
                         requestMovePawn(nickname, pedineDaSpostare);
                     } else {
                         lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getBarbara().getCoinPrice());
-                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori,bool));
                     }
 
                 } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 2) {
@@ -648,7 +648,7 @@ public class Cli implements Runnable, View {
                             out.println("Numero isola inesistente, inserisci un numero valido: ");
                             numIsland = scanner.nextInt();
                         }
-                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori,bool));
                     }
 
                 } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 3) {
@@ -657,7 +657,7 @@ public class Cli implements Runnable, View {
                         requestMovePawn(nickname, pedineDaSpostare);
                     } else {
                         lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getDante().getCoinPrice());
-                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori,bool));
                     }
 
                 } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 4) {
@@ -672,7 +672,7 @@ public class Cli implements Runnable, View {
                             out.println("Numero isola inesistente, inserisci un numero valido: ");
                             numIsland = scanner.nextInt();
                         }
-                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori,bool));
                     }
 
                 } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 5) {
@@ -681,7 +681,7 @@ public class Cli implements Runnable, View {
                         requestMovePawn(nickname, pedineDaSpostare);
                     } else {
                         lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getFelix().getCoinPrice());
-                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori,bool));
                     }
 
                 } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 6) {
@@ -754,7 +754,7 @@ public class Cli implements Runnable, View {
                             }
                             colori.add(nomeColore);
                         }
-                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori,bool));
                     }
 
                 } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 7) {
@@ -763,7 +763,7 @@ public class Cli implements Runnable, View {
                         requestMovePawn(nickname, pedineDaSpostare);
                     } else {
                         lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getIvan().getCoinPrice());
-                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori,bool));
                     }
                 } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 8) {
                     if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getLancillotto().getCoinPrice()) {
@@ -787,7 +787,7 @@ public class Cli implements Runnable, View {
                             nomeColore = ColorPawn.BLUE;
                         }
                         colori.add(nomeColore);
-                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori,bool));
                     }
                 } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 9) {
                     if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getMaria().getCoinPrice()) {
@@ -859,7 +859,7 @@ public class Cli implements Runnable, View {
                             }
                             colori.add(nomeColore);
                         }
-                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori,bool));
                     }
 
                 } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 10) {
@@ -895,7 +895,7 @@ public class Cli implements Runnable, View {
                             }
                         }
                         colori.add(nomeColore);
-                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori,bool));
                     }
 
                 } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 11) {
@@ -920,11 +920,11 @@ public class Cli implements Runnable, View {
                             nomeColore = ColorPawn.BLUE;
                         }
                         colori.add(nomeColore);
-                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori));
+                        socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori,bool));
                     }
                 }
             } else {
-                socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(numPawn,numPawn,numPawn,new ArrayList<>()));
+                socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0,0,0,colori,bool));
             }
         }else{
             System.out.println(nickname + " sta giocando la fase CharacterCard");
@@ -1057,17 +1057,23 @@ public class Cli implements Runnable, View {
     }
 
     @Override
-    public void startTurn(ArrayList<String> players, String actualPlayer) {
-        if (Objects.equals(actualPlayer, socketNetworkHandler.getNicknameThisPlayer())) {
+    public void startTurn(ArrayList<String> players, String player) {
+        if (Objects.equals(player, socketNetworkHandler.getNicknameThisPlayer())) {
             displayEndTurn();
         }
-            int i;
-            for (i = 0; Objects.equals(players.get(i), actualPlayer); i++) ;
+        int i;
+        int j;
+        for (j = 0; !Objects.equals(players.get(j), player); j++) ;
+        if (j< players.size()-1) {
+            for (i = j; Objects.equals(players.get(i), player); i++) ;
             if (Objects.equals(players.get(i), socketNetworkHandler.getNicknameThisPlayer())) {
                 displayStartTurn();
             } else
                 out.println(players.get(i) + " sta iniziando il suo turno");
+        }else{
+            out.println("round finito, inizia uno nuovo");
         }
+    }
 
     @Override
     public void displayStartTurn() {

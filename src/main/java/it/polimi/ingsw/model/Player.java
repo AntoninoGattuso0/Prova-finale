@@ -58,7 +58,7 @@ public class Player {
     }
     public Player(String nick, Game game) {
         setActive(true);
-        int j, k;
+        int j, k,m=0;
         setNickname(nick);
         if (game.isExpert) setNumCoin(1);
         else setNumCoin(-1);
@@ -112,6 +112,10 @@ public class Player {
             if (player.deckAssistant.size() == 1 || player.deckAssistant.get(i).getCardValue() == Assistant.getCardValue()) {
                 player.setCurrentAssistant(player.deckAssistant.get(i));
                 player.deckAssistant.remove(i);
+                AssistantCard temp=new AssistantCard();
+                temp.setCardValue(-1);
+                temp.setStep(-1);
+                player.deckAssistant.add(i,temp);
                 player.setCurrentPhase(PhaseTurn.MOVE_STUDENT);
                 contr = 1;
                 return contr;
