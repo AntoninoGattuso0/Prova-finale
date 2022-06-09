@@ -112,8 +112,6 @@ public class Player {
             if (player.deckAssistant.size() == 1 || player.deckAssistant.get(i).getCardValue() == Assistant.getCardValue()) {
                 player.setCurrentAssistant(player.deckAssistant.get(i));
                 player.deckAssistant.remove(i);
-                AssistantCard temp=new AssistantCard();
-                deckAssistant.remove(i);
                 player.setCurrentPhase(PhaseTurn.MOVE_STUDENT);
                 contr = 1;
                 return contr;

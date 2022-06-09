@@ -50,7 +50,7 @@ public class Game {
             LightPlayer lightPlayer=new LightPlayer(players.get(i).getNickname(),players.get(i).getNumCoin(),players.get(i).getDeckAssistant(),players.get(i).getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDiningRoom,players.get(i).getCurrentPhase() );
             lightPlayers.add(lightPlayer);
         }
-        return new LightGame(characterCards,isExpert, lightClouds, lightPlayers, islands, totPlayer, profTable, antonio, barbara, ciro, dante, ernesto, felix, giuseppe, ivan, lancillotto, maria, nicola, omnia);
+        return new LightGame(characterCards,isExpert, lightClouds, lightPlayers, islands, totPlayer, this.profTable, this.antonio, this.barbara, this.ciro, this.dante, this.ernesto, this.felix, this.giuseppe, this.ivan, this.lancillotto, this.maria, this.nicola, this.omnia);
     }
 
     public int getTotPlayer() {
