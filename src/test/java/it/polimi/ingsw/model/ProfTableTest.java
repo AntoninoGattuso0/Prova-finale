@@ -35,11 +35,11 @@ class ProfTableTest {
         game.start(game);
         game.newPlayer("Davide", game);
         game.newPlayer("Isaac", game);
-        ProfTable.setGreenProf(0);
-        ProfTable.setRedProf(0);
-        ProfTable.setYellowProf(1);
-        ProfTable.setPinkProf(1);
-        ProfTable.setBlueProf(1);
+        game.getProfTable().setGreenProf(0);
+        game.getProfTable().setRedProf(0);
+        game.getProfTable().setYellowProf(1);
+        game.getProfTable().setPinkProf(1);
+        game.getProfTable().setBlueProf(1);
 
         assertEquals(0, game.profTable.checkProf(0));
         assertEquals(0, game.profTable.checkProf(1));

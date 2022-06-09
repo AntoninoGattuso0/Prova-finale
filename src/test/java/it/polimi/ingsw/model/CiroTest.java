@@ -15,10 +15,10 @@ class CiroTest {
         game.newPlayer("a",game);
         game.newPlayer("b",game);
         game.newPlayer("c",game);
-        ProfTable.setPinkProf(2);
-        ProfTable.setRedProf(2);
-        ProfTable.setYellowProf(2);
-        ProfTable.setGreenProf(2);
+        game.getProfTable().setPinkProf(2);
+        game.getProfTable().setRedProf(2);
+        game.getProfTable().setYellowProf(2);
+        game.getProfTable().setGreenProf(2);
         Ciro ciro= new Ciro();
         ArrayList<ColorPawn> colorPawn= new ArrayList<>();
         CharacterCard characterCard=new CharacterCard(ciro,2);

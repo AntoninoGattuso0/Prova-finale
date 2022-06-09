@@ -20,11 +20,11 @@ class LancillottoTest {
         game.players.get(0).towerSpace.colorTower = ColorTower.BLACK;
         game.players.get(1).towerSpace.colorTower = ColorTower.BLACK;
         game.players.get(2).towerSpace.colorTower = ColorTower.BLACK;
-        ProfTable.setGreenProf(0);
-        ProfTable.setRedProf(0);
-        ProfTable.setYellowProf(1);
-        ProfTable.setPinkProf(2);
-        ProfTable.setBlueProf(-1);
+        game.getProfTable().setGreenProf(0);
+        game.getProfTable().setRedProf(0);
+        game.getProfTable().setYellowProf(1);
+        game.getProfTable().setPinkProf(2);
+        game.getProfTable().setBlueProf(-1);
         game.islands.get(0).setGreenPawn(3);
         game.islands.get(0).setRedPawn(2);
         game.islands.get(0).setYellowPawn(4);
