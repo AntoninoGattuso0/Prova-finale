@@ -208,7 +208,7 @@ public class Game {
             island.setProhibited(false);
             game.ernesto.setNumProhibitionCard(game.ernesto.getNumProhibitionCard() + 1);
         } else {
-            boolean notunique = false;
+            boolean notUnique = false;
             ArrayList<Integer> influence = new ArrayList<>();
             for (i = 0; i < game.totPlayer; i++) influence.add(0);
             for (color = 0; color < 5; color++) {
@@ -237,13 +237,13 @@ public class Game {
                     influence.set(i, influence.get(i) + island.getTotIsland());
             }
             max = Collections.max(influence);
-            for (i = 0; i < influence.size() && !notunique; i++) {
-                for (j = i + 1; j < influence.size() && !notunique; j++) {
+            for (i = 0; i < influence.size() && !notUnique; i++) {
+                for (j = i + 1; j < influence.size() && !notUnique; j++) {
                     if ((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && game.players.get(i).towerSpace.colorTower != game.players.get(j).towerSpace.colorTower)
-                        notunique = true;
+                        notUnique = true;
                 }
             }
-            if (!notunique) island.setColorTower(game.players.get(influence.indexOf(max)).towerSpace.colorTower);
+            if (!notUnique) island.setColorTower(game.players.get(influence.indexOf(max)).towerSpace.colorTower);
             unifyIsland(game.islands.indexOf(island), game);
         }
     }

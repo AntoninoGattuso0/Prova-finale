@@ -19,7 +19,7 @@ public class LightEntrance implements Serializable {
         this.redPawn=redPawn;
         this.yellowPawn =yellowPawn;
         this.pinkPawn =pinkPawn;
-        this.bluePawn =pinkPawn;
+        this.bluePawn =bluePawn;
     }
     public int getNumPawn() {
         return numPawn;
