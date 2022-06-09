@@ -12,6 +12,7 @@ import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
 import it.polimi.ingsw.network.VirtualView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Controller {
     private RoundController roundController;
@@ -139,7 +140,11 @@ public class Controller {
             virtualView.sendBroadcast( new SetCloudMessage(player.getNickname()));
         } else if (player.getCurrentPhase() == PhaseTurn.END_TURN) {
             updateThisPlayersLight();
-            virtualView.sendBroadcast( new EndTurnMessage(playersLight,player.getNickname()));
+            virtualView.sendBroadcast(new SetCharacterCardMessage(player.getNickname(),false));
+            virtualView.sendBroadcast( new EndTurnMessage(orderNamePlayers,player.getNickname()));
+            if(Objects.equals(player.getNickname(), getRoundController().getLastPlayer().getNickname())){
+                startRound();
+            }
         }
     }
 }

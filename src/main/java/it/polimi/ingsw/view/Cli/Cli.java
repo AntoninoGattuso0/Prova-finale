@@ -144,8 +144,7 @@ public class Cli implements Runnable, View {
             displaySchoolBoard();
             pedineDaSpostare = pedineDaSpostare - numPawnMoved;//pedine che rimangono da spostare
             out.println("Digita 1 per usare una Character Card");
-            out.println("Digita 2 per spostare delle pedine verso la DiningRoom");
-            out.println("Digita 1 per spostare delle pedine verso un'Isola");
+            out.println("Digita 2 per spostare delle pedine verso la DiningRoom");out.println("Digita 3 per spostare delle pedine verso un'Isola");
             int scelta = scanner.nextInt();
             while (scelta < 0 || scelta > 3) {
                 out.println("Numero Errato!");
@@ -223,7 +222,7 @@ public class Cli implements Runnable, View {
         }
         out.println("Verso quale isola vuoi spostarle? ");
         int numIsland = scanner.nextInt();
-        while(numIsland<0 || numIsland>lightGame.getIslands().size()+1){
+        while(numIsland<0 || numIsland>lightGame.getIslands().size()-1){
             out.println("Isola inesistente, inserisci un numero dell'isola corretto");
             numIsland = scanner.nextInt();
         }
@@ -564,8 +563,7 @@ public class Cli implements Runnable, View {
         selected = selected - 1;
         int numPawn = 1, numIsland = -1, i;
         ArrayList<ColorPawn> colori = new ArrayList<>();
-        for (i = 0; i < lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(actualPlayer)); i++)
-            ;
+        for (i = 0; i < lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(nickname)); i++) ;
         int player = i;
 
         if (lightGame.getCharacterCards().get(selected).getNumCard() == 0) {
@@ -1026,11 +1024,31 @@ public class Cli implements Runnable, View {
             out.println((i+1) + ") " + orderNamePlayers.get(i));
         }
     }
+
+    @Override
+    public void startTurn(ArrayList<String> players, String actualPlayer) {
+        if (Objects.equals(actualPlayer, socketNetworkHandler.getNicknameThisPlayer())) {
+            displayEndTurn();
+        }
+            int i;
+            for (i = 0; Objects.equals(players.get(i), actualPlayer); i++) ;
+            if (Objects.equals(players.get(i), socketNetworkHandler.getNicknameThisPlayer())) {
+                displayStartTurn();
+            } else
+                out.println(players.get(i) + " sta iniziando il suo turno");
+        }
+
     @Override
     public void displayStartTurn() {
         out.println("È il tuo turno! Puoi fare le tue mosse:");
     }
-
+    public void displayEndTurn(){
+        out.println("il tuo turno è finito.");
+    }
+    @Override
+    public void displayEndRound(){
+        out.println("il round è finito");
+    }
     @Override
     public void displayResponseMessage() {
 

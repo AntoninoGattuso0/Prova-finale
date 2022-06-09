@@ -256,7 +256,12 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         }
         game.getCharacterCards().get(num - 1).getUseEffect().useEffect(game, numberPawn, island, game.getPlayers().get(findPlayer(game, clientHandler)), colorPawn);
         clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
-        controller.getRoundController().setExeCharacterCard(true);
+        if(game.getPlayers().get(findPlayer(game,clientHandler)).getCurrentPhase()==PhaseTurn.END_TURN)
+            game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
+        int i;
+        for(i=0; Objects.equals(controller.getRoundController().getRoundOrder().get(i).getNickname(), clientHandler.getUserNickname()); i++);
+        controller.startTurn(controller.getRoundController().getRoundOrder().get(i));
+        controller.startTurn(controller.getRoundController().getRoundOrder().get(i++));
     }
 
     public int findPlayer(Game game, ClientHandler clientHandler) {
@@ -274,7 +279,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             game.getPlayers().get(findPlayer(game, clientHandler)).getEntrance().chooseCloud(game.getClouds().get(cloud), game, game.getPlayers().get(findPlayer(game, clientHandler)));
             game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.END_TURN);
             virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
-            controller.startTurn(game.getPlayers().get(findPlayer(game, clientHandler)));
+            controller.startTurn(game.getPlayers().get(findPlayer(game,clientHandler)));
         }else{
             clientHandler.sendObject(new WrongTurnMessage());
         }

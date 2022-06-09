@@ -119,6 +119,11 @@ public class Gui extends Application implements View {
     }
 
     @Override
+    public void displayEndRound() {
+
+    }
+
+    @Override
     public void displayResponseMessage() {
 
     }
@@ -140,7 +145,7 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public void selectAssistantCard(String nickname) {
+    public void selectAssistantCard(String nickname,boolean effect) {
 
     }
 
@@ -182,6 +187,11 @@ public class Gui extends Application implements View {
 
     @Override
     public void turnOrder(ArrayList<String> players) {
+
+    }
+
+    @Override
+    public void startTurn(ArrayList<String> players, String actualPlayer) {
 
     }
 
