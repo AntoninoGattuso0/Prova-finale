@@ -2,7 +2,6 @@ package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.controller.Controller;
 import it.polimi.ingsw.controller.PhaseTurn;
-import it.polimi.ingsw.controller.UserInput;
 import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Island;
@@ -21,7 +20,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     private ArrayList<String> namePlayer;
     private ArrayList<Player> players;
     private final VirtualView virtualView;
-    private final UserInput userInput;
     private boolean contr;
     private int numPlayers;
     private int numPawnExe;
@@ -39,7 +37,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         lock = new Object();
         namePlayer = new ArrayList<>();
         virtualView = new VirtualView();
-        userInput = new UserInput();
         clients = new ArrayList<>();
         players = new ArrayList<>();
         numinsert=false;
@@ -167,7 +164,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     }
 
     public void newGame(Game game) {
-        controller = new Controller(game, userInput, virtualView, clients);
+        controller = new Controller(game, virtualView, clients);
         controller.sendUpdate();
         controller.startRound();
     }
@@ -227,7 +224,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             numinsert = true;
         }
 
-    public synchronized void selectAssistantCard(int assistant, ClientHandler clientHandler) {
+    public synchronized void selectAssistantCard(int assistant, ClientHandler clientHandler) {// modificare la funzione in player. se non viene eliminato come lo gestisco?
             int i;
             int contr = -1;
             i = findPlayer(game, clientHandler);
@@ -236,9 +233,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 clientHandler.sendObject(new WrongNotAssistantMessage(controller.getRoundController().getRoundOrder().get(i).getNickname()));
             } else if (contr == 1) {
                 virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
-                if (Objects.equals(controller.getOrderNamePlayers().get(game.getTotPlayer()-1), clientHandler.getUserNickname())) {
-                   players= controller.getRoundController().getTurnController().TurnOrder(controller.getRoundController(),game);
-                    controller.setOrderNamePlayers(controller.getRoundController().getRoundOrder());
+                if (Objects.equals(controller.getPlayers().get(players.size()-1).getNickname(), clientHandler.getUserNickname())) {
+                   players= controller.getRoundController().newRoundOrder(game);
+                    controller.setOrderNamePlayers(players);
                     virtualView.sendBroadcast(new TurnOrderMessage(controller.getOrderNamePlayers()));
                     controller.startTurn(players.get(0));
                 } else {
@@ -249,14 +246,21 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             }
     }
 
-    public synchronized void useCharacter(int num, int numberPawn, int numIsland, ArrayList<ColorPawn> colorPawn, ClientHandler clientHandler) {
-        Island island = null;
-        if (numIsland != -1) {
-            island = game.getIslands().get(numIsland);
+    public synchronized void useCharacter(int num, int numberPawn, int numIsland, ArrayList<ColorPawn> colorPawn, ClientHandler clientHandler,boolean v) {
+        if (v) {
+            Island island = null;
+            if (numIsland != -1) {
+                island = game.getIslands().get(numIsland);
+            }
+            game.getCharacterCards().get(num - 1).getUseEffect().useEffect(game, numberPawn, island, game.getPlayers().get(findPlayer(game, clientHandler)), colorPawn);
+            clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
         }
-        game.getCharacterCards().get(num - 1).getUseEffect().useEffect(game, numberPawn, island, game.getPlayers().get(findPlayer(game, clientHandler)), colorPawn);
-        clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
-        controller.getRoundController().setExeCharacterCard(true);
+            if (game.getPlayers().get(findPlayer(game, clientHandler)).getCurrentPhase() == PhaseTurn.USE_CHARACTER) {
+                game.getPlayers().get(findPlayer(game, clientHandler)).setCurrentPhase(PhaseTurn.END_TURN);
+            }
+            int i;
+            for (i = 0; !Objects.equals(controller.getRoundController().getRoundOrder().get(i).getNickname(), clientHandler.getUserNickname()); i++);
+            controller.startTurn(game.getPlayers().get(findPlayer(game,clientHandler)));
     }
 
     public int findPlayer(Game game, ClientHandler clientHandler) {
@@ -272,9 +276,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     public synchronized void selectCloud(int cloud, ClientHandler clientHandler) {
         if(game.getPlayers().get(findPlayer(game,clientHandler)).getCurrentPhase()==PhaseTurn.CHOOSE_CLOUD) {
             game.getPlayers().get(findPlayer(game, clientHandler)).getEntrance().chooseCloud(game.getClouds().get(cloud), game, game.getPlayers().get(findPlayer(game, clientHandler)));
-            game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.END_TURN);
+            game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.USE_CHARACTER);
             virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
-            controller.startTurn(game.getPlayers().get(findPlayer(game, clientHandler)));
+            controller.startTurn(game.getPlayers().get(findPlayer(game,clientHandler)));
         }else{
             clientHandler.sendObject(new WrongTurnMessage());
         }

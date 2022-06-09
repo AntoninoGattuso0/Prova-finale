@@ -50,7 +50,7 @@ public class ClientMessageManager {
         } /*else if (object instanceof EndGameMessage) {
            //socketNetworkHandler.getView().
         }*/ else if (object instanceof EndTurnMessage) {//dice a tutti che il turno di "giocatore che gioca" è finito e che tocca a "giocatore successivo"
-          // socketNetworkHandler.getView().
+           socketNetworkHandler.getView().startTurn(((EndTurnMessage) object).getPlayers(),((EndTurnMessage) object).getActualPlayer());
         } else if (object instanceof InvalidNumPlayerMessage) {
             // socketNetworkHandler.getView().
         } else if (object instanceof NewCurrentPlayerMessage) {
@@ -68,6 +68,8 @@ public class ClientMessageManager {
             socketNetworkHandler.getView().turnOrder(((TurnOrderMessage) object).getPlayersOrder());
         }else if(object instanceof WrongSameAssistantMessage){
            // socketNetworkHandler.getView().
+        }else if(object instanceof SetCharacterCardMessage){
+            socketNetworkHandler.getView().requestCharacterCard(((SetCharacterCardMessage) object).getNickname(),((SetCharacterCardMessage) object).isBool());
         }
         else throw new IllegalArgumentException();
     }

@@ -16,7 +16,7 @@ public interface View {
     void requestMovePawnToIsland(int pawn);
     void requestMovePawn(String nickname,int numPawnMoved);
 
-    void requestCharacterCard(String nickname);
+    void requestCharacterCard(String nickname,boolean bool);
 
     void displayNick();
 
@@ -46,6 +46,8 @@ public interface View {
 
     void displayStartTurn();
 
+    void displayEndRound();
+
     void displayResponseMessage();
 
     void updateAll(LightGame object);
@@ -69,5 +71,7 @@ public interface View {
     void lobbyFull();
 
     void turnOrder(ArrayList<String> orderNamePLayers);
+
+    void startTurn(ArrayList<String> players, String actualPlayer);
 }
 //CLI E GUI dovranno implementare quest interfaccia

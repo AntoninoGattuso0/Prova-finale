@@ -13,7 +13,7 @@ public class ServerMessageMenager {
 
     public void ManageInputToServer(ClientHandler clientHandler, Object object) {
          if (object instanceof ChooseCharacterCardMessage c) {
-             lobby.useCharacter(c.getNumCharacter(),c.getNumPawn(),c.getNumIsland(),c.getColorPawns(),clientHandler);
+             lobby.useCharacter(c.getNumCharacter(),c.getNumPawn(),c.getNumIsland(),c.getColorPawns(),clientHandler,c.getCheck());
         }else if(object instanceof ChooseCloudMessage cloud) {
              lobby.selectCloud(cloud.getCloud(),clientHandler);
         } else if (object instanceof MoveMotherNatureMessage move) {
