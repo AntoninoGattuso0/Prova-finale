@@ -304,6 +304,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             for (i = 0; i < numPawn; i++) {
                 game.getPlayers().get(numPlayer).getDiningRoom().addPawnToDiningRoom(arrayPawn.get(i), game.getPlayers().get(numPlayer), game);
             }
+            game.moveProf();
             virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
             movement(numPawn, clientHandler, numPlayer);
         }else{
