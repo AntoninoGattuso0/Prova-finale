@@ -371,16 +371,16 @@ public class Game {
         numTower.add(0);
         ArrayList<Integer> numProf = new ArrayList<>();
         for(int i = 0; i<totPlayer; i++) numProf.add(0);
-        for(int i = 0; i<5; i++){
-            numProf.set(profTable.checkProf(i), numProf.get(profTable.checkProf(i) + 1));
+        for(int i = 0; i<5; i++){//scorro tutti i colori
+            numProf.set(profTable.checkProf(i), numProf.get(profTable.checkProf(i)) + 1);//per ogni colore vedo quale player ha il suo professore e aggiungo +1 all'arraylist
         }
         for (Island island : islands) {
             if (island.getColorTower() == ColorTower.BLACK)
-                numTower.set(0, numTower.get(0) + 1);
+                numTower.set(0, numTower.get(0) + island.getTotIsland());
             else if (island.getColorTower() == ColorTower.WHITE)
-                numTower.set(1, numTower.get(1) + 1);
+                numTower.set(1, numTower.get(1) + island.getTotIsland());
             else if (island.getColorTower() == ColorTower.GREY)
-                numTower.set(2, numTower.get(2) + 1);
+                numTower.set(2, numTower.get(2) + island.getTotIsland());
         }
         int max = numTower.indexOf(Collections.max(numTower));
 
