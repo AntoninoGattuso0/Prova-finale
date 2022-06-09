@@ -113,9 +113,7 @@ public class Player {
                 player.setCurrentAssistant(player.deckAssistant.get(i));
                 player.deckAssistant.remove(i);
                 AssistantCard temp=new AssistantCard();
-                temp.setCardValue(-1);
-                temp.setStep(-1);
-                player.deckAssistant.add(i,temp);
+                deckAssistant.remove(i);
                 player.setCurrentPhase(PhaseTurn.MOVE_STUDENT);
                 contr = 1;
                 return contr;
