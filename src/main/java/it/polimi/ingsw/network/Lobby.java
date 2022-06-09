@@ -252,7 +252,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             if (numIsland != -1) {
                 island = game.getIslands().get(numIsland);
             }
-            game.getCharacterCards().get(num - 1).getUseEffect().useEffect(game, numberPawn, island, game.getPlayers().get(findPlayer(game, clientHandler)), colorPawn);
+            game.getCharacterCards().get(num).getUseEffect().useEffect(game, numberPawn, island, game.getPlayers().get(findPlayer(game, clientHandler)), colorPawn);
             clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
         }
             if (game.getPlayers().get(findPlayer(game, clientHandler)).getCurrentPhase() == PhaseTurn.USE_CHARACTER) {
