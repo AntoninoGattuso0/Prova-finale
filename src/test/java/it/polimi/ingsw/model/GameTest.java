@@ -29,7 +29,7 @@ public class GameTest {
     public void testCreateArrayPawn(){
         Game game = new Game(4, true);
         game.start(game);
-        ArrayList<String> a = Game.createArrayPawn(game.studentBag);
+        ArrayList<ColorPawn> a = Game.createArrayPawn(game.studentBag);
         System.out.println(a);
     }
     @Test

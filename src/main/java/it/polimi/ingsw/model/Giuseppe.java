@@ -67,30 +67,30 @@ public class Giuseppe extends UseEffect implements Serializable {
         numPinkPawn=0;
         numBluePawn=0;
         Random rdm = new Random();
-        ArrayList<String> refillCharacterCard = Game.createArrayPawn(game.studentBag);
+        ArrayList<ColorPawn> refillCharacterCard = Game.createArrayPawn(game.studentBag);
         for(int i = 0; i < 6; i++){
             int random = rdm.nextInt(refillCharacterCard.size());
-            if(Objects.equals(refillCharacterCard.get(random), game.m.get(0))) {
+            if(Objects.equals(refillCharacterCard.get(random), ColorPawn.GREEN)) {
                 numGreenPawn++;
                 studentBag.setNum(studentBag.getNum() - 1);
                 studentBag.setGreenNum(studentBag.getGreenNum() - 1);
                 if(studentBag.getGreenNum() == 0) refillCharacterCard.remove(random);
-            }else if(Objects.equals(refillCharacterCard.get(random), game.m.get(1))) {
+            }else if(Objects.equals(refillCharacterCard.get(random), ColorPawn.RED)) {
                 numRedPawn++;
                 studentBag.setNum(studentBag.getNum() - 1);
                 studentBag.setRedNum(studentBag.getRedNum() - 1);
                 if(studentBag.getRedNum() == 0) refillCharacterCard.remove(random);
-            }else if(Objects.equals(refillCharacterCard.get(random), game.m.get(2))) {
+            }else if(Objects.equals(refillCharacterCard.get(random), ColorPawn.YELLOW)) {
                 numYellowPawn++;
                 studentBag.setNum(studentBag.getNum() - 1);
                 studentBag.setYellowNum(studentBag.getYellowNum() - 1);
                 if(studentBag.getYellowNum() == 0) refillCharacterCard.remove(random);
-            }else if(Objects.equals(refillCharacterCard.get(random), game.m.get(3))) {
+            }else if(Objects.equals(refillCharacterCard.get(random), ColorPawn.PINK)) {
                 numPinkPawn++;
                 studentBag.setNum(studentBag.getNum() - 1);
                 studentBag.setPinkNum(studentBag.getPinkNum() - 1);
                 if(studentBag.getPinkNum() == 0) refillCharacterCard.remove(random);
-            }else if(Objects.equals(refillCharacterCard.get(random), game.m.get(4))) {
+            }else if(Objects.equals(refillCharacterCard.get(random), ColorPawn.BLUE)) {
                 numBluePawn++;
                 studentBag.setNum(studentBag.getNum() - 1);
                 studentBag.setBlueNum(studentBag.getBlueNum() - 1);

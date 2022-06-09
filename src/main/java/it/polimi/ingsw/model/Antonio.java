@@ -21,10 +21,10 @@ public class Antonio extends UseEffect implements Serializable{
         bluePawn=0;
         while(numPawnAntonio<4){
             Random rnd = new Random();
-            ArrayList<String> refillPawn = Game.createArrayPawn(studentBag);
+            ArrayList<ColorPawn> refillPawn = Game.createArrayPawn(studentBag);
             if (studentBag.getNum() > 0) {
                 int random = rnd.nextInt(refillPawn.size());
-                if (Objects.equals(refillPawn.get(random), "GREEN")) {
+                if (Objects.equals(refillPawn.get(random), ColorPawn.GREEN)) {
                     setGreenPawn(getGreenPawn()+1);
                     numPawnAntonio++;
                     studentBag.setNum(studentBag.getNum()-1);
@@ -32,7 +32,7 @@ public class Antonio extends UseEffect implements Serializable{
                     if(studentBag.getGreenNum()==0){
                         refillPawn.remove(random);
                     }
-                } else if (Objects.equals(refillPawn.get(random), "RED")) {
+                } else if (Objects.equals(refillPawn.get(random), ColorPawn.RED)) {
                     setRedPawn(getRedPawn()+1);
                     numPawnAntonio++;
                     studentBag.setNum(studentBag.getNum()-1);
@@ -40,7 +40,7 @@ public class Antonio extends UseEffect implements Serializable{
                     if(studentBag.getRedNum()==0){
                         refillPawn.remove(random);
                     }
-                } else if (Objects.equals(refillPawn.get(random), "YELLOW")) {
+                } else if (Objects.equals(refillPawn.get(random), ColorPawn.YELLOW)) {
                     setYellowPawn(getYellowPawn()+1);
                     numPawnAntonio++;
                     studentBag.setNum(studentBag.getNum()-1);
@@ -48,7 +48,7 @@ public class Antonio extends UseEffect implements Serializable{
                     if(studentBag.getYellowNum()==0){
                         refillPawn.remove(random);
                     }
-                } else if (Objects.equals(refillPawn.get(random), "PINK")) {
+                } else if (Objects.equals(refillPawn.get(random), ColorPawn.PINK)) {
                     setPinkPawn(getPinkPawn()+1);
                     numPawnAntonio++;
                     studentBag.setNum(studentBag.getNum()-1);
@@ -56,7 +56,7 @@ public class Antonio extends UseEffect implements Serializable{
                     if(studentBag.getPinkNum()==0){
                         refillPawn.remove(random);
                     }
-                } else if (Objects.equals(refillPawn.get(random), "BLUE")) {
+                } else if (Objects.equals(refillPawn.get(random), ColorPawn.BLUE)) {
                     setBluePawn(getBluePawn()+1);
                     numPawnAntonio++;
                     studentBag.setNum(studentBag.getNum()-1);
@@ -72,7 +72,7 @@ public class Antonio extends UseEffect implements Serializable{
 
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
         Random rnd = new Random();
-        ArrayList<String> refillPawn = Game.createArrayPawn(game.studentBag);
+        ArrayList<ColorPawn> refillPawn = Game.createArrayPawn(game.studentBag);
         if (colorPawn.get(0).toString().equals("GREEN") && getGreenPawn() > 0) {  //altrimenti cosa succede se la pedina verde non c'è?
             island.setGreenPawn(island.getGreenPawn() + 1);
             setGreenPawn(getGreenPawn() - 1);
@@ -99,7 +99,7 @@ public class Antonio extends UseEffect implements Serializable{
         if (numPawnAntonio == 3) {
             if (game.studentBag.getNum() > 0 && refillPawn.size() > 0) {
                 int random = rnd.nextInt(refillPawn.size());
-                if (Objects.equals(refillPawn.get(random), "GREEN")) {
+                if (Objects.equals(refillPawn.get(random), ColorPawn.GREEN)) {
                     setGreenPawn(getGreenPawn() + 1);
                     setNumPawnAntonio(getNumPawnAntonio() + 1);
                     game.studentBag.setNum(game.studentBag.getNum() - 1);
@@ -107,7 +107,7 @@ public class Antonio extends UseEffect implements Serializable{
                     if (game.studentBag.getGreenNum() == 0) {
                         refillPawn.remove(random);
                     }
-                } else if (Objects.equals(refillPawn.get(random), "RED")) {
+                } else if (Objects.equals(refillPawn.get(random), ColorPawn.RED)) {
                     setRedPawn(getRedPawn() + 1);
                     setNumPawnAntonio(getNumPawnAntonio() + 1);
                     game.studentBag.setNum(game.studentBag.getNum() - 1);
@@ -115,7 +115,7 @@ public class Antonio extends UseEffect implements Serializable{
                     if (game.studentBag.getRedNum() == 0) {
                         refillPawn.remove(random);
                     }
-                } else if (Objects.equals(refillPawn.get(random), "YELLOW")) {
+                } else if (Objects.equals(refillPawn.get(random), ColorPawn.YELLOW)) {
                     setYellowPawn(getYellowPawn() + 1);
                     setNumPawnAntonio(getNumPawnAntonio() + 1);
                     game.studentBag.setNum(game.studentBag.getNum() - 1);
@@ -123,7 +123,7 @@ public class Antonio extends UseEffect implements Serializable{
                     if (game.studentBag.getYellowNum() == 0) {
                         refillPawn.remove(random);
                     }
-                } else if (Objects.equals(refillPawn.get(random), "PINK")) {
+                } else if (Objects.equals(refillPawn.get(random), ColorPawn.PINK)) {
                     setPinkPawn(getPinkPawn() + 1);
                     setNumPawnAntonio(getNumPawnAntonio() + 1);
                     game.studentBag.setNum(game.studentBag.getNum() - 1);
@@ -131,7 +131,7 @@ public class Antonio extends UseEffect implements Serializable{
                     if (game.studentBag.getPinkNum() == 0) {
                         refillPawn.remove(random);
                     }
-                } else if (Objects.equals(refillPawn.get(random), "BLUE")) {
+                } else if (Objects.equals(refillPawn.get(random), ColorPawn.BLUE)) {
                     setBluePawn(getBluePawn() + 1);
                     setNumPawnAntonio(getNumPawnAntonio() + 1);
                     game.studentBag.setNum(game.studentBag.getNum() - 1);

@@ -7,7 +7,7 @@ public class Game {
     protected ArrayList<Player> players = new ArrayList<>();
     protected int totPlayer;
     protected ArrayList<Cloud> clouds;
-    protected ProfTable profTable = new ProfTable();
+    protected ProfTable profTable;// = new ProfTable()
     protected ArrayList<Island> islands = new ArrayList<>();
     protected boolean isExpert;
     protected ArrayList<CharacterCard> characterCards = new ArrayList<>();//insieme dei 3 characters usati
@@ -45,7 +45,7 @@ public class Game {
         ArrayList<LightPlayer> lightPlayers= new ArrayList<>();
         for(i=0;i<players.size();i++){
             LightDiningRoom lightDiningRoom=new LightDiningRoom(players.get(i).getDiningRoom().getNumBlue(),players.get(i).getDiningRoom().getNumGreen(),players.get(i).getDiningRoom().getNumPink(),players.get(i).getDiningRoom().getNumRed(),players.get(i).getDiningRoom().getNumYellow());
-            LightTowerSpace lightTowerSpace=new LightTowerSpace(players.get(0).getTowerSpace().getColorTower(),players.get(0).getTowerSpace().getNumTower());
+            LightTowerSpace lightTowerSpace=new LightTowerSpace(players.get(i).getTowerSpace().getColorTower(),players.get(i).getTowerSpace().getNumTower());
             LightEntrance lightEntrance=new LightEntrance(players.get(i).getEntrance().getNumPawn(),players.get(i).getEntrance().getGreenPawn(),players.get(i).getEntrance().getRedPawn(),players.get(i).getEntrance().getYellowPawn(),players.get(i).getEntrance().getPinkPawn(),players.get(i).getEntrance().getBluePawn());
             LightPlayer lightPlayer=new LightPlayer(players.get(i).getNickname(),players.get(i).getNumCoin(),players.get(i).getDeckAssistant(),players.get(i).getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDiningRoom,players.get(i).getCurrentPhase() );
             lightPlayers.add(lightPlayer);
@@ -152,18 +152,18 @@ public class Game {
         }
         setCharacterCards(game);
         }
-    static ArrayList<String> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
-        ArrayList<String> arrayPawn = new ArrayList<>(5);
+    static ArrayList<ColorPawn> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
+        ArrayList<ColorPawn> arrayPawn = new ArrayList<>(5);
         if (studentBag.getGreenNum() > 0)
-            arrayPawn.add("GREEN");
+            arrayPawn.add(ColorPawn.GREEN);
         if (studentBag.getRedNum() > 0)
-            arrayPawn.add("RED");
+            arrayPawn.add(ColorPawn.RED);
         if (studentBag.getYellowNum() > 0)
-            arrayPawn.add("YELLOW");
+            arrayPawn.add(ColorPawn.YELLOW);
         if (studentBag.getPinkNum() > 0)
-            arrayPawn.add("PINK");
+            arrayPawn.add(ColorPawn.PINK);
         if (studentBag.getBlueNum() > 0)
-            arrayPawn.add("BLUE");
+            arrayPawn.add(ColorPawn.BLUE);
         return arrayPawn;
     }
     public void newPlayer(String nick,Game game) {
