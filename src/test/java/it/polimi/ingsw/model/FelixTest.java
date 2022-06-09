@@ -16,11 +16,11 @@ public class FelixTest {
         game.newPlayer("John", game);
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(1);
         colorPawn.add(ColorPawn.GREEN);
-        ProfTable.setGreenProf(0);
-        ProfTable.setRedProf(1);
-        ProfTable.setYellowProf(0);
-        ProfTable.setPinkProf(1);
-        ProfTable.setBlueProf(1);
+        game.getProfTable().setGreenProf(0);
+        game.getProfTable().setRedProf(1);
+        game.getProfTable().setYellowProf(0);
+        game.getProfTable().setPinkProf(1);
+        game.getProfTable().setBlueProf(1);
         game.islands.get(7).setGreenPawn(3);
         game.islands.get(7).setRedPawn(2);
         game.islands.get(7).setYellowPawn(4);

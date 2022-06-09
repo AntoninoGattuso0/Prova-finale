@@ -19,20 +19,20 @@ public class Barbara extends UseEffect implements Serializable {
         max = 0;
         if (game.getProfTable().getGreenProf() != -1) {
             if (game.players.get(i).diningRoom.getNumGreen() == game.players.get(game.getProfTable().getGreenProf()).diningRoom.getNumGreen())
-                ProfTable.setGreenProf(i);
+                game.getProfTable().setGreenProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
                 if (game.players.get(i).diningRoom.getNumGreen() < game.players.get(j).diningRoom.getNumGreen())
                     max = 1;
             }
             if (max == 0) {
-                ProfTable.setGreenProf(i);
+                game.getProfTable().setGreenProf(i);
             }
         }
         max = 0;
         if (game.getProfTable().getRedProf() != -1) {
             if (game.players.get(i).diningRoom.getNumRed() == game.players.get(game.getProfTable().getRedProf()).diningRoom.getNumRed())
-                ProfTable.setRedProf(i);
+                game.getProfTable().setRedProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
 
@@ -40,46 +40,46 @@ public class Barbara extends UseEffect implements Serializable {
                     max = 1;
             }
             if (max == 0) {
-                ProfTable.setRedProf(i);
+                game.getProfTable().setRedProf(i);
             }
         }
         max = 0;
         if (game.getProfTable().getBlueProf() != -1) {
             if (game.players.get(i).diningRoom.getNumBlue() == game.players.get(game.getProfTable().getBlueProf()).diningRoom.getNumBlue())
-                ProfTable.setBlueProf(i);
+                game.getProfTable().setBlueProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
                 if (game.players.get(i).diningRoom.getNumBlue() < game.players.get(j).diningRoom.getNumBlue())
                     max = 1;
             }
             if (max == 0) {
-                ProfTable.setBlueProf(i);
+                game.getProfTable().setBlueProf(i);
             }
         }
         max = 0;
         if (game.getProfTable().getPinkProf() != -1) {
             if (game.players.get(i).diningRoom.getNumPink() == game.players.get(game.getProfTable().getPinkProf()).diningRoom.getNumPink())
-                ProfTable.setPinkProf(i);
+                game.getProfTable().setPinkProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
                 if (game.players.get(i).diningRoom.getNumPink() < game.players.get(j).diningRoom.getNumPink())
                     max = 1;
             }
             if (max == 0) {
-                ProfTable.setPinkProf(i);
+                game.getProfTable().setPinkProf(i);
             }
         }
         max = 0;
         if (game.getProfTable().getYellowProf() != -1) {
             if (game.players.get(i).diningRoom.getNumYellow() == game.players.get(game.getProfTable().getYellowProf()).diningRoom.getNumYellow())
-                ProfTable.setYellowProf(i);
+                game.getProfTable().setYellowProf(i);
         } else {
             for (j = 0; j < game.getTotPlayer(); j++) {
                 if (game.players.get(i).diningRoom.getNumYellow() < game.players.get(j).diningRoom.getNumYellow())
                     max = 1;
             }
             if (max == 0) {
-                ProfTable.setYellowProf(i);
+                game.getProfTable().setYellowProf(i);
             }
         }
             setCoinPrice(3);

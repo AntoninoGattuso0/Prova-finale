@@ -119,4 +119,5 @@ public class LightGame implements Serializable {
     public Omnia getOmnia() {
         return omnia;
     }
+
 }

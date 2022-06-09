@@ -50,7 +50,7 @@ public class Game {
             LightPlayer lightPlayer=new LightPlayer(players.get(i).getNickname(),players.get(i).getNumCoin(),players.get(i).getDeckAssistant(),players.get(i).getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDiningRoom,players.get(i).getCurrentPhase() );
             lightPlayers.add(lightPlayer);
         }
-        return new LightGame(characterCards,isExpert, lightClouds, lightPlayers, islands, totPlayer, this.profTable, this.antonio, this.barbara, this.ciro, this.dante, this.ernesto, this.felix, this.giuseppe, this.ivan, this.lancillotto, this.maria, this.nicola, this.omnia);
+        return new LightGame(characterCards,isExpert, lightClouds, lightPlayers, islands, totPlayer, getProfTable(), this.antonio, this.barbara, this.ciro, this.dante, this.ernesto, this.felix, this.giuseppe, this.ivan, this.lancillotto, this.maria, this.nicola, this.omnia);
     }
 
     public int getTotPlayer() {
@@ -330,41 +330,41 @@ public class Game {
                     int max = Collections.max(maxColor);
                     int indexMax = maxColor.indexOf(max);
                     maxColor.remove(indexMax);
-                    if (!maxColor.contains(max)) ProfTable.setGreenProf(indexMax);
+                    if (!maxColor.contains(max)) getProfTable().setGreenProf(indexMax);
                     maxColor.clear();
                 } else if (i == 1) {
                     for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumRed());
                     int max = Collections.max(maxColor);
                     int indexMax = maxColor.indexOf(max);
                     maxColor.remove(indexMax);
-                    if (!maxColor.contains(max)) ProfTable.setRedProf(indexMax);
+                    if (!maxColor.contains(max)) getProfTable().setRedProf(indexMax);
                     maxColor.clear();
                 } else if (i == 2) {
                     for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumYellow());
                     int max = Collections.max(maxColor);
                     int indexMax = maxColor.indexOf(max);
                     maxColor.remove(indexMax);
-                    if (!maxColor.contains(max)) ProfTable.setYellowProf(indexMax);
+                    if (!maxColor.contains(max)) getProfTable().setYellowProf(indexMax);
                     maxColor.clear();
                 } else if (i == 3) {
                     for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumPink());
                     int max = Collections.max(maxColor);
                     int indexMax = maxColor.indexOf(max);
                     maxColor.remove(indexMax);
-                    if (!maxColor.contains(max)) ProfTable.setPinkProf(indexMax);
+                    if (!maxColor.contains(max)) getProfTable().setPinkProf(indexMax);
                     maxColor.clear();
                 } else if (i == 4) {
                     for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumBlue());
                     int max = Collections.max(maxColor);
                     int indexMax = maxColor.indexOf(max);
                     maxColor.remove(indexMax);
-                    if (!maxColor.contains(max)) ProfTable.setBlueProf(indexMax);
+                    if (!maxColor.contains(max)) getProfTable().setBlueProf(indexMax);
                     maxColor.clear();
                 }
             }
         }
 
-    public Player finish() {
+    public Player finish(Boolean lastTurn) {
         ArrayList<Integer> numTower = new ArrayList<>();
         numTower.add(0);
         numTower.add(0);
@@ -391,34 +391,25 @@ public class Game {
                 max1 = i;
         }
 
-        if(max1 != -1 && (numProf.get(max) < numProf.get(max1))){
+        if((max1 != -1) && (numProf.get(max) < numProf.get(max1))){
             max = max1;
         }
 
-        ColorTower maxColor = null;
-        if(max == 0) maxColor = ColorTower.BLACK;
-        else if (max == 1) maxColor = ColorTower.WHITE;
-        else if (max == 2) maxColor = ColorTower.GREY;
 
         for(int i = 0; i<totPlayer; i++){
-            if(players.get(i).towerSpace.getNumTower() == 0){ //caso 1, torri finite
-                for(int k = 0; k<totPlayer; k++){
-                    if(players.get(k).towerSpace.getColorTower() == maxColor) return players.get(k);
-                }
-            }
+            if(players.get(i).towerSpace.getNumTower() == 0) //caso 1, torri finite
+                 return players.get(max);
         }
-        if(islands.size() <= 3){
-            for(int k = 0; k<totPlayer; k++){ //caso 2, 3 gruppi di isole
-                if(players.get(k).towerSpace.getColorTower() == maxColor) return players.get(k);
-            }
+        if(islands.size() <= 3){//caso 2, 3 gruppi di isole
+            return players.get(max);
         }
 
-
-        if(studentBag.getNum() == 0) {
-            for (int k = 0; k < totPlayer; k++) { //caso 3, studenti finiti
-                if (players.get(k).towerSpace.getColorTower() == maxColor) return players.get(k);
-            }
+        if(studentBag.getNum() == 0) {//caso 3, fine studenti nel sacchetto
+            return players.get(max);
         }
+
+        if((players.get(0).getDeckAssistant().size() == 0) && lastTurn)//caso 4, finiti gli assistenti & ultimo turno
+            return players.get(max);
         return null;
     }
 }
