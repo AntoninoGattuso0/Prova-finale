@@ -1350,6 +1350,7 @@ public class Cli implements Runnable, View {
                 showColor.append(" ◌ ");
             showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("\n");
             showColor.append("Il numero totale di torri ").append(lightGame.getPlayers().get(player).getTowerSpace().getColorTower()).append(" disponibili è: ").append(ColorCli.BOLDWITE).append(lightGame.getPlayers().get(player).getTowerSpace().getNumTower());
+            showColor.append(ColorCli.BOLDCYAN).append("+---------------------------------------------------+").append(ColorCli.RESET);
             showColor.append("\n");
         }
         return showColor.toString();

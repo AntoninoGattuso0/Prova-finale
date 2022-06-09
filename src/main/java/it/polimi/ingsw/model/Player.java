@@ -76,7 +76,7 @@ public class Player {
             //collegamento a tower, dining and entrance
             this.entrance = new Entrance(game);
             this.diningRoom = new DiningRoom();
-            //this.towerSpace = new TowerSpace(game); NON VA BENE, ASSOCIA A TUTTI I PLAYER GLI STESSI COLORI
+            this.towerSpace = new TowerSpace(game); //NON VA BENE, ASSOCIA A TUTTI I PLAYER LO STESSO COLORE
     }
     public void setCurrentAssistant(AssistantCard currentAssistant) {
         this.currentAssistant = currentAssistant;
