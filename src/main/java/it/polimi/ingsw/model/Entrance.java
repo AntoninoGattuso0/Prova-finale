@@ -13,19 +13,19 @@ public class Entrance {
     private int redPawn;
 
     public int getNumPawn(){
-        return numPawn;
+        return this.numPawn;
     }
     public int getGreenPawn() {
-        return greenPawn;
+        return this.greenPawn;
     }
     public int getRedPawn(){
-        return redPawn;
+        return this.redPawn;
     }
     public int getYellowPawn() {
-        return yellowPawn;
+        return this.yellowPawn;
     }
     public int getPinkPawn() {
-        return pinkPawn;
+        return this.pinkPawn;
     }
     public int getBluePawn() {
         return bluePawn;
@@ -50,57 +50,64 @@ public class Entrance {
     }
 
     public Entrance(Game game){
-       setGreenPawn(0);
-       setBluePawn(0);
-       setPinkPawn(0);
-       setYellowPawn(0);
-       setRedPawn(0);
+        this.greenPawn=0;
+        this.redPawn=0;
+        this.yellowPawn=0;
+        this.pinkPawn=0;
+        this.bluePawn=0;
        Random rnd = new Random();
         if(game.totPlayer == 2 || game.totPlayer == 4)
-            setNumPawn(7);
+            this.numPawn=7;
         else if(game.totPlayer == 3)
-            setNumPawn(9);
+            this.numPawn=9;
         int i,k;
         ArrayList<ColorPawn> entrancePawn = Game.createArrayPawn(game.studentBag);
-        for(i = 0; i < getNumPawn(); i++){
+        for(i = 0; i < this.numPawn;){
             if (game.studentBag.getNum() > 0 && entrancePawn.size() > 0) {
                 int random = rnd.nextInt(entrancePawn.size());
                 if (Objects.equals(entrancePawn.get(random), ColorPawn.GREEN) && game.studentBag.getGreenNum() > 0) {//verde
-                    setGreenPawn(getGreenPawn() + 1);
-                    k = game.studentBag.getNum() - 1;
-                    game.studentBag.setNum(k);
-                    k = game.studentBag.getGreenNum() - 1;
-                    game.studentBag.setGreenNum(k);
-                    if(game.studentBag.getGreenNum() == 0) entrancePawn.remove(random);
-                } else if (Objects.equals(entrancePawn.get(random), ColorPawn.RED) && game.studentBag.getRedNum() > 0) {//rosso
-                    setRedPawn(getRedPawn() + 1);
-                    k = game.studentBag.getNum() - 1;
-                    game.studentBag.setNum(k);
-                    k = game.studentBag.getRedNum() - 1;
-                    game.studentBag.setRedNum(k);
-                    if(game.studentBag.getRedNum() == 0) entrancePawn.remove(random);
-                } else if (Objects.equals(entrancePawn.get(random), ColorPawn.YELLOW) && game.studentBag.getYellowNum() > 0) {//giallo
-                    setYellowPawn(getYellowPawn() + 1);
-                    k = game.studentBag.getNum() - 1;
-                    game.studentBag.setNum(k);
-                    k = game.studentBag.getYellowNum() - 1;
-                    game.studentBag.setYellowNum(k);
-                    if(game.studentBag.getYellowNum() == 0) entrancePawn.remove(random);
-                } else if (Objects.equals(entrancePawn.get(random), ColorPawn.PINK) && game.studentBag.getPinkNum() > 0) {//rosa
-                    setPinkPawn(getPinkPawn() + 1);
-                    k = game.studentBag.getNum() - 1;
-                    game.studentBag.setNum(k);
-                    k = game.studentBag.getPinkNum() - 1;
-                    game.studentBag.setPinkNum(k);
-                    if(game.studentBag.getPinkNum() == 0) entrancePawn.remove(random);
-                } else if (Objects.equals(entrancePawn.get(random), ColorPawn.BLUE) && game.studentBag.getBlueNum() > 0) {//blu
-                    setBluePawn(getBluePawn() + 1);
-                    k = game.studentBag.getNum() - 1;
-                    game.studentBag.setNum(k);
-                    k = game.studentBag.getBlueNum() - 1;
-                    game.studentBag.setBlueNum(k);
-                    if(game.studentBag.getBlueNum() == 0) entrancePawn.remove(random);
-                }
+                        this.greenPawn++;
+                        k = (game.studentBag.getNum()) - 1;
+                        game.studentBag.setNum(k);
+                        k = (game.studentBag.getGreenNum()) - 1;
+                        game.studentBag.setGreenNum(k);
+                        i++;
+                        if (game.studentBag.getGreenNum() == 0) entrancePawn.remove(random);
+                    } else if (Objects.equals(entrancePawn.get(random), ColorPawn.RED) && game.studentBag.getRedNum() > 0) {//rosso
+                        this.redPawn++;
+                        k = game.studentBag.getNum() - 1;
+                        game.studentBag.setNum(k);
+                        k = game.studentBag.getRedNum() - 1;
+                        game.studentBag.setRedNum(k);
+                        i++;
+                        if (game.studentBag.getRedNum() == 0) entrancePawn.remove(random);
+                    } else if (Objects.equals(entrancePawn.get(random), ColorPawn.YELLOW) && game.studentBag.getYellowNum() > 0) {//giallo
+                        System.out.println("c'e " + random);
+                        this.yellowPawn++;
+                        k = (game.studentBag.getNum()) - 1;
+                        game.studentBag.setNum(k);
+                        k = (game.studentBag.getYellowNum()) - 1;
+                        game.studentBag.setYellowNum(k);
+                        i++;
+                        if (game.studentBag.getYellowNum() == 0) entrancePawn.remove(random);
+                    } else if (Objects.equals(entrancePawn.get(random), ColorPawn.PINK) && game.studentBag.getPinkNum() > 0) {//rosa
+                        this.pinkPawn++;
+                        k = (game.studentBag.getNum()) - 1;
+                        game.studentBag.setNum(k);
+                        k = (game.studentBag.getPinkNum()) - 1;
+                        game.studentBag.setPinkNum(k);
+                        i++;
+                        if (game.studentBag.getPinkNum() == 0) entrancePawn.remove(random);
+                    } else if (Objects.equals(entrancePawn.get(random), ColorPawn.BLUE) && game.studentBag.getBlueNum() > 0) {//blu
+                        this.bluePawn++;
+                        System.out.println(bluePawn);
+                        k = (game.studentBag.getNum()) - 1;
+                        game.studentBag.setNum(k);
+                        k = (game.studentBag.getBlueNum()) - 1;
+                        game.studentBag.setBlueNum(k);
+                        i++;
+                        if (game.studentBag.getBlueNum() == 0) entrancePawn.remove(random);
+                    }
             }
         }
     }
@@ -183,7 +190,7 @@ public class Entrance {
         }
     }
     public LightEntrance getLightEntrance(){
-        LightEntrance lightEntrance=new LightEntrance(getNumPawn(),getGreenPawn(),getRedPawn(),getYellowPawn(),getPinkPawn(),getBluePawn());
+        LightEntrance lightEntrance=new LightEntrance(this.numPawn,this.redPawn,this.greenPawn,this.yellowPawn,this.pinkPawn,this.bluePawn);
         return lightEntrance;
     }
 }
