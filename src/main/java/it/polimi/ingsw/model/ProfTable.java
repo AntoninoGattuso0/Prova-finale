@@ -50,11 +50,11 @@ public class ProfTable implements Serializable {
     }
 
     public ProfTable() {
-        greenProf = -1;
-        redProf = -1;
-        yellowProf = -1;
-        pinkProf = -1;
-        blueProf = -1;
+        setGreenProf(-1);
+        setRedProf(-1);
+        setYellowProf(-1);
+        setPinkProf(-1);
+        setBlueProf(-1);
     }
 
     //modifiche all'UML:metodo restituisce un int ovvero il numero del giocatore che possiede il professore
