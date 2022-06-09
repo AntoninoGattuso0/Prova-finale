@@ -14,9 +14,9 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 public class Cli implements Runnable, View {
-    Scanner scanner = new Scanner(System.in); //PER PAUL: QUI CI SONO LE RIGHE A CUI DEVI ANDARE IN LOBBY, LI' TI DIRO' COSA MODIFICARE:
-    private final PrintStream out;
-    private Thread inputThread;
+    Scanner scanner = new Scanner(System.in); //PER PAUL: QUI CI SONO LE RIGHE A CUI DEVI ANDARE IN LOBBY, LI' TI DIRO' COSA MODIFICARE: riga 337, riga 398, riga 453, riga 555,riga 1113,riga 1128.
+    private final PrintStream out;          //se è possibile stampare gli assistenti uno accanto all'altro.
+    private Thread inputThread;             //molto importante:non toccare per nessun motivo le funzioni al di fuori di quelle righe e non modificare cose che non sai cosa fanno. testa sempre il gioco prima di committare
     private boolean isExpert;
     private boolean gameStart;
     private LightGame lightGame;
@@ -334,7 +334,7 @@ public class Cli implements Runnable, View {
     }
 
     @Override
-    public void displayAssistantCard(int player) {
+    public void displayAssistantCard(int player) {//Va modificato perchè rimuovere l'assistente creava problemi. ora quando un assistente è usato imposto il suo value e step a -1. quindi quando è -1 non va stampato
         clearCli();
         int i;
         for (i = 0; i < lightGame.getPlayers().get(player).getDeckAssistant().size(); i++) {
@@ -395,7 +395,7 @@ public class Cli implements Runnable, View {
     }
 
     @Override
-    public void displayIslands() {
+    public void displayIslands() {//manca madre natura
         clearCli();
 
         int i;
@@ -450,7 +450,7 @@ public class Cli implements Runnable, View {
     }
 
     @Override
-    public void displaySchoolBoard() {
+    public void displaySchoolBoard() {// problema con i professori: vengono aggiunti alla schoolboard del primo e no vengono più modificati
         clearCli();
         int i, m;
         StringBuilder schoolBoard = new StringBuilder();
@@ -555,7 +555,7 @@ public class Cli implements Runnable, View {
     public void requestCharacterCard(String nickname,boolean bool) {//Gestire il fatto di dirgli quante pedine ha e che in caso le sue monete non bastino non gli fa proprio scegliere le character, se invece c'è qualche carta che costa meno e qualcuna che costa di più fargli inserire la possibilità di non giocarne nessuna o inserirne una nuova
         ArrayList<ColorPawn> colori=new ArrayList<>();
         int numPawn = 1, numIsland = -1, i;//gestire il fatto che alcune carachter non possono essere giocate se non ci sono abbastanza pedine in sla/isole/diningroom. in questo caso devi inviare un messaggio tipo "non ci sono abbastanza pedine " e poi gestire come la riga sopra
-        if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
+        if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {// controllare anche come vengono gestiti: mi ha chiamato felix quando non era la sua carta. come mai? il problema potrebbe essere di model o di qualche int-1. ma meglio controllare anche la cli
             if (!bool) {
                 boolean check = false;
                 String b = null;
@@ -1110,7 +1110,7 @@ public class Cli implements Runnable, View {
     }
 
     @Override
-    public void selectCloud(String nickname) {
+    public void selectCloud(String nickname) {//inserire quali sono le cloud non vuote
         if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
             displayCloud();
             out.println("Scegli una delle nuvole presenti: ");
@@ -1125,9 +1125,9 @@ public class Cli implements Runnable, View {
         }
     }
     @Override
-    public void selectAssistantCard(String nickname) {
-        int i,m=-1;
-        int numAssistant = -1;
+    public void selectAssistantCard(String nickname) {//si deve gestire il fatto che una volta scelto l'assistente, esso diventa con value e step= -1; non può scegliere una carta -1 e la size a questo punto non va bene per controllare se è l'unica carta giocabile.
+        int i,m=-1;// SE HAI UN IDEA MIGLIORE DIMMELO PERCHE' ANCORA NON HO MODIFICATO LA FUNZIONE DEL PLAYER E QUESTA NON MI SE,BRA NEMMENO LA MIGLIORE
+        int numAssistant = -1;//dire anche quali sono gli assistenti giocati dagli altri in quel turno.
         if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
             for (i = 0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++) ;
             displayAssistantCard(i);
@@ -1220,7 +1220,7 @@ public class Cli implements Runnable, View {
             out.println("Inserisci i passi da far fare a Madre Natura: puoi inserire massimo "+ lightGame.getPlayers().get(i).getCurrentAssistant().getStep() +" step");
             int step = scanner.nextInt();
             while (step < 1 || step > lightGame.getPlayers().get(i).getCurrentAssistant().getStep()) {
-                out.println("Numero Errato! Inserisci i passi da far fare a Madre Natura. Massimo di step" +lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
+                out.println("Numero Errato! Inserisci i passi da far fare a Madre Natura. Massimo di step " +lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
                 step = scanner.nextInt();
             }
             socketNetworkHandler.sendMessage(new MoveMotherNatureMessage(step));
@@ -1243,17 +1243,6 @@ public class Cli implements Runnable, View {
     public void clearCli() {
         out.print(ColorCli.CLEAR);
         out.flush();
-    }
-
-    public void requestCloud() {
-        out.println("Please select a cloud between 0 and "+ lightGame.getClouds().size() + ": ");
-        int cloud = checkInteger();
-
-        while(cloud < 0 || cloud > lightGame.getClouds().size()){
-            out.println("Please select a cloud between 0 and "+ lightGame.getClouds().size() + ": ");
-            cloud = checkInteger();
-        }
-        socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloud));
     }
     private String color4Island(int island, int color){
         StringBuilder showColor = new StringBuilder();

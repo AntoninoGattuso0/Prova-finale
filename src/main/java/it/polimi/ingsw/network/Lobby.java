@@ -224,7 +224,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             numinsert = true;
         }
 
-    public synchronized void selectAssistantCard(int assistant, ClientHandler clientHandler) {
+    public synchronized void selectAssistantCard(int assistant, ClientHandler clientHandler) {// modificare la funzione in player. se non viene eliminato come lo gestisco?
             int i;
             int contr = -1;
             i = findPlayer(game, clientHandler);
