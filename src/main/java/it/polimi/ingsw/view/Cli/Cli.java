@@ -857,7 +857,7 @@ public class Cli implements Runnable, View {
     @Override
     public void displayCharacterCard() {
         for(int i = 0; i < lightGame.getCharacterCards().size(); i++) {
-            out.println("CharacterCard numero " + i + ":");
+            out.println("CharacterCard numero " + (i+1) + ":");
             if (lightGame.getCharacterCards().get(i).getNumCard() == 0) {
                 out.println("");
                 out.println("EFFETTO: Prendi 1 studente dalla carta e piazzalo su un'Isola a tua scelta. Poi pesca 1 studente dal sacchetto e mettilo su questa carta");
@@ -1250,11 +1250,11 @@ public class Cli implements Runnable, View {
             showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.GREEN);
             if(lightGame.getProfTable().getGreenProf() == player) {
                 showColor.append(" ❂ ");
-                out.println(lightGame.getProfTable().getGreenProf());
+                /*out.println(lightGame.getProfTable().getGreenProf());
                 out.println(lightGame.getProfTable().getRedProf());
                 out.println(lightGame.getProfTable().getYellowProf());
                 out.println(lightGame.getProfTable().getPinkProf());
-                out.println(lightGame.getProfTable().getBlueProf());
+                out.println(lightGame.getProfTable().getBlueProf()); DEBUG */
             }
             else
                 showColor.append(" ◌ ");
