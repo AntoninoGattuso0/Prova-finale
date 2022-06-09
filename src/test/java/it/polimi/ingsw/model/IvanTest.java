@@ -14,11 +14,11 @@ class IvanTest {
         game.start(game);
         game.newPlayer("Nicky", game);
         game.newPlayer("Gabi", game);
-        ProfTable.setGreenProf(0);
-        ProfTable.setRedProf(0);
-        ProfTable.setYellowProf(1);
-        ProfTable.setPinkProf(1);
-        ProfTable.setBlueProf(-1);
+        game.getProfTable().setGreenProf(0);
+        game.getProfTable().setRedProf(0);
+        game.getProfTable().setYellowProf(1);
+        game.getProfTable().setPinkProf(1);
+        game.getProfTable().setBlueProf(-1);
         game.islands.get(3).setGreenPawn(3);
         game.islands.get(3).setRedPawn(2);
         game.islands.get(3).setYellowPawn(3);

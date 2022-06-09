@@ -19,11 +19,11 @@ public class ErnestoTest {
         game.newPlayer(nick3, game);
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(1);
         colorPawn.add(ColorPawn.GREEN);
-        ProfTable.setGreenProf(0);
-        ProfTable.setRedProf(0);
-        ProfTable.setYellowProf(1);
-        ProfTable.setPinkProf(1);
-        ProfTable.setBlueProf(-1);
+        game.getProfTable().setGreenProf(0);
+        game.getProfTable().setRedProf(0);
+        game.getProfTable().setYellowProf(1);
+        game.getProfTable().setPinkProf(1);
+        game.getProfTable().setBlueProf(-1);
         game.islands.get(9).setGreenPawn(6);
         game.islands.get(9).setRedPawn(2);
         game.islands.get(9).setYellowPawn(3);

@@ -3,11 +3,11 @@ package it.polimi.ingsw.model;
 import java.io.Serializable;
 
 public class ProfTable implements Serializable {
-    private static int greenProf;
-    private static int redProf;
-    private static int yellowProf;
-    private static int pinkProf;
-    private static int blueProf;
+    private int greenProf;
+    private int redProf;
+    private int yellowProf;
+    private int pinkProf;
+    private int blueProf;
 
     public int getGreenProf() {
         return greenProf;
@@ -29,24 +29,24 @@ public class ProfTable implements Serializable {
         return blueProf;
     }
 
-    public static void setGreenProf(int i) {
+    public void setGreenProf(int i) {
         greenProf = i;
     }
 
-    public static void setRedProf(int i) {
+    public void setRedProf(int i) {
         redProf = i;
     }
 
-    public static void setYellowProf(int i) {
+    public void setYellowProf(int i) {
         yellowProf = i;
     }
 
-    public static void setPinkProf(int i) {
+    public void setPinkProf(int i) {
         pinkProf = i;
     }
 
-    public static void setBlueProf(int i) {
-        blueProf = i;
+    public void setBlueProf(int i) {
+        this.blueProf = i;
     }
 
     public ProfTable() {

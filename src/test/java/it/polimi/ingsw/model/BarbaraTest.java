@@ -14,9 +14,9 @@ class BarbaraTest {
         colorPawn.add(ColorPawn.GREEN);
         game.newPlayer("a",game);//0
         game.newPlayer("b",game);//1
-        ProfTable.setGreenProf(0);
-        ProfTable.setRedProf(0);
-        ProfTable.setPinkProf(0);
+        game.getProfTable().setGreenProf(0);
+        game.getProfTable().setRedProf(0);
+        game.getProfTable().setPinkProf(0);
         game.players.get(0).diningRoom.setNumGreen(3);
         game.players.get(1).diningRoom.setNumGreen(3);
         game.players.get(0).diningRoom.setNumRed(3);
