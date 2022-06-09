@@ -82,7 +82,6 @@ public class Entrance {
                         i++;
                         if (game.studentBag.getRedNum() == 0) entrancePawn.remove(random);
                     } else if (Objects.equals(entrancePawn.get(random), ColorPawn.YELLOW) && game.studentBag.getYellowNum() > 0) {//giallo
-                        System.out.println("c'e " + random);
                         this.yellowPawn++;
                         k = (game.studentBag.getNum()) - 1;
                         game.studentBag.setNum(k);
@@ -100,7 +99,6 @@ public class Entrance {
                         if (game.studentBag.getPinkNum() == 0) entrancePawn.remove(random);
                     } else if (Objects.equals(entrancePawn.get(random), ColorPawn.BLUE) && game.studentBag.getBlueNum() > 0) {//blu
                         this.bluePawn++;
-                        System.out.println(bluePawn);
                         k = (game.studentBag.getNum()) - 1;
                         game.studentBag.setNum(k);
                         k = (game.studentBag.getBlueNum()) - 1;
