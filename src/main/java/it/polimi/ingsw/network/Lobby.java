@@ -250,18 +250,20 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     }
 
     public synchronized void useCharacter(int num, int numberPawn, int numIsland, ArrayList<ColorPawn> colorPawn, ClientHandler clientHandler) {
-        Island island = null;
-        if (numIsland != -1) {
-            island = game.getIslands().get(numIsland);
+        if (num != -1) {
+            Island island = null;
+            if (numIsland != -1) {
+                island = game.getIslands().get(numIsland);
+            }
+            game.getCharacterCards().get(num - 1).getUseEffect().useEffect(game, numberPawn, island, game.getPlayers().get(findPlayer(game, clientHandler)), colorPawn);
+            clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
         }
-        game.getCharacterCards().get(num - 1).getUseEffect().useEffect(game, numberPawn, island, game.getPlayers().get(findPlayer(game, clientHandler)), colorPawn);
-        clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));
-        if(game.getPlayers().get(findPlayer(game,clientHandler)).getCurrentPhase()==PhaseTurn.END_TURN)
-            game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
-        int i;
-        for(i=0; Objects.equals(controller.getRoundController().getRoundOrder().get(i).getNickname(), clientHandler.getUserNickname()); i++);
-        controller.startTurn(controller.getRoundController().getRoundOrder().get(i));
-        controller.startTurn(controller.getRoundController().getRoundOrder().get(i++));
+            if (game.getPlayers().get(findPlayer(game, clientHandler)).getCurrentPhase() == PhaseTurn.END_TURN)
+                game.getPlayers().get(findPlayer(game, clientHandler)).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
+            int i;
+            for (i = 0; Objects.equals(controller.getRoundController().getRoundOrder().get(i).getNickname(), clientHandler.getUserNickname()); i++) ;
+            controller.startTurn(controller.getRoundController().getRoundOrder().get(i));
+            controller.startTurn(controller.getRoundController().getRoundOrder().get(i++));
     }
 
     public int findPlayer(Game game, ClientHandler clientHandler) {
