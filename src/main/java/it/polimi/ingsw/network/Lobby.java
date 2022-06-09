@@ -198,6 +198,13 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                         return;
                     }
                     game.newPlayer(nickname, game);
+
+                    System.out.println(game.getPlayers().get(1).getEntrance().getGreenPawn());
+                    System.out.println(game.getPlayers().get(1).getEntrance().getRedPawn());
+                    System.out.println(game.getPlayers().get(1).getEntrance().getYellowPawn());
+                    System.out.println(game.getPlayers().get(1).getEntrance().getPinkPawn());
+                    System.out.println(game.getPlayers().get(1).getEntrance().getPinkPawn());
+
                     System.out.println("SERVER: " + nickname + " is joining!\n");
                     clientHandler.setTurn(false);
                     addClient(clientHandler);
@@ -218,6 +225,13 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             game = new Game(numPlayers, isExpert);
             game.start(game);
             game.newPlayer(namePlayer.get(0), game);
+
+            System.out.println(game.getPlayers().get(0).getEntrance().getGreenPawn());
+            System.out.println(game.getPlayers().get(0).getEntrance().getRedPawn());
+            System.out.println(game.getPlayers().get(0).getEntrance().getYellowPawn());
+            System.out.println(game.getPlayers().get(0).getEntrance().getPinkPawn());
+            System.out.println(game.getPlayers().get(0).getEntrance().getPinkPawn());
+
             System.out.println("SERVER: " + namePlayer.get(0) + " is joining!\n");
             clientHandler.setTurn(false);
             addClient(clientHandler);
@@ -304,6 +318,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             for (i = 0; i < numPawn; i++) {
                 game.getPlayers().get(numPlayer).getDiningRoom().addPawnToDiningRoom(arrayPawn.get(i), game.getPlayers().get(numPlayer), game);
             }
+            game.moveProf();
             virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
             movement(numPawn, clientHandler, numPlayer);
         }else{

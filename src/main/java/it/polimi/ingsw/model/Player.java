@@ -76,7 +76,7 @@ public class Player {
             //collegamento a tower, dining and entrance
             this.entrance = new Entrance(game);
             this.diningRoom = new DiningRoom();
-            this.towerSpace = new TowerSpace(game); //NON VA BENE, ASSOCIA A TUTTI I PLAYER LO STESSO COLORE
+            this.towerSpace = new TowerSpace(game);
     }
     public void setCurrentAssistant(AssistantCard currentAssistant) {
         this.currentAssistant = currentAssistant;
@@ -113,9 +113,7 @@ public class Player {
                 player.setCurrentAssistant(player.deckAssistant.get(i));
                 player.deckAssistant.remove(i);
                 AssistantCard temp=new AssistantCard();
-                temp.setCardValue(-1);
-                temp.setStep(-1);
-                player.deckAssistant.add(i,temp);
+                deckAssistant.remove(i);
                 player.setCurrentPhase(PhaseTurn.MOVE_STUDENT);
                 contr = 1;
                 return contr;
