@@ -153,7 +153,7 @@ public class Cli implements Runnable, View {
                 out.println("Digita 3 per spostare delle pedine verso un'Isola");
                 scelta = scanner.nextInt();
             }
-            if (scelta == 1) requestCharacterCard(nickname);
+            if (scelta == 1) requestCharacterCard(nickname,true);
             else if (scelta == 2)
                 requestMovePawnToDiningRoom(pedineDaSpostare);//mando in ingresso il numero di pedine così controlli il numero che ti da in ingresso
             else if (scelta == 3) requestMovePawnToIsland(pedineDaSpostare);
@@ -552,7 +552,7 @@ public class Cli implements Runnable, View {
         }
 
     @Override
-    public void requestCharacterCard(String nickname) {
+    public void requestCharacterCard(String nickname,boolean bool) {
             displayCharacterCard();
         out.println("Scegli il CharacterCard da utilizzare: (inserisci un numero compreso tra 1 e 3)");
         int selected = scanner.nextInt();

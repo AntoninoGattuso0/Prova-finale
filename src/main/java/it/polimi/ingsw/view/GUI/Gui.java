@@ -43,8 +43,9 @@ public class Gui extends Application implements View {
     public void requestMovePawn(String nickname, int numPawnMoved) {
 
     }
+
     @Override
-    public void requestCharacterCard(String nickname) {
+    public void requestCharacterCard(String nickname, boolean bool) {
 
     }
 
@@ -145,10 +146,9 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public void selectAssistantCard(String nickname,boolean effect) {
+    public void selectAssistantCard(String nickname) {
 
     }
-
 
     @Override
     public void requestMoveMotherNature(String nickname) {

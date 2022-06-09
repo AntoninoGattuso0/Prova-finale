@@ -69,7 +69,7 @@ public class ClientMessageManager {
         }else if(object instanceof WrongSameAssistantMessage){
            // socketNetworkHandler.getView().
         }else if(object instanceof SetCharacterCardMessage){
-            socketNetworkHandler.getView().selectCharacterCard(((SetCharacterCardMessage) object).getNickname(),((SetCharacterCardMessage) object).isBool());
+            socketNetworkHandler.getView().requestCharacterCard(((SetCharacterCardMessage) object).getNickname(),((SetCharacterCardMessage) object).isBool());
         }
         else throw new IllegalArgumentException();
     }
