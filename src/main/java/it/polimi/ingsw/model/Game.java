@@ -364,7 +364,7 @@ public class Game {
             }
         }
 
-    public Player finish() {
+    public Player finish(Boolean lastTurn) {
         ArrayList<Integer> numTower = new ArrayList<>();
         numTower.add(0);
         numTower.add(0);
@@ -395,30 +395,21 @@ public class Game {
             max = max1;
         }
 
-        ColorTower maxColor = null;
-        if(max == 0) maxColor = ColorTower.BLACK;
-        else if (max == 1) maxColor = ColorTower.WHITE;
-        else if (max == 2) maxColor = ColorTower.GREY;
 
         for(int i = 0; i<totPlayer; i++){
-            if(players.get(i).towerSpace.getNumTower() == 0){ //caso 1, torri finite
-                for(int k = 0; k<totPlayer; k++){
-                    if(players.get(k).towerSpace.getColorTower() == maxColor) return players.get(k);
-                }
-            }
+            if(players.get(i).towerSpace.getNumTower() == 0) //caso 1, torri finite
+                 return players.get(max);
         }
-        if(islands.size() <= 3){
-            for(int k = 0; k<totPlayer; k++){ //caso 2, 3 gruppi di isole
-                if(players.get(k).towerSpace.getColorTower() == maxColor) return players.get(k);
-            }
+        if(islands.size() <= 3){//caso 2, 3 gruppi di isole
+            return players.get(max);
         }
 
-
-        if(studentBag.getNum() == 0) {
-            for (int k = 0; k < totPlayer; k++) { //caso 3, studenti finiti
-                if (players.get(k).towerSpace.getColorTower() == maxColor) return players.get(k);
-            }
+        if(studentBag.getNum() == 0) {//caso 3, fine studenti nel sacchetto
+            return players.get(max);
         }
+
+        if((players.get(0).getDeckAssistant().size() == 0) && lastTurn)//caso 4, finiti gli assistenti & ultimo turno
+            return players.get(max);
         return null;
     }
 }
