@@ -32,7 +32,7 @@ public class ServerMessageMenager {
              lobby.insertNickname(((RequestNicknameAfterFirstLoginMessage) object).getNickname(),clientHandler);
          }else if(object instanceof Ping){
          }else if(object instanceof iHaveToDisconnectMessage){
-             lobby.updateDisconnection(((iHaveToDisconnectMessage) object).getNickname());
+             //
          }
         else throw new IllegalArgumentException();
     }

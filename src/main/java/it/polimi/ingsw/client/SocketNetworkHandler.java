@@ -117,6 +117,7 @@ public class SocketNetworkHandler implements Runnable{
                     Object input = in.readObject();
                     clientMessageManager.manageInputToClient(input,this);
                 }catch (IOException|ClassNotFoundException|InterruptedException e){
+                    e.printStackTrace();
                    if(!connected)
                     view.displayNetError();
                     closeConnection();

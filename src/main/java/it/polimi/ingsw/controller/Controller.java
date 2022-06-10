@@ -8,6 +8,7 @@ import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.ClientHandlerInterface;
 import it.polimi.ingsw.network.Message.ServerToClient.*;
+import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
 import it.polimi.ingsw.network.VirtualView;
 
 import java.util.ArrayList;
@@ -68,12 +69,6 @@ public class Controller {
         endGame = true;
         virtualView.playerWinForQuitting(nick);
     }
-
-
-    public void sendUpdateDisconnection(String nickname) {
-        virtualView.sendBroadcast(new DisconnectionMessage(nickname));
-    }
-
     public void AdministrDisconnectionInSet(String userNickname) {
         endGame = true;
         virtualView.sendDisconectionInSet(userNickname);
@@ -114,6 +109,10 @@ public class Controller {
         return orderNamePlayers;
     }
 
+    public void setPlayer(ArrayList<Player> players) {
+        this.players=players;
+    }
+
     public synchronized void startRound() {
         this.counterRound++;
         players = roundController.getRoundOrder();
@@ -126,6 +125,7 @@ public class Controller {
             game.getPlayers().get(i).setCurrentPhase(PhaseTurn.USE_ASSISTANT);
             game.getPlayers().get(i).setCurrentAssistant(null);
         }
+        virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
         virtualView.sendBroadcast(new SetAssistantMessage(players.get(0).getNickname()));
     }
 
@@ -140,8 +140,20 @@ public class Controller {
             setOrderNamePlayers(getRoundController().getRoundOrder());
             virtualView.sendBroadcast( new EndTurnMessage(getOrderNamePlayers(),player.getNickname()));
             if(Objects.equals(player.getNickname(), getRoundController().getLastPlayer().getNickname())){
-                startRound();
+                int i;
+                for(i=0;i<players.size();i++){
+                    game.getPlayers().get(i).setCurrentAssistant(null);
+                }
                 this.c=0;
+                    for (i = 0; i < game.getClouds().size(); i++) {
+                        game.getClouds().get(i).refillCloud(game.getStudentBag(), game);
+                }
+                    if(game.getStudentBag().getNum()==0){
+                        player=game.finish(false);
+                        virtualView.sendBroadcast(new WinnerMessage(player.getNickname()));
+                    }else {
+                        startRound();
+                    }
             }else{
                 this.c=this.c+1;
                 virtualView.sendBroadcast(new SetMovePawnMessage(roundController.getRoundOrder().get(this.c).getNickname(),0));

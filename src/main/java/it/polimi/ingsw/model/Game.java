@@ -31,6 +31,10 @@ public class Game {
         return characterCards;
     }
 
+    public StudentBag getStudentBag() {
+        return studentBag;
+    }
+
     public ProfTable getProfTable() {
         return profTable;
     }
@@ -372,7 +376,10 @@ public class Game {
         ArrayList<Integer> numProf = new ArrayList<>();
         for(int i = 0; i<totPlayer; i++) numProf.add(0);
         for(int i = 0; i<5; i++){//scorro tutti i colori
-            numProf.set(profTable.checkProf(i), numProf.get(profTable.checkProf(i)) + 1);//per ogni colore vedo quale player ha il suo professore e aggiungo +1 all'arraylist
+            if(profTable.checkProf(i)!=-1) {
+                numProf.set(profTable.checkProf(i), numProf.get(profTable.checkProf(i)) + 1);//per ogni colore vedo quale player ha il suo professore e aggiungo +1 all'arraylist
+            }
+            System.out.println(" " +numProf.get(0)+ " " +numProf.get(1)+" "+numProf.get(2));
         }
         for (Island island : islands) {
             if (island.getColorTower() == ColorTower.BLACK)
@@ -404,7 +411,7 @@ public class Game {
             return players.get(max);
         }
 
-        if(studentBag.getNum() == 0) {//caso 3, fine studenti nel sacchetto
+        if(studentBag.getNum()==0) {//caso 3, fine studenti nel sacchetto
             return players.get(max);
         }
 

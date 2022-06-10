@@ -77,12 +77,4 @@ public class VirtualView {
 
     }
 
-    public void endTurn() {
-        int i;
-        for (i=0;i<clients.size();i++){
-        if(clients.get(i).getUserNickname().equals(getActualPlayer())){
-            clients.get(i).setTurn(false);
-        }
-    }
 }
-    }

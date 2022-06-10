@@ -18,7 +18,7 @@ public class Cli implements Runnable, View {
     private Thread inputThread;             //molto importante:non toccare per nessun motivo le funzioni al di fuori di quelle righe e non modificare cose che non sai cosa fanno. testa sempre il gioco prima di committare
     private boolean isExpert;
     private boolean gameStart;              //PRIMA di ogni messaggio di mossa chiedere se vuole giocare il characterCard
-    private LightGame lightGame;
+    private LightGame lightGame;              //nel controllo del movimento di pedine inserire il controllo che se in diningroom hanno 10 pedine già inserite, non ne può spostare altre
     private SocketNetworkHandler socketNetworkHandler;
     private String actualPlayer;
     private int pedineDaSpostare;
@@ -927,7 +927,7 @@ public class Cli implements Runnable, View {
                 out.println(ColorCli.GREEN + "●: " + lightGame.getGiuseppe().getNumGreenPawn());
                 out.println(ColorCli.RED + "●: " + lightGame.getGiuseppe().getNumRedPawn());
                 out.println(ColorCli.YELLOW + "●: " + lightGame.getGiuseppe().getNumYellowPawn());
-                out.println(ColorCli.PINK + "●: " + lightGame.getAntonio().getPinkPawn());
+                out.println(ColorCli.PINK + "●: " + lightGame.getGiuseppe().getNumPinkPawn());
                 out.println(ColorCli.BLUE + "●: " + lightGame.getGiuseppe().getNumBluePawn() + ColorCli.RESET);
                 out.println();
                 out.println("+-----------------------------------------------------+");
@@ -960,7 +960,7 @@ public class Cli implements Runnable, View {
                 out.println(ColorCli.GREEN + "●: " + lightGame.getNicola().getGreenPawn());
                 out.println(ColorCli.RED + "●: " + lightGame.getNicola().getRedPawn());
                 out.println(ColorCli.YELLOW + "●: " + lightGame.getNicola().getYellowPawn());
-                out.println(ColorCli.PINK + "●: " + lightGame.getAntonio().getPinkPawn());
+                out.println(ColorCli.PINK + "●: " + lightGame.getNicola().getPinkPawn());
                 out.println(ColorCli.BLUE + "●: " + lightGame.getNicola().getBluePawn()+ ColorCli.RESET);
                 out.println();
                 out.println("+-----------------------------------------------------+");
@@ -1022,6 +1022,15 @@ public class Cli implements Runnable, View {
                 out.println(players.get(i) + " sta iniziando il suo turno");
         }else{
             out.println("round finito, inizia uno nuovo");
+        }
+    }
+
+    @Override
+    public void displayDisconnection(String playerDisconnected) {
+        if(Objects.equals(playerDisconnected, socketNetworkHandler.getNicknameThisPlayer())){
+
+        }else{
+            socketNetworkHandler.sendMessage(new iHaveToDisconnectMessage(socketNetworkHandler.getNicknameThisPlayer()));
         }
     }
 
@@ -1116,7 +1125,7 @@ public class Cli implements Runnable, View {
                     out.println("Assistente errato o già utilizzato, inserisci un numero valido: ");
                 }
             }
-            socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(numAssistant));
+            socketNetworkHandler.sendMessage(new ChooseAssistantCardMessage(m));
         } else {
             System.out.println(nickname + " sta scegliendo l'AssistantCard");
         }

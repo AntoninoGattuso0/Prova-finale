@@ -10,7 +10,6 @@ public interface ClientHandlerInterface extends Runnable, ConnectionObserver {//
     String getUserNickname();
     void readFromClient();
     Message read();
-    void addObserver(ConnectionObserver observer);
     void run();
     void closeConnect(String nickname);
 }
