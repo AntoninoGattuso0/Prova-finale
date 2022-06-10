@@ -31,6 +31,7 @@ public class DisplayTurn {
 
             selectAssistant.setOnMouseClicked(mouseEvent -> {
                 // da vedere cosa fa una volta schiacciato il bottone
+                //potrebbe cambiare scena e far vedere gli assistenti
             });
         }
 

@@ -8,6 +8,8 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.Objects;
 
+
+//mostra agli altri giocatori di chi è il turno
 public class DisplayTurnForOtherPlayers {
     private Pane rootFXML;
 
