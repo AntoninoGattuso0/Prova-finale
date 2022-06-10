@@ -69,7 +69,6 @@ public class Cloud {
         for (i = 0; i < requiredNumPawn(game); i++) {
             if (studentBag.getNum() > 0) {
                 int random = rnd.nextInt(refillPawn.size());
-                //String color = game.m.get(random);     //non lo richiami da nessuna parte - R
                 if (Objects.equals(refillPawn.get(random), ColorPawn.GREEN)) {
                         setGreenPawn(getGreenPawn() + 1);
                         setNumPawn(getNumPawn() + 1);
@@ -111,6 +110,8 @@ public class Cloud {
                             refillPawn.remove(random);
                     }
                 }
+            }else{
+                return;
             }
         }
     }

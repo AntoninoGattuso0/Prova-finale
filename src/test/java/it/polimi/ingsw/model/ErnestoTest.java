@@ -34,7 +34,7 @@ public class ErnestoTest {
         Ernesto ernesto = new Ernesto();
         CharacterCard card = new CharacterCard(ernesto,4);
         card.useEffect.useEffect(game, 5, game.islands.get(9), game.players.get(0), colorPawn);
-        Game.topInfluence(game.islands.get(9), game);
+        game.topInfluence(game.islands.get(9), game);
         assertEquals(ColorTower.BLACK, game.islands.get(9).getColorTower());
     }
 }

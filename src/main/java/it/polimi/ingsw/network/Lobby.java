@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA----
-    private Controller controller;                 //SETTARE I BOOLEANI PER IL ROUNDCONTROLLER -DA NINO PER NINO
+    private Controller controller;
     private ArrayList<String> namePlayer;
     private ArrayList<Player> players;
     private final VirtualView virtualView;
@@ -26,13 +26,11 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     private EndGameObserver endGame;
     private boolean lobbyOk;
     private final ArrayList<ClientHandlerInterface> clients;
-    private boolean lobbySett;
     private boolean isExpert;
     private boolean numinsert;
     private final Object lock;
     private Game game;
     private final ServerMessageMenager serverMessageMenager;
-
     public Lobby() {
         lock = new Object();
         namePlayer = new ArrayList<>();
@@ -43,22 +41,22 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         numPlayers = 0;
         contr=false;
         lobbyOk = false;
-        lobbySett = false;
         serverMessageMenager=new ServerMessageMenager(this);
         numPawnExe=0;
+    }
+
+    public ArrayList<ClientHandlerInterface> getClients() {
+        return clients;
+    }
+    public Controller getController() {
+        return controller;
     }
 
     public ArrayList<Player> getPlayers() {
         return players;
     }
-
-    public boolean isLobbySett() {
-        return lobbySett;
-    }
-
     public void addClient(ClientHandlerInterface client) {
         synchronized (lock) {
-            client.addObserver(this);
             clients.add(client);
             int i;
             for (i = 0; i < clients.size() && clients.get(i) != client; i++) ;
@@ -81,21 +79,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             lock.notifyAll();
         }
     }
-
     @Override
     public void updateDisconnection(ClientHandlerInterface clientHandler) {
-        if (controller.getEndGame() != true) {
-            if (lobbySett) {
-                updateDisconnectionInSet(clientHandler);
-            } else if (lobbyOk) {
-                updateDisconnectionInGame(clientHandler);
-            }
-        } else {
-            closeConnection(clientHandler);
-            if (clients.size() == 1 || clients.size() == 0) {
-                endGame.administrEndGame();
-            }
-        }
+
     }
 
     private synchronized void closeConnection(ClientHandlerInterface clientHandler) {
@@ -228,18 +214,20 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             int i;
             int contr = -1;
             i = findPlayer(game, clientHandler);
-            contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant-1));
+            contr = game.getPlayers().get(i).useAssistant(game, game.getPlayers().get(i), game.getPlayers().get(i).getDeckAssistant().get(assistant));
             if (contr == 0) {
                 clientHandler.sendObject(new WrongNotAssistantMessage(controller.getRoundController().getRoundOrder().get(i).getNickname()));
             } else if (contr == 1) {
                 virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
                 if (Objects.equals(controller.getPlayers().get(players.size()-1).getNickname(), clientHandler.getUserNickname())) {
                    players= controller.getRoundController().newRoundOrder(game);
+                   controller.setPlayer(players);
                     controller.setOrderNamePlayers(players);
                     virtualView.sendBroadcast(new TurnOrderMessage(controller.getOrderNamePlayers()));
                     controller.startTurn(players.get(0));
                 } else {
-                    virtualView.sendBroadcast(new SetAssistantMessage(controller.getRoundController().getRoundOrder().get(i + 1).getNickname()));
+                    for(i=0; !Objects.equals(players.get(i).getNickname(), clientHandler.getUserNickname());i++);
+                    virtualView.sendBroadcast(new SetAssistantMessage(players.get(i+1).getNickname()));
                 }
             } else if (contr == 2) {
                 clientHandler.sendObject(new WrongSameAssistantMessage(controller.getRoundController().getRoundOrder().get(i).getNickname()));
@@ -285,13 +273,25 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
 
     }
     public synchronized void moveMotherNature(int island, ClientHandler clientHandler) {
+        Player player;
         if(game.getPlayers().get(findPlayer(game,clientHandler)).getCurrentPhase()== PhaseTurn.MOVE_MOTHER_NATURE) {
             game.getPlayers().get(findPlayer(game, clientHandler));
             Island island1 = game.getIslands().get(island);
             game.moveMotherNature(island1);
-            virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
-            game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.CHOOSE_CLOUD);
-            controller.startTurn(game.getPlayers().get(findPlayer(game,clientHandler)));
+            game.topInfluence(island1,game);
+            if(controller.getCounterRound()==10) {
+                player=game.finish(true);
+            }else{
+                player=game.finish(false);
+            }
+            if(player==null) {
+                virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+                game.getPlayers().get(findPlayer(game, clientHandler)).setCurrentPhase(PhaseTurn.CHOOSE_CLOUD);
+                controller.startTurn(game.getPlayers().get(findPlayer(game, clientHandler)));
+            }else{
+                virtualView.sendBroadcast(new WinnerMessage(player.getNickname()));
+                //endGame.administrEndGame();
+            }
         }else{
             clientHandler.sendObject(new WrongTurnMessage());
         }
@@ -361,4 +361,4 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             }
         }
     }
-}
+    }

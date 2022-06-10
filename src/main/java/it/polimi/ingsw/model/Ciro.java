@@ -14,7 +14,7 @@ public class Ciro extends UseEffect implements Serializable {
         return coinPrice;
     }
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {//copia del metodo per calcolare la top influenza
-        Game.topInfluence(island,game);
+        game.topInfluence(island,game);
          setCoinPrice(4);
     }
 }

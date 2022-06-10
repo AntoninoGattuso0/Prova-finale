@@ -172,7 +172,7 @@ public class Entrance {
         }
     }
     public void chooseCloud (Cloud cloud,Game game,Player player){
-        if(cloud.getNumPawn()!=0 && !checkNum(game)){      //utile o no il controllo di numPawn? (controller)
+        if(cloud.getNumPawn()!=0){      //utile o no il controllo di numPawn? (controller)
             player.entrance.setGreenPawn(player.entrance.getGreenPawn() + cloud.getGreenPawn());
             player.entrance.setRedPawn(player.entrance.getRedPawn() + cloud.getRedPawn());
             player.entrance.setYellowPawn(player.entrance.getYellowPawn() + cloud.getYellowPawn());

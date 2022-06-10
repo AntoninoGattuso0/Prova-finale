@@ -3,7 +3,6 @@ package it.polimi.ingsw.network;
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
 import it.polimi.ingsw.network.Message.ServerToClient.WaitLoginMessage;
-import it.polimi.ingsw.observer.ConnectionObserver;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -91,28 +90,27 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
     public void readFromClient(){
         Thread thread= new Thread(()->{
             while (connected) {
-                try {
-                    mySocket.setSoTimeout(30000);
-                    Message toServer = null;
                     try {
-                        toServer = (Message) objectInputStream.readObject();
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    if (!(toServer instanceof Ping)) {
-                            lobby.processMessage(this,toServer);
+                        mySocket.setSoTimeout(30000);
+                        Message toServer = null;
+                        try {
+                            toServer = (Message) objectInputStream.readObject();
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        if (!(toServer instanceof Ping)) {
+                            lobby.processMessage(this, toServer);
                             messageReady = true;
                             synchronized (this) {
                                 notifyAll();
                             }
                         }
-                }catch (IOException |NullPointerException|IllegalArgumentException e){
-                    System.out.println("SERVER: "+userNickname+" connection close by the client");
-                    closeConnect(userNickname);
-
-                    break;
+                    } catch (IOException | NullPointerException | IllegalArgumentException e) {
+                        System.out.println("SERVER: " + userNickname + " connection close by the client");
+                        closeConnect(userNickname);
+                        break;
+                    }
                 }
-            }
         });
         thread.start();
     }
@@ -130,13 +128,6 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
         messageReady = false;
         return message;
     }
-
-    @Override
-    public void addObserver(ConnectionObserver observer) {
-
-    }
-
-
     public void run() {
         try {
             this.objectOutputStream = new ObjectOutputStream(mySocket.getOutputStream());
@@ -152,6 +143,12 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
 
     @Override
     public void updateDisconnection(ClientHandlerInterface client) {
+        int i;
+        for(i=0;i<lobby.getClients().size();i++){
+            if(lobby.getClients().get(i)==client){
+                lobby.getClients().remove(i);
+            }
+        }
         client=null;
     }
 }

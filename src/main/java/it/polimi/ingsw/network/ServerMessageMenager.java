@@ -31,6 +31,8 @@ public class ServerMessageMenager {
          }else if(object instanceof RequestNicknameAfterFirstLoginMessage){
              lobby.insertNickname(((RequestNicknameAfterFirstLoginMessage) object).getNickname(),clientHandler);
          }else if(object instanceof Ping){
+         }else if(object instanceof iHaveToDisconnectMessage){
+             //
          }
         else throw new IllegalArgumentException();
     }
