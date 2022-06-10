@@ -196,6 +196,11 @@ public class Gui extends Application implements View {
     }
 
     @Override
+    public void displayDisconnection(String playerDisconnected) {
+
+    }
+
+    @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(
                 getClass().getResource("FXML/NumOfPlayerIsExpert.fxml"));

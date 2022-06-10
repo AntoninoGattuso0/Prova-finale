@@ -202,7 +202,7 @@ public class Game {
         }
         return false;
     }
-    public static void topInfluence(Island island, Game game) {
+    public void topInfluence(Island island, Game game) {
         int i, j, k, n, color, max;
         if (island.getProhibited()) {
             island.setProhibited(false);

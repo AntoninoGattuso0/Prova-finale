@@ -8,7 +8,6 @@ import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.network.ClientHandlerInterface;
 import it.polimi.ingsw.network.Message.ServerToClient.*;
-import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
 import it.polimi.ingsw.network.VirtualView;
 
 import java.util.ArrayList;
@@ -21,6 +20,7 @@ public class Controller {
     private Game game;
     private boolean contr;
     private int c;
+    private int counterRound;
     private final ArrayList<String> orderNamePlayers;
     private final VirtualView virtualView;
     private ArrayList<Player> players;
@@ -37,6 +37,7 @@ public class Controller {
         this.endGame = false;
         this.contr = false;
         this.c=0;
+        this.counterRound=0;
         this.playersLight = new ArrayList<>();
         this.roundController = new RoundController(game.getPlayers());
         this.clients = clients;
@@ -69,8 +70,8 @@ public class Controller {
     }
 
 
-    public void sendUpdate() {
-        virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+    public void sendUpdateDisconnection(String nickname) {
+        virtualView.sendBroadcast(new DisconnectionMessage(nickname));
     }
 
     public void AdministrDisconnectionInSet(String userNickname) {
@@ -106,12 +107,15 @@ public class Controller {
             orderNamePlayers.add(players.get(i).getNickname());
         }
     }
-
+    public int getCounterRound() {
+        return counterRound;
+    }
     public ArrayList<String> getOrderNamePlayers() {
         return orderNamePlayers;
     }
 
     public synchronized void startRound() {
+        this.counterRound++;
         players = roundController.getRoundOrder();
         updateThisPlayersLight();
         setOrderNamePlayers(players);

@@ -30,7 +30,7 @@ class IvanTest {
         Ivan ivan = new Ivan();
         CharacterCard card = new CharacterCard(ivan,7);
         card.useEffect.useEffect(game, 8, game.islands.get(3), game.players.get(1), colorPawn);
-        Game.topInfluence(game.islands.get(3), game);
+        game.topInfluence(game.islands.get(3), game);
         assertEquals(ColorTower.BLACK, game.islands.get(3).getColorTower());
         System.out.println("Costo attuale carta Ivan: " + ivan.getCoinPrice());
     }

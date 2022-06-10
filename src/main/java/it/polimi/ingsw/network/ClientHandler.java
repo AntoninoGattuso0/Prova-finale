@@ -108,6 +108,7 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
                         }
                 }catch (IOException |NullPointerException|IllegalArgumentException e){
                     System.out.println("SERVER: "+userNickname+" connection close by the client");
+                    lobby.getController().sendUpdateDisconnection(userNickname);
                     closeConnect(userNickname);
 
                     break;

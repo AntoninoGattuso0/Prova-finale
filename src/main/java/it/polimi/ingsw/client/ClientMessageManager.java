@@ -46,7 +46,7 @@ public class ClientMessageManager {
         } else if (object instanceof SetCloudMessage) {
            socketNetworkHandler.getView().selectCloud(((SetCloudMessage) object).getNickname());
         } else if (object instanceof DisconnectionMessage) {
-            // socketNetworkHandler.getView().
+            socketNetworkHandler.getView().displayDisconnection(((DisconnectionMessage) object).getPlayerDisconnected());
         } /*else if (object instanceof EndGameMessage) {
            //socketNetworkHandler.getView().
         }*/ else if (object instanceof EndTurnMessage) {//dice a tutti che il turno di "giocatore che gioca" è finito e che tocca a "giocatore successivo"

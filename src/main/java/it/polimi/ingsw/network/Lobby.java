@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA----
-    private Controller controller;                 //SETTARE I BOOLEANI PER IL ROUNDCONTROLLER -DA NINO PER NINO
+    private Controller controller;
     private ArrayList<String> namePlayer;
     private ArrayList<Player> players;
     private final VirtualView virtualView;
@@ -26,7 +26,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     private EndGameObserver endGame;
     private boolean lobbyOk;
     private final ArrayList<ClientHandlerInterface> clients;
-    private boolean lobbySett;
     private boolean isExpert;
     private boolean numinsert;
     private final Object lock;
@@ -43,19 +42,17 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         numPlayers = 0;
         contr=false;
         lobbyOk = false;
-        lobbySett = false;
         serverMessageMenager=new ServerMessageMenager(this);
         numPawnExe=0;
+    }
+
+    public Controller getController() {
+        return controller;
     }
 
     public ArrayList<Player> getPlayers() {
         return players;
     }
-
-    public boolean isLobbySett() {
-        return lobbySett;
-    }
-
     public void addClient(ClientHandlerInterface client) {
         synchronized (lock) {
             client.addObserver(this);
@@ -81,7 +78,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             lock.notifyAll();
         }
     }
-
     @Override
     public void updateDisconnection(ClientHandlerInterface clientHandler) {
         if (controller.getEndGame() != true) {
@@ -285,13 +281,25 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
 
     }
     public synchronized void moveMotherNature(int island, ClientHandler clientHandler) {
+        Player player;
         if(game.getPlayers().get(findPlayer(game,clientHandler)).getCurrentPhase()== PhaseTurn.MOVE_MOTHER_NATURE) {
             game.getPlayers().get(findPlayer(game, clientHandler));
             Island island1 = game.getIslands().get(island);
             game.moveMotherNature(island1);
-            virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
-            game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.CHOOSE_CLOUD);
-            controller.startTurn(game.getPlayers().get(findPlayer(game,clientHandler)));
+            game.topInfluence(island1,game);
+            if(controller.getCounterRound()==10) {
+                player=game.finish(true);
+            }else{
+                player=game.finish(false);
+            }
+            if(player==null) {
+                virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+                game.getPlayers().get(findPlayer(game, clientHandler)).setCurrentPhase(PhaseTurn.CHOOSE_CLOUD);
+                controller.startTurn(game.getPlayers().get(findPlayer(game, clientHandler)));
+            }else{
+                virtualView.sendBroadcast(new WinnerMessage(player.getNickname()));
+                endGame.administrEndGame();
+            }
         }else{
             clientHandler.sendObject(new WrongTurnMessage());
         }

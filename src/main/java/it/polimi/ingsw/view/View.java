@@ -73,5 +73,7 @@ public interface View {
     void turnOrder(ArrayList<String> orderNamePLayers);
 
     void startTurn(ArrayList<String> players, String actualPlayer);
+
+    void displayDisconnection(String playerDisconnected);
 }
 //CLI E GUI dovranno implementare quest interfaccia

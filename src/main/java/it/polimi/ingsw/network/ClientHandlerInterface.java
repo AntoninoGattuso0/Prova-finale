@@ -12,4 +12,5 @@ public interface ClientHandlerInterface extends Runnable, ConnectionObserver {//
     Message read();
     void addObserver(ConnectionObserver observer);
     void run();
+    void closeConnect(String nickname);
 }

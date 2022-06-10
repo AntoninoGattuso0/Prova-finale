@@ -97,7 +97,7 @@ public class GameTest {
         game.islands.get(0).setYellowPawn(4);
         game.islands.get(0).setPinkPawn(3);
         game.islands.get(0).setBluePawn(0);
-        Game.topInfluence(game.islands.get(0), game);
+        game.topInfluence(game.islands.get(0), game);
         assertEquals(ColorTower.BLACK, game.islands.get(0).getColorTower());
     }
 
