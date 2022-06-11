@@ -45,6 +45,16 @@ public class Gui extends Application implements View {
     }
 
     @Override
+    public void requestMotherNaturMove(String nickname) {
+
+    }
+
+    @Override
+    public void requestCloud(String nickname) {
+
+    }
+
+    @Override
     public void requestCharacterCard(String nickname, boolean bool) {
 
     }

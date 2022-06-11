@@ -377,7 +377,7 @@ public class Game {
         numTower.add(0);
         numTower.add(0);
         ArrayList<Integer> numProf = new ArrayList<>();
-        for(int i = 0; i<totPlayer; i++) numProf.add(0);
+        for(int i = 0; i<players.size(); i++) numProf.add(0);
         for(int i = 0; i<5; i++){//scorro tutti i colori
             if(profTable.checkProf(i)!=-1) {
                 numProf.set(profTable.checkProf(i), numProf.get(profTable.checkProf(i)) + 1);//per ogni colore vedo quale player ha il suo professore e aggiungo +1 all'arraylist
@@ -396,7 +396,7 @@ public class Game {
 
         int max1 = -1;
 
-        for(int i = 0; i<numTower.size(); i++){
+        for(int i = 0; i<numTower.size() && i<players.size(); i++){
             if((numTower.get(i) == numTower.indexOf(Collections.max(numTower)) && (i!= max)))
                 max1 = i;
         }

@@ -15,6 +15,8 @@ public interface View {
     void requestMovePawnToDiningRoom(int pawn);
     void requestMovePawnToIsland(int pawn);
     void requestMovePawn(String nickname,int numPawnMoved);
+    void requestMotherNaturMove(String nickname);
+    void requestCloud(String nickname);
 
     void requestCharacterCard(String nickname,boolean bool);
 
