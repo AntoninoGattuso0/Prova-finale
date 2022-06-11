@@ -45,7 +45,7 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public void requestMotherNaturMove(String nickname) {
+    public void requestMotherNatureMove(String nickname) {
 
     }
 
