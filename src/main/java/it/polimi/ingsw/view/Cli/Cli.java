@@ -1229,7 +1229,7 @@ public class Cli implements Runnable, View {
     @Override
     public void displayOnePlayerBoard(String nickname) {
             int i;
-            for(i=0; Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++);
+            for(i=0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++);
         StringBuilder schoolBoard = new StringBuilder();
         out.println(" ");
         out.println(" ");
@@ -1481,11 +1481,6 @@ public class Cli implements Runnable, View {
             showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.GREEN);
             if(lightGame.getProfTable().getGreenProf() == player) {
                 showColor.append(" ❂ ");
-                out.println(lightGame.getProfTable().getGreenProf());
-                out.println(lightGame.getProfTable().getRedProf());
-                out.println(lightGame.getProfTable().getYellowProf());
-                out.println(lightGame.getProfTable().getPinkProf());
-                out.println(lightGame.getProfTable().getBlueProf());
             }
             else
                 showColor.append(" ◌ ");
