@@ -84,14 +84,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
 
     }
 
-    private synchronized void closeConnection(ClientHandlerInterface clientHandler) {
-        System.out.println("Server unregistering client.");
-        virtualView.removeClientInVirtualView(clientHandler);
-        players.remove(getPlayerByNick(clientHandler.getUserNickname()));
-        clients.remove(clientHandler);
-        System.out.println(clientHandler.getUserNickname() + "'s client unregistered\n");
-    }
-
     private void updateDisconnectionInSet(ClientHandlerInterface clientHandler) {
         System.out.println("A client disconnects in set-phase. The lobby is closed\n");
         deregisterConn(clientHandler);
@@ -365,8 +357,10 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                     serverMessageMenager.ManageInputToServer(clientHandler, m);
             }else{
                 clientHandler.sendObject(new LobbyFullMessage());
+                virtualView.removeClientInVirtualView(clientHandler);
+                players.remove(getPlayerByNick(clientHandler.getUserNickname()));
+                clients.remove(clientHandler);
                 clientHandler.closeConnect(clientHandler.getUserNickname());
-                closeConnection(clientHandler);
             }
         }
     }
