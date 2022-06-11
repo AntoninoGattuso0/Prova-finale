@@ -626,7 +626,7 @@ public class Cli implements Runnable, View {
                         requestMovePawn(nickname, pedineDaSpostare);
                     } else {
                         lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getCiro().getCoinPrice());
-                        out.println("Scegli un'Isola (puoi scegliere un numero tra 1 e " + lightGame.getIslands().size() + "):");
+                        out.println("Scegli un'Isola su cui calcolare l'influenza (puoi scegliere un numero tra 1 e " + lightGame.getIslands().size() + "):");
                         String numIslandString = null;
                         try {
                             numIslandString = readLine();
@@ -886,19 +886,69 @@ public class Cli implements Runnable, View {
                                 while (!check) {
                                     if (colore == 1 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > 0) {
                                         nomeColore = ColorPawn.GREEN;
-                                        check = true;
+                                        if(lightGame.getPlayers().get(player).getDiningRoom().getNumGreen()==10){
+                                            out.println("Numero massimo raggiunto sulla DiningRoom per il colore GREEN, scegli un altro colore: ");
+                                            try {
+                                                coloreString = readLine();
+                                                colore = convertStringToNumber(coloreString);
+                                            } catch (ExecutionException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        else
+                                            check = true;
                                     } else if (colore == 2 && lightGame.getPlayers().get(player).getEntrance().getRedPawn() > 0) {
                                         nomeColore = ColorPawn.RED;
-                                        check = true;
+                                        if(lightGame.getPlayers().get(player).getDiningRoom().getNumRed()==10){
+                                            out.println("Numero massimo raggiunto sulla DiningRoom per il colore RED, scegli un altro colore: ");
+                                            try {
+                                                coloreString = readLine();
+                                                colore = convertStringToNumber(coloreString);
+                                            } catch (ExecutionException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        else
+                                            check = true;
                                     } else if (colore == 3 && lightGame.getPlayers().get(player).getEntrance().getYellowPawn() > 0) {
                                         nomeColore = ColorPawn.YELLOW;
-                                        check = true;
+                                        if(lightGame.getPlayers().get(player).getDiningRoom().getNumYellow()==10){
+                                            out.println("Numero massimo raggiunto sulla DiningRoom per il colore YELLOW, scegli un altro colore: ");
+                                            try {
+                                                coloreString = readLine();
+                                                colore = convertStringToNumber(coloreString);
+                                            } catch (ExecutionException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        else
+                                            check = true;
                                     } else if (colore == 4 && lightGame.getPlayers().get(player).getEntrance().getPinkPawn() > 0) {
                                         nomeColore = ColorPawn.PINK;
-                                        check = true;
+                                        if(lightGame.getPlayers().get(player).getDiningRoom().getNumPink()==10){
+                                            out.println("Numero massimo raggiunto sulla DiningRoom per il colore PINK, scegli un altro colore: ");
+                                            try {
+                                                coloreString = readLine();
+                                                colore = convertStringToNumber(coloreString);
+                                            } catch (ExecutionException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        else
+                                            check = true;
                                     } else if (colore == 5 && lightGame.getPlayers().get(player).getEntrance().getBluePawn() > 0) {
                                         nomeColore = ColorPawn.BLUE;
-                                        check = true;
+                                        if(lightGame.getPlayers().get(player).getDiningRoom().getNumBlue()==10){
+                                            out.println("Numero massimo raggiunto sulla DiningRoom per il colore BLUE, scegli un altro colore: ");
+                                            try {
+                                                coloreString = readLine();
+                                                colore = convertStringToNumber(coloreString);
+                                            } catch (ExecutionException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        else
+                                            check = true;
                                     } else {
                                         out.println("Non ci sono pedine di questo colore, inserisci un altro colore: ");
                                         try {
@@ -977,19 +1027,69 @@ public class Cli implements Runnable, View {
                         while (!check) {
                             if (colore == 1 && lightGame.getNicola().getGreenPawn() > 0) {
                                 nomeColore = ColorPawn.GREEN;
-                                check = true;
+                                if(lightGame.getPlayers().get(player).getDiningRoom().getNumGreen()==10){
+                                    out.println("Numero massimo raggiunto sulla DiningRoom per il colore GREEN, scegli un altro colore: ");
+                                    try {
+                                        coloreString = readLine();
+                                        colore = convertStringToNumber(coloreString);
+                                    } catch (ExecutionException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                else
+                                    check = true;
                             } else if (colore == 2 && lightGame.getNicola().getRedPawn() > 0) {
                                 nomeColore = ColorPawn.RED;
-                                check = true;
+                                if(lightGame.getPlayers().get(player).getDiningRoom().getNumRed()==10){
+                                    out.println("Numero massimo raggiunto sulla DiningRoom per il colore RED, scegli un altro colore: ");
+                                    try {
+                                        coloreString = readLine();
+                                        colore = convertStringToNumber(coloreString);
+                                    } catch (ExecutionException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                else
+                                    check = true;
                             } else if (colore == 3 && lightGame.getNicola().getYellowPawn() > 0) {
                                 nomeColore = ColorPawn.YELLOW;
-                                check = true;
+                                if(lightGame.getPlayers().get(player).getDiningRoom().getNumYellow()==10){
+                                    out.println("Numero massimo raggiunto sulla DiningRoom per il colore YELLOW, scegli un altro colore: ");
+                                    try {
+                                        coloreString = readLine();
+                                        colore = convertStringToNumber(coloreString);
+                                    } catch (ExecutionException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                else
+                                    check = true;
                             } else if (colore == 4 && lightGame.getNicola().getPinkPawn() > 0) {
                                 nomeColore = ColorPawn.PINK;
-                                check = true;
+                                if(lightGame.getPlayers().get(player).getDiningRoom().getNumPink()==10){
+                                    out.println("Numero massimo raggiunto sulla DiningRoom per il colore PINK, scegli un altro colore: ");
+                                    try {
+                                        coloreString = readLine();
+                                        colore = convertStringToNumber(coloreString);
+                                    } catch (ExecutionException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                else
+                                    check = true;
                             } else if (colore == 5 && lightGame.getNicola().getBluePawn() > 0) {
                                 nomeColore = ColorPawn.BLUE;
-                                check = true;
+                                if(lightGame.getPlayers().get(player).getDiningRoom().getNumBlue()==10){
+                                    out.println("Numero massimo raggiunto sulla DiningRoom per il colore BLUE, scegli un altro colore: ");
+                                    try {
+                                        coloreString = readLine();
+                                        colore = convertStringToNumber(coloreString);
+                                    } catch (ExecutionException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                else
+                                    check = true;
                             } else {
                                 out.println("Non ci sono pedine di questo colore, inserisci un altro colore: ");
                                 try {
