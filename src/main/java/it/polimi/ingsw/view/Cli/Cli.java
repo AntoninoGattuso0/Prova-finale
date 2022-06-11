@@ -1273,6 +1273,7 @@ public class Cli implements Runnable, View {
     @Override
     public void lobbyFull(){
         System.out.println("Sorry,lobby is full");
+        socketNetworkHandler.closeConnection();
     }
     @Override
     public void updateAll(LightGame object) {

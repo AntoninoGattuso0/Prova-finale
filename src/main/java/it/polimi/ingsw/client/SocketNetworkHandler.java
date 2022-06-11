@@ -113,14 +113,17 @@ public class SocketNetworkHandler implements Runnable{
         try{
             while (true){
                 try {
-                    socket.setSoTimeout(30000);
-                    Object input = in.readObject();
-                    clientMessageManager.manageInputToClient(input,this);
+                    if(connected) {
+                        socket.setSoTimeout(30000);
+                        Object input = in.readObject();
+                        clientMessageManager.manageInputToClient(input, this);
+                    }
                 }catch (IOException|ClassNotFoundException|InterruptedException e){
-                    e.printStackTrace();
-                   if(!connected)
-                    view.displayNetError();
-                    closeConnection();
+                   if(!connected) {
+                       closeConnection();
+                   }else{
+                       e.printStackTrace();
+                   }
                     break;
                 }
             }
