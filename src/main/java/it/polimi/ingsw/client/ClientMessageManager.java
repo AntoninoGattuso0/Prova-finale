@@ -68,6 +68,12 @@ public class ClientMessageManager {
            // socketNetworkHandler.getView().
         }else if(object instanceof SetCharacterCardMessage){
             socketNetworkHandler.getView().requestCharacterCard(((SetCharacterCardMessage) object).getNickname(),((SetCharacterCardMessage) object).isBool());
+        }else if(object instanceof UpdateIslandsMessage){
+            socketNetworkHandler.getView().displayIslands();
+        }else if(object instanceof UpdateDiningMessage){
+            socketNetworkHandler.getView().displaySchoolBoard();
+        }else if(object instanceof UpdateDiningOnePlayerMessage){
+            socketNetworkHandler.getView().displayOnePlayerBoard(((UpdateDiningOnePlayerMessage) object).getNickname());
         }
         else throw new IllegalArgumentException();
     }

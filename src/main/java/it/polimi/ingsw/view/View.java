@@ -75,5 +75,7 @@ public interface View {
     void startTurn(ArrayList<String> players, String actualPlayer);
 
     void displayDisconnection(String playerDisconnected);
+
+    void displayOnePlayerBoard(String nickname);
 }
 //CLI E GUI dovranno implementare quest interfaccia

@@ -279,7 +279,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             for(i=0;!game.getIslands().get(i).getMotherNature();i++);
             i += island;
             if(i>game.getIslands().size()-1){
-                i=i-game.getIslands().size()-1;
+                i=i-(game.getIslands().size()-1);
             }
             game.moveMotherNature(game.getIslands().get(i));
             game.topInfluence(game.getIslands().get(i),game);
@@ -290,6 +290,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             }
             if(player==null) {
                 virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
+                virtualView.sendBroadcast(new UpdateIslandsMessage());
                 game.getPlayers().get(findPlayer(game, clientHandler)).setCurrentPhase(PhaseTurn.CHOOSE_CLOUD);
                 controller.startTurn(game.getPlayers().get(findPlayer(game, clientHandler)));
             }else{
@@ -334,17 +335,21 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         if(numPlayers==2||numPlayers==4){
             if(numPawnExe==3){// le pedine sono 3 se i player sono 2 o 4 (ho pensato io a questo sulla CLI riga 264)
                 game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.MOVE_MOTHER_NATURE);//setto la fase successiva
+                virtualView.sendBroadcast(new UpdateDiningMessage());
                 controller.startTurn(game.getPlayers().get(numPlayer));//mando il messaggio broadcast della mothernature
                 numPawnExe=0;//setto a zero per permettere lo spostamento al prossimo player
             }else{
+                virtualView.sendBroadcast(new UpdateDiningOnePlayerMessage(game.getPlayers().get(numPlayer).getNickname()));
                 clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));//se le pedine totali spostate non sono 3 reinvio il messaggio
             }
         } else if(numPlayers==3) {
             if (numPawnExe == 4) {//le pedine sono 4 se i player sono 3 (ho pensato io a questo sulla CLI riga 267)
                 game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.MOVE_MOTHER_NATURE);
+                virtualView.sendBroadcast(new UpdateDiningOnePlayerMessage(game.getPlayers().get(findPlayer(game,clientHandler)).getNickname()));
                 controller.startTurn(game.getPlayers().get(numPlayer));
                 numPawnExe=0;
             }else{
+                virtualView.sendBroadcast(new UpdateDiningOnePlayerMessage(game.getPlayers().get(numPlayer).getNickname()));
                 clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));//se le pedine totali spostate non sono 4 reinvio il messaggio
             }
         }

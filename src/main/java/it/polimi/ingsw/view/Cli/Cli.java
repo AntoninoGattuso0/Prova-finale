@@ -1227,6 +1227,22 @@ public class Cli implements Runnable, View {
     }
 
     @Override
+    public void displayOnePlayerBoard(String nickname) {
+            int i;
+            for(i=0; Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++);
+        StringBuilder schoolBoard = new StringBuilder();
+        out.println(" ");
+        out.println(" ");
+        schoolBoard.append(ColorCli.BOLDCYAN);
+
+        schoolBoard.append("Player: " + lightGame.getPlayers().get(i).getNickname()).append("\n").append("+--------------+--------------------------------+---+\n");
+        for (int j = 0; j < 5; j++)
+            schoolBoard.append("|").append(color4Entrance(i, j));
+        out.println(schoolBoard);
+        out.println();
+    }
+
+    @Override
     public void displayStartTurn() {
         out.println("È il tuo turno! Puoi fare le tue mosse:");
     }
