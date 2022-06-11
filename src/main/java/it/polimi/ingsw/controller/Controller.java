@@ -156,6 +156,7 @@ public class Controller {
                     }
             }else{
                 this.c=this.c+1;
+                virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
                 virtualView.sendBroadcast(new SetMovePawnMessage(roundController.getRoundOrder().get(this.c).getNickname(),0));
             }
         }else if(player.getCurrentPhase()==PhaseTurn.USE_CHARACTER){

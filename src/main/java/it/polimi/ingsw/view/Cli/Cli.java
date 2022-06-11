@@ -175,6 +175,12 @@ public class Cli implements Runnable, View {
         out.println("");
         ArrayList<ColorPawn> colori = new ArrayList<>();
         ColorPawn nomeColore = null;
+        ArrayList<Integer> numPawn=new ArrayList<>();
+        numPawn.add(0);
+        numPawn.add(0);
+        numPawn.add(0);
+        numPawn.add(0);
+        numPawn.add(0);
         int i;
         for(i = 0; i<lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(socketNetworkHandler.getNicknameThisPlayer())); i++);
         int player = i;
@@ -185,20 +191,25 @@ public class Cli implements Runnable, View {
             int colore = scanner.nextInt();
             boolean check = false;
             while(!check) {
-                if (colore == 1 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > 0) {
+                if (colore == 1 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > numPawn.get(0)) {
                     nomeColore = ColorPawn.GREEN;
+                    numPawn.set(0, numPawn.get(0)+1);
                     check = true;
-                } else if (colore == 2 && lightGame.getPlayers().get(player).getEntrance().getRedPawn() > 0) {
+                } else if (colore == 2 && lightGame.getPlayers().get(player).getEntrance().getRedPawn() > numPawn.get(1)) {
                     nomeColore = ColorPawn.RED;
+                    numPawn.set(1, numPawn.get(1)+1);
                     check = true;
-                } else if (colore == 3 && lightGame.getPlayers().get(player).getEntrance().getYellowPawn() > 0) {
+                } else if (colore == 3 && lightGame.getPlayers().get(player).getEntrance().getYellowPawn()> numPawn.get(2)) {
                     nomeColore = ColorPawn.YELLOW;
+                    numPawn.set(2, numPawn.get(2)+1);
                     check = true;
-                } else if (colore == 4 && lightGame.getPlayers().get(player).getEntrance().getPinkPawn() > 0) {
+                } else if (colore == 4 && lightGame.getPlayers().get(player).getEntrance().getPinkPawn() > numPawn.get(3)) {
                     nomeColore = ColorPawn.PINK;
+                    numPawn.set(3, numPawn.get(3)+1);
                     check = true;
-                } else if (colore == 5 && lightGame.getPlayers().get(player).getEntrance().getBluePawn() > 0) {
+                } else if (colore == 5 && lightGame.getPlayers().get(player).getEntrance().getBluePawn() > numPawn.get(4)) {
                     nomeColore = ColorPawn.BLUE;
+                    numPawn.set(4, numPawn.get(4)+1);
                     check = true;
                 } else {
                     out.println("Non hai pedine di questo colore, inserisci un altro colore: ");
@@ -206,7 +217,7 @@ public class Cli implements Runnable, View {
                 }
             }
             colori.add(nomeColore);
-            out.println("Hai spostato correttamente una pedina, ne rimangono: " + (i + 1) + "/" + numDining);//??? non lo fai qui lo spostamento!! se ci sono errori non li sposto!
+            out.println("Hai spostato correttamente una pedina, ne rimangono: " + (numDining-i) + "/" + numDining);//??? non lo fai qui lo spostamento!! se ci sono errori non li sposto!
         }
         socketNetworkHandler.sendMessage(new MovePawnToDiningMessage(numDining, colori));
         out.println("");
@@ -214,6 +225,12 @@ public class Cli implements Runnable, View {
 
     @Override
     public void requestMovePawnToIsland(int pedineDaSpostare) {
+        ArrayList<Integer> numP=new ArrayList<>();
+        numP.add(0);
+        numP.add(0);
+        numP.add(0);
+        numP.add(0);
+        numP.add(0);
         out.println("Quante pedine vuoi spostare verso un'Isola? puoi spostare fino a" + pedineDaSpostare +"pedine.");// serve il controllo sulle pedine possibili da spostare (pedinedaspostate)
         int numPawn = scanner.nextInt();
         while (numPawn<1||numPawn>pedineDaSpostare){
@@ -222,11 +239,11 @@ public class Cli implements Runnable, View {
         }
         out.println("Verso quale isola vuoi spostarle? ");
         int numIsland = scanner.nextInt();
-        while(numIsland<0 || numIsland>lightGame.getIslands().size()-1){
+        while(numIsland<1 || numIsland>lightGame.getIslands().size()){
             out.println("Isola inesistente, inserisci un numero dell'isola corretto");
             numIsland = scanner.nextInt();
         }
-        out.println("Sposterai " + numPawn + " pedine verso l'Isola numero " + numIsland);
+        out.println("Sposterai " + numPawn + " pedine verso l'Isola numero " + (numIsland));
         out.println();
         ArrayList<ColorPawn> colori = new ArrayList<>();
         ColorPawn nomeColore = null;
@@ -240,20 +257,25 @@ public class Cli implements Runnable, View {
             int colore = scanner.nextInt();
             boolean check = false;
             while(!check) {
-                if (colore == 1 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > 0) {
+                if (colore == 1 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > numP.get(0)) {
                     nomeColore = ColorPawn.GREEN;
+                    numP.set(0,numP.get(0)+1);
                     check = true;
-                } else if (colore == 2 && lightGame.getPlayers().get(player).getEntrance().getRedPawn() > 0) {
+                } else if (colore == 2 && lightGame.getPlayers().get(player).getEntrance().getRedPawn() > numP.get(1)) {
                     nomeColore = ColorPawn.RED;
+                    numP.set(1,numP.get(1)+1);
                     check = true;
-                } else if (colore == 3 && lightGame.getPlayers().get(player).getEntrance().getYellowPawn() > 0) {
+                } else if (colore == 3 && lightGame.getPlayers().get(player).getEntrance().getYellowPawn() > numP.get(2)) {
                     nomeColore = ColorPawn.YELLOW;
+                    numP.set(2,numP.get(2)+1);
                     check = true;
-                } else if (colore == 4 && lightGame.getPlayers().get(player).getEntrance().getPinkPawn() > 0) {
+                } else if (colore == 4 && lightGame.getPlayers().get(player).getEntrance().getPinkPawn() > numP.get(3)) {
                     nomeColore = ColorPawn.PINK;
+                    numP.set(3,numP.get(3)+1);
                     check = true;
-                } else if (colore == 5 && lightGame.getPlayers().get(player).getEntrance().getBluePawn() > 0) {
+                } else if (colore == 5 && lightGame.getPlayers().get(player).getEntrance().getBluePawn() > numP.get(4)) {
                     nomeColore = ColorPawn.BLUE;
+                    numP.set(4,numP.get(4)+1);
                     check = true;
                 } else {
                     out.println("Non hai pedine di questo colore, inserisci un altro colore: ");
@@ -261,9 +283,9 @@ public class Cli implements Runnable, View {
                 }
             }
             colori.add(nomeColore);
-            out.println("Hai scelto correttamente una pedina, ne rimangono: " + (i + 1) + "/" + numPawn);
+            out.println("Hai scelto correttamente una pedina, ne rimangono: " + (numPawn-i-1) + "/" + numPawn);
         }
-        socketNetworkHandler.sendMessage(new MovePawnToIslandMessage(numIsland, numPawn, colori));
+        socketNetworkHandler.sendMessage(new MovePawnToIslandMessage(numIsland-1, numPawn, colori));
     }
 
 
@@ -1239,7 +1261,6 @@ public class Cli implements Runnable, View {
     @Override
     public void updateAll(LightGame object) {
         this.lightGame = object;
-        System.out.println(lightGame.getProfTable().getGreenProf());
     }
 
     @Override

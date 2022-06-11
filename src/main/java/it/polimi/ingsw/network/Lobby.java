@@ -275,10 +275,14 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     public synchronized void moveMotherNature(int island, ClientHandler clientHandler) {
         Player player;
         if(game.getPlayers().get(findPlayer(game,clientHandler)).getCurrentPhase()== PhaseTurn.MOVE_MOTHER_NATURE) {
-            game.getPlayers().get(findPlayer(game, clientHandler));
-            Island island1 = game.getIslands().get(island);
-            game.moveMotherNature(island1);
-            game.topInfluence(island1,game);
+            int i;
+            for(i=0;!game.getIslands().get(i).getMotherNature();i++);
+            i += island;
+            if(i>game.getIslands().size()-1){
+                i=i-game.getIslands().size()-1;
+            }
+            game.moveMotherNature(game.getIslands().get(i));
+            game.topInfluence(game.getIslands().get(i),game);
             if(controller.getCounterRound()==10) {
                 player=game.finish(true);
             }else{
@@ -303,8 +307,8 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         if(game.getPlayers().get(numPlayer).getCurrentPhase()==PhaseTurn.MOVE_STUDENT) {
             for (i = 0; i < numPawn; i++) {
                 game.getPlayers().get(numPlayer).getDiningRoom().addPawnToDiningRoom(arrayPawn.get(i), game.getPlayers().get(numPlayer), game);
+                game.moveProf();
             }
-            game.moveProf();
             virtualView.sendBroadcast(new AllUpdateMessage(game.getLightGame()));
             movement(numPawn, clientHandler, numPlayer);
         }else{

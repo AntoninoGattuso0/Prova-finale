@@ -70,7 +70,7 @@ public class GameTest {
         game.islands.get(1).setColorTower(ColorTower.BLACK);
         game.islands.get(2).setTower(true);
         game.islands.get(2).setColorTower(ColorTower.BLACK);
-        Game.unifyIsland(1, game);
+        game.unifyIsland(1, game);
         System.out.println(game.islands.size());
         assertEquals(3, game.islands.get(0).getTotIsland());
 

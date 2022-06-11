@@ -51,7 +51,7 @@ public class Felix extends UseEffect implements Serializable {
             }
         }
         if(!notunique) island.setColorTower(game.players.get(influence.indexOf(max)).towerSpace.colorTower);
-        Game.unifyIsland(game.islands.indexOf(island), game);
+        game.unifyIsland(game.islands.indexOf(island), game);
         setCoinPrice(4);
     }
 }

@@ -180,7 +180,7 @@ public class Game {
         islands.get(i).setMotherNature(false);
         island.setMotherNature(true);
     }
-    public static void unifyIsland(int i, Game game) { // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
+    public void unifyIsland(int i, Game game) { // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
         int j, k;
         boolean prevTrue, postTrue;
         if (game.islands.get(i).getTower()) {
@@ -247,7 +247,10 @@ public class Game {
                         notUnique = true;
                 }
             }
-            if (!notUnique) island.setColorTower(game.players.get(influence.indexOf(max)).towerSpace.colorTower);
+            if (!notUnique){
+                island.setColorTower(game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getColorTower());
+                game.getPlayers().get(influence.indexOf(max)).getTowerSpace().setNumTower((game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getNumTower())-1);
+            }
             unifyIsland(game.islands.indexOf(island), game);
         }
     }
@@ -379,7 +382,6 @@ public class Game {
             if(profTable.checkProf(i)!=-1) {
                 numProf.set(profTable.checkProf(i), numProf.get(profTable.checkProf(i)) + 1);//per ogni colore vedo quale player ha il suo professore e aggiungo +1 all'arraylist
             }
-            System.out.println(" " +numProf.get(0)+ " " +numProf.get(1)+" "+numProf.get(2));
         }
         for (Island island : islands) {
             if (island.getColorTower() == ColorTower.BLACK)
@@ -389,6 +391,7 @@ public class Game {
             else if (island.getColorTower() == ColorTower.GREY)
                 numTower.set(2, numTower.get(2) + island.getTotIsland());
         }
+        System.out.println(numTower.get(0)+" "+numTower.get(1)+" "+numTower.get(2));
         int max = numTower.indexOf(Collections.max(numTower));
 
         int max1 = -1;
@@ -403,15 +406,19 @@ public class Game {
         }
 
 
-        for(int i = 0; i<totPlayer; i++){
-            if(players.get(i).towerSpace.getNumTower() == 0) //caso 1, torri finite
-                 return players.get(max);
+        for(int i = 0; i<totPlayer; i++) {
+            if (players.get(i).towerSpace.getNumTower() == 0) { //caso 1, torri finite
+                System.out.println("1 "+ players.get(max).getNickname());
+                return players.get(max);
+            }
         }
         if(islands.size() <= 3){//caso 2, 3 gruppi di isole
+            System.out.println("2"+ players.get(max).getNickname());
             return players.get(max);
         }
 
         if(studentBag.getNum()==0) {//caso 3, fine studenti nel sacchetto
+            System.out.println("3"+ players.get(max).getNickname());
             return players.get(max);
         }
 

@@ -64,7 +64,7 @@ public class DiningRoom {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[0][j] != 1) {
                     player.diningRoom.position[0][j] = 1;
-                    player.diningRoom.setNumGreen(j+1);
+                    player.diningRoom.setNumGreen(player.getDiningRoom().getNumGreen()+1);
                     player.entrance.setGreenPawn(player.entrance.getGreenPawn() - 1);
                     player.entrance.setNumPawn(player.entrance.getNumPawn() - 1);
                     if (game.isExpert && ( j == 2 || j == 5 || j == 8))
