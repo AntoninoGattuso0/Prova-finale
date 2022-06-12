@@ -3,6 +3,7 @@ package it.polimi.ingsw.view;
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public interface View {
@@ -82,5 +83,7 @@ public interface View {
     void displayDisconnection(String playerDisconnected);
 
     void displayOnePlayerBoard(String nickname);
+
+    void disconnectionAll(String playerDisconnected) throws IOException;
 }
 //CLI E GUI dovranno implementare quest interfaccia

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.network;
 
+import it.polimi.ingsw.network.Message.ClientToServer.ReadyTodisconnection;
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.Ping;
 import it.polimi.ingsw.network.Message.ServerToClient.WaitLoginMessage;
@@ -98,15 +99,23 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }
-                        if (!(toServer instanceof Ping)) {
-                            lobby.processMessage(this, toServer);
-                            messageReady = true;
-                            synchronized (this) {
-                                notifyAll();
+                        if(lobby.isDisconnectAll()) {
+                            if(toServer instanceof ReadyTodisconnection){
+                                lobby.processMessage(this,toServer);
                             }
-                        }
+                        }else if (!(toServer instanceof Ping)) {
+                                lobby.processMessage(this, toServer);
+                                messageReady = true;
+                                synchronized (this) {
+                                    notifyAll();
+                                }
+                            }
                     } catch (IOException | NullPointerException | IllegalArgumentException e) {
                         System.out.println("SERVER: " + userNickname + " connection close by the client");
+                        if(lobby.isLobbyOk()){
+                            lobby.updateDisconnection(this);
+                        }
+                        lobby.setDisconnectionCounter();
                         closeConnect(userNickname);
                         break;
                     }

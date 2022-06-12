@@ -18,7 +18,7 @@ public class Server {
         return lobby;
     }
 
-    public void start() {
+    public void start() throws IOException {
         try {
             serverSocket = new ServerSocket(port);
         } catch (IOException e) {
@@ -26,15 +26,21 @@ public class Server {
             System.out.println("SERVER SOCKET CLOSED!");
         }
     while(true){
-        try{
-        System.out.println("SERVER: Waiting client connection.");
-            Socket socket= serverSocket.accept();
-            System.out.println("SERVER: Client connected.");
-            ClientHandlerInterface client= (ClientHandlerInterface) new ClientHandler(socket,getLobby());
-            client.run();
-        } catch (IOException e) {
-            System.out.println("SERVER: restarting server.");
-        }
+            try {
+                    System.out.println("SERVER: Waiting client connection.");
+                    if (!lobby.isLobbyOk()) {
+                        Socket socket = serverSocket.accept();
+                        System.out.println("SERVER: Client connected.");
+                        ClientHandlerInterface client = (ClientHandlerInterface) new ClientHandler(socket, getLobby());
+                        client.run();
+                    } else if (getLobby().getClients().size() != getLobby().getPlayers().size()) {
+                        serverSocket.close();
+                        System.out.println("Server closed");
+                        break;
+                    }
+            } catch (IOException e) {
+                System.out.println("SERVER: restarting server.");
+            }
     }
 }
 

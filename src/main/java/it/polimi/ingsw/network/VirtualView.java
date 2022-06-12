@@ -1,6 +1,7 @@
 package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.network.Message.Message;
+import it.polimi.ingsw.network.Message.ServerToClient.DisconnectionMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.WinnerMessage;
 
@@ -71,6 +72,7 @@ public class VirtualView {
     }
 
     public void sendAllQuitPlayer(String userNickname) {
+        sendBroadcast(new DisconnectionMessage(userNickname));
     }
 
     public void sendDisconectionInSet(String userNickname) {

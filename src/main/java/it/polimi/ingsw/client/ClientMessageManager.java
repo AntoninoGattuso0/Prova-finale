@@ -5,6 +5,8 @@ import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
 import it.polimi.ingsw.view.View;
 
+import java.io.IOException;
+
 public class ClientMessageManager {
     private final View view;
 
@@ -12,7 +14,7 @@ public class ClientMessageManager {
         this.view = view;
     }
 
-    public void manageInputToClient(Object object, SocketNetworkHandler socketNetworkHandler) throws InterruptedException {
+    public void manageInputToClient(Object object, SocketNetworkHandler socketNetworkHandler) throws InterruptedException, IOException {
         if (object instanceof WaitMessage) {
             socketNetworkHandler.getView().waitOtherPlayers();
         } else if (object instanceof StartTurnMessage) {
@@ -74,6 +76,8 @@ public class ClientMessageManager {
             socketNetworkHandler.getView().displaySchoolBoard();
         }else if(object instanceof UpdateDiningOnePlayerMessage){
             socketNetworkHandler.getView().displayOnePlayerBoard(((UpdateDiningOnePlayerMessage) object).getNickname());
+        }else if(object instanceof DisconnectionMessage){
+            socketNetworkHandler.getView().disconnectionAll(((DisconnectionMessage) object).getPlayerDisconnected());
         }
         else throw new IllegalArgumentException();
     }
