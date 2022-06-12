@@ -13,8 +13,8 @@ public interface View {
 
     void requestNumPlayersIsExpert();
 
-    void requestMovePawnToDiningRoom(int pawn);
-    void requestMovePawnToIsland(int pawn);
+    void requestMovePawnToDiningRoom(String nickname, int pawn);
+    void requestMovePawnToIsland(String nickname, int pawn);
     void requestMovePawn(String nickname,int numPawnMoved);
     void requestMotherNatureMove(String nickname);
     void requestCloud(String nickname);
