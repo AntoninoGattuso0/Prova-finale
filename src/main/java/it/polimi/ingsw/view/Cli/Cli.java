@@ -17,7 +17,7 @@ public class Cli implements Runnable, View {
     private final PrintStream out;            //IN OGNI messaggio di mossa chiedere se vuole giocare il characterCard
     private Thread inputThread;               //nel controllo del movimento di pedine inserire il controllo che se in diningroom hanno 10 pedine già inserite, non ne può spostare altre
     private boolean isExpert;                  //verificare che il gioco sia esperto prima di stampare le varie richieste: se è Base i character non devono essere un opzione: per questo devi invertire le richieste 1) per dining, 2) per isola, 3) per charcter... altrimenti nel caso base esce premere 2 per movedining e 3 per moveisola
-    private LightGame lightGame;
+    private LightGame lightGame;                // per verificare se è esperto puoi usare isExpert o LightGame.getIsExpert();
     private SocketNetworkHandler socketNetworkHandler;
     private int pedineDaSpostare;
     private int numPawnMove;
