@@ -63,17 +63,27 @@ public class GameTest {
     public void testUnifyIsland(){
         Game game = new Game(4, true);
         game.start(game);
+        game.newPlayer("ciao",game);
+        game.newPlayer("hei",game);
+        game.newPlayer("ou",game);
+        game.newPlayer("4",game);
         System.out.println(game.islands.size());
+        game.getPlayers().get(1).getDiningRoom().setNumGreen(4);
+        game.getPlayers().get(1).getDiningRoom().setNumBlue(3);
+        game.getPlayers().get(0).getDiningRoom().setNumBlue(4);
+        game.getPlayers().get(0).getDiningRoom().setNumRed(4);
+        game.getPlayers().get(0).getDiningRoom().setNumYellow(4);
+        game.moveProf();
         game.islands.get(0).setTower(true);
         game.islands.get(0).setColorTower(ColorTower.BLACK);
         game.islands.get(1).setTower(true);
         game.islands.get(1).setColorTower(ColorTower.BLACK);
         game.islands.get(2).setTower(true);
         game.islands.get(2).setColorTower(ColorTower.BLACK);
-        game.unifyIsland(1, game);
+        game.moveMotherNature(game.getIslands().get(1));
+        game.topInfluence(game.getIslands().get(1),game);
         System.out.println(game.islands.size());
         assertEquals(3, game.islands.get(0).getTotIsland());
-
     }
 
     @Test

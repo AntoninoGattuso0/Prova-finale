@@ -13,12 +13,12 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 public class Cli implements Runnable, View {
-    Scanner scanner = new Scanner(System.in); //PER PAUL: QUI CI SONO LE RIGHE A CUI DEVI ANDARE IN LOBBY, LI' TI DIRO' COSA MODIFICARE: riga 337, riga 555,riga 1113,riga 1128.
-    private final PrintStream out;          //se è possibile stampare gli assistenti uno accanto all'altro.
-    private Thread inputThread;
-    private boolean isExpert;
-    private boolean gameStart;              //PRIMA di ogni messaggio di mossa chiedere se vuole giocare il characterCard
-    private LightGame lightGame;              //nel controllo del movimento di pedine inserire il controllo che se in diningroom hanno 10 pedine già inserite, non ne può spostare altre
+    Scanner scanner = new Scanner(System.in); //PER PAUL: QUI CI SONO LE RIGHE A CUI DEVI ANDARE IN LOBBY, LI' TI DIRO' COSA MODIFICARE: 1555
+    private final PrintStream out;            //PRIMA di ogni messaggio di mossa chiedere se vuole giocare il characterCard
+    private Thread inputThread;               //nel controllo del movimento di pedine inserire il controllo che se in diningroom hanno 10 pedine già inserite, non ne può spostare altre
+    private boolean isExpert;                  //verificare che il gioco sia esperto prima di stampare le varie richieste: se è Base i character non devono essere un opzione: per questo devi invertire le richieste 1) per dining, 2) per isola, 3) per charcter... altrimenti nel caso base esce premere 2 per movedining e 3 per moveisola
+    private boolean gameStart;
+    private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;
     private String actualPlayer;
     private int pedineDaSpostare;
@@ -166,10 +166,13 @@ public class Cli implements Runnable, View {
                 }
             }
             if (scelta == 1) requestCharacterCard(nickname,true);
-            else if (scelta == 2)
+            else if (scelta == 2) {
                 requestMovePawnToDiningRoom(pedineDaSpostare);//mando in ingresso il numero di pedine così controlli il numero che ti da in ingresso
-            else if (scelta == 3) requestMovePawnToIsland(pedineDaSpostare);
-            pedineDaSpostare = numPawnMove;
+                pedineDaSpostare = numPawnMove;
+            }else if (scelta == 3) {
+                requestMovePawnToIsland(pedineDaSpostare);
+                pedineDaSpostare = numPawnMove;
+            }
         }else{
             System.out.println(nickname+" sta spostando le pedine");
         }
@@ -1436,6 +1439,7 @@ public class Cli implements Runnable, View {
 
     @Override
     public void displayWinner(String winner) {
+        displayStartRound();
         out.println("The winner is: " + winner);
     }
 
@@ -1542,27 +1546,46 @@ public class Cli implements Runnable, View {
     @Override
     public void updateAll(LightGame object) {
         this.lightGame = object;
+        int i;
+        int c=0;
+        for(i=0;i<lightGame.getNumPlayers();i++) {
+            if (lightGame.getPlayers().get(i).getCurrentAssistant() != null) {
+                c++;
+            }
+        }
+        if(c==0){
+            displayStartRound();
+        }
     }
-
+    @Override
+    public void displayStartRound(){
+        displayIslands();
+        displayCloud();
+        out.println();
+        out.println();
+        displayCharacterCard();
+        out.println();
+        displaySchoolBoard();
+    }
     @Override
     public void selectCloud(String nickname) {//inserire quali sono le cloud non vuote
         if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
             displayCloud();
             out.println("Scegli una delle nuvole presenti: ");
             int cloud = scanner.nextInt();
-            while (cloud < 1 || cloud > (lightGame.getClouds().size() + 1) || lightGame.getClouds().get(cloud - 1).getNumPawn() == 0) {
+            while (cloud < 1 || cloud > (lightGame.getClouds().size() +1) || lightGame.getClouds().get(cloud - 1).getNumPawn() == 0) {
                 out.println("Numero nuvola errato OPPURE Nuvola Vuota. Inserisci un numero valido: ");
-                cloud = scanner.nextInt();
+                cloud = scanner.nextInt();// QUESTO è UNA LETTURA IN INT, VA FATTA STRINGA
             }
-            socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloud - 1)); //Penso sia carino che scelga le cloud partendo da 1 e non da 0
+            socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloud - 1));
         }else{
             out.println(nickname +" sta scegliendo la cloud");
         }
     }
     @Override
     public void selectAssistantCard(String nickname) {
-        int i,m=-1;// SE HAI UN IDEA MIGLIORE DIMMELO PERCHE' ANCORA NON HO MODIFICATO LA FUNZIONE DEL PLAYER E QUESTA NON MI SE,BRA NEMMENO LA MIGLIORE
-        int numAssistant = -1;//dire anche quali sono gli assistenti giocati dagli altri in quel turno.
+        int i,m=-1;
+        int numAssistant = -1;
         if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
             for (i = 0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++) ;
             displayAssistantCard(i);

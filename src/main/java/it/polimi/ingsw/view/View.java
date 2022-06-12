@@ -54,6 +54,9 @@ public interface View {
 
     void updateAll(LightGame object);
     void displayAll();
+
+    void displayStartRound();
+
     void selectCloud(String nickname);
 
     void selectAssistantCard(String nickname);

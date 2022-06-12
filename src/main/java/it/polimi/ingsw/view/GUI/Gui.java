@@ -151,6 +151,11 @@ public class Gui extends Application implements View {
     }
 
     @Override
+    public void displayStartRound() {
+
+    }
+
+    @Override
     public void selectCloud(String nickname) {
 
     }

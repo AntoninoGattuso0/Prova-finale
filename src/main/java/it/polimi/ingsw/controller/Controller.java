@@ -141,9 +141,6 @@ public class Controller {
             virtualView.sendBroadcast( new EndTurnMessage(getOrderNamePlayers(),player.getNickname()));
             if(Objects.equals(player.getNickname(), getRoundController().getLastPlayer().getNickname())){
                 int i;
-                for(i=0;i<players.size();i++){
-                    game.getPlayers().get(i).setCurrentAssistant(null);
-                }
                 this.c=0;
                     for (i = 0; i < game.getClouds().size(); i++) {
                         game.getClouds().get(i).refillCloud(game.getStudentBag(), game);

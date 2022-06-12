@@ -271,7 +271,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             for(i=0;!game.getIslands().get(i).getMotherNature();i++);
             i += island;
             if(i>game.getIslands().size()-1){
-                i=i-(game.getIslands().size()-1);
+                i=i-(game.getIslands().size());
             }
             game.moveMotherNature(game.getIslands().get(i));
             game.topInfluence(game.getIslands().get(i),game);

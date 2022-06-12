@@ -185,18 +185,26 @@ public class Game {
         boolean prevTrue, postTrue;
         if (game.islands.get(i).getTower()) {
             j = i - 1;
-            k = i+1;
-            if (j < 0) j = game.islands.size() - 1;
-            if (k >= game.islands.size()) k = 0;
+            k = i + 1;
+            if (j == -1) j = game.islands.size() - 1;
+            if (k == game.islands.size()) k = 0;
             prevTrue = checkIsland(i, j, game);
             postTrue = checkIsland(i, k, game);
-            if(prevTrue) game.islands.remove(j);
-            if(postTrue && prevTrue) game.islands.remove(k-1);
-            else if(postTrue) game.islands.remove(k);
+            if (prevTrue) {
+                game.getIslands().remove(j);
+                if(j==game.getIslands().size()) j=0;
+                game.getIslands().get(j).setMotherNature(true);
+            }
+            if (postTrue&&prevTrue) {
+                game.getIslands().remove(k - 1);
+            } else if(postTrue) {
+                    game.getIslands().remove(k);
+            }
         }
-    }
+            System.out.println(game.getIslands().size());
+        }
     public static boolean checkIsland(int i, int j, Game game) { //controlla se le due isole si possono unire, nel caso le unisce
-        if (game.islands.get(j).getTower() && game.islands.get(j).getColorTower() == game.islands.get(i).getColorTower()) {
+        if (game.islands.get(j).getColorTower() == game.islands.get(i).getColorTower()) {
             game.islands.get(i).setGreenPawn(game.islands.get(i).getGreenPawn() + game.islands.get(j).getGreenPawn());
             game.islands.get(i).setRedPawn(game.islands.get(i).getRedPawn() + game.islands.get(j).getRedPawn());
             game.islands.get(i).setYellowPawn(game.islands.get(i).getYellowPawn() + game.islands.get(j).getYellowPawn());
@@ -240,6 +248,7 @@ public class Game {
                 if (island.getTower() && island.getColorTower() == game.players.get(i).towerSpace.colorTower)
                     influence.set(i, influence.get(i) + island.getTotIsland());
             }
+            System.out.println(influence.get(0)+" "+influence.get(1)+" "+influence.get(2));
             max = Collections.max(influence);
             for (i = 0; i < influence.size() && !notUnique; i++) {
                 for (j = i + 1; j < influence.size() && !notUnique; j++) {
@@ -248,10 +257,21 @@ public class Game {
                 }
             }
             if (!notUnique){
-                island.setColorTower(game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getColorTower());
-                game.getPlayers().get(influence.indexOf(max)).getTowerSpace().setNumTower((game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getNumTower())-1);
+                if(!island.getTower()) {
+                    island.setTower(true);
+                    island.setColorTower(game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getColorTower());
+                    game.getPlayers().get(influence.indexOf(max)).getTowerSpace().setNumTower((game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getNumTower()) - island.getTotIsland());
+                }else{
+                    for(i=0;island.getColorTower()!=game.getPlayers().get(i).getTowerSpace().getColorTower();i++);
+                    game.getPlayers().get(i).getTowerSpace().setNumTower(players.get(i).getTowerSpace().getNumTower()+island.getTotIsland());
+                    island.setColorTower(game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getColorTower());
+                    game.getPlayers().get(influence.indexOf(max)).getTowerSpace().setNumTower((game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getNumTower()) - island.getTotIsland());
+                }
             }
             unifyIsland(game.islands.indexOf(island), game);
+            for(i=0;i<game.getIslands().size();i++){
+                System.out.println(game.getIslands().get(i).getColorTower()+" "+getIslands().get(i).getTotIsland());
+            }
         }
     }
         public void setCharacterCards (Game game) { //posiziona a caso dei personaggi (3)
@@ -337,35 +357,55 @@ public class Game {
                     int max = Collections.max(maxColor);
                     int indexMax = maxColor.indexOf(max);
                     maxColor.remove(indexMax);
-                    if (!maxColor.contains(max)) getProfTable().setGreenProf(indexMax);
+                    if (!maxColor.contains(max)) {
+                        getProfTable().setGreenProf(indexMax);
+                    }else{
+                        getProfTable().setGreenProf(-1);
+                    }
                     maxColor.clear();
                 } else if (i == 1) {
                     for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumRed());
                     int max = Collections.max(maxColor);
                     int indexMax = maxColor.indexOf(max);
                     maxColor.remove(indexMax);
-                    if (!maxColor.contains(max)) getProfTable().setRedProf(indexMax);
+                    if (!maxColor.contains(max)){
+                        getProfTable().setRedProf(indexMax);
+                    }else {
+                    getProfTable().setRedProf(-1);
+                }
                     maxColor.clear();
                 } else if (i == 2) {
                     for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumYellow());
                     int max = Collections.max(maxColor);
                     int indexMax = maxColor.indexOf(max);
                     maxColor.remove(indexMax);
-                    if (!maxColor.contains(max)) getProfTable().setYellowProf(indexMax);
+                    if (!maxColor.contains(max)){
+                        getProfTable().setYellowProf(indexMax);
+                    }else {
+                        getProfTable().setYellowProf(-1);
+                    }
                     maxColor.clear();
                 } else if (i == 3) {
                     for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumPink());
                     int max = Collections.max(maxColor);
                     int indexMax = maxColor.indexOf(max);
                     maxColor.remove(indexMax);
-                    if (!maxColor.contains(max)) getProfTable().setPinkProf(indexMax);
+                    if (!maxColor.contains(max)){
+                        getProfTable().setPinkProf(indexMax);
+                    }else {
+                        getProfTable().setPinkProf(-1);
+                    }
                     maxColor.clear();
                 } else if (i == 4) {
                     for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumBlue());
                     int max = Collections.max(maxColor);
                     int indexMax = maxColor.indexOf(max);
                     maxColor.remove(indexMax);
-                    if (!maxColor.contains(max)) getProfTable().setBlueProf(indexMax);
+                    if (!maxColor.contains(max)) {
+                        getProfTable().setBlueProf(indexMax);
+                    }else{
+                        getProfTable().setBlueProf(-1);
+                    }
                     maxColor.clear();
                 }
             }
@@ -384,14 +424,13 @@ public class Game {
             }
         }
         for (Island island : islands) {
-            if (island.getColorTower() == ColorTower.BLACK)
+            if (island.getColorTower() == ColorTower.WHITE)
                 numTower.set(0, numTower.get(0) + island.getTotIsland());
-            else if (island.getColorTower() == ColorTower.WHITE)
+            else if (island.getColorTower() == ColorTower.BLACK)
                 numTower.set(1, numTower.get(1) + island.getTotIsland());
             else if (island.getColorTower() == ColorTower.GREY)
                 numTower.set(2, numTower.get(2) + island.getTotIsland());
         }
-        System.out.println(numTower.get(0)+" "+numTower.get(1)+" "+numTower.get(2));
         int max = numTower.indexOf(Collections.max(numTower));
 
         int max1 = -1;
