@@ -23,11 +23,14 @@ public class Gui extends Application implements View {
 
     @Override
     public void requestNickname() {
-
+        RequestNickPlayers requestNickPlayers = new RequestNickPlayers();
+        // DA COMPLETARE
     }
 
     @Override
     public void requestNumPlayersIsExpert() {
+        NumOfPlayerIsExpert requestNumPlayersIsExpert = new NumOfPlayerIsExpert();
+// DA COMPLETARE
 
     }
 

@@ -6,6 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.GameTable">
    <children>
@@ -76,7 +77,7 @@
                   <Image url="@../images/island3.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="motherNature" fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="566.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="motherNature10" fitHeight="25.0" fitWidth="25.0" layoutX="210.0" layoutY="503.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/mother_nature.png" />
                </image>
@@ -423,6 +424,122 @@
                   <Image url="@../images/pinkProf3D.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="motherNature11" fitHeight="25.0" fitWidth="25.0" layoutX="108.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mother_nature.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="motherNature0" fitHeight="25.0" fitWidth="25.0" layoutX="78.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mother_nature.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="motherNature1" fitHeight="25.0" fitWidth="25.0" layoutX="118.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mother_nature.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="motherNature7" fitHeight="25.0" fitWidth="25.0" layoutX="556.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mother_nature.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="motherNature6" fitHeight="25.0" fitWidth="25.0" layoutX="588.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mother_nature.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="motherNature5" fitHeight="25.0" fitWidth="25.0" layoutX="568.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mother_nature.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="motherNature4" fitHeight="25.0" fitWidth="25.0" layoutX="466.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mother_nature.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="motherNature3" fitHeight="25.0" fitWidth="25.0" layoutX="341.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mother_nature.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="motherNature2" fitHeight="25.0" fitWidth="25.0" layoutX="223.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mother_nature.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="motherNature8" fitHeight="25.0" fitWidth="25.0" layoutX="491.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mother_nature.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="motherNature9" fitHeight="25.0" fitWidth="25.0" layoutX="343.0" layoutY="579.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mother_nature.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="textRed1" layoutX="98.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textBlue1" layoutX="86.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textGreen1" layoutX="86.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textYellow1" layoutX="98.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textPink1" layoutX="131.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textRed2" layoutX="198.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textBlue2" layoutX="186.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textGreen2" layoutX="186.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textYellow2" layoutX="188.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textPink2" layoutX="210.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="texRed3" layoutX="323.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textBlue3" layoutX="314.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textGreen3" layoutX="314.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textYellow3" layoutX="323.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textPink3" layoutX="362.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textRed4" layoutX="449.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textBlue4" layoutX="439.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textGreen4" layoutX="439.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textPink4" layoutX="479.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textYellow4" layoutX="449.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textPink5" layoutX="576.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textRed5" layoutX="556.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textBlue5" layoutX="526.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textGreen5" layoutX="539.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textYellow5" layoutX="549.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textRed6" layoutX="569.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textBlue6" layoutX="561.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textGreen6" layoutX="556.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textYellow6" layoutX="561.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textPink6" layoutX="601.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textRed7" layoutX="539.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textPink7" layoutX="561.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textBlue7" layoutX="529.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textGreen7" layoutX="529.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textYellow7" layoutX="539.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textRed0" layoutX="58.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textBlue0" layoutX="46.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textGreen0" layoutX="48.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textYellow0" layoutX="58.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textPink0" layoutX="88.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textPink11" layoutX="110.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textRed11" layoutX="91.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textBlue11" layoutX="79.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textGreen11" layoutX="88.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textYellow11" layoutX="108.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textRed10" layoutX="200.0" layoutY="487.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textBlue10" layoutX="178.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textGreen10" layoutX="186.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textYellow10" layoutX="186.0" layoutY="536.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textPink10" layoutX="210.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textRed9" layoutX="335.0" layoutY="536.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textBlue9" layoutX="306.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textGreen9" layoutX="306.0" layoutY="576.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textYellow9" layoutX="323.0" layoutY="596.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textPink9" layoutX="356.0" layoutY="566.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textRed8" layoutX="469.0" layoutY="487.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textBlue8" layoutX="448.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textGreen8" layoutX="461.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textYellow8" layoutX="476.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="textPink8" layoutX="501.0" layoutY="512.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text layoutX="68.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" />
          </children>
       </Pane>
       <TabPane layoutX="650.0" prefHeight="650.0" prefWidth="350.0" tabClosingPolicy="UNAVAILABLE">
