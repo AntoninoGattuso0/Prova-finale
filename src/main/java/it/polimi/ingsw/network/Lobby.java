@@ -31,6 +31,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     private final Object lock;
     private Game game;
     private final ServerMessageMenager serverMessageMenager;
+    private boolean isDisconnectAll=false;
+    private int disconnectionCounter=0;
+
     public Lobby() {
         lock = new Object();
         namePlayer = new ArrayList<>();
@@ -81,19 +84,19 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     }
     @Override
     public void updateDisconnection(ClientHandlerInterface clientHandler) {
-
-    }
-
-    private void updateDisconnectionInSet(ClientHandlerInterface clientHandler) {
-        System.out.println("A client disconnects in set-phase. The lobby is closed\n");
-        deregisterConn(clientHandler);
-        if (players.size() == 1) {
-            endGame.administrEndGame();
-        } else {
-            controller.AdministrDisconnectionInSet(clientHandler.getUserNickname());
+        int i;
+        String nickname=null;
+        for(i=0;i<getClients().size();i++){
+            if(getClients().get(i)==clientHandler){
+                nickname=clientHandler.getUserNickname();
+                getClients().remove(i);
+                virtualView.getClients().remove(i);
+            }
         }
+        clientHandler=null;
+        isDisconnectAll=true;
+        virtualView.sendBroadcast(new DisconnectionMessage(nickname));
     }
-
     private Player getPlayerByNick(String nick) {
         for (Player player : players) {
             if (player.getNickname().equals(nick)) {
@@ -103,28 +106,12 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         return null;
     }
 
-    private void updateDisconnectionInGame(ClientHandlerInterface clientHandler) {
-        int i, c = 0;
-        getPlayerByNick(clientHandler.getUserNickname()).setActive(false);
+    public void updateDisconnectionInGame(ClientHandlerInterface clientHandler) {
         virtualView.sendAllQuitPlayer(clientHandler.getUserNickname());
-        for (i = 0; i < players.size(); i++) {
-            if (players.get(i).getActive()) {
-                c++;
-            }
-        }
-        if (c == 0) {
-            deregisterConn(clientHandler);
-            endGame.administrEndGame();
-        } else if (c == 1) {
-            System.out.println("Only one active player in start game");
-            controller.administrEnd();
-        }
+
     }
 
-    private void deregisterConn(ClientHandlerInterface clientHandler) {
-    }
-
-    public boolean isLobbyOk() {
+ public boolean isLobbyOk() {
         return lobbyOk;
     }
 
@@ -355,6 +342,10 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             i=findPlayer(game,clientHandler);
             if(i!=-1) {
                     serverMessageMenager.ManageInputToServer(clientHandler, m);
+                    disconnectionCounter++;
+                    if(disconnectionCounter==game.getTotPlayer()){
+                        System.exit(1);
+                    }
             }else{
                 clientHandler.sendObject(new LobbyFullMessage());
                 virtualView.removeClientInVirtualView(clientHandler);
@@ -364,4 +355,12 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             }
         }
     }
+
+    public boolean isDisconnectAll() {
+        return isDisconnectAll;
     }
+
+    public void setDisconnectionCounter() {
+        this.disconnectionCounter++;
+    }
+}

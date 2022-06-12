@@ -13,6 +13,6 @@ public class DisconnectionMessage extends ServerToClient implements Serializable
     }
 
     public String getPlayerDisconnected() {
-        return playerDisconnected+" is disconnected";
+        return playerDisconnected;
     }
 }

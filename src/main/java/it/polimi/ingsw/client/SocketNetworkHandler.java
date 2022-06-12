@@ -29,6 +29,11 @@ public class SocketNetworkHandler implements Runnable{
         view.setSocketNetworkHandler(this);
         ping=new Ping();
     }
+
+    public ObjectOutputStream getOut() {
+        return out;
+    }
+
     public View getView() {
         return view;
     }
@@ -51,7 +56,8 @@ public class SocketNetworkHandler implements Runnable{
                 }
                 if(c>=100){
                     c=0;
-                    sendMessage(ping);
+                    if(connected)
+                        sendMessage(ping);
                 }
             }
         });

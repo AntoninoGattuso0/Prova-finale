@@ -7,6 +7,7 @@ import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.network.Message.ClientToServer.*;
 import it.polimi.ingsw.view.View;
 
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
@@ -1503,6 +1504,15 @@ public class Cli implements Runnable, View {
         out.println(schoolBoard);
         out.println();
     }
+
+    @Override
+    public void disconnectionAll(String playerDisconnected) throws IOException {
+            System.out.println(playerDisconnected+" è stato disconnesso a causa di problemi, sarai disconnesso anche tu e la partita sarà chiusa");
+            socketNetworkHandler.getOut().reset();
+            socketNetworkHandler.getOut().flush();
+            socketNetworkHandler.sendMessage(new ReadyTodisconnection());
+            socketNetworkHandler.closeConnection();
+        }
 
     @Override
     public void displayStartTurn() {
