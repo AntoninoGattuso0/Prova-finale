@@ -189,8 +189,8 @@ public class Cli implements Runnable, View {
             displaySchoolBoard();
             String sceltaString;
             int scelta = -1;
-            out.println("Digita 1 per usare una Character Card");
-            out.println("Digita 2 per spostare MadreNatura");
+            out.println("Digita 1 per spostare MadreNatura");
+            out.println("Digita 2 per usare una Character Card");
             try {
                 sceltaString = readLine();
                 scelta = convertStringToNumber(sceltaString);
@@ -199,8 +199,8 @@ public class Cli implements Runnable, View {
             }
             while (scelta < 1 || scelta > 2) {
                 out.println("Numero Errato!");
-                out.println("Digita 1 per usare una Character Card");
-                out.println("Digita 2 per spostare MadreNatura");
+                out.println("Digita 1 per spostare MadreNatura");
+                out.println("Digita 2 per usare una Character Card");
                 try {
                     sceltaString = readLine();
                     scelta = convertStringToNumber(sceltaString);
@@ -208,7 +208,7 @@ public class Cli implements Runnable, View {
                     e.printStackTrace();
                 }
             }
-            if (scelta == 1) requestCharacterCard(nickname,true);
+            if (scelta == 2) requestCharacterCard(nickname,true);
             else requestMoveMotherNature(nickname);
         }else{
             System.out.println(nickname+" sta spostando Madre Natura");
@@ -221,8 +221,8 @@ public class Cli implements Runnable, View {
             displayCloud();
             String sceltaString;
             int scelta = -1;
-            out.println("Digita 1 per usare una Character Card");
-            out.println("Digita 2 per scegliere una Cloud");
+            out.println("Digita 1 per scegliere una Cloud");
+            out.println("Digita 2 per usare una Character Card");
             try {
                 sceltaString = readLine();
                 scelta = convertStringToNumber(sceltaString);
@@ -231,8 +231,8 @@ public class Cli implements Runnable, View {
             }
             while (scelta < 1 || scelta > 2) {
                 out.println("Numero Errato!");
-                out.println("Digita 1 per usare una Character Card");
-                out.println("Digita 2 per scegliere una Cloud");
+                out.println("Digita 1 per scegliere una Cloud");
+                out.println("Digita 2 per usare una Character Card");
                 try {
                     sceltaString = readLine();
                     scelta = convertStringToNumber(sceltaString);
@@ -240,7 +240,7 @@ public class Cli implements Runnable, View {
                     e.printStackTrace();
                 }
             }
-            if (scelta == 1) requestCharacterCard(nickname,true);
+            if (scelta == 2) requestCharacterCard(nickname,true);
             else selectCloud(nickname);
         }else{
             System.out.println(nickname+" sta scegliendo la Cloud");
@@ -249,86 +249,91 @@ public class Cli implements Runnable, View {
 
     @Override
     public void requestMovePawnToDiningRoom(int pedineDaSpostare) {
-        out.println("Quante pedine vuoi spostare verso la DiningRoom? puoi spostare fino a " + pedineDaSpostare +" pedine.");// va fatto il controllo sul numero di pedine possibili da spostare
-        String numDiningStr;
-        int numDining = -1;
-        try {
-            numDiningStr = readLine();
-            numDining = convertStringToNumber(numDiningStr);
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        while(numDining<1||numDining>pedineDaSpostare){
-            out.println("Stai cercando di spostare più pedine di quante sono consentite. Inserisci un numero valido");
+        if (pedineDaSpostare == 0) {
+            out.println("Non hai più pedine da spostare!");
+        } else {
+            out.println("Quante pedine vuoi spostare verso la DiningRoom? puoi spostare fino a " + pedineDaSpostare + " pedine.");// va fatto il controllo sul numero di pedine possibili da spostare
+            String numDiningStr;
+            int numDining = -1;
             try {
                 numDiningStr = readLine();
                 numDining = convertStringToNumber(numDiningStr);
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
-        }
-        out.println("Sposterai " + numDining + " pedine verso la DiningRoom");
-        out.println("");
-        ArrayList<ColorPawn> colori = new ArrayList<>();
-        ColorPawn nomeColore = null;
-        ArrayList<Integer> numPawn=new ArrayList<>();
-        numPawn.add(0);
-        numPawn.add(0);
-        numPawn.add(0);
-        numPawn.add(0);
-        numPawn.add(0);
-        int i;
-        for(i = 0; i<lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(socketNetworkHandler.getNicknameThisPlayer())); i++);
-        int player = i;
-        for (i = 0; i < numDining; i++) {
-            out.print("Scegli la pedina numero " + (i + 1) + " da spostare nella DiningRoom");
-            out.println("Digita il nome corrispondente al colore: ");
-            out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
-            String coloreStr;
-            int colore = -1;
-            try {
-                coloreStr = readLine();
-                colore = convertStringToNumber(coloreStr);
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
-            boolean check = false;
-            while(!check) {
-                if (colore == 1 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > numPawn.get(0)) {
-                    nomeColore = ColorPawn.GREEN;
-                    numPawn.set(0, numPawn.get(0)+1);
-                    check = true;
-                } else if (colore == 2 && lightGame.getPlayers().get(player).getEntrance().getRedPawn() > numPawn.get(1)) {
-                    nomeColore = ColorPawn.RED;
-                    numPawn.set(1, numPawn.get(1)+1);
-                    check = true;
-                } else if (colore == 3 && lightGame.getPlayers().get(player).getEntrance().getYellowPawn()> numPawn.get(2)) {
-                    nomeColore = ColorPawn.YELLOW;
-                    numPawn.set(2, numPawn.get(2)+1);
-                    check = true;
-                } else if (colore == 4 && lightGame.getPlayers().get(player).getEntrance().getPinkPawn() > numPawn.get(3)) {
-                    nomeColore = ColorPawn.PINK;
-                    numPawn.set(3, numPawn.get(3)+1);
-                    check = true;
-                } else if (colore == 5 && lightGame.getPlayers().get(player).getEntrance().getBluePawn() > numPawn.get(4)) {
-                    nomeColore = ColorPawn.BLUE;
-                    numPawn.set(4, numPawn.get(4)+1);
-                    check = true;
-                } else {
-                    out.println("Non hai pedine di questo colore, inserisci un altro colore: ");
-                    try {
-                        coloreStr = readLine();
-                        colore = convertStringToNumber(coloreStr);
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    }
+            while (numDining < 1 || numDining > pedineDaSpostare) {
+                out.println("Stai cercando di spostare più pedine di quante sono consentite. Inserisci un numero valido");
+                try {
+                    numDiningStr = readLine();
+                    numDining = convertStringToNumber(numDiningStr);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
                 }
             }
-            colori.add(nomeColore);
-            out.println("Hai spostato correttamente una pedina, ne rimangono: " + (numDining-i) + "/" + numDining);
+            out.println("Sposterai " + numDining + " pedine verso la DiningRoom");
+            out.println("");
+            ArrayList<ColorPawn> colori = new ArrayList<>();
+            ColorPawn nomeColore = null;
+            ArrayList<Integer> numPawn = new ArrayList<>();
+            numPawn.add(0);
+            numPawn.add(0);
+            numPawn.add(0);
+            numPawn.add(0);
+            numPawn.add(0);
+            int i;
+            for (i = 0; i < lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(socketNetworkHandler.getNicknameThisPlayer())); i++)
+                ;
+            int player = i;
+            for (i = 0; i < numDining; i++) {
+                out.print("Scegli la pedina numero " + (i + 1) + " da spostare nella DiningRoom");
+                out.println("Digita il nome corrispondente al colore: ");
+                out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                String coloreStr;
+                int colore = -1;
+                try {
+                    coloreStr = readLine();
+                    colore = convertStringToNumber(coloreStr);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                boolean check = false;
+                while (!check) {
+                    if (colore == 1 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > numPawn.get(0) && lightGame.getPlayers().get(player).getDiningRoom().getNumGreen() < 10) {
+                        nomeColore = ColorPawn.GREEN;
+                        numPawn.set(0, numPawn.get(0) + 1);
+                        check = true;
+                    } else if (colore == 2 && lightGame.getPlayers().get(player).getEntrance().getRedPawn() > numPawn.get(1)&& lightGame.getPlayers().get(player).getDiningRoom().getNumRed() < 10) {
+                        nomeColore = ColorPawn.RED;
+                        numPawn.set(1, numPawn.get(1) + 1);
+                        check = true;
+                    } else if (colore == 3 && lightGame.getPlayers().get(player).getEntrance().getYellowPawn() > numPawn.get(2)&& lightGame.getPlayers().get(player).getDiningRoom().getNumYellow() < 10) {
+                        nomeColore = ColorPawn.YELLOW;
+                        numPawn.set(2, numPawn.get(2) + 1);
+                        check = true;
+                    } else if (colore == 4 && lightGame.getPlayers().get(player).getEntrance().getPinkPawn() > numPawn.get(3) && lightGame.getPlayers().get(player).getDiningRoom().getNumPink() < 10) {
+                        nomeColore = ColorPawn.PINK;
+                        numPawn.set(3, numPawn.get(3) + 1);
+                        check = true;
+                    } else if (colore == 5 && lightGame.getPlayers().get(player).getEntrance().getBluePawn() > numPawn.get(4) && lightGame.getPlayers().get(player).getDiningRoom().getNumPink() < 10) {
+                        nomeColore = ColorPawn.BLUE;
+                        numPawn.set(4, numPawn.get(4) + 1);
+                        check = true;
+                    } else {
+                        out.println("Non hai pedine di questo colore OPPURE raggiunto numero massimo pedine in DiningRoom, inserisci un altro colore: ");
+                        try {
+                            coloreStr = readLine();
+                            colore = convertStringToNumber(coloreStr);
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                colori.add(nomeColore);
+                out.println("Hai spostato correttamente una pedina, ne rimangono: " + (numDining - i) + "/" + numDining);
+            }
+            socketNetworkHandler.sendMessage(new MovePawnToDiningMessage(numDining, colori));
+            out.println("");
         }
-        socketNetworkHandler.sendMessage(new MovePawnToDiningMessage(numDining, colori));
-        out.println("");
     }
 
     @Override
