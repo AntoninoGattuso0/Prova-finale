@@ -342,7 +342,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             i=findPlayer(game,clientHandler);
             if(i!=-1) {
                     serverMessageMenager.ManageInputToServer(clientHandler, m);
-                    disconnectionCounter++;
+                    if(isDisconnectAll) setDisconnectionCounter();
                     if(disconnectionCounter==game.getTotPlayer()){
                         System.exit(1);
                     }
