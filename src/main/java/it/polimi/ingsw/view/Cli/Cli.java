@@ -20,10 +20,8 @@ public class Cli implements Runnable, View {
     private boolean gameStart;
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;
-    private String actualPlayer;
     private int pedineDaSpostare;
     private int numPawnMove;
-    private ArrayList<String> orderPlayer;
 
     public Cli() {
         out = System.out;
