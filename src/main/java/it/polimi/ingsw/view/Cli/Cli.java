@@ -15,14 +15,14 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 public class Cli implements Runnable, View {
-    Scanner scanner = new Scanner(System.in); //PER PAUL: QUI CI SONO LE RIGHE A CUI DEVI ANDARE IN LOBBY, LI' TI DIRO' COSA MODIFICARE: 1555
+   //PER PAUL: QUI CI SONO LE RIGHE A CUI DEVI ANDARE IN LOBBY, LI' TI DIRO' COSA MODIFICARE: 1583
     private final PrintStream out;            //IN OGNI messaggio di mossa chiedere se vuole giocare il characterCard
     private Thread inputThread;               //nel controllo del movimento di pedine inserire il controllo che se in diningroom hanno 10 pedine già inserite, non ne può spostare altre
     private boolean isExpert;                  //verificare che il gioco sia esperto prima di stampare le varie richieste: se è Base i character non devono essere un opzione: per questo devi invertire le richieste 1) per dining, 2) per isola, 3) per charcter... altrimenti nel caso base esce premere 2 per movedining e 3 per moveisola
     private LightGame lightGame;                // per verificare se è esperto puoi usare isExpert o LightGame.getIsExpert();
-    private SocketNetworkHandler socketNetworkHandler;
-    private int pedineDaSpostare;
-    private int numPawnMove;
+    private SocketNetworkHandler socketNetworkHandler;//controlli se è esperto, su cc e sul numero di dining room
+    private int pedineDaSpostare;                     //display coin
+    private int numPawnMove;                           //cerca come testare su cmd (estrai il jar?)
 
     public Cli() {
         out = System.out;
@@ -81,15 +81,19 @@ public class Cli implements Runnable, View {
 
     public int checkInteger() {
         boolean isInteger = false;
+        String integerStr;
         int integer = -1;
         while (!isInteger) {
             try {
-                integer = scanner.nextInt();
+                try {
+                    integerStr = readLine();
+                    integer = convertStringToNumber(integerStr);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
                 isInteger = true;
             } catch (InputMismatchException | NumberFormatException e) {
                 System.out.println("ERROR: insert an integer number");
-            } finally {
-                scanner.close();
             }
         }
         return integer;
@@ -142,9 +146,10 @@ public class Cli implements Runnable, View {
             String sceltaString;
             int scelta = -1;
             pedineDaSpostare = pedineDaSpostare - numPawnMoved;//pedine che rimangono da spostare C'è QUALCHE PROBLEMA, CONTA ANCHE SE USI CC
-            out.println("Digita 1 per usare una Character Card");
-            out.println("Digita 2 per spostare delle pedine verso la DiningRoom");
-            out.println("Digita 3 per spostare delle pedine verso un'Isola");
+            out.println("Digita 1 per spostare delle pedine verso la DiningRoom");
+            out.println("Digita 2 per spostare delle pedine verso un'Isola");
+            out.println("Digita 3 per usare una Character Card");
+
             try {
                 sceltaString = readLine();
                 scelta = convertStringToNumber(sceltaString);
@@ -153,9 +158,9 @@ public class Cli implements Runnable, View {
             }
             while (scelta < 0 || scelta > 3) {
                 out.println("Numero Errato!");
-                out.println("Digita 1 per usare una Character Card");
-                out.println("Digita 2 per spostare delle pedine verso la DiningRoom");
-                out.println("Digita 3 per spostare delle pedine verso un'Isola");
+                out.println("Digita 1 per spostare delle pedine verso la DiningRoom");
+                out.println("Digita 2 per spostare delle pedine verso un'Isola");
+                out.println("Digita 3 per usare una Character Card");
                 try {
                     sceltaString = readLine();
                     scelta = convertStringToNumber(sceltaString);
@@ -163,14 +168,15 @@ public class Cli implements Runnable, View {
                     e.printStackTrace();
                 }
             }
-            if (scelta == 1) requestCharacterCard(nickname,true);
-            else if (scelta == 2) {
+            if (scelta == 1){
                 requestMovePawnToDiningRoom(pedineDaSpostare);//mando in ingresso il numero di pedine così controlli il numero che ti da in ingresso
                 pedineDaSpostare = numPawnMove;
-            }else if (scelta == 3) {
+            }
+            else if (scelta == 2) {
                 requestMovePawnToIsland(pedineDaSpostare);
                 pedineDaSpostare = numPawnMove;
-            }
+            }else if (scelta == 3) requestCharacterCard(nickname,true);
+
         }else{
             System.out.println(nickname+" sta spostando le pedine");
         }
@@ -1576,11 +1582,24 @@ public class Cli implements Runnable, View {
     public void selectCloud(String nickname) {//inserire quali sono le cloud non vuote
         if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
             displayCloud();
+            String cloudString;
+            int cloud = -1;
             out.println("Scegli una delle nuvole presenti: ");
-            int cloud = scanner.nextInt();
+            try {
+                cloudString = readLine();
+                cloud = convertStringToNumber(cloudString);
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
             while (cloud < 1 || cloud > (lightGame.getClouds().size() +1) || lightGame.getClouds().get(cloud - 1).getNumPawn() == 0) {
                 out.println("Numero nuvola errato OPPURE Nuvola Vuota. Inserisci un numero valido: ");
-                cloud = scanner.nextInt();// QUESTO è UNA LETTURA IN INT, VA FATTA STRINGA
+                try {
+                    cloudString = readLine();
+                    cloud = convertStringToNumber(cloudString);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
             }
             socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloud - 1));
         }else{
@@ -1679,12 +1698,24 @@ public class Cli implements Runnable, View {
     public void requestMoveMotherNature(String nickname) {
         if(Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
             int i;
+            String stepString;
+            int step = -1;
             for (i = 0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++) ;
             out.println("Inserisci i passi da far fare a Madre Natura: puoi inserire massimo "+ lightGame.getPlayers().get(i).getCurrentAssistant().getStep() +" step");
-            int step = scanner.nextInt();
+            try {
+                stepString = readLine();
+                step = convertStringToNumber(stepString);
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
             while (step < 1 || step > lightGame.getPlayers().get(i).getCurrentAssistant().getStep()) {
                 out.println("Numero Errato! Inserisci i passi da far fare a Madre Natura. Massimo di step " +lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
-                step = scanner.nextInt();
+                try {
+                    stepString = readLine();
+                    step = convertStringToNumber(stepString);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
             }
             socketNetworkHandler.sendMessage(new MoveMotherNatureMessage(step));
         }else{
