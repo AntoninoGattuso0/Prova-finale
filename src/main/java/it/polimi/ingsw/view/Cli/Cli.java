@@ -4,6 +4,7 @@ package it.polimi.ingsw.view.Cli;
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.model.ColorPawn;
+import it.polimi.ingsw.model.ColorTower;
 import it.polimi.ingsw.network.Message.ClientToServer.*;
 import it.polimi.ingsw.view.View;
 
