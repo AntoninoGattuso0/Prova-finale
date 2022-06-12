@@ -133,13 +133,13 @@ public class Cli implements Runnable, View {
     }
 
     @Override
-    public void requestMovePawn(String nickname,int numPawnMoved){
+    public void requestMovePawn(String nickname,int numPawnMoved){ //MI SONO PERSO IN QUESTE VARIABILI
         if(Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
             displayIslands();
             displaySchoolBoard();
             String sceltaString;
             int scelta = -1;
-            pedineDaSpostare = pedineDaSpostare - numPawnMoved;//pedine che rimangono da spostare
+            pedineDaSpostare = pedineDaSpostare - numPawnMoved;//pedine che rimangono da spostare C'è QUALCHE PROBLEMA, CONTA ANCHE SE USI CC
             out.println("Digita 1 per usare una Character Card");
             out.println("Digita 2 per spostare delle pedine verso la DiningRoom");
             out.println("Digita 3 per spostare delle pedine verso un'Isola");
@@ -325,7 +325,7 @@ public class Cli implements Runnable, View {
 
     @Override
     public void requestMovePawnToIsland(int pedineDaSpostare) {
-        out.println("Quante pedine vuoi spostare verso un'Isola? puoi spostare fino a" + pedineDaSpostare +"pedine.");
+        out.println("Quante pedine vuoi spostare verso un'Isola? puoi spostare fino a " + pedineDaSpostare +" pedine.");
         String numPawnStr;
         int numPawn = -1;
         try {
@@ -508,8 +508,6 @@ public class Cli implements Runnable, View {
                 assistantCard.append(ColorCli.BOLDCYAN).append("+-------------------------");
             }
         }
-            assistantCard.append("\n");
-
             for (i = 5; i < lightGame.getPlayers().get(player).getDeckAssistant().size() && i < 10; i++) {
                 if (i == 9 || (i == (lightGame.getPlayers().get(player).getDeckAssistant().size() - 1))) {
                     assistantCard.append(ColorCli.BOLDCYAN).append("| Card Value: ").append(ColorCli.RED).append(lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue()).append(ColorCli.BOLDCYAN).append("          |\n");
@@ -588,10 +586,10 @@ public class Cli implements Runnable, View {
         for (i = 0; i < lightGame.getIslands().size() && i < 4; i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
         tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
-        for (int j = 0; j < 6; j++) {
+        for (int j = 0; j < 8; j++) {
             for (i = 0; i < lightGame.getIslands().size() && i < 4; i++)
                 tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(i, j));
-            tabIslands.append("|\n").append(ColorCli.RESET);
+            tabIslands.append(ColorCli.BOLDCYAN).append("|\n").append(ColorCli.RESET);
         }
         for (i = 0; i < lightGame.getIslands().size() && i < 4; i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
@@ -604,10 +602,10 @@ public class Cli implements Runnable, View {
         for (i = 4; i < lightGame.getIslands().size() && i < 8; i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
         tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
-        for (int j = 0; j < 6; j++) {
+        for (int j = 0; j < 8; j++) {
             for (i = 4; i < lightGame.getIslands().size() && i < 8; i++)
                 tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(i, j));
-            tabIslands.append("|").append(ColorCli.RESET).append("\n");
+            tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("\n");
         }
         for (i = 4; i < lightGame.getIslands().size() && i < 8; i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
@@ -620,10 +618,10 @@ public class Cli implements Runnable, View {
         for (i = 8; i < lightGame.getIslands().size(); i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
         tabIslands.append(ColorCli.BOLDCYAN).append("+\n").append(ColorCli.RESET);
-        for (int j = 0; j < 6; j++) {
+        for (int j = 0; j < 8; j++) {
             for (i = 8; i < lightGame.getIslands().size(); i++)
                 tabIslands.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append(color4Island(i, j));
-            tabIslands.append("|\n").append(ColorCli.RESET);
+            tabIslands.append(ColorCli.BOLDCYAN).append("|\n").append(ColorCli.RESET);
         }
         for (i = 8; i < lightGame.getIslands().size(); i++)
             tabIslands.append(ColorCli.BOLDCYAN).append("+--------------");
@@ -1720,6 +1718,22 @@ public class Cli implements Runnable, View {
                 showColor.append(ColorCli.GREEN).append("   MN: ").append("OK     ").append(ColorCli.BOLDCYAN);
             else
                 showColor.append(ColorCli.RED).append("   MN: ").append("NO     ").append(ColorCli.BOLDCYAN);
+        }
+        else if(color == 6){
+            showColor.append(ColorCli.RESET).append("  Isole: ").append(lightGame.getIslands().get(island).getTotIsland()).append(ColorCli.BOLDCYAN).append("    ").append(ColorCli.RESET);
+        }
+        else if(color == 7){
+            showColor.append(ColorCli.RESET).append("  Torri: ").append(ColorCli.RESET);
+            if(lightGame.getIslands().get(island).getColorTower() == ColorTower.BLACK)
+                showColor.append("B").append("    ").append(ColorCli.RESET);
+            else if(lightGame.getIslands().get(island).getColorTower() == ColorTower.WHITE)
+                showColor.append("W").append("    ").append(ColorCli.RESET);
+            else if(lightGame.getIslands().get(island).getColorTower() == ColorTower.GREY)
+                showColor.append("G").append("    ").append(ColorCli.RESET);
+            else
+                showColor.append(ColorCli.RED).append("X").append("    ").append(ColorCli.RESET);
+
+
         }
         return showColor.toString();
     }

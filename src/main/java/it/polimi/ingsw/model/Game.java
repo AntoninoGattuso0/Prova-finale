@@ -248,7 +248,6 @@ public class Game {
                 if (island.getTower() && island.getColorTower() == game.players.get(i).towerSpace.colorTower)
                     influence.set(i, influence.get(i) + island.getTotIsland());
             }
-            System.out.println(influence.get(0)+" "+influence.get(1)+" "+influence.get(2));
             max = Collections.max(influence);
             for (i = 0; i < influence.size() && !notUnique; i++) {
                 for (j = i + 1; j < influence.size() && !notUnique; j++) {
