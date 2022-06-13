@@ -209,7 +209,7 @@ public class Game {
             game.islands.get(i).setRedPawn(game.islands.get(i).getRedPawn() + game.islands.get(j).getRedPawn());
             game.islands.get(i).setYellowPawn(game.islands.get(i).getYellowPawn() + game.islands.get(j).getYellowPawn());
             game.islands.get(i).setBluePawn(game.islands.get(i).getBluePawn() + game.islands.get(j).getBluePawn());
-            game.islands.get(i).setTotIsland(game.islands.get(i).getTotIsland() + 1);
+            game.islands.get(i).setTotIsland(game.islands.get(i).getTotIsland() + game.islands.get(j).getTotIsland());
             return true;
         }
         return false;
@@ -236,7 +236,7 @@ public class Game {
                 else if (color == 4 && n != -1) influence.set(n, influence.get(n) + island.getBluePawn());
             }
             if (game.totPlayer == 4) {
-                for (i = 1; game.players.get(i).towerSpace.colorTower == game.players.get(0).towerSpace.colorTower; i++) ;
+                for (i = 1; game.players.get(i).towerSpace.colorTower != game.players.get(0).towerSpace.colorTower; i++) ;
                 influence.set(0, influence.get(0) + influence.get(i));//ho tutte le pedine di una squadra sommate al player 0
                 for (j = 1; j < game.totPlayer && j == i; j++) ;
                 for (k = 2; k < game.totPlayer && (k == i || k == j); k++) ;
@@ -356,11 +356,8 @@ public class Game {
                     int max = Collections.max(maxColor);
                     int indexMax = maxColor.indexOf(max);
                     maxColor.remove(indexMax);
-                    if (!maxColor.contains(max)) {
+                    if (!maxColor.contains(max))
                         getProfTable().setGreenProf(indexMax);
-                    }else{
-                        getProfTable().setGreenProf(-1);
-                    }
                     maxColor.clear();
                 } else if (i == 1) {
                     for (j = 0; j < totPlayer; j++) maxColor.add(players.get(j).diningRoom.getNumRed());
@@ -369,8 +366,6 @@ public class Game {
                     maxColor.remove(indexMax);
                     if (!maxColor.contains(max)){
                         getProfTable().setRedProf(indexMax);
-                    }else {
-                    getProfTable().setRedProf(-1);
                 }
                     maxColor.clear();
                 } else if (i == 2) {
@@ -380,8 +375,6 @@ public class Game {
                     maxColor.remove(indexMax);
                     if (!maxColor.contains(max)){
                         getProfTable().setYellowProf(indexMax);
-                    }else {
-                        getProfTable().setYellowProf(-1);
                     }
                     maxColor.clear();
                 } else if (i == 3) {
@@ -391,8 +384,6 @@ public class Game {
                     maxColor.remove(indexMax);
                     if (!maxColor.contains(max)){
                         getProfTable().setPinkProf(indexMax);
-                    }else {
-                        getProfTable().setPinkProf(-1);
                     }
                     maxColor.clear();
                 } else if (i == 4) {
@@ -402,8 +393,6 @@ public class Game {
                     maxColor.remove(indexMax);
                     if (!maxColor.contains(max)) {
                         getProfTable().setBlueProf(indexMax);
-                    }else{
-                        getProfTable().setBlueProf(-1);
                     }
                     maxColor.clear();
                 }
@@ -443,11 +432,19 @@ public class Game {
             max = max1;
         }
 
-
-        for(int i = 0; i<totPlayer; i++) {
-            if (players.get(i).towerSpace.getNumTower() == 0) { //caso 1, torri finite
-                System.out.println("1 "+ players.get(max).getNickname());
-                return players.get(max);
+        if(totPlayer!=4) {
+            for (int i = 0; i < totPlayer; i++) {
+                if (players.get(i).towerSpace.getNumTower() == 0) { //caso 1, torri finite per 2 o 3 giocatori
+                    System.out.println("1 " + players.get(max).getNickname());
+                    return players.get(max);
+                }
+            }
+        }else{
+            for(int i=0;i<totPlayer/2;i++){
+                if (players.get(i).towerSpace.getNumTower() == 0) { //caso 1, torri finite per 4 giocatori
+                    System.out.println("1 " + players.get(max).getNickname());
+                    return players.get(max);
+                }
             }
         }
         if(islands.size() <= 3){//caso 2, 3 gruppi di isole
