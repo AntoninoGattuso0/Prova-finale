@@ -1364,6 +1364,46 @@
                               <Image url="@../images/pinkProf3D.png" />
                            </image>
                         </ImageView>
+                        <ImageView id="blackTowerSchool0" fitHeight="45.0" fitWidth="45.0" layoutX="24.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/BlackTower.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="blackTowerSchool1" fitHeight="45.0" fitWidth="45.0" layoutX="24.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/BlackTower.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="blackTowerSchool2" fitHeight="45.0" fitWidth="45.0" layoutX="74.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/BlackTower.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="blackTowerSchool3" fitHeight="45.0" fitWidth="45.0" layoutX="74.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/BlackTower.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="blackTowerSchool4" fitHeight="45.0" fitWidth="45.0" layoutX="117.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/BlackTower.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="blackTowerSchool5" fitHeight="45.0" fitWidth="45.0" layoutX="117.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/BlackTower.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="blackTowerSchool6" fitHeight="45.0" fitWidth="45.0" layoutX="160.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/BlackTower.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="blackTowerSchool7" fitHeight="45.0" fitWidth="45.0" layoutX="160.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/BlackTower.png" />
+                           </image>
+                        </ImageView>
                      </children></AnchorPane>
             </content>
           </Tab>
