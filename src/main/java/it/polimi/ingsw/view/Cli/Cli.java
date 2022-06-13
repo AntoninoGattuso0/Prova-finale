@@ -1517,7 +1517,15 @@ public class Cli implements Runnable, View {
     @Override
     public void displayWinner(String winner) throws IOException {
         displayStartRound();
+        int i;
+        int j;
+        for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(), winner); i++);
+        if(lightGame.getPlayers().size()==4){
+            for(j=0;lightGame.getPlayers().get(i).getTowerSpace().getColorTower()!=lightGame.getPlayers().get(j).getTowerSpace().getColorTower();j++)
+            out.println("i vincitori sono "+ winner+" e "+lightGame.getPlayers().get(j).getNickname());
+        }else{
         out.println("The winner is: " + winner);
+        }
         socketNetworkHandler.getOut().reset();
         socketNetworkHandler.getOut().flush();
         socketNetworkHandler.sendMessage(new ReadyTodisconnection());

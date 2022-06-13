@@ -196,16 +196,17 @@ public class Game {
                 game.getIslands().get(j).setMotherNature(true);
             }
             if (postTrue&&prevTrue) {
-                k=k-1;
+                if(i!=0) {
+                    k = k - 1;
+                }
                 if(k==-1){
-                    k=islands.size()-1;
+                    k=0;
                 }
                 game.getIslands().remove(k);
             } else if(postTrue) {
                     game.getIslands().remove(k);
             }
         }
-            System.out.println(game.getIslands().size());
         }
     public static boolean checkIsland(int i, int j, Game game) { //controlla se le due isole si possono unire, nel caso le unisce
         if (game.islands.get(j).getColorTower() == game.islands.get(i).getColorTower()) {
@@ -272,9 +273,6 @@ public class Game {
                 }
             }
             unifyIsland(game.islands.indexOf(island), game);
-            for(i=0;i<game.getIslands().size();i++){
-                System.out.println(game.getIslands().get(i).getColorTower()+" "+getIslands().get(i).getTotIsland());
-            }
         }
     }
         public void setCharacterCards (Game game) { //posiziona a caso dei personaggi (3)
