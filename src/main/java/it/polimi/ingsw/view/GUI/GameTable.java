@@ -49,6 +49,12 @@ public class GameTable {
 
     @FXML private final List<ImageView> characterCards = null;
 
+    @FXML private final List<ImageView> greenSchool0 = null;
+    @FXML private final List<ImageView> redSchool0 = null;
+    @FXML private final List<ImageView> yellowSchool0 = null;
+    @FXML private final List<ImageView> pinkSchool0 = null;
+    @FXML private final List<ImageView> blueSchool0 = null;
+
 
     public GameTable(){
         try{
@@ -180,7 +186,7 @@ public class GameTable {
         }
 
         // da vedere come fare add image
-        for(int j = 0; j < 3; j++){
+        /*for(int j = 0; j < 3; j++){
             characterCards.add((ImageView) rootFXML.lookup("characterCard" + j));
             characterCards.get(j).setVisible(false);
         }
@@ -188,6 +194,20 @@ public class GameTable {
             for(ImageView characterCard : characterCards)
 
 
+        }*/
+
+
+        for(int i = 0; i < 10; i++){
+            greenSchool0.add((ImageView) rootFXML.lookup("schoolGreen" + i));
+            redSchool0.add((ImageView) rootFXML.lookup("schoolRed" + i));
+            yellowSchool0.add((ImageView) rootFXML.lookup("schoolYellow" + i));
+            pinkSchool0.add((ImageView) rootFXML.lookup("schoolPink" + i));
+            blueSchool0.add((ImageView) rootFXML.lookup("schoolBlue" + i));
+            greenSchool0.get(i).setVisible(false);
+            redSchool0.get(i).setVisible(false);
+            yellowSchool0.get(i).setVisible(false);
+            pinkSchool0.get(i).setVisible(false);
+            blueSchool0.get(i).setVisible(false);
         }
 
 
