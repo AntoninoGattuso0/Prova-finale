@@ -4,6 +4,7 @@ package it.polimi.ingsw.view.GUI;
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseAssistantCardMessage;
+import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
@@ -45,6 +46,8 @@ public class GameTable {
     @FXML private final List<ImageView> yellowPawnClouds = null;
     @FXML private final List<ImageView> pinkPawnClouds = null;
     @FXML private final List<ImageView> bluePawnClouds = null;
+
+    @FXML private final List<ImageView> characterCards = null;
 
 
     public GameTable(){
@@ -155,6 +158,36 @@ public class GameTable {
             yellowPawnClouds.get(i).setVisible(false);
             pinkPawnClouds.get(i).setVisible(false);
             bluePawnClouds.get(i).setVisible(false);
+        }
+
+        //quando il cursore arriva su una card diventa a forma di mano
+        for(ImageView cloud : clouds){
+            cloud.setOnMouseEntered(mouseEvent -> cloud.setCursor(Cursor.HAND));
+            cloud.setOnMouseExited(mouseEvent -> cloud.setCursor(Cursor.DEFAULT));
+        }
+
+        //questo devo vedere se metterlo in una funzione e poi richiamarlo dalla GUI
+        //o se mettere direttamente nella gui
+        boolean selectedCloud = false;
+        for(ImageView cloud : clouds){
+            if(!selectedCloud){  //vorrei che fosse se falso entri dentro l'if (scritto cosi E GIUSTO o no?)
+                cloud.setOnMouseClicked(mouseEvent -> {
+                    int cloudSel = clouds.indexOf(cloud);
+                    socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloudSel));
+                });
+                selectedCloud = true;
+            }
+        }
+
+        // da vedere come fare add image
+        for(int j = 0; j < 3; j++){
+            characterCards.add((ImageView) rootFXML.lookup("characterCard" + j));
+            characterCards.get(j).setVisible(false);
+        }
+        if(lightGame.getIsExpert()){
+            for(ImageView characterCard : characterCards)
+
+
         }
 
 
