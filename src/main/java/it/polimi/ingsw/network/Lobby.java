@@ -55,6 +55,10 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         return controller;
     }
 
+    public void setIsDisconnectAll(boolean disconnectAll) {
+        isDisconnectAll = disconnectAll;
+    }
+
     public ArrayList<Player> getPlayers() {
         return players;
     }
@@ -273,8 +277,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 game.getPlayers().get(findPlayer(game, clientHandler)).setCurrentPhase(PhaseTurn.CHOOSE_CLOUD);
                 controller.startTurn(game.getPlayers().get(findPlayer(game, clientHandler)));
             }else{
+                isDisconnectAll=true;
                 virtualView.sendBroadcast(new WinnerMessage(player.getNickname()));
-                //endGame.administrEndGame();
+                virtualView.updateWin(player.getNickname());
             }
         }else{
             clientHandler.sendObject(new WrongTurnMessage());

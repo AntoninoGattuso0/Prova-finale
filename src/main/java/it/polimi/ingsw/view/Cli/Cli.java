@@ -1515,9 +1515,13 @@ public class Cli implements Runnable, View {
 
 
     @Override
-    public void displayWinner(String winner) {
+    public void displayWinner(String winner) throws IOException {
         displayStartRound();
         out.println("The winner is: " + winner);
+        socketNetworkHandler.getOut().reset();
+        socketNetworkHandler.getOut().flush();
+        socketNetworkHandler.sendMessage(new ReadyTodisconnection());
+        socketNetworkHandler.closeConnection();
     }
 
     @Override

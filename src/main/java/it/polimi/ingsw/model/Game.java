@@ -196,7 +196,11 @@ public class Game {
                 game.getIslands().get(j).setMotherNature(true);
             }
             if (postTrue&&prevTrue) {
-                game.getIslands().remove(k - 1);
+                k=k-1;
+                if(k==-1){
+                    k=islands.size()-1;
+                }
+                game.getIslands().remove(k);
             } else if(postTrue) {
                     game.getIslands().remove(k);
             }
@@ -434,7 +438,7 @@ public class Game {
 
         if(totPlayer!=4) {
             for (int i = 0; i < totPlayer; i++) {
-                if (players.get(i).towerSpace.getNumTower() == 0) { //caso 1, torri finite per 2 o 3 giocatori
+                if (players.get(i).towerSpace.getNumTower() <= 0) { //caso 1, torri finite per 2 o 3 giocatori
                     System.out.println("1 " + players.get(max).getNickname());
                     return players.get(max);
                 }

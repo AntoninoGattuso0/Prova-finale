@@ -148,6 +148,7 @@ public class Controller {
                     if(game.getStudentBag().getNum()==0){
                         player=game.finish(false);
                         virtualView.sendBroadcast(new WinnerMessage(player.getNickname()));
+                        virtualView.updateWin(player.getNickname());
                     }else {
                         startRound();
                     }

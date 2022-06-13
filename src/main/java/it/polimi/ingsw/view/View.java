@@ -39,7 +39,7 @@ public interface View {
 
     void displayCharacterCard();
 
-    void displayWinner(String nickname);
+    void displayWinner(String nickname) throws IOException;
 
     void displayNetError();
 

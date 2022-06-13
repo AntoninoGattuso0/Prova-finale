@@ -112,9 +112,6 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
                             }
                     } catch (IOException | NullPointerException | IllegalArgumentException e) {
                         System.out.println("SERVER: " + userNickname + " connection close by the client");
-                        if(lobby.isLobbyOk()){
-                            lobby.updateDisconnection(this);
-                        }
                         lobby.setDisconnectionCounter();
                         closeConnect(userNickname);
                         break;
@@ -153,6 +150,7 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
     @Override
     public void updateDisconnection(ClientHandlerInterface client) {
         int i;
+        lobby.setIsDisconnectAll(true);
         for(i=0;i<lobby.getClients().size();i++){
             if(lobby.getClients().get(i)==client){
                 lobby.getClients().remove(i);

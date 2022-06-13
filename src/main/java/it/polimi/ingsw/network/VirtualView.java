@@ -60,6 +60,7 @@ public class VirtualView {
     public void updateWin(String nick) {
         System.out.println("The winner is " + nick + ", GameOver");
         sendBroadcast(new WinnerMessage(nick));
+        System.exit(1);
     }
 
     public synchronized void sendBroadcast(Message message) {
