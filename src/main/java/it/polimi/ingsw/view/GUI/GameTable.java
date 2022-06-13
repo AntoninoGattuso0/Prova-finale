@@ -4,6 +4,7 @@ package it.polimi.ingsw.view.GUI;
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseAssistantCardMessage;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.layout.Pane;
@@ -17,34 +18,33 @@ import java.util.Objects;
 
 
 public class GameTable {
-    private Pane rootFXML;
+    @FXML private Pane rootFXML;
     private SocketNetworkHandler socketNetworkHandler;
     private LightGame lightGame;
 
-    private final List<ImageView> islands = null;
-    private final List<ImageView> motherNature = null;
-    private final List<ImageView> greenPawns = null;
-    private final List<ImageView> redPawns = null;
-    private final List<ImageView> yellowPawns = null;
-    private final List<ImageView> pinkPawns = null;
-    private final List<ImageView> bluePawns= null;
-    private final List<Text> textGreen = null;
-    private final List<Text> textRed = null;
-    private final List<Text> textYellow = null;
-    private final List<Text> textPink = null;
-    private final List<Text> textBlue= null;
+    @FXML private final List<ImageView> islands = null;
+    @FXML private final List<ImageView> motherNature = null;
+    @FXML private final List<ImageView> greenPawns = null;
+    @FXML private final List<ImageView> redPawns = null;
+    @FXML private final List<ImageView> yellowPawns = null;
+    @FXML private final List<ImageView> pinkPawns = null;
+    @FXML private final List<ImageView> bluePawns= null;
+    @FXML private final List<Text> textGreen = null;
+    @FXML private final List<Text> textRed = null;
+    @FXML private final List<Text> textYellow = null;
+    @FXML private final List<Text> textPink = null;
+    @FXML private final List<Text> textBlue= null;
 
-    private final List<ImageView> blackTowers = null;
-    private final List<ImageView> whiteTowers = null;
-    private final List<ImageView> greyTowers = null;
+    @FXML private final List<ImageView> blackTowers = null;
+    @FXML private final List<ImageView> whiteTowers = null;
+    @FXML private final List<ImageView> greyTowers = null;
 
-    private final List<ImageView> clouds = null;
-    private final List<ImageView> greenPawnClouds = null;
-    private final List<ImageView> redPawnClouds = null;
-    private final List<ImageView> yellowPawnClouds = null;
-    private final List<ImageView> pinkPawnClouds = null;
-    private final List<ImageView> bluePawnClouds = null;
-
+    @FXML private final List<ImageView> clouds = null;
+    @FXML private final List<ImageView> greenPawnClouds = null;
+    @FXML private final List<ImageView> redPawnClouds = null;
+    @FXML private final List<ImageView> yellowPawnClouds = null;
+    @FXML private final List<ImageView> pinkPawnClouds = null;
+    @FXML private final List<ImageView> bluePawnClouds = null;
 
 
     public GameTable(){
@@ -164,6 +164,7 @@ public class GameTable {
     //settato nel costruttore le pedine presenti invibili all'inizio
     //poi quando vengono randomizzate le pedine  e MN all'inizio del gioco, vengono settate su visibiili
     //io l'ho fatto poi è da vedere se funziona ;)
+    @FXML
     public void displayInitialGameTable(){
          for(int i = 0; i < 12; i++){
              if(lightGame.getIslands().get(i).getGreenPawn()>0){
