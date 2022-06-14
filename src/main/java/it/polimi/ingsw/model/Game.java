@@ -299,7 +299,7 @@ public class Game {
                     influence.set(i, 0);
                     influence.set(k, 0);
                 }
-                if(felix.getEffectActive()&&felix!=null) {
+                if(felix!=null&&felix.isEffectActive()) {
                     for (i = 0; i < game.totPlayer; i++) {
                         if (island.getTower() && island.getColorTower() == game.players.get(i).towerSpace.colorTower)
                             influence.set(i, influence.get(i) + island.getTotIsland());
@@ -327,7 +327,7 @@ public class Game {
                 if(ivan!=null&&ivan.isEffectActive()){
                     ivan.setEffectActive(false);
                 }
-                if(felix.getEffectActive()&&felix!=null){
+            if(felix!=null&&felix.isEffectActive()){
                     felix.setEffectActive(false);
                 }
                 if(lancillotto!=null&&lancillotto.isEffectActive()){

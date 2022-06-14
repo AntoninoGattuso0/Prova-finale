@@ -19,7 +19,7 @@ public class Felix extends UseEffect implements Serializable {
     public void setEffectActive(boolean c){
         effectActive=c;
     }
-    public boolean getEffectActive(){
+    public boolean isEffectActive(){
         return effectActive;
     }
     Felix(){
