@@ -299,7 +299,7 @@ public class Game {
                     influence.set(i, 0);
                     influence.set(k, 0);
                 }
-                if(felix!=null&&felix.isEffectActive()) {
+                if(felix!=null&& !felix.isEffectActive()) {
                     for (i = 0; i < game.totPlayer; i++) {
                         if (island.getTower() && island.getColorTower() == game.players.get(i).towerSpace.colorTower)
                             influence.set(i, influence.get(i) + island.getTotIsland());
