@@ -9,9 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
       <ImageView fitHeight="506.0" fitWidth="532.0" layoutX="-1.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
-         <image>
             <Image url="@../images/Background.png" />
-         </image>
       </ImageView>
       <Text fill="WHITE" layoutX="41.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WAITING FOR OTHER PLAYERS...">
          <font>

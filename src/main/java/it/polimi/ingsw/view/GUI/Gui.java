@@ -11,9 +11,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
-public class Gui extends Application implements View {
+public class Gui implements View {
 
 
     @Override
@@ -225,13 +226,4 @@ public class Gui extends Application implements View {
 
     }
 
-    @Override
-    public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(
-                getClass().getResource("FXML/NumOfPlayerIsExpert.fxml"));
-        Scene sc = new Scene(root);
-        primaryStage.setScene(sc);
-        primaryStage.sizeToScene();
-        primaryStage.show();
-    }
 }

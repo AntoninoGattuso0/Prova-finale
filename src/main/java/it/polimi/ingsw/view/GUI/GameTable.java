@@ -5,12 +5,17 @@ import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseAssistantCardMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,6 +27,9 @@ public class GameTable {
     @FXML private Pane rootFXML;
     private SocketNetworkHandler socketNetworkHandler;
     private LightGame lightGame;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @FXML private final List<ImageView> islands = null;
     @FXML private final List<ImageView> motherNature = null;
@@ -248,5 +256,21 @@ public class GameTable {
              if(lightGame.getIslands().get(i).getMotherNature())
                  motherNature.get(i).setVisible(true);
          }
+    }
+
+    public void switchToAssistantCard(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/AssistantCard.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToCharacterCard(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/CharacterCard.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 }
