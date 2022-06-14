@@ -13,11 +13,7 @@ public interface View {
 
     void requestNumPlayersIsExpert();
 
-    void requestMovePawnToDiningRoom(String nickname, int pawn);
-    void requestMovePawnToIsland(String nickname, int pawn);
     void requestMovePawn(String nickname,int numPawnMoved);
-    void requestMotherNatureMove(String nickname);
-    void requestCloud(String nickname);
 
     void requestCharacterCard(String nickname,boolean bool);
 
@@ -85,5 +81,11 @@ public interface View {
     void displayOnePlayerBoard(String nickname);
 
     void disconnectionAll(String playerDisconnected) throws IOException;
+
+    void endgame();
+
+    void invalidNumPlayer();
+
+    void wrongSameAssistantMessage();
 }
 //CLI E GUI dovranno implementare quest interfaccia

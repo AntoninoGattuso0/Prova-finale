@@ -198,88 +198,8 @@ public class Cli implements Runnable, View {
         }
     }
 
-    @Override
-    public void requestMotherNatureMove(String nickname) {
-        if(Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
-            displayIslands();
-            displaySchoolBoard();
-            String sceltaString;
-            int scelta = -1;
-            out.println("Digita 1 per spostare MadreNatura");
-            if(lightGame.getIsExpert())
-                out.println("Digita 2 per usare una Character Card");
-            try {
-                sceltaString = readLine();
-                scelta = convertStringToNumber(sceltaString);
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
-            if(lightGame.getIsExpert()) {
-                while (scelta < 1 || scelta > 2) {
-                    out.println("Numero Errato!");
-                    out.println("Digita 1 per spostare MadreNatura");
-                    out.println("Digita 2 per usare una Character Card");
-                    try {
-                        sceltaString = readLine();
-                        scelta = convertStringToNumber(sceltaString);
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            else{
-                while(scelta != 1){
-                    out.println("Numero Errato!");
-                    out.println("Digita 1 per spostare MadreNatura");
-                    try {
-                        sceltaString = readLine();
-                        scelta = convertStringToNumber(sceltaString);
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            if (scelta == 2) requestCharacterCard(nickname,true);
-            else requestMoveMotherNature(nickname);
-        }else{
-            System.out.println(nickname+" sta spostando Madre Natura");
-        }
-    }
 
-    @Override
-    public void requestCloud(String nickname) {
-        if(Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
-            displayCloud();
-            String sceltaString;
-            int scelta = -1;
-            out.println("Digita 1 per scegliere una Cloud");
-            out.println("Digita 2 per usare una Character Card");
-            try {
-                sceltaString = readLine();
-                scelta = convertStringToNumber(sceltaString);
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
-            while (scelta < 1 || scelta > 2) {
-                out.println("Numero Errato!");
-                out.println("Digita 1 per scegliere una Cloud");
-                out.println("Digita 2 per usare una Character Card");
-                try {
-                    sceltaString = readLine();
-                    scelta = convertStringToNumber(sceltaString);
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (scelta == 2) requestCharacterCard(nickname,true);
-            else selectCloud(nickname);
-        }else{
-            System.out.println(nickname+" sta scegliendo la Cloud");
-        }
-    }
-
-    @Override
-    public void requestMovePawnToDiningRoom(String nickname, int pedineDaSpostare) {
+    private void requestMovePawnToDiningRoom(String nickname, int pedineDaSpostare) {
         if (pedineDaSpostare == 0) {
             out.println("Non hai più pedine da spostare!");
             requestCharacterCard(nickname, false);
@@ -368,8 +288,7 @@ public class Cli implements Runnable, View {
         }
     }
 
-    @Override
-    public void requestMovePawnToIsland(String nickname, int pedineDaSpostare) {
+    private void requestMovePawnToIsland(String nickname, int pedineDaSpostare) {
         if (pedineDaSpostare == 0) {
             out.println("Non hai più pedine da spostare!");
             requestCharacterCard(nickname, false);
@@ -1542,7 +1461,7 @@ public class Cli implements Runnable, View {
     @Override
     public void displayDisconnection(String playerDisconnected) {
         if(Objects.equals(playerDisconnected, socketNetworkHandler.getNicknameThisPlayer())){
-
+            out.println("Sei stato disconnesso dalla partita!");
         }else{
             socketNetworkHandler.sendMessage(new iHaveToDisconnectMessage(socketNetworkHandler.getNicknameThisPlayer()));
         }
@@ -1578,11 +1497,11 @@ public class Cli implements Runnable, View {
         out.println("È il tuo turno! Puoi fare le tue mosse:");
     }
     public void displayEndTurn(){
-        out.println("il tuo turno è finito.");
+        out.println("Il tuo turno è finito.");
     }
     @Override
     public void displayEndRound(){
-        out.println("il round è finito");
+        out.println("Il round è finito");
     }
     @Override
     public void displayResponseMessage() {
@@ -1634,29 +1553,56 @@ public class Cli implements Runnable, View {
     public void selectCloud(String nickname) {//inserire quali sono le cloud non vuote
         if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
             displayCloud();
-            String cloudString;
-            int cloud = -1;
-            out.println("Scegli una delle nuvole presenti: ");
-            try {
-                cloudString = readLine();
-                cloud = convertStringToNumber(cloudString);
-            } catch (ExecutionException e) {
-                e.printStackTrace();
+            String sceltaString;
+            int scelta = -1;
+            if (lightGame.getIsExpert()) {
+                out.println("Digita 1 per scegliere una Cloud");
+                out.println("Digita 2 per usare una Character Card");
+                try {
+                    sceltaString = readLine();
+                    scelta = convertStringToNumber(sceltaString);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                while (scelta < 1 || scelta > 2) {
+                    out.println("Numero Errato!");
+                    out.println("Digita 1 per scegliere una Cloud");
+                    out.println("Digita 2 per usare una Character Card");
+                    try {
+                        sceltaString = readLine();
+                        scelta = convertStringToNumber(sceltaString);
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-            while (cloud < 1 || cloud > (lightGame.getClouds().size()) || lightGame.getClouds().get(cloud - 1).getNumPawn() == 0) {
-                out.println("Numero nuvola errato OPPURE Nuvola Vuota. Inserisci un numero valido: ");
+            if (scelta == 2) requestCharacterCard(nickname, true);
+            else {
+
+                String cloudString;
+                int cloud = -1;
+                out.println("Scegli una delle nuvole presenti: ");
                 try {
                     cloudString = readLine();
                     cloud = convertStringToNumber(cloudString);
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
+                while (cloud < 1 || cloud > (lightGame.getClouds().size()) || lightGame.getClouds().get(cloud - 1).getNumPawn() == 0) {
+                    out.println("Numero nuvola errato OPPURE Nuvola Vuota. Inserisci un numero valido: ");
+                    try {
+                        cloudString = readLine();
+                        cloud = convertStringToNumber(cloudString);
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
 
+                }
+                socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloud - 1));
             }
-            socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloud - 1));
-        }else{
-            out.println(nickname +" sta scegliendo la cloud");
         }
+        else
+            out.println(nickname + " sta scegliendo la cloud");
     }
     @Override
     public void selectAssistantCard(String nickname) {
@@ -1748,31 +1694,61 @@ public class Cli implements Runnable, View {
 
     @Override
     public void requestMoveMotherNature(String nickname) {
-        if(Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
-            int i;
-            String stepString;
-            int step = -1;
-            for (i = 0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++) ;
-            out.println("Inserisci i passi da far fare a Madre Natura: puoi inserire massimo "+ lightGame.getPlayers().get(i).getCurrentAssistant().getStep() +" step");
-            try {
-                stepString = readLine();
-                step = convertStringToNumber(stepString);
-            } catch (ExecutionException e) {
-                e.printStackTrace();
+        if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
+            displayIslands();
+            displaySchoolBoard();
+            String sceltaString;
+            int scelta = -1;
+            if (lightGame.getIsExpert()) {
+                out.println("Digita 1 per spostare MadreNatura");
+                out.println("Digita 2 per usare una Character Card");
+                try {
+                    sceltaString = readLine();
+                    scelta = convertStringToNumber(sceltaString);
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                if (lightGame.getIsExpert()) {
+                    while (scelta < 1 || scelta > 2) {
+                        out.println("Numero Errato!");
+                        out.println("Digita 1 per spostare MadreNatura");
+                        out.println("Digita 2 per usare una Character Card");
+                        try {
+                            sceltaString = readLine();
+                            scelta = convertStringToNumber(sceltaString);
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
             }
-            while (step < 1 || step > lightGame.getPlayers().get(i).getCurrentAssistant().getStep()) {
-                out.println("Numero Errato! Inserisci i passi da far fare a Madre Natura. Massimo di step " +lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
+            if (scelta == 2) requestCharacterCard(nickname, true);
+            else {
+
+                int i;
+                String stepString;
+                int step = -1;
+                for (i = 0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++) ;
+                out.println("Inserisci i passi da far fare a Madre Natura: puoi inserire massimo " + lightGame.getPlayers().get(i).getCurrentAssistant().getStep() + " step");
                 try {
                     stepString = readLine();
                     step = convertStringToNumber(stepString);
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
+                while (step < 1 || step > lightGame.getPlayers().get(i).getCurrentAssistant().getStep()) {
+                    out.println("Numero Errato! Inserisci i passi da far fare a Madre Natura. Massimo di step " + lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
+                    try {
+                        stepString = readLine();
+                        step = convertStringToNumber(stepString);
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                }
+                socketNetworkHandler.sendMessage(new MoveMotherNatureMessage(step));
             }
-            socketNetworkHandler.sendMessage(new MoveMotherNatureMessage(step));
-        }else{
-            System.out.println(nickname+" sta spostando madre natura");
-        }
+        } else
+            System.out.println(nickname + " sta spostando Madre Natura");
     }
 
 
@@ -2001,5 +1977,19 @@ public class Cli implements Runnable, View {
         return index.toString();
     }
 
+    @Override
+    public void endgame(){
+        out.println("Il gioco è termitano!");
+    }
+
+    @Override
+    public void invalidNumPlayer(){
+        out.println("ATTENZIONE: Numero Player non valido");
+    }
+
+    @Override
+    public void wrongSameAssistantMessage(){
+        out.println("ERRORE: assistente già usato da un altro Player!");
+    }
 
 }
