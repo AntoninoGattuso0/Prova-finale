@@ -75,7 +75,53 @@ public class Game {
         return this.clouds;
     }
 
+    public Antonio getAntonio() {
+        return antonio;
+    }
 
+    public Barbara getBarbara() {
+        return barbara;
+    }
+
+    public Ciro getCiro() {
+        return ciro;
+    }
+
+    public Dante getDante() {
+        return dante;
+    }
+
+    public Ernesto getErnesto() {
+        return ernesto;
+    }
+
+    public Felix getFelix() {
+        return felix;
+    }
+
+    public Giuseppe getGiuseppe() {
+        return giuseppe;
+    }
+
+    public Ivan getIvan() {
+        return ivan;
+    }
+
+    public Lancillotto getLancillotto() {
+        return lancillotto;
+    }
+
+    public Maria getMaria() {
+        return maria;
+    }
+
+    public Nicola getNicola() {
+        return nicola;
+    }
+
+    public Omnia getOmnia() {
+        return omnia;
+    }
 
     public Game(int giocatori, boolean expert) {
         totPlayer = giocatori;
@@ -228,6 +274,9 @@ public class Game {
                 boolean notUnique = false;
                 ArrayList<Integer> influence = new ArrayList<>();
                 for (i = 0; i < game.totPlayer; i++) influence.add(0);
+                if(ivan!=null&&ivan.isEffectActive()){
+                    influence.set(ivan.getNumPlayer(),2);
+                }
                 for (color = 0; color < 5; color++) {
                     n = game.profTable.checkProf(color);
                     if (color == 0 && n != -1&&!(lancillotto!=null&&lancillotto.isEffectActive()&&lancillotto.getPedina()==color)) influence.set(n, influence.get(n) + island.getGreenPawn());
@@ -250,9 +299,11 @@ public class Game {
                     influence.set(i, 0);
                     influence.set(k, 0);
                 }
-                for (i = 0; i < game.totPlayer; i++) {
-                    if (island.getTower() && island.getColorTower() == game.players.get(i).towerSpace.colorTower)
-                        influence.set(i, influence.get(i) + island.getTotIsland());
+                if(felix.getEffectActive()&&felix!=null) {
+                    for (i = 0; i < game.totPlayer; i++) {
+                        if (island.getTower() && island.getColorTower() == game.players.get(i).towerSpace.colorTower)
+                            influence.set(i, influence.get(i) + island.getTotIsland());
+                    }
                 }
                 max = Collections.max(influence);
                 for (i = 0; i < influence.size() && !notUnique; i++) {
@@ -267,14 +318,19 @@ public class Game {
                         island.setColorTower(game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getColorTower());
                         game.getPlayers().get(influence.indexOf(max)).getTowerSpace().setNumTower((game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getNumTower()) - island.getTotIsland());
                     } else {
-                        for (i = 0; island.getColorTower() != game.getPlayers().get(i).getTowerSpace().getColorTower(); i++)
-                            ;
+                        for (i = 0; island.getColorTower() != game.getPlayers().get(i).getTowerSpace().getColorTower(); i++) ;
                         game.getPlayers().get(i).getTowerSpace().setNumTower(players.get(i).getTowerSpace().getNumTower() + island.getTotIsland());
                         island.setColorTower(game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getColorTower());
                         game.getPlayers().get(influence.indexOf(max)).getTowerSpace().setNumTower((game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getNumTower()) - island.getTotIsland());
                     }
                 }
-                if(lancillotto!=null){
+                if(ivan!=null&&ivan.isEffectActive()){
+                    ivan.setEffectActive(false);
+                }
+                if(felix.getEffectActive()&&felix!=null){
+                    felix.setEffectActive(false);
+                }
+                if(lancillotto!=null&&lancillotto.isEffectActive()){
                     lancillotto.setEffectActive(false);
                 }
                 unifyIsland(game.islands.indexOf(island), game);

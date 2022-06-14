@@ -145,7 +145,7 @@ public class Cli implements Runnable, View {
             displaySchoolBoard();
             String sceltaString;
             int scelta = -1;
-            pedineDaSpostare = pedineDaSpostare - numPawnMoved;//pedine che rimangono da spostare C'è QUALCHE PROBLEMA, se usi CC si torna a 3
+            pedineDaSpostare = pedineDaSpostare - numPawnMoved;
             out.println("Digita 1 per spostare delle pedine verso la DiningRoom");
             out.println("Digita 2 per spostare delle pedine verso un'Isola");
             if(lightGame.getIsExpert())
@@ -170,8 +170,7 @@ public class Cli implements Runnable, View {
                         e.printStackTrace();
                     }
                 }
-            }
-            else {
+            } else {
                 while (scelta < 1 || scelta > 2) {
                     out.println("Numero Errato!");
                     out.println("Digita 1 per spostare delle pedine verso la DiningRoom");
@@ -719,7 +718,6 @@ public class Cli implements Runnable, View {
             int player = i;//giocatore
             int numPawn = -1, numIsland = -1;
             if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
-                boolean retry = bool;
                 if (!bool) {
                     if(lightGame.getIsExpert()) {
                         boolean check = false;
@@ -767,10 +765,7 @@ public class Cli implements Runnable, View {
                     if (lightGame.getCharacterCards().get(selected).getNumCard() == 0) {
                         if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getAntonio().getCoinPrice()) {
                             out.println("Non hai abbastanza Coin per usare questa carta\n");
-                            if (!retry)
-                                requestCharacterCard(nickname, false);
-                            else
-                                requestMovePawn(nickname, 0);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli il colore di uno studente presente sulla carta  da spostare su un'Isola ");
                             out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
@@ -835,10 +830,8 @@ public class Cli implements Runnable, View {
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 1) {
                         if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getBarbara().getCoinPrice()) {
                             out.println("Non hai abbastanza Coin per usare questa carta\n");
-                            if (!retry)
-                                requestCharacterCard(nickname, false);
-                            else
-                                requestMovePawn(nickname, 0);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
+
                         } else {
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getBarbara().getCoinPrice());
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
@@ -847,10 +840,7 @@ public class Cli implements Runnable, View {
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 2) {
                         if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getCiro().getCoinPrice()) {
                             out.println("Non hai abbastanza Coin per usare questa carta\n");
-                            if (!retry)
-                                requestCharacterCard(nickname, false);
-                            else
-                                requestMovePawn(nickname, 0);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli un'Isola su cui calcolare l'influenza (puoi scegliere un numero tra 1 e " + lightGame.getIslands().size() + "):");
                             String numIslandString = null;
@@ -877,10 +867,7 @@ public class Cli implements Runnable, View {
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 3) {
                         if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getDante().getCoinPrice()) {
                             out.println("Non hai abbastanza Coin per usare questa carta\n");
-                            if (!retry)
-                                requestCharacterCard(nickname, false);
-                            else
-                                requestMovePawn(nickname, 0);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getDante().getCoinPrice());
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
@@ -889,10 +876,7 @@ public class Cli implements Runnable, View {
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 4) {
                         if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getErnesto().getCoinPrice()) {
                             out.println("Non hai abbastanza Coin per usare questa carta\n");
-                            if (!retry)
-                                requestCharacterCard(nickname, false);
-                            else
-                                requestMovePawn(nickname, 0);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli l'Isola su cui piazzare una tessera Divieto (puoi scegliere un numero tra 1 e " + lightGame.getIslands().size() + "):");
                             String numIslandString = null;
@@ -918,10 +902,7 @@ public class Cli implements Runnable, View {
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 5) {
                         if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getFelix().getCoinPrice()) {
                             out.println("Non hai abbastanza Coin per usare questa carta\n");
-                            if (!retry)
-                                requestCharacterCard(nickname, false);
-                            else
-                                requestMovePawn(nickname, 0);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getFelix().getCoinPrice());
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
@@ -930,10 +911,7 @@ public class Cli implements Runnable, View {
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 6) {
                         if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getGiuseppe().getCoinPrice()) {
                             out.println("Non hai abbastanza Coin per usare questa carta\n");
-                            if (!retry)
-                                requestCharacterCard(nickname, false);
-                            else
-                                requestMovePawn(nickname, 0);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Quanti studenti vuoi spostare da questa Carta al tuo Ingresso e viceversa? Puoi scegliere un numero tra 1 e 3");
                             String numPawnString = null;
@@ -954,7 +932,7 @@ public class Cli implements Runnable, View {
                             }
                             if (numPawn > (lightGame.getPlayers().get(player).getEntrance().getGreenPawn() + lightGame.getPlayers().get(player).getEntrance().getRedPawn() + lightGame.getPlayers().get(player).getEntrance().getYellowPawn() + lightGame.getPlayers().get(player).getEntrance().getPinkPawn() + lightGame.getPlayers().get(player).getEntrance().getBluePawn())) {
                                 out.println("Non hai abbastanza pedine da spostare!");
-                                requestMovePawn(nickname, 0);
+                                socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                             } else {
                                 for (int j = 0; j < numPawn; j++) {
                                     out.println("Seleziona il colore dello studente " + (i + 1) + "/" + numPawn + " da spostare da questa Carta al tuo Ingresso");
@@ -1046,21 +1024,16 @@ public class Cli implements Runnable, View {
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 7) {
                         if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getIvan().getCoinPrice()) {
                             out.println("Non hai abbastanza Coin per usare questa carta\n");
-                            if (!retry)
-                                requestCharacterCard(nickname, false);
-                            else
-                                requestMovePawn(nickname, 0);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
-                            lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getIvan().getCoinPrice());
-                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
+                            int j;
+                            for(j=0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); j++);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, j, numIsland, colori, bool));
                         }
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 8) {
                         if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getLancillotto().getCoinPrice()) {
                             out.println("Non hai abbastanza Coin per usare questa carta\n");
-                            if (!retry)
-                                requestCharacterCard(nickname, false);
-                            else
-                                requestMovePawn(nickname, 0);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli un colore da non conteggiare nell'influenza di questo turno: ");
                             out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
@@ -1091,10 +1064,7 @@ public class Cli implements Runnable, View {
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 9) {
                         if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getMaria().getCoinPrice()) {
                             out.println("Non hai abbastanza Coin per usare questa carta\n");
-                            if (!retry)
-                                requestCharacterCard(nickname, false);
-                            else
-                                requestMovePawn(nickname, 0);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli quanti studenti vuoi scambiare tra il tuo Ingresso e la tua Diningroom (puoi scegliere un numero tra 1 e 2): ");
                             String numPawnString;
@@ -1252,10 +1222,7 @@ public class Cli implements Runnable, View {
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 10) {
                         if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getNicola().getCoinPrice()) {
                             out.println("Non hai abbastanza Coin per usare questa carta\n");
-                            if (!retry)
-                                requestCharacterCard(nickname, false);
-                            else
-                                requestMovePawn(nickname, 0);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli uno studente da questa Carta e posizionalo nella tua DiningRoom: ");
                             out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
@@ -1348,10 +1315,7 @@ public class Cli implements Runnable, View {
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 11) {
                         if (lightGame.getPlayers().get(player).getNumCoin() < lightGame.getOmnia().getCoinPrice()) {
                             out.println("Non hai abbastanza Coin per usare questa carta\n");
-                            if (!retry)
-                                requestCharacterCard(nickname, false);
-                            else
-                                requestMovePawn(nickname, 0);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli un Colore: ogni giocatore rimetterà nel sacchetto 3 Studenti dalla propria DiningRoom di quel Colore");
                             out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
@@ -1398,7 +1362,7 @@ public class Cli implements Runnable, View {
                         }
                     }
                 } else {
-                    socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, bool));
+                    socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0,0,0,colori,bool));
                 }
             } else {
                 System.out.println(nickname + " sta giocando la fase CharacterCard");

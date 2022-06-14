@@ -2,10 +2,7 @@ package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.controller.Controller;
 import it.polimi.ingsw.controller.PhaseTurn;
-import it.polimi.ingsw.model.ColorPawn;
-import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.Island;
-import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
@@ -222,6 +219,31 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             Island island = null;
             if (numIsland != -1) {
                 island = game.getIslands().get(numIsland);
+            }
+            if ((game.getCharacterCards().get(num).getUseEffect()).equals(game.getAntonio())){
+                game.getPlayers().get(findPlayer(game, clientHandler)).setNumCoin(game.getPlayers().get(findPlayer(game, clientHandler)).getNumCoin() - game.getAntonio().getCoinPrice());
+            }else if((game.getCharacterCards().get(num).getUseEffect()).equals(game.getBarbara())){
+                game.getPlayers().get(findPlayer(game, clientHandler)).setNumCoin(game.getPlayers().get(findPlayer(game, clientHandler)).getNumCoin() - game.getBarbara().getCoinPrice());
+            }else if((game.getCharacterCards().get(num).getUseEffect()).equals(game.getCiro())){
+                game.getPlayers().get(findPlayer(game, clientHandler)).setNumCoin(game.getPlayers().get(findPlayer(game, clientHandler)).getNumCoin() - game.getCiro().getCoinPrice());
+            }else if((game.getCharacterCards().get(num).getUseEffect()).equals(game.getDante())){
+                game.getPlayers().get(findPlayer(game, clientHandler)).setNumCoin(game.getPlayers().get(findPlayer(game, clientHandler)).getNumCoin() - game.getDante().getCoinPrice());
+            }else if((game.getCharacterCards().get(num).getUseEffect()).equals(game.getErnesto())){
+                game.getPlayers().get(findPlayer(game, clientHandler)).setNumCoin(game.getPlayers().get(findPlayer(game, clientHandler)).getNumCoin() - game.getErnesto().getCoinPrice());
+            }else if((game.getCharacterCards().get(num).getUseEffect()).equals(game.getFelix())){
+                game.getPlayers().get(findPlayer(game, clientHandler)).setNumCoin(game.getPlayers().get(findPlayer(game, clientHandler)).getNumCoin() - game.getFelix().getCoinPrice());
+            }else if((game.getCharacterCards().get(num).getUseEffect()).equals(game.getGiuseppe())){
+                game.getPlayers().get(findPlayer(game, clientHandler)).setNumCoin(game.getPlayers().get(findPlayer(game, clientHandler)).getNumCoin() - game.getGiuseppe().getCoinPrice());
+            }else if((game.getCharacterCards().get(num).getUseEffect()).equals(game.getIvan())){
+                game.getPlayers().get(findPlayer(game, clientHandler)).setNumCoin(game.getPlayers().get(findPlayer(game, clientHandler)).getNumCoin() - game.getIvan().getCoinPrice());
+            }else if((game.getCharacterCards().get(num).getUseEffect()).equals(game.getLancillotto())){
+                game.getPlayers().get(findPlayer(game, clientHandler)).setNumCoin(game.getPlayers().get(findPlayer(game, clientHandler)).getNumCoin() - game.getLancillotto().getCoinPrice());
+            }else if((game.getCharacterCards().get(num).getUseEffect()).equals(game.getOmnia())){
+                game.getPlayers().get(findPlayer(game, clientHandler)).setNumCoin(game.getPlayers().get(findPlayer(game, clientHandler)).getNumCoin() - game.getOmnia().getCoinPrice());
+            }else if((game.getCharacterCards().get(num).getUseEffect()).equals(game.getMaria())){
+                game.getPlayers().get(findPlayer(game, clientHandler)).setNumCoin(game.getPlayers().get(findPlayer(game, clientHandler)).getNumCoin() - game.getMaria().getCoinPrice());
+            }else if((game.getCharacterCards().get(num).getUseEffect()).equals(game.getNicola())){
+                game.getPlayers().get(findPlayer(game, clientHandler)).setNumCoin(game.getPlayers().get(findPlayer(game, clientHandler)).getNumCoin() - game.getNicola().getCoinPrice());
             }
             game.getCharacterCards().get(num).getUseEffect().useEffect(game, numberPawn, island, game.getPlayers().get(findPlayer(game, clientHandler)), colorPawn);
             clientHandler.sendObject(new AllUpdateMessage(game.getLightGame()));

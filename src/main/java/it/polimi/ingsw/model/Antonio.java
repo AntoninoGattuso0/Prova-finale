@@ -11,7 +11,7 @@ public class Antonio extends UseEffect implements Serializable{
     private int yellowPawn;
     private int pinkPawn;
     private int bluePawn;
-    public Antonio(StudentBag studentBag){//COSTRUTTORE ANTONIO: manca l'inizializzazione del prezzo. Non so come fare visto che CharacterCard è una classe astratta -Nino
+    public Antonio(StudentBag studentBag){
         coinPrice=1;
         numPawnAntonio=0;
         greenPawn=0;
@@ -68,7 +68,6 @@ public class Antonio extends UseEffect implements Serializable{
             }
         }
     }
-
 
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
         Random rnd = new Random();
