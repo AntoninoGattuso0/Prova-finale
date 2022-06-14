@@ -16,7 +16,8 @@ public enum ColorCli {
     BLACK("\033[0;30m"),
     GREY("\033[0;30m"),   //PROVVISORIO
     BOLDCYAN("\033[1;36m"), //Per tabelle
-    BOLDWITE("\033[1;37m");
+    BOLDWITE("\033[1;37m"),
+    BACKGROUND_RED("\033[41m");
 
     private final String code;
 
