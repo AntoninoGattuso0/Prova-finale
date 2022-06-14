@@ -952,7 +952,7 @@ public class Cli implements Runnable, View {
                                     e.printStackTrace();
                                 }
                             }
-                            if (numPawn > (lightGame.getPlayers().get(player).getEntrance().getGreenPawn() + lightGame.getPlayers().get(player).getEntrance().getRedPawn() + lightGame.getPlayers().get(player).getEntrance().getYellowPawn() + lightGame.getPlayers().get(player).getEntrance().getPinkPawn() + lightGame.getPlayers().get(player).getEntrance().getBluePawn()) || numPawn > (lightGame.getPlayers().get(player).getDiningRoom().getNumGreen() + lightGame.getPlayers().get(player).getDiningRoom().getNumRed() + lightGame.getPlayers().get(player).getDiningRoom().getNumYellow() + lightGame.getPlayers().get(player).getDiningRoom().getNumPink() + lightGame.getPlayers().get(player).getDiningRoom().getNumBlue())) {
+                            if (numPawn > (lightGame.getPlayers().get(player).getEntrance().getGreenPawn() + lightGame.getPlayers().get(player).getEntrance().getRedPawn() + lightGame.getPlayers().get(player).getEntrance().getYellowPawn() + lightGame.getPlayers().get(player).getEntrance().getPinkPawn() + lightGame.getPlayers().get(player).getEntrance().getBluePawn())) {
                                 out.println("Non hai abbastanza pedine da spostare!");
                                 requestMovePawn(nickname, 0);
                             } else {
@@ -1011,19 +1011,19 @@ public class Cli implements Runnable, View {
                                     ColorPawn nomeColore = null;
                                     boolean check = false;
                                     while (!check) {
-                                        if (colore == 1 && lightGame.getPlayers().get(player).getDiningRoom().getNumGreen() > 0) {
+                                        if (colore == 1 && lightGame.getPlayers().get(player).getEntrance().getGreenPawn() > 0) {
                                             nomeColore = ColorPawn.GREEN;
                                             check = true;
-                                        } else if (colore == 2 && lightGame.getPlayers().get(player).getDiningRoom().getNumRed() > 0) {
+                                        } else if (colore == 2 && lightGame.getPlayers().get(player).getEntrance().getRedPawn() > 0) {
                                             nomeColore = ColorPawn.RED;
                                             check = true;
-                                        } else if (colore == 3 && lightGame.getPlayers().get(player).getDiningRoom().getNumYellow() > 0) {
+                                        } else if (colore == 3 && lightGame.getPlayers().get(player).getEntrance().getYellowPawn() > 0) {
                                             nomeColore = ColorPawn.YELLOW;
                                             check = true;
-                                        } else if (colore == 4 && lightGame.getPlayers().get(player).getDiningRoom().getNumPink() > 0) {
+                                        } else if (colore == 4 && lightGame.getPlayers().get(player).getEntrance().getPinkPawn() > 0) {
                                             nomeColore = ColorPawn.PINK;
                                             check = true;
-                                        } else if (colore == 5 && lightGame.getPlayers().get(player).getDiningRoom().getNumBlue() > 0) {
+                                        } else if (colore == 5 && lightGame.getPlayers().get(player).getEntrance().getBluePawn() > 0) {
                                             nomeColore = ColorPawn.BLUE;
                                             check = true;
                                         } else {
@@ -1073,15 +1073,15 @@ public class Cli implements Runnable, View {
                                 e.printStackTrace();
                             }
                             ColorPawn nomeColore = null;
-                            if (colore == 1 && lightGame.getAntonio().getGreenPawn() > 0) {
+                            if (colore == 1) {
                                 nomeColore = ColorPawn.GREEN;
-                            } else if (colore == 2 && lightGame.getAntonio().getRedPawn() > 0) {
+                            } else if (colore == 2) {
                                 nomeColore = ColorPawn.RED;
-                            } else if (colore == 3 && lightGame.getAntonio().getYellowPawn() > 0) {
+                            } else if (colore == 3) {
                                 nomeColore = ColorPawn.YELLOW;
-                            } else if (colore == 4 && lightGame.getAntonio().getPinkPawn() > 0) {
+                            } else if (colore == 4) {
                                 nomeColore = ColorPawn.PINK;
-                            } else if (colore == 5 && lightGame.getAntonio().getBluePawn() > 0) {
+                            } else if (colore ==5) {
                                 nomeColore = ColorPawn.BLUE;
                             }
                             colori.add(nomeColore);

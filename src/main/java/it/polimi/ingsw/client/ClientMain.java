@@ -1,15 +1,53 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.view.Cli.Cli;
+import it.polimi.ingsw.view.Cli.InputReadTask;
+import it.polimi.ingsw.view.GUI.Gui;
 
 import java.io.IOException;
+import java.util.Objects;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 public class ClientMain {
-    public static void main(String[] args) throws IOException {
-        Cli cli=new Cli();
-        SocketNetworkHandler socketNetworkHandler=new SocketNetworkHandler(cli);
-        socketNetworkHandler.updateConnection("localhost", String.valueOf(4000));
-        cli.run();
+    public static void main(String[] args) throws IOException, ExecutionException {
+        SocketNetworkHandler socketNetworkHandler = null;
+        System.out.println("Inserisci l'indirizzo IP del server a cui vuoi collegarti:");
+        String address;
+        String view = null;
+        address= readLine();
+        System.out.println("Scrivere C per giocare con la Cli oppure G per giocare con la GUI:");
+        while(!Objects.equals(view, "C") && !Objects.equals(view, "G")){
+            view= readLine();
+            if(!Objects.equals(view, "C") && !Objects.equals(view, "G")){
+                System.out.println("Errore nell'inserimento: Scrivere C per giocare con la Cli oppure G per giocare con la GUI");
+            }
+        }
+        if(view.equals("C")) {
+            Cli cli = new Cli();
+            socketNetworkHandler = new SocketNetworkHandler(cli);
+            cli.run();
+        }else if (view.equals("G")){
+            Gui gui= new Gui();
+             socketNetworkHandler= new SocketNetworkHandler(gui);
+             //gui.run();
+        }
+        socketNetworkHandler.updateConnection(address, String.valueOf(4000));
         socketNetworkHandler.run();
+    }
+    public static String readLine() throws ExecutionException {
+        FutureTask<String> futureTask = new FutureTask<>(new InputReadTask());
+        Thread inputThread = new Thread(futureTask);
+        inputThread.start();
+
+        String input = null;
+
+        try {
+            input = futureTask.get();
+        } catch (InterruptedException e) {
+            futureTask.cancel(true);
+            Thread.currentThread().interrupt();
+        }
+        return input;
     }
 }

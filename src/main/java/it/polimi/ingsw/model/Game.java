@@ -225,57 +225,62 @@ public class Game {
             island.setProhibited(false);
             game.ernesto.setNumProhibitionCard(game.ernesto.getNumProhibitionCard() + 1);
         } else {
-            boolean notUnique = false;
-            ArrayList<Integer> influence = new ArrayList<>();
-            for (i = 0; i < game.totPlayer; i++) influence.add(0);
-            for (color = 0; color < 5; color++) {
-                n = game.profTable.checkProf(color);
-                if (color == 0 && n != -1) influence.set(n, influence.get(n) + island.getGreenPawn());
+                boolean notUnique = false;
+                ArrayList<Integer> influence = new ArrayList<>();
+                for (i = 0; i < game.totPlayer; i++) influence.add(0);
+                for (color = 0; color < 5; color++) {
+                    n = game.profTable.checkProf(color);
+                    if (color == 0 && n != -1&&!(lancillotto!=null&&lancillotto.isEffectActive()&&lancillotto.getPedina()==color)) influence.set(n, influence.get(n) + island.getGreenPawn());
 
-                else if (color == 1 && n != -1) influence.set(n, influence.get(n) + island.getRedPawn());
+                    else if (color == 1 && n != -1 &&!(lancillotto!=null&&lancillotto.isEffectActive()&&lancillotto.getPedina()==color)) influence.set(n, influence.get(n) + island.getRedPawn());
 
-                else if (color == 2 && n != -1) influence.set(n, influence.get(n) + island.getYellowPawn());
+                    else if (color == 2 && n != -1&&!(lancillotto!=null&&lancillotto.isEffectActive()&&lancillotto.getPedina()==color)) influence.set(n, influence.get(n) + island.getYellowPawn());
 
-                else if (color == 3 && n != -1) influence.set(n, influence.get(n) + island.getPinkPawn());
+                    else if (color == 3 && n != -1&&!(lancillotto!=null&&lancillotto.isEffectActive()&&lancillotto.getPedina()==color)) influence.set(n, influence.get(n) + island.getPinkPawn());
 
-                else if (color == 4 && n != -1) influence.set(n, influence.get(n) + island.getBluePawn());
-            }
-            if (game.totPlayer == 4) {
-                for (i = 1; game.players.get(i).towerSpace.colorTower != game.players.get(0).towerSpace.colorTower; i++) ;
-                influence.set(0, influence.get(0) + influence.get(i));//ho tutte le pedine di una squadra sommate al player 0
-                for (j = 1; j < game.totPlayer && j == i; j++) ;
-                for (k = 2; k < game.totPlayer && (k == i || k == j); k++) ;
-                influence.set(j, influence.get(j) + influence.get(k));//sommo tutte le pedine dell'altra squadra all'indirizzo j
-                influence.set(i, 0);
-                influence.set(k, 0);
-            }
-            for (i = 0; i < game.totPlayer; i++) {
-                if (island.getTower() && island.getColorTower() == game.players.get(i).towerSpace.colorTower)
-                    influence.set(i, influence.get(i) + island.getTotIsland());
-            }
-            max = Collections.max(influence);
-            for (i = 0; i < influence.size() && !notUnique; i++) {
-                for (j = i + 1; j < influence.size() && !notUnique; j++) {
-                    if ((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && game.players.get(i).towerSpace.colorTower != game.players.get(j).towerSpace.colorTower)
-                        notUnique = true;
+                    else if (color == 4 && n != -1&&!(lancillotto!=null&&lancillotto.isEffectActive()&&lancillotto.getPedina()==color)) influence.set(n, influence.get(n) + island.getBluePawn());
                 }
-            }
-            if (!notUnique){
-                if(!island.getTower()) {
-                    island.setTower(true);
-                    island.setColorTower(game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getColorTower());
-                    game.getPlayers().get(influence.indexOf(max)).getTowerSpace().setNumTower((game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getNumTower()) - island.getTotIsland());
-                }else{
-                    for(i=0;island.getColorTower()!=game.getPlayers().get(i).getTowerSpace().getColorTower();i++);
-                    game.getPlayers().get(i).getTowerSpace().setNumTower(players.get(i).getTowerSpace().getNumTower()+island.getTotIsland());
-                    island.setColorTower(game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getColorTower());
-                    game.getPlayers().get(influence.indexOf(max)).getTowerSpace().setNumTower((game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getNumTower()) - island.getTotIsland());
+                if (game.totPlayer == 4) {
+                    for (i = 1; game.players.get(i).towerSpace.colorTower != game.players.get(0).towerSpace.colorTower; i++)
+                        ;
+                    influence.set(0, influence.get(0) + influence.get(i));//ho tutte le pedine di una squadra sommate al player 0
+                    for (j = 1; j < game.totPlayer && j == i; j++) ;
+                    for (k = 2; k < game.totPlayer && (k == i || k == j); k++) ;
+                    influence.set(j, influence.get(j) + influence.get(k));//sommo tutte le pedine dell'altra squadra all'indirizzo j
+                    influence.set(i, 0);
+                    influence.set(k, 0);
                 }
+                for (i = 0; i < game.totPlayer; i++) {
+                    if (island.getTower() && island.getColorTower() == game.players.get(i).towerSpace.colorTower)
+                        influence.set(i, influence.get(i) + island.getTotIsland());
+                }
+                max = Collections.max(influence);
+                for (i = 0; i < influence.size() && !notUnique; i++) {
+                    for (j = i + 1; j < influence.size() && !notUnique; j++) {
+                        if ((influence.get(i).equals(influence.get(j))) && influence.get(i).equals(max) && game.players.get(i).towerSpace.colorTower != game.players.get(j).towerSpace.colorTower)
+                            notUnique = true;
+                    }
+                }
+                if (!notUnique) {
+                    if (!island.getTower()) {
+                        island.setTower(true);
+                        island.setColorTower(game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getColorTower());
+                        game.getPlayers().get(influence.indexOf(max)).getTowerSpace().setNumTower((game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getNumTower()) - island.getTotIsland());
+                    } else {
+                        for (i = 0; island.getColorTower() != game.getPlayers().get(i).getTowerSpace().getColorTower(); i++)
+                            ;
+                        game.getPlayers().get(i).getTowerSpace().setNumTower(players.get(i).getTowerSpace().getNumTower() + island.getTotIsland());
+                        island.setColorTower(game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getColorTower());
+                        game.getPlayers().get(influence.indexOf(max)).getTowerSpace().setNumTower((game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getNumTower()) - island.getTotIsland());
+                    }
+                }
+                if(lancillotto!=null){
+                    lancillotto.setEffectActive(false);
+                }
+                unifyIsland(game.islands.indexOf(island), game);
             }
-            unifyIsland(game.islands.indexOf(island), game);
-        }
     }
-        public void setCharacterCards (Game game) { //posiziona a caso dei personaggi (3)
+        public void setCharacterCards (Game game){ //posiziona a caso dei personaggi (3)
             if (game.isExpert) {
 
                 Random rnd = new Random();
@@ -299,7 +304,7 @@ public class Game {
                 }
                 if (random == 2 || random1 == 2 || random2 == 2) {
                     ciro = new Ciro();
-                    CharacterCard card = new CharacterCard(ciro,2);
+                    CharacterCard card = new CharacterCard(ciro, 2);
                     game.characterCards.add(card);
                 }
                 if (random == 3 || random1 == 3 || random2 == 3) {
