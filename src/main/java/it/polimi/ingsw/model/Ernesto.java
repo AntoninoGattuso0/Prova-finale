@@ -1,9 +1,12 @@
 package it.polimi.ingsw.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Ernesto extends UseEffect implements Serializable {
+    @Serial
+    private static final long serialVersionUID= -2535390467065107362L;
     private int coinPrice;
     public int getCoinPrice(){ return coinPrice;}
     public void setCoinPrice(int coin){ this.coinPrice=coin;}

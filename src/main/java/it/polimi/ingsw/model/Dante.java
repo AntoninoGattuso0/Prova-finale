@@ -1,7 +1,10 @@
 package it.polimi.ingsw.model;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 public class Dante extends UseEffect implements Serializable {
+    @Serial
+    private static final long serialVersionUID= -1428465615073943049L;
     private int coinPrice;
     public Dante() {
         coinPrice = 1;

@@ -1,7 +1,10 @@
 package it.polimi.ingsw.model;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.*;
 public class Giuseppe extends UseEffect implements Serializable {
+    @Serial
+    private static final long serialVersionUID= 7452426495076939173L;
     private int coinPrice;
     private int nPawn;
     private int numGreenPawn;

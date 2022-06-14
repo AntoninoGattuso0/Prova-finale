@@ -1,9 +1,12 @@
 package it.polimi.ingsw.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Felix extends UseEffect implements Serializable {
+    @Serial
+    private static final long serialVersionUID= -1214930636709409876L;
     private int coinPrice;
     private boolean effectActive;
     public int getCoinPrice(){

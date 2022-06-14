@@ -1,9 +1,12 @@
 package it.polimi.ingsw.model;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 public class Antonio extends UseEffect implements Serializable{
+    @Serial
+    private static final long serialVersionUID= 2137362576944932011L;
     private int coinPrice;
     private int numPawnAntonio;
     private int greenPawn;

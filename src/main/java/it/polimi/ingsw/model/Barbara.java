@@ -1,7 +1,10 @@
 package it.polimi.ingsw.model;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 public class Barbara extends UseEffect implements Serializable {
+    @Serial
+    private static final long serialVersionUID= 6437140673880575588L;
     private int coinPrice;
     public Barbara(){
         coinPrice=2;

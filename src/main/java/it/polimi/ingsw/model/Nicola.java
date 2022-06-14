@@ -1,9 +1,12 @@
 package it.polimi.ingsw.model;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 public class Nicola extends UseEffect implements Serializable {
+    @Serial
+    private static final long serialVersionUID= 4274113059561342264L;
     protected int coinPrice;
     private int greenPawn;
     private int redPawn;

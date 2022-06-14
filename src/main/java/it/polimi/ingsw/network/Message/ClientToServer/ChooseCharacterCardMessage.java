@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ChooseCharacterCardMessage extends ClientToServer implements Serializable {
     @Serial
-    private static final long serialVersionUID = -5847602274405048384L;
+    private static final long serialVersionUID = 2809026361437311296L;
     private final int numCharacter;
     private final int numIsland;
     private final ArrayList<ColorPawn> colorPawns;

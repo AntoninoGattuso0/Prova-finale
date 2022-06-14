@@ -1,8 +1,11 @@
 package it.polimi.ingsw.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 public class Lancillotto extends UseEffect implements Serializable {
+    @Serial
+    private static final long serialVersionUID= -3530330329008197496L;
     private int coinPrice;
     private int colorNumber;
     private boolean effectActive;

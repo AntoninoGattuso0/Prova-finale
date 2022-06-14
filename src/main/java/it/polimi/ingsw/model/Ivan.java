@@ -1,9 +1,12 @@
 package it.polimi.ingsw.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Ivan extends UseEffect implements Serializable {
+    @Serial
+    private static final long serialVersionUID= -2091548432968052714L;
     private int coinPrice;
     private boolean effectActive;
     private int numPlayer;

@@ -833,8 +833,9 @@ public class Cli implements Runnable, View {
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
 
                         } else {
-                            lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getBarbara().getCoinPrice());
-                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
+                            int j;
+                            for(j=0; !Objects.equals(lightGame.getPlayers().get(j).getNickname(), nickname); j++);
+                            socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected,j, numIsland, colori, bool));
                         }
 
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 2) {

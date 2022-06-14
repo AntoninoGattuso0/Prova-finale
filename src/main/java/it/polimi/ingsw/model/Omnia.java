@@ -1,9 +1,12 @@
 package it.polimi.ingsw.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Omnia extends UseEffect implements Serializable {
+    @Serial
+    private static final long serialVersionUID= -5293594704396653058L;
     private int coinPrice;
     Omnia(){
         coinPrice=3;

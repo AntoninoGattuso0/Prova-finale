@@ -1,7 +1,10 @@
 package it.polimi.ingsw.model;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 public class Ciro extends UseEffect implements Serializable {
+    @Serial
+    private static final long serialVersionUID= -3300256130620262852L;
     private int coinPrice;
     Ciro(){
         coinPrice=3;
