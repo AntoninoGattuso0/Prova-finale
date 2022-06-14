@@ -814,6 +814,7 @@ public class Cli implements Runnable, View {
                                 } catch (ExecutionException e) {
                                     e.printStackTrace();
                                 }
+                                numIsland = numIsland - 1;
                             }
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getErnesto().getCoinPrice());
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
@@ -855,7 +856,7 @@ public class Cli implements Runnable, View {
                                 socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                             } else {
                                 for (int j = 0; j < numPawn; j++) {
-                                    out.println("Seleziona il colore dello studente " + (i + 1) + "/" + numPawn + " da spostare da questa Carta al tuo Ingresso");
+                                    out.println("Seleziona il colore dello studente " + (j + 1) + "/" + numPawn + " da spostare da questa Carta al tuo Ingresso");
                                     out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
                                     int colore = -1;
                                     String coloreString;
@@ -896,7 +897,7 @@ public class Cli implements Runnable, View {
                                     colori.add(nomeColore);
                                 }
                                 for (int j = 0; j < numPawn; j++) {
-                                    out.println("Seleziona il colore dello studente " + (i + 1) + "/" + numPawn + " da spostare dal tuo Ingresso su questa Carta");
+                                    out.println("Seleziona il colore dello studente " + (j + 1) + "/" + numPawn + " da spostare dal tuo Ingresso su questa Carta");
                                     out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
                                     int colore = -1;
                                     String coloreString;
@@ -1387,7 +1388,7 @@ public class Cli implements Runnable, View {
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 11) {
                 out.println("");
-                out.println("EFFETTO: Scegli un colore di Studente; ogni giocatore (incluso te) deve rimettere nel sacchetto 3 studenti di quel colore presenti nella sua Sala");
+                out.println("EFFETTO: Scegli un colore di Studente; ogni giocatore (incluso te) deve rimettere nel sacchetto 3 studenti di quel colore presenti nella sua DiningRoom");
                 out.println("Prezzo carta: " + lightGame.getOmnia().getCoinPrice() + "✪");
                 out.println();
                 out.println("+-----------------------------------------------------+");
@@ -1955,7 +1956,7 @@ public class Cli implements Runnable, View {
     private String print1_4Index(){
         StringBuilder index = new StringBuilder();
         for(int i = 0; i < lightGame.getIslands().size() && i<4; i++)
-            index.append("   ").append("Isola: ").append(i+1).append("   ");
+            index.append("   ").append("Isola: ").append(i+1).append("    ");
         return index.toString();
     }
 
@@ -1963,7 +1964,7 @@ public class Cli implements Runnable, View {
         StringBuilder index = new StringBuilder();
         if(lightGame.getIslands().size()>=4){
             for(int i = 4; i < lightGame.getIslands().size() && i<8; i++)
-                index.append("   ").append("Isola: ").append(i+1).append("   ");
+                index.append("   ").append("Isola: ").append(i+1).append("    ");
         }
         return index.toString();
     }

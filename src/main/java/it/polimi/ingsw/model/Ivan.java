@@ -34,7 +34,10 @@ public class Ivan extends UseEffect implements Serializable {
 
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){//   public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){
         effectActive=true;
-        numPlayer=i;
+        for(int j = 0; j<game.getTotPlayer(); j++){
+            if(game.players.get(j).getNickname().equals(player.getNickname()))
+                numPlayer=j;
+        }
         setCoinPrice(3);
     }
 }

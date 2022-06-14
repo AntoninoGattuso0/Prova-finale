@@ -279,7 +279,7 @@ public class Game {
                 }
                 for (color = 0; color < 5; color++) {
                     n = game.profTable.checkProf(color);
-                    if (color == 0 && n != -1&&!(lancillotto!=null&&lancillotto.isEffectActive()&&lancillotto.getPedina()==color)) influence.set(n, influence.get(n) + island.getGreenPawn());
+                    if (color == 0 && n != -1 && !(lancillotto!=null&&lancillotto.isEffectActive()&&lancillotto.getPedina()==color)) influence.set(n, influence.get(n) + island.getGreenPawn());
 
                     else if (color == 1 && n != -1 &&!(lancillotto!=null&&lancillotto.isEffectActive()&&lancillotto.getPedina()==color)) influence.set(n, influence.get(n) + island.getRedPawn());
 
@@ -299,7 +299,8 @@ public class Game {
                     influence.set(i, 0);
                     influence.set(k, 0);
                 }
-                if(felix!=null&& !felix.isEffectActive()) {
+
+                if(felix==null || !felix.isEffectActive()) {
                     for (i = 0; i < game.totPlayer; i++) {
                         if (island.getTower() && island.getColorTower() == game.players.get(i).towerSpace.colorTower)
                             influence.set(i, influence.get(i) + island.getTotIsland());
@@ -324,21 +325,18 @@ public class Game {
                         game.getPlayers().get(influence.indexOf(max)).getTowerSpace().setNumTower((game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getNumTower()) - island.getTotIsland());
                     }
                 }
-                if(ivan!=null&&ivan.isEffectActive()){
-                    ivan.setEffectActive(false);
-                }
+
             if(felix!=null&&felix.isEffectActive()){
                     felix.setEffectActive(false);
                 }
-                if(lancillotto!=null&&lancillotto.isEffectActive()){
+            if(lancillotto!=null&&lancillotto.isEffectActive()){
                     lancillotto.setEffectActive(false);
                 }
-                unifyIsland(game.islands.indexOf(island), game);
-            }
+            unifyIsland(game.islands.indexOf(island), game);
+        }
     }
         public void setCharacterCards (Game game){ //posiziona a caso dei personaggi (3)
             if (game.isExpert) {
-
                 Random rnd = new Random();
                 int random = rnd.nextInt(12);
                 int random1 = rnd.nextInt(12);
@@ -348,6 +346,7 @@ public class Game {
                     random1 = rnd.nextInt(12);
                     random2 = rnd.nextInt(12);
                 }
+
                 if (random == 0 || random1 == 0 || random2 == 0) {
                     antonio = new Antonio(game.studentBag);
                     CharacterCard card = new CharacterCard(antonio, 0);
