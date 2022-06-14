@@ -35,25 +35,7 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public void requestMovePawnToDiningRoom(String nickname, int pawn) {
-    }
-
-    @Override
-    public void requestMovePawnToIsland(String nickname, int pawn) {
-    }
-
-    @Override
     public void requestMovePawn(String nickname, int numPawnMoved) {
-
-    }
-
-    @Override
-    public void requestMotherNatureMove(String nickname) {
-
-    }
-
-    @Override
-    public void requestCloud(String nickname) {
 
     }
 
@@ -225,6 +207,21 @@ public class Gui extends Application implements View {
 
     @Override
     public void disconnectionAll(String playerDisconnected) {
+
+    }
+
+    @Override
+    public void endgame() {
+
+    }
+
+    @Override
+    public void invalidNumPlayer() {
+
+    }
+
+    @Override
+    public void wrongSameAssistantMessage() {
 
     }
 

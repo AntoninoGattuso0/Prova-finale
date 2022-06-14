@@ -47,27 +47,25 @@ public class ClientMessageManager {
            socketNetworkHandler.getView().requestMoveMotherNature(((SetMoveMotherNature) object).getNickname());
         } else if (object instanceof SetCloudMessage) {
            socketNetworkHandler.getView().selectCloud(((SetCloudMessage) object).getNickname());
-        } /*else if (object instanceof EndGameMessage) {
-           //socketNetworkHandler.getView().
-        }*/ else if (object instanceof EndTurnMessage) {//dice a tutti che il turno di "giocatore che gioca" è finito e che tocca a "giocatore successivo"
+        } else if (object instanceof EndGameMessage) {
+           socketNetworkHandler.getView().endgame();
+        } else if (object instanceof EndTurnMessage) {//dice a tutti che il turno di "giocatore che gioca" è finito e che tocca a "giocatore successivo"
            socketNetworkHandler.getView().startTurn(((EndTurnMessage) object).getPlayers(),((EndTurnMessage) object).getActualPlayer());
         } else if (object instanceof InvalidNumPlayerMessage) {
-            // socketNetworkHandler.getView().
+            socketNetworkHandler.getView().invalidNumPlayer();
         } else if (object instanceof NewCurrentPlayerMessage) {
             // socketNetworkHandler.getView().
         }else if(object instanceof WrongNumPlayerIsExpertMessage){
              socketNetworkHandler.getView().displayWrongNickname();
-        }/*else if(object instanceof WrongSameAssistantMessage){
-           // socketNetworkHandler.getView().
-        }*/else if(object instanceof WaitLoginMessage){
+        }else if(object instanceof WrongSameAssistantMessage){
+           socketNetworkHandler.getView().wrongSameAssistantMessage();
+        }else if(object instanceof WaitLoginMessage){
             socketNetworkHandler.getView().sendNick(((WaitLoginMessage) object).getNickname());
         }else if(object instanceof LobbyFullMessage){
             socketNetworkHandler.getView().lobbyFull();
         }else if(object instanceof Ping){
         }else if(object instanceof TurnOrderMessage){
             socketNetworkHandler.getView().turnOrder(((TurnOrderMessage) object).getPlayersOrder());
-        }else if(object instanceof WrongSameAssistantMessage){
-           // socketNetworkHandler.getView().
         }else if(object instanceof SetCharacterCardMessage){
             socketNetworkHandler.getView().requestCharacterCard(((SetCharacterCardMessage) object).getNickname(),((SetCharacterCardMessage) object).isBool());
         }else if(object instanceof UpdateIslandsMessage){
