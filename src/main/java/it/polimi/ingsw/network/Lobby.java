@@ -7,7 +7,6 @@ import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
 import it.polimi.ingsw.observer.ConnectionObserver;
-import it.polimi.ingsw.observer.EndGameObserver;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -20,7 +19,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     private boolean contr;
     private int numPlayers;
     private int numPawnExe;
-    private EndGameObserver endGame;
     private boolean lobbyOk;
     private final ArrayList<ClientHandlerInterface> clients;
     private boolean isExpert;
