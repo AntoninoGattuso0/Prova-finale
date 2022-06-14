@@ -2,11 +2,13 @@ package it.polimi.ingsw.network;
 
 import it.polimi.ingsw.network.Message.Message;
 import it.polimi.ingsw.network.Message.ServerToClient.DisconnectionMessage;
-import it.polimi.ingsw.network.Message.ServerToClient.StartTurnMessage;
 import it.polimi.ingsw.network.Message.ServerToClient.WinnerMessage;
 
 import java.util.ArrayList;
 
+/**
+ * This class is used to send broadcast messages to all clients.
+ */
 public class VirtualView {
     private final ArrayList<ClientHandlerInterface> clients = new ArrayList<>();
     private String actualPlayer;
@@ -19,10 +21,7 @@ public class VirtualView {
     public void addClientInVirtualView(ClientHandlerInterface client) {
             clients.add(client);
     }
-    public void sendMessage(ClientHandlerInterface clientHandlerInterface,Message message){
-        clientHandlerInterface.sendObject(message);
 
-    }
     public ArrayList<ClientHandlerInterface> getClients() {
         return clients;
     }
@@ -30,11 +29,6 @@ public class VirtualView {
         synchronized (lock) {
             clients.remove(client);
             lock.notifyAll();
-        }
-    }
-    public void startTurn() {
-        for (ClientHandlerInterface clientHandler :clients) {
-            clientHandler.sendObject(new StartTurnMessage(getActualPlayer()));
         }
     }
 
@@ -48,21 +42,20 @@ public class VirtualView {
         }
     }
 
-    public String getActualPlayer() {
-        return actualPlayer;
-    }
-
-    public void playerWinForQuitting(String nick) {
-        System.out.println(nick + " is the last Player in lobby. ");
-        updateWin(nick);
-    }
-
+    /**
+     * When the game ends, send to everyone the messages with the winner-nickname and after close the server.
+     * @param nick of the winning player.
+     * @see #sendBroadcast(Message)
+     * @see WinnerMessage#WinnerMessage(String)
+     */
     public void updateWin(String nick) {
         System.out.println("The winner is " + nick + ", GameOver");
         sendBroadcast(new WinnerMessage(nick));
         System.exit(1);
     }
-
+/**
+ * Is used to send a message to everyone.
+ */
     public synchronized void sendBroadcast(Message message) {
         synchronized (lock) {
             for (ClientHandlerInterface clientHandler : clients) {
@@ -74,10 +67,6 @@ public class VirtualView {
 
     public void sendAllQuitPlayer(String userNickname) {
         sendBroadcast(new DisconnectionMessage(userNickname));
-    }
-
-    public void sendDisconectionInSet(String userNickname) {
-
     }
 
 }

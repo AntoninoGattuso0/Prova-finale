@@ -55,33 +55,6 @@ public class Controller {
     public Game getGame() {
         return this.game;
     }
-
-    public boolean getEndGame() {
-        return endGame;
-    }
-
-    public boolean getIsExpert() {
-        return this.isExpert;
-    }
-
-    public void administrEnd() {
-        String nick = "";
-        endGame = true;
-        virtualView.playerWinForQuitting(nick);
-    }
-    public void AdministrDisconnectionInSet(String userNickname) {
-        endGame = true;
-        virtualView.sendDisconectionInSet(userNickname);
-    }
-
-    public boolean lastTurn() {
-        boolean i = false;
-        if (roundController.getLastPlayer().getDeckAssistant().size() == 0) {
-            i = true;
-        }
-        return i;
-    }
-
     public void updateThisPlayersLight() {
         for (Player player : players) {
             PhaseTurn phaseTurn = player.getCurrentPhase();

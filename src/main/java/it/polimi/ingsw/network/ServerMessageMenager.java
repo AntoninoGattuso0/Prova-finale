@@ -3,7 +3,9 @@ package it.polimi.ingsw.network;
 import it.polimi.ingsw.network.Message.ClientToServer.*;
 import it.polimi.ingsw.network.Message.Ping;
 
-
+/**
+ * This class is used to manage the messages arriving from the client
+ */
 public class ServerMessageMenager {
     private final Lobby lobby;
 
@@ -11,6 +13,14 @@ public class ServerMessageMenager {
      this.lobby=lobby;
     }
 
+    /**
+     * Takes has input a clientHandler and a message object then processes the message
+     * and calls the relative lobby function
+     * @param clientHandler which sends the messages
+     * @param object the message sent by the clientHandler
+     * @see ClientHandler
+     * @see Lobby
+     */
     public void ManageInputToServer(ClientHandler clientHandler, Object object) {
          if (object instanceof ChooseCharacterCardMessage c) {
              lobby.useCharacter(c.getNumCharacter(),c.getNumPawn(),c.getNumIsland(),c.getColorPawns(),clientHandler,c.getCheck());
