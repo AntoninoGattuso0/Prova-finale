@@ -133,7 +133,7 @@ public class Game {
         isExpert = expert;
     }
 
-    /**This function inizialize everything needed in the game just created(islands, clouds etc...)
+    /**This function initialize everything needed in the game just created(islands, clouds etc...)
      *
      * @param game
      */
@@ -209,7 +209,7 @@ public class Game {
         setCharacterCards(game);
     }
 
-    /**This fucntion is useful to create fast an array of the color that are in the StudentBag (if a color miss
+    /**This function is useful to create fast an array of the color that are in the StudentBag (if a color miss
      * it doesn't get added to the array)
      * @param studentBag
      * @return
@@ -245,7 +245,7 @@ public class Game {
         island.setMotherNature(true);
     }
 
-    /**Everythime a Tower is added the game check if he can unify the near Islands
+    /**Everytime a Tower is added the game check if he can unify the near Islands
      *
      * @param i
      * @param game
