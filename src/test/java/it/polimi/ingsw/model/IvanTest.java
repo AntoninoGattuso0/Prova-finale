@@ -10,8 +10,18 @@ class IvanTest {
 
     @Test
     public void TestIvanUseEffect(){
+        int contr=0;
         Game game = new Game(2, true);
         game.start(game);
+        while (contr == 0) {
+            if (game.getCharacterCards().get(0).getNumCard()==7) {
+                contr = 1;
+            }
+            if (contr == 0) {
+                game = new Game(2, true);
+                game.start(game);
+            }
+        }
         game.newPlayer("Nicky", game);
         game.newPlayer("Gabi", game);
         game.getProfTable().setGreenProf(0);
@@ -27,11 +37,8 @@ class IvanTest {
         game.islands.get(3).setTower(false);
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(1);
         colorPawn.add(ColorPawn.GREEN);
-        Ivan ivan = new Ivan();
-        CharacterCard card = new CharacterCard(ivan,7);
-        card.useEffect.useEffect(game, 8, game.islands.get(3), game.players.get(1), colorPawn);
+        game.getCharacterCards().get(0).getUseEffect().useEffect(game, 8, game.islands.get(3), game.players.get(1), colorPawn);
         game.topInfluence(game.islands.get(3), game);
         assertEquals(ColorTower.BLACK, game.islands.get(3).getColorTower());
-        System.out.println("Costo attuale carta Ivan: " + ivan.getCoinPrice());
     }
 }

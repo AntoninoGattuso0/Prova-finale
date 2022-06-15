@@ -308,6 +308,7 @@ public class Game {
         if (island.getProhibited()) {
             island.setProhibited(false);
             game.ernesto.setNumProhibitionCard(game.ernesto.getNumProhibitionCard() + 1);
+            System.out.println("vvv");
         } else {
                 boolean notUnique = false;
                 ArrayList<Integer> influence = new ArrayList<>();

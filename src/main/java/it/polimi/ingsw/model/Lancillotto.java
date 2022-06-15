@@ -25,7 +25,6 @@ public class Lancillotto extends UseEffect implements Serializable {
         return effectActive;
     }
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){//(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn)
-        int colorNumber;
         switch (colorPawn.get(0)){
             case GREEN -> this.colorNumber=0;
             case RED -> this.colorNumber=1;

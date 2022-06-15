@@ -8,9 +8,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ErnestoTest {
     @Test
-    public void TestNotInfluence(){
+    public void TestNotInfluence() {
+        int contr = 0;
         Game game = new Game(3, true);
         game.start(game);
+        while (contr == 0) {
+            if (game.getCharacterCards().get(0).getNumCard()==4) {
+                contr = 1;
+            }
+            if (contr == 0) {
+                game = new Game(3, true);
+                game.start(game);
+            }
+        }
         String nick1 = "Rebeca";
         String nick2 = "Paolo";
         String nick3 = "Antonino";
@@ -31,9 +41,7 @@ public class ErnestoTest {
         game.islands.get(9).setBluePawn(0);
         game.islands.get(9).setTower(true);
         game.islands.get(9).setColorTower(ColorTower.BLACK);
-        Ernesto ernesto = new Ernesto();
-        CharacterCard card = new CharacterCard(ernesto,4);
-        card.useEffect.useEffect(game, 5, game.islands.get(9), game.players.get(0), colorPawn);
+        game.getCharacterCards().get(0).getUseEffect().useEffect(game, 5, game.islands.get(9), game.players.get(0), colorPawn);
         game.topInfluence(game.islands.get(9), game);
         assertEquals(ColorTower.BLACK, game.islands.get(9).getColorTower());
     }

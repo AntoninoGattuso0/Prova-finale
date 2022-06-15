@@ -10,8 +10,18 @@ public class FelixTest {
 
     @Test
     public void testFelix(){
+        int contr=0;
         Game game = new Game(2, true);
         game.start(game);
+        while (contr == 0) {
+            if (game.getCharacterCards().get(0).getNumCard()==5) {
+                contr = 1;
+            }
+            if (contr == 0) {
+                game = new Game(2, true);
+                game.start(game);
+            }
+        }
         game.newPlayer("Andre", game);
         game.newPlayer("John", game);
         ArrayList<ColorPawn> colorPawn = new ArrayList<>(1);
@@ -26,12 +36,11 @@ public class FelixTest {
         game.islands.get(7).setYellowPawn(4);
         game.islands.get(7).setPinkPawn(0);
         game.islands.get(7).setBluePawn(4);
+        game.islands.get(7).setMotherNature(true);
         game.islands.get(7).setTower(true);
         game.islands.get(7).setColorTower(ColorTower.BLACK);
-        Felix felix = new Felix();
-        CharacterCard card = new CharacterCard(felix,5);
-        card.useEffect.useEffect(game, 6, game.islands.get(7), game.players.get(1), colorPawn);
+        game.getCharacterCards().get(0).getUseEffect().useEffect(game, 6, game.islands.get(7), game.players.get(1), colorPawn);
+        game.topInfluence(game.getIslands().get(7), game);
         assertEquals(ColorTower.WHITE, game.islands.get(7).getColorTower());
-        System.out.println("Costo attuale carta Felix: " + felix.getCoinPrice());
     }
 }
