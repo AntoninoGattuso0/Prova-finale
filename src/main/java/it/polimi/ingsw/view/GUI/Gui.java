@@ -2,20 +2,12 @@ package it.polimi.ingsw.view.GUI;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
-import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
-import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
-import it.polimi.ingsw.view.GUI.warnings.WarningNickname;
+import it.polimi.ingsw.network.Message.ClientToServer.*;
+import it.polimi.ingsw.view.GUI.warnings.*;
 import it.polimi.ingsw.view.View;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
+
 
 
 public class Gui implements View {
@@ -23,6 +15,7 @@ public class Gui implements View {
     private boolean isExpert;
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;
+    private GameTable gameTable = new GameTable();
 
     public void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler) {
         this.socketNetworkHandler = socketNetworkHandler;
@@ -49,6 +42,7 @@ public class Gui implements View {
     public void requestNumPlayersIsExpert() {
         NumOfPlayerIsExpert requestNumPlayersIsExpert = new NumOfPlayerIsExpert();
         socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(requestNumPlayersIsExpert.getNumPlayer(), requestNumPlayersIsExpert.isExpert()));
+        socketNetworkHandler.setNicknameThisPlayer(requestNumPlayersIsExpert.getNickname());
     }
 
     @Override
@@ -157,8 +151,16 @@ public class Gui implements View {
 
     }
 
+
+    //è provvisorio non vi spaventate :)
     @Override
     public void selectCloud(String nickname) {
+        if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
+                socketNetworkHandler.sendMessage(new ChooseCloudMessage(gameTable.getCloudSelected()));
+        }else{
+            new WarningCloud();
+        }
+
 
     }
 

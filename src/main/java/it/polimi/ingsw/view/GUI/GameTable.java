@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,8 @@ public class GameTable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private int cloudSelected;
+    boolean cloudIsAlreadySelected = false;
 
     @FXML private final List<ImageView> islands = null;
     @FXML private final List<ImageView> motherNature = null;
@@ -175,7 +178,7 @@ public class GameTable {
             bluePawnClouds.get(i).setVisible(false);
         }
 
-        //quando il cursore arriva su una card diventa a forma di mano
+        //quando il cursore arriva su una cloud diventa a forma di mano
         for(ImageView cloud : clouds){
             cloud.setOnMouseEntered(mouseEvent -> cloud.setCursor(Cursor.HAND));
             cloud.setOnMouseExited(mouseEvent -> cloud.setCursor(Cursor.DEFAULT));
@@ -183,14 +186,12 @@ public class GameTable {
 
         //questo devo vedere se metterlo in una funzione e poi richiamarlo dalla GUI
         //o se mettere direttamente nella gui
-        boolean selectedCloud = false;
         for(ImageView cloud : clouds){
-            if(!selectedCloud){  //vorrei che fosse se falso entri dentro l'if (scritto cosi E GIUSTO o no?)
+            if(!cloudIsAlreadySelected){  //vorrei che fosse se falso entri dentro l'if (scritto cosi E GIUSTO o no?)
                 cloud.setOnMouseClicked(mouseEvent -> {
-                    int cloudSel = clouds.indexOf(cloud);
-                    socketNetworkHandler.sendMessage(new ChooseCloudMessage(cloudSel));
+                    cloudSelected = clouds.indexOf(cloud);
                 });
-                selectedCloud = true;
+                cloudIsAlreadySelected = true;
             }
         }
 
@@ -272,5 +273,13 @@ public class GameTable {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public int getCloudSelected() {
+        return cloudSelected;
+    }
+
+    public boolean cloudIsAlreadySelected() {
+        return cloudIsAlreadySelected;
     }
 }
