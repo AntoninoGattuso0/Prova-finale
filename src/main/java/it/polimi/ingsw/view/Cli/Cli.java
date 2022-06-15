@@ -1824,19 +1824,19 @@ public class Cli implements Runnable, View {
     private String color4Clouds(int cloud, int color){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
-            showColor.append(ColorCli.GREEN).append("       O: ").append(lightGame.getClouds().get(cloud).getGreenPawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.GREEN).append("        ").append(lightGame.getClouds().get(cloud).getGreenPawn()).append("        ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 1){
-            showColor.append(ColorCli.RED).append("       O: ").append(lightGame.getClouds().get(cloud).getRedPawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.RED).append("        ").append(lightGame.getClouds().get(cloud).getRedPawn()).append("        ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 2){
-            showColor.append(ColorCli.YELLOW).append("       O: ").append(lightGame.getClouds().get(cloud).getYellowPawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.YELLOW).append("        ").append(lightGame.getClouds().get(cloud).getYellowPawn()).append("        ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 3){
-            showColor.append(ColorCli.PINK).append("       O: ").append(lightGame.getClouds().get(cloud).getPinkPawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.PINK).append("        ").append(lightGame.getClouds().get(cloud).getPinkPawn()).append("        ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 4){
-            showColor.append(ColorCli.BLUE).append("       O: ").append(lightGame.getClouds().get(cloud).getBluePawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.BLUE).append("        ").append(lightGame.getClouds().get(cloud).getBluePawn()).append("        ").append(ColorCli.BOLDCYAN);
         }
         return showColor.toString();
     }
@@ -1863,7 +1863,7 @@ public class Cli implements Runnable, View {
                 showColor.append(" o ");
             }
             else
-                showColor.append(" ? ");
+                showColor.append(" ~ ");
             showColor.append(ColorCli.BOLDCYAN).append("|");
             showColor.append("\n");
         }
@@ -1886,7 +1886,7 @@ public class Cli implements Runnable, View {
             if(lightGame.getProfTable().getRedProf() == player)
                 showColor.append(" o ");
             else
-                showColor.append(" ? ");
+                showColor.append(" ~ ");
             showColor.append(ColorCli.BOLDCYAN).append("|");
             showColor.append("\n");
         }
@@ -1908,7 +1908,7 @@ public class Cli implements Runnable, View {
             if(lightGame.getProfTable().getYellowProf() == player)
                 showColor.append(" o ");
             else
-                showColor.append(" ? ");
+                showColor.append(" ~ ");
             showColor.append(ColorCli.BOLDCYAN).append("|");
             showColor.append("\n");
         }
@@ -1931,7 +1931,7 @@ public class Cli implements Runnable, View {
                 showColor.append(" o ");
 
             else
-                showColor.append(" ? ");
+                showColor.append(" ~ ");
             showColor.append(ColorCli.BOLDCYAN).append("|");
             showColor.append("\n");
         }
@@ -1953,7 +1953,7 @@ public class Cli implements Runnable, View {
             if(lightGame.getProfTable().getBlueProf() == player)
                 showColor.append(" o ");
             else
-                showColor.append(" ? ");
+                showColor.append(" ~ ");
             showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("\n");
             showColor.append(ColorCli.BOLDCYAN).append("+---------------------------------------------------+\n").append(ColorCli.RESET);
             showColor.append("\n");
