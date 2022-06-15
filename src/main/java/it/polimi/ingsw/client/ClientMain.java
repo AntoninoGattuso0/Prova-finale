@@ -1,13 +1,12 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.view.Cli.Cli;
-import it.polimi.ingsw.view.Cli.InputReadTask;
 import it.polimi.ingsw.view.GUI.Gui;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
 
 public class ClientMain {
 
@@ -49,18 +48,7 @@ public class ClientMain {
      * @throws ExecutionException
      */
     public static String readLine() throws ExecutionException {
-        FutureTask<String> futureTask = new FutureTask<>(new InputReadTask());
-        Thread inputThread = new Thread(futureTask);
-        inputThread.start();
-
-        String input = null;
-
-        try {
-            input = futureTask.get();
-        } catch (InterruptedException e) {
-            futureTask.cancel(true);
-            Thread.currentThread().interrupt();
-        }
-        return input;
+        Scanner in= new Scanner(System.in);
+        return in.nextLine();
     }
 }
