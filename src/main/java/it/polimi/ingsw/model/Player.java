@@ -65,7 +65,7 @@ public class Player {
         setActive(true);
         int j, k,m=0;
         setNickname(nick);
-        if (game.isExpert) setNumCoin(400);
+        if (game.isExpert) setNumCoin(1);
         else setNumCoin(-1);
         //creazione assistenti
         k = 1;
