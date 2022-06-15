@@ -44,7 +44,7 @@ public class ClientMain {
 
     /**Function that reads the input of the player
      *
-     * @return
+     * @return String read through command line
      * @throws ExecutionException
      */
     public static String readLine() throws ExecutionException {

@@ -22,7 +22,7 @@ public class RoundController {
         return this.roundOrder;
     }
 
-    /**This function decides the order of the player (it depends of the AssistantCard used)
+    /**This function decides the order of the player (it depends on the AssistantCard used)
      *
      * @param game
      * @return
