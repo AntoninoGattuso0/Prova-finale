@@ -2,6 +2,9 @@ package it.polimi.ingsw.view.GUI;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
+import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
+import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
+import it.polimi.ingsw.view.GUI.warnings.WarningNickname;
 import it.polimi.ingsw.view.View;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,9 +15,18 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 
 public class Gui implements View {
+
+    private boolean isExpert;
+    private LightGame lightGame;
+    private SocketNetworkHandler socketNetworkHandler;
+
+    public void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler) {
+        this.socketNetworkHandler = socketNetworkHandler;
+    }
 
 
     @Override
@@ -24,15 +36,19 @@ public class Gui implements View {
 
     @Override
     public void requestNickname() {
-        RequestNickPlayers requestNickPlayers = new RequestNickPlayers();
-        // DA COMPLETARE
+        //try{
+            RequestNickPlayers requestNickPlayers = new RequestNickPlayers();
+            socketNetworkHandler.sendMessage(new RequestNickname(requestNickPlayers.getNick()));
+            socketNetworkHandler.setNicknameThisPlayer(requestNickPlayers.getNick());
+        /*}catch (ExecutionException e){
+            new WarningNickname();
+        }*/
     }
 
     @Override
     public void requestNumPlayersIsExpert() {
         NumOfPlayerIsExpert requestNumPlayersIsExpert = new NumOfPlayerIsExpert();
-// DA COMPLETARE
-
+        socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(requestNumPlayersIsExpert.getNumPlayer(), requestNumPlayersIsExpert.isExpert()));
     }
 
     @Override
@@ -163,11 +179,6 @@ public class Gui implements View {
 
     @Override
     public void waitOtherPlayers() {
-
-    }
-
-    @Override
-    public void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler) {
 
     }
 

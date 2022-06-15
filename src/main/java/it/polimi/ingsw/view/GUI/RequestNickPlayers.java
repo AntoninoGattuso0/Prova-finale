@@ -15,7 +15,6 @@ import java.util.Objects;
 
 public class RequestNickPlayers {
 
-    private SocketNetworkHandler socketNetworkHandler;
     private Pane rootFXML;
     private String nick;
     private final ImageView joinButton;
@@ -36,11 +35,7 @@ public class RequestNickPlayers {
         joinButton.setOnMouseEntered(mouseEvent -> joinButton.setCursor(Cursor.HAND));
         joinButton.setOnMouseExited(mouseEvent -> joinButton.setCursor(Cursor.DEFAULT));
 
-        joinButton.setOnMouseClicked(mouseEvent -> {
-            nick = nickPlayer.getText();
-            if(nick!=null) socketNetworkHandler.sendMessage(new RequestNickname(nick));
-            else new WarningNickname();
-        });
+        joinButton.setOnMouseClicked(mouseEvent -> nick = nickPlayer.getText());
 
     }
 
@@ -48,4 +43,7 @@ public class RequestNickPlayers {
         return rootFXML;
     }
 
+    public String getNick(){
+        return nick;
+    }
 }

@@ -23,7 +23,6 @@ import java.util.Objects;
     and if the game is expert or not
  */
 public class NumOfPlayerIsExpert{
-    private SocketNetworkHandler socketNetworkHandler;
     private Pane rootFXML;
     @FXML
     private final ImageView joinButton;
@@ -53,31 +52,34 @@ public class NumOfPlayerIsExpert{
         joinButton.setOnMouseExited(mouseEvent -> joinButton.setCursor(Cursor.DEFAULT));
 
         nickname = nickPlayer.getText();
-        if(nickname!=null) socketNetworkHandler.sendMessage(new RequestNickname(nickname));
-        else new WarningNickname();
 
-        if (expertMode.isSelected()) expert = true;
-        else expert = false;
+        expert = expertMode.isSelected();
 
         joinButton.setOnMouseClicked(mouseEvent -> {
             String num = numPlayerBox.getValue();
-            switch(num){
-                case "2":
-                    numPlayer = 2;
-                    break;
-                case "3":
-                    numPlayer = 3;
-                    break;
-                case "4":
-                    numPlayer = 4;
+            switch (num) {
+                case "2" -> numPlayer = 2;
+                case "3" -> numPlayer = 3;
+                case "4" -> numPlayer = 4;
             }
-            socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(numPlayer, expert));
         });
+
+
 
     }
 
     public Pane getRootFXML(){
         return rootFXML;
     }
+    public String getNickname(){
+        return nickname;
+    }
 
+    public boolean isExpert() {
+        return expert;
+    }
+
+    public int getNumPlayer() {
+        return numPlayer;
+    }
 }

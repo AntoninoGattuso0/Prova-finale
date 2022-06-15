@@ -3,7 +3,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.GameTable">
         <ImageView id="characterCard0" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView id="characterCard1" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView id="characterCard2" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
