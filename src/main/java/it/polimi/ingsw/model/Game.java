@@ -509,7 +509,7 @@ public class Game {
             }
         }
 
-    /**Check if the game is finished
+    /**Check if the game is finished after every turn
      *
      * @param lastTurn
      * @return

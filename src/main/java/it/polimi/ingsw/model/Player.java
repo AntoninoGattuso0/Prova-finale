@@ -50,6 +50,11 @@ public class Player {
         LightEntrance lightEntrance= new LightEntrance(getEntrance().getNumPawn(),getEntrance().getGreenPawn(),getEntrance().getRedPawn(),getEntrance().getYellowPawn(),getEntrance().getPinkPawn(),getEntrance().getBluePawn());
         return new LightPlayer(getNickname(),getNumCoin(),getDeckAssistant(),getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDining,currentPhase);
     }
+
+    /**Set if the player is the one who have to tdo the actions during the turn
+     *
+     * @param active
+     */
     public void setActive(boolean active) {
         this.active=active;
     }

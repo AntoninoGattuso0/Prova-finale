@@ -127,6 +127,7 @@ public class Entrance {
             return true;
        else return false;
     }
+
     public void movePawnToIsland(ColorPawn colorPawn, Island island, Game game){
             //tutti questi spostamenti sono possibili se il numero di pedine all'entrata è 4 o 5 in base ai giocatori
                if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
