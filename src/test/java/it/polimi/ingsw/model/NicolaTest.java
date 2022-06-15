@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-class NicolaTest {//
+class NicolaTest {
     @Test
     public void testUseEffectNicola() {
         Game game = new Game(4, true);
