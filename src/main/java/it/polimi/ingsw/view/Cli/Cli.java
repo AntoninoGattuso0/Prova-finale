@@ -218,7 +218,7 @@ public class Cli implements Runnable, View {
             for (i = 0; i < numDining; i++) {
                 out.print("Scegli la pedina numero " + (i + 1) + " da spostare nella DiningRoom\n");
                 out.println("Digita il nome corrispondente al colore: ");
-                out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                out.println(ColorCli.GREEN + "1" + "   " + ColorCli.RED + "2" + "   " + ColorCli.YELLOW + "3" + "   " + ColorCli.PINK + "4" + "   " + ColorCli.BLUE + "5" + ColorCli.RESET);
                 String coloreStr;
                 int colore = -1;
                 try {
@@ -324,7 +324,7 @@ public class Cli implements Runnable, View {
             for (i = 0; i < numPawn; i++) {
                 out.print("Scegli la pedina numero " + (i + 1) + " da spostare sull'Isola numero " + numIsland + "\n");
                 out.println("Digita il nome corrispondente al colore: ");
-                out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                out.println(ColorCli.GREEN + "1" + "   " + ColorCli.RED + "2" + "   " + ColorCli.YELLOW + "3" + "   " + ColorCli.PINK + "4" + "   " + ColorCli.BLUE + "5" + ColorCli.RESET);
                 String coloreStr;
                 int colore = -1;
                 try {
@@ -690,7 +690,7 @@ public class Cli implements Runnable, View {
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli il colore di uno studente presente sulla carta  da spostare su un'Isola ");
-                            out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                            out.println(ColorCli.GREEN + "1O" + "   " + ColorCli.RED + "2O" + "   " + ColorCli.YELLOW + "3O" + "   " + ColorCli.PINK + "4O" + "   " + ColorCli.BLUE + "5O" + ColorCli.RESET);
                             int colore = -1;
                             String coloreString = null;
                             try {
@@ -817,8 +817,8 @@ public class Cli implements Runnable, View {
                                 } catch (ExecutionException e) {
                                     e.printStackTrace();
                                 }
-                                numIsland = numIsland - 1;
                             }
+                            numIsland = numIsland - 1;
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getErnesto().getCoinPrice());
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
                         }
@@ -860,7 +860,7 @@ public class Cli implements Runnable, View {
                             } else {
                                 for (int j = 0; j < numPawn; j++) {
                                     out.println("Seleziona il colore dello studente " + (j + 1) + "/" + numPawn + " da spostare da questa Carta al tuo Ingresso");
-                                    out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                                    out.println(ColorCli.GREEN + "1" + "   " + ColorCli.RED + "2" + "   " + ColorCli.YELLOW + "3" + "   " + ColorCli.PINK + "4" + "   " + ColorCli.BLUE + "5" + ColorCli.RESET);
                                     int colore = -1;
                                     String coloreString;
                                     try {
@@ -901,7 +901,7 @@ public class Cli implements Runnable, View {
                                 }
                                 for (int j = 0; j < numPawn; j++) {
                                     out.println("Seleziona il colore dello studente " + (j + 1) + "/" + numPawn + " da spostare dal tuo Ingresso su questa Carta");
-                                    out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                                    out.println(ColorCli.GREEN + "1" + "   " + ColorCli.RED + "2" + "   " + ColorCli.YELLOW + "3" + "   " + ColorCli.PINK + "4" + "   " + ColorCli.BLUE + "5" + ColorCli.RESET);
                                     int colore = -1;
                                     String coloreString;
                                     try {
@@ -960,7 +960,7 @@ public class Cli implements Runnable, View {
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli un colore da non conteggiare nell'influenza di questo turno: ");
-                            out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                            out.println(ColorCli.GREEN + "1O" + "   " + ColorCli.RED + "2O" + "   " + ColorCli.YELLOW + "3O" + "   " + ColorCli.PINK + "4O" + "   " + ColorCli.BLUE + "5O" + ColorCli.RESET);
                             int colore = -1;
                             String coloreString;
                             try {
@@ -1013,7 +1013,7 @@ public class Cli implements Runnable, View {
                             } else {
                                 for (i = 0; i < numPawn; i++) {
                                     out.println("Seleziona il colore dello studente " + (i + 1) + "/" + numPawn + " da spostare dal tuo Ingresso alla DiningRoom");
-                                    out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                                    out.println(ColorCli.GREEN + "1" + "   " + ColorCli.RED + "2" + "   " + ColorCli.YELLOW + "3" + "   " + ColorCli.PINK + "4" + "   " + ColorCli.BLUE + "5" + ColorCli.RESET);
                                     int colore = -1;
                                     String coloreString;
                                     try {
@@ -1099,7 +1099,7 @@ public class Cli implements Runnable, View {
                                 }
                                 for (i = 0; i < numPawn; i++) {
                                     out.println("Seleziona il colore dello studente " + (i + 1) + "/" + numPawn + " da spostare dalla DiningRoome al tuo Ingresso");
-                                    out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                                    out.println(ColorCli.GREEN + "1" + "   " + ColorCli.RED + "2" + "   " + ColorCli.YELLOW + "3" + "   " + ColorCli.PINK + "4" + "   " + ColorCli.BLUE + "5" + ColorCli.RESET);
                                     int colore = -1;
                                     String coloreString;
                                     try {
@@ -1149,7 +1149,7 @@ public class Cli implements Runnable, View {
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli uno studente da questa Carta e posizionalo nella tua DiningRoom: ");
-                            out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                            out.println(ColorCli.GREEN + "1O" + "   " + ColorCli.RED + "2O" + "   " + ColorCli.YELLOW + "3O" + "   " + ColorCli.PINK + "4O" + "   " + ColorCli.BLUE + "5O" + ColorCli.RESET);
                             int colore = -1;
                             String coloreString;
                             try {
@@ -1242,7 +1242,7 @@ public class Cli implements Runnable, View {
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli un Colore: ogni giocatore rimetterà nel sacchetto 3 Studenti dalla propria DiningRoom di quel Colore");
-                            out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                            out.println(ColorCli.GREEN + "1O" + "   " + ColorCli.RED + "2O" + "   " + ColorCli.YELLOW + "3O" + "   " + ColorCli.PINK + "4O" + "   " + ColorCli.BLUE + "5O" + ColorCli.RESET);
                             int colore = -1;
                             String coloreString;
                             try {
@@ -1271,7 +1271,7 @@ public class Cli implements Runnable, View {
                                     check = true;
                                 } else {
                                     out.println("Colore inesistente, inserisci un colore corretto:");
-                                    out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
+                                    out.println(ColorCli.GREEN + "1O" + "   " + ColorCli.RED + "2O" + "   " + ColorCli.YELLOW + "3O" + "   " + ColorCli.PINK + "4O" + "   " + ColorCli.BLUE + "5O" + ColorCli.RESET);
                                     try {
                                         coloreString = readLine();
                                         colore = convertStringToNumber(coloreString);
@@ -1299,40 +1299,40 @@ public class Cli implements Runnable, View {
             if (lightGame.getCharacterCards().get(i).getNumCard() == 0) {
                 out.println("");
                 out.println("EFFETTO: Prendi 1 studente dalla carta e piazzalo su un'Isola a tua scelta. Poi pesca 1 studente dal sacchetto e mettilo su questa carta");
-                out.println("Prezzo carta: " + lightGame.getAntonio().getCoinPrice() + "✪");
-                out.println(ColorCli.GREEN + "●: " + lightGame.getAntonio().getGreenPawn());
-                out.println(ColorCli.RED + "●: " + lightGame.getAntonio().getRedPawn());
-                out.println(ColorCli.YELLOW + "●: " + lightGame.getAntonio().getYellowPawn());
-                out.println(ColorCli.PINK + "●: " + lightGame.getAntonio().getPinkPawn());
-                out.println(ColorCli.BLUE + "●: " + lightGame.getAntonio().getBluePawn() + ColorCli.RESET);
+                out.println("Prezzo carta: " + lightGame.getAntonio().getCoinPrice() + "");
+                out.println(ColorCli.GREEN + "O: " + lightGame.getAntonio().getGreenPawn());
+                out.println(ColorCli.RED + "O: " + lightGame.getAntonio().getRedPawn());
+                out.println(ColorCli.YELLOW + "O: " + lightGame.getAntonio().getYellowPawn());
+                out.println(ColorCli.PINK + "O: " + lightGame.getAntonio().getPinkPawn());
+                out.println(ColorCli.BLUE + "O: " + lightGame.getAntonio().getBluePawn() + ColorCli.RESET);
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println();
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 1) {
                 out.println("");
                 out.println("EFFETTO: Durante questo turno, prendi il controllo dei professori anche se nella tua Sala hai lo stesso numero di Studenti del giocatore che li controlla in quel momento");
-                out.println("Prezzo carta: " + lightGame.getBarbara().getCoinPrice() + "✪");
+                out.println("Prezzo carta: " + lightGame.getBarbara().getCoinPrice() + "");
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 2) {
                 out.println("");
                 out.println("EFFETTO: Scegli un'isola e calcola la maggioranza come se Madre Natura avesse terminato il suo movimento lì. In questo turno madre natura si muoverà come di consueto");
-                out.println("Prezzo carta: " + lightGame.getCiro().getCoinPrice() + "✪");
+                out.println("Prezzo carta: " + lightGame.getCiro().getCoinPrice() + "");
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 3) {
                 out.println("");
                 out.println("Puoi muovere Madre Natura fino a 2 isole addizionali");
-                out.println("Prezzo carta: " + lightGame.getDante().getCoinPrice() + "✪");
+                out.println("Prezzo carta: " + lightGame.getDante().getCoinPrice() + "");
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 4) {
                 out.println("");
                 out.println("EFFETTO: Piazza una tessera Divieto su un'Isola a tua scelta. La prima volta che Madre Natura termina lì il suo movimento rimuovete la tessera Divieto SENZA calcolare l'influenza su quell'isola");
-                out.println("Prezzo carta: " + lightGame.getErnesto().getCoinPrice() + "✪");
+                out.println("Prezzo carta: " + lightGame.getErnesto().getCoinPrice() + "");
                 out.println("Numero carte Divieto rimanenti: " + lightGame.getErnesto().getNumProhibitionCard());
                 out.println();
                 out.println("+-----------------------------------------------------+");
@@ -1340,59 +1340,59 @@ public class Cli implements Runnable, View {
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 5) {
                 out.println("");
                 out.println("EFFETTO: Durante il conteggio dell'influenza su in'Isola , le Torri presenti non vengono calcolate");
-                out.println("Prezzo carta: " + lightGame.getFelix().getCoinPrice() + "✪");
+                out.println("Prezzo carta: " + lightGame.getFelix().getCoinPrice() + "");
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 6) {
                 out.println("");
                 out.println("EFFETTO: Poi prendere fino a 3 Studenti da questa carta e scambiarli con altrettanti Studenti presenti nel tuo Ingresso");
-                out.println("Prezzo carta: " + lightGame.getGiuseppe().getCoinPrice() + "✪");
-                out.println(ColorCli.GREEN + "●: " + lightGame.getGiuseppe().getNumGreenPawn());
-                out.println(ColorCli.RED + "●: " + lightGame.getGiuseppe().getNumRedPawn());
-                out.println(ColorCli.YELLOW + "●: " + lightGame.getGiuseppe().getNumYellowPawn());
-                out.println(ColorCli.PINK + "●: " + lightGame.getGiuseppe().getNumPinkPawn());
-                out.println(ColorCli.BLUE + "●: " + lightGame.getGiuseppe().getNumBluePawn() + ColorCli.RESET);
+                out.println("Prezzo carta: " + lightGame.getGiuseppe().getCoinPrice() + "");
+                out.println(ColorCli.GREEN + "O: " + lightGame.getGiuseppe().getNumGreenPawn());
+                out.println(ColorCli.RED + "O: " + lightGame.getGiuseppe().getNumRedPawn());
+                out.println(ColorCli.YELLOW + "O: " + lightGame.getGiuseppe().getNumYellowPawn());
+                out.println(ColorCli.PINK + "O: " + lightGame.getGiuseppe().getNumPinkPawn());
+                out.println(ColorCli.BLUE + "O: " + lightGame.getGiuseppe().getNumBluePawn() + ColorCli.RESET);
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 7) {
                 out.println("");
                 out.println("EFFETTO: in questo turno, durante il calcolo dell'influenza, hai 2 punti addizionali");
-                out.println("Prezzo carta: " + lightGame.getIvan().getCoinPrice() + "✪");
+                out.println("Prezzo carta: " + lightGame.getIvan().getCoinPrice() + "");
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 8) {
                 out.println("");
                 out.println("EFFETTO: Scegli un colore Studente; in questo turno quel colore non fornisce influenza");
-                out.println("Prezzo carta: " + lightGame.getLancillotto().getCoinPrice() + "✪");
+                out.println("Prezzo carta: " + lightGame.getLancillotto().getCoinPrice() + "");
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 9) {
                 out.println("");
                 out.println("EFFETTO: Puoi scabiare fino a 2 Studenti presenti nella tua Sala e nel tuo Ingresso");
-                out.println("Prezzo carta: " + lightGame.getMaria().getCoinPrice() + "✪");
+                out.println("Prezzo carta: " + lightGame.getMaria().getCoinPrice() + "");
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 10) {
                 out.println("");
                 out.println("EFFETTO: Prendi 1 Studente da questa carta e piazzalo nella tua Sala. Poi pesca un nuovo Studente e posizionalo su questa carta");
-                out.println("Prezzo carta: " + lightGame.getNicola().getCoinPrice() + "✪");
-                out.println(ColorCli.GREEN + "●: " + lightGame.getNicola().getGreenPawn());
-                out.println(ColorCli.RED + "●: " + lightGame.getNicola().getRedPawn());
-                out.println(ColorCli.YELLOW + "●: " + lightGame.getNicola().getYellowPawn());
-                out.println(ColorCli.PINK + "●: " + lightGame.getNicola().getPinkPawn());
-                out.println(ColorCli.BLUE + "●: " + lightGame.getNicola().getBluePawn()+ ColorCli.RESET);
+                out.println("Prezzo carta: " + lightGame.getNicola().getCoinPrice() + "");
+                out.println(ColorCli.GREEN + "O: " + lightGame.getNicola().getGreenPawn());
+                out.println(ColorCli.RED + "O: " + lightGame.getNicola().getRedPawn());
+                out.println(ColorCli.YELLOW + "O: " + lightGame.getNicola().getYellowPawn());
+                out.println(ColorCli.PINK + "O: " + lightGame.getNicola().getPinkPawn());
+                out.println(ColorCli.BLUE + "O: " + lightGame.getNicola().getBluePawn()+ ColorCli.RESET);
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 11) {
                 out.println("");
                 out.println("EFFETTO: Scegli un colore di Studente; ogni giocatore (incluso te) deve rimettere nel sacchetto 3 studenti di quel colore presenti nella sua DiningRoom");
-                out.println("Prezzo carta: " + lightGame.getOmnia().getCoinPrice() + "✪");
+                out.println("Prezzo carta: " + lightGame.getOmnia().getCoinPrice() + "");
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
@@ -1781,19 +1781,19 @@ public class Cli implements Runnable, View {
     private String color4Island(int island, int color){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
-            showColor.append(ColorCli.GREEN).append("    ●: ").append(lightGame.getIslands().get(island).getGreenPawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.GREEN).append("      ").append(lightGame.getIslands().get(island).getGreenPawn()).append("       ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 1){
-            showColor.append(ColorCli.RED).append("    ●: ").append(lightGame.getIslands().get(island).getRedPawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.RED).append("      ").append(lightGame.getIslands().get(island).getRedPawn()).append("       ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 2){
-            showColor.append(ColorCli.YELLOW).append("    ●: ").append(lightGame.getIslands().get(island).getYellowPawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.YELLOW).append("      ").append(lightGame.getIslands().get(island).getYellowPawn()).append("       ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 3){
-            showColor.append(ColorCli.PINK).append("    ●: ").append(lightGame.getIslands().get(island).getPinkPawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.PINK).append("      ").append(lightGame.getIslands().get(island).getPinkPawn()).append("       ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 4){
-            showColor.append(ColorCli.BLUE).append("    ●: ").append(lightGame.getIslands().get(island).getBluePawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.BLUE).append("      ").append(lightGame.getIslands().get(island).getBluePawn()).append("       ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 5){
             if(lightGame.getIslands().get(island).getMotherNature())
@@ -1824,19 +1824,19 @@ public class Cli implements Runnable, View {
     private String color4Clouds(int cloud, int color){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
-            showColor.append(ColorCli.GREEN).append("       ●: ").append(lightGame.getClouds().get(cloud).getGreenPawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.GREEN).append("       O: ").append(lightGame.getClouds().get(cloud).getGreenPawn()).append("      ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 1){
-            showColor.append(ColorCli.RED).append("       ●: ").append(lightGame.getClouds().get(cloud).getRedPawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.RED).append("       O: ").append(lightGame.getClouds().get(cloud).getRedPawn()).append("      ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 2){
-            showColor.append(ColorCli.YELLOW).append("       ●: ").append(lightGame.getClouds().get(cloud).getYellowPawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.YELLOW).append("       O: ").append(lightGame.getClouds().get(cloud).getYellowPawn()).append("      ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 3){
-            showColor.append(ColorCli.PINK).append("       ●: ").append(lightGame.getClouds().get(cloud).getPinkPawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.PINK).append("       O: ").append(lightGame.getClouds().get(cloud).getPinkPawn()).append("      ").append(ColorCli.BOLDCYAN);
         }
         else if(color == 4){
-            showColor.append(ColorCli.BLUE).append("       ●: ").append(lightGame.getClouds().get(cloud).getBluePawn()).append("      ").append(ColorCli.BOLDCYAN);
+            showColor.append(ColorCli.BLUE).append("       O: ").append(lightGame.getClouds().get(cloud).getBluePawn()).append("      ").append(ColorCli.BOLDCYAN);
         }
         return showColor.toString();
     }
@@ -1846,119 +1846,120 @@ public class Cli implements Runnable, View {
         StringBuilder showColor = new StringBuilder();
 
         if(color == 0){
-            showColor.append(ColorCli.GREEN).append("●: ").append(lightGame.getPlayers().get(player).getEntrance().getGreenPawn()).append("          ");
+            showColor.append(ColorCli.GREEN).append(" ").append(lightGame.getPlayers().get(player).getEntrance().getGreenPawn()).append("            ");
             showColor.append(ColorCli.BOLDCYAN).append("|  ").append(ColorCli.GREEN);
             for (m = 0; m < lightGame.getPlayers().get(player).getDiningRoom().getNumGreen(); m++) {
                 if (m == 2 || m == 5 || m == 8)
-                    showColor.append(" ◎ ");
+                    showColor.append(" Ø ");
                 else
-                    showColor.append(" ● " );
+                    showColor.append(" O " );
             }
             while (m < 10) {
-                showColor.append(" ◌ ");
+                showColor.append(" x ");
                 m++;
             }
             showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.GREEN);
             if(lightGame.getProfTable().getGreenProf() == player) {
-                showColor.append(" ❂ ");
+                showColor.append(" o ");
             }
             else
-                showColor.append(" ◌ ");
+                showColor.append(" ? ");
             showColor.append(ColorCli.BOLDCYAN).append("|");
             showColor.append("\n");
         }
 
 
         else if(color == 1){
-            showColor.append(ColorCli.RED).append("●: ").append(lightGame.getPlayers().get(player).getEntrance().getRedPawn()).append("          ");
+            showColor.append(ColorCli.RED).append(" ").append(lightGame.getPlayers().get(player).getEntrance().getRedPawn()).append("            ");
             showColor.append(ColorCli.BOLDCYAN).append("|  ").append(ColorCli.RED);
             for (m = 0; m < lightGame.getPlayers().get(player).getDiningRoom().getNumRed(); m++) {
                 if (m == 2 || m == 5 || m == 8)
-                    showColor.append(" ◎ ");
+                    showColor.append(" Ø ");
                 else
-                    showColor.append(" ● " );
+                    showColor.append(" O " );
             }
             while (m < 10) {
-                showColor.append(" ◌ ");
+                showColor.append(" x ");
                 m++;
             }
             showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RED);
             if(lightGame.getProfTable().getRedProf() == player)
-                showColor.append(" ❂ ");
+                showColor.append(" o ");
             else
-                showColor.append(" ◌ ");
+                showColor.append(" ? ");
             showColor.append(ColorCli.BOLDCYAN).append("|");
             showColor.append("\n");
         }
 
         else if(color == 2){
-            showColor.append(ColorCli.YELLOW).append("●: ").append(lightGame.getPlayers().get(player).getEntrance().getYellowPawn()).append("          ");
+            showColor.append(ColorCli.YELLOW).append(" ").append(lightGame.getPlayers().get(player).getEntrance().getYellowPawn()).append("            ");
             showColor.append(ColorCli.BOLDCYAN).append("|  ").append(ColorCli.YELLOW);
             for (m = 0; m < lightGame.getPlayers().get(player).getDiningRoom().getNumYellow(); m++) {
                 if (m == 2 || m == 5 || m == 8)
-                    showColor.append(" ◎ ");
+                    showColor.append(" Ø ");
                 else
-                    showColor.append(" ● " );
+                    showColor.append(" O " );
             }
             while (m < 10) {
-                showColor.append(" ◌ ");
+                showColor.append(" x ");
                 m++;
             }
             showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.YELLOW);
             if(lightGame.getProfTable().getYellowProf() == player)
-                showColor.append(" ❂ ");
+                showColor.append(" o ");
             else
-                showColor.append(" ◌ ");
+                showColor.append(" ? ");
             showColor.append(ColorCli.BOLDCYAN).append("|");
             showColor.append("\n");
         }
 
         else if(color == 3){
-            showColor.append(ColorCli.PINK).append("●: ").append(lightGame.getPlayers().get(player).getEntrance().getPinkPawn()).append("          ");
+            showColor.append(ColorCli.PINK).append(" ").append(lightGame.getPlayers().get(player).getEntrance().getPinkPawn()).append("            ");
             showColor.append(ColorCli.BOLDCYAN).append("|  ").append(ColorCli.PINK);
             for (m = 0; m < lightGame.getPlayers().get(player).getDiningRoom().getNumPink(); m++) {
                 if (m == 2 || m == 5 || m == 8)
-                    showColor.append(" ◎ ");
+                    showColor.append(" Ø ");
                 else
-                    showColor.append(" ● " );
+                    showColor.append(" O " );
             }
             while (m < 10) {
-                showColor.append(" ◌ ");
+                showColor.append(" x ");
                 m++;
             }
             showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.PINK);
             if(lightGame.getProfTable().getPinkProf() == player)
-                showColor.append(" ❂ ");
+                showColor.append(" o ");
 
             else
-                showColor.append(" ◌ ");
+                showColor.append(" ? ");
             showColor.append(ColorCli.BOLDCYAN).append("|");
             showColor.append("\n");
         }
 
         else if(color == 4){
-            showColor.append(ColorCli.BLUE).append("●: ").append(lightGame.getPlayers().get(player).getEntrance().getBluePawn()).append("          ");
+            showColor.append(ColorCli.BLUE).append(" ").append(lightGame.getPlayers().get(player).getEntrance().getBluePawn()).append("            ");
             showColor.append(ColorCli.BOLDCYAN).append("|  ").append(ColorCli.BLUE);
             for (m = 0; m < lightGame.getPlayers().get(player).getDiningRoom().getNumBlue(); m++) {
                 if (m == 2 || m == 5 || m == 8)
-                    showColor.append(" ◎ ");
+                    showColor.append(" Ø ");
                 else
-                    showColor.append(" ● " );
+                    showColor.append(" O " );
             }
             while (m < 10) {
-                showColor.append(" ◌ ");
+                showColor.append(" x ");
                 m++;
             }
             showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.BLUE);
             if(lightGame.getProfTable().getBlueProf() == player)
-                showColor.append(" ❂ ");
+                showColor.append(" o ");
             else
-                showColor.append(" ◌ ");
+                showColor.append(" ? ");
             showColor.append(ColorCli.BOLDCYAN).append("|").append(ColorCli.RESET).append("\n");
+            showColor.append(ColorCli.BOLDCYAN).append("+---------------------------------------------------+\n").append(ColorCli.RESET);
+            showColor.append("\n");
             showColor.append("Il numero totale di torri ").append(lightGame.getPlayers().get(player).getTowerSpace().getColorTower()).append(" disponibili è: ").append(ColorCli.BOLDWITE).append(lightGame.getPlayers().get(player).getTowerSpace().getNumTower()).append("\n").append(ColorCli.RESET);
             if(lightGame.getIsExpert())
                 showColor.append("Il numero di Coin posseduti è: ").append(ColorCli.BOLDWITE).append(lightGame.getPlayers().get(player).getNumCoin()).append("\n").append(ColorCli.RESET);
-            showColor.append(ColorCli.BOLDCYAN).append("+---------------------------------------------------+\n").append(ColorCli.RESET);
             showColor.append("\n");
         }
         return showColor.toString();
