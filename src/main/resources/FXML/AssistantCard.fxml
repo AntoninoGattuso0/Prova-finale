@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <ImageView id="AssistantCard1" fitHeight="150.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/AssistantCard1.png" />
+        </ImageView>
+        <ImageView id="AssistantCard2" fitHeight="150.0" fitWidth="115.0" layoutX="116.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/AssistantCard2.png" />
+        </ImageView>
+        <ImageView id="AssistantCard3" fitHeight="150.0" fitWidth="117.0" layoutX="232.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/AssistantCard3.png" />
+        </ImageView>
+        <ImageView id="AssistantCard4" fitHeight="150.0" fitWidth="116.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/AssistantCard4.png" />
+        </ImageView>
+        <ImageView id="AssistantCard5" fitHeight="150.0" fitWidth="116.0" layoutX="116.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/AssistantCard5.png" />
+        </ImageView>
+        <ImageView id="AssistantCard6" fitHeight="150.0" fitWidth="117.0" layoutX="232.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/AssistantCard6.png" />
+        </ImageView>
+        <ImageView id="AssistantCard7" fitHeight="150.0" fitWidth="115.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/AssistantCard7.png" />
+        </ImageView>
+        <ImageView id="AssistantCArd8" fitHeight="150.0" fitWidth="116.0" layoutX="116.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/AssistantCard8.png" />
+        </ImageView>
+        <ImageView id="AssistantCard9" fitHeight="150.0" fitWidth="117.0" layoutX="232.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/AssistantCard9.png" />
+        </ImageView>
+        <ImageView id="AssistantCard10" fitHeight="150.0" fitWidth="116.0" layoutX="116.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/AssistantCard10.png" />
+        </ImageView>
+    </children>
+</Pane>

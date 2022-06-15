@@ -2,16 +2,17 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.client.ModelLight.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 public class Game {
     protected ArrayList<Player> players = new ArrayList<>();
     protected int totPlayer;
     protected ArrayList<Cloud> clouds;
-    protected ProfTable profTable;// = new ProfTable()
+    protected ProfTable profTable;
     protected ArrayList<Island> islands = new ArrayList<>();
     protected boolean isExpert;
     protected ArrayList<CharacterCard> characterCards = new ArrayList<>();//insieme dei 3 characters usati
-    protected Map<Integer, String> m = new HashMap<>();
     protected StudentBag studentBag;
 
     private Antonio antonio;
@@ -39,6 +40,10 @@ public class Game {
         return profTable;
     }
 
+    /**Creating the "LightGame" instance: it contains the useful things to pass to the View
+     *
+     * @return
+     */
     public LightGame getLightGame(){
         int i;
         ArrayList<LightCloud> lightClouds=new ArrayList<>();
@@ -126,65 +131,66 @@ public class Game {
     public Game(int giocatori, boolean expert) {
         totPlayer = giocatori;
         isExpert = expert;
-        //mappa che associa numeri a colori ("m.get(int)" per ricevere il colore in base al numero inserito in int)
-        m.put(0, "GREEN");
-        m.put(1, "RED");
-        m.put(2, "YELLOW");
-        m.put(3, "PINK");
-        m.put(4, "BLUE");
     }
+
+    /**This function inizialize everything needed in the game just created(islands, clouds etc...)
+     *
+     * @param game
+     */
     public void start (Game game){
         int i;
         studentBag = new StudentBag();
         profTable = new ProfTable();
 
-//creazione isole
+        //Islands Creations
+
         for(i=0; i<12; i++){
             Island island = new Island();
             islands.add(island);
         }
 
-//randomizza madre natura
+        //Randomizer MN position
         Random rnd = new Random();
         int n = rnd.nextInt(12);
         islands.get(n).setMotherNature(true);
 
-//randomizza pedine per ogni isola iniziale
+        //Randomizer starting pawn for each island (except for the MN one and the opposite one)
         int g = 2;
         int r = 2;
         int y = 2;
         int p = 2;
-        int b = 2; //conteggio 2 pedine per colore
-//arraylist per ogni colore
-        ArrayList<String> startingPawn = new ArrayList<>(5);
-        startingPawn.add(m.get(0));
-        startingPawn.add(m.get(1));
-        startingPawn.add(m.get(2));
-        startingPawn.add(m.get(3));
-        startingPawn.add(m.get(4));
+        int b = 2;
+
+        //ArrayList to count each color
+        ArrayList<ColorPawn> startingPawn = new ArrayList<>(5);
+        startingPawn.add(ColorPawn.GREEN);
+        startingPawn.add(ColorPawn.RED);
+        startingPawn.add(ColorPawn.YELLOW);
+        startingPawn.add(ColorPawn.PINK);
+        startingPawn.add(ColorPawn.BLUE);
         i = n + 1;
         if (i == 12) i = 0;
         while (!(islands.get(i).getMotherNature())&&startingPawn.size()>0){
             if(i!=(n+6) && i!=(n-6)) {
                 Random rnd1 = new Random();
                 int random = rnd1.nextInt(startingPawn.size());
-                if (startingPawn.get(random).equals(m.get(0))) {
+                if (startingPawn.get(random).equals(ColorPawn.GREEN)) {
                     g--;
                     islands.get(i).setGreenPawn(islands.get(i).getGreenPawn() + 1);
                     if (g == 0) startingPawn.remove(random);
-                } else if (startingPawn.get(random).equals(m.get(1))) {
+                } else if (startingPawn.get(random).equals(ColorPawn.RED)) {
                     r--;
                     islands.get(i).setRedPawn(islands.get(i).getRedPawn() + 1);
                     if (r == 0) startingPawn.remove(random);
-                } else if (startingPawn.get(random).equals(m.get(2))) {
+                } else if (startingPawn.get(random).equals(ColorPawn.YELLOW)) {
                     y--;
                     islands.get(i).setYellowPawn(islands.get(i).getYellowPawn() + 1);
                     if (y == 0) startingPawn.remove(random);
-                } else if (startingPawn.get(random).equals(m.get(3))) {
+                } else if (startingPawn.get(random).equals(ColorPawn.PINK)) {
                     p--;
                     islands.get(i).setPinkPawn(islands.get(i).getPinkPawn() + 1);
                     if (p == 0) startingPawn.remove(random);
-                } else if (startingPawn.get(random).equals(m.get(4))) {
+                } else if (startingPawn.get(random).equals(ColorPawn.BLUE)) {
                     b--;
                     islands.get(i).setBluePawn(islands.get(i).getBluePawn() + 1);
                     if (b == 0) startingPawn.remove(random);
@@ -193,7 +199,7 @@ public class Game {
             i++;
             if (i >= 12) i = 0;
         }
-        // creazione nuvole e inizializzazione
+        //Clouds creation
         clouds = new ArrayList<>();
         for (i = 0; i < totPlayer; i++) {
             Cloud cloud = new Cloud();
@@ -201,7 +207,13 @@ public class Game {
             clouds.add(cloud);
         }
         setCharacterCards(game);
-        }
+    }
+
+    /**This fucntion is useful to create fast an array of the color that are in the StudentBag (if a color miss
+     * it doesn't get added to the array)
+     * @param studentBag
+     * @return
+     */
     static ArrayList<ColorPawn> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
         ArrayList<ColorPawn> arrayPawn = new ArrayList<>(5);
         if (studentBag.getGreenNum() > 0)
@@ -216,6 +228,12 @@ public class Game {
             arrayPawn.add(ColorPawn.BLUE);
         return arrayPawn;
     }
+
+    /**Create a new player in the game
+     *
+     * @param nick
+     * @param game
+     */
     public void newPlayer(String nick,Game game) {
         Player player = new Player(nick,game);
         game.players.add(player);
@@ -226,7 +244,13 @@ public class Game {
         islands.get(i).setMotherNature(false);
         island.setMotherNature(true);
     }
-    public void unifyIsland(int i, Game game) { // si fa sempre dopo aver messo una torre, mettiamo in ingresso l'isola con madre natura
+
+    /**Everythime a Tower is added the game check if he can unify the near Islands
+     *
+     * @param i
+     * @param game
+     */
+    public void unifyIsland(int i, Game game) {
         int j, k;
         boolean prevTrue, postTrue;
         if (game.islands.get(i).getTower()) {
@@ -253,7 +277,15 @@ public class Game {
                     game.getIslands().remove(k);
             }
         }
-        }
+    }
+
+    /**Check if the 2 islands can be unified or not
+     *
+     * @param i (island 1)
+     * @param j (island 2)
+     * @param game
+     * @return
+     */
     public static boolean checkIsland(int i, int j, Game game) { //controlla se le due isole si possono unire, nel caso le unisce
         if (game.islands.get(j).getColorTower() == game.islands.get(i).getColorTower()) {
             game.islands.get(i).setGreenPawn(game.islands.get(i).getGreenPawn() + game.islands.get(j).getGreenPawn());
@@ -265,6 +297,12 @@ public class Game {
         }
         return false;
     }
+
+    /**Calculates the influence of the island
+     *
+     * @param island
+     * @param game
+     */
     public void topInfluence(Island island, Game game) {
         int i, j, k, n, color, max;
         if (island.getProhibited()) {
@@ -279,7 +317,7 @@ public class Game {
                 }
                 for (color = 0; color < 5; color++) {
                     n = game.profTable.checkProf(color);
-                    if (color == 0 && n != -1&&!(lancillotto!=null&&lancillotto.isEffectActive()&&lancillotto.getPedina()==color)) influence.set(n, influence.get(n) + island.getGreenPawn());
+                    if (color == 0 && n != -1 && !(lancillotto!=null&&lancillotto.isEffectActive()&&lancillotto.getPedina()==color)) influence.set(n, influence.get(n) + island.getGreenPawn());
 
                     else if (color == 1 && n != -1 &&!(lancillotto!=null&&lancillotto.isEffectActive()&&lancillotto.getPedina()==color)) influence.set(n, influence.get(n) + island.getRedPawn());
 
@@ -299,7 +337,8 @@ public class Game {
                     influence.set(i, 0);
                     influence.set(k, 0);
                 }
-                if(felix!=null&& !felix.isEffectActive()) {
+
+                if(felix==null || !felix.isEffectActive()) {
                     for (i = 0; i < game.totPlayer; i++) {
                         if (island.getTower() && island.getColorTower() == game.players.get(i).towerSpace.colorTower)
                             influence.set(i, influence.get(i) + island.getTotIsland());
@@ -324,21 +363,23 @@ public class Game {
                         game.getPlayers().get(influence.indexOf(max)).getTowerSpace().setNumTower((game.getPlayers().get(influence.indexOf(max)).getTowerSpace().getNumTower()) - island.getTotIsland());
                     }
                 }
-                if(ivan!=null&&ivan.isEffectActive()){
-                    ivan.setEffectActive(false);
-                }
+
             if(felix!=null&&felix.isEffectActive()){
                     felix.setEffectActive(false);
                 }
-                if(lancillotto!=null&&lancillotto.isEffectActive()){
+            if(lancillotto!=null&&lancillotto.isEffectActive()){
                     lancillotto.setEffectActive(false);
                 }
-                unifyIsland(game.islands.indexOf(island), game);
-            }
+            unifyIsland(game.islands.indexOf(island), game);
+        }
     }
+
+    /**Randomizer the 3 CharacterCards of that Game
+     *
+     * @param game
+     */
         public void setCharacterCards (Game game){ //posiziona a caso dei personaggi (3)
             if (game.isExpert) {
-
                 Random rnd = new Random();
                 int random = rnd.nextInt(12);
                 int random1 = rnd.nextInt(12);
@@ -348,6 +389,7 @@ public class Game {
                     random1 = rnd.nextInt(12);
                     random2 = rnd.nextInt(12);
                 }
+
                 if (random == 0 || random1 == 0 || random2 == 0) {
                     antonio = new Antonio(game.studentBag);
                     CharacterCard card = new CharacterCard(antonio, 0);
@@ -410,7 +452,11 @@ public class Game {
                 }
             }
         }
-        public void moveProf() {
+
+    /**Assign the Professor to the correct player
+     *
+     */
+    public void moveProf() {
             int i, j;
             ArrayList<Integer> maxColor = new ArrayList<>();
             for (i = 0; i < 5; i++) {
@@ -462,6 +508,11 @@ public class Game {
             }
         }
 
+    /**Check if the game is finished
+     *
+     * @param lastTurn
+     * @return
+     */
     public Player finish(Boolean lastTurn) {
         ArrayList<Integer> numTower = new ArrayList<>();
         numTower.add(0);
@@ -469,9 +520,9 @@ public class Game {
         numTower.add(0);
         ArrayList<Integer> numProf = new ArrayList<>();
         for(int i = 0; i<players.size(); i++) numProf.add(0);
-        for(int i = 0; i<5; i++){//scorro tutti i colori
+        for(int i = 0; i<5; i++){//for the 5 colors
             if(profTable.checkProf(i)!=-1) {
-                numProf.set(profTable.checkProf(i), numProf.get(profTable.checkProf(i)) + 1);//per ogni colore vedo quale player ha il suo professore e aggiungo +1 all'arraylist
+                numProf.set(profTable.checkProf(i), numProf.get(profTable.checkProf(i)) + 1);//if the player got the professor, the arrayList get a +1 in the count
             }
         }
         for (Island island : islands) {

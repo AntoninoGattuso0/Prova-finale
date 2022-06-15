@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+        <ImageView fitHeight="350.0" fitWidth="620.0" layoutX="-176.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+            <Image url="@../images/SchoolTable.png" />
+        </ImageView>
+        <ImageView id="schoolGreen00" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolGreen02" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolGreen01" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="452.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolGreen03" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolGreen09" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolGreen04" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolGreen05" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolGreen06" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolGreen07" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolGreen08" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolRed00" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolRed02" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolRed01" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="452.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolRed03" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolRed09" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolRed04" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolRed05" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolRed06" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolRed07" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolRed08" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolYellow00" fitHeight="20.0" fitWidth="20.0" layoutX="125.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolYellow02" fitHeight="20.0" fitWidth="20.0" layoutX="125.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolYellow01" fitHeight="20.0" fitWidth="20.0" layoutX="125.0" layoutY="452.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolYellow03" fitHeight="20.0" fitWidth="20.0" layoutX="125.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolYellow09" fitHeight="20.0" fitWidth="20.0" layoutX="125.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolYellow04" fitHeight="20.0" fitWidth="20.0" layoutX="125.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolYellow05" fitHeight="20.0" fitWidth="20.0" layoutX="125.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolYellow06" fitHeight="20.0" fitWidth="20.0" layoutX="125.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolYellow07" fitHeight="20.0" fitWidth="20.0" layoutX="125.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolYellow08" fitHeight="20.0" fitWidth="20.0" layoutX="125.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolPink00" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolPink02" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolPink01" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="452.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolPink03" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolPink09" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolPink04" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolPink05" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolPink06" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolPink07" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolPink08" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolBlue00" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolBlue02" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolBlue01" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="452.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolBlue03" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolBlue09" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolBlue04" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolBlue05" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolBlue06" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolBlue07" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolBlue08" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="schoolRedProf0" fitHeight="35.0" fitWidth="35.0" layoutX="74.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redProf3D.png" />
+        </ImageView>
+        <ImageView id="schoolBlueProf0" fitHeight="35.0" fitWidth="35.0" layoutX="205.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueProf3D.png" />
+        </ImageView>
+        <ImageView id="schoolGreenProf0" fitHeight="35.0" fitWidth="35.0" layoutX="29.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenProf3D.png" />
+        </ImageView>
+        <ImageView id="schoolYellowProf0" fitHeight="35.0" fitWidth="35.0" layoutX="117.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowProf3D.png" />
+        </ImageView>
+        <ImageView id="schoolPinkProf0" fitHeight="35.0" fitWidth="35.0" layoutX="160.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkProf3D.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool0" fitHeight="45.0" fitWidth="45.0" layoutX="24.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool1" fitHeight="45.0" fitWidth="45.0" layoutX="24.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool2" fitHeight="45.0" fitWidth="45.0" layoutX="74.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool3" fitHeight="45.0" fitWidth="45.0" layoutX="74.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool4" fitHeight="45.0" fitWidth="45.0" layoutX="117.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool5" fitHeight="45.0" fitWidth="45.0" layoutX="117.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool6" fitHeight="45.0" fitWidth="45.0" layoutX="160.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool7" fitHeight="45.0" fitWidth="45.0" layoutX="160.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="entranceGreen00" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceGreen01" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceGreen02" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceGreen03" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceGreen04" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceGreen05" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceGreen06" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceGreen07" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceGreen08" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/greenStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceRed00" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceRed01" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceRed02" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceRed03" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceRed04" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceRed05" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceRed06" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceRed07" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceRed08" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/redStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceYellow00" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceYellow01" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceYellow02" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceYellow03" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceYellow04" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceYellow05" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceYellow06" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceYellow07" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceYellow08" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/yellowStudent3D.png" />
+        </ImageView>
+        <ImageView id="entrancePink00" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="entrancePink01" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="entrancePink02" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="entrancePink03" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="entrancePink04" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="entrancePink05" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="entrancePink06" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="entrancePink07" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="entrancePink08" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/pinkStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceBlue00" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceBlue01" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceBlue02" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceBlue03" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceBlue04" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceBlue05" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceBlue06" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceBlue07" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+        <ImageView id="entranceBlue08" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/blueStudent3D.png" />
+        </ImageView>
+ </Pane>

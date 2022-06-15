@@ -9,16 +9,14 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="291.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="358.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-         <image>
             <Image url="@../images/BackWinner.png" />
-         </image>
       </ImageView>
       <Text fill="WHITE" layoutX="98.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IT'S ">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text fx:id="turnText" fill="WHITE" layoutX="266.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text id="turnText" fill="WHITE" layoutX="266.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
          <font>
             <Font size="36.0" />
          </font>

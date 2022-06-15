@@ -10,7 +10,10 @@ import it.polimi.ingsw.view.View;
 
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
@@ -79,26 +82,6 @@ public class Cli implements Runnable, View {
         } while (!validInput);
     }
 
-    public int checkInteger() {
-        boolean isInteger = false;
-        String integerStr;
-        int integer = -1;
-        while (!isInteger) {
-            try {
-                try {
-                    integerStr = readLine();
-                    integer = convertStringToNumber(integerStr);
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-                isInteger = true;
-            } catch (InputMismatchException | NumberFormatException e) {
-                System.out.println("ERROR: insert an integer number");
-            }
-        }
-        return integer;
-    }
-
     @Override
     public void startGame() {
         out.println(ColorCli.GREEN +
@@ -138,6 +121,12 @@ public class Cli implements Runnable, View {
         }
     }
 
+
+    /**You have to choose if u want to move the pawn or to use a CharacterCard(in expert mode)
+     *
+     * @param nickname
+     * @param numPawnMoved
+     */
     @Override
     public void requestMovePawn(String nickname,int numPawnMoved){
         if(Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
@@ -200,6 +189,7 @@ public class Cli implements Runnable, View {
 
 
     private void requestMovePawnToDiningRoom(String nickname, int pedineDaSpostare) {
+        //pedineDaSpostare is the number of pawn you can still move
         if (pedineDaSpostare == 0) {
             out.println("Non hai più pedine da spostare!");
             requestCharacterCard(nickname, false);
@@ -303,7 +293,7 @@ public class Cli implements Runnable, View {
                 e.printStackTrace();
             }
             while (numPawn < 1 || numPawn > pedineDaSpostare) {
-                out.println("Stai cercando di spostare più pedine di quante sono consentite. Inserisci un numero valido");
+                out.println("Stai cercando di spostare un numero scorretto di pedine, inserisci un numero valido: ");
                 try {
                     numPawnStr = readLine();
                     numPawn = convertStringToNumber(numPawnStr);
@@ -383,7 +373,9 @@ public class Cli implements Runnable, View {
         }
     }
 
-
+    /**Inizialize the importat variables of the game
+     *
+     */
     @Override
     public void newGameStart(){
         System.out.println("Siete tutti in lobby. Il Game inizia!");
@@ -396,6 +388,10 @@ public class Cli implements Runnable, View {
             numPawnMove=4;
         }
     }
+
+    /**Requests to the first player the number of player and if the game is expert
+     *
+     */
     @Override
     public void requestNumPlayersIsExpert() {
         out.println("Inserisci il numero di giocatori (puoi inserire 2, 3 o 4 giocatori): ");
@@ -450,6 +446,10 @@ public class Cli implements Runnable, View {
             out.println("Il gioco è in modalità normale");
     }
 
+    /**Display all the AssistantCard that a player still have
+     *
+     * @param player
+     */
     @Override
     public void displayAssistantCard(int player) {
         clearCli();
@@ -550,6 +550,9 @@ public class Cli implements Runnable, View {
 
     }
 
+    /**Display all the remaining islands
+     *
+     */
     @Override
     public void displayIslands() {
         clearCli();
@@ -629,9 +632,15 @@ public class Cli implements Runnable, View {
             socketNetworkHandler.sendMessage(new RequestNicknameAfterFirstLoginMessage(nick));
         }
 
+    /**Check which CharacterCard a player has decided to use
+     *
+     * @param nickname
+     * @param bool
+     */
     @Override
-    public void requestCharacterCard(String nickname,boolean bool) {//Gestire il fatto di dirgli quante pedine ha e che in caso le sue monete non bastino non gli fa proprio scegliere le character, se invece c'è qualche carta che costa meno e qualcuna che costa di più fargli inserire la possibilità di non giocarne nessuna o inserirne una nuova
-            ArrayList<ColorPawn> colori = new ArrayList<>();                  //RISPOSTA: se il player seleziona una carta che non può usare semplicemente gli ritorna indietro che non può usarla, quindi penso possa essere gestito così e basta (più facile)
+    public void requestCharacterCard(String nickname,boolean bool) {
+        //bool check if it's the last request of the turn
+            ArrayList<ColorPawn> colori = new ArrayList<>();
             int i;
             for (i = 0; i < lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(nickname)); i++) ;
             int player = i;//giocatore
@@ -814,6 +823,7 @@ public class Cli implements Runnable, View {
                                 } catch (ExecutionException e) {
                                     e.printStackTrace();
                                 }
+                                numIsland = numIsland - 1;
                             }
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getErnesto().getCoinPrice());
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
@@ -855,7 +865,7 @@ public class Cli implements Runnable, View {
                                 socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                             } else {
                                 for (int j = 0; j < numPawn; j++) {
-                                    out.println("Seleziona il colore dello studente " + (i + 1) + "/" + numPawn + " da spostare da questa Carta al tuo Ingresso");
+                                    out.println("Seleziona il colore dello studente " + (j + 1) + "/" + numPawn + " da spostare da questa Carta al tuo Ingresso");
                                     out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
                                     int colore = -1;
                                     String coloreString;
@@ -896,7 +906,7 @@ public class Cli implements Runnable, View {
                                     colori.add(nomeColore);
                                 }
                                 for (int j = 0; j < numPawn; j++) {
-                                    out.println("Seleziona il colore dello studente " + (i + 1) + "/" + numPawn + " da spostare dal tuo Ingresso su questa Carta");
+                                    out.println("Seleziona il colore dello studente " + (j + 1) + "/" + numPawn + " da spostare dal tuo Ingresso su questa Carta");
                                     out.println(ColorCli.GREEN + "1●" + "   " + ColorCli.RED + "2●" + "   " + ColorCli.YELLOW + "3●" + "   " + ColorCli.PINK + "4●" + "   " + ColorCli.BLUE + "5●" + ColorCli.RESET);
                                     int colore = -1;
                                     String coloreString;
@@ -1387,7 +1397,7 @@ public class Cli implements Runnable, View {
                 out.println("");
             } else if (lightGame.getCharacterCards().get(i).getNumCard() == 11) {
                 out.println("");
-                out.println("EFFETTO: Scegli un colore di Studente; ogni giocatore (incluso te) deve rimettere nel sacchetto 3 studenti di quel colore presenti nella sua Sala");
+                out.println("EFFETTO: Scegli un colore di Studente; ogni giocatore (incluso te) deve rimettere nel sacchetto 3 studenti di quel colore presenti nella sua DiningRoom");
                 out.println("Prezzo carta: " + lightGame.getOmnia().getCoinPrice() + "✪");
                 out.println();
                 out.println("+-----------------------------------------------------+");
@@ -1406,7 +1416,7 @@ public class Cli implements Runnable, View {
         for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(), winner); i++);
         if(lightGame.getPlayers().size()==4){
             for(j=0;lightGame.getPlayers().get(i).getTowerSpace().getColorTower()!=lightGame.getPlayers().get(j).getTowerSpace().getColorTower();j++)
-            out.println("i vincitori sono "+ winner+" e "+lightGame.getPlayers().get(j).getNickname());
+            out.println("I vincitori sono "+ winner+" e "+lightGame.getPlayers().get(j).getNickname());
         }else{
         out.println("The winner is: " + winner);
         }
@@ -1454,7 +1464,7 @@ public class Cli implements Runnable, View {
             } else
                 out.println(players.get(i) + " sta iniziando il suo turno");
         }else{
-            out.println("round finito, inizia uno nuovo");
+            out.println("Round finito, inizia uno nuovo");
         }
     }
 
@@ -1550,7 +1560,7 @@ public class Cli implements Runnable, View {
         displaySchoolBoard();
     }
     @Override
-    public void selectCloud(String nickname) {//inserire quali sono le cloud non vuote
+    public void selectCloud(String nickname) {
         if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
             displayCloud();
             String sceltaString;
@@ -1647,6 +1657,7 @@ public class Cli implements Runnable, View {
             System.out.println(nickname + " sta scegliendo l'AssistantCard");
         }
     }
+
     public int convertStringToNumber(String num){
         int c=-1;
         if(Objects.equals(num, "0")){
@@ -1766,6 +1777,13 @@ public class Cli implements Runnable, View {
         out.print(ColorCli.CLEAR);
         out.flush();
     }
+
+    /**Functions to display the colors/numbers
+     *
+     * @param island
+     * @param color
+     * @return
+     */
     private String color4Island(int island, int color){
         StringBuilder showColor = new StringBuilder();
         if(color == 0){
@@ -1952,18 +1970,29 @@ public class Cli implements Runnable, View {
         return showColor.toString();
     }
 
-    private String print1_4Index(){
+    private String print1_4Index(){//BackgroundRed is for PROHIBITED islands
         StringBuilder index = new StringBuilder();
-        for(int i = 0; i < lightGame.getIslands().size() && i<4; i++)
-            index.append("   ").append("Isola: ").append(i+1).append("   ");
+        index.append("\n");
+        if(lightGame.getIsExpert() && lightGame.getErnesto()!=null)
+            index.append(ColorCli.BACKGROUND_RED).append("    ").append(ColorCli.RESET).append(" -> Indica che l'isola è PROIBITA\n");
+        for(int i = 0; i < lightGame.getIslands().size() && i<4; i++) {
+            if (lightGame.getIslands().get(i).getProhibited())
+                index.append("   ").append(ColorCli.BACKGROUND_RED).append("Isola: ").append(i + 1).append(ColorCli.RESET).append("    ");
+            else
+                index.append("   ").append("Isola: ").append(i + 1).append("    ");
+        }
         return index.toString();
     }
 
     private String print4_8Index(){
         StringBuilder index = new StringBuilder();
         if(lightGame.getIslands().size()>=4){
-            for(int i = 4; i < lightGame.getIslands().size() && i<8; i++)
-                index.append("   ").append("Isola: ").append(i+1).append("   ");
+            for(int i = 4; i < lightGame.getIslands().size() && i<8; i++){
+                if (lightGame.getIslands().get(i).getProhibited())
+                    index.append("   ").append(ColorCli.BACKGROUND_RED).append("Isola: ").append(i + 1).append(ColorCli.RESET).append("    ");
+                else
+                    index.append("   ").append("Isola: ").append(i + 1).append("    ");
+            }
         }
         return index.toString();
     }
@@ -1971,8 +2000,12 @@ public class Cli implements Runnable, View {
     private String print8_12Index(){
         StringBuilder index = new StringBuilder();
         if(lightGame.getIslands().size()>=8){
-            for(int i = 8; i < lightGame.getIslands().size(); i++)
-                index.append("   ").append("Isola: ").append(i+1).append("   ");
+            for(int i = 8; i < lightGame.getIslands().size(); i++){
+                if (lightGame.getIslands().get(i).getProhibited())
+                    index.append("   ").append(ColorCli.BACKGROUND_RED).append("Isola: ").append(i + 1).append(ColorCli.RESET).append("    ");
+                else
+                    index.append("   ").append("Isola: ").append(i + 1).append("    ");
+            }
         }
         return index.toString();
     }

@@ -10,9 +10,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="292.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="304.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-         <image>
             <Image url="@../images/BackWinner.png" />
-         </image>
       </ImageView>
       <Text fill="WHITE" layoutX="144.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IT'S YOUR TURN YET">
          <font>
@@ -24,7 +22,7 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Button fx:id="characteCardButton" layoutX="157.0" layoutY="200.0" mnemonicParsing="false" text="Use CharacterCard" />
-      <Button fx:id="movePawns" layoutX="346.0" layoutY="200.0" mnemonicParsing="false" text="Move Pawns" />
+      <Button id="characterCardButton" layoutX="157.0" layoutY="200.0" mnemonicParsing="false" text="Use CharacterCard" />
+      <Button id="movePawns" layoutX="346.0" layoutY="200.0" mnemonicParsing="false" text="Move Pawns" />
    </children>
 </Pane>

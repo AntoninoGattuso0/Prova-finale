@@ -11,14 +11,10 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.NumOfPlayerIsExpert">
       <ImageView fitHeight="481.0" fitWidth="488.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
-         <image>
             <Image url="@../images/Background.png" />
-         </image>
       </ImageView>
-      <ImageView fx:id="joinButton" fitHeight="34.0" fitWidth="135.0" layoutX="207.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
-         <image>
+      <ImageView id="joinButton" fitHeight="34.0" fitWidth="135.0" layoutX="207.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../images/JoinButton.png" />
-         </image>
       </ImageView>
       <TextField layoutX="281.0" layoutY="138.0" />
       <Label layoutX="53.0" layoutY="138.0" text="NICKNAME:" textFill="WHITE" textOverrun="CLIP">
