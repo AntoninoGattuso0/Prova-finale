@@ -9,6 +9,13 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 
 public class ClientMain {
+
+    /**Function MAIN that start the Cli or the Gui
+     *
+     * @param args
+     * @throws IOException
+     * @throws ExecutionException
+     */
     public static void main(String[] args) throws IOException, ExecutionException {
         SocketNetworkHandler socketNetworkHandler = null;
         System.out.println("Inserisci l'indirizzo IP del server a cui vuoi collegarti:");
@@ -16,17 +23,17 @@ public class ClientMain {
         String view = null;
         address= readLine();
         System.out.println("Scrivere C per giocare con la Cli oppure G per giocare con la GUI:");
-        while(!Objects.equals(view, "C") && !Objects.equals(view, "G")){
+        while(!Objects.equals(view, "C") && !Objects.equals(view, "G") && !Objects.equals(view, "c") && !Objects.equals(view, "g")){
             view= readLine();
-            if(!Objects.equals(view, "C") && !Objects.equals(view, "G")){
+            if(!Objects.equals(view, "C") && !Objects.equals(view, "G") && !Objects.equals(view, "c") && !Objects.equals(view, "g")){
                 System.out.println("Errore nell'inserimento: Scrivere C per giocare con la Cli oppure G per giocare con la GUI");
             }
         }
-        if(view.equals("C")) {
+        if(view.equals("C") || view.equals("c")) {
             Cli cli = new Cli();
             socketNetworkHandler = new SocketNetworkHandler(cli);
             cli.run();
-        }else if (view.equals("G")){
+        }else if (view.equals("G") || view.equals("g")){
             Gui gui= new Gui();
              socketNetworkHandler= new SocketNetworkHandler(gui);
              //gui.run();
@@ -34,6 +41,12 @@ public class ClientMain {
         socketNetworkHandler.updateConnection(address, String.valueOf(4000));
         socketNetworkHandler.run();
     }
+
+    /**Function that reads the input of the player
+     *
+     * @return
+     * @throws ExecutionException
+     */
     public static String readLine() throws ExecutionException {
         Scanner in= new Scanner(System.in);
         return in.nextLine();

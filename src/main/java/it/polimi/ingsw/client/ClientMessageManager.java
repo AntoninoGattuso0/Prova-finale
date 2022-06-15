@@ -14,6 +14,13 @@ public class ClientMessageManager {
         this.view = view;
     }
 
+    /**It contains all the type of message the Client can receive
+     *
+     * @param object
+     * @param socketNetworkHandler
+     * @throws InterruptedException
+     * @throws IOException
+     */
     public void manageInputToClient(Object object, SocketNetworkHandler socketNetworkHandler) throws InterruptedException, IOException {
         if (object instanceof WaitMessage) {
             socketNetworkHandler.getView().waitOtherPlayers();

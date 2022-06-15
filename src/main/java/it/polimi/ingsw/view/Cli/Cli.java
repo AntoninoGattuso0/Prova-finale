@@ -173,7 +173,11 @@ public class Cli implements Runnable, View {
         }
     }
 
-
+    /**Requests the number of pawn you want to move to your DiningRoom
+     *
+     * @param nickname
+     * @param pedineDaSpostare
+     */
     private void requestMovePawnToDiningRoom(String nickname, int pedineDaSpostare) {
         //pedineDaSpostare is the number of pawn you can still move
         if (pedineDaSpostare == 0) {
@@ -264,6 +268,11 @@ public class Cli implements Runnable, View {
         }
     }
 
+    /**Request the number of pawn you want to move to an Island
+     *
+     * @param nickname
+     * @param pedineDaSpostare
+     */
     private void requestMovePawnToIsland(String nickname, int pedineDaSpostare) {
         if (pedineDaSpostare == 0) {
             out.println("Non hai più pedine da spostare!");
@@ -359,7 +368,7 @@ public class Cli implements Runnable, View {
         }
     }
 
-    /**Inizialize the importat variables of the game
+    /**Initialize the important variables of the game
      *
      */
     @Override
@@ -432,7 +441,7 @@ public class Cli implements Runnable, View {
             out.println("Il gioco è in modalità normale");
     }
 
-    /**Display all the AssistantCard that a player still have
+    /**Display all the AssistantCard that a player still has
      *
      * @param player
      */

@@ -63,6 +63,11 @@ public class SocketNetworkHandler implements Runnable{
         });
         thread.start();
     }
+
+    /**Send the message to the correct client
+     *
+     * @param message
+     */
     public synchronized void sendMessage(Message message){
         try{
             if(!(message instanceof RequestNicknameAfterFirstLoginMessage)) {

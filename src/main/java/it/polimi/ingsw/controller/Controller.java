@@ -55,6 +55,10 @@ public class Controller {
     public Game getGame() {
         return this.game;
     }
+
+    /**Update everything from the Game to the LightGame
+     *
+     */
     public void updateThisPlayersLight() {
         for (Player player : players) {
             PhaseTurn phaseTurn = player.getCurrentPhase();

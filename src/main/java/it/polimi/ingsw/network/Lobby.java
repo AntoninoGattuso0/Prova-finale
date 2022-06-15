@@ -57,6 +57,8 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     public ArrayList<Player> getPlayers() {
         return players;
     }
+
+
     public void addClient(ClientHandlerInterface client) {
         synchronized (lock) {
             clients.add(client);
@@ -114,7 +116,10 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         return lobbyOk;
     }
 
-    //inserisco i player nell'array nomi, e li creo anche nel gioco
+    /**Add players in the array of names, and then add them to the game
+     *
+     * @param loginClient
+     */
     public synchronized void loginUser(ClientHandlerInterface loginClient) {
                 loginClient.setTurn(true);
                 loginClient.sendObject(new SetNickMessage());
@@ -132,6 +137,11 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         controller.startRound();
     }
 
+    /**Check if the nickname is unique
+     *
+     * @param nickname
+     * @param clientHandler
+     */
     public synchronized void insertNickname(String nickname, ClientHandler clientHandler) {
             if (!contr || numinsert) {
                 if (nickname == null) {
@@ -307,7 +317,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     }
 
     public synchronized void movePawnToDining(int numPawn, ArrayList<ColorPawn> arrayPawn, ClientHandler clientHandler) {
-        int i;//questa funzione muove le pedine verso la diningroom attraverso la funzione addPawnToDiningRoom (riga 303), fa l'update di tutto e poi chiama la funzione movement (riga 306), se non è il suo turno manda un messaggio di errore (non pensarci per adesso)
+        int i;
         int numPlayer = findPlayer(game, clientHandler);
         if(game.getPlayers().get(numPlayer).getCurrentPhase()==PhaseTurn.MOVE_STUDENT) {
             for (i = 0; i < numPawn; i++) {
@@ -321,7 +331,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         }
     }
     public synchronized void movePawnToIsland(int island, int numPawn, ArrayList<ColorPawn> arrayPawn, ClientHandler clientHandler) {
-        int numPlayer = findPlayer(game, clientHandler); //questa funzione è praticamente la "copia" parallela della funzione sopra, solo che sposta le pedine verso una specifica isola
+        int numPlayer = findPlayer(game, clientHandler);
         int i;
         if(game.getPlayers().get(numPlayer).getCurrentPhase()==PhaseTurn.MOVE_STUDENT) {
             for (i = 0; i < numPawn; i++) {
@@ -334,6 +344,12 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         }
     }
 
+    /**Check that the sum of all the moved pawn is correct (not more and not less than the number of pawn you have to move)
+     *
+     * @param numPawn
+     * @param clientHandler
+     * @param numPlayer
+     */
     public synchronized void movement(int numPawn, ClientHandler clientHandler, int numPlayer) {
         numPawnExe=numPawnExe+numPawn;// questa funzione gestisce le pedine spostate. ogni volta che arriva un messaggio di movimento, somma le pedine spostate alla variabile numpawnexe.
         if(numPlayers==2||numPlayers==4){

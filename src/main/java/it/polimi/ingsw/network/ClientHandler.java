@@ -45,6 +45,10 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
         this.userNickname=userNickname;
     }
 
+    /**Sends the messages to the server
+     *
+     * @param object
+     */
     public synchronized void sendObject(Message object) {
         try {
             if (!(object instanceof WaitLoginMessage)) {
