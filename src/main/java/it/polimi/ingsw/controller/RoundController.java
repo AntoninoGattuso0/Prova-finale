@@ -22,6 +22,11 @@ public class RoundController {
         return this.roundOrder;
     }
 
+    /**This function decides the order of the player (it depends of the AssistantCard used)
+     *
+     * @param game
+     * @return
+     */
     public synchronized ArrayList<Player> newRoundOrder(Game game) {
         int i, j, w, k;
         ArrayList<Player> tempArray = new ArrayList<>(game.getTotPlayer());
