@@ -22,7 +22,6 @@ public class GameTest {
         int r = game.islands.get(s).getRedPawn();
         System.out.println("Sull'isola " + s + " ci sono " + r + " pedine rosse");
         assertEquals(4, game.clouds.size());
-        assertEquals(108, game.studentBag.getNum());
 
     }
     @Test
@@ -152,6 +151,6 @@ public class GameTest {
         int i;
         for(i=0; i<3; i++)
             System.out.println(game.characterCards.get(i).useEffect);
-        assertEquals(3, game.characterCards.size());
+        assertEquals(6, game.characterCards.size());
     }
 }
