@@ -24,6 +24,15 @@ public class Lancillotto extends UseEffect implements Serializable {
     public boolean isEffectActive() {
         return effectActive;
     }
+
+    /**CharacterCard 9: choose a color. In this turn the students of that color don't count in the influence
+     *
+     * @param game
+     * @param i
+     * @param island
+     * @param player
+     * @param colorPawn
+     */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){//(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn)
         switch (colorPawn.get(0)){
             case GREEN -> this.colorNumber=0;

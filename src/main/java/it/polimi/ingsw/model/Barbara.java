@@ -16,6 +16,15 @@ public class Barbara extends UseEffect implements Serializable {
     public int getCoinPrice() {
         return coinPrice;
     }
+
+    /**CharacterCard 2: During this turn you obtain the professor even if the pawn in your DiningRoom are the same of the player who already has the professor
+     *
+     * @param game
+     * @param i
+     * @param island
+     * @param player
+     * @param colorPawn
+     */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
         int j;
         int max;

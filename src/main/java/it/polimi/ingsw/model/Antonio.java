@@ -72,6 +72,14 @@ public class Antonio extends UseEffect implements Serializable{
         }
     }
 
+    /**CharacterCard 1: take 1 Student from that card and put it on an Island
+     *
+     * @param game
+     * @param i
+     * @param island
+     * @param player
+     * @param colorPawn
+     */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
         Random rnd = new Random();
         ArrayList<ColorPawn> refillPawn = Game.createArrayPawn(game.studentBag);

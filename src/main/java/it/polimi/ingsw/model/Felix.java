@@ -27,6 +27,14 @@ public class Felix extends UseEffect implements Serializable {
         effectActive=false;
     }
 
+    /**CharacterCard 6: during this turn the towers don't count in the Influence
+     *
+     * @param game
+     * @param num
+     * @param island
+     * @param player
+     * @param colorPawn
+     */
     public void useEffect(Game game, int num, Island island, Player player, ArrayList<ColorPawn> colorPawn){
         effectActive=true;
         setCoinPrice(4);

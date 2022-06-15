@@ -32,6 +32,14 @@ public class Ivan extends UseEffect implements Serializable {
         numPlayer=-1;
     }
 
+    /**CharacterCard 8: during this turn you have a +2 in the influence count
+     *
+     * @param game
+     * @param i
+     * @param island
+     * @param player
+     * @param colorPawn
+     */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){//   public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){
         effectActive=true;
         for(int j = 0; j<game.getTotPlayer(); j++){

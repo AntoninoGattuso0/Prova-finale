@@ -10,6 +10,14 @@ public class Dante extends UseEffect implements Serializable {
         coinPrice = 1;
     }
 
+    /**CharacterCard 4: you can move MotherNature with +2 steps
+     *
+     * @param game
+     * @param i
+     * @param island
+     * @param player
+     * @param colorPawn
+     */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
         int step;
         step = player.getCurrentAssistant().getStep() + 2;

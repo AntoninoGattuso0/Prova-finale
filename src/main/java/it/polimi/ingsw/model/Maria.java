@@ -11,6 +11,15 @@ public class Maria extends UseEffect implements Serializable {
     }
     public void setCoinPrice(int coinPrice){this.coinPrice = coinPrice;}
     public int getCoinPrice(){return coinPrice;}
+
+    /**CharacterCard 10: you can swap at most 2 students from your Entrance and your DiningRoom
+     *
+     * @param game
+     * @param i
+     * @param island
+     * @param player
+     * @param colorPawn
+     */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){
         int k;
         for(k=0; k<colorPawn.size(); k++)

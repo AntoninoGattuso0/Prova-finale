@@ -24,6 +24,14 @@ public class Ernesto extends UseEffect implements Serializable {
         coinPrice=2;
     }
 
+    /**CharacterCard 5: you have 4 proibition card. You can put one on a Island to make it Prohibited
+     *
+     * @param game
+     * @param i
+     * @param island
+     * @param player
+     * @param colorPawn
+     */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){
         if(numProhibitionCard != 0){
             island.setProhibited(true);

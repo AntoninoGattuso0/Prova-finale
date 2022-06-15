@@ -138,7 +138,15 @@ public class Giuseppe extends UseEffect implements Serializable {
             }
         }
     }
-    //LEGGIMI :( non va bene il fatto che anche se la funzione viene chiamata n volte viene richiamata sempre su stessa isola e pedina
+
+    /**CharacterCard 7: you can swap at most 3 pawn from that card to your Entrance
+     *
+     * @param game
+     * @param i
+     * @param island
+     * @param player
+     * @param colorPawn
+     */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){
         boolean swap = false;
         int j;

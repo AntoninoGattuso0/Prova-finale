@@ -15,6 +15,14 @@ public class Omnia extends UseEffect implements Serializable {
     public void setCoinPrice(int coinPrice){this.coinPrice = coinPrice;}
     public int getCoinPrice(){return coinPrice;}
 
+    /**CharacterCard 12: choose a color. Every player (you too) have to discart 3 student of the same color from thei DiningRoom
+     *
+     * @param game
+     * @param s
+     * @param island
+     * @param player
+     * @param colorPawn
+     */
     public void useEffect(Game game, int s, Island island, Player player, ArrayList<ColorPawn> colorPawn){
         int i, j;
         for(i=0; i<3; i++){
