@@ -41,32 +41,6 @@ public class Cli implements Runnable, View {
         startGame();
     }
 
-    public void askServerInfo() throws ExecutionException {
-        Map<String, String> serverInfo = new HashMap<>();
-        String defaultAddress = "localhost";
-        String defaultPort = "5555";
-        boolean validInput;
-
-        out.println("Seleziona una delle opzioni, il valore di default è tra le parentesi");
-
-        do {
-            out.print("Inserisci il server address [" + defaultAddress + "]: ");
-            String address = readLine();
-
-            if (address.equals("")) {
-                serverInfo.put("address", defaultAddress);
-                validInput = true;
-            } /*else if (ClientcController.isValidIpAddress(address)){
-                serverInfo.put("address", address);
-                validInput= true;
-            }*/ else {
-                out.println("Invalid Address!!!");
-                //  clearCli();
-                validInput = false;
-            }
-        } while (!validInput);
-    }
-
     @Override
     public void startGame() {
         out.println(ColorCli.GREEN +
