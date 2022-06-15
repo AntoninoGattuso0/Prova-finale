@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
 
 public class Cli implements Runnable, View {
    //PER PAUL: QUI CI SONO LE RIGHE A CUI DEVI ANDARE IN LOBBY, LI' TI DIRO' COSA MODIFICARE: 1583
