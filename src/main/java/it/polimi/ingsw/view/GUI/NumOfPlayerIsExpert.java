@@ -40,16 +40,22 @@ public class NumOfPlayerIsExpert{
             e.printStackTrace();
         }
 
-        joinButton = (ImageView) rootFXML.lookup("#joinButton");
-        ObservableList<String> numPlayers = FXCollections.observableArrayList("2","3","4");
-        numPlayerBox.setItems(numPlayers);
 
+        joinButton = (ImageView) rootFXML.lookup("#joinButton");  //questo è l'id che permette di accedere all'immagine selezionabile chiamata joinButton, vedi cartella images
+        ObservableList<String> numPlayers = FXCollections.observableArrayList("2","3","4");  // Lista contentente il numero di players che puo essere selezionato
+        numPlayerBox.setItems(numPlayers);  //setta i numeri 2,3,4 all'interno del menu a tendina
+
+        //se entra dentro l'immagine del bottone il cursore diventa a forma di mano
         joinButton.setOnMouseEntered(mouseEvent -> joinButton.setCursor(javafx.scene.Cursor.HAND));
+        //se esce dall'immagine del bottone il cursore diventa normale freccia
         joinButton.setOnMouseExited(mouseEvent -> joinButton.setCursor(Cursor.DEFAULT));
 
+        //prende il nick che l'utente inserisce all'interno del textField
         nickname = nickPlayer.getText();
+        //se l'utente schiaccia il bottone della modalita E allora questo diventa true
         expert = expertMode.isSelected();
 
+        //quando sciacchia l'immagine del join allora prende il valore del num of players che ce dentro il menu a tendina e li mette dentro un int
         joinButton.setOnMouseClicked(mouseEvent -> {
             String num = numPlayerBox.getValue();
             switch (num) {
@@ -60,6 +66,7 @@ public class NumOfPlayerIsExpert{
         });
     }
 
+//queste funzioni ritornano i valori che vengono settati all'interno del costruttore e li restituisce ai metodi della gui
     public Pane getRootFXML(){
         return rootFXML;
     }

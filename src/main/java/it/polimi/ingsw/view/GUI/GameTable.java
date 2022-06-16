@@ -96,7 +96,7 @@ public class GameTable {
             }
         }
 
-
+//id per accedere alle varie immagini
         for(int i = 0; i < 12; i++){
             islands.add((ImageView) rootFXML.lookup("island" + i));
             motherNature.add((ImageView) rootFXML.lookup("motherNature" + i));
@@ -156,6 +156,7 @@ public class GameTable {
             clouds.add((ImageView) rootFXML.lookup("cloud" + i));
             clouds.get(i).setVisible(false);
         }
+        //mette visibili un numero di clud in base al numero di players
         for(int i = 0; i < lightGame.getNumPlayers(); i++)
             clouds.get(i).setVisible(true);
 
@@ -185,7 +186,7 @@ public class GameTable {
         //questo devo vedere se metterlo in una funzione e poi richiamarlo dalla GUI
         //o se mettere direttamente nella gui
         for(ImageView cloud : clouds){
-            if(!cloudIsAlreadySelected){  //vorrei che fosse se falso entri dentro l'if (scritto cosi E GIUSTO o no?)
+            if(!cloudIsAlreadySelected){
                 cloud.setOnMouseClicked(mouseEvent -> cloudSelected = clouds.indexOf(cloud));
                 cloudIsAlreadySelected = true;
             }
@@ -202,6 +203,7 @@ public class GameTable {
 
         }*/
 
+//setta su non visibili le pedine della schoolBoard
         for(int i = 0; i < 10; i++){
             greenSchool0.add((ImageView) rootFXML.lookup("schoolGreen" + i));
             redSchool0.add((ImageView) rootFXML.lookup("schoolRed" + i));
@@ -217,7 +219,6 @@ public class GameTable {
         for(int i = 0; i < 8; i++){
             blackTowersSchool0.add((ImageView) rootFXML.lookup("blackTowerSchool" + i));
             blackTowers.get(i).setVisible(false);
-
         }
 
     }
@@ -255,6 +256,7 @@ public class GameTable {
          }
     }
 
+    //queste due funzioni di switch devo vedere ancora come gestirle sulla parte destra della scena che vi ho fatto vedere
     public void switchToAssistantCard(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/AssistantCard.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

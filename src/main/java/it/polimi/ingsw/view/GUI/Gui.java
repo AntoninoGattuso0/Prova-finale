@@ -29,12 +29,13 @@ public class Gui implements View {
 
     }
 
+    //per le altre funzioni che sono scritte sono uguali a questa
     @Override
     public void requestNickname() {
         RequestNickPlayers requestNickPlayers = new RequestNickPlayers();
-        Platform.runLater(()->TransitionScene.setRequestNickPlayers(requestNickPlayers));
-        Platform.runLater(TransitionScene::swapRequestNickPlayers);
-        socketNetworkHandler.sendMessage(new RequestNickname(requestNickPlayers.getNick()));
+        Platform.runLater(()->TransitionScene.setRequestNickPlayers(requestNickPlayers)); //setta come scena quella tra parentesi
+        Platform.runLater(TransitionScene::switchRequestNickPlayers); //switcha su questa scena in cui richiede il nick
+        socketNetworkHandler.sendMessage(new RequestNickname(requestNickPlayers.getNick()));  //queste due righe sono come quelle della cli
         socketNetworkHandler.setNicknameThisPlayer(requestNickPlayers.getNick());
 
     }
@@ -43,7 +44,7 @@ public class Gui implements View {
     public void requestNumPlayersIsExpert() {
         NumOfPlayerIsExpert numPlayersIsExpert = new NumOfPlayerIsExpert();
         Platform.runLater(()->TransitionScene.setNumOfPlayersIsExpert(numPlayersIsExpert));
-        Platform.runLater(TransitionScene::swapToNumOfPlayerIsExpert);
+        Platform.runLater(TransitionScene::switchToNumOfPlayerIsExpert);
         socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(numPlayersIsExpert.getNumPlayer(), numPlayersIsExpert.isExpert()));
         socketNetworkHandler.setNicknameThisPlayer(numPlayersIsExpert.getNickname());
     }
@@ -107,7 +108,7 @@ public class Gui implements View {
     public void displayWinner(String nickname) {
         WinnerScene winnerScene = new WinnerScene(nickname);
         Platform.runLater(()->TransitionScene.setWinnerScene(winnerScene));
-        Platform.runLater(TransitionScene::swapToWinnerScene);
+        Platform.runLater(TransitionScene::switchToWinnerScene);
     }
 
     @Override
@@ -178,7 +179,7 @@ public class Gui implements View {
     public void waitOtherPlayers() {
         WaitingPlayers waitingPlayers = new WaitingPlayers();
         Platform.runLater(()->TransitionScene.setWaitingPlayers(waitingPlayers));
-        Platform.runLater(TransitionScene::swapToWaitingPlayers);
+        Platform.runLater(TransitionScene::switchToWaitingPlayers);
 
     }
 

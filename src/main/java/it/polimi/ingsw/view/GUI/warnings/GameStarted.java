@@ -6,6 +6,7 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.util.Objects;
 
+//fa vedere una scena iniziale che dice che il gioco e iniziato
 public class GameStarted {
 
     private Pane rootFXML;

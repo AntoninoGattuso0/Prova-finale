@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+
+//i warning dovranno apparire come degli avvisi e non cambiare totalmente scena
+
 public class WarningCloud {
 
         private Pane rootFXML;

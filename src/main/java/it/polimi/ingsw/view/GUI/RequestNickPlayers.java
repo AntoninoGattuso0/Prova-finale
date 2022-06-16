@@ -24,17 +24,18 @@ public class RequestNickPlayers {
 
     public RequestNickPlayers(){
 
-        try{
+        try{ //mette
             rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/RequestNickPlayers.fxml")));
         }catch(IOException e){
             e.printStackTrace();
         }
 
-        joinButton = (ImageView) rootFXML.lookup("#joinButton");
+        joinButton = (ImageView) rootFXML.lookup("#joinButton"); // vedi per le righe 33-36 i commenti di numOfPlayerIsExpert
 
         joinButton.setOnMouseEntered(mouseEvent -> joinButton.setCursor(Cursor.HAND));
         joinButton.setOnMouseExited(mouseEvent -> joinButton.setCursor(Cursor.DEFAULT));
 
+        //prende dal texField il nome del player nel momento in cui schiaccia l'immagine join
         joinButton.setOnMouseClicked(mouseEvent -> nick = nickPlayer.getText());
 
     }
