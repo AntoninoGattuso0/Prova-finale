@@ -33,7 +33,6 @@ public class NumOfPlayerIsExpert{
     @FXML
     private CheckBox expertMode;
 
-
     public NumOfPlayerIsExpert(){
         try{
             rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/NumOfPlayerIsExpert.fxml")));
@@ -49,7 +48,6 @@ public class NumOfPlayerIsExpert{
         joinButton.setOnMouseExited(mouseEvent -> joinButton.setCursor(Cursor.DEFAULT));
 
         nickname = nickPlayer.getText();
-
         expert = expertMode.isSelected();
 
         joinButton.setOnMouseClicked(mouseEvent -> {
@@ -60,9 +58,6 @@ public class NumOfPlayerIsExpert{
                 case "4" -> numPlayer = 4;
             }
         });
-
-
-
     }
 
     public Pane getRootFXML(){
@@ -71,11 +66,9 @@ public class NumOfPlayerIsExpert{
     public String getNickname(){
         return nickname;
     }
-
     public boolean isExpert() {
         return expert;
     }
-
     public int getNumPlayer() {
         return numPlayer;
     }
