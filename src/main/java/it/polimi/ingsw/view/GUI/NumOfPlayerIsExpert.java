@@ -1,9 +1,5 @@
 package it.polimi.ingsw.view.GUI;
 
-import it.polimi.ingsw.client.SocketNetworkHandler;
-import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
-import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
-import it.polimi.ingsw.view.GUI.warnings.WarningNickname;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -36,6 +32,7 @@ public class NumOfPlayerIsExpert{
     private ChoiceBox<String> numPlayerBox;
     @FXML
     private CheckBox expertMode;
+
 
     public NumOfPlayerIsExpert(){
         try{
@@ -82,4 +79,5 @@ public class NumOfPlayerIsExpert{
     public int getNumPlayer() {
         return numPlayer;
     }
+
 }

@@ -3,8 +3,7 @@ package it.polimi.ingsw.view.GUI;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
-import it.polimi.ingsw.network.Message.ClientToServer.ChooseAssistantCardMessage;
-import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
+import it.polimi.ingsw.network.Message.ClientToServer.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +16,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,38 +32,38 @@ public class GameTable {
     private int cloudSelected;
     boolean cloudIsAlreadySelected = false;
 
-    @FXML private final List<ImageView> islands = null;
-    @FXML private final List<ImageView> motherNature = null;
-    @FXML private final List<ImageView> greenPawns = null;
-    @FXML private final List<ImageView> redPawns = null;
-    @FXML private final List<ImageView> yellowPawns = null;
-    @FXML private final List<ImageView> pinkPawns = null;
-    @FXML private final List<ImageView> bluePawns= null;
-    @FXML private final List<Text> textGreen = null;
-    @FXML private final List<Text> textRed = null;
-    @FXML private final List<Text> textYellow = null;
-    @FXML private final List<Text> textPink = null;
-    @FXML private final List<Text> textBlue= null;
+    @FXML private List<ImageView> islands;
+    @FXML private List<ImageView> motherNature;
+    @FXML private List<ImageView> greenPawns;
+    @FXML private List<ImageView> redPawns;
+    @FXML private List<ImageView> yellowPawns;
+    @FXML private List<ImageView> pinkPawns;
+    @FXML private List<ImageView> bluePawns;
+    @FXML private List<Text> textGreen;
+    @FXML private List<Text> textRed;
+    @FXML private List<Text> textYellow;
+    @FXML private List<Text> textPink;
+    @FXML private List<Text> textBlue;
 
-    @FXML private final List<ImageView> blackTowers = null;
-    @FXML private final List<ImageView> whiteTowers = null;
-    @FXML private final List<ImageView> greyTowers = null;
+    @FXML private List<ImageView> blackTowers;
+    @FXML private List<ImageView> whiteTowers;
+    @FXML private List<ImageView> greyTowers;
 
-    @FXML private final List<ImageView> clouds = null;
-    @FXML private final List<ImageView> greenPawnClouds = null;
-    @FXML private final List<ImageView> redPawnClouds = null;
-    @FXML private final List<ImageView> yellowPawnClouds = null;
-    @FXML private final List<ImageView> pinkPawnClouds = null;
-    @FXML private final List<ImageView> bluePawnClouds = null;
+    @FXML private List<ImageView> clouds;
+    @FXML private List<ImageView> greenPawnClouds;
+    @FXML private List<ImageView> redPawnClouds;
+    @FXML private List<ImageView> yellowPawnClouds;
+    @FXML private List<ImageView> pinkPawnClouds;
+    @FXML private List<ImageView> bluePawnClouds;
 
-    @FXML private final List<ImageView> characterCards = null;
+    @FXML private List<ImageView> characterCards;
 
-    @FXML private final List<ImageView> greenSchool0 = null;
-    @FXML private final List<ImageView> redSchool0 = null;
-    @FXML private final List<ImageView> yellowSchool0 = null;
-    @FXML private final List<ImageView> pinkSchool0 = null;
-    @FXML private final List<ImageView> blueSchool0 = null;
-    @FXML private final List<ImageView> blackTowersSchool0 = null;
+    @FXML private List<ImageView> greenSchool0;
+    @FXML private List<ImageView> redSchool0;
+    @FXML private List<ImageView> yellowSchool0;
+    @FXML private List<ImageView> pinkSchool0;
+    @FXML private List<ImageView> blueSchool0;
+    @FXML private List<ImageView> blackTowersSchool0;
 
 
     public GameTable(){
@@ -188,9 +186,7 @@ public class GameTable {
         //o se mettere direttamente nella gui
         for(ImageView cloud : clouds){
             if(!cloudIsAlreadySelected){  //vorrei che fosse se falso entri dentro l'if (scritto cosi E GIUSTO o no?)
-                cloud.setOnMouseClicked(mouseEvent -> {
-                    cloudSelected = clouds.indexOf(cloud);
-                });
+                cloud.setOnMouseClicked(mouseEvent -> cloudSelected = clouds.indexOf(cloud));
                 cloudIsAlreadySelected = true;
             }
         }
