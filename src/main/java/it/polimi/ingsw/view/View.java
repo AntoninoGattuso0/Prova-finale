@@ -74,7 +74,6 @@ public interface View {
     void displayOnePlayerBoard(String nickname);
 
     void disconnectionAll(String playerDisconnected) throws IOException;
-    void invalidNumPlayer();
 
     void wrongSameAssistantMessage();
 }

@@ -65,7 +65,15 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         return players;
     }
 
-
+    /**
+     * add client in lobby,virtualView and clients array
+     * @see VirtualView
+     * @see ClientAcceptedMessage
+     * @see LoginAcceptedMessage
+     * @see WaitMessage
+     * @see GameStartedMessage
+     * @see AllUpdateMessage
+     */
     public void addClient(ClientHandlerInterface client) {
         synchronized (lock) {
             clients.add(client);
@@ -90,6 +98,11 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             lock.notifyAll();
         }
     }
+
+    /**
+     * remove client to clients array
+     * @see DisconnectionMessage
+     */
     @Override
     public void updateDisconnection(ClientHandlerInterface clientHandler) {
         int i;
@@ -143,6 +156,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
      * Check if the nickname is unique
      * @see WrongNicknameMessage
      * @see SetNickMessage
+     * @see LobbyFullMessage
      */
     public synchronized void insertNickname(String nickname, ClientHandler clientHandler) {
             if (!contr || numinsert) {
@@ -203,6 +217,12 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             numinsert = true;
         }
 
+    /**
+     * @see WrongSameAssistantMessage
+     * @see SetAssistantMessage
+     * @see WrongNotAssistantMessage
+     * @see TurnOrderMessage
+     */
     public synchronized void selectAssistantCard(int assistant, ClientHandler clientHandler) {
             int i;
             int contr = -1;
@@ -226,6 +246,11 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 clientHandler.sendObject(new WrongSameAssistantMessage(controller.getRoundController().getRoundOrder().get(i).getNickname()));
             }
     }
+
+    /**
+     * function to activate the CharacterCard
+     * @see StartTurnMessage
+     */
     public synchronized void useCharacter(int num, int numberPawn, int numIsland, ArrayList<ColorPawn> colorPawn, ClientHandler clientHandler,boolean v) {
         if (v) {
             Island island = null;

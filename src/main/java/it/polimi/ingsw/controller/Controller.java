@@ -106,6 +106,7 @@ public class Controller {
     /**
      *check the phase the player is in and after that ,sends the correct message and checks the end of the round and the end of the game
      * @param player actual Player
+     * @see EndTurnMessage
      */
     public synchronized void startTurn(Player player) {
         if (player.getCurrentPhase() == PhaseTurn.MOVE_STUDENT) {

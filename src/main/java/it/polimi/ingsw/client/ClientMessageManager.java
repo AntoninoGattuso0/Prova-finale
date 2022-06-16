@@ -54,8 +54,6 @@ public class ClientMessageManager {
            socketNetworkHandler.getView().selectCloud(((SetCloudMessage) object).getNickname());
         } else if (object instanceof EndTurnMessage) {//dice a tutti che il turno di "giocatore che gioca" è finito e che tocca a "giocatore successivo"
            socketNetworkHandler.getView().startTurn(((EndTurnMessage) object).getPlayers(),((EndTurnMessage) object).getActualPlayer());
-        } else if (object instanceof InvalidNumPlayerMessage) {
-            socketNetworkHandler.getView().invalidNumPlayer();
         }else if(object instanceof WrongNumPlayerIsExpertMessage){
              socketNetworkHandler.getView().displayWrongNickname();
         }else if(object instanceof WrongSameAssistantMessage){

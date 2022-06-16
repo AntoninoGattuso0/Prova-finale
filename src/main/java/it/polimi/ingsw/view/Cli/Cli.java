@@ -66,6 +66,10 @@ public class Cli implements Runnable, View {
 
     }
 
+    /**
+     * set the nickname
+     * @see RequestNickname
+     */
     @Override
     public void requestNickname() {
         out.println("Digita il tuo nickname: ");
@@ -237,7 +241,7 @@ public class Cli implements Runnable, View {
     }
 
     /**Request the number of pawn you want to move to an Island
-     * @see MovePawnToDiningMessage
+     * @see MovePawnToIslandMessage
      */
     private void requestMovePawnToIsland(String nickname, int pedineDaSpostare) {
         if (pedineDaSpostare == 0) {
@@ -586,6 +590,11 @@ public class Cli implements Runnable, View {
             out.println();
         }
     }
+
+    /**
+     *ping-pong nickname
+     * @see RequestNicknameAfterFirstLoginMessage
+     */
     @Override
     public void sendNick(String nickname){
         String nick = nickname;
@@ -1964,10 +1973,6 @@ public class Cli implements Runnable, View {
             }
         }
         return index.toString();
-    }
-    @Override
-    public void invalidNumPlayer(){
-        out.println("ATTENZIONE: Numero Player non valido");
     }
 
     @Override
