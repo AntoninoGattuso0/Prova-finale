@@ -3,6 +3,9 @@ package it.polimi.ingsw.network.Message.ClientToServer;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * Message sent by the client to server when the first player select number of players and mode
+ */
 public class RequestNumPlayersIsExpert extends ClientToServer implements Serializable {
     @Serial
     private static final long serialVersionUID = -3349291186535169304L;

@@ -40,8 +40,6 @@ public class ClientMessageManager {
             socketNetworkHandler.getView().displayWrongNickname();
         } else if (object instanceof WrongTurnMessage) {
             socketNetworkHandler.getView().displayWrongTurn();
-        } else if (object instanceof ClientInputMessage) {
-            socketNetworkHandler.getView().displayResponseMessage();
         } else if (object instanceof AllUpdateMessage m) {
             socketNetworkHandler.getView().updateAll(m.getLightGame());
         } else if (object instanceof LoginAcceptedMessage) {// serve a dire all' ultimo player che è entrato in lobby e che era l'ultimo player che mancava
@@ -54,14 +52,10 @@ public class ClientMessageManager {
            socketNetworkHandler.getView().requestMoveMotherNature(((SetMoveMotherNature) object).getNickname());
         } else if (object instanceof SetCloudMessage) {
            socketNetworkHandler.getView().selectCloud(((SetCloudMessage) object).getNickname());
-        } else if (object instanceof EndGameMessage) {
-           socketNetworkHandler.getView().endgame();
         } else if (object instanceof EndTurnMessage) {//dice a tutti che il turno di "giocatore che gioca" è finito e che tocca a "giocatore successivo"
            socketNetworkHandler.getView().startTurn(((EndTurnMessage) object).getPlayers(),((EndTurnMessage) object).getActualPlayer());
         } else if (object instanceof InvalidNumPlayerMessage) {
             socketNetworkHandler.getView().invalidNumPlayer();
-        } else if (object instanceof NewCurrentPlayerMessage) {
-            // socketNetworkHandler.getView().
         }else if(object instanceof WrongNumPlayerIsExpertMessage){
              socketNetworkHandler.getView().displayWrongNickname();
         }else if(object instanceof WrongSameAssistantMessage){

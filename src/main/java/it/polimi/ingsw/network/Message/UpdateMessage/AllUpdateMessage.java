@@ -6,6 +6,9 @@ import it.polimi.ingsw.network.Message.ServerToClient.ServerToClient;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * Message sent by the server to client for Update all
+ */
 public class AllUpdateMessage extends ServerToClient implements Serializable {
     @Serial
     private static final long serialVersionUID= 8897338037071499069L;

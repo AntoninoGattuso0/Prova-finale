@@ -7,6 +7,9 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Message sent by the client to server to use a CharacterCard
+ */
 public class ChooseCharacterCardMessage extends ClientToServer implements Serializable {
     @Serial
     private static final long serialVersionUID = 2809026361437311296L;

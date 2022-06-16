@@ -3,6 +3,9 @@ package it.polimi.ingsw.network.Message.ClientToServer;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * Message sent by the client to server when the client wait for the nickname to be accepted
+ */
 public class RequestNicknameAfterFirstLoginMessage extends ClientToServer implements Serializable {
     @Serial
     private static final long serialVersionUID= -7749598423238883884L;

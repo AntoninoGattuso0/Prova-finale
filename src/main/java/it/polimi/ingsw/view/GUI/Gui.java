@@ -125,16 +125,6 @@ public class Gui implements View {
 
     }
 
-    @Override
-    public void displayEndRound() {
-
-    }
-
-    @Override
-    public void displayResponseMessage() {
-
-    }
-
 
     @Override
     public void updateAll(LightGame object) {
@@ -208,12 +198,6 @@ public class Gui implements View {
     public void startTurn(ArrayList<String> players, String actualPlayer) {
 
     }
-
-    @Override
-    public void displayDisconnection(String playerDisconnected) {
-
-    }
-
     @Override
     public void displayOnePlayerBoard(String nickname) {
 
@@ -221,11 +205,6 @@ public class Gui implements View {
 
     @Override
     public void disconnectionAll(String playerDisconnected) {
-
-    }
-
-    @Override
-    public void endgame() {
 
     }
 

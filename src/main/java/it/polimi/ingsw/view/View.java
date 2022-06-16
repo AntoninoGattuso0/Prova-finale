@@ -44,11 +44,6 @@ public interface View {
     void displayWrongTurn();
 
     void displayStartTurn();
-
-    void displayEndRound();
-
-    void displayResponseMessage();
-
     void updateAll(LightGame object);
     void displayAll();
 
@@ -76,14 +71,9 @@ public interface View {
 
     void startTurn(ArrayList<String> players, String actualPlayer);
 
-    void displayDisconnection(String playerDisconnected);
-
     void displayOnePlayerBoard(String nickname);
 
     void disconnectionAll(String playerDisconnected) throws IOException;
-
-    void endgame();
-
     void invalidNumPlayer();
 
     void wrongSameAssistantMessage();

@@ -4,6 +4,9 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Message sent by the server to client to send the order
+ */
 public class TurnOrderMessage extends ServerToClient implements Serializable {
     @Serial
     private static final long serialVersionUID= 6847035424917439806L;

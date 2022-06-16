@@ -1434,16 +1434,6 @@ public class Cli implements Runnable, View {
             out.println("Round finito, inizia uno nuovo");
         }
     }
-
-    @Override
-    public void displayDisconnection(String playerDisconnected) {
-        if(Objects.equals(playerDisconnected, socketNetworkHandler.getNicknameThisPlayer())){
-            out.println("Sei stato disconnesso dalla partita!");
-        }else{
-            socketNetworkHandler.sendMessage(new iHaveToDisconnectMessage(socketNetworkHandler.getNicknameThisPlayer()));
-        }
-    }
-
     @Override
     public void displayOnePlayerBoard(String nickname) {
             int i;
@@ -1475,14 +1465,6 @@ public class Cli implements Runnable, View {
     }
     public void displayEndTurn(){
         out.println("Il tuo turno è finito.");
-    }
-    @Override
-    public void displayEndRound(){
-        out.println("Il round è finito");
-    }
-    @Override
-    public void displayResponseMessage() {
-
     }
     @Override
     public void displayAll(){
@@ -1977,12 +1959,6 @@ public class Cli implements Runnable, View {
         }
         return index.toString();
     }
-
-    @Override
-    public void endgame(){
-        out.println("Il gioco è termitano!");
-    }
-
     @Override
     public void invalidNumPlayer(){
         out.println("ATTENZIONE: Numero Player non valido");

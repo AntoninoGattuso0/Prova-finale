@@ -6,6 +6,9 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Message sent by the client to server for move pawns to Island
+ */
 public class MovePawnToIslandMessage extends ClientToServer implements Serializable{
     @Serial
     private static final long serialVersionUID = 8736574405034849035L;

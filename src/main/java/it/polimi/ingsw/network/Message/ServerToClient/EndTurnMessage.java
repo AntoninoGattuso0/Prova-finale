@@ -4,6 +4,9 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Message sent by the server to client when the turn ended
+ */
 public class EndTurnMessage extends ServerToClient implements Serializable {
     @Serial
     private static final long serialVersionUID = -8399908476119148036L;

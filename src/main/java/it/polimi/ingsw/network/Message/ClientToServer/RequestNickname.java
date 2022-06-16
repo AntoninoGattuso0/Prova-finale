@@ -3,6 +3,9 @@ package it.polimi.ingsw.network.Message.ClientToServer;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * Message sent by the client to server with the Nickname
+ */
 public class RequestNickname extends ClientToServer implements Serializable {
     @Serial
     private static final long serialVersionUID= 5123207096423101693L;
