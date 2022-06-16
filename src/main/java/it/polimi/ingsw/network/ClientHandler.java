@@ -26,25 +26,29 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
     private ObjectOutputStream objectOutputStream;
 
     public ClientHandler(Socket socket, Lobby lobby) {
-        this.lobby= lobby;
+        this.lobby = lobby;
         this.mySocket = socket;
         this.connected = true;
         this.myTurn = false;
         this.messageReady = false;
-        ping=new Ping();
+        ping = new Ping();
     }
+
     public String getUserNickname() {
         return userNickname;
     }
-    public boolean getMyTurn(){
+
+    public boolean getMyTurn() {
         return myTurn;
     }
+
     @Override
     public void setTurn(boolean myTurn) {
         this.myTurn = myTurn;
     }
+
     public void setUserNickname(String userNickname) {
-        this.userNickname=userNickname;
+        this.userNickname = userNickname;
     }
 
     /**
@@ -61,8 +65,9 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
             e.printStackTrace();
         }
     }
-    private void pingToClient(){
-        Thread thread= new Thread(()-> {
+
+    private void pingToClient() {
+        Thread thread = new Thread(() -> {
             int c = 0;
             while (connected) {
                 try {
@@ -81,53 +86,55 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
     }
 
     /**
-     *Close the Client connection
+     * Close the Client connection
      */
-    public void closeConnect(String userNickname){
-        try{
-            connected=false;
+    public void closeConnect(String userNickname) {
+        try {
+            connected = false;
             mySocket.close();
             objectOutputStream.close();
             objectInputStream.close();
             updateDisconnection(this);
-            System.out.println("SERVER: "+userNickname+" connection close by the server.\n");
-        }catch (IOException e){
-            System.out.println("SERVER: errore closing: "+userNickname+"\n");
+            System.out.println("SERVER: " + userNickname + " connection close by the server.\n");
+        } catch (IOException e) {
+            System.out.println("SERVER: errore closing: " + userNickname + "\n");
             e.printStackTrace();
         }
     }
-    public void readFromClient(){
-        Thread thread= new Thread(()->{
+
+    public void readFromClient() {
+        Thread thread = new Thread(() -> {
             while (connected) {
+                try {
+                    mySocket.setSoTimeout(30000);
+                    Message toServer = null;
                     try {
-                        mySocket.setSoTimeout(30000);
-                        Message toServer = null;
-                        try {
-                            toServer = (Message) objectInputStream.readObject();
-                        } catch (ClassNotFoundException e) {
-                            e.printStackTrace();
-                        }
-                        if(lobby.isDisconnectAll()) {
-                            if(toServer instanceof ReadyTodisconnection){
-                                lobby.processMessage(this,toServer);
-                            }
-                        }else if (!(toServer instanceof Ping)) {
-                                lobby.processMessage(this, toServer);
-                                messageReady = true;
-                                synchronized (this) {
-                                    notifyAll();
-                                }
-                            }
-                    } catch (IOException | NullPointerException | IllegalArgumentException e) {
-                        System.out.println("SERVER: " + userNickname + " connection close by the client");
-                        lobby.setDisconnectionCounter();
-                        closeConnect(userNickname);
-                        break;
+                        toServer = (Message) objectInputStream.readObject();
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
                     }
+                    if (lobby.isDisconnectAll()) {
+                        if (toServer instanceof ReadyTodisconnection) {
+                            lobby.processMessage(this, toServer);
+                        }
+                    } else if (!(toServer instanceof Ping)) {
+                        lobby.processMessage(this, toServer);
+                        messageReady = true;
+                        synchronized (this) {
+                            notifyAll();
+                        }
+                    }
+                } catch (IOException | NullPointerException | IllegalArgumentException e) {
+                    System.out.println("SERVER: " + userNickname + " connection close by the client");
+                    lobby.setDisconnectionCounter();
+                    closeConnect(userNickname);
+                    break;
                 }
+            }
         });
         thread.start();
     }
+
     @Override
     public Message read() {
         synchronized (this) {
@@ -142,6 +149,7 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
         messageReady = false;
         return message;
     }
+
     public void run() {
         try {
             this.objectOutputStream = new ObjectOutputStream(mySocket.getOutputStream());
@@ -157,13 +165,6 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
 
     @Override
     public void updateDisconnection(ClientHandlerInterface client) {
-        int i;
-        lobby.setIsDisconnectAll(true);
-        for(i=0;i<lobby.getClients().size();i++){
-            if(lobby.getClients().get(i)==client){
-                lobby.getClients().remove(i);
-            }
-        }
-        client=null;
+        lobby.updateDisconnection(this);
     }
 }

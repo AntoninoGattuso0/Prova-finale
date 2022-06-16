@@ -344,7 +344,6 @@ public class Cli implements Runnable, View {
     @Override
     public void newGameStart(){
         System.out.println("Siete tutti in lobby. Il Game inizia!");
-        displayAll();
         if(lightGame.getNumPlayers()==2||lightGame.getNumPlayers()==4){
             pedineDaSpostare=3;
             numPawnMove=3;
@@ -1492,14 +1491,16 @@ public class Cli implements Runnable, View {
     public void updateAll(LightGame object) {
         this.lightGame = object;
         int i;
-        int c=0;
-        for(i=0;i<lightGame.getNumPlayers();i++) {
+        int c = 0;
+        for (i = 0; i < lightGame.getNumPlayers(); i++) {
             if (lightGame.getPlayers().get(i).getCurrentAssistant() != null) {
                 c++;
             }
         }
-        if(c==0){
-            displayStartRound();
+        if(numPawnMove!=0) {
+            if (c == 0) {
+                displayStartRound();
+            }
         }
     }
     @Override

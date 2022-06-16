@@ -35,7 +35,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     private final ServerMessageMenager serverMessageMenager;
     private boolean isDisconnectAll=false;
     private int disconnectionCounter=0;
-
     public Lobby() {
         lock = new Object();
         namePlayer = new ArrayList<>();
@@ -55,6 +54,10 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     }
     public Controller getController() {
         return controller;
+    }
+
+    public VirtualView getVirtualView() {
+        return virtualView;
     }
 
     public void setIsDisconnectAll(boolean disconnectAll) {
