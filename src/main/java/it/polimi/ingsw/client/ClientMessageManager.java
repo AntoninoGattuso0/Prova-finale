@@ -16,8 +16,8 @@ public class ClientMessageManager {
 
     /**It contains all the type of message the Client can receive
      *
-     * @param object
-     * @param socketNetworkHandler
+     * @param object the Message
+     * @param socketNetworkHandler the Client
      * @throws InterruptedException
      * @throws IOException
      */

@@ -1,9 +1,6 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.client.ModelLight.LightDiningRoom;
 public class DiningRoom {
-    //modifiche all'UML: array di array: in cui gli elementi sono 0 o 1;
-    //5 int che tengono conto di quante pedine di ogni colore sono presenti nella sala
     int[][] position = new int[5][10];
     private int numGreen;
     private int numRed;
@@ -56,6 +53,10 @@ public class DiningRoom {
         numBlue = 0;
     }
 
+    /**
+     *add pawn to DiningRoom
+     * @param colorPawn Color of the Pawn to be added to the DiningRoom
+     */
     public void addPawnToDiningRoom(ColorPawn colorPawn, Player player, Game game) {
         int j; //variabile che serve a iterare dentro le righe della sala
         if (colorPawn.equals(ColorPawn.GREEN) && player.entrance.getGreenPawn() > 0) {
@@ -121,8 +122,12 @@ public class DiningRoom {
         }
     }
 
+    /**
+     * is used for the effect of
+     * @see Omnia
+     */
     public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player, Game game) { //le sposta da dining al sacchetto
-        int j; //variabile che serve a iterare dentro le righe della sala
+        int j;
         if (colorPawn.equals(ColorPawn.GREEN)) {
             for (j = 9; j > -1; j--) {
                 if (player.diningRoom.position[0][j] != 0) {
@@ -174,6 +179,11 @@ public class DiningRoom {
                 }
         }
     }
+
+    /**
+     * is used for the effect of
+     * @see Maria
+     */
     public void removePawnFromDiningRoomToEntrance(ColorPawn colorPawn, Player player, Game game) {//le sposta da dining all'entrance
         int j; //variabile che serve a iterare dentro le righe della sala
         if (colorPawn.equals(ColorPawn.GREEN) && player.diningRoom.getNumGreen() > 0) {
@@ -227,9 +237,5 @@ public class DiningRoom {
                 }
             }
         }
-    }
-    public LightDiningRoom getLightDiningRoom(){
-        LightDiningRoom lightDiningRoom=new LightDiningRoom(getNumBlue(),getNumGreen(),getNumPink(),getNumRed(),getNumYellow());
-        return lightDiningRoom;
     }
 }

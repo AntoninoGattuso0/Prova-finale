@@ -4,6 +4,10 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * the twelfth effect (Omnia because "O" is the twelfth alphabet letter)
+ * @see UseEffect
+ */
 public class Omnia extends UseEffect implements Serializable {
     @Serial
     private static final long serialVersionUID= -5293594704396653058L;
@@ -15,13 +19,8 @@ public class Omnia extends UseEffect implements Serializable {
     public void setCoinPrice(int coinPrice){this.coinPrice = coinPrice;}
     public int getCoinPrice(){return coinPrice;}
 
-    /**CharacterCard 12: choose a color. Every player (you too) have to discart 3 student of the same color from thei DiningRoom
-     *
-     * @param game
-     * @param s
-     * @param island
-     * @param player
-     * @param colorPawn
+    /**
+     * CharacterCard 12: choose a color. Every player (you too) have to discard 3 student of the same color from their DiningRoom
      */
     public void useEffect(Game game, int s, Island island, Player player, ArrayList<ColorPawn> colorPawn){
         int i, j;

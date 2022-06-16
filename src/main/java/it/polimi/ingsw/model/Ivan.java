@@ -4,6 +4,10 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * the eight effect (Ivan because "I" is the eight alphabet letter)
+ *  @see UseEffect
+ */
 public class Ivan extends UseEffect implements Serializable {
     @Serial
     private static final long serialVersionUID= -2091548432968052714L;
@@ -32,13 +36,8 @@ public class Ivan extends UseEffect implements Serializable {
         numPlayer=-1;
     }
 
-    /**CharacterCard 8: during this turn you have a +2 in the influence count
-     *
-     * @param game
-     * @param i
-     * @param island
-     * @param player
-     * @param colorPawn
+    /**
+     * CharacterCard 8: during this turn you have a +2 in the influence count
      */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){//   public void useEffect(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn){
         effectActive=true;

@@ -3,6 +3,11 @@ package it.polimi.ingsw.model;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
+
+/**
+ * the ninth effect (Lancillotto because "L" is the ninth alphabet letter)
+ * @see UseEffect
+ */
 public class Lancillotto extends UseEffect implements Serializable {
     @Serial
     private static final long serialVersionUID= -3530330329008197496L;
@@ -26,12 +31,7 @@ public class Lancillotto extends UseEffect implements Serializable {
     }
 
     /**CharacterCard 9: choose a color. In this turn the students of that color don't count in the influence
-     *
-     * @param game
-     * @param i
-     * @param island
-     * @param player
-     * @param colorPawn
+     * @param colorPawn colorPawn.get(0) contain the color
      */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){//(Game game, int i,Island island,Player player,ArrayList<ColorPawn> colorPawn)
         switch (colorPawn.get(0)){

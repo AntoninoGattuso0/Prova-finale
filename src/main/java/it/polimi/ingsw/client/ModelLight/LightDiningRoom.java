@@ -3,6 +3,10 @@ package it.polimi.ingsw.client.ModelLight;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * LightCloud is the serialized class that contains the DiningRoom information to be sent to the client
+ * @see it.polimi.ingsw.model.DiningRoom
+ */
 public class LightDiningRoom implements Serializable {
     @Serial
     private static final long serialVersionUID= -5630857078178651445L;

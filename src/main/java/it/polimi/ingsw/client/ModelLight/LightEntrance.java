@@ -3,6 +3,10 @@ package it.polimi.ingsw.client.ModelLight;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * LightEntrance is the serialized class that contains the Entrance information to be sent to the client
+ * @see it.polimi.ingsw.model.Entrance
+ */
 public class LightEntrance implements Serializable {
     @Serial
     private static final long serialVersionUID= -4779606610459309810L;

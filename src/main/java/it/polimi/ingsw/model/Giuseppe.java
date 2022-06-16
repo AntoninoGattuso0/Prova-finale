@@ -2,6 +2,11 @@ package it.polimi.ingsw.model;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.*;
+
+/**
+ * the seventh effect (Giuseppe because "G" is the seventh alphabet letter)
+ * @see UseEffect
+ */
 public class Giuseppe extends UseEffect implements Serializable {
     @Serial
     private static final long serialVersionUID= 7452426495076939173L;
@@ -102,6 +107,7 @@ public class Giuseppe extends UseEffect implements Serializable {
         }
         nPawn = 6;
     }
+
     public void swapPawn(ColorPawn colorPawnCard, ColorPawn colorPawnEntrance, Player player){
         if(!Objects.equals(colorPawnCard, colorPawnEntrance) && this.nPawn > 3){
             if(Objects.equals(colorPawnCard.toString(), "GREEN") && getNumGreenPawn() > 0){
@@ -139,13 +145,9 @@ public class Giuseppe extends UseEffect implements Serializable {
         }
     }
 
-    /**CharacterCard 7: you can swap at most 3 pawn from that card to your Entrance
-     *
-     * @param game
-     * @param i
-     * @param island
-     * @param player
-     * @param colorPawn
+    /**
+     * CharacterCard 7: you can swap at most 3 pawn from that card to your Entrance
+     * @param colorPawn contains all Pawns. the first half contains the pawns to be moved to the entrance, the second half the pawns to be moved on the card
      */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){
         boolean swap = false;

@@ -3,6 +3,10 @@ package it.polimi.ingsw.client.ModelLight;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * Lightcloud is the serialized class that contains the cloud information to be sent to the client
+ * @see it.polimi.ingsw.model.Cloud
+ */
 public class LightCloud implements Serializable {
     @Serial
     private static final long serialVersionUID= 7032643951141513848L;

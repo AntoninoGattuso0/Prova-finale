@@ -49,6 +49,9 @@ public class ProfTable implements Serializable {
         this.blueProf = i;
     }
 
+    /**
+     * ProfTable is initialized all to -1 (-1 because no ine has the professor )
+     */
     public ProfTable() {
         setGreenProf(-1);
         setRedProf(-1);
@@ -56,8 +59,6 @@ public class ProfTable implements Serializable {
         setPinkProf(-1);
         setBlueProf(-1);
     }
-
-    //modifiche all'UML:metodo restituisce un int ovvero il numero del giocatore che possiede il professore
     public int checkProf(int color) {
         if (color == 0) return greenProf;
         else if (color == 1) return redProf;

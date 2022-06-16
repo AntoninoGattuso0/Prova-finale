@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
+/**
+ * the first effect (Antonio because "A" is the first alphabet letter)
+ * @see UseEffect
+ */
 public class Antonio extends UseEffect implements Serializable{
     @Serial
     private static final long serialVersionUID= 2137362576944932011L;
@@ -72,18 +76,13 @@ public class Antonio extends UseEffect implements Serializable{
         }
     }
 
-    /**CharacterCard 1: take 1 Student from that card and put it on an Island
-     *
-     * @param game
-     * @param i
-     * @param island
-     * @param player
-     * @param colorPawn
+    /**CharacterCard 1: take 1 Student from that card and put it on an Island.
+     * @param colorPawn colorPawn.get(0) contain the pawn color
      */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
         Random rnd = new Random();
         ArrayList<ColorPawn> refillPawn = Game.createArrayPawn(game.studentBag);
-        if (colorPawn.get(0).toString().equals("GREEN") && getGreenPawn() > 0) {  //altrimenti cosa succede se la pedina verde non c'è?
+        if (colorPawn.get(0).toString().equals("GREEN") && getGreenPawn() > 0) {
             island.setGreenPawn(island.getGreenPawn() + 1);
             setGreenPawn(getGreenPawn() - 1);
             setNumPawnAntonio(getNumPawnAntonio() - 1);

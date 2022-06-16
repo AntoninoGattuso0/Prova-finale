@@ -1,11 +1,10 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.client.ModelLight.LightEntrance;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Random;
 public class Entrance {
-    private int numPawn;       //numero di pedine totali presenti all'entrata della plancia
-    //numero di pedine per ogni colore, inizialmente sono zero, poi in base al numero di player vengono aggiunte pedine in maniera randomica
+    private int numPawn;
     private int greenPawn;
     private int bluePawn;
     private int pinkPawn;
@@ -109,17 +108,12 @@ public class Entrance {
             }
         }
     }
-
-    // modifiche all'UML:ho aggiunto setter per definire quante sono le pedine che devono esserci in Entrance
-    //all'inizio del gioco e dopo che ho fatto refill da una nuvola
     public void startNumPawn(Game game){
         if(game.totPlayer == 2 || game.totPlayer == 4)
             setNumPawn(7);
         else if(game.totPlayer == 3)
             setNumPawn(9);
     }
-    //modifiche all'UML: il ritorno di check è boolean
-    //metodo che controlla in base al numero di Players se ci sono ancora 4 o 5 pedine all'ingresso
     public boolean checkNum(Game game){
         if((game.totPlayer == 2 || game.totPlayer == 4) && numPawn > 4 )
             return true;
@@ -127,10 +121,8 @@ public class Entrance {
             return true;
        else return false;
     }
-
     public void movePawnToIsland(ColorPawn colorPawn, Island island, Game game){
-            //tutti questi spostamenti sono possibili se il numero di pedine all'entrata è 4 o 5 in base ai giocatori
-               if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){  //altrimenti cosa succede se la pedina verde non c'è?
+               if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){
                    island.setGreenPawn(island.getGreenPawn() + 1);
                    setGreenPawn(getGreenPawn() - 1);
                    setNumPawn(getNumPawn() - 1);
@@ -152,11 +144,13 @@ public class Entrance {
                    setNumPawn(getNumPawn() - 1);
                }
             }
-        //LEGGIMI :( non va bene il fatto che anche se la funzione viene chiamata n volte viene richiamata sempre su stessa isola e pedina
+
+    /**
+     * invokes the function MovePawnToIsland
+     * @param n number of Pawns
+     * @param colorPawn array whit Pawns
+     */
     public void moveToIsland(int n, ArrayList<ColorPawn> colorPawn, Island island,Game game) {
-        //n = numero di pedine che si vogliono spostare da entrance a island
-        //la somma di n pedine da spostare da entrance verso l'isola e da entance verso diningroom deve essere 3 o 4
-        //controller?
         if((game.totPlayer == 2 || game.totPlayer == 4) && (n > 0 &&  n < 4 )){
             while(n != 0){
                 movePawnToIsland(colorPawn.get(n - 1), island, game);
@@ -172,8 +166,12 @@ public class Entrance {
                 }
         }
     }
+
+    /**
+     * after choosing teh cloud ì, refill the Entrance
+     */
     public void chooseCloud (Cloud cloud,Game game,Player player){
-        if(cloud.getNumPawn()!=0){      //utile o no il controllo di numPawn? (controller)
+        if(cloud.getNumPawn()!=0){
             player.entrance.setGreenPawn(player.entrance.getGreenPawn() + cloud.getGreenPawn());
             player.entrance.setRedPawn(player.entrance.getRedPawn() + cloud.getRedPawn());
             player.entrance.setYellowPawn(player.entrance.getYellowPawn() + cloud.getYellowPawn());
@@ -187,9 +185,5 @@ public class Entrance {
             cloud.setBluePawn(0);
             player.entrance.startNumPawn(game);
         }
-    }
-    public LightEntrance getLightEntrance(){
-        LightEntrance lightEntrance=new LightEntrance(this.numPawn,this.redPawn,this.greenPawn,this.yellowPawn,this.pinkPawn,this.bluePawn);
-        return lightEntrance;
     }
 }

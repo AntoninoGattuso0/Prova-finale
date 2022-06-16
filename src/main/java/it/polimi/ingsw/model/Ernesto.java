@@ -4,6 +4,10 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * the fifth effect (Ernesto because "E" is the fifth alphabet letter)
+ * @see UseEffect
+ */
 public class Ernesto extends UseEffect implements Serializable {
     @Serial
     private static final long serialVersionUID= -2535390467065107362L;
@@ -24,13 +28,7 @@ public class Ernesto extends UseEffect implements Serializable {
         coinPrice=2;
     }
 
-    /**CharacterCard 5: you have 4 proibition card. You can put one on a Island to make it Prohibited
-     *
-     * @param game
-     * @param i
-     * @param island
-     * @param player
-     * @param colorPawn
+    /**CharacterCard 5: you have 4 No Entry card. You can put one on the Island to make it Prohibited
      */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn){
         if(numProhibitionCard != 0){

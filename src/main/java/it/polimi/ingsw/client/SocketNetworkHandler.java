@@ -11,6 +11,9 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.NoSuchElementException;
 
+/**
+ * SocketNetworkHandler is the client
+ */
 public class SocketNetworkHandler implements Runnable{
     private Socket socket;
     private ObjectOutputStream out;
@@ -21,6 +24,11 @@ public class SocketNetworkHandler implements Runnable{
     private volatile boolean ready;
     private final Ping ping;
     private final ClientMessageManager clientMessageManager;
+
+    /**
+     * Associate Client to Cli or Gui
+     * @param view Cli or Gui
+     */
     public SocketNetworkHandler(View view){
         connected=false;
         ready=false;
@@ -64,8 +72,9 @@ public class SocketNetworkHandler implements Runnable{
         thread.start();
     }
 
-    /**Send the message to the correct client
-     *
+    /**
+     * Send the message
+     * if the message is a RequestNickname Message, don't reset out because the client has to keep the "nickname" until it is accepted/rejected
      * @param message
      */
     public synchronized void sendMessage(Message message){

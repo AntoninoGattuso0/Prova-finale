@@ -133,7 +133,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     }
 
     public void newGame(Game game) {
-        controller = new Controller(game, virtualView, clients);
+        controller = new Controller(game, virtualView);
         controller.startRound();
     }
 

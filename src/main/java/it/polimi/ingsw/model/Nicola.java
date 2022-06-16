@@ -4,6 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
+
+/**
+ * the eleventh effect (Nicola because "N" is the eleventh alphabet letter)
+ *  @see UseEffect
+ */
 public class Nicola extends UseEffect implements Serializable {
     @Serial
     private static final long serialVersionUID= 4274113059561342264L;
@@ -83,16 +88,11 @@ public class Nicola extends UseEffect implements Serializable {
     public void setCoinPrice(int coinPrice){this.coinPrice = coinPrice;}
     public int getCoinPrice(){return coinPrice;}
 
-    /**CharacterCard 11: choose 1 student from that card and put it in your DiningRoom
-     *
-     * @param game
-     * @param i
-     * @param island
-     * @param player
-     * @param colorPawn
+    /**
+     * CharacterCard 11: choose 1 student from that card and put it in your DiningRoom
      */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
-        int j; //variabile che serve a iterare dentro le righe della sala
+        int j;
         if (colorPawn.get(0).equals(ColorPawn.GREEN)) {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[0][j] != 1) {

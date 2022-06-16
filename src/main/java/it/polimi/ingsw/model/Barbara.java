@@ -2,6 +2,10 @@ package it.polimi.ingsw.model;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
+/**
+ * the second effect (Barbara because "B" is the second alphabet letter)
+ * @see UseEffect
+ */
 public class Barbara extends UseEffect implements Serializable {
     @Serial
     private static final long serialVersionUID= 6437140673880575588L;
@@ -18,12 +22,7 @@ public class Barbara extends UseEffect implements Serializable {
     }
 
     /**CharacterCard 2: During this turn you obtain the professor even if the pawn in your DiningRoom are the same of the player who already has the professor
-     *
-     * @param game
-     * @param i
-     * @param island
-     * @param player
-     * @param colorPawn
+     * @param i is the index of the player that used Barbara
      */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
         int j;

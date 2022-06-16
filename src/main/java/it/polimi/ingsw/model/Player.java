@@ -1,14 +1,17 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.client.ModelLight.LightDiningRoom;
-import it.polimi.ingsw.client.ModelLight.LightEntrance;
-import it.polimi.ingsw.client.ModelLight.LightPlayer;
-import it.polimi.ingsw.client.ModelLight.LightTowerSpace;
 import it.polimi.ingsw.controller.PhaseTurn;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * the Player contains the Entrance,DiningRoom,TowerSpace and deckAssistant
+ * @see Entrance
+ * @see DiningRoom
+ * @see TowerSpace
+ * @see AssistantCard
+ */
 public class Player {
     private String nickname;
     private boolean active;
@@ -44,32 +47,26 @@ public class Player {
     public ArrayList<AssistantCard> getDeckAssistant(){
         return this.deckAssistant;
     }
-    public LightPlayer getLightPlayer(){
-        LightDiningRoom lightDining=new LightDiningRoom(getDiningRoom().getNumBlue(),getDiningRoom().getNumGreen(),getDiningRoom().getNumPink(),getDiningRoom().getNumRed(),getDiningRoom().getNumYellow());
-        LightTowerSpace lightTowerSpace= new LightTowerSpace(getTowerSpace().getColorTower(),getTowerSpace().getNumTower());
-        LightEntrance lightEntrance= new LightEntrance(getEntrance().getNumPawn(),getEntrance().getGreenPawn(),getEntrance().getRedPawn(),getEntrance().getYellowPawn(),getEntrance().getPinkPawn(),getEntrance().getBluePawn());
-        return new LightPlayer(getNickname(),getNumCoin(),getDeckAssistant(),getCurrentAssistant(),lightEntrance,lightTowerSpace,lightDining,currentPhase);
-    }
 
-    /**Set if the player is the one who have to tdo the actions during the turn
-     *
+    /**
+     * Set if the player is the one who have to do the actions during the turn
      * @param active
      */
     public void setActive(boolean active) {
         this.active=active;
     }
-    public boolean getActive(){
-        return this.active;
-    }
+
+    /**
+     * the AssistantCard are created in the constructor of the single player
+     * @see AssistantCard
+     */
     public Player(String nick, Game game) {
         setActive(true);
-        int j, k,m=0;
+        int j, k;
         setNickname(nick);
         if (game.isExpert) setNumCoin(1);
         else setNumCoin(-1);
-        //creazione assistenti
         k = 1;
-        //aggiunta assistenti
         for (j = 1; j < 11; j++) {
             AssistantCard assistant = new AssistantCard();
             assistant.setCardValue(j);
@@ -78,7 +75,6 @@ public class Player {
             this.deckAssistant.add(assistant);
         }
         this.currentAssistant=null;
-            //collegamento a tower, dining and entrance
             this.entrance = new Entrance(game);
             this.diningRoom = new DiningRoom();
             this.towerSpace = new TowerSpace(game);
@@ -86,23 +82,19 @@ public class Player {
     public void setCurrentAssistant(AssistantCard currentAssistant) {
         this.currentAssistant = currentAssistant;
     }
+
     public AssistantCard getCurrentAssistant() {
         return currentAssistant;
     }
+
     public int getNumCoin() {
         return numCoin;
     }
+
     public void setNumCoin(int numCoin) {
         this.numCoin = numCoin;
     }
-    public boolean checkNumStepMotherNature(int num){
-        boolean b;
-        if (currentAssistant.getStep() >= num) b = true;
-        else b = false;
-        return b;
-    }
-    // modifica UML: chooseCloud dovrebbe scegliere una nuvola  e spostare le pedine in entrance. quindi va fatto nella classe entrance.
-    // public void chooseCloud(Cloud cloud){}//
+
     public int useAssistant(Game game,Player player,AssistantCard Assistant) {
         int i, contr = 0;
         for (i = 0; i < game.getPlayers().size(); i++) {

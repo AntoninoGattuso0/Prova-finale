@@ -6,6 +6,29 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * LightGame is the serialized class that contains the Game information to be sent to the client
+ * contains:
+ * @see ProfTable
+ * @see LightTowerSpace
+ * @see LightEntrance
+ * @see LightDiningRoom
+ * @see LightCloud
+ * @see LightPlayer
+ * @see Island
+ * @see Antonio
+ * @see Barbara
+ * @see Ciro
+ * @see Dante
+ * @see Ernesto
+ * @see Felix
+ * @see Giuseppe
+ * @see Ivan
+ * @see Lancillotto
+ * @see Maria
+ * @see Nicola
+ * @see Omnia
+ */
 public class LightGame implements Serializable {
     @Serial
     private static final long serialVersionUID= 3353043693680634940L;

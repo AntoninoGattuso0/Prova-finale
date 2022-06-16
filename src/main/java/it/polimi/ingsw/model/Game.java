@@ -40,9 +40,8 @@ public class Game {
         return profTable;
     }
 
-    /**Creating the "LightGame" instance: it contains the useful things to pass to the View
-     *
-     * @return
+    /**
+     * Creating the "LightGame" instance: it contains the useful things to pass to the View
      */
     public LightGame getLightGame(){
         int i;
@@ -133,9 +132,8 @@ public class Game {
         isExpert = expert;
     }
 
-    /**This function initialize everything needed in the game just created(islands, clouds etc...)
-     *
-     * @param game
+    /**
+     * This function initialize everything needed in the game just created(islands, clouds etc...)
      */
     public void start (Game game){
         int i;
@@ -209,10 +207,10 @@ public class Game {
         setCharacterCards(game);
     }
 
-    /**This function is useful to create fast an array of the color that are in the StudentBag (if a color miss
+    /**
+     * This function is useful to create fast an array of the color that are in the StudentBag (if a color miss
      * it doesn't get added to the array)
-     * @param studentBag
-     * @return
+     * @return ArrayPawn with the color
      */
     static ArrayList<ColorPawn> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
         ArrayList<ColorPawn> arrayPawn = new ArrayList<>(5);
@@ -229,15 +227,15 @@ public class Game {
         return arrayPawn;
     }
 
-    /**Create a new player in the game
-     *
-     * @param nick
-     * @param game
+    /**
+     * Create a new player in the game
+     * @see Player
      */
     public void newPlayer(String nick,Game game) {
         Player player = new Player(nick,game);
         game.players.add(player);
     }
+
     public void moveMotherNature(Island island) {
         int i;
         for (i = 0; !islands.get(i).getMotherNature(); i++) ;
@@ -245,10 +243,8 @@ public class Game {
         island.setMotherNature(true);
     }
 
-    /**Everytime a Tower is added the game check if he can unify the near Islands
-     *
-     * @param i
-     * @param game
+    /**
+     * Everytime a Tower is added the game check if he can unify the near Islands
      */
     public void unifyIsland(int i, Game game) {
         int j, k;
@@ -279,12 +275,11 @@ public class Game {
         }
     }
 
-    /**Check if the 2 islands can be unified or not
-     *
+    /**
+     * Check if the 2 islands can be unified or not and if the 2 islands can be unified sum pawns to island 1
      * @param i (island 1)
      * @param j (island 2)
-     * @param game
-     * @return
+     * @return boolean: if is "true" the islands have been merged
      */
     public static boolean checkIsland(int i, int j, Game game) { //controlla se le due isole si possono unire, nel caso le unisce
         if (game.islands.get(j).getColorTower() == game.islands.get(i).getColorTower()) {
@@ -298,10 +293,8 @@ public class Game {
         return false;
     }
 
-    /**Calculates the influence of the island
-     *
-     * @param island
-     * @param game
+    /**
+     * Calculates the influence of the island and eventually call function UnifyIsland
      */
     public void topInfluence(Island island, Game game) {
         int i, j, k, n, color, max;
@@ -375,11 +368,10 @@ public class Game {
         }
     }
 
-    /**Randomizer the 3 CharacterCards of that Game
-     *
-     * @param game
+    /**
+     * Randomizer the 3 CharacterCards of that Game and pu this in the characterCards array
      */
-        public void setCharacterCards (Game game){ //posiziona a caso dei personaggi (3)
+        public void setCharacterCards (Game game){
             if (game.isExpert) {
                 Random rnd = new Random();
                 int random = rnd.nextInt(12);
@@ -454,8 +446,9 @@ public class Game {
             }
         }
 
-    /**Assign the Professor to the correct player
-     *
+    /**
+     * Assign the Professor to the correct index of player
+     * @see ProfTable
      */
     public void moveProf() {
             int i, j;
@@ -509,11 +502,10 @@ public class Game {
             }
         }
 
-    /**Check if the game is finished after every turn
-     *
-     * @param lastTurn
-     * @return
-     */
+    /**
+     * Check if the game is finished after every turn or after the MoveMotherNature
+     * @return the winner Player or "null"
+     * */
     public Player finish(Boolean lastTurn) {
         ArrayList<Integer> numTower = new ArrayList<>();
         numTower.add(0);

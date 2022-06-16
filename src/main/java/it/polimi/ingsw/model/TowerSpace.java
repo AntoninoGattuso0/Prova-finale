@@ -1,7 +1,5 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.client.ModelLight.LightTowerSpace;
-
 public class TowerSpace {
 
     protected ColorTower colorTower;
@@ -19,11 +17,17 @@ public class TowerSpace {
         return colorTower;
     }
 
+    /**
+     * set the number of tower
+     */
     public void setStartNumTower(Game game){
         if(game.totPlayer == 2 || game.totPlayer == 4) setNumTower(8);
         else if(game.totPlayer == 3) setNumTower(6);
     }
 
+    /**
+     * set the colorTower
+     */
     public TowerSpace(Game game){
         int i = game.players.size();
         setNumTower(0);
@@ -48,8 +52,4 @@ public class TowerSpace {
                 }
             }
         }
-    public LightTowerSpace getLightTowerSpace(){
-        LightTowerSpace lightTowerSpace=new LightTowerSpace(getColorTower(),getNumTower());
-        return lightTowerSpace;
-    }
 }

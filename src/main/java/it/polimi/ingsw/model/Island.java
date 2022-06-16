@@ -2,6 +2,9 @@ package it.polimi.ingsw.model;
 
 import java.io.Serializable;
 
+/**
+ * @see #totIsland  totIsland is the number of islands that have joined this (1 in the start game)
+ */
 public class Island implements Serializable {
     private boolean isMotherNature;
     private int greenPawn;

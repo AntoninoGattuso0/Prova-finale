@@ -1,7 +1,12 @@
 package it.polimi.ingsw.model;
-import it.polimi.ingsw.client.ModelLight.LightCloud;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Random;
+
+/**
+ * represents the Cloud and hos the number of Pawn
+ */
 public class Cloud {
     private int numPawn;
     private int greenPawn;
@@ -54,6 +59,10 @@ public class Cloud {
         this.numPawn = numPawn;
     }
 
+    /**
+     * if the players are 2 or 4, the NumPawn on the cloud are 3, else are 4
+     * @return the numPawn
+     */
     public int requiredNumPawn(Game game) {
         if(game.totPlayer == 2 || game.totPlayer == 4)
             setNumPawn(3);
@@ -61,7 +70,6 @@ public class Cloud {
             setNumPawn(4);
          return getNumPawn();
     }
-
     public void refillCloud(StudentBag studentBag, Game game) {
         int i;
         Random rnd = new Random();
@@ -114,10 +122,5 @@ public class Cloud {
                 return;
             }
         }
-    }
-
-    public LightCloud getLightCloud(){
-        LightCloud lightCloud=new LightCloud(redPawn,bluePawn,numPawn,pinkPawn,yellowPawn,getGreenPawn());
-        return lightCloud;
     }
 }

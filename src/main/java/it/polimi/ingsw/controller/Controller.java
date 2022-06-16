@@ -6,7 +6,6 @@ import it.polimi.ingsw.client.ModelLight.LightPlayer;
 import it.polimi.ingsw.client.ModelLight.LightTowerSpace;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Player;
-import it.polimi.ingsw.network.ClientHandlerInterface;
 import it.polimi.ingsw.network.Message.ServerToClient.*;
 import it.polimi.ingsw.network.Message.UpdateMessage.AllUpdateMessage;
 import it.polimi.ingsw.network.VirtualView;
@@ -14,34 +13,29 @@ import it.polimi.ingsw.network.VirtualView;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Controller manages the phases of the game
+ */
 public class Controller {
     private RoundController roundController;
-    private boolean endGame;
-    private boolean isExpert;
     private Game game;
-    private boolean contr;
     private int c;
     private int counterRound;
     private final ArrayList<String> orderNamePlayers;
     private final VirtualView virtualView;
     private ArrayList<Player> players;
     private ArrayList<LightPlayer> playersLight;
-    private ArrayList<ClientHandlerInterface> clients;
 
-    public Controller(Game game, VirtualView virtualView, ArrayList<ClientHandlerInterface> clients) {
+    public Controller(Game game, VirtualView virtualView) {
         this.game = game;
-        this.isExpert = game.getIsExpert();//Manca il controllo della assistantphase nello startround DA NINO PER NINO
         this.virtualView = virtualView;
         this.orderNamePlayers = new ArrayList<>();
         this.players = new ArrayList<>();
         this.players.addAll(game.getPlayers());
-        this.endGame = false;
-        this.contr = false;
         this.c=0;
         this.counterRound=0;
         this.playersLight = new ArrayList<>();
         this.roundController = new RoundController(game.getPlayers());
-        this.clients = clients;
     }
 
     public ArrayList<Player> getPlayers() {
@@ -56,8 +50,8 @@ public class Controller {
         return this.game;
     }
 
-    /**Update everything from the Game to the LightGame
-     *
+    /**
+     * Update LightPlayer
      */
     public void updateThisPlayersLight() {
         for (Player player : players) {
@@ -90,6 +84,9 @@ public class Controller {
         this.players=players;
     }
 
+    /**
+     * this function manages the startRound and send the message AssistantMessage to the first player
+     */
     public synchronized void startRound() {
         this.counterRound++;
         players = roundController.getRoundOrder();
@@ -106,6 +103,10 @@ public class Controller {
         virtualView.sendBroadcast(new SetAssistantMessage(players.get(0).getNickname()));
     }
 
+    /**
+     *check the phase the player is in and after that ,sends the correct message and checks the end of the round and the end of the game
+     * @param player actual Player
+     */
     public synchronized void startTurn(Player player) {
         if (player.getCurrentPhase() == PhaseTurn.MOVE_STUDENT) {
             virtualView.sendBroadcast(new SetMovePawnMessage(player.getNickname(), 0));
