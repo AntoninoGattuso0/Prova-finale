@@ -17,7 +17,6 @@ public class Server {
     public Lobby getLobby() {
         return lobby;
     }
-
     public void start() throws IOException {
         try {
             serverSocket = new ServerSocket(port);

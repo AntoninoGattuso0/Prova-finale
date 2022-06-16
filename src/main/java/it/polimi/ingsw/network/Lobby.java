@@ -11,6 +11,13 @@ import it.polimi.ingsw.observer.ConnectionObserver;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Lobby manages the game and invokes game functions
+ * @see ServerMessageMenager
+ * @see ClientHandler
+ * @see VirtualView
+ * @see Controller
+ */
 public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA----
     private Controller controller;
     private ArrayList<String> namePlayer;
@@ -94,7 +101,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 virtualView.getClients().remove(i);
             }
         }
-        clientHandler=null;
         isDisconnectAll=true;
         virtualView.sendBroadcast(new DisconnectionMessage(nickname));
     }
@@ -125,22 +131,18 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 loginClient.sendObject(new SetNickMessage());
     }
 
-    public void endGame(Lobby lobby) {
-        for (String nickname : namePlayer) {
-            namePlayer.remove(nickname);
-        }
-        lobby = null;
-    }
-
+    /**
+     * start the game
+     */
     public void newGame(Game game) {
         controller = new Controller(game, virtualView);
         controller.startRound();
     }
 
-    /**Check if the nickname is unique
-     *
-     * @param nickname
-     * @param clientHandler
+    /**
+     * Check if the nickname is unique
+     * @see WrongNicknameMessage
+     * @see SetNickMessage
      */
     public synchronized void insertNickname(String nickname, ClientHandler clientHandler) {
             if (!contr || numinsert) {
@@ -180,6 +182,9 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             }
     }
 
+    /**
+     * set numPlayers and mode and after create a game
+     */
     public synchronized void insertNumPlayersIsExpert(int numPlayers, boolean isExpert, ClientHandler clientHandler) {
             if (numPlayers < 2 || numPlayers > 4) {
                 clientHandler.sendObject(new WrongNumPlayerIsExpertMessage());
@@ -198,7 +203,7 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             numinsert = true;
         }
 
-    public synchronized void selectAssistantCard(int assistant, ClientHandler clientHandler) {// modificare la funzione in player. se non viene eliminato come lo gestisco?
+    public synchronized void selectAssistantCard(int assistant, ClientHandler clientHandler) {
             int i;
             int contr = -1;
             i = findPlayer(game, clientHandler);
@@ -221,7 +226,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 clientHandler.sendObject(new WrongSameAssistantMessage(controller.getRoundController().getRoundOrder().get(i).getNickname()));
             }
     }
-
     public synchronized void useCharacter(int num, int numberPawn, int numIsland, ArrayList<ColorPawn> colorPawn, ClientHandler clientHandler,boolean v) {
         if (v) {
             Island island = null;
@@ -344,37 +348,33 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
         }
     }
 
-    /**Check that the sum of all the moved pawn is correct (not more and not less than the number of pawn you have to move)
-     *
-     * @param numPawn
-     * @param clientHandler
-     * @param numPlayer
+    /**
+     * Check that the sum of all the moved pawn is correct (not more and not less than the number of pawn you have to move)
      */
     public synchronized void movement(int numPawn, ClientHandler clientHandler, int numPlayer) {
-        numPawnExe=numPawnExe+numPawn;// questa funzione gestisce le pedine spostate. ogni volta che arriva un messaggio di movimento, somma le pedine spostate alla variabile numpawnexe.
+        numPawnExe=numPawnExe+numPawn;
         if(numPlayers==2||numPlayers==4){
-            if(numPawnExe==3){// le pedine sono 3 se i player sono 2 o 4 (ho pensato io a questo sulla CLI riga 264)
-                game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.MOVE_MOTHER_NATURE);//setto la fase successiva
+            if(numPawnExe==3){
+                game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.MOVE_MOTHER_NATURE);
                 virtualView.sendBroadcast(new UpdateDiningMessage());
-                controller.startTurn(game.getPlayers().get(numPlayer));//mando il messaggio broadcast della mothernature
-                numPawnExe=0;//setto a zero per permettere lo spostamento al prossimo player
+                controller.startTurn(game.getPlayers().get(numPlayer));
+                numPawnExe=0;
             }else{
                 virtualView.sendBroadcast(new UpdateDiningOnePlayerMessage(game.getPlayers().get(numPlayer).getNickname()));
-                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));//se le pedine totali spostate non sono 3 reinvio il messaggio
+                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));
             }
         } else if(numPlayers==3) {
-            if (numPawnExe == 4) {//le pedine sono 4 se i player sono 3 (ho pensato io a questo sulla CLI riga 267)
+            if (numPawnExe == 4) {
                 game.getPlayers().get(findPlayer(game,clientHandler)).setCurrentPhase(PhaseTurn.MOVE_MOTHER_NATURE);
                 virtualView.sendBroadcast(new UpdateDiningOnePlayerMessage(game.getPlayers().get(findPlayer(game,clientHandler)).getNickname()));
                 controller.startTurn(game.getPlayers().get(numPlayer));
                 numPawnExe=0;
             }else{
                 virtualView.sendBroadcast(new UpdateDiningOnePlayerMessage(game.getPlayers().get(numPlayer).getNickname()));
-                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));//se le pedine totali spostate non sono 4 reinvio il messaggio
+                clientHandler.sendObject(new SetMovePawnMessage(clientHandler.getUserNickname(),numPawnExe));
             }
         }
     }
-
     public void processMessage(ClientHandler clientHandler, Message m) {
         if(!lobbyOk){
                 serverMessageMenager.ManageInputToServer(clientHandler, m);

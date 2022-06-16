@@ -10,7 +10,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-
+/**
+ * is used for create an instance of client
+ */
 public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVEDERE
     private final Lobby lobby;
     private final Socket mySocket;
@@ -45,9 +47,8 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
         this.userNickname=userNickname;
     }
 
-    /**Sends the messages to the server
-     *
-     * @param object
+    /**
+     * Sends the messages to the server
      */
     public synchronized void sendObject(Message object) {
         try {
@@ -79,6 +80,9 @@ public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVE
         thread.start();
     }
 
+    /**
+     *Close the Client connection
+     */
     public void closeConnect(String userNickname){
         try{
             connected=false;

@@ -14,13 +14,12 @@ import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 public class Cli implements Runnable, View {
-   //PER PAUL: QUI CI SONO LE RIGHE A CUI DEVI ANDARE IN LOBBY, LI' TI DIRO' COSA MODIFICARE: 1583
-    private final PrintStream out;            //IN OGNI messaggio di mossa chiedere se vuole giocare il characterCard     //nel controllo del movimento di pedine inserire il controllo che se in diningroom hanno 10 pedine già inserite, non ne può spostare altre
-    private boolean isExpert;                  //verificare che il gioco sia esperto prima di stampare le varie richieste: se è Base i character non devono essere un opzione: per questo devi invertire le richieste 1) per dining, 2) per isola, 3) per charcter... altrimenti nel caso base esce premere 2 per movedining e 3 per moveisola
-    private LightGame lightGame;                // per verificare se è esperto puoi usare isExpert o LightGame.getIsExpert();
+    private final PrintStream out;            //nel controllo del movimento di pedine inserire il controllo che se in diningroom hanno 10 pedine già inserite, non ne può spostare altre
+    private boolean isExpert;
+    private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;//controlli se è esperto, su cc e sul numero di dining room
     private int pedineDaSpostare;                     //display coin
-    private int numPawnMove;                           //cerca come testare su cmd (estrai il jar?)
+    private int numPawnMove;
 
     public Cli() {
         out = System.out;
@@ -80,10 +79,8 @@ public class Cli implements Runnable, View {
     }
 
 
-    /**You have to choose if u want to move the pawn or to use a CharacterCard(in expert mode)
-     *
-     * @param nickname
-     * @param numPawnMoved
+    /**
+     * You have to choose if you want to move the pawn or to use a CharacterCard(in expert mode)
      */
     @Override
     public void requestMovePawn(String nickname,int numPawnMoved){
@@ -145,10 +142,9 @@ public class Cli implements Runnable, View {
         }
     }
 
-    /**Requests the number of pawn you want to move to your DiningRoom
-     *
-     * @param nickname
-     * @param pedineDaSpostare
+    /**
+     * Requests the number of pawn you want to move to your DiningRoom and send a message
+     * @see MovePawnToDiningMessage
      */
     private void requestMovePawnToDiningRoom(String nickname, int pedineDaSpostare) {
         //pedineDaSpostare is the number of pawn you can still move
@@ -241,9 +237,7 @@ public class Cli implements Runnable, View {
     }
 
     /**Request the number of pawn you want to move to an Island
-     *
-     * @param nickname
-     * @param pedineDaSpostare
+     * @see MovePawnToDiningMessage
      */
     private void requestMovePawnToIsland(String nickname, int pedineDaSpostare) {
         if (pedineDaSpostare == 0) {
@@ -340,8 +334,8 @@ public class Cli implements Runnable, View {
         }
     }
 
-    /**Initialize the important variables of the game
-     *
+    /**
+     * Initialize the pawns and inform all that the game started
      */
     @Override
     public void newGameStart(){
@@ -356,8 +350,9 @@ public class Cli implements Runnable, View {
         }
     }
 
-    /**Requests to the first player the number of player and if the game is expert
-     *
+    /**
+     * Requests to the first player the number of player and if the game is expert
+     * @see RequestNumPlayersIsExpert
      */
     @Override
     public void requestNumPlayersIsExpert() {
@@ -413,9 +408,8 @@ public class Cli implements Runnable, View {
             out.println("Il gioco è in modalità normale");
     }
 
-    /**Display all the AssistantCard that a player still has
-     *
-     * @param player
+    /**
+     * Display all the AssistantCard that a player still has
      */
     @Override
     public void displayAssistantCard(int player) {
@@ -517,8 +511,8 @@ public class Cli implements Runnable, View {
 
     }
 
-    /**Display all the remaining islands
-     *
+    /**
+     * Display all the remaining islands
      */
     @Override
     public void displayIslands() {
@@ -599,10 +593,9 @@ public class Cli implements Runnable, View {
             socketNetworkHandler.sendMessage(new RequestNicknameAfterFirstLoginMessage(nick));
         }
 
-    /**Check which CharacterCard a player has decided to use
-     *
-     * @param nickname
-     * @param bool
+    /**
+     * Check which CharacterCard a player has decided to use
+     * @see ChooseCharacterCardMessage
      */
     @Override
     public void requestCharacterCard(String nickname,boolean bool) {
@@ -610,7 +603,7 @@ public class Cli implements Runnable, View {
             ArrayList<ColorPawn> colori = new ArrayList<>();
             int i;
             for (i = 0; i < lightGame.getNumPlayers() && !(lightGame.getPlayers().get(i).getNickname().equals(nickname)); i++) ;
-            int player = i;//giocatore
+            int player = i;
             int numPawn = -1, numIsland = -1;
             if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
                 if (!bool) {
@@ -1374,7 +1367,10 @@ public class Cli implements Runnable, View {
     }
 
 
-
+    /**
+     * display when player win
+     * @see ReadyTodisconnection
+     */
     @Override
     public void displayWinner(String winner) throws IOException {
         displayStartRound();
@@ -1415,7 +1411,6 @@ public class Cli implements Runnable, View {
             out.println((i+1) + ") " + orderNamePlayers.get(i));
         }
     }
-
     @Override
     public void startTurn(ArrayList<String> players, String player) {
         if (Objects.equals(player, socketNetworkHandler.getNicknameThisPlayer())) {
@@ -1508,6 +1503,11 @@ public class Cli implements Runnable, View {
         out.println();
         displaySchoolBoard();
     }
+
+    /**
+     *function to choose a Cloud
+     * @see ChooseCloudMessage
+     */
     @Override
     public void selectCloud(String nickname) {
         if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
@@ -1563,6 +1563,11 @@ public class Cli implements Runnable, View {
         else
             out.println(nickname + " sta scegliendo la cloud");
     }
+
+    /**
+     *function for choose an Assistant
+     * @see ChooseAssistantCardMessage
+     */
     @Override
     public void selectAssistantCard(String nickname) {
         int i,m=-1;
@@ -1652,6 +1657,10 @@ public class Cli implements Runnable, View {
         return c;
     }
 
+    /**
+     *function for set the step
+     * @see MoveMotherNatureMessage
+     */
     @Override
     public void requestMoveMotherNature(String nickname) {
         if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
@@ -1727,11 +1736,8 @@ public class Cli implements Runnable, View {
         out.flush();
     }
 
-    /**Functions to display the colors/numbers
-     *
-     * @param island
-     * @param color
-     * @return
+    /**
+     * Functions to display the colors/numbers
      */
     private String color4Island(int island, int color){
         StringBuilder showColor = new StringBuilder();

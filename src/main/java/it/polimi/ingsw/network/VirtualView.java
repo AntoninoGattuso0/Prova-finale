@@ -46,7 +46,6 @@ public class VirtualView {
      * When the game ends, send to everyone the messages with the winner-nickname and after close the server.
      * @param nick of the winning player.
      * @see #sendBroadcast(Message)
-     * @see WinnerMessage#WinnerMessage(String)
      */
     public void updateWin(String nick) {
         System.out.println("The winner is " + nick + ", GameOver");
