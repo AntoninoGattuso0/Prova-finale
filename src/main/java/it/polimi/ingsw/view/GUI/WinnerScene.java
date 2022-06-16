@@ -12,13 +12,13 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.Objects;
 
-public class Winner {
+public class WinnerScene {
     private Pane rootFXML;
     private final ImageView exitButton;
 
-    public Winner(String nickPlayerWinner){
+    public WinnerScene(String nickPlayerWinner){
         try{
-            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/RequestNickPlayers.fxml")));
+            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/WinnerScene.fxml")));
         }catch(
         IOException e){
             e.printStackTrace();

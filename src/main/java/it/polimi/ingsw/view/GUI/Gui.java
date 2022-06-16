@@ -5,6 +5,8 @@ import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.*;
 import it.polimi.ingsw.view.GUI.warnings.*;
 import it.polimi.ingsw.view.View;
+import javafx.application.Platform;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -29,20 +31,21 @@ public class Gui implements View {
 
     @Override
     public void requestNickname() {
-        //try{
-            RequestNickPlayers requestNickPlayers = new RequestNickPlayers();
-            socketNetworkHandler.sendMessage(new RequestNickname(requestNickPlayers.getNick()));
-            socketNetworkHandler.setNicknameThisPlayer(requestNickPlayers.getNick());
-        /*}catch (ExecutionException e){
-            new WarningNickname();
-        }*/
+        RequestNickPlayers requestNickPlayers = new RequestNickPlayers();
+        Platform.runLater(()->TransitionScene.setRequestNickPlayers(requestNickPlayers));
+        Platform.runLater(TransitionScene::swapRequestNickPlayers);
+        socketNetworkHandler.sendMessage(new RequestNickname(requestNickPlayers.getNick()));
+        socketNetworkHandler.setNicknameThisPlayer(requestNickPlayers.getNick());
+
     }
 
     @Override
     public void requestNumPlayersIsExpert() {
-        NumOfPlayerIsExpert requestNumPlayersIsExpert = new NumOfPlayerIsExpert();
-        socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(requestNumPlayersIsExpert.getNumPlayer(), requestNumPlayersIsExpert.isExpert()));
-        socketNetworkHandler.setNicknameThisPlayer(requestNumPlayersIsExpert.getNickname());
+        NumOfPlayerIsExpert numPlayersIsExpert = new NumOfPlayerIsExpert();
+        Platform.runLater(()->TransitionScene.setNumOfPlayersIsExpert(numPlayersIsExpert));
+        Platform.runLater(TransitionScene::swapToNumOfPlayerIsExpert);
+        socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(numPlayersIsExpert.getNumPlayer(), numPlayersIsExpert.isExpert()));
+        socketNetworkHandler.setNicknameThisPlayer(numPlayersIsExpert.getNickname());
     }
 
     @Override
@@ -102,7 +105,9 @@ public class Gui implements View {
 
     @Override
     public void displayWinner(String nickname) {
-
+        WinnerScene winnerScene = new WinnerScene(nickname);
+        Platform.runLater(()->TransitionScene.setWinnerScene(winnerScene));
+        Platform.runLater(TransitionScene::swapToWinnerScene);
     }
 
     @Override
@@ -171,6 +176,9 @@ public class Gui implements View {
 
     @Override
     public void waitOtherPlayers() {
+        WaitingPlayers waitingPlayers = new WaitingPlayers();
+        Platform.runLater(()->TransitionScene.setWaitingPlayers(waitingPlayers));
+        Platform.runLater(TransitionScene::swapToWaitingPlayers);
 
     }
 

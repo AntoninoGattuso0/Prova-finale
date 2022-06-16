@@ -23,7 +23,7 @@ import java.util.Objects;
 
 
 public class GameTable {
-    @FXML private Pane rootFXML;
+    private Pane rootFXML;
     private SocketNetworkHandler socketNetworkHandler;
     private LightGame lightGame;
     private Stage stage;
@@ -277,5 +277,9 @@ public class GameTable {
 
     public boolean cloudIsAlreadySelected() {
         return cloudIsAlreadySelected;
+    }
+
+    public Pane getRootFXML() {
+        return rootFXML;
     }
 }
