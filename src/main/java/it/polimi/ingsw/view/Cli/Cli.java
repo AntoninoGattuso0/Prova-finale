@@ -16,6 +16,7 @@ import java.util.concurrent.ExecutionException;
 public class Cli implements Runnable, View {
     private final PrintStream out;            //nel controllo del movimento di pedine inserire il controllo che se in diningroom hanno 10 pedine già inserite, non ne può spostare altre
     private boolean isExpert;
+    private boolean endGame=false;
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;//controlli se è esperto, su cc e sul numero di dining room
     private int pedineDaSpostare;                     //display coin
@@ -1381,6 +1382,7 @@ public class Cli implements Runnable, View {
      */
     @Override
     public void displayWinner(String winner) throws IOException {
+        endGame=true;
         displayStartRound();
         int i;
         int j;
@@ -1455,7 +1457,9 @@ public class Cli implements Runnable, View {
 
     @Override
     public void disconnectionAll(String playerDisconnected) throws IOException {
-            System.out.println(playerDisconnected+" è stato disconnesso a causa di problemi, sarai disconnesso anche tu e la partita sarà chiusa");
+        if(!endGame) {
+            System.out.println(playerDisconnected + " è stato disconnesso a causa di problemi, sarai disconnesso anche tu e la partita sarà chiusa");
+        }
             socketNetworkHandler.getOut().reset();
             socketNetworkHandler.getOut().flush();
             socketNetworkHandler.sendMessage(new ReadyTodisconnection());
