@@ -665,7 +665,7 @@ public class Cli implements Runnable, View {
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli il colore di uno studente presente sulla carta  da spostare su un'Isola ");
-                            out.println(ColorCli.GREEN + "1O" + "   " + ColorCli.RED + "2O" + "   " + ColorCli.YELLOW + "3O" + "   " + ColorCli.PINK + "4O" + "   " + ColorCli.BLUE + "5O" + ColorCli.RESET);
+                            out.println(ColorCli.GREEN + "1" + "   " + ColorCli.RED + "2" + "   " + ColorCli.YELLOW + "3" + "   " + ColorCli.PINK + "4" + "   " + ColorCli.BLUE + "5" + ColorCli.RESET);
                             int colore = -1;
                             String coloreString = null;
                             try {
@@ -935,7 +935,7 @@ public class Cli implements Runnable, View {
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli un colore da non conteggiare nell'influenza di questo turno: ");
-                            out.println(ColorCli.GREEN + "1O" + "   " + ColorCli.RED + "2O" + "   " + ColorCli.YELLOW + "3O" + "   " + ColorCli.PINK + "4O" + "   " + ColorCli.BLUE + "5O" + ColorCli.RESET);
+                            out.println(ColorCli.GREEN + "1" + "   " + ColorCli.RED + "2" + "   " + ColorCli.YELLOW + "3" + "   " + ColorCli.PINK + "4" + "   " + ColorCli.BLUE + "5" + ColorCli.RESET);
                             int colore = -1;
                             String coloreString;
                             try {
@@ -1124,7 +1124,7 @@ public class Cli implements Runnable, View {
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli uno studente da questa Carta e posizionalo nella tua DiningRoom: ");
-                            out.println(ColorCli.GREEN + "1O" + "   " + ColorCli.RED + "2O" + "   " + ColorCli.YELLOW + "3O" + "   " + ColorCli.PINK + "4O" + "   " + ColorCli.BLUE + "5O" + ColorCli.RESET);
+                            out.println(ColorCli.GREEN + "1" + "   " + ColorCli.RED + "2" + "   " + ColorCli.YELLOW + "3" + "   " + ColorCli.PINK + "4" + "   " + ColorCli.BLUE + "5" + ColorCli.RESET);
                             int colore = -1;
                             String coloreString;
                             try {
@@ -1217,7 +1217,7 @@ public class Cli implements Runnable, View {
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             out.println("Scegli un Colore: ogni giocatore rimetterà nel sacchetto 3 Studenti dalla propria DiningRoom di quel Colore");
-                            out.println(ColorCli.GREEN + "1O" + "   " + ColorCli.RED + "2O" + "   " + ColorCli.YELLOW + "3O" + "   " + ColorCli.PINK + "4O" + "   " + ColorCli.BLUE + "5O" + ColorCli.RESET);
+                            out.println(ColorCli.GREEN + "1" + "   " + ColorCli.RED + "2" + "   " + ColorCli.YELLOW + "3" + "   " + ColorCli.PINK + "4" + "   " + ColorCli.BLUE + "5" + ColorCli.RESET);
                             int colore = -1;
                             String coloreString;
                             try {
@@ -1246,7 +1246,7 @@ public class Cli implements Runnable, View {
                                     check = true;
                                 } else {
                                     out.println("Colore inesistente, inserisci un colore corretto:");
-                                    out.println(ColorCli.GREEN + "1O" + "   " + ColorCli.RED + "2O" + "   " + ColorCli.YELLOW + "3O" + "   " + ColorCli.PINK + "4O" + "   " + ColorCli.BLUE + "5O" + ColorCli.RESET);
+                                    out.println(ColorCli.GREEN + "1" + "   " + ColorCli.RED + "2" + "   " + ColorCli.YELLOW + "3" + "   " + ColorCli.PINK + "4" + "   " + ColorCli.BLUE + "5" + ColorCli.RESET);
                                     try {
                                         coloreString = readLine();
                                         colore = convertStringToNumber(coloreString);
@@ -1275,11 +1275,11 @@ public class Cli implements Runnable, View {
                 out.println("");
                 out.println("EFFETTO: Prendi 1 studente dalla carta e piazzalo su un'Isola a tua scelta. Poi pesca 1 studente dal sacchetto e mettilo su questa carta");
                 out.println("Prezzo carta: " + lightGame.getAntonio().getCoinPrice() + "");
-                out.println(ColorCli.GREEN + "O: " + lightGame.getAntonio().getGreenPawn());
-                out.println(ColorCli.RED + "O: " + lightGame.getAntonio().getRedPawn());
-                out.println(ColorCli.YELLOW + "O: " + lightGame.getAntonio().getYellowPawn());
-                out.println(ColorCli.PINK + "O: " + lightGame.getAntonio().getPinkPawn());
-                out.println(ColorCli.BLUE + "O: " + lightGame.getAntonio().getBluePawn() + ColorCli.RESET);
+                out.println(ColorCli.GREEN + " " + lightGame.getAntonio().getGreenPawn());
+                out.println(ColorCli.RED + " " + lightGame.getAntonio().getRedPawn());
+                out.println(ColorCli.YELLOW + " " + lightGame.getAntonio().getYellowPawn());
+                out.println(ColorCli.PINK + " " + lightGame.getAntonio().getPinkPawn());
+                out.println(ColorCli.BLUE + " " + lightGame.getAntonio().getBluePawn() + ColorCli.RESET);
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println();
@@ -1323,11 +1323,11 @@ public class Cli implements Runnable, View {
                 out.println("");
                 out.println("EFFETTO: Poi prendere fino a 3 Studenti da questa carta e scambiarli con altrettanti Studenti presenti nel tuo Ingresso");
                 out.println("Prezzo carta: " + lightGame.getGiuseppe().getCoinPrice() + "");
-                out.println(ColorCli.GREEN + "O: " + lightGame.getGiuseppe().getNumGreenPawn());
-                out.println(ColorCli.RED + "O: " + lightGame.getGiuseppe().getNumRedPawn());
-                out.println(ColorCli.YELLOW + "O: " + lightGame.getGiuseppe().getNumYellowPawn());
-                out.println(ColorCli.PINK + "O: " + lightGame.getGiuseppe().getNumPinkPawn());
-                out.println(ColorCli.BLUE + "O: " + lightGame.getGiuseppe().getNumBluePawn() + ColorCli.RESET);
+                out.println(ColorCli.GREEN + " " + lightGame.getGiuseppe().getNumGreenPawn());
+                out.println(ColorCli.RED + " " + lightGame.getGiuseppe().getNumRedPawn());
+                out.println(ColorCli.YELLOW + " " + lightGame.getGiuseppe().getNumYellowPawn());
+                out.println(ColorCli.PINK + " " + lightGame.getGiuseppe().getNumPinkPawn());
+                out.println(ColorCli.BLUE + " " + lightGame.getGiuseppe().getNumBluePawn() + ColorCli.RESET);
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
@@ -1356,11 +1356,11 @@ public class Cli implements Runnable, View {
                 out.println("");
                 out.println("EFFETTO: Prendi 1 Studente da questa carta e piazzalo nella tua Sala. Poi pesca un nuovo Studente e posizionalo su questa carta");
                 out.println("Prezzo carta: " + lightGame.getNicola().getCoinPrice() + "");
-                out.println(ColorCli.GREEN + "O: " + lightGame.getNicola().getGreenPawn());
-                out.println(ColorCli.RED + "O: " + lightGame.getNicola().getRedPawn());
-                out.println(ColorCli.YELLOW + "O: " + lightGame.getNicola().getYellowPawn());
-                out.println(ColorCli.PINK + "O: " + lightGame.getNicola().getPinkPawn());
-                out.println(ColorCli.BLUE + "O: " + lightGame.getNicola().getBluePawn()+ ColorCli.RESET);
+                out.println(ColorCli.GREEN + " " + lightGame.getNicola().getGreenPawn());
+                out.println(ColorCli.RED + " " + lightGame.getNicola().getRedPawn());
+                out.println(ColorCli.YELLOW + " " + lightGame.getNicola().getYellowPawn());
+                out.println(ColorCli.PINK + " " + lightGame.getNicola().getPinkPawn());
+                out.println(ColorCli.BLUE + " " + lightGame.getNicola().getBluePawn()+ ColorCli.RESET);
                 out.println();
                 out.println("+-----------------------------------------------------+");
                 out.println("");
