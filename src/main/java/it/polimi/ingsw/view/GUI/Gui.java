@@ -27,7 +27,6 @@ public class Gui implements View {
     }
     @Override
     public void startGame() {
-
     }
 
     //per le altre funzioni che sono scritte sono uguali a questa
@@ -78,11 +77,12 @@ public class Gui implements View {
     @Override
     public void displayAssistantCard(int player) {
         int j;
-        AssistantCardController.setDisabiliteAll();
+        assistantCardController.setDisableAll();
+        assistantCardController.setInvisibileAll();
        for(j=0;j<lightGame.getPlayers().get(player).getDeckAssistant().size();j++){
            int n=lightGame.getPlayers().get(player).getDeckAssistant().get(j).getCardValue();
-
-           AssistantCardController.setInvisibile(n);
+           assistantCardController.setAble(n);
+           assistantCardController.setVisibile(n);
        }
     }
 
@@ -163,16 +163,17 @@ public class Gui implements View {
         }else{
             new WarningCloud();
         }
-
-
     }
 
     @Override
     public void selectAssistantCard(String nickname) {
-        int i,m=-1;
+        int i;
         if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
             for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(),nickname);i++);
+            pannellodiscrittura.vritetext("scegli l'assistente");
             displayAssistantCard(i);
+        }else{
+            Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+"sta scegliendo l'Assistente");
         }
     }
 

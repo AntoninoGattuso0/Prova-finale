@@ -16,9 +16,9 @@ public class AssistantCardController {
             assistant.setDisable(true);
         }
     }
-    public void setDisable(int n){
+    public void setAble(int n){
         String name = "#AssistantCard" + n;
-        assistantCards.lookup(name).setDisable(true);
+        assistantCards.lookup(name).setDisable(false);
     }
     public void setVisibile(int n){
         String name= "#AssistantCard"+n;
@@ -28,34 +28,39 @@ public class AssistantCardController {
         String name= "#AssistantCard"+n;
         assistantCards.lookup(name).setVisible(false);
     }
-    public void assistant1Select() {
-        gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(1));
+    public void setInvisibileAll() {
+        for (Node assistant : assistantCards.getChildren()) {
+            assistant.setDisable(false);
+        }
     }
-    public void assistant2Select() {
-        gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(2));
+        public void assistant1Select () {
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(1));
+        }
+        public void assistant2Select () {
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(2));
+        }
+        public void assistant3Select () {
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(3));
+        }
+        public void assistant4Select () {
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(4));
+        }
+        public void assistant5Select () {
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(5));
+        }
+        public void assistant6Select () {
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(6));
+        }
+        public void assistant7Selected () {
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(7));
+        }
+        public void assistant8Select () {
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(8));
+        }
+        public void assistant9Select () {
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(9));
+        }
+        public void assistant10Select () {
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(10));
+        }
     }
-    public void assistant3Select() {
-        gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(3));
-    }
-    public void assistant4Select() {
-        gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(4));
-    }
-    public void assistant5Select() {
-        gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(5));
-    }
-    public void assistant6Select() {
-        gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(6));
-    }
-    public void assistant7Selected() {
-        gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(7));
-    }
-    public void assistant8Select() {
-        gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(8));
-    }
-    public void assistant9Select() {
-        gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(9));
-    }
-    public void assistant10Select() {
-        gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(10));
-    }
-}
