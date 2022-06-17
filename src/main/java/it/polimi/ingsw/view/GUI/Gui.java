@@ -15,7 +15,6 @@ import java.util.Objects;
 
 
 public class Gui implements View {
-
     private boolean isExpert;
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;
@@ -141,7 +140,7 @@ public class Gui implements View {
 
     @Override
     public void updateAll(LightGame object) {
-
+        this.lightGame=object;
     }
 
     @Override
