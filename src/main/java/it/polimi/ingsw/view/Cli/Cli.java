@@ -1625,7 +1625,6 @@ public class Cli implements Runnable, View {
             System.out.println(nickname + " sta scegliendo l'AssistantCard");
         }
     }
-
     public int convertStringToNumber(String num){
         int c=-1;
         if(Objects.equals(num, "0")){
