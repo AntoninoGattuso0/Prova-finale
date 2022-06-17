@@ -12,7 +12,6 @@ public class CharacterCard implements Serializable {
         this.useEffect=useEffect;
         this.numCard = numCard;
     }
-
     /**
      * is used to take the real effect of CharacterCard
      * @return the Effect

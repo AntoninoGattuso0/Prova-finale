@@ -4,6 +4,7 @@ import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
+import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
 import it.polimi.ingsw.view.GUI.warnings.WarningCloud;
 import it.polimi.ingsw.view.View;
@@ -15,11 +16,10 @@ import java.util.Objects;
 
 
 public class Gui implements View {
-
     private boolean isExpert;
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;
-    private GameTable gameTable = new GameTable();
+    private GameTable gameTable = new GameTable(this);
     private AssistantCardController assistantCardController=new AssistantCardController(this);
     private ChooseAction chooseAction=new ChooseAction();
     public SocketNetworkHandler getSocketNetworkHandler() {
@@ -29,7 +29,6 @@ public class Gui implements View {
     public void startGame() {
 
     }
-
     //per le altre funzioni che sono scritte sono uguali a questa
     @Override
     public void requestNickname() {
@@ -38,9 +37,7 @@ public class Gui implements View {
         Platform.runLater(TransitionScene::switchRequestNickPlayers); //switcha su questa scena in cui richiede il nick
         socketNetworkHandler.sendMessage(new RequestNickname(requestNickPlayers.getNick()));  //queste due righe sono come quelle della cli
         socketNetworkHandler.setNicknameThisPlayer(requestNickPlayers.getNick());
-
     }
-
     @Override
     public void requestNumPlayersIsExpert() {
         NumOfPlayerIsExpert numPlayersIsExpert = new NumOfPlayerIsExpert();
@@ -57,7 +54,20 @@ public class Gui implements View {
 
     @Override
     public void requestCharacterCard(String nickname, boolean bool) {
-
+        int i;
+        for(i=0;i<lightGame.getNumPlayers()&&!(lightGame.getPlayers().get(i).getNickname().equals(nickname));i++);
+        int player =i;
+        if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
+            if(!bool){
+                if(lightGame.getIsExpert()){
+                    pannellodiscrittura.writetext("Clicca si se vuoi giocare un characterCard e no per non giocarlo");
+                }
+            }
+            if(bool){
+                displayCharacterCard();
+                pannellodiscrittura.writetest("Scegli il CharacterCard da utilizzare");
+            }
+        }
     }
 
     @Override
@@ -78,11 +88,12 @@ public class Gui implements View {
     @Override
     public void displayAssistantCard(int player) {
         int j;
-        AssistantCardController.setDisabiliteAll();
+        assistantCardController.setDisableAll();
+        assistantCardController.setInvisibileAll();
        for(j=0;j<lightGame.getPlayers().get(player).getDeckAssistant().size();j++){
            int n=lightGame.getPlayers().get(player).getDeckAssistant().get(j).getCardValue();
-
-           AssistantCardController.setInvisibile(n);
+           assistantCardController.setAble(n);
+           assistantCardController.setVisibile(n);
        }
     }
 
@@ -103,12 +114,38 @@ public class Gui implements View {
 
     @Override
     public void sendNick(String nickname) {
-
+        if(nickname !=null){
+            socketNetworkHandler.sendMessage(new RequestNicknameAfterFirstLoginMessage(nickname));
+        }
     }
 
     @Override
     public void displayCharacterCard() {
-
+        int i;
+        int coin=0;
+        int player;
+        for(i=0; !Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), lightGame.getPlayers().get(i).getNickname()); i++);
+        player=i;
+        for(i=0;i<lightGame.getCharacterCards().size();i++){
+            switch (lightGame.getCharacterCards().get(i).getNumCard()){
+                case 0 -> coin=lightGame.getAntonio().getCoinPrice();
+                case 1 -> coin=lightGame.getBarbara().getCoinPrice();
+                case 2 -> coin=lightGame.getCiro().getCoinPrice();
+                case 3 -> coin=lightGame.getDante().getCoinPrice();
+                case 4 -> coin=lightGame.getErnesto().getCoinPrice();
+                case 5 -> coin=lightGame.getFelix().getCoinPrice();
+                case 6 -> coin=lightGame.getGiuseppe().getCoinPrice();
+                case 7 -> coin=lightGame.getIvan().getCoinPrice();
+                case 8 -> coin=lightGame.getLancillotto().getCoinPrice();
+                case 9 -> coin=lightGame.getMaria().getCoinPrice();
+                case 10 -> coin=lightGame.getNicola().getCoinPrice();
+                case 11 -> coin=lightGame.getOmnia().getCoinPrice();
+            }
+            if(coin<lightGame.getPlayers().get(player).getNumCoin()){
+                characterCardController.setVsibile(i);
+                characterCardController.setAble(i);
+            }
+        }
     }
 
     @Override
@@ -141,7 +178,7 @@ public class Gui implements View {
 
     @Override
     public void updateAll(LightGame object) {
-
+        this.lightGame=object;
     }
 
     @Override
@@ -163,16 +200,17 @@ public class Gui implements View {
         }else{
             new WarningCloud();
         }
-
-
     }
 
     @Override
     public void selectAssistantCard(String nickname) {
-        int i,m=-1;
+        int i;
         if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
             for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(),nickname);i++);
+            pannellodiscrittura.vritetext("scegli l'assistente");
             displayAssistantCard(i);
+        }else{
+            Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+"sta scegliendo l'Assistente");
         }
     }
 
@@ -196,7 +234,7 @@ public class Gui implements View {
 
     @Override
     public void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler) {
-
+        this.socketNetworkHandler=socketNetworkHandler;
     }
 
     @Override

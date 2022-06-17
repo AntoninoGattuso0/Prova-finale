@@ -597,9 +597,8 @@ public class Cli implements Runnable, View {
      */
     @Override
     public void sendNick(String nickname){
-        String nick = nickname;
-        if(nick!=null)
-            socketNetworkHandler.sendMessage(new RequestNicknameAfterFirstLoginMessage(nick));
+        if(nickname !=null)
+            socketNetworkHandler.sendMessage(new RequestNicknameAfterFirstLoginMessage(nickname));
         }
 
     /**
