@@ -24,6 +24,7 @@ import java.util.Objects;
 
 
 public class GameTable {
+    private Gui gui;
     private Pane rootFXML;
     private SocketNetworkHandler socketNetworkHandler;
     private LightGame lightGame;
@@ -95,7 +96,8 @@ public class GameTable {
     private List<ImageView> blackTowersSchool0;
 
 
-    public GameTable() {
+    public GameTable(Gui gui) {
+        this.gui=gui;
         try {
             rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/GameTable.fxml")));
         } catch (IOException e) {

@@ -18,7 +18,7 @@ public class Gui implements View {
     private boolean isExpert;
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;
-    private GameTable gameTable = new GameTable();
+    private GameTable gameTable = new GameTable(this);
     private AssistantCardController assistantCardController=new AssistantCardController(this);
     private ChooseAction chooseAction=new ChooseAction();
     public SocketNetworkHandler getSocketNetworkHandler() {
@@ -26,8 +26,8 @@ public class Gui implements View {
     }
     @Override
     public void startGame() {
-    }
 
+    }
     //per le altre funzioni che sono scritte sono uguali a questa
     @Override
     public void requestNickname() {
@@ -36,9 +36,7 @@ public class Gui implements View {
         Platform.runLater(TransitionScene::switchRequestNickPlayers); //switcha su questa scena in cui richiede il nick
         socketNetworkHandler.sendMessage(new RequestNickname(requestNickPlayers.getNick()));  //queste due righe sono come quelle della cli
         socketNetworkHandler.setNicknameThisPlayer(requestNickPlayers.getNick());
-
     }
-
     @Override
     public void requestNumPlayersIsExpert() {
         NumOfPlayerIsExpert numPlayersIsExpert = new NumOfPlayerIsExpert();
@@ -196,7 +194,7 @@ public class Gui implements View {
 
     @Override
     public void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler) {
-
+        this.socketNetworkHandler=socketNetworkHandler;
     }
 
     @Override
