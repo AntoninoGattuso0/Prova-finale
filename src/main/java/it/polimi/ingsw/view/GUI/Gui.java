@@ -6,6 +6,8 @@ import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
+import it.polimi.ingsw.view.GUI.Controller.AssistantCardController;
+import it.polimi.ingsw.view.GUI.Controller.CharacterCardController;
 import it.polimi.ingsw.view.GUI.warnings.WarningCloud;
 import it.polimi.ingsw.view.View;
 import javafx.application.Platform;
@@ -20,7 +22,8 @@ public class Gui implements View {
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;
     private GameTable gameTable = new GameTable(this);
-    private AssistantCardController assistantCardController=new AssistantCardController(this);
+    private final AssistantCardController assistantCardController=new AssistantCardController(this);
+    private final CharacterCardController characterCardController = new CharacterCardController(this)
     private ChooseAction chooseAction=new ChooseAction();
     public SocketNetworkHandler getSocketNetworkHandler() {
         return socketNetworkHandler;
@@ -93,7 +96,7 @@ public class Gui implements View {
        for(j=0;j<lightGame.getPlayers().get(player).getDeckAssistant().size();j++){
            int n=lightGame.getPlayers().get(player).getDeckAssistant().get(j).getCardValue();
            assistantCardController.setAble(n);
-           assistantCardController.setVisibile(n);
+           assistantCardController.setVisible(n);
        }
     }
 
@@ -142,7 +145,7 @@ public class Gui implements View {
                 case 11 -> coin=lightGame.getOmnia().getCoinPrice();
             }
             if(coin<lightGame.getPlayers().get(player).getNumCoin()){
-                characterCardController.setVsibile(i);
+                characterCardController.setVisible(i);
                 characterCardController.setAble(i);
             }
         }

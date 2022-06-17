@@ -21,7 +21,7 @@ public class AssistantCardController {
         String name = "#AssistantCard" + n;
         assistantCards.lookup(name).setDisable(false);
     }
-    public void setVisibile(int n){
+    public void setVisible(int n){
         String name= "#AssistantCard"+n;
         assistantCards.lookup(name).setVisible(true);
     }
