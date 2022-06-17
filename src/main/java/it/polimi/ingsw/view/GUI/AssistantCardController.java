@@ -2,8 +2,6 @@ package it.polimi.ingsw.view.GUI;
 
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseAssistantCardMessage;
 
-import java.util.Objects;
-
 public class AssistantCardController {
     Gui gui;
     public AssistantCardController(Gui gui){
@@ -47,9 +45,5 @@ public class AssistantCardController {
     public void assistant10Select() {
         gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(1));
     }
-    public int findPlayer(){
-        int i;
-        for (i=0; !Objects.equals(gui.getLightGame().getPlayers().get(i).getNickname(), gui.getSocketNetworkHandler().getNicknameThisPlayer()); i++);
-        return i;
-    }
+
 }
