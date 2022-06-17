@@ -236,7 +236,7 @@
             <ImageView id="cloud1" fitHeight="100.0" fitWidth="100.0" layoutX="208.0" layoutY="145.0" onMouseClicked="#cloud1select" pickOnBounds="true" preserveRatio="true">
                <Image url="@../images/cloud_card_2.png" />
             </ImageView>
-            <ImageView id="cloud2" fitHeight="100.0" fitWidth="100.0" layoutX="310.0" layoutY="115.0" onMouseClicked="#cloud2select"pickOnBounds="true" preserveRatio="true">
+            <ImageView id="cloud2" fitHeight="100.0" fitWidth="100.0" layoutX="310.0" layoutY="115.0" onMouseClicked="#cloud2select" pickOnBounds="true" preserveRatio="true">
                <Image url="@../images/cloud_card_3.png" />
             </ImageView>
             <ImageView id="cloud3" fitHeight="100.0" fitWidth="100.0" layoutX="410.0" layoutY="160.0" onMouseClicked="#cloud3select" pickOnBounds="true" preserveRatio="true">
