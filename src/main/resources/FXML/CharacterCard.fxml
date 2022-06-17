@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.GameTable">
         <ImageView id="characterCard0" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true" />
         <ImageView id="characterCard1" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true" />
         <ImageView id="characterCard2" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true" />
-   <Text layoutX="2.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text layoutX="200.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text layoutX="2.0" layoutY="613.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <ImageView id="greenCharacter0" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="2.0" onMouseClicked="#moveGreenCharacter0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/greenStudent3D.png" />
+   </ImageView>
+   <ImageView id="redCharacter1" fitHeight="25.0" fitWidth="25.0" layoutX="175.0" layoutY="231.0" onMouseClicked="#moveRedCharacter1" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/redStudent3D.png" />
+   </ImageView>
+   <ImageView id="yellowCharacter0" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="66.0" onMouseClicked="#moveYellowCharacter0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/yellowStudent3D.png" />
+   </ImageView>
+   <ImageView id="pinkCharacter0" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="100.0" onMouseClicked="#movePinkCharacter0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/pinkStudent3D.png" />
+   </ImageView>
+   <ImageView id="blueCharacter0" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="131.0" onMouseClicked="#moveBlueCharacter0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/blueStudent3D.png" />
+   </ImageView>
+   <ImageView id="greenCharacter1" fitHeight="25.0" fitWidth="25.0" layoutX="175.0" layoutY="200.0" onMouseClicked="#moveGreenCharacter1" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/greenStudent3D.png" />
+   </ImageView>
+   <ImageView id="redCharacter0" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="34.0" onMouseClicked="#moveRedCharacter0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/redStudent3D.png" />
+   </ImageView>
+   <ImageView id="yellowCharacter1" fitHeight="25.0" fitWidth="25.0" layoutX="175.0" layoutY="264.0" onMouseClicked="#moveYellowCharacter1" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/yellowStudent3D.png" />
+   </ImageView>
+   <ImageView id="yellowCharacter2" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="466.0" onMouseClicked="#moveYellowCharacter2" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/yellowStudent3D.png" />
+   </ImageView>
+   <ImageView id="pinkCharacter1" fitHeight="25.0" fitWidth="25.0" layoutX="175.0" layoutY="300.0" onMouseClicked="#movePinkCharacter1" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/pinkStudent3D.png" />
+   </ImageView>
+   <ImageView id="blueCharacter1" fitHeight="25.0" fitWidth="25.0" layoutX="175.0" layoutY="333.0" onMouseClicked="#moveBlueCharacter1" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/blueStudent3D.png" />
+   </ImageView>
+   <ImageView id="greenCharacter2" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="400.0" onMouseClicked="#moveGreenCharacter2" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/greenStudent3D.png" />
+   </ImageView>
+   <ImageView id="redCharacter2" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="432.0" onMouseClicked="#moveRedCharacter2" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/redStudent3D.png" />
+   </ImageView>
+   <ImageView id="pinkCharacter2" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="500.0" onMouseClicked="#movePinkCharacter2" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/pinkStudent3D.png" />
+   </ImageView>
+   <ImageView id="blueCharacter2" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="535.0" onMouseClicked="#moveBlueCharacter2" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/blueStudent3D.png" />
+   </ImageView>
+   <ImageView id="coin0" fitHeight="35.0" fitWidth="35.0" layoutX="147.0" layoutY="156.0"  pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/Coin.png" />
+   </ImageView>
+   <ImageView id="coin1" fitHeight="35.0" fitWidth="35.0" layoutX="172.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/Coin.png" />
+   </ImageView>
+   <ImageView id="coin2" fitHeight="35.0" fitWidth="35.0" layoutX="147.0" layoutY="565.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/Coin.png" />
+   </ImageView>
 </Pane>
