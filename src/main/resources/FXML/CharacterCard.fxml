@@ -3,6 +3,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.GameTable">
         <ImageView id="characterCard0" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true" />
@@ -53,7 +54,7 @@
    <ImageView id="blueCharacter2" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="535.0" onMouseClicked="#moveBlueCharacter2" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/blueStudent3D.png" />
    </ImageView>
-   <ImageView id="coin0" fitHeight="35.0" fitWidth="35.0" layoutX="147.0" layoutY="156.0"  pickOnBounds="true" preserveRatio="true">
+   <ImageView id="coin0" fitHeight="35.0" fitWidth="35.0" layoutX="147.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/Coin.png" />
    </ImageView>
    <ImageView id="coin1" fitHeight="35.0" fitWidth="35.0" layoutX="172.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
@@ -62,4 +63,19 @@
    <ImageView id="coin2" fitHeight="35.0" fitWidth="35.0" layoutX="147.0" layoutY="565.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/Coin.png" />
    </ImageView>
+   <Text id="textGreenCharacter0" layoutX="178.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textRedCharacter0" layoutX="178.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textYellowCharacter0" layoutX="178.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textPinkCharacter0" layoutX="178.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textBlueCharacter0" layoutX="175.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textGreenCharacter1" layoutX="150.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textRedCharacter1" layoutX="150.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textYellowCharacter1" layoutX="150.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textPinkCharacter1" layoutX="150.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textBlueCharacter1" layoutX="150.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textGreenCharacter2" layoutX="178.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textRedCharacter2" layoutX="178.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textYellowCharacter2" layoutX="178.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textPinkCharacter2" layoutX="178.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text id="textBlueCharacter2" layoutX="175.0" layoutY="552.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
 </Pane>
