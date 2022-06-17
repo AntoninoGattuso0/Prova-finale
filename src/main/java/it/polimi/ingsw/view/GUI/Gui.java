@@ -2,8 +2,10 @@ package it.polimi.ingsw.view.GUI;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
-import it.polimi.ingsw.network.Message.ClientToServer.*;
-import it.polimi.ingsw.view.GUI.warnings.*;
+import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
+import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
+import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
+import it.polimi.ingsw.view.GUI.warnings.WarningCloud;
 import it.polimi.ingsw.view.View;
 import javafx.application.Platform;
 
@@ -18,19 +20,11 @@ public class Gui implements View {
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;
     private GameTable gameTable = new GameTable();
-
-    public void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler) {
-        this.socketNetworkHandler = socketNetworkHandler;
-    }
-
-    public LightGame getLightGame() {
-        return lightGame;
-    }
-
+    private AssistantCardController assistantCardController=new AssistantCardController(this);
+    private ChooseAction chooseAction=new ChooseAction();
     public SocketNetworkHandler getSocketNetworkHandler() {
         return socketNetworkHandler;
     }
-
     @Override
     public void startGame() {
 
@@ -83,7 +77,13 @@ public class Gui implements View {
 
     @Override
     public void displayAssistantCard(int player) {
+        int j;
+        AssistantCardController.setDisabiliteAll();
+       for(j=0;j<lightGame.getPlayers().get(player).getDeckAssistant().size();j++){
+           int n=lightGame.getPlayers().get(player).getDeckAssistant().get(j).getCardValue();
 
+           AssistantCardController.setInvisibile(n);
+       }
     }
 
     @Override
@@ -169,7 +169,11 @@ public class Gui implements View {
 
     @Override
     public void selectAssistantCard(String nickname) {
-
+        int i,m=-1;
+        if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
+            for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(),nickname);i++);
+            displayAssistantCard(i);
+        }
     }
 
     @Override
@@ -187,6 +191,11 @@ public class Gui implements View {
         WaitingPlayers waitingPlayers = new WaitingPlayers();
         Platform.runLater(()->TransitionScene.setWaitingPlayers(waitingPlayers));
         Platform.runLater(TransitionScene::switchToWaitingPlayers);
+
+    }
+
+    @Override
+    public void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler) {
 
     }
 
