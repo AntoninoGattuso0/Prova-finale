@@ -4,6 +4,7 @@ import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
+import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
 import it.polimi.ingsw.view.GUI.warnings.WarningCloud;
 import it.polimi.ingsw.view.View;
@@ -53,7 +54,20 @@ public class Gui implements View {
 
     @Override
     public void requestCharacterCard(String nickname, boolean bool) {
-
+        int i;
+        for(i=0;i<lightGame.getNumPlayers()&&!(lightGame.getPlayers().get(i).getNickname().equals(nickname));i++);
+        int player =i;
+        if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
+            if(!bool){
+                if(lightGame.getIsExpert()){
+                    pannellodiscrittura.writetext("Clicca si se vuoi giocare un characterCard e no per non giocarlo");
+                }
+            }
+            if(bool){
+                displayCharacterCard();
+                pannellodiscrittura.writetest("Scegli il CharacterCard da utilizzare");
+            }
+        }
     }
 
     @Override
@@ -100,12 +114,38 @@ public class Gui implements View {
 
     @Override
     public void sendNick(String nickname) {
-
+        if(nickname !=null){
+            socketNetworkHandler.sendMessage(new RequestNicknameAfterFirstLoginMessage(nickname));
+        }
     }
 
     @Override
     public void displayCharacterCard() {
-
+        int i;
+        int coin=0;
+        int player;
+        for(i=0; !Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), lightGame.getPlayers().get(i).getNickname()); i++);
+        player=i;
+        for(i=0;i<lightGame.getCharacterCards().size();i++){
+            switch (lightGame.getCharacterCards().get(i).getNumCard()){
+                case 0 -> coin=lightGame.getAntonio().getCoinPrice();
+                case 1 -> coin=lightGame.getBarbara().getCoinPrice();
+                case 2 -> coin=lightGame.getCiro().getCoinPrice();
+                case 3 -> coin=lightGame.getDante().getCoinPrice();
+                case 4 -> coin=lightGame.getErnesto().getCoinPrice();
+                case 5 -> coin=lightGame.getFelix().getCoinPrice();
+                case 6 -> coin=lightGame.getGiuseppe().getCoinPrice();
+                case 7 -> coin=lightGame.getIvan().getCoinPrice();
+                case 8 -> coin=lightGame.getLancillotto().getCoinPrice();
+                case 9 -> coin=lightGame.getMaria().getCoinPrice();
+                case 10 -> coin=lightGame.getNicola().getCoinPrice();
+                case 11 -> coin=lightGame.getOmnia().getCoinPrice();
+            }
+            if(coin<lightGame.getPlayers().get(player).getNumCoin()){
+                characterCardController.setVsibile(i);
+                characterCardController.setAble(i);
+            }
+        }
     }
 
     @Override
