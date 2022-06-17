@@ -12,7 +12,7 @@
    <ImageView id="greenCharacter0" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="2.0" onMouseClicked="#moveGreenCharacter0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/greenStudent3D.png" />
    </ImageView>
-   <ImageView id="redCharacter1" fitHeight="25.0" fitWidth="25.0" layoutX="175.0" layoutY="231.0" onMouseClicked="#moveRedCharacter1" pickOnBounds="true" preserveRatio="true">
+   <ImageView id="redCharacter0" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="34.0" onMouseClicked="#moveRedCharacter0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/redStudent3D.png" />
    </ImageView>
    <ImageView id="yellowCharacter0" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="66.0" onMouseClicked="#moveYellowCharacter0" pickOnBounds="true" preserveRatio="true">
@@ -27,13 +27,10 @@
    <ImageView id="greenCharacter1" fitHeight="25.0" fitWidth="25.0" layoutX="175.0" layoutY="200.0" onMouseClicked="#moveGreenCharacter1" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/greenStudent3D.png" />
    </ImageView>
-   <ImageView id="redCharacter0" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="34.0" onMouseClicked="#moveRedCharacter0" pickOnBounds="true" preserveRatio="true">
+   <ImageView id="redCharacter1" fitHeight="25.0" fitWidth="25.0" layoutX="175.0" layoutY="231.0" onMouseClicked="#moveRedCharacter1" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/redStudent3D.png" />
    </ImageView>
    <ImageView id="yellowCharacter1" fitHeight="25.0" fitWidth="25.0" layoutX="175.0" layoutY="264.0" onMouseClicked="#moveYellowCharacter1" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../images/yellowStudent3D.png" />
-   </ImageView>
-   <ImageView id="yellowCharacter2" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="466.0" onMouseClicked="#moveYellowCharacter2" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/yellowStudent3D.png" />
    </ImageView>
    <ImageView id="pinkCharacter1" fitHeight="25.0" fitWidth="25.0" layoutX="175.0" layoutY="300.0" onMouseClicked="#movePinkCharacter1" pickOnBounds="true" preserveRatio="true">
@@ -47,6 +44,9 @@
    </ImageView>
    <ImageView id="redCharacter2" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="432.0" onMouseClicked="#moveRedCharacter2" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/redStudent3D.png" />
+   </ImageView>
+   <ImageView id="yellowCharacter2" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="466.0" onMouseClicked="#moveYellowCharacter2" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/yellowStudent3D.png" />
    </ImageView>
    <ImageView id="pinkCharacter2" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="500.0" onMouseClicked="#movePinkCharacter2" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/pinkStudent3D.png" />
