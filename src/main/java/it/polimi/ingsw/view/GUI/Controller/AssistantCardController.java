@@ -1,6 +1,7 @@
-package it.polimi.ingsw.view.GUI;
+package it.polimi.ingsw.view.GUI.Controller;
 
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseAssistantCardMessage;
+import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
