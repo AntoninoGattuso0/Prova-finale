@@ -2,9 +2,13 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.GameTable">
-        <ImageView id="characterCard0" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-        <ImageView id="characterCard1" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" />
-        <ImageView id="characterCard2" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView id="characterCard0" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true" />
+        <ImageView id="characterCard1" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true" />
+        <ImageView id="characterCard2" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true" />
+   <Text layoutX="2.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text layoutX="200.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text layoutX="2.0" layoutY="613.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
 </Pane>
