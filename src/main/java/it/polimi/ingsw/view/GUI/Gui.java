@@ -23,6 +23,13 @@ public class Gui implements View {
         this.socketNetworkHandler = socketNetworkHandler;
     }
 
+    public LightGame getLightGame() {
+        return lightGame;
+    }
+
+    public SocketNetworkHandler getSocketNetworkHandler() {
+        return socketNetworkHandler;
+    }
 
     @Override
     public void startGame() {
