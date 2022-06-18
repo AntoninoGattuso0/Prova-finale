@@ -1,42 +1,24 @@
 package it.polimi.ingsw.view.GUI;
 
 import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
-import java.awt.*;
-
 public class RequestNickPlayers {
-
-    private Pane rootFXML;
-    private String nick;
-    //private final ImageView joinButton;
-
+    Gui gui;
     @FXML
-    private TextField nickPlayer;
-
-    /*public RequestNickPlayers(){
-
-        try{ //mette
-            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/RequestNickPlayers.fxml")));
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-
-        joinButton = (ImageView) rootFXML.lookup("#joinButton"); // vedi per le righe 33-36 i commenti di numOfPlayerIsExpert
-
-        joinButton.setOnMouseEntered(mouseEvent -> joinButton.setCursor(Cursor.HAND));
-        joinButton.setOnMouseExited(mouseEvent -> joinButton.setCursor(Cursor.DEFAULT));
-
-        //prende dal texField il nome del player nel momento in cui schiaccia l'immagine join
-        joinButton.setOnMouseClicked(mouseEvent -> nick = nickPlayer.getText());
-
-    }*/
-
-    public Pane getRootFXML(){
-        return rootFXML;
+    private Pane requestNick;
+    @FXML public ImageView joinButton;
+    public void setJoinButtonAble(){
+        joinButton.setDisable(false);
+        joinButton.setVisible(true);
     }
 
-    public String getNick(){
-        return nick;
+    public Pane getRequestNick() {
+        return requestNick;
+    }
+
+    public void buttonClickNickname(MouseEvent mouseEvent) {
     }
 }

@@ -26,7 +26,7 @@ public class TransitionScene {
 
     //setta come scena la pagina in cui chiede il nick al player
     public static void setRequestNickPlayers(RequestNickPlayers requestNickPlayers) {
-        TransitionScene.requestNickPlayers = new Scene(requestNickPlayers.getRootFXML());
+      //  TransitionScene.requestNickPlayers = new Scene(requestNickPlayers.getRootFXML());
     }
 
     //setta come scena tutta la gameTable che sarebbe la scena dove si vedono le isole nuvole etc

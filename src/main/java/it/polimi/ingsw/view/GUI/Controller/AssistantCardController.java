@@ -9,7 +9,6 @@ import javafx.scene.layout.Pane;
 public class AssistantCardController {
     Gui gui;
     @FXML public Pane assistantCards;
-
     public void setGui(Gui gui){this.gui=gui;}
 
     public void setDisableAll(){

@@ -26,6 +26,7 @@ public class Gui extends Application implements View {
    // private GameTable gameTable = new GameTable(this);
    private final AssistantCardController assistantCardController=new AssistantCardController();
     //private final CharacterCardController characterCardController = new CharacterCardController();
+    private RequestNickPlayers requestNickPlayers;
    // private ChooseAction chooseAction=new ChooseAction();
     public Gui(){
     }
@@ -47,6 +48,7 @@ public class Gui extends Application implements View {
         Platform.runLater(()-> {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/RequestNickPlayers.fxml"));
+
             Scene scene = null;
             try {
                 scene = new Scene(fxmlLoader.load());
@@ -54,6 +56,8 @@ public class Gui extends Application implements View {
                 e.printStackTrace();
             }
             stage.setScene(scene);
+            requestNickPlayers=fxmlLoader.getController();
+            requestNickPlayers.setJoinButtonAble();
             stage.show();
         });
     }
