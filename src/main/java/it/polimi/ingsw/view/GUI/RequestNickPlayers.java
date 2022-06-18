@@ -1,6 +1,8 @@
 package it.polimi.ingsw.view.GUI;
 
+import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -9,16 +11,16 @@ public class RequestNickPlayers {
     Gui gui;
     @FXML
     private Pane requestNick;
-    @FXML public ImageView joinButton;
+    @FXML private ImageView joinButton;
+    @FXML private TextField nickname;
     public void setJoinButtonAble(){
         joinButton.setDisable(false);
         joinButton.setVisible(true);
     }
 
-    public Pane getRequestNick() {
-        return requestNick;
-    }
-
+    //Viene Cliccato join. viene inviato il nome al server
     public void buttonClickNickname(MouseEvent mouseEvent) {
+        gui.getSocketNetworkHandler().sendMessage(new RequestNickname((String) nickname.getCharacters()));
+        System.out.println(nickname.getCharacters());
     }
 }
