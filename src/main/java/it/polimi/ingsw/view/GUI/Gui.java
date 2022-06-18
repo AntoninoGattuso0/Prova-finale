@@ -6,6 +6,8 @@ import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
+import it.polimi.ingsw.view.GUI.Controller.AssistantCardController;
+import it.polimi.ingsw.view.GUI.Controller.CharacterCardController;
 import it.polimi.ingsw.view.GUI.warnings.WarningCloud;
 import it.polimi.ingsw.view.View;
 import javafx.application.Platform;
@@ -20,10 +22,14 @@ public class Gui implements View {
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;
     private GameTable gameTable = new GameTable(this);
-    private AssistantCardController assistantCardController=new AssistantCardController(this);
+    private final AssistantCardController assistantCardController=new AssistantCardController(this);
+    private final CharacterCardController characterCardController = new CharacterCardController(this)
     private ChooseAction chooseAction=new ChooseAction();
     public SocketNetworkHandler getSocketNetworkHandler() {
         return socketNetworkHandler;
+    }
+    public Gui(){
+
     }
     @Override
     public void startGame() {
@@ -60,12 +66,12 @@ public class Gui implements View {
         if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
             if(!bool){
                 if(lightGame.getIsExpert()){
-                    pannellodiscrittura.writetext("Clicca si se vuoi giocare un characterCard e no per non giocarlo");
+                   // pannellodiscrittura.writetext("Clicca si se vuoi giocare un characterCard e no per non giocarlo");
                 }
             }
             if(bool){
                 displayCharacterCard();
-                pannellodiscrittura.writetest("Scegli il CharacterCard da utilizzare");
+               // pannellodiscrittura.writetest("Scegli il CharacterCard da utilizzare");
             }
         }
     }
@@ -93,7 +99,7 @@ public class Gui implements View {
        for(j=0;j<lightGame.getPlayers().get(player).getDeckAssistant().size();j++){
            int n=lightGame.getPlayers().get(player).getDeckAssistant().get(j).getCardValue();
            assistantCardController.setAble(n);
-           assistantCardController.setVisibile(n);
+           assistantCardController.setVisible(n);
        }
     }
 
@@ -141,8 +147,9 @@ public class Gui implements View {
                 case 10 -> coin=lightGame.getNicola().getCoinPrice();
                 case 11 -> coin=lightGame.getOmnia().getCoinPrice();
             }
+            characterCardController.setVisible(i);
+            characterCardController.setCoinVisible(i,true);
             if(coin<lightGame.getPlayers().get(player).getNumCoin()){
-                characterCardController.setVsibile(i);
                 characterCardController.setAble(i);
             }
         }
@@ -207,10 +214,10 @@ public class Gui implements View {
         int i;
         if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
             for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(),nickname);i++);
-            pannellodiscrittura.vritetext("scegli l'assistente");
+            //pannellodiscrittura.vritetext("scegli l'assistente");
             displayAssistantCard(i);
         }else{
-            Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+"sta scegliendo l'Assistente");
+            //Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+"sta scegliendo l'Assistente");
         }
     }
 

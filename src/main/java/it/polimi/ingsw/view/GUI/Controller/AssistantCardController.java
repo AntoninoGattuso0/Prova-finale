@@ -1,6 +1,7 @@
-package it.polimi.ingsw.view.GUI;
+package it.polimi.ingsw.view.GUI.Controller;
 
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseAssistantCardMessage;
+import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
@@ -20,7 +21,7 @@ public class AssistantCardController {
         String name = "#AssistantCard" + n;
         assistantCards.lookup(name).setDisable(false);
     }
-    public void setVisibile(int n){
+    public void setVisible(int n){
         String name= "#AssistantCard"+n;
         assistantCards.lookup(name).setVisible(true);
     }

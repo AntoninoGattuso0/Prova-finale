@@ -1,23 +1,19 @@
 package it.polimi.ingsw.View.GUI;
 
-import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.view.GUI.GameTable;
-import it.polimi.ingsw.view.GUI.Gui;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import java.util.Objects;
+
 class TestGui extends Application {
-    public void start(Stage primaryStage) throws Exception{
-        Game game=new Game(2,true);
-        Gui gui=new Gui();
-        game.start(game);
-        game.newPlayer("a",game);
-        game.newPlayer("b",game);
-        GameTable gameTable=new GameTable(gui);
-        Parent root= FXMLLoader.load(getClass().getResource("resources/FXML/GameTable.fxml" ));
-        primaryStage.setScene(new Scene(root));
+
+    public void start(Stage primaryStage) throws Exception {
+        BorderPane root=new BorderPane();
+        Scene scene=new Scene(root);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("FXML/AssistantCard.fxml")).toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
