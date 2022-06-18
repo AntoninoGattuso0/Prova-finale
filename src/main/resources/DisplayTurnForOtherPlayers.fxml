@@ -9,7 +9,7 @@
 <Pane fx:id="DisplayOtherTurn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="291.0"
       prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.Controller.DisplayTurnForOtherPlayersController">
    <ImageView fitHeight="358.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../images/BackWinner.png"/>
+      <Image url="@images/BackWinner.png"/>
    </ImageView>
    <Text fill="WHITE" layoutX="98.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IT'S ">
       <font>

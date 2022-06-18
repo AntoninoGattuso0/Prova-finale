@@ -1,8 +1,5 @@
 package it.polimi.ingsw.view.GUI;
 
-import it.polimi.ingsw.client.SocketNetworkHandler;
-import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
-import it.polimi.ingsw.view.GUI.warnings.WarningNickname;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.image.ImageView;
@@ -19,7 +16,7 @@ public class WinnerScene {
 
     public WinnerScene(String nickPlayerWinner){
         try{
-            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/WinnerScene.fxml")));
+            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/WinnerScene.fxml")));
         }catch(
         IOException e){
             e.printStackTrace();

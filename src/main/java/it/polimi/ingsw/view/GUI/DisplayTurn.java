@@ -21,7 +21,7 @@ public class DisplayTurn {
 
         public DisplayTurn(String TurnOf){
             try{
-                rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/DisplayTurn.fxml")));
+                rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/DisplayTurn.fxml")));
             }catch(
                     IOException e){
                 e.printStackTrace();

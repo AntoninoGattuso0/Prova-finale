@@ -35,7 +35,7 @@ public class NumOfPlayerIsExpert{
 
     public NumOfPlayerIsExpert(){
         try{
-            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/NumOfPlayerIsExpert.fxml")));
+            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/NumOfPlayerIsExpert.fxml")));
         }catch(IOException e){
             e.printStackTrace();
         }

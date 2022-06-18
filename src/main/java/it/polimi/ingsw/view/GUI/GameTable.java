@@ -99,7 +99,7 @@ public class GameTable {
     public GameTable(Gui gui) {
         this.gui=gui;
         try {
-            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/GameTable.fxml")));
+            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GameTable.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -297,7 +297,7 @@ public class GameTable {
     }
 
     public void switchToCharacterCard(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/CharacterCard.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/CharacterCard.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

@@ -16,7 +16,7 @@ public class WarningNickname {
 
     public WarningNickname(){
         try{
-            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/WarningNickname.fxml")));
+            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/WarningNickname.fxml")));
         }catch(IOException e){
             e.printStackTrace();
         }

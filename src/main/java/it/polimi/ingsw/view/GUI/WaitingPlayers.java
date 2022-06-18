@@ -14,7 +14,7 @@ public class WaitingPlayers {
 
     public WaitingPlayers(){
         try{
-            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/WaitingPlayers.fxml")));
+            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/WaitingPlayers.fxml")));
         }catch(
                 IOException e){
             e.printStackTrace();

@@ -20,7 +20,7 @@ public class WarningCloud {
 
         public WarningCloud(){
             try{
-                rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/WarningCloud.fxml")));
+                rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/WarningCloud.fxml")));
             }catch(IOException e){
                 e.printStackTrace();
             }

@@ -1,7 +1,6 @@
 package it.polimi.ingsw.view.GUI;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
@@ -15,7 +14,7 @@ public class DisplayTurnForOtherPlayers {
 
     public DisplayTurnForOtherPlayers(String TurnOf){
         try{
-            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/DisplayTurnForOtherPlayers.fxml")));
+            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/DisplayTurnForOtherPlayers.fxml")));
         }catch(
                 IOException e){
             e.printStackTrace();

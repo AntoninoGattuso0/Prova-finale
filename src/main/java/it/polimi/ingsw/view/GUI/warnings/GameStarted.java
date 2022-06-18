@@ -13,7 +13,7 @@ public class GameStarted {
 
     public GameStarted(){
         try{
-            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/GameStarted.fxml")));
+            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GameStarted.fxml")));
         }catch(
                 IOException e){
             e.printStackTrace();

@@ -8,10 +8,10 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.warnings.WarningCloud">
     <ImageView fitHeight="355.0" fitWidth="345.0" layoutX="2.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../images/Warning.png" />
+        <Image url="@images/Warning.png" />
     </ImageView>
     <ImageView id="okButton" fitHeight="34.0" fitWidth="80.0" layoutX="253.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../images/OkButton.png" />
+        <Image url="@images/OkButton.png" />
     </ImageView>
     <Label layoutX="103.0" layoutY="3.0" text="CLOUD EMPTY!">
         <font>

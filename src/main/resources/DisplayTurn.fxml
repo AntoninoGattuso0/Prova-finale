@@ -10,7 +10,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="292.0"
       prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <ImageView fitHeight="338.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../images/BackWinner.png"/>
+      <Image url="@images/BackWinner.png"/>
    </ImageView>
    <Text id="turnText" fill="#fcfafa" layoutX="266.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
       <font>
