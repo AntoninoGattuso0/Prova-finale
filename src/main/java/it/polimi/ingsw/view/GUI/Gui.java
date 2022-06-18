@@ -2,47 +2,60 @@ package it.polimi.ingsw.view.GUI;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
-import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
-import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNumPlayersIsExpert;
 import it.polimi.ingsw.view.GUI.Controller.AssistantCardController;
-import it.polimi.ingsw.view.GUI.Controller.CharacterCardController;
 import it.polimi.ingsw.view.GUI.warnings.WarningCloud;
 import it.polimi.ingsw.view.View;
+import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
 
 
-public class Gui implements View {
-    private boolean isExpert;
+public class Gui extends Application implements View {
     private LightGame lightGame;
+    private Stage stage;
     private SocketNetworkHandler socketNetworkHandler;
-    private GameTable gameTable = new GameTable(this);
-    private final AssistantCardController assistantCardController=new AssistantCardController();
-    private final CharacterCardController characterCardController = new CharacterCardController();
-    private ChooseAction chooseAction=new ChooseAction();
-    public SocketNetworkHandler getSocketNetworkHandler() {
-        return socketNetworkHandler;
-    }
+   // private GameTable gameTable = new GameTable(this);
+   private final AssistantCardController assistantCardController=new AssistantCardController();
+    //private final CharacterCardController characterCardController = new CharacterCardController();
+   // private ChooseAction chooseAction=new ChooseAction();
     public Gui(){
-
     }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        startGame();
+        this.stage=stage;
+        socketNetworkHandler=new SocketNetworkHandler(this);
+    }
+
     @Override
     public void startGame() {
-
+       requestNickname();
     }
     //per le altre funzioni che sono scritte sono uguali a questa
     @Override
     public void requestNickname() {
-        RequestNickPlayers requestNickPlayers = new RequestNickPlayers();
-        Platform.runLater(()->TransitionScene.setRequestNickPlayers(requestNickPlayers)); //setta come scena quella tra parentesi
-        Platform.runLater(TransitionScene::switchRequestNickPlayers); //switcha su questa scena in cui richiede il nick
-        socketNetworkHandler.sendMessage(new RequestNickname(requestNickPlayers.getNick()));  //queste due righe sono come quelle della cli
-        socketNetworkHandler.setNicknameThisPlayer(requestNickPlayers.getNick());
+        Platform.runLater(()-> {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/RequestNickPlayers.fxml"));
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage.setScene(scene);
+            stage.show();
+        });
     }
     @Override
     public void requestNumPlayersIsExpert() {
@@ -52,10 +65,11 @@ public class Gui implements View {
         socketNetworkHandler.sendMessage(new RequestNumPlayersIsExpert(numPlayersIsExpert.getNumPlayer(), numPlayersIsExpert.isExpert()));
         socketNetworkHandler.setNicknameThisPlayer(numPlayersIsExpert.getNickname());
     }
-
+    public SocketNetworkHandler getSocketNetworkHandler() {
+        return socketNetworkHandler;
+    }
     @Override
     public void requestMovePawn(String nickname, int numPawnMoved) {
-
     }
 
     @Override
@@ -147,10 +161,10 @@ public class Gui implements View {
                 case 10 -> coin=lightGame.getNicola().getCoinPrice();
                 case 11 -> coin=lightGame.getOmnia().getCoinPrice();
             }
-            characterCardController.setVisible(i);
-            characterCardController.setCoinVisible(i,true);
+            //characterCardController.setVisible(i);
+           // characterCardController.setCoinVisible(i,true);
             if(coin<lightGame.getPlayers().get(player).getNumCoin()){
-                characterCardController.setAble(i);
+                //characterCardController.setAble(i);
             }
         }
     }
@@ -203,7 +217,7 @@ public class Gui implements View {
     @Override
     public void selectCloud(String nickname) {
         if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
-                socketNetworkHandler.sendMessage(new ChooseCloudMessage(gameTable.getCloudSelected()));
+              //  socketNetworkHandler.sendMessage(new ChooseCloudMessage(gameTable.getCloudSelected()));
         }else{
             new WarningCloud();
         }

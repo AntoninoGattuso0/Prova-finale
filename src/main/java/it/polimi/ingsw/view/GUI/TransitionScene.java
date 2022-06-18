@@ -37,7 +37,7 @@ public class TransitionScene {
     public static void setWaitingPlayers(WaitingPlayers waitingPlayers) {
         TransitionScene.waitingPlayers = new Scene(waitingPlayers.getRootFXML());
     }
-    //srtta come scena la schermata chi e il vincitore
+    //setta come scena la schermata chi e il vincitore
     public static void setWinnerScene(WinnerScene winnerScene) {
         TransitionScene.winnerScene = new Scene(winnerScene.getRootFXML());
     }

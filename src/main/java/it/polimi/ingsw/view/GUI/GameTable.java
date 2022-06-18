@@ -94,8 +94,6 @@ public class GameTable {
     private List<ImageView> blueSchool0;
     @FXML
     private List<ImageView> blackTowersSchool0;
-
-
     public GameTable(Gui gui) {
         this.gui=gui;
         try {

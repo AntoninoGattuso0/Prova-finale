@@ -2,7 +2,7 @@ package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.view.Cli.Cli;
 import it.polimi.ingsw.view.GUI.Gui;
-
+import javafx.application.Application;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
@@ -34,9 +34,7 @@ public class ClientMain {
             socketNetworkHandler = new SocketNetworkHandler(cli);
             cli.run();
         }else if (view.equals("G") || view.equals("g")){
-            Gui gui= new Gui();
-             socketNetworkHandler= new SocketNetworkHandler(gui);
-             //gui.run();
+            Application.launch(Gui.class,args);
         }
         socketNetworkHandler.updateConnection(address, String.valueOf(4000));
         socketNetworkHandler.run();

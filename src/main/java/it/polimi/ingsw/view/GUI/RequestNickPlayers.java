@@ -1,25 +1,20 @@
 package it.polimi.ingsw.view.GUI;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.awt.*;
-import java.io.IOException;
-import java.util.Objects;
 
 public class RequestNickPlayers {
 
     private Pane rootFXML;
     private String nick;
-    private final ImageView joinButton;
+    //private final ImageView joinButton;
 
     @FXML
     private TextField nickPlayer;
 
-    public RequestNickPlayers(){
+    /*public RequestNickPlayers(){
 
         try{ //mette
             rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/RequestNickPlayers.fxml")));
@@ -35,7 +30,7 @@ public class RequestNickPlayers {
         //prende dal texField il nome del player nel momento in cui schiaccia l'immagine join
         joinButton.setOnMouseClicked(mouseEvent -> nick = nickPlayer.getText());
 
-    }
+    }*/
 
     public Pane getRootFXML(){
         return rootFXML;
