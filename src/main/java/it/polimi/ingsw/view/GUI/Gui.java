@@ -23,7 +23,7 @@ public class Gui implements View {
     private SocketNetworkHandler socketNetworkHandler;
     private GameTable gameTable = new GameTable(this);
     private final AssistantCardController assistantCardController=new AssistantCardController();
-    private final CharacterCardController characterCardController = new CharacterCardController(this);
+    private final CharacterCardController characterCardController = new CharacterCardController();
     private ChooseAction chooseAction=new ChooseAction();
     public SocketNetworkHandler getSocketNetworkHandler() {
         return socketNetworkHandler;

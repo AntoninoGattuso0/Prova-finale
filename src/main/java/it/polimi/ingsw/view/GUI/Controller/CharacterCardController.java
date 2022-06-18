@@ -9,10 +9,9 @@ public class CharacterCardController {
     Gui gui;
     @FXML public Pane characterCards;
 
-    public CharacterCardController(Gui gui){
-        this.gui=gui;
+    public void setGui(Gui gui) {
+        this.gui = gui;
     }
-
 
     public void setDisableAll(){
         for(Node character : characterCards.getChildren()){
