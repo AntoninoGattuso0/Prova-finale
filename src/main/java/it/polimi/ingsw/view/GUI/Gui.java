@@ -22,8 +22,8 @@ public class Gui implements View {
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;
     private GameTable gameTable = new GameTable(this);
-    private final AssistantCardController assistantCardController=new AssistantCardController(this);
-    private final CharacterCardController characterCardController = new CharacterCardController(this)
+    private final AssistantCardController assistantCardController=new AssistantCardController();
+    private final CharacterCardController characterCardController = new CharacterCardController(this);
     private ChooseAction chooseAction=new ChooseAction();
     public SocketNetworkHandler getSocketNetworkHandler() {
         return socketNetworkHandler;

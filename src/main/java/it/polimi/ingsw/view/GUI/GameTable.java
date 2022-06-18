@@ -289,7 +289,7 @@ public class GameTable {
 
     //queste due funzioni di switch devo vedere ancora come gestirle sulla parte destra della scena che vi ho fatto vedere
     public void switchToAssistantCard(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/AssistantCard.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/AssistantCard.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

@@ -1,8 +1,5 @@
 package it.polimi.ingsw.view.GUI;
 
-import it.polimi.ingsw.client.SocketNetworkHandler;
-import it.polimi.ingsw.network.Message.ClientToServer.RequestNickname;
-import it.polimi.ingsw.view.GUI.warnings.WarningNickname;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
@@ -25,7 +22,7 @@ public class RequestNickPlayers {
     public RequestNickPlayers(){
 
         try{ //mette
-            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/FXML/RequestNickPlayers.fxml")));
+            rootFXML = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/RequestNickPlayers.fxml")));
         }catch(IOException e){
             e.printStackTrace();
         }
