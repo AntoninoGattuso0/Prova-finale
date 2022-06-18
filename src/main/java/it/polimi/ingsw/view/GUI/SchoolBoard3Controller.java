@@ -1,12 +1,28 @@
 package it.polimi.ingsw.view.GUI;
 
 import javafx.scene.input.MouseEvent;
+import it.polimi.ingsw.view.GUI.Gui;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.layout.Pane;
+
 
 public class SchoolBoard3Controller {
     //colorepedina, numeroSchoolBoard, numero posizione della pedina sull'entrata
     //POSIZIONE PEDINE ENTRATA:
     //0 2 4 6 8
     //  1 3 5 7
+    Gui gui;
+
+    public SchoolBoard3Controller(Gui gui){this.gui=gui;}
+
+    @FXML Pane schoolBoard3;
+
+    public void setSchoolBoard3(boolean visible){
+        for(Node schoolBoard : schoolBoard3.getChildren()){
+            schoolBoard.setVisible(visible);
+        }
+    }
     public void green30Select(MouseEvent mouseEvent) {
     }
     public void green31Select(MouseEvent mouseEvent) {
