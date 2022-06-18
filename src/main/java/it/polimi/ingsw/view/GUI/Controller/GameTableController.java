@@ -87,6 +87,7 @@ public class GameTableController {
         String name = "cloud" + cloud;
         gameTable.lookup(name).setVisible(visible);
         gameTable.lookup(name).setDisable(disabled);
+        //pedine sempre visibili?
     }
 
     public void setMotherNatureVisible(int island){
@@ -100,6 +101,7 @@ public class GameTableController {
 
     public void setTowers(int island, int color, boolean visible){
         String name = null;
+        String text = "textIsland" + island;
         if(color == 0){
             name = "blackTower" + island;
         }else if (color == 1){
@@ -108,6 +110,6 @@ public class GameTableController {
             name = "greyTower" + island;
         }
         gameTable.lookup(name).setVisible(visible);
-
+        gameTable.lookup(text).setVisible(visible);
     }
 }

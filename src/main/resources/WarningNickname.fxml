@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.warnings.WarningNickname">
+<Pane fx:id="warningNickname" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.warnings.WarningNickname">
       <ImageView fitHeight="355.0" fitWidth="345.0" layoutX="2.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/Warning.png" />
       </ImageView>
