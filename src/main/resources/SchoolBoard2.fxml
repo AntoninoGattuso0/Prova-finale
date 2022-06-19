@@ -197,139 +197,139 @@
     <ImageView id="greyTowerSchool7" fitHeight="45.0" fitWidth="45.0" layoutX="160.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/GreyTower.png" />
     </ImageView>
-    <ImageView id="entranceGreen20" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceGreen20" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" onMouseClicked="#green20Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/greenStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceGreen21" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceGreen21" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" onMouseClicked="#green21Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/greenStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceGreen22" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceGreen22" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" onMouseClicked="#green22Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/greenStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceGreen23" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceGreen23" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" onMouseClicked="#green23Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/greenStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceGreen24" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceGreen24" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" onMouseClicked="#green24Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/greenStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceGreen25" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceGreen25" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" onMouseClicked="#green25Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/greenStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceGreen26" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceGreen26" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" onMouseClicked="#green26Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/greenStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceGreen27" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceGreen27" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" onMouseClicked="#green27Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/greenStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceGreen28" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceGreen28" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" onMouseClicked="#green28Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/greenStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceRed20" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceRed20" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" onMouseClicked="#red20Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/redStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceRed21" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceRed21" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" onMouseClicked="#red21Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/redStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceRed22" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceRed22" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" onMouseClicked="#red22Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/redStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceRed23" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceRed23" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" onMouseClicked="#red23Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/redStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceRed24" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceRed24" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" onMouseClicked="#red24Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/redStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceRed25" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceRed25" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" onMouseClicked="#red25Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/redStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceRed26" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceRed26" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" onMouseClicked="#red26Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/redStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceRed27" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceRed27" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" onMouseClicked="#red27Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/redStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceRed28" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceRed28" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" onMouseClicked="#red28Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/redStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceYellow20" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceYellow20" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" onMouseClicked="#yellow20Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/yellowStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceYellow21" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceYellow21" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" onMouseClicked="#yellow21Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/yellowStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceYellow22" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceYellow22" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" onMouseClicked="#yellow22Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/yellowStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceYellow23" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceYellow23" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" onMouseClicked="#yellow23Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/yellowStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceYellow24" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceYellow24" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" onMouseClicked="#yellow24Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/yellowStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceYellow25" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceYellow25" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" onMouseClicked="#yellow25Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/yellowStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceYellow26" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceYellow26" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" onMouseClicked="#yellow26Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/yellowStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceYellow27" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceYellow27" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" onMouseClicked="#yellow27Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/yellowStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceYellow28" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceYellow28" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" onMouseClicked="#yellow28Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/yellowStudent3D.png" />
     </ImageView>
-    <ImageView id="entrancePink20" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entrancePink20" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" onMouseClicked="#pink20Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/pinkStudent3D.png" />
     </ImageView>
-    <ImageView id="entrancePink21" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entrancePink21" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" onMouseClicked="#pink21Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/pinkStudent3D.png" />
     </ImageView>
-    <ImageView id="entrancePink22" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entrancePink22" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" onMouseClicked="#pink22Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/pinkStudent3D.png" />
     </ImageView>
-    <ImageView id="entrancePink23" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entrancePink23" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" onMouseClicked="#pink23Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/pinkStudent3D.png" />
     </ImageView>
-    <ImageView id="entrancePink24" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entrancePink24" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" onMouseClicked="#pink24Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/pinkStudent3D.png" />
     </ImageView>
-    <ImageView id="entrancePink25" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entrancePink25" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" onMouseClicked="#pink25Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/pinkStudent3D.png" />
     </ImageView>
-    <ImageView id="entrancePink26" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entrancePink26" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" onMouseClicked="#pink26Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/pinkStudent3D.png" />
     </ImageView>
-    <ImageView id="entrancePink27" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entrancePink27" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" onMouseClicked="#pink27Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/pinkStudent3D.png" />
     </ImageView>
-    <ImageView id="entrancePink28" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entrancePink28" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" onMouseClicked="#pink28Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/pinkStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceBlue20" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceBlue20" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" onMouseClicked="#blue20Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/blueStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceBlue21" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceBlue21" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="576.0" onMouseClicked="#blue21Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/blueStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceBlue22" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceBlue22" fitHeight="20.0" fitWidth="20.0" layoutX="81.0" layoutY="541.0" onMouseClicked="#blue22Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/blueStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceBlue23" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceBlue23" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="576.0" onMouseClicked="#blue23Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/blueStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceBlue24" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceBlue24" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" onMouseClicked="#blue24Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/blueStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceBlue25" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceBlue25" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" onMouseClicked="#blue25Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/blueStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceBlue26" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceBlue26" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="541.0" onMouseClicked="#blue26Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/blueStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceBlue27" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceBlue27" fitHeight="20.0" fitWidth="20.0" layoutX="213.0" layoutY="576.0" onMouseClicked="#blue27Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/blueStudent3D.png" />
     </ImageView>
-    <ImageView id="entranceBlue28" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="entranceBlue28" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" onMouseClicked="#blue28Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/blueStudent3D.png" />
     </ImageView>
     <ImageView id="coin0" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
