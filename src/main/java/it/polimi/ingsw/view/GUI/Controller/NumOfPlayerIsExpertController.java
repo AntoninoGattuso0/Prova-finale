@@ -17,7 +17,7 @@ public class NumOfPlayerIsExpertController {
         this.gui = gui;
     }
 
-    public void setNumPlayerIsExpert(boolean visible) {;
+    public void setNumPlayerIsExpert(boolean visible) {
         numPlayerBox.getItems().add("2");
         numPlayerBox.getItems().add("3");
         numPlayerBox.getItems().add("4");

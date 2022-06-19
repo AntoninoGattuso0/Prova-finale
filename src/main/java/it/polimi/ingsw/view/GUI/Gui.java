@@ -86,6 +86,7 @@ public class Gui extends Application implements View {
             }
             stage.setScene(scene);
             numOfPlayerIsExpertController=new NumOfPlayerIsExpertController();
+            numOfPlayerIsExpertController=fxmlLoader.getController();
             numOfPlayerIsExpertController.setGui(this);
             numOfPlayerIsExpertController.setNumPlayerIsExpert(true);
             stage.show();
