@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,17 +29,32 @@ public class Gui extends Application implements View {
    private final AssistantCardController assistantCardController=new AssistantCardController();
     //private final CharacterCardController characterCardController = new CharacterCardController();
     private RequestNickPlayers requestNickPlayers;
-   // private ChooseAction chooseAction=new ChooseAction();
+    private FXMLLoader fxmlLoader;
+
+    // private ChooseAction chooseAction=new ChooseAction();
     @Override
     public void start(Stage stage) throws Exception {
         this.stage=stage;
+        Platform.runLater(()->{
+            fxmlLoader=new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/Start.fxml"));
+            Scene scene=null;
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage.setScene(scene);
+            stage.show();
+
+        });
+        Platform.setImplicitExit(false);
+    }
+    @Override
+    public void startGame() {
         socketNetworkHandler=new SocketNetworkHandler(this);
         socketNetworkHandler.updateConnection(addressSock, String.valueOf(4000));
         socketNetworkHandler.run();
-    }
-
-    @Override
-    public void startGame() {
     }
     public static void setAddress(String address){
         addressSock=address;
@@ -47,20 +63,25 @@ public class Gui extends Application implements View {
     //per le altre funzioni che sono scritte sono uguali a questa
     @Override
     public void requestNickname() {
+        System.out.println("sono fuori dal tunnel");
+        Platform.setImplicitExit(false);
         Platform.runLater(()-> {
-            FXMLLoader fxmlLoader = new FXMLLoader();
+            System.out.println("lelele");
+            fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/RequestNickPlayers.fxml"));
-            Scene scene = null;
+            Scene scene;
             try {
                 scene = new Scene(fxmlLoader.load());
             } catch (IOException e) {
                 e.printStackTrace();
+                scene = new Scene(new Label("Error"));
             }
             stage.setScene(scene);
-            requestNickPlayers=fxmlLoader.getController();
+            requestNickPlayers = fxmlLoader.getController();
             requestNickPlayers.setJoinButtonAble();
             stage.show();
         });
+        System.out.println("del divertimento ohohoho");
     }
     @Override
     public void requestNumPlayersIsExpert() {
@@ -260,7 +281,6 @@ public class Gui extends Application implements View {
 
     @Override
     public void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler) {
-        this.socketNetworkHandler=socketNetworkHandler;
     }
 
     @Override

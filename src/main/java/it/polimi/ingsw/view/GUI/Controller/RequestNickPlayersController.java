@@ -7,8 +7,9 @@ import javafx.scene.layout.Pane;
 
 public class RequestNickPlayersController {
     Gui gui;
-    public RequestNickPlayersController(Gui gui){this.gui=gui;}
-
+    public void setGui(Gui gui) {
+        this.gui = gui;
+    }
     @FXML
     Pane requestNick;
 

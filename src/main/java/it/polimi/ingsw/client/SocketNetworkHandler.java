@@ -93,7 +93,6 @@ public class SocketNetworkHandler implements Runnable{
             socket=new Socket(ipAddress, Integer.parseInt(port));
             ready=true;
             connected=true;
-            System.out.println("Connection up");
         }catch (IOException| IllegalArgumentException e){
             System.out.println("Server unavailable");
             System.exit(0);
