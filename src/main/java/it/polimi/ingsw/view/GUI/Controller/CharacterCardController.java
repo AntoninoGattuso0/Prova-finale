@@ -3,6 +3,7 @@ package it.polimi.ingsw.view.GUI.Controller;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class CharacterCardController {
@@ -90,5 +91,9 @@ public class CharacterCardController {
     public void setCoinVisible(int character, boolean visible){
         String name = "#coin" + character;
         characterCards.lookup(name).setVisible(visible);
+    }
+
+    public void character0Select(MouseEvent mouseEvent) {
+
     }
 }

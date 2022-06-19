@@ -13,7 +13,7 @@
    <ImageView fitHeight="304.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@images/BackWinner.png"/>
    </ImageView>
-   <Text fill="WHITE" layoutX="144.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IT'S YOUR TURN YET">
+   <Text fill="WHITE" layoutX="144.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IT'S YOUR TURN NOW">
       <font>
          <Font size="36.0"/>
       </font>
