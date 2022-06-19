@@ -62,6 +62,7 @@ public class Gui extends Application implements View {
             }
             stage.setScene(scene);
             requestNickPlayers = fxmlLoader.getController();
+            requestNickPlayers.setGui(this);
             requestNickPlayers.setJoinButtonAble();
             stage.show();
         });

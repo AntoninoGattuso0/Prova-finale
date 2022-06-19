@@ -17,10 +17,16 @@ public class RequestNickPlayers {
         joinButton.setDisable(false);
         joinButton.setVisible(true);
     }
-
-    //Viene Cliccato join. viene inviato il nome al server
+    public void setJoinButtonDisable(){
+        joinButton.setVisible(false);
+        joinButton.setDisable(true);
+    }
+    public void setGui(Gui gui) {
+        this.gui = gui;
+    }
+    //Viene Cliccato join: viene inviato il nome al server e il bottone non visibile e non cliccabile
     public void buttonClickNickname(MouseEvent mouseEvent) {
         gui.getSocketNetworkHandler().sendMessage(new RequestNickname(nickname.getText()));
-        System.out.println(nickname.getText());
+        setJoinButtonDisable();
     }
 }
