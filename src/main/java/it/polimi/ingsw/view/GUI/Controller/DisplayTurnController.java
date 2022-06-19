@@ -1,19 +1,20 @@
 package it.polimi.ingsw.view.GUI.Controller;
 
 import it.polimi.ingsw.view.GUI.Gui;
-import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 
 public class DisplayTurnController {
+    public Text turnText;
+    public Button selectAssistantButton;
     Gui gui;
 
-    public DisplayTurnController(Gui gui){this.gui=gui;}
+    public void setGui(Gui gui){this.gui=gui;}
 
-    @FXML Pane displayTurn;
-
-    public void setDisplayTurn(boolean visible) {
-        for(Node turn : displayTurn.getChildren())
-            turn.setVisible(visible);
+    public void setDisplayTurn(String nickname) {
+        turnText.setText(nickname);
+        turnText.setVisible(true);
+        selectAssistantButton.setVisible(true);
+        selectAssistantButton.setDisable(false);
     }
 }

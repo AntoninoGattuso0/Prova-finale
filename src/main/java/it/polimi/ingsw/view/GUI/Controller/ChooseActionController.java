@@ -9,7 +9,7 @@ public class ChooseActionController {
 
     @FXML public Pane chooseAction;
 
-    public ChooseActionController(Gui gui){this.gui = gui;}
+    public void setGui(Gui gui){this.gui = gui;}
 
     public void setCharacterButton(boolean disabled, boolean visible){
         chooseAction.lookup("characterCardButton").setVisible(visible);

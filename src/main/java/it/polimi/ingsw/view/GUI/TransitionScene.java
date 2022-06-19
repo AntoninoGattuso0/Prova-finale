@@ -1,6 +1,6 @@
 package it.polimi.ingsw.view.GUI;
 
-import it.polimi.ingsw.view.GUI.Controller.WaitingPlayersController;
+import it.polimi.ingsw.view.GUI.Controller.RequestNickPlayersController;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -26,7 +26,7 @@ public class TransitionScene {
    // }
 
     //setta come scena la pagina in cui chiede il nick al player
-    public static void setRequestNickPlayers(WaitingPlayersController.RequestNickPlayersController requestNickPlayers) {
+    public static void setRequestNickPlayers(RequestNickPlayersController requestNickPlayers) {
       //  TransitionScene.requestNickPlayers = new Scene(requestNickPlayers.getRootFXML());
     }
 

@@ -4,7 +4,7 @@ import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
 import it.polimi.ingsw.view.GUI.Controller.NumOfPlayerIsExpertController;
-import it.polimi.ingsw.view.GUI.Controller.WaitingPlayersController;
+import it.polimi.ingsw.view.GUI.Controller.RequestNickPlayersController;
 import it.polimi.ingsw.view.GUI.warnings.WarningCloud;
 import it.polimi.ingsw.view.View;
 import javafx.application.Application;
@@ -30,7 +30,7 @@ public class Gui extends Application implements View {
     //private final CharacterCardController characterCardController = new CharacterCardController();
     private NumOfPlayerIsExpertController numOfPlayerIsExpertController;
 
-    private WaitingPlayersController.RequestNickPlayersController requestNickPlayersController;
+    private RequestNickPlayersController requestNickPlayersController;
     private FXMLLoader fxmlLoader;
 
      private ChooseAction chooseAction=new ChooseAction();
@@ -89,7 +89,7 @@ public class Gui extends Application implements View {
             numOfPlayerIsExpertController=new NumOfPlayerIsExpertController();
             numOfPlayerIsExpertController=fxmlLoader.getController();
             numOfPlayerIsExpertController.setGui(this);
-            numOfPlayerIsExpertController.setNumPlayerIsExpert(true);
+            numOfPlayerIsExpertController.setNumPlayerIsExpert();
             stage.show();
         });
     }
