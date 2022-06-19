@@ -29,7 +29,7 @@ public class Gui extends Application implements View {
     //private final CharacterCardController characterCardController = new CharacterCardController();
     private NumOfPlayerIsExpertController numOfPlayerIsExpertController;
 
-    private RequestNickPlayers requestNickPlayers;
+    private RequestNickPlayersController requestNickPlayersController;
     private FXMLLoader fxmlLoader;
 
      private ChooseAction chooseAction=new ChooseAction();
@@ -66,9 +66,9 @@ public class Gui extends Application implements View {
                 scene = new Scene(new Label("Error"));
             }
             stage.setScene(scene);
-            requestNickPlayers = fxmlLoader.getController();
-            requestNickPlayers.setGui(this);
-            requestNickPlayers.setJoinButtonAble();
+            requestNickPlayersController = fxmlLoader.getController();
+            requestNickPlayersController.setGui(this);
+            requestNickPlayersController.setJoinButtonAble();
             stage.show();
         });
     }

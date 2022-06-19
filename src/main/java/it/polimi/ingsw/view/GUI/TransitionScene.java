@@ -25,7 +25,7 @@ public class TransitionScene {
    // }
 
     //setta come scena la pagina in cui chiede il nick al player
-    public static void setRequestNickPlayers(RequestNickPlayers requestNickPlayers) {
+    public static void setRequestNickPlayers(RequestNickPlayersController requestNickPlayers) {
       //  TransitionScene.requestNickPlayers = new Scene(requestNickPlayers.getRootFXML());
     }
 

@@ -7,7 +7,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
-public class RequestNickPlayers {
+public class
+RequestNickPlayersController {
     Gui gui;
     @FXML
     private Pane requestNick;
