@@ -35,20 +35,7 @@ public class Gui extends Application implements View {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage=stage;
-        Platform.runLater(()->{
-            fxmlLoader=new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/Start.fxml"));
-            Scene scene=null;
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            stage.setScene(scene);
-            stage.show();
-
-        });
-        Platform.setImplicitExit(false);
+        startGame();
     }
     @Override
     public void startGame() {
@@ -63,10 +50,7 @@ public class Gui extends Application implements View {
     //per le altre funzioni che sono scritte sono uguali a questa
     @Override
     public void requestNickname() {
-        System.out.println("sono fuori dal tunnel");
-        Platform.setImplicitExit(false);
         Platform.runLater(()-> {
-            System.out.println("lelele");
             fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/RequestNickPlayers.fxml"));
             Scene scene;
@@ -81,7 +65,6 @@ public class Gui extends Application implements View {
             requestNickPlayers.setJoinButtonAble();
             stage.show();
         });
-        System.out.println("del divertimento ohohoho");
     }
     @Override
     public void requestNumPlayersIsExpert() {

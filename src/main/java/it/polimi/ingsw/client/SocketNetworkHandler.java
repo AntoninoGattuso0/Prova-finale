@@ -112,7 +112,8 @@ public class SocketNetworkHandler implements Runnable{
     }
     @Override
     public void run(){
-        synchronized (this){
+        Thread thread = new Thread(() ->{
+            synchronized (this){
             while(!ready){
                 try{
                     wait();
@@ -121,34 +122,35 @@ public class SocketNetworkHandler implements Runnable{
                 }
             }
         }
-        connected=true;
-        try{
-            in=new ObjectInputStream(socket.getInputStream());
-            out=new ObjectOutputStream(socket.getOutputStream());
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        pingToServer();
-        try{
-            while (true){
-                try {
-                    if(connected) {
-                        socket.setSoTimeout(30000);
-                        Object input = in.readObject();
-                        clientMessageManager.manageInputToClient(input, this);
-                    }
-                }catch (IOException|ClassNotFoundException|InterruptedException e){
-                   if(!connected) {
-                       closeConnection();
-                   }else{
-                       e.printStackTrace();
-                   }
-                    break;
-                }
+            connected=true;
+            try{
+                in=new ObjectInputStream(socket.getInputStream());
+                out=new ObjectOutputStream(socket.getOutputStream());
+            }catch (IOException e){
+                e.printStackTrace();
             }
-        }catch (NoSuchElementException e){
-            view.displayNetError();
-            closeConnection();
-        }
+            pingToServer();
+            try{
+                while (true){
+                    try {
+                        if(connected) {
+                            socket.setSoTimeout(30000);
+                            Object input = in.readObject();
+                            clientMessageManager.manageInputToClient(input, this);
+                        }
+                    }catch (IOException|ClassNotFoundException|InterruptedException e){
+                        if(!connected) {
+                            closeConnection();
+                        }else{
+                            e.printStackTrace();
+                        }
+                        break;
+                    }
+                }
+            }catch (NoSuchElementException e){
+                view.displayNetError();
+                closeConnection();
+            }});
+        thread.start();
         }
     }
