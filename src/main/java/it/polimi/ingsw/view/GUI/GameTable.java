@@ -22,6 +22,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+// ho messo sotto i professori un pannello (righe 717-727 circa del fxml)
+//che contiene un text cosi si puo modficare in base a ciò che deve fare il player
+//tipo scegli assistente o scegli prossima mossa
+//poi ho messo 4 bottoni e anche per questi bottoni si può cambaire il testo sopra
+//se cè scegli azione i bottoni saranno 3: island dining cc
+//poi fara vedere quante pedine spostare...
 
 public class GameTable {
     private Gui gui;
