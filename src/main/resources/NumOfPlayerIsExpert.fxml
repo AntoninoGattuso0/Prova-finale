@@ -3,37 +3,30 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="numPlayerIsExpert"  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.NumOfPlayerIsExpert">
+<Pane fx:id="numPlayerIsExpert" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.Controller.NumOfPlayerIsExpertController">
     <ImageView fitHeight="481.0" fitWidth="488.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/Background.png" />
     </ImageView>
-    <ImageView id="joinButton" fitHeight="34.0" fitWidth="135.0" layoutX="207.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="joinButton" fitHeight="34.0" fitWidth="135.0" layoutX="207.0" layoutY="365.0" onMouseClicked="#bottomClicked" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/JoinButton.png" />
     </ImageView>
-    <TextField layoutX="281.0" layoutY="138.0" />
-    <Label layoutX="53.0" layoutY="138.0" text="NICKNAME:" textFill="WHITE" textOverrun="CLIP">
-        <font>
-            <Font name="System Bold" size="21.0" />
-        </font>
-    </Label>
     <Label layoutX="53.0" layoutY="180.0" text="NUMBER OF PLAYERS:" textFill="WHITE">
         <font>
             <Font size="21.0" />
         </font>
     </Label>
-    <ChoiceBox layoutX="281.0" layoutY="181.0" prefWidth="150.0" />
+    <ChoiceBox fx:id="numPlayerBox" layoutX="281.0" layoutY="181.0" prefWidth="150.0" />
     <Label layoutX="53.0" layoutY="227.0" text="EXPERT MODE:" textFill="WHITE">
         <font>
             <Font name="System Bold" size="21.0" />
         </font>
     </Label>
-    <CheckBox layoutX="281.0" layoutY="227.0" mnemonicParsing="false" text="YES" textFill="WHITE">
+    <CheckBox fx:id="expertMode" layoutX="281.0" layoutY="227.0" mnemonicParsing="false" text="YES" textFill="WHITE">
         <font>
             <Font size="17.0" />
         </font>

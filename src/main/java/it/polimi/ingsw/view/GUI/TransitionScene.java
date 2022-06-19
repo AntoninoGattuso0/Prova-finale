@@ -20,9 +20,9 @@ public class TransitionScene {
     }
 
     //setta come scena la pagina di richiesta di num player e se è esperto
-    public static void setNumOfPlayersIsExpert(NumOfPlayerIsExpert numOfPlayersIsExpert){
-        TransitionScene.numOfPlayersIsExpert = new Scene(numOfPlayersIsExpert.getRootFXML());
-    }
+    //public static void setNumOfPlayersIsExpert(NumOfPlayerIsExpert numOfPlayersIsExpert){
+    //    TransitionScene.numOfPlayersIsExpert = new Scene(numOfPlayersIsExpert.getRootFXML());
+   // }
 
     //setta come scena la pagina in cui chiede il nick al player
     public static void setRequestNickPlayers(RequestNickPlayers requestNickPlayers) {
