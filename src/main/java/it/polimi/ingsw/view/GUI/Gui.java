@@ -22,33 +22,34 @@ import java.util.Objects;
 public class Gui extends Application implements View {
     private LightGame lightGame;
     private Stage stage;
+    private static String addressSock;
     private SocketNetworkHandler socketNetworkHandler;
    // private GameTable gameTable = new GameTable(this);
    private final AssistantCardController assistantCardController=new AssistantCardController();
     //private final CharacterCardController characterCardController = new CharacterCardController();
     private RequestNickPlayers requestNickPlayers;
    // private ChooseAction chooseAction=new ChooseAction();
-    public Gui(){
-    }
-
     @Override
     public void start(Stage stage) throws Exception {
-        startGame();
         this.stage=stage;
         socketNetworkHandler=new SocketNetworkHandler(this);
+        socketNetworkHandler.updateConnection(addressSock, String.valueOf(4000));
+        socketNetworkHandler.run();
     }
 
     @Override
     public void startGame() {
-       requestNickname();
     }
+    public static void setAddress(String address){
+        addressSock=address;
+    }
+
     //per le altre funzioni che sono scritte sono uguali a questa
     @Override
     public void requestNickname() {
         Platform.runLater(()-> {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/RequestNickPlayers.fxml"));
-
             Scene scene = null;
             try {
                 scene = new Scene(fxmlLoader.load());

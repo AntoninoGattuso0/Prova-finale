@@ -33,11 +33,12 @@ public class ClientMain {
             Cli cli = new Cli();
             socketNetworkHandler = new SocketNetworkHandler(cli);
             cli.run();
+            socketNetworkHandler.updateConnection(address, String.valueOf(4000));
+            socketNetworkHandler.run();
         }else if (view.equals("G") || view.equals("g")){
+            Gui.setAddress(address);
             Application.launch(Gui.class,args);
         }
-        socketNetworkHandler.updateConnection(address, String.valueOf(4000));
-        socketNetworkHandler.run();
     }
 
     /**Function that reads the input of the player

@@ -20,7 +20,7 @@ public class RequestNickPlayers {
 
     //Viene Cliccato join. viene inviato il nome al server
     public void buttonClickNickname(MouseEvent mouseEvent) {
-        gui.getSocketNetworkHandler().sendMessage(new RequestNickname((String) nickname.getCharacters()));
-        System.out.println(nickname.getCharacters());
+        gui.getSocketNetworkHandler().sendMessage(new RequestNickname(nickname.getText()));
+        System.out.println(nickname.getText());
     }
 }
