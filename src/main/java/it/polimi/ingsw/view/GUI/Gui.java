@@ -34,8 +34,9 @@ public class Gui extends Application implements View {
     private WinnerSceneController winnerScene;
     private RequestNickPlayersController requestNickPlayersController;
     private FXMLLoader fxmlLoader;
-
      private ChooseAction chooseAction=new ChooseAction();
+    private int pedineDaSpostare;
+    private int numPawnMove;
 
     public Gui() {
     }
@@ -325,7 +326,14 @@ public class Gui extends Application implements View {
 
     @Override
     public void newGameStart() {
+        if (lightGame.getNumPlayers() == 2 || lightGame.getNumPlayers() == 4) {
+            pedineDaSpostare = 3;
+            numPawnMove = 3;
+        } else {
+            pedineDaSpostare = 4;
+            numPawnMove = 4;
 
+        }
     }
 
     @Override
