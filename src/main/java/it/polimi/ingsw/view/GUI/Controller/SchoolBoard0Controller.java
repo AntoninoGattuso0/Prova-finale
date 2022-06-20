@@ -125,6 +125,13 @@ public class SchoolBoard0Controller {
             schoolBoard0.lookup("coin" + i).setVisible(true);
     }
 
+    //all'inizio c'è solo una pedina visibile
+    public void setStartingCoin0() {
+        schoolBoard0.lookup("coin0").setVisible(true);
+        for (int i = 1; i < lightGame.getPlayers().get(0).getNumCoin(); i++)
+            schoolBoard0.lookup("coin" + i).setVisible(false);
+    }
+
 
     public ColorPawn green00Select(MouseEvent mouseEvent) {
         schoolBoard0.lookup("entranceGreen00").setVisible(false);

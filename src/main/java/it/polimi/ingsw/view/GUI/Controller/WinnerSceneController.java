@@ -21,5 +21,6 @@ public class WinnerSceneController {
         NickPlayer.setText(nick);
     }
     //C'è UN BOTTONE CHE TI FA USCIRE NEL FILE FXML. GIUSTO O SBAGLIATO IN BASE ALLA CLI? CONTROLLATE E MODIFICATE IN CASO
+    //risolto -> l'ho cancellato :)
 
 }

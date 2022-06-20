@@ -21,8 +21,5 @@
                 <Font size="48.0" />
             </font>
         </Text>
-        <ImageView id="exitButton" fitHeight="57.0" fitWidth="76.0" layoutX="510.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@images/ExitButton.png" />
-        </ImageView>
     </children>
 </Pane>
