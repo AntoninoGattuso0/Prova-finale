@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane fx:id="gameTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.Controller.GameTableController">
@@ -711,25 +712,37 @@
             <Text id="textIsland6" layoutX="576.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
             <Text id="textIsland7" layoutX="559.0" layoutY="487.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
             <Text id="textIsland8" layoutX="488.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
-            <Text id="textIsland9" layoutX="348.0" layoutY="624.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
+            <Text id="textIsland9" layoutX="381.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
             <Text id="textIsland10" layoutX="159.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
             <Text id="textIsland11" layoutX="68.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
-            <Pane fx:id="messages" layoutX="255.0" layoutY="312.0" prefHeight="163.0" prefWidth="161.0">
+            <Pane fx:id="messagesActions" layoutX="230.0" layoutY="313.0" prefHeight="163.0" prefWidth="210.0">
                <children>
-                  <Text layoutX="8.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                  <Button id="firstButton" layoutX="47.0" layoutY="22.0" mnemonicParsing="false" text="Button" />
-                  <Button id="secondButton" layoutX="47.0" layoutY="92.0" mnemonicParsing="false" text="Button" />
-                  <Button id="thirdButton" layoutX="47.0" layoutY="57.0" mnemonicParsing="false" text="Button" />
-                  <Button id="lastButton" layoutX="47.0" layoutY="127.0" mnemonicParsing="false" text="Button" />
+                  <Text fill="WHITE" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHOOSE YOUR NEXT ACTION">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Text>
+                  <Button id="firstButton" layoutY="56.0" mnemonicParsing="false" text="MoveToIsland" />
+                  <Button id="secondButton" layoutY="92.0" mnemonicParsing="false" text="ChooseCharacter" />
+                  <Button id="thirdButton" layoutX="105.0" layoutY="56.0" mnemonicParsing="false" text="Move ToDining" />
+                  <Button id="fourthButton" layoutX="135.0" layoutY="92.0" mnemonicParsing="false" text="Button" />
                </children>
             </Pane>
+            <Text id="turnOf" fill="WHITE" layoutX="6.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TURN OF: ">
+               <font>
+                  <Font size="24.0" />
+               </font></Text>
+            <Text id="messages" fill="RED" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ROUND FINISHED, A NEW ONE BEGINS">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
             </children>
       </Pane>
       <Pane layoutX="650.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="650.0" prefWidth="350.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#switchToAssistantCard" text="AssistantCard" />
-            <ChoiceBox layoutX="94.0" prefWidth="150.0" />
-            <Button layoutX="244.0" mnemonicParsing="false" onAction="#switchToCharacterCard" prefHeight="26.0" prefWidth="107.0" text="CharacterCard" />
+            <Button id="AssistantCardButton" mnemonicParsing="false" onAction="#switchToAssistantCard" text="AssistantCard" />
+            <ChoiceBox id="SchoolBoard" layoutX="94.0" prefWidth="150.0" />
+            <Button id="CharacterCard" layoutX="244.0" mnemonicParsing="false" onAction="#switchToCharacterCard" prefHeight="26.0" prefWidth="107.0" text="CharacterCard" />
          </children>
       </Pane>
    </children>

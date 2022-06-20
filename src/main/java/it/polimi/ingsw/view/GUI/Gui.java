@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
+//HO VISTO CHE HAI USATO ALCUNE VOLTE SCENE=NEW SCENE(NEW LABEL(ERROR))
+//SE VUOI POSSO CREARE UN FXML COSI? SCRIVIMELO SU WHATSAPP SE SERVE
 
 public class Gui extends Application implements View {
     private LightGame lightGame;
@@ -106,6 +108,11 @@ public class Gui extends Application implements View {
     @Override
     public void requestMovePawn(String nickname, int numPawnMoved) {
         //si devono settare i bottoni aggiunti nella gametable e stampargli "clicca "isole" per ecc..., clicca "dining" per...ecc"
+
+        //IO METTEREI setText("CHOOSE YOUR ACTION")
+        //NOME BOTTONI MoveToIsland, MoveToDining, ChooseCharacter
+        //TI FACCIO UN AUDIO PER SPIEGARTI COME HO PENSATO A QUESTO
+
     }
 
     @Override
@@ -117,6 +124,13 @@ public class Gui extends Application implements View {
             if(!bool){
                 if(lightGame.getIsExpert()){
                    //pannellodiscrittura.writetext("Clicca si se vuoi giocare un characterCard e no per non giocarlo");
+
+                    //SE E ESPERTO MOSTRA IL BOTTONE DEI CHARACTR CARD
+                    //IO LO METTEREI TRA LE ALTRE AZIONI DA SCEGLIERE
+                    //TIPO SCEGLI AZIONE E LI C'E SCRITTO SPOSTARE PEDINA SU ISOLA O DINING O USARE CHARACT
+                    //SE SCEGLIE DI SPOSTARE LE PEDINE FA VEDERE 1, 2, 3, 4
+                    //DOPO CHE HA SCELTO QUANTE E FA QUESTE MOSSE
+                    //FA VEDERE DI NUOVO CHOOSE ACTION DOVE FA VEDERE DI NUOVO COME PRIMA RIGA 130
                 }
             }
             if(bool){
@@ -265,6 +279,12 @@ public class Gui extends Application implements View {
     @Override
     public void displayWrongTurn() {
         //quando saprò come gestire la game table la inserisco come testo in caso di errore nel fare mosse non durante il suo turno
+
+        //RISPOSTA: IN BASSO A SINISTRA HO MESSO UN TESTO MOFICABILE
+        //POTREMMO FARE CHE PER GLI ERRORI SI METTE IL MESSAGGIO IN ROSSO
+        //per cambiare colore messaggio penso che si possa usare setFill
+        //messaggio da far vedere per farcelo stare nella schermata setText("IT'S NOT YOUR TURN")
+
     }
 
     @Override
@@ -302,10 +322,10 @@ public class Gui extends Application implements View {
         int i;
         if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
             for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(),nickname);i++);
-            //pannellodiscrittura.writetext("scegli l'assistente");
+            //pannellodiscrittura.writetext("CHOOSE ASSISTANT");
             displayAssistantCard(i);
         }else{
-            //Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+"sta scegliendo l'Assistente");
+            //Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+"IS CHOOSING AN ASSISTANT");
         }
     }
 
@@ -383,7 +403,7 @@ public class Gui extends Application implements View {
 
     @Override
     public void lobbyFull() {
-        //FXML e controller nuovi per la lobby full
+        //FXML e controller nuovi per la lobby full  //RISPOSTA: FXML creato.. LobbyIsFull
         socketNetworkHandler.closeConnection();
     }
 
@@ -412,9 +432,9 @@ public class Gui extends Application implements View {
                 // displayStartTurn();
                 //va gestito nella parte di testo in game table
             } else
-                System.out.println(players.get(i) + " sta iniziando il suo turno");
+                System.out.println(players.get(i) + " sta iniziando il suo turno");   //IN ALTO A SINISTRA C'E UN TESTO TURN OF: NOMEPLAYER
         }else{
-            //System.out.println("Round finito, inizia uno nuovo");
+            //System.out.println("ROUND FINISHED, A NEW ONE BEGINS");  //RISPOSTA: questo e il messaggio da metter come setText per farlo stare all'interno della schermata
             //va gestito nell parte di testo in game table
         }
     }
@@ -427,6 +447,12 @@ public class Gui extends Application implements View {
     public void disconnectionAll(String playerDisconnected) throws IOException {
     if(!endGame){
         //scrivere nel pannello il fatto che un giocatore è stato disconnesso per problemi
+
+        //RISPOSTA: IN BASSO A SINISTRA HO MESSO UN TESTO MOFICABILE
+        //POTREMMO FARE CHE PER GLI ERRORI SI METTE IL MESSAGGIO IN ROSSO
+        //per cambiare colore messaggio penso che si possa usare setFill
+        //messaggio da far vedere setText("NOMEPLAYER DISCONNECTED PER BOH NETERROR")
+        //Puoi mettere il messaggio che vuoi basta che non superi quello del wrongSameAssistant perche esce fuori
     }
         socketNetworkHandler.getOut().reset();
         socketNetworkHandler.getOut().flush();
@@ -436,7 +462,13 @@ public class Gui extends Application implements View {
 
     @Override
     public void wrongSameAssistantMessage() {
-        //parte di testo in gametable:"ERRORE:assistente già usato da un altro player"
+        //parte di testo in gametable:"ERRORE: assistente già usato da un altro player"
+
+        //RISPOSTA: IN BASSO A SINISTRA HO MESSO UN TESTO MOFICABILE
+        //POTREMMO FARE CHE PER GLI ERRORI SI METTE IL MESSAGGIO IN ROSSO
+        //per cambiare colore messaggio penso che si possa usare setFill
+        //messaggio da far vedere per farcelo stare nella schermata setText("ASSISTANTCARD ALREADY SELECTED BY ANOTHER PLAYER")
+
 
     }
 
