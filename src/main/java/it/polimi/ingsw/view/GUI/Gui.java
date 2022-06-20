@@ -6,6 +6,7 @@ import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstL
 import it.polimi.ingsw.view.GUI.Controller.NumOfPlayerIsExpertController;
 import it.polimi.ingsw.view.GUI.Controller.RequestNickPlayersController;
 import it.polimi.ingsw.view.GUI.Controller.WaitingPlayersController;
+import it.polimi.ingsw.view.GUI.Controller.WinnerSceneController;
 import it.polimi.ingsw.view.GUI.warnings.WarningCloud;
 import it.polimi.ingsw.view.View;
 import javafx.application.Application;
@@ -30,6 +31,7 @@ public class Gui extends Application implements View {
     //private final CharacterCardController characterCardController = new CharacterCardController();
     private NumOfPlayerIsExpertController numOfPlayerIsExpertController;
     private WaitingPlayersController waitingPlayersController;
+    private WinnerSceneController winnerScene;
     private RequestNickPlayersController requestNickPlayersController;
     private FXMLLoader fxmlLoader;
 
@@ -199,10 +201,32 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayWinner(String nickname) {
-        WinnerScene winnerScene = new WinnerScene(nickname);
-        Platform.runLater(()->TransitionScene.setWinnerScene(winnerScene));
-        Platform.runLater(TransitionScene::switchToWinnerScene);
-    }
+        int i;
+        int j;
+        for (i = 0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++) ;
+        if (lightGame.getPlayers().size() == 4) {
+            for (j = i; lightGame.getPlayers().get(i).getTowerSpace().getColorTower() != lightGame.getPlayers().get(j).getTowerSpace().getColorTower(); j++);
+            nickname=lightGame.getPlayers().get(i).getNickname()+" and "+lightGame.getPlayers().get(j).getNickname();
+        }
+        String finalNickname = nickname;
+        Platform.runLater(() -> {
+                fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/RequestNickPlayers.fxml"));
+                Scene scene;
+                try {
+                    scene = new Scene(fxmlLoader.load());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    scene = new Scene(new Label("Error"));
+                }
+                stage.setScene(scene);
+                winnerScene = fxmlLoader.getController();
+                winnerScene.setGui(this);
+                winnerScene.setNicknameWinner(finalNickname);
+                winnerScene.setWinnerScene(true);
+                stage.show();
+            });
+        }
 
     @Override
     public void displayNetError() {

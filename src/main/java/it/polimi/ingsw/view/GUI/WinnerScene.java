@@ -1,3 +1,4 @@
+/*
 package it.polimi.ingsw.view.GUI;
 
 import javafx.fxml.FXMLLoader;
@@ -32,9 +33,10 @@ public class WinnerScene {
         /*exitButton.setOnMouseClicked(mouseEvent -> {
            //funzione del clientManager
         });*/
-    }
-
+//    }
+/*
     public Pane getRootFXML() {
         return rootFXML;
     }
 }
+*/
