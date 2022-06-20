@@ -2,7 +2,6 @@ package it.polimi.ingsw.view.GUI.Controller;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.model.ColorPawn;
-import it.polimi.ingsw.network.Message.ClientToServer.ChooseCharacterCardMessage;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -123,7 +122,7 @@ public class CharacterCardController {
                 characterCards.lookup("blueCharacter0").setDisable(false);
             }
         }
-    }
+
 
     public void moveGreenCharacter0(MouseEvent mouseEvent) {
         colori.add(ColorPawn.GREEN);
@@ -134,6 +133,6 @@ public class CharacterCardController {
             characterCards.lookup("pinkCharacter0").setDisable(true);
             characterCards.lookup("blueCharacter0").setDisable(true);
             gameTableController.setAllIslands(true, false);
-        }else if ...
+        }
     }
 }
