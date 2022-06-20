@@ -779,6 +779,7 @@
             <Button id="AssistantCardButton" mnemonicParsing="false" onAction="#switchToAssistantCard" text="AssistantCard" />
             <ChoiceBox id="SchoolBoard" layoutX="94.0" prefWidth="150.0" />
             <Button id="CharacterCard" layoutX="244.0" mnemonicParsing="false" onAction="#switchToCharacterCard" prefHeight="26.0" prefWidth="107.0" text="CharacterCard" />
+            <Pane layoutY="26.0" prefHeight="627.0" prefWidth="350.0" />
          </children>
       </Pane>
    </children>
