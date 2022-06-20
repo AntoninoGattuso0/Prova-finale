@@ -1405,6 +1405,7 @@ public class Cli implements Runnable, View {
     @Override
     public void displayWrongNickname() {
         out.println("Nickname Errato o Già Presente!");
+        requestNickname();
     }
 
     @Override

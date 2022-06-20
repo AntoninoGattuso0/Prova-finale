@@ -165,7 +165,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
             if (!contr || numinsert) {
                 if (nickname == null) {
                     clientHandler.sendObject(new WrongNicknameMessage());
-                    clientHandler.sendObject(new SetNickMessage());
                     return;
                 } else {
                     contr = true;
@@ -178,7 +177,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                     for (i = 0; i < namePlayer.size(); i++) {
                         if (nickname.equals(namePlayer.get(i))) {
                             clientHandler.sendObject(new WrongNicknameMessage());
-                            clientHandler.sendObject(new SetNickMessage());
                             return;
                         }
                     }

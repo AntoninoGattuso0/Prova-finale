@@ -40,9 +40,9 @@ public class TransitionScene {
     //    TransitionScene.waitingPlayers = new Scene(waitingPlayers.getRootFXML());
     }
     //setta come scena la schermata chi e il vincitore
-    public static void setWinnerScene(WinnerScene winnerScene) {
-        TransitionScene.winnerScene = new Scene(winnerScene.getRootFXML());
-    }
+    //public static void setWinnerScene(WinnerScene winnerScene) {
+       // TransitionScene.winnerScene = new Scene(winnerScene.getRootFXML());
+   // }
 
 
     //tutte le funzioni qua sotto permettono di switchare scena passando dalla scena attuale a quella tra parentesi di switchScene

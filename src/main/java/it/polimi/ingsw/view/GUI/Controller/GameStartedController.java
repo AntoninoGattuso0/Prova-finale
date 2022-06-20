@@ -7,9 +7,6 @@ import javafx.scene.layout.Pane;
 
 public class GameStartedController {
     Gui gui;
-
-    public GameStartedController(Gui gui){this.gui=gui;}
-
     @FXML Pane gameStarted;
 
     public void setGameText(boolean visible){
@@ -18,4 +15,7 @@ public class GameStartedController {
         }
     }
 
+    public void setGui(Gui gui) {
+        this.gui = gui;
+    }
 }

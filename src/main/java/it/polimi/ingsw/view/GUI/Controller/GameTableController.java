@@ -6,11 +6,11 @@ import javafx.scene.layout.Pane;
 
 public class GameTableController {
     Gui gui;
-
-    public GameTableController(Gui gui){this.gui=gui;}
-
     @FXML Pane gameTable;
 
+    public void setGui(Gui gui) {
+        this.gui = gui;
+    }
     public void setAllIslands(boolean visible){
         for(int i = 0; i<12; i++){
             String name = "island" + i;

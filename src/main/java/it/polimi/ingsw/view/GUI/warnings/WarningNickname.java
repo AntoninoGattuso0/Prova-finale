@@ -1,4 +1,4 @@
-package it.polimi.ingsw.view.GUI.warnings;
+/*package it.polimi.ingsw.view.GUI.warnings;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
@@ -41,3 +41,4 @@ public class WarningNickname {
         return rootFXML;
     }
 }
+*/

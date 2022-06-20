@@ -2,12 +2,10 @@ package it.polimi.ingsw.view.GUI;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
+import it.polimi.ingsw.network.Message.ClientToServer.ReadyTodisconnection;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
-import it.polimi.ingsw.view.GUI.Controller.NumOfPlayerIsExpertController;
-import it.polimi.ingsw.view.GUI.Controller.RequestNickPlayersController;
-import it.polimi.ingsw.view.GUI.Controller.WaitingPlayersController;
-import it.polimi.ingsw.view.GUI.Controller.WinnerSceneController;
-import it.polimi.ingsw.view.GUI.warnings.WarningCloud;
+import it.polimi.ingsw.view.GUI.Controller.*;
+import it.polimi.ingsw.view.GUI.warnings.WarningNicknameController;
 import it.polimi.ingsw.view.View;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -26,17 +24,20 @@ public class Gui extends Application implements View {
     private Stage stage;
     private static String addressSock;
     private SocketNetworkHandler socketNetworkHandler;
-    //private GameTable gameTable = new GameTable(this);
+    private GameTableController gameTable;
     //private final AssistantCardController assistantCardController=new AssistantCardController();
     //private final CharacterCardController characterCardController = new CharacterCardController();
     private NumOfPlayerIsExpertController numOfPlayerIsExpertController;
     private WaitingPlayersController waitingPlayersController;
     private WinnerSceneController winnerScene;
+    private WarningNicknameController warningNicknameController;
+    private GameStartedController gameStartedController;
     private RequestNickPlayersController requestNickPlayersController;
     private FXMLLoader fxmlLoader;
      private ChooseAction chooseAction=new ChooseAction();
     private int pedineDaSpostare;
     private int numPawnMove;
+    private boolean endGame=false;
 
     public Gui() {
     }
@@ -101,6 +102,7 @@ public class Gui extends Application implements View {
     }
     @Override
     public void requestMovePawn(String nickname, int numPawnMoved) {
+        //si devono settare i bottoni aggiunti nella gametable e stampargli "clicca "isole" per ecc..., clicca "dining" per...ecc"
     }
 
     @Override
@@ -155,12 +157,13 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayIslands() {
+        //va gestito con il game table totale
 
     }
 
     @Override
     public void displaySchoolBoard() {
-
+        //non penso serva ma in caso va lasciata vuota
     }
 
     @Override
@@ -172,6 +175,7 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayCharacterCard() {
+        //va gestito attraverso il gameTable
         int i;
         int coin=0;
         int player;
@@ -236,17 +240,43 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayWrongNickname() {
-
+        Platform.runLater(() -> {
+            fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/RequestNickPlayers.fxml"));
+            Scene scene;
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+                scene = new Scene(new Label("Error"));
+            }
+            stage.setScene(scene);
+            warningNicknameController= fxmlLoader.getController();
+            warningNicknameController.setGui(this);
+            warningNicknameController.setOkButton();
+            warningNicknameController.setWarningNickname(true);
+            stage.show();
+        });
     }
 
     @Override
     public void displayWrongTurn() {
-
+        //quando saprò come gestire la game table la inserisco come testo in caso di errore nel fare mosse non durante il suo turno
     }
 
     @Override
     public void updateAll(LightGame object) {
         this.lightGame=object;
+        int i;
+        int c=0;
+        for(i=0;i<lightGame.getNumPlayers();i++){
+            c++;
+        }
+        if(numPawnMove!=0){
+            if(c==0){
+                displayStartRound();
+            }
+        }
     }
 
     @Override
@@ -258,24 +288,18 @@ public class Gui extends Application implements View {
     public void displayStartRound() {
 
     }
-
-
-    //è provvisorio non vi spaventate :)
     @Override
     public void selectCloud(String nickname) {
-        if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
-              // socketNetworkHandler.sendMessage(new ChooseCloudMessage(gameTable.getCloudSelected()));
-        }else{
-            new WarningCloud();
-        }
+        //gestire con gametable
     }
 
     @Override
     public void selectAssistantCard(String nickname) {
+        //si deve capire come gestire il gameTableController
         int i;
         if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
             for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(),nickname);i++);
-            //pannellodiscrittura.vritetext("scegli l'assistente");
+            //pannellodiscrittura.writetext("scegli l'assistente");
             displayAssistantCard(i);
         }else{
             //Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+"sta scegliendo l'Assistente");
@@ -284,7 +308,7 @@ public class Gui extends Application implements View {
 
     @Override
     public void requestMoveMotherNature(String nickname) {
-
+        //va gestito sempre capendo come funziona il game table
     }
 
     @Override
@@ -320,12 +344,14 @@ public class Gui extends Application implements View {
     }
 
     @Override
+    //va bene vuota
     public void playerWait() {
 
     }
 
     @Override
     public void newGameStart() {
+        gameStartedController=new GameStartedController();
         if (lightGame.getNumPlayers() == 2 || lightGame.getNumPlayers() == 4) {
             pedineDaSpostare = 3;
             numPawnMove = 3;
@@ -334,34 +360,80 @@ public class Gui extends Application implements View {
             numPawnMove = 4;
 
         }
+        Platform.runLater(()-> {
+            fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/GameStarted.fxml"));
+            Scene scene;
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+                scene = new Scene(new Label("Error"));
+            }
+            stage.setScene(scene);
+            gameStartedController=fxmlLoader.getController();
+           gameStartedController.setGui(this);
+           gameStartedController.setGameText(true);
+            stage.show();
+        });
     }
 
     @Override
     public void lobbyFull() {
-
+        //FXML e controller nuovi per la lobby full
+        socketNetworkHandler.closeConnection();
     }
 
     @Override
     public void turnOrder(ArrayList<String> players) {
-
+        //nella schermata del testo gametable va inserito l"ordine dei giocatori gestito dal controller
+        //questa è la funzione da mettere nel controller ma ovviamente inserendoli non co
+        //  inserire:("L'ordine dei giocatori per questo round è: ");
+        //        for(int i = 0; i<orderNamePlayers.size(); i++){
+        //         inserire nel testo andando a capo: (i+1)+") " + orderNamePlayers.get(i);
+        //        }
     }
 
     @Override
     public void startTurn(ArrayList<String> players, String actualPlayer) {
-
+        if (Objects.equals(actualPlayer, socketNetworkHandler.getNicknameThisPlayer())) {
+            //displayEndTurn();
+            //va gestito nella parte di testo in gameTable
+        }
+        int i;
+        int j;
+        for (j = 0; !Objects.equals(players.get(j), actualPlayer); j++) ;
+        if (j< players.size()-1) {
+            for (i = j; Objects.equals(players.get(i), actualPlayer); i++) ;
+            if (Objects.equals(players.get(i), socketNetworkHandler.getNicknameThisPlayer())) {
+                // displayStartTurn();
+                //va gestito nella parte di testo in game table
+            } else
+                System.out.println(players.get(i) + " sta iniziando il suo turno");
+        }else{
+            //System.out.println("Round finito, inizia uno nuovo");
+            //va gestito nell parte di testo in game table
+        }
     }
     @Override
     public void displayOnePlayerBoard(String nickname) {
-
+    //potrei usarla per attivare la singola schoolboard quando un giocatore clicca sulla specifica schoolboard dal menù a tendina
     }
 
     @Override
-    public void disconnectionAll(String playerDisconnected) {
-
+    public void disconnectionAll(String playerDisconnected) throws IOException {
+    if(!endGame){
+        //scrivere nel pannello il fatto che un giocatore è stato disconnesso per problemi
+    }
+        socketNetworkHandler.getOut().reset();
+        socketNetworkHandler.getOut().flush();
+        socketNetworkHandler.sendMessage(new ReadyTodisconnection());
+        socketNetworkHandler.closeConnection();
     }
 
     @Override
     public void wrongSameAssistantMessage() {
+        //parte di testo in gametable:"ERRORE:assistente già usato da un altro player"
 
     }
 
