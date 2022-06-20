@@ -2,6 +2,7 @@ package it.polimi.ingsw.view.GUI.Controller;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.view.GUI.Gui;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -120,6 +121,8 @@ public class GameTableController {
     }
 
     public void island0Select(MouseEvent mouseEvent) {
-        gui.getSocketNetworkHandler().
+    }
+
+    public void switchToAssistantCard(ActionEvent actionEvent) {
     }
 }

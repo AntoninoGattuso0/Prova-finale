@@ -11,8 +11,8 @@ public class DisplayTurnController {
 
     public void setGui(Gui gui){this.gui=gui;}
 
-    public void setDisplayTurn(String nickname) {
-        turnText.setText(nickname);
+    public void setDisplayTurn() {
+        turnText.setText(gui.getSocketNetworkHandler().getNicknameThisPlayer());
         turnText.setVisible(true);
         selectAssistantButton.setVisible(true);
         selectAssistantButton.setDisable(false);

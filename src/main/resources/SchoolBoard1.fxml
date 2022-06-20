@@ -8,7 +8,7 @@
     <ImageView fitHeight="350.0" fitWidth="620.0" layoutX="-176.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
         <Image url="@images/SchoolTable.png" />
     </ImageView>
-    <ImageView id="schoolGreen10" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="481.0" onMouseClicked="#selectSchoolGreen10" pickOnBounds="true" preserveRatio="true">
+    <ImageView id="schoolBoard1Green1" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="481.0" onMouseClicked="#selectSchoolGreen10" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/greenStudent3D.png" />
     </ImageView>
     <ImageView id="schoolGreen12" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="422.0" onMouseClicked="#selectSchoolGreen11" pickOnBounds="true" preserveRatio="true">
