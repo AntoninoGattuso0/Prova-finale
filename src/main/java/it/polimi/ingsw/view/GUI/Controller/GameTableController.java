@@ -144,6 +144,6 @@ public class GameTableController {
     public void switchToCharacterCard(ActionEvent actionEvent) {
         FXMLLoader object = new FXMLLoader();
         Pane view = getPage("CharacterCard");
-        showCard.setCenter(view)
+        showCard.setCenter(view);
     }
 }
