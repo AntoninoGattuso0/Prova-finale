@@ -395,4 +395,259 @@ public class SchoolBoard3Controller {
         schoolBoard3.lookup("entranceBlue38").setDisable(true);
         return ColorPawn.BLUE;
     }
+
+    public ColorPawn selectSchoolGreen30(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Green0").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Green0").setDisable(true);
+        return ColorPawn.GREEN;
+    }
+    public ColorPawn selectSchoolGreen31(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Green1").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Green1").setDisable(true);
+        return ColorPawn.GREEN;
+    }
+    public ColorPawn selectSchoolGreen32(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Green2").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Green2").setDisable(true);
+        return ColorPawn.GREEN;
+    }
+    public ColorPawn selectSchoolGreen33(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Green3").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Green3").setDisable(true);
+        return ColorPawn.GREEN;
+    }
+    public ColorPawn selectSchoolGreen34(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Green4").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Green4").setDisable(true);
+        return ColorPawn.GREEN;
+    }
+    public ColorPawn selectSchoolGreen35(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Green5").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Green5").setDisable(true);
+        return ColorPawn.GREEN;
+    }
+    public ColorPawn selectSchoolGreen36(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Green6").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Green6").setDisable(true);
+        return ColorPawn.GREEN;
+    }
+    public ColorPawn selectSchoolGreen37(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Green7").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Green7").setDisable(true);
+        return ColorPawn.GREEN;
+    }
+    public ColorPawn selectSchoolGreen38(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Green8").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Green8").setDisable(true);
+        return ColorPawn.GREEN;
+    }
+    public ColorPawn selectSchoolGreen39(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Green9").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Green9").setDisable(true);
+        return ColorPawn.GREEN;
+    }
+
+    public ColorPawn selectSchoolRed30(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Red0").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Red0").setDisable(true);
+        return ColorPawn.RED;
+    }
+    public ColorPawn selectSchoolRed31(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Red1").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Red1").setDisable(true);
+        return ColorPawn.RED;
+    }
+    public ColorPawn selectSchoolRed32(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Red2").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Red2").setDisable(true);
+        return ColorPawn.RED;
+    }
+    public ColorPawn selectSchoolRed33(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Red3").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Red3").setDisable(true);
+        return ColorPawn.RED;
+    }
+    public ColorPawn selectSchoolRed34(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Red4").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Red4").setDisable(true);
+        return ColorPawn.RED;
+    }
+    public ColorPawn selectSchoolRed35(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Red5").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Red5").setDisable(true);
+        return ColorPawn.RED;
+    }
+    public ColorPawn selectSchoolRed36(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Red6").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Red6").setDisable(true);
+        return ColorPawn.RED;
+    }
+    public ColorPawn selectSchoolRed37(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Red7").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Red7").setDisable(true);
+        return ColorPawn.RED;
+    }
+    public ColorPawn selectSchoolRed38(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Red8").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Red8").setDisable(true);
+        return ColorPawn.RED;
+    }
+    public ColorPawn selectSchoolRed39(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Red9").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Red9").setDisable(true);
+        return ColorPawn.RED;
+    }
+
+    public ColorPawn selectSchoolYellow30(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Yellow0").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Yellow0").setDisable(true);
+        return ColorPawn.YELLOW;
+    }
+    public ColorPawn selectSchoolYellow31(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Yellow1").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Yellow1").setDisable(true);
+        return ColorPawn.YELLOW;
+    }
+    public ColorPawn selectSchoolYellow32(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Yellow2").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Yellow2").setDisable(true);
+        return ColorPawn.YELLOW;
+    }
+    public ColorPawn selectSchoolYellow33(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Yellow3").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Yellow3").setDisable(true);
+        return ColorPawn.YELLOW;
+    }
+    public ColorPawn selectSchoolYellow34(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Yellow4").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Yellow4").setDisable(true);
+        return ColorPawn.YELLOW;
+    }
+    public ColorPawn selectSchoolYellow35(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Yellow5").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Yellow5").setDisable(true);
+        return ColorPawn.YELLOW;
+    }
+    public ColorPawn selectSchoolYellow36(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Yellow6").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Yellow6").setDisable(true);
+        return ColorPawn.YELLOW;
+    }
+    public ColorPawn selectSchoolYellow37(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Yellow7").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Yellow7").setDisable(true);
+        return ColorPawn.YELLOW;
+    }
+    public ColorPawn selectSchoolYellow38(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Yellow8").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Yellow8").setDisable(true);
+        return ColorPawn.YELLOW;
+    }
+    public ColorPawn selectSchoolYellow39(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Yellow9").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Yellow9").setDisable(true);
+        return ColorPawn.YELLOW;
+    }
+
+    public ColorPawn selectSchoolPink30(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Pink0").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Pink0").setDisable(true);
+        return ColorPawn.PINK;
+    }
+    public ColorPawn selectSchoolPink31(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Pink1").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Pink1").setDisable(true);
+        return ColorPawn.PINK;
+    }
+    public ColorPawn selectSchoolPink32(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Pink2").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Pink2").setDisable(true);
+        return ColorPawn.PINK;
+    }
+    public ColorPawn selectSchoolPink33(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Pink3").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Pink3").setDisable(true);
+        return ColorPawn.PINK;
+    }
+    public ColorPawn selectSchoolPink34(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Pink4").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Pink4").setDisable(true);
+        return ColorPawn.PINK;
+    }
+    public ColorPawn selectSchoolPink35(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Pink5").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Pink5").setDisable(true);
+        return ColorPawn.PINK;
+    }
+    public ColorPawn selectSchoolPink36(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Pink6").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Pink6").setDisable(true);
+        return ColorPawn.PINK;
+    }
+    public ColorPawn selectSchoolPink37(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Pink7").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Pink7").setDisable(true);
+        return ColorPawn.PINK;
+    }
+    public ColorPawn selectSchoolPink38(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Pink8").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Pink8").setDisable(true);
+        return ColorPawn.PINK;
+    }
+    public ColorPawn selectSchoolPink39(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Pink9").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Pink9").setDisable(true);
+        return ColorPawn.PINK;
+    }
+
+    public ColorPawn selectSchoolBlue30(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Blue0").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Blue0").setDisable(true);
+        return ColorPawn.BLUE;
+    }
+    public ColorPawn selectSchoolBlue31(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Blue1").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Blue1").setDisable(true);
+        return ColorPawn.BLUE;
+    }
+    public ColorPawn selectSchoolBlue32(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Blue2").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Blue2").setDisable(true);
+        return ColorPawn.BLUE;
+    }
+    public ColorPawn selectSchoolBlue33(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Blue3").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Blue3").setDisable(true);
+        return ColorPawn.BLUE;
+    }
+    public ColorPawn selectSchoolBlue34(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Blue4").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Blue4").setDisable(true);
+        return ColorPawn.BLUE;
+    }
+    public ColorPawn selectSchoolBlue35(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Blue5").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Blue5").setDisable(true);
+        return ColorPawn.BLUE;
+    }
+    public ColorPawn selectSchoolBlue36(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Blue6").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Blue6").setDisable(true);
+        return ColorPawn.BLUE;
+    }
+    public ColorPawn selectSchoolBlue37(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Blue7").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Blue7").setDisable(true);
+        return ColorPawn.BLUE;
+    }
+    public ColorPawn selectSchoolBlue38(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Blue8").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Blue8").setDisable(true);
+        return ColorPawn.BLUE;
+    }
+    public ColorPawn selectSchoolBlue39(MouseEvent mouseEvent) {
+        schoolBoard3.lookup("schoolBoard3Blue9").setVisible(false);
+        schoolBoard3.lookup("schoolBoard3Blue9").setDisable(true);
+        return ColorPawn.BLUE;
+    }
 }
