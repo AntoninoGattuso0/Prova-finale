@@ -25,8 +25,8 @@ public class Gui extends Application implements View {
     private static String addressSock;
     private SocketNetworkHandler socketNetworkHandler;
     private GameTableController gameTable;
-    //private final AssistantCardController assistantCardController=new AssistantCardController();
-    //private final CharacterCardController characterCardController = new CharacterCardController();
+    private AssistantCardController assistantCardController;
+    private CharacterCardController characterCardController;
     private NumOfPlayerIsExpertController numOfPlayerIsExpertController;
     private WaitingPlayersController waitingPlayersController;
     private WinnerSceneController winnerScene;
@@ -34,13 +34,16 @@ public class Gui extends Application implements View {
     private GameStartedController gameStartedController;
     private RequestNickPlayersController requestNickPlayersController;
     private FXMLLoader fxmlLoader;
-     private ChooseAction chooseAction=new ChooseAction();
     private int pedineDaSpostare;
     private int numPawnMove;
     private boolean endGame=false;
 
     public Gui() {
     }
+
+    public LightGame getLightGame(){return this.lightGame;}
+
+    public GameTableController getGameTable(){return this.gameTable;}
 
     @Override
     public void start(Stage stage) throws Exception {
