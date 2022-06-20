@@ -15,7 +15,6 @@ import java.util.concurrent.ExecutionException;
 
 public class Cli implements Runnable, View {
     private final PrintStream out;            //nel controllo del movimento di pedine inserire il controllo che se in diningroom hanno 10 pedine già inserite, non ne può spostare altre
-    private boolean isExpert;
     private boolean endGame=false;
     private LightGame lightGame;
     private SocketNetworkHandler socketNetworkHandler;//controlli se è esperto, su cc e sul numero di dining room
@@ -140,7 +139,7 @@ public class Cli implements Runnable, View {
             else if (scelta == 2) {
                 requestMovePawnToIsland(nickname, pedineDaSpostare);
                 pedineDaSpostare = numPawnMove;
-            }else if (scelta == 3) requestCharacterCard(nickname,true);
+            }else requestCharacterCard(nickname,true);
 
         }else{
             System.out.println(nickname+" sta spostando le pedine");
@@ -370,13 +369,13 @@ public class Cli implements Runnable, View {
             }
             out.println("Inserisci E per variante esperta o B base");
             String exp = readLine();
-            isExpert=false;
+            boolean isExpert = false;
             while (!Objects.equals(exp, "B") && !Objects.equals(exp, "E") && !Objects.equals(exp, "b") && !Objects.equals(exp, "e")) {
                 out.println("Inserisci E per variante esperta o B base");
                 exp=readLine();
             }
             if (exp.equals("E") || exp.equals("e")) {
-                isExpert=true;
+                isExpert =true;
             }
             switch (numPlayer) {
                 case "2" -> num = 2;
@@ -1464,8 +1463,6 @@ public class Cli implements Runnable, View {
             socketNetworkHandler.sendMessage(new ReadyTodisconnection());
             socketNetworkHandler.closeConnection();
         }
-
-    @Override
     public void displayStartTurn() {
         out.println("È il tuo turno! Puoi fare le tue mosse:");
     }

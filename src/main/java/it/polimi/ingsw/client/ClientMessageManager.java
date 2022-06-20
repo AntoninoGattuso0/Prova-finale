@@ -24,8 +24,6 @@ public class ClientMessageManager {
     public void manageInputToClient(Object object, SocketNetworkHandler socketNetworkHandler) throws InterruptedException, IOException {
         if (object instanceof WaitMessage) {
             socketNetworkHandler.getView().waitOtherPlayers();
-        } else if (object instanceof StartTurnMessage) {
-            socketNetworkHandler.getView().displayStartTurn();
         } else if (object instanceof SetNumPlayersIsExpertMessage) {
             socketNetworkHandler.getView().requestNumPlayersIsExpert();
         } else if (object instanceof SetNickMessage) {

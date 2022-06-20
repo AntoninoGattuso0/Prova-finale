@@ -1,6 +1,7 @@
 package it.polimi.ingsw.view.GUI;
 
 import it.polimi.ingsw.view.GUI.Controller.RequestNickPlayersController;
+import it.polimi.ingsw.view.GUI.Controller.WaitingPlayersController;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -35,7 +36,7 @@ public class TransitionScene {
         TransitionScene.gameTable = new Scene(gameTable.getRootFXML());
     }
     //setta come scena la schermata di waiting for other players
-    public static void setWaitingPlayers(WaitingPlayers waitingPlayers) {
+    public static void setWaitingPlayers(WaitingPlayersController waitingPlayersController) {
     //    TransitionScene.waitingPlayers = new Scene(waitingPlayers.getRootFXML());
     }
     //setta come scena la schermata chi e il vincitore

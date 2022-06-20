@@ -5,6 +5,7 @@ import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
 import it.polimi.ingsw.view.GUI.Controller.NumOfPlayerIsExpertController;
 import it.polimi.ingsw.view.GUI.Controller.RequestNickPlayersController;
+import it.polimi.ingsw.view.GUI.Controller.WaitingPlayersController;
 import it.polimi.ingsw.view.GUI.warnings.WarningCloud;
 import it.polimi.ingsw.view.View;
 import javafx.application.Application;
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 
-
 public class Gui extends Application implements View {
     private LightGame lightGame;
     private Stage stage;
@@ -29,7 +29,7 @@ public class Gui extends Application implements View {
     //private final AssistantCardController assistantCardController=new AssistantCardController();
     //private final CharacterCardController characterCardController = new CharacterCardController();
     private NumOfPlayerIsExpertController numOfPlayerIsExpertController;
-
+    private WaitingPlayersController waitingPlayersController;
     private RequestNickPlayersController requestNickPlayersController;
     private FXMLLoader fxmlLoader;
 
@@ -220,12 +220,6 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public void displayStartTurn() {
-
-    }
-
-
-    @Override
     public void updateAll(LightGame object) {
         this.lightGame=object;
     }
@@ -275,9 +269,24 @@ public class Gui extends Application implements View {
 
     @Override
     public void waitOtherPlayers() {
-        WaitingPlayers waitingPlayers = new WaitingPlayers();
-        Platform.runLater(()->TransitionScene.setWaitingPlayers(waitingPlayers));
-        Platform.runLater(TransitionScene::switchToWaitingPlayers);
+        Platform.runLater(()-> {
+            fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/WaitingPlayers.fxml"));
+            Scene scene;
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+                scene = new Scene(new Label("Error"));
+            }
+            stage.setScene(scene);
+            waitingPlayersController=fxmlLoader.getController();
+            waitingPlayersController.setGui(this);
+            waitingPlayersController.setWaitingPlayers(true);
+            requestNickPlayersController.setJoinButtonAble();
+            stage.show();
+        });
+
 
     }
 

@@ -252,7 +252,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
 
     /**
      * function to activate the CharacterCard
-     * @see StartTurnMessage
      */
     public synchronized void useCharacter(int num, int numberPawn, int numIsland, ArrayList<ColorPawn> colorPawn, ClientHandler clientHandler,boolean v) {
         if (v) {

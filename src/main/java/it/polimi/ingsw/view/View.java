@@ -43,7 +43,6 @@ public interface View {
 
     void displayWrongTurn();
 
-    void displayStartTurn();
     void updateAll(LightGame object);
     void displayAll();
 

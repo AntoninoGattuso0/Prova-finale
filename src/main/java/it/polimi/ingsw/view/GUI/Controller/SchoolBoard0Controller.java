@@ -10,7 +10,7 @@ import javafx.scene.layout.Pane;
 
 public class SchoolBoard0Controller {
     Gui gui;
-    LightGame lightGame;//da qualche parte ha bisogno di ricevere lightGame
+    LightGame lightGame;
 
     public void setGui(Gui gui){this.gui=gui;}
 
@@ -25,7 +25,6 @@ public class SchoolBoard0Controller {
         setTower0();
         setCoin0();
     }
-
     public void setAllInvisible(){
         for(Node all : schoolBoard0.getChildren()) {
             all.setVisible(false);
