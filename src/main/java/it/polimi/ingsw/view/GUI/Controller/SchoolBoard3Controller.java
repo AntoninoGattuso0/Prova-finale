@@ -126,7 +126,6 @@ public class SchoolBoard3Controller {
             schoolBoard3.lookup("coin" + i).setVisible(true);
     }
 
-
     public ColorPawn green30Select(MouseEvent mouseEvent) {
         schoolBoard3.lookup("entranceGreen3").setVisible(false);
         schoolBoard3.lookup("entranceGreen3").setDisable(true);
