@@ -1,20 +1,26 @@
 package it.polimi.ingsw.view.GUI.Controller;
 
+import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class GameTableController {
     Gui gui;
+    LightGame lightGame;
     @FXML Pane gameTable;
 
     public void setGui(Gui gui) {
         this.gui = gui;
+        this.lightGame = gui.getLightGame();
     }
-    public void setAllIslands(boolean visible){
-        for(int i = 0; i<12; i++){
+    
+    public void setAllIslands(boolean visible, boolean disabled){
+        for(int i = 0; i<lightGame.getIslands().size(); i++){
             String name = "island" + i;
             gameTable.lookup(name).setVisible(visible);
+            gameTable.lookup(name).setDisable(disabled);
         }
     }
 
@@ -111,5 +117,9 @@ public class GameTableController {
         }
         gameTable.lookup(name).setVisible(visible);
         gameTable.lookup(text).setVisible(visible);
+    }
+
+    public void island0Select(MouseEvent mouseEvent) {
+        gui.getSocketNetworkHandler().
     }
 }
