@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.Pane?>
 
 <Pane fx:id="schoolBoard0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.Controller.SchoolBoard0Controller">
-        <ImageView fitHeight="350.0" fitWidth="620.0" layoutX="-176.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+    <children>
+    <ImageView fitHeight="350.0" fitWidth="620.0" layoutX="-176.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
             <Image url="@images/SchoolTable.png" />
         </ImageView>
         <ImageView id="schoolBoard0Green0" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="481.0" onMouseClicked="#selectSchoolGreen00" pickOnBounds="true" preserveRatio="true">
@@ -350,4 +351,5 @@
     <ImageView id="coin5" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/Coin.png" />
     </ImageView>
+    </children>
  </Pane>
