@@ -92,6 +92,7 @@ public class GameTableController {
     BorderPane showCard;
     @FXML Text turnOf;
     @FXML Text messages;
+    AssistantCardController assistantCardController;
     public void setGui(Gui gui) {
         this.gui = gui;
         this.lightGame = gui.getLightGame();
@@ -372,7 +373,9 @@ public class GameTableController {
 }
     public void switchToAssistantCard(MouseEvent mouseEvent) {
         FXMLLoader object = new FXMLLoader();
+        object.setLocation(getClass().getResource("/AssistantCard.fxml"));
         Pane view = getPage("AssistantCard");
+        object.getController();
         showCard.setCenter(view);
     }
 
@@ -446,5 +449,9 @@ public class GameTableController {
     }
 
     public void cloud3select(MouseEvent mouseEvent) {
+    }
+
+    public void setAssistantController(AssistantCardController assistantCardController) {
+        this.assistantCardController=assistantCardController;
     }
 }
