@@ -434,7 +434,6 @@ public class Gui extends Application implements View {
                 scene = new Scene(new Label("Error"));
             }
             stage.setScene(scene);
-            stage.show();
             gameTable=fxmlLoader.getController();
             gameTable.setGui(this);
             gameTable.setTurnOf(players);
@@ -446,6 +445,7 @@ public class Gui extends Application implements View {
             gameTable.setButtonOff();
             gameTable.setProhibited();
             gameTable.setAssistantSchoolBoardCharacter();
+            stage.show();
         });
     }
 

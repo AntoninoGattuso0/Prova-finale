@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class GameTableController {
     @FXML Button CharacterCard;
-    @FXML ChoiceBox SchoolBoard;
+    @FXML ChoiceBox<String> SchoolBoard;
     @FXML Button AssistantCardButton;
     @FXML Button fourthButton;
     @FXML Button thirdButton;
@@ -136,7 +136,17 @@ public class GameTableController {
         int i;
         for(i=0;i<lightGame.getPlayers().size();i++) {
             SchoolBoard.getItems().add("Board "+lightGame.getPlayers().get(i).getNickname());
+            // if the item of the list is changed
+            SchoolBoard.getSelectionModel().selectedIndexProperty().addListener((ov, value, new_value) -> {
+            // set the SchoolBoard for the selected item
+                Pane view = getPage("SchoolBoard"+new_value);
+                showCard.setCenter(view);
+            });
         }
+
+
+
+
     }
     public void setPawnVisible() {
         int n;
@@ -373,8 +383,24 @@ public class GameTableController {
     }
 
     public void switchToSchoolBoard(MouseEvent mouseEvent) {
-        FXMLLoader object=new FXMLLoader();
-        Pane view =getPage(mouseEvent.toString());
+        int num = -1;
+        String ciao = SchoolBoard.getValue();
+        System.out.println(ciao);
+        if(SchoolBoard.getValue() != null) {
+            if (SchoolBoard.getValue().equals("Board " + lightGame.getPlayers().get(0).getNickname())) {
+                Pane view = getPage("SchoolBoard0");
+                showCard.setCenter(view);
+            } else if (SchoolBoard.getValue().equals("Board " + lightGame.getPlayers().get(1).getNickname())) {
+                Pane view = getPage("SchoolBoard1");
+                showCard.setCenter(view);
+            } else if (SchoolBoard.getValue().equals("Board " + lightGame.getPlayers().get(2).getNickname())) {
+                Pane view = getPage("SchoolBoard2");
+                showCard.setCenter(view);
+            } else if (SchoolBoard.getValue().equals("Board " + lightGame.getPlayers().get(3).getNickname())) {
+                Pane view = getPage("SchoolBoard3");
+                showCard.setCenter(view);
+            }
+        }
     }
 
     public void island11Select(MouseEvent mouseEvent) {
