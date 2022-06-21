@@ -501,7 +501,6 @@ public class Gui extends Application implements View {
         //per cambiare colore messaggio penso che si possa usare setFill
         //messaggio da far vedere per farcelo stare nella schermata setText("ASSISTANTCARD ALREADY SELECTED BY ANOTHER PLAYER")
 
-
     }
 
 }

@@ -146,7 +146,6 @@ public class GameTableController {
 
 
 
-
     }
     public void setPawnVisible() {
         int n;
