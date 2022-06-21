@@ -230,7 +230,7 @@ public class GameTableController {
             gameTable.lookup("#cloud3").setVisible(false);
             gameTable.lookup("#cloud2").setVisible(false);
         }
-        for (i = 0; i <lightGame.getPlayers().size(); i++) {
+        for (i = 0; i <4; i++) {
             int j;
             for(j=0;j<4;j++) {
                 gameTable.lookup("#greenCloud" + i + j).setVisible(false);
@@ -241,6 +241,7 @@ public class GameTableController {
             }
         }
         for (i = 0; i < gui.getLightGame().getPlayers().size(); i++) {
+            k=0;
             String name = "#cloud" + i;
             gameTable.lookup(name).setVisible(true);
             gameTable.lookup(name).setDisable(true);
