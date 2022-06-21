@@ -332,22 +332,22 @@
         <ImageView id="entranceBlue08" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" onMouseClicked="#blue08Select" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/blueStudent3D.png" />
         </ImageView>
-   <ImageView id="coin0" fitHeight="40.0" fitWidth="40.0" layoutX="268.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-         <Image url="@images/Coin.png" />
-   </ImageView>
-   <ImageView id="coin1" fitHeight="40.0" fitWidth="40.0" layoutX="268.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
-       <Image url="@images/Coin.png" />
-   </ImageView>
-   <ImageView id="coin2" fitHeight="40.0" fitWidth="40.0" layoutX="268.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
-       <Image url="@images/Coin.png" />
-   </ImageView>
-   <ImageView id="coin3" fitHeight="40.0" fitWidth="40.0" layoutX="268.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
-       <Image url="@images/Coin.png" />
-   </ImageView>
-   <ImageView id="coin4" fitHeight="40.0" fitWidth="40.0" layoutX="268.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
-       <Image url="@images/Coin.png" />
-   </ImageView>
-   <ImageView id="coin5" fitHeight="40.0" fitWidth="40.0" layoutX="268.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
-       <Image url="@images/Coin.png" />
-   </ImageView>
+    <ImageView id="coin0" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/Coin.png" />
+    </ImageView>
+    <ImageView id="coin1" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/Coin.png" />
+    </ImageView>
+    <ImageView id="coin2" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/Coin.png" />
+    </ImageView>
+    <ImageView id="coin3" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/Coin.png" />
+    </ImageView>
+    <ImageView id="coin4" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/Coin.png" />
+    </ImageView>
+    <ImageView id="coin5" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/Coin.png" />
+    </ImageView>
  </Pane>
