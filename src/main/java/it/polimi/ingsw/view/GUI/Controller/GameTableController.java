@@ -278,7 +278,7 @@ public class GameTableController {
             gameTable.lookup("#motherNature" + i).setVisible(false);
         }
         }
-    }
+    }//
     public void setProhibited(){
         int i;
         for(i=0;i<lightGame.getIslands().size();i++){
