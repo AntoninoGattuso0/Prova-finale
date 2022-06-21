@@ -17,11 +17,6 @@
         </font>
     </Label>
     <TextField fx:id="nickname" layoutX="244.0" layoutY="222.0" />
-    <Label layoutX="102.0" layoutY="127.0" text="FIRST PLAYER IS ALREADY LOGGED" textFill="WHITE">
-        <font>
-            <Font size="18.0" />
-        </font>
-    </Label>
     <Label layoutX="111.0" layoutY="150.0" text="PLEASE INSERT YOUR NICKNAME:" textFill="WHITE">
         <font>
             <Font name="System Bold" size="18.0" />
