@@ -728,9 +728,9 @@
                   <Button fx:id="fourthButton" layoutX="135.0" layoutY="92.0" mnemonicParsing="false" text="Button" />
                </children>
             </Pane>
-            <Text fx:id="turnOf" fill="WHITE" layoutX="6.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TURN OFRDER: ">
+            <Text fx:id="turnOf" fill="WHITE" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TURN ORDER: " wrappingWidth="162.55829853635134">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font></Text>
             <Text fx:id="messages" fill="RED" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ROUND FINISHED, A NEW ONE BEGINS">
                <font>
