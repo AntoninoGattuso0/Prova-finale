@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GameTableController {
     @FXML Button CharacterCard;
@@ -361,8 +362,10 @@ public class GameTableController {
             URL fileUrl = getClass().getResource("/"+fileName + ".fxml");
             if (fileUrl == null)
                 throw new java.io.FileNotFoundException("Impossibile trovare file");
-            new FXMLLoader();
-            view = FXMLLoader.load(fileUrl);
+            FXMLLoader loader =new FXMLLoader();
+            view = loader.load(fileUrl);
+            if(Objects.equals(fileName, "AssistantCard"))
+                assistantCardController=loader.getController();
         } catch (Exception e) {
             System.out.println("No Page Found");
         }
@@ -372,7 +375,6 @@ public class GameTableController {
         FXMLLoader object = new FXMLLoader();
         object.setLocation(getClass().getResource("/AssistantCard.fxml"));
         Pane view = getPage("AssistantCard");
-        object.getController();
         showCard.setCenter(view);
     }
 
@@ -446,9 +448,5 @@ public class GameTableController {
     }
 
     public void cloud3select(MouseEvent mouseEvent) {
-    }
-
-    public void setAssistantController(AssistantCardController assistantCardController) {
-        this.assistantCardController=assistantCardController;
     }
 }

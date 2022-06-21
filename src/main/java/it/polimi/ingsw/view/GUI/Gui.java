@@ -445,8 +445,6 @@ public class Gui extends Application implements View {
             gameTable.setButtonOff();
             gameTable.setProhibited();
             gameTable.setAssistantSchoolBoardCharacter();
-            assistantCardController.setDisableAll();
-            gameTable.setAssistantController(assistantCardController);
             stage.show();
         });
     }
