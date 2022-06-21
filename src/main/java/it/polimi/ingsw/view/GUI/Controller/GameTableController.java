@@ -224,12 +224,21 @@ public class GameTableController {
         int n;
         int i;
         int k=0;
-        for (i = 0; i < 11; i++) {
-            gameTable.lookup("#green" + i).setVisible(false);
-            gameTable.lookup("#red" + i).setVisible(false);
-            gameTable.lookup("#yellow" + i).setVisible(false);
-            gameTable.lookup("#pink" + i).setVisible(false);
-            gameTable.lookup("#blue" + i).setVisible(false);
+        if(lightGame.getPlayers().size()==3){
+            gameTable.lookup("#cloud3").setVisible(false);
+        }else if(lightGame.getPlayers().size()==2){
+            gameTable.lookup("#cloud3").setVisible(false);
+            gameTable.lookup("#cloud2").setVisible(false);
+        }
+        for (i = 0; i <lightGame.getPlayers().size(); i++) {
+            int j;
+            for(j=0;j<4;j++) {
+                gameTable.lookup("#greenCloud" + i + j).setVisible(false);
+                gameTable.lookup("#redCloud" + i + j).setVisible(false);
+                gameTable.lookup("#yellowCloud" + i + j).setVisible(false);
+                gameTable.lookup("#pinkCloud" + i + j).setVisible(false);
+                gameTable.lookup("#blueCloud" + i + j).setVisible(false);
+            }
         }
         for (i = 0; i < gui.getLightGame().getPlayers().size(); i++) {
             String name = "#cloud" + i;
@@ -237,31 +246,31 @@ public class GameTableController {
             gameTable.lookup(name).setDisable(true);
             n=lightGame.getClouds().get(i).getGreenPawn();
             while(n>0){
-                gameTable.lookup("#green"+k).setVisible(true);
+                gameTable.lookup("#greenCloud"+i+k).setVisible(true);
                 k++;
                 n--;
             }
             n=lightGame.getClouds().get(i).getRedPawn();
             while(n>0){
-                gameTable.lookup("#red"+k).setVisible(true);
+                gameTable.lookup("#redCloud"+i+k).setVisible(true);
                 k++;
                 n--;
             }
             n=lightGame.getClouds().get(i).getYellowPawn();
             while(n>0){
-                gameTable.lookup("#yellow"+k).setVisible(true);
+                gameTable.lookup("#yellowCloud"+i+k).setVisible(true);
                 k++;
                 n--;
             }
             n=lightGame.getClouds().get(i).getPinkPawn();
             while(n>0){
-                gameTable.lookup("#pink"+k).setVisible(true);
+                gameTable.lookup("#pinkCloud"+i+k).setVisible(true);
                 k++;
                 n--;
             }
             n=lightGame.getClouds().get(i).getBluePawn();
             while(n>0){
-                gameTable.lookup("#blue"+k).setVisible(true);
+                gameTable.lookup("#blueCloud"+i+k).setVisible(true);
                 k++;
                 n--;
             }
