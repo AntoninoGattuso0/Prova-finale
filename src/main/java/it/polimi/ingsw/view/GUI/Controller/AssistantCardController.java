@@ -30,7 +30,7 @@ public class AssistantCardController {
     }
     public void setInvisibileAll() {
         for (Node assistant : assistantCards.getChildren()) {
-            assistant.setDisable(false);
+            assistant.setVisible(false);
         }
     }
         public void assistant1Select () {

@@ -12,9 +12,11 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -22,6 +24,8 @@ import java.util.Objects;
 //SE VUOI POSSO CREARE UN FXML COSI? SCRIVIMELO SU WHATSAPP SE SERVE
 
 public class Gui extends Application implements View {
+
+
     private LightGame lightGame;
     private Stage stage;
     private static String addressSock;
@@ -40,6 +44,11 @@ public class Gui extends Application implements View {
     private int pedineDaSpostare;
     private int numPawnMove;
     private boolean endGame=false;
+
+    SchoolBoard0Controller schoolBoard0Controller;
+    SchoolBoard1Controller schoolBoard1Controller;
+    SchoolBoard2Controller schoolBoard2Controller;
+    SchoolBoard3Controller schoolBoard3Controller;
 
     public Gui() {
     }
@@ -422,7 +431,8 @@ public class Gui extends Application implements View {
 
     @Override
     public void turnOrder(ArrayList<String> players) {
-        int i=0;
+
+
         Platform.runLater(()-> {
             fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/GameTable.fxml"));
@@ -433,9 +443,9 @@ public class Gui extends Application implements View {
                 e.printStackTrace();
                 scene = new Scene(new Label("Error"));
             }
-            stage.setScene(scene);
             gameTable=fxmlLoader.getController();
             gameTable.setGui(this);
+            gameTable.inizializeBorderPane();
             gameTable.setTurnOf(players);
             gameTable.setPawnVisible();
             gameTable.setMotherNatureVisible();
@@ -445,8 +455,39 @@ public class Gui extends Application implements View {
             gameTable.setButtonOff();
             gameTable.setProhibited();
             gameTable.setAssistantSchoolBoardCharacter();
+            stage.setScene(scene);
             stage.show();
         });
+
+        Platform.runLater(()-> {
+            fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+                scene = new Scene(new Label("Error"));
+            }
+            schoolBoard0Controller=fxmlLoader.getController();
+            schoolBoard0Controller.setGui(this);
+            schoolBoard0Controller.setSchoolBoard0();
+
+            gameTable.getShowSchool0().setCenter(schoolBoard0Controller.getSchoolBoard0());
+        });
+    }
+
+    public Pane getPage(String fileName) {
+        Pane view = null;
+        try {
+            URL fileUrl = getClass().getResource("/"+fileName + ".fxml");
+            if (fileUrl == null)
+                throw new java.io.FileNotFoundException("Impossibile trovare file");
+            view = FXMLLoader.load(fileUrl);
+        } catch (Exception e) {
+            System.out.println("No Page Found");
+        }
+        return view;
     }
 
     @Override

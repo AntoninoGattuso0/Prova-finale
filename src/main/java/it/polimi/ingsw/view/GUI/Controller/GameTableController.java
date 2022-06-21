@@ -3,20 +3,28 @@ package it.polimi.ingsw.view.GUI.Controller;
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.model.ColorTower;
 import it.polimi.ingsw.view.GUI.Gui;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class GameTableController {
+    @FXML BorderPane showSchool1;
+    @FXML BorderPane showSchool2;
+    @FXML BorderPane showSchool3;
+    @FXML BorderPane showSchool0;
+    @FXML BorderPane showAssistant;
     @FXML Button CharacterCard;
     @FXML ChoiceBox<String> SchoolBoard;
     @FXML Button AssistantCardButton;
@@ -90,10 +98,18 @@ public class GameTableController {
     @FXML
     Pane gameTable;
     @FXML
-    BorderPane showCard;
+    BorderPane showCharacterCard;
     @FXML Text turnOf;
     @FXML Text messages;
+
+    FXMLLoader fxmlLoader;
+
+    SchoolBoard0Controller schoolBoard0Controller;
+
     AssistantCardController assistantCardController;
+
+    public BorderPane getShowSchool0(){return showSchool0;}
+
     public void setGui(Gui gui) {
         this.gui = gui;
         this.lightGame = gui.getLightGame();
@@ -141,8 +157,53 @@ public class GameTableController {
             // if the item of the list is changed
             SchoolBoard.getSelectionModel().selectedIndexProperty().addListener((ov, value, new_value) -> {
             // set the SchoolBoard for the selected item
-                Pane view = getPage("SchoolBoard"+new_value);
-                showCard.setCenter(view);
+                if((int)new_value == 0){
+                    Platform.runLater(()-> {
+                        fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
+                        Scene scene = null;
+                        try {
+                            scene = new Scene(fxmlLoader.load());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            scene = new Scene(new Label("Error"));
+                        }
+                        schoolBoard0Controller=fxmlLoader.getController();
+                        schoolBoard0Controller.setGui(this.gui);
+                        schoolBoard0Controller.setAllInvisible();
+                    });
+
+                    showAssistant.setVisible(false);
+                    showCharacterCard.setVisible(false);
+                    showSchool0.setVisible(true);
+                    showSchool1.setVisible(false);
+                    showSchool2.setVisible(false);
+                    showSchool3.setVisible(false);
+                }
+                else if((int)new_value == 1){
+                    showAssistant.setVisible(false);
+                    showCharacterCard.setVisible(false);
+                    showSchool0.setVisible(false);
+                    showSchool1.setVisible(true);
+                    showSchool2.setVisible(false);
+                    showSchool3.setVisible(false);
+                }
+                else if((int)new_value == 2){
+                    showAssistant.setVisible(false);
+                    showCharacterCard.setVisible(false);
+                    showSchool0.setVisible(false);
+                    showSchool1.setVisible(false);
+                    showSchool2.setVisible(true);
+                    showSchool3.setVisible(false);
+                }
+                else if((int)new_value == 3){
+                    showAssistant.setVisible(false);
+                    showCharacterCard.setVisible(false);
+                    showSchool0.setVisible(false);
+                    showSchool1.setVisible(false);
+                    showSchool2.setVisible(false);
+                    showSchool3.setVisible(true);
+                }
             });
         }
 
@@ -362,27 +423,58 @@ public class GameTableController {
             URL fileUrl = getClass().getResource("/"+fileName + ".fxml");
             if (fileUrl == null)
                 throw new java.io.FileNotFoundException("Impossibile trovare file");
-            FXMLLoader loader =new FXMLLoader();
-            view = loader.load(fileUrl);
-            if(Objects.equals(fileName, "AssistantCard"))
-                assistantCardController=loader.getController();
+            view = FXMLLoader.load(fileUrl);
         } catch (Exception e) {
             System.out.println("No Page Found");
         }
     return view;
 }
     public void switchToAssistantCard(MouseEvent mouseEvent) {
-        FXMLLoader object = new FXMLLoader();
-        object.setLocation(getClass().getResource("/AssistantCard.fxml"));
-        Pane view = getPage("AssistantCard");
-        showCard.setCenter(view);
+       showAssistant.setVisible(true);
+       showCharacterCard.setVisible(false);
+       showSchool0.setVisible(false);
+       showSchool1.setVisible(false);
+       showSchool2.setVisible(false);
+       showSchool3.setVisible(false);
     }
 
+
     public void switchToCharacterCard(MouseEvent mouseEvent) {
-        FXMLLoader object = new FXMLLoader();
-        Pane view = getPage("CharacterCard");
-        showCard.setCenter(view);
+        showAssistant.setVisible(false);
+        showCharacterCard.setVisible(true);
+        showSchool0.setVisible(false);
+        showSchool1.setVisible(false);
+        showSchool2.setVisible(false);
+        showSchool3.setVisible(false);
     }
+
+    public void inizializeBorderPane(){
+        Pane view = getPage("AssistantCard");
+        showAssistant.setCenter(view);
+        showAssistant.setVisible(false);
+
+        view = getPage("CharacterCard");
+        showCharacterCard.setCenter(view);
+        showCharacterCard.setVisible(false);
+
+        view = getPage("SchoolBoard0");
+        showSchool0.setCenter(view);
+        showSchool0.setVisible(false);
+
+        view = getPage("SchoolBoard1");
+        showSchool1.setCenter(view);
+        showSchool1.setVisible(false);
+
+        view = getPage("SchoolBoard2");
+        showSchool2.setCenter(view);
+        showSchool2.setVisible(false);
+
+        view = getPage("SchoolBoard3");
+        showSchool3.setCenter(view);
+        showSchool3.setVisible(false);
+    }
+
+
 
     public void switchToSchoolBoard(MouseEvent mouseEvent) {
         int num = -1;
@@ -391,19 +483,20 @@ public class GameTableController {
         if(SchoolBoard.getValue() != null) {
             if (SchoolBoard.getValue().equals("Board " + lightGame.getPlayers().get(0).getNickname())) {
                 Pane view = getPage("SchoolBoard0");
-                showCard.setCenter(view);
+                showCharacterCard.setCenter(view);
             } else if (SchoolBoard.getValue().equals("Board " + lightGame.getPlayers().get(1).getNickname())) {
                 Pane view = getPage("SchoolBoard1");
-                showCard.setCenter(view);
+                showCharacterCard.setCenter(view);
             } else if (SchoolBoard.getValue().equals("Board " + lightGame.getPlayers().get(2).getNickname())) {
                 Pane view = getPage("SchoolBoard2");
-                showCard.setCenter(view);
+                showCharacterCard.setCenter(view);
             } else if (SchoolBoard.getValue().equals("Board " + lightGame.getPlayers().get(3).getNickname())) {
                 Pane view = getPage("SchoolBoard3");
-                showCard.setCenter(view);
+                showCharacterCard.setCenter(view);
             }
         }
     }
+
 
     public void island11Select(MouseEvent mouseEvent) {
     }

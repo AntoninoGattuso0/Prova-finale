@@ -12,11 +12,12 @@ public class SchoolBoard0Controller {
     Gui gui;
     LightGame lightGame;
 
-    public void setGui(Gui gui){this.gui=gui;}
-
-    public void setLightGame(LightGame lightGame){this.lightGame=lightGame;}
+    public void setGui(Gui gui){this.gui=gui;
+    this.lightGame = gui.getLightGame();}
 
     @FXML Pane schoolBoard0;
+
+    public Pane getSchoolBoard0(){return schoolBoard0;}
 
     public void setSchoolBoard0(){
         setAllInvisible();
@@ -28,7 +29,10 @@ public class SchoolBoard0Controller {
     public void setAllInvisible(){
         for(Node all : schoolBoard0.getChildren()) {
             all.setVisible(false);
+            System.out.println(all.getId());
             all.setDisable(true);
+            if(all.getId().equals("backSchool0"))
+                all.setVisible(true);
         }
     }
 
