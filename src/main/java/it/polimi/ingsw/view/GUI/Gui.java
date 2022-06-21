@@ -445,6 +445,7 @@ public class Gui extends Application implements View {
             gameTable.setTowers();
             gameTable.setButtonOff();
             gameTable.setProhibited();
+
         });
     }
 

@@ -6,6 +6,7 @@ import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -15,6 +16,9 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class GameTableController {
+    @FXML Button CharacterCard;
+    @FXML ChoiceBox SchoolBoard;
+    @FXML Button AssistantCardButton;
     @FXML Button fourthButton;
     @FXML Button thirdButton;
     @FXML Button secondButton;
@@ -122,6 +126,17 @@ public class GameTableController {
         fourthButton.setDisable(true);
         messagesActions.setVisible(false);
         messagesActions.setDisable(true);
+    }
+    public void setAssistantSchoolBoardCharacter(){
+        AssistantCardButton.setDisable(false);
+        AssistantCardButton.setVisible(true);
+        CharacterCard.setVisible(true);
+        CharacterCard.setDisable(false);
+        SchoolBoard.setVisible(true);
+        int i;
+        for(i=0;i<lightGame.getPlayers().size();i++) {
+            SchoolBoard.getItems().add("Board "+lightGame.getPlayers().get(i).getNickname());
+        }
     }
     public void setPawnVisible() {
         int n;

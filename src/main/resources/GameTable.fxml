@@ -777,9 +777,9 @@
       </Pane>
       <Pane layoutX="650.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="650.0" prefWidth="350.0">
          <children>
-            <Button id="AssistantCardButton" mnemonicParsing="false" onMouseClicked="#switchToAssistantCard" text="AssistantCard" />
-            <ChoiceBox id="SchoolBoard" layoutX="94.0" onMouseClicked="#switchToSchoolBoard" prefWidth="150.0" />
-            <Button id="CharacterCard" layoutX="244.0" mnemonicParsing="false" onMouseClicked="#switchToCharacterCard" prefHeight="26.0" prefWidth="107.0" text="CharacterCard" />
+            <Button fx:id="AssistantCardButton" mnemonicParsing="false" onMouseClicked="#switchToAssistantCard" text="AssistantCard" />
+            <ChoiceBox fx:id="SchoolBoard" layoutX="94.0" onMouseClicked="#switchToSchoolBoard" prefWidth="150.0" />
+            <Button fx:id="CharacterCard" layoutX="244.0" mnemonicParsing="false" onMouseClicked="#switchToCharacterCard" prefHeight="26.0" prefWidth="107.0" text="CharacterCard" />
             <BorderPane fx:id="showCard" layoutY="26.0" prefHeight="627.0" prefWidth="350.0" />
          </children>
       </Pane>
