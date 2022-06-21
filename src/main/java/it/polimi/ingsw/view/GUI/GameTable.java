@@ -1,4 +1,4 @@
-package it.polimi.ingsw.view.GUI;
+/*package it.polimi.ingsw.view.GUI;
 
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
@@ -237,7 +237,7 @@ public class GameTable {
 
 
         }*/
-
+/*
 //setta su non visibili le pedine della schoolBoard
         for (int i = 0; i < 10; i++) {
             greenSchool0.add((ImageView) rootFXML.lookup("schoolGreen" + i));
@@ -320,7 +320,7 @@ public class GameTable {
     public Pane getRootFXML() {
         return rootFXML;
     }
-
+*/
     /*public void character0Select(MouseEvent mouseEvent) {
         int i;
         ArrayList<ColorPawn> colori = new ArrayList<>();
@@ -934,10 +934,10 @@ public class GameTable {
         socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, bool));
     }*/
 
-
+/*
     public void character1Select(MouseEvent mouseEvent) {
     }
 
     public void character2Select(MouseEvent mouseEvent) {
     }
-}
+}*/

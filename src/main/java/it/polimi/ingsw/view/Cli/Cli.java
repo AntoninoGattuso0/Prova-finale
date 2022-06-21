@@ -1422,7 +1422,6 @@ public class Cli implements Runnable, View {
     @Override
     public void displayWrongTurn() {
         out.println("Non è il tuo turno, aspetta...");}
-
     @Override
     public void turnOrder(ArrayList<String> orderNamePlayers){
         out.println(ColorCli.RESET);

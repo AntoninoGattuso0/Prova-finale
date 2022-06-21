@@ -32,9 +32,9 @@ public class TransitionScene {
     }
 
     //setta come scena tutta la gameTable che sarebbe la scena dove si vedono le isole nuvole etc
-    public static void setGameTable(GameTable gameTable) {
-        TransitionScene.gameTable = new Scene(gameTable.getRootFXML());
-    }
+    //public static void setGameTable(GameTable gameTable) {
+       // TransitionScene.gameTable = new Scene(gameTable.getRootFXML());
+    //}
     //setta come scena la schermata di waiting for other players
     public static void setWaitingPlayers(WaitingPlayersController waitingPlayersController) {
     //    TransitionScene.waitingPlayers = new Scene(waitingPlayers.getRootFXML());

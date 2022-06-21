@@ -35,6 +35,7 @@ public class Gui extends Application implements View {
     private WarningNicknameController warningNicknameController;
     private GameStartedController gameStartedController;
     private RequestNickPlayersController requestNickPlayersController;
+    private LobbyIsFullController lobbyIsFullController;
     private FXMLLoader fxmlLoader;
     private int pedineDaSpostare;
     private int numPawnMove;
@@ -42,7 +43,6 @@ public class Gui extends Application implements View {
 
     public Gui() {
     }
-
     public LightGame getLightGame(){return this.lightGame;}
 
     public GameTableController getGameTable(){return this.gameTable;}
@@ -157,14 +157,12 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayAssistantCard(int player) {
-        int j;
-       // assistantCardController.setDisableAll();
-        //assistantCardController.setInvisibileAll();
-       for(j=0;j<lightGame.getPlayers().get(player).getDeckAssistant().size();j++){
-           int n=lightGame.getPlayers().get(player).getDeckAssistant().get(j).getCardValue();
+        stage.show();
+     //  for(j=0;j<lightGame.getPlayers().get(player).getDeckAssistant().size();j++){
+          // int n=lightGame.getPlayers().get(player).getDeckAssistant().get(j).getCardValue();
            //assistantCardController.setAble(n);
            //assistantCardController.setVisible(n);
-       }
+    //   }
     }
 
     @Override
@@ -318,11 +316,12 @@ public class Gui extends Application implements View {
 
     @Override
     public void selectAssistantCard(String nickname) {
+
         //si deve capire come gestire il gameTableController
         int i;
         if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
             for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(),nickname);i++);
-            //pannellodiscrittura.writetext("CHOOSE ASSISTANT");
+            
             displayAssistantCard(i);
         }else{
             //Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+"IS CHOOSING AN ASSISTANT");
@@ -402,19 +401,51 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public void lobbyFull() {
-        //FXML e controller nuovi per la lobby full  //RISPOSTA: FXML creato.. LobbyIsFull
+    public void lobbyFull(){
+        lobbyIsFullController=new LobbyIsFullController();
+        Platform.runLater(()-> {
+            fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/LobbyIsFull.fxml"));
+            Scene scene;
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+                scene = new Scene(new Label("Error"));
+            }
+            stage.setScene(scene);
+            lobbyIsFullController=fxmlLoader.getController();
+            stage.show();
+        });
         socketNetworkHandler.closeConnection();
     }
 
     @Override
     public void turnOrder(ArrayList<String> players) {
-        //nella schermata del testo gametable va inserito l"ordine dei giocatori gestito dal controller
-        //questa è la funzione da mettere nel controller ma ovviamente inserendoli non co
-        //  inserire:("L'ordine dei giocatori per questo round è: ");
-        //        for(int i = 0; i<orderNamePlayers.size(); i++){
-        //         inserire nel testo andando a capo: (i+1)+") " + orderNamePlayers.get(i);
-        //        }
+        int i=0;
+        Platform.runLater(()-> {
+            fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/GameTable.fxml"));
+            Scene scene=null;
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+                scene = new Scene(new Label("Error"));
+            }
+            stage.setScene(scene);
+            stage.show();
+            gameTable=fxmlLoader.getController();
+            gameTable.setGui(this);
+            gameTable.setTurnOf(players);
+            gameTable.setPawnVisible();
+            gameTable.setMotherNatureVisible();
+            gameTable.setAllIslands(true,false);
+            gameTable.setCloudVisible();
+            gameTable.setTowers();
+            gameTable.setButtonOff();
+            gameTable.setProhibited();
+        });
     }
 
     @Override
