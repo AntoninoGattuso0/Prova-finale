@@ -59,6 +59,8 @@ public class SchoolBoard0Controller {
         }
     }
 
+
+
     public void setEntrance0(){
         int green = lightGame.getPlayers().get(0).getEntrance().getGreenPawn();
         System.out.println(green);
@@ -98,6 +100,9 @@ public class SchoolBoard0Controller {
             }
         }
     }
+
+
+
 
     public void setDiningRoom0(){
         int green = lightGame.getPlayers().get(0).getDiningRoom().getNumGreen();
@@ -150,6 +155,8 @@ public class SchoolBoard0Controller {
             schoolBoard0.lookup("schoolBlueProf0").setVisible(true);
     }
 
+
+
     public void setTower0(){
         for(int i = 0; i<lightGame.getPlayers().get(0).getTowerSpace().getNumTower(); i++)
             for(Node school : schoolBoard0.getChildren()) {
@@ -157,6 +164,9 @@ public class SchoolBoard0Controller {
                     school.setVisible(true);
             }
     }
+
+
+
 
     public void setCoin0() {
         for (int i = 0; i < lightGame.getPlayers().get(0).getNumCoin(); i++)

@@ -459,6 +459,8 @@ public class Gui extends Application implements View {
             stage.show();
         });
 
+
+
         //ANTONINO GUARDA QUA CHE FORSE CI CAPISCI QUALCOSA (FUNZIONA MA VA APPLICATO ANCHE AGLI ALTRI AGGIORNAMENTI)
         Platform.runLater(()-> {
             fxmlLoader = new FXMLLoader();

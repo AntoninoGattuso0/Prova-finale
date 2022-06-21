@@ -448,6 +448,9 @@ public class GameTableController {
         showSchool3.setVisible(false);
     }
 
+
+
+
     public void inizializeBorderPane(){
         Pane view = getPage("AssistantCard");
         showAssistant.setCenter(view);
