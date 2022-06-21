@@ -362,13 +362,13 @@ public class GameTableController {
 }
     public void switchToAssistantCard(MouseEvent mouseEvent) {
         FXMLLoader object = new FXMLLoader();
-        Pane view = getPage(mouseEvent.toString());
+        Pane view = getPage("AssistantCard");
         showCard.setCenter(view);
     }
 
     public void switchToCharacterCard(MouseEvent mouseEvent) {
         FXMLLoader object = new FXMLLoader();
-        Pane view = getPage(mouseEvent.toString());
+        Pane view = getPage("CharacterCard");
         showCard.setCenter(view);
     }
 

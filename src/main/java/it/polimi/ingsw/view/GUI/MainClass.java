@@ -1,4 +1,4 @@
-/*package it.polimi.ingsw.view.GUI;
+package it.polimi.ingsw.view.GUI;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -22,4 +22,3 @@ public class MainClass extends Application {
         }
     }
 }
-*/
