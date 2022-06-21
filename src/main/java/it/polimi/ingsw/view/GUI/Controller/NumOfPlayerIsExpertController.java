@@ -24,8 +24,8 @@ public class NumOfPlayerIsExpertController {
         numPlayerBox.setVisible(true);
         expertMode.setVisible(true);
         expertMode.setSelected(true);
-        joinButton.setDisable(false);
         joinButton.setVisible(true);
+        joinButton.setDisable(false);
     }
 
     public void bottomClicked(MouseEvent mouseEvent) {

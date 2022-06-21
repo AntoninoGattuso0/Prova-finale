@@ -190,7 +190,7 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayCharacterCard() {
-        //va gestito attraverso il gameTable
+
         int i;
         int coin=0;
         int player;
@@ -324,7 +324,7 @@ public class Gui extends Application implements View {
             
             displayAssistantCard(i);
         }else{
-            //Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+"IS CHOOSING AN ASSISTANT");
+            //Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+" CHOOSE AN ASSISTANT");
         }
     }
 
