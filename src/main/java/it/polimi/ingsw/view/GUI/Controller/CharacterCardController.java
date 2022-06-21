@@ -11,28 +11,24 @@ import javafx.scene.layout.Pane;
 import java.util.ArrayList;
 
 public class CharacterCardController {
+    @FXML
+    public Pane characterCards;
     ArrayList<ColorPawn> colori = new ArrayList<>();
     int island = -1;
-
-
-
     Gui gui;
     LightGame lightGame;
     GameTableController gameTableController;
-
+    
     public void setLightGame(LightGame lightGame) {
         this.lightGame = lightGame;
     }
-
-    @FXML
-    public Pane characterCards;
-
+    
     public void setGui(Gui gui) {
         this.gui = gui;
         this.lightGame = gui.getLightGame();
         this.gameTableController = gui.getGameTable();
     }
-
+    
     public void setDisableAll() {
         for (Node character : characterCards.getChildren()) {
             character.setDisable(true);
@@ -134,5 +130,26 @@ public class CharacterCardController {
             characterCards.lookup("blueCharacter0").setDisable(true);
             gameTableController.setAllIslands(true, false);
         }
+    }
+
+    public void character2Select(MouseEvent mouseEvent) {
+    }
+
+    public void character1Select(MouseEvent mouseEvent) {
+    }
+
+    public void moveYellowCharacter0(MouseEvent mouseEvent) {
+    }
+
+    public void movePinkCharacter0(MouseEvent mouseEvent) {
+    }
+
+    public void moveBlueCharacter0(MouseEvent mouseEvent) {
+    }
+
+    public void moveGreenCharacter1(MouseEvent mouseEvent) {
+    }
+
+    public void moveRedCharacter1(MouseEvent mouseEvent) {
     }
 }
