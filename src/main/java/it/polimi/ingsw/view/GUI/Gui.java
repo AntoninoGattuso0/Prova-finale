@@ -502,5 +502,4 @@ public class Gui extends Application implements View {
         //messaggio da far vedere per farcelo stare nella schermata setText("ASSISTANTCARD ALREADY SELECTED BY ANOTHER PLAYER")
 
     }
-
 }
