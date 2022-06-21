@@ -5,10 +5,115 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="characterCards" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.Controller.CharacterCardController">
-        <ImageView id="characterCard0" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true" />
-        <ImageView id="characterCard1" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true" />
-        <ImageView id="characterCard2" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true" />
+<Pane id="0Character1" fx:id="characterCards" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.Controller.CharacterCardController">
+   <ImageView id="0characterCard0" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard1.jpg" />
+   </ImageView>
+     <ImageView id="1characterCard0" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard1.jpg" />
+   </ImageView>
+     <ImageView id="2CharacterCard0" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard1.jpg" />
+   </ImageView>
+   <ImageView id="0characterCard1" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard2.jpg" />
+   </ImageView>
+   <ImageView id="1characterCard1" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard2.jpg" />
+   </ImageView>
+   <ImageView id="2CharacterCard1" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard2.jpg" />
+   </ImageView>
+   <ImageView id="0characterCard2" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard3.jpg" />
+   </ImageView>
+   <ImageView id="1characterCard2" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard3.jpg" />
+   </ImageView>
+   <ImageView id="2CharacterCard2" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard1.jpg" />
+   </ImageView>
+   <ImageView id="0characterCard3" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard4.jpg" />
+   </ImageView>
+   <ImageView id="1characterCard3" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard4.jpg" />
+   </ImageView>
+   <ImageView id="2CharacterCard3" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard4.jpg" />
+   </ImageView>
+   <ImageView id="0characterCard4" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard5.jpg" />
+   </ImageView>
+   <ImageView id="1characterCard4" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard5.jpg" />
+   </ImageView>
+   <ImageView id="2CharacterCard4" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard5.jpg" />
+   </ImageView>
+   <ImageView id="0characterCard5" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard6.jpg" />
+   </ImageView>
+   <ImageView id="1characterCard5" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard6.jpg" />
+   </ImageView>
+   <ImageView id="2CharacterCard5" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard6.jpg" />
+   </ImageView>
+   <ImageView id="0characterCard6" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard7.jpg" />
+   </ImageView>
+   <ImageView id="1characterCard6" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard7.jpg" />
+   </ImageView>
+   <ImageView id="2CharacterCard6" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard7.jpg" />
+   </ImageView>
+   <ImageView id="0characterCard7" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard8.jpg" />
+   </ImageView>
+   <ImageView id="1characterCard7" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard8.jpg" />
+   </ImageView>
+   <ImageView id="2CharacterCard7" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard8.jpg" />
+   </ImageView>
+   <ImageView id="0characterCard8" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard9.jpg" />
+   </ImageView>
+   <ImageView id="1characterCard8" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard9.jpg" />
+   </ImageView>
+   <ImageView id="2CharacterCard8" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard9.jpg" />
+   </ImageView>
+   <ImageView id="0characterCard9" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard10.jpg" />
+   </ImageView>
+   <ImageView id="1characterCard9" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard10.jpg" />
+   </ImageView>
+   <ImageView id="2CharacterCard9" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard10.jpg" />
+   </ImageView>
+   <ImageView id="0characterCard10" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard11.jpg" />
+   </ImageView>
+   <ImageView id="1characterCard10" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard11.jpg" />
+   </ImageView>
+   <ImageView id="2CharacterCard10" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard11.jpg" />
+   </ImageView>
+   <ImageView id="0characterCard11" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard12.jpg" />
+   </ImageView>
+   <ImageView id="1characterCard11" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard12.jpg" />
+   </ImageView>
+   <ImageView id="2CharacterCard11" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/CharacterCard12.jpg" />
+   </ImageView>
    <ImageView id="greenCharacter0" fitHeight="25.0" fitWidth="25.0" layoutX="150.0" layoutY="2.0" onMouseClicked="#moveGreenCharacter0" pickOnBounds="true" preserveRatio="true">
       <Image url="@images/greenStudent3D.png" />
    </ImageView>
