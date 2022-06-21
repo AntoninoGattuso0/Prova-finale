@@ -20,8 +20,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 
-//HO VISTO CHE HAI USATO ALCUNE VOLTE SCENE=NEW SCENE(NEW LABEL(ERROR))
-//SE VUOI POSSO CREARE UN FXML COSI? SCRIVIMELO SU WHATSAPP SE SERVE
+
+//NINO GUARDA A RIGA 462, L'AGGIORNAMENTO INIZIALE DI DININGROOM FUNZIONA!!!!!!!!!!!!!!!!
 
 public class Gui extends Application implements View {
 
@@ -459,6 +459,7 @@ public class Gui extends Application implements View {
             stage.show();
         });
 
+        //ANTONINO GUARDA QUA CHE FORSE CI CAPISCI QUALCOSA (FUNZIONA MA VA APPLICATO ANCHE AGLI ALTRI AGGIORNAMENTI)
         Platform.runLater(()-> {
             fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
