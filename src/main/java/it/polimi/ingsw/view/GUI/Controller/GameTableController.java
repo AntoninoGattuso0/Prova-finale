@@ -270,15 +270,15 @@ public class GameTableController {
 
     public void setMotherNatureVisible() {
         int i;
-        for(i=0;i<gui.getLightGame().getIslands().size();i++){
+        for (i = 0; i < gui.getLightGame().getIslands().size(); i++) {
 
-        if(gui.getLightGame().getIslands().get(i).getMotherNature()) {
-            gameTable.lookup("#motherNature" + i).setVisible(true);
-        }else {
-            gameTable.lookup("#motherNature" + i).setVisible(false);
+            if (gui.getLightGame().getIslands().get(i).getMotherNature()) {
+                gameTable.lookup("#motherNature" + i).setVisible(true);
+            } else {
+                gameTable.lookup("#motherNature" + i).setVisible(false);
+            }
         }
-        }
-    }//
+    }
     public void setProhibited(){
         int i;
         for(i=0;i<lightGame.getIslands().size();i++){
