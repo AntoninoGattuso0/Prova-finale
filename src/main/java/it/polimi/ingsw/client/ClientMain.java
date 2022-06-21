@@ -19,7 +19,7 @@ public class ClientMain {
     public static void main(String[] args) throws IOException, ExecutionException {
         SocketNetworkHandler socketNetworkHandler = null;
         System.out.println("Inserisci l'indirizzo IP del server a cui vuoi collegarti:");
-        String address;.
+        String address;
         String view = null;
         address= readLine();
         System.out.println("Scrivere C per giocare con la Cli oppure G per giocare con la GUI:");
