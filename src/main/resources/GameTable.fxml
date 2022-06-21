@@ -779,7 +779,6 @@
          <Button fx:id="AssistantCardButton" mnemonicParsing="false" onMouseClicked="#switchToAssistantCard"
                  text="AssistantCard"/>
          <ChoiceBox fx:id="SchoolBoard" layoutX="94.0"  prefWidth="150.0"/>
-
          <Button fx:id="CharacterCard" layoutX="244.0" mnemonicParsing="false" onMouseClicked="#switchToCharacterCard"
                  prefHeight="26.0" prefWidth="107.0" text="CharacterCard"/>
          <BorderPane fx:id="showCard" layoutY="26.0" prefHeight="627.0" prefWidth="350.0"/>
