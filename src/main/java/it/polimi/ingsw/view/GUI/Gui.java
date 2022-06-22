@@ -414,14 +414,14 @@ public class Gui extends Application implements View {
             }
             gameTable=fxmlLoader.getController();
             gameTable.setGui(this);
-          //  gameTable.setPawnVisible();
-           // gameTable.setMotherNatureVisible();
-            //gameTable.setAllIslands(true,false);
-            //gameTable.setCloudVisible();
-           // gameTable.setTowers();
-            //gameTable.setButtonOff();
-           // gameTable.setProhibited();
-           // gameTable.setAssistantSchoolBoardCharacter();
+           gameTable.setPawnVisible();
+            gameTable.setMotherNatureVisible();
+            gameTable.setAllIslands(true,false);
+            gameTable.setCloudVisible();
+             gameTable.setTowers();
+            gameTable.setButtonOff();
+            gameTable.setProhibited();
+           gameTable.setAssistantSchoolBoardCharacter();
             gameTable.initializeBorderPane();
             stage.setScene(scene);
             stage.show();

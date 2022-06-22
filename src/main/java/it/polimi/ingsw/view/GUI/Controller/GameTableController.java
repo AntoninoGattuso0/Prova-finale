@@ -14,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -573,36 +574,34 @@ public void initializeBorderPane(){
     public void cloud3select(MouseEvent mouseEvent) {
     }
 
-    public void switchToSchoolBoard0(MouseEvent mouseEvent)  {
-       /* URL fileUrl = getClass().getResource("/SchoolBoard0.fxml");
+    public void switchToSchoolBoard0(MouseEvent mouseEvent) throws IOException {
+        URL fileUrl = getClass().getResource("/SchoolBoard0.fxml");
         assert fileUrl != null;
-        BorderPane view=FXMLLoader.load(file
+        BorderPane view=FXMLLoader.load(fileUrl);
         showAssistant.setCenter(view);
-        showAssistant.setVisible(true);*/
+        showAssistant.setVisible(true);
     }
 
-    public void switchToSchoolBoard1(MouseEvent mouseEvent)  {
-       /* URL fileUrl= getClass().getResource("/SchoolBoard1.fxml");
+    public void switchToSchoolBoard1(MouseEvent mouseEvent) throws IOException {
+        URL fileUrl= getClass().getResource("/SchoolBoard1.fxml");
         assert fileUrl != null;
         BorderPane view=FXMLLoader.load(fileUrl);
         showSchool1.setCenter(view);
-        showSchool1.setVisible(true);*/
+        showSchool1.setVisible(true);
     }
 
-    public void switchToSchoolBoard2(MouseEvent mouseEvent) {
-        /*URL fileUrl= getClass().getResource("/SchoolBoard2.fxml");
+    public void switchToSchoolBoard2(MouseEvent mouseEvent) throws IOException {
+        URL fileUrl= getClass().getResource("/SchoolBoard2.fxml");
         assert fileUrl != null;
         BorderPane view=FXMLLoader.load(fileUrl);
         showSchool2.setCenter(view);
-        showSchool2.setVisible(true);*/
+        showSchool2.setVisible(true);
     }
 
-    public void switchToSchoolBoard3(MouseEvent mouseEvent) {
-      /*  URL fileUrl= getClass().getResource("/SchoolBoard3.fxml");
+    public void switchToSchoolBoard3(MouseEvent mouseEvent) throws IOException {
+        URL fileUrl= getClass().getResource("/SchoolBoard3.fxml");
         assert fileUrl != null;
         BorderPane view=FXMLLoader.load(fileUrl);
         showSchool3.setCenter(view);
-        showSchool3.setVisible(true);/+/
-
-       */
+        showSchool3.setVisible(true);
     }}
