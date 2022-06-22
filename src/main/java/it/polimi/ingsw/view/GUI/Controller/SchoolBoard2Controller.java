@@ -1,7 +1,6 @@
 package it.polimi.ingsw.view.GUI.Controller;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
-import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -169,529 +168,434 @@ public class SchoolBoard2Controller {
     }
 
 
-    public ColorPawn green20Select(MouseEvent mouseEvent) {
+    public void green20Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceGreen2").setVisible(false);
         schoolBoard2.lookup("entranceGreen2").setDisable(true);
-        return ColorPawn.GREEN;
     }
 
-    public ColorPawn green21Select(MouseEvent mouseEvent) {
+    public void green21Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceGreen21").setVisible(false);
         schoolBoard2.lookup("entranceGreen21").setDisable(true);
-        return ColorPawn.GREEN;
     }
 
-    public ColorPawn green22Select(MouseEvent mouseEvent) {
+    public void green22Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceGreen22").setVisible(false);
         schoolBoard2.lookup("entranceGreen22").setDisable(true);
-        return ColorPawn.GREEN;
     }
 
-    public ColorPawn green23Select(MouseEvent mouseEvent) {
+    public void green23Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceGreen23").setVisible(false);
         schoolBoard2.lookup("entranceGreen23").setDisable(true);
-        return ColorPawn.GREEN;
     }
 
-    public ColorPawn green24Select(MouseEvent mouseEvent) {
+    public void green24Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceGreen24").setVisible(false);
         schoolBoard2.lookup("entranceGreen24").setDisable(true);
-        return ColorPawn.GREEN;
     }
 
-    public ColorPawn green25Select(MouseEvent mouseEvent) {
+    public void green25Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceGreen25").setVisible(false);
         schoolBoard2.lookup("entranceGreen25").setDisable(true);
-        return ColorPawn.GREEN;
     }
 
-    public ColorPawn green26Select(MouseEvent mouseEvent) {
+    public void green26Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceGreen26").setVisible(false);
         schoolBoard2.lookup("entranceGreen26").setDisable(true);
-        return ColorPawn.GREEN;
     }
 
-    public ColorPawn green27Select(MouseEvent mouseEvent) {
+    public void green27Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceGreen27").setVisible(false);
         schoolBoard2.lookup("entranceGreen27").setDisable(true);
-        return ColorPawn.GREEN;
     }
 
-    public ColorPawn green28Select(MouseEvent mouseEvent) {
+    public void green28Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceGreen28").setVisible(false);
         schoolBoard2.lookup("entranceGreen28").setDisable(true);
-        return ColorPawn.GREEN;
     }
 
-    public ColorPawn red20Select(MouseEvent mouseEvent) {
+    public void red20Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceRed2").setVisible(false);
         schoolBoard2.lookup("entranceRed2").setDisable(true);
-        return ColorPawn.RED;
     }
 
-    public ColorPawn red21Select(MouseEvent mouseEvent) {
+    public void red21Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceRed21").setVisible(false);
         schoolBoard2.lookup("entranceRed21").setDisable(true);
-        return ColorPawn.RED;
     }
 
-    public ColorPawn red22Select(MouseEvent mouseEvent) {
+    public void red22Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceRed22").setVisible(false);
         schoolBoard2.lookup("entranceRed22").setDisable(true);
-        return ColorPawn.RED;
     }
 
-    public ColorPawn red23Select(MouseEvent mouseEvent) {
+    public void red23Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceRed23").setVisible(false);
         schoolBoard2.lookup("entranceRed23").setDisable(true);
-        return ColorPawn.RED;
     }
 
-    public ColorPawn red24Select(MouseEvent mouseEvent) {
+    public void red24Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceRed24").setVisible(false);
         schoolBoard2.lookup("entranceRed24").setDisable(true);
-        return ColorPawn.RED;
     }
 
-    public ColorPawn red25Select(MouseEvent mouseEvent) {
+    public void red25Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceRed25").setVisible(false);
         schoolBoard2.lookup("entranceRed25").setDisable(true);
-        return ColorPawn.RED;
     }
 
-    public ColorPawn red26Select(MouseEvent mouseEvent) {
+    public void red26Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceRed26").setVisible(false);
         schoolBoard2.lookup("entranceRed26").setDisable(true);
-        return ColorPawn.RED;
     }
 
-    public ColorPawn red27Select(MouseEvent mouseEvent) {
+    public void red27Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceRed27").setVisible(false);
         schoolBoard2.lookup("entranceRed27").setDisable(true);
-        return ColorPawn.RED;
     }
 
-    public ColorPawn red28Select(MouseEvent mouseEvent) {
+    public void red28Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceRed28").setVisible(false);
         schoolBoard2.lookup("entranceRed28").setDisable(true);
-        return ColorPawn.RED;
     }
 
-    public ColorPawn yellow20Select(MouseEvent mouseEvent) {
+    public void yellow20Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceYellow2").setVisible(false);
         schoolBoard2.lookup("entranceYellow2").setDisable(true);
-        return ColorPawn.YELLOW;
     }
 
-    public ColorPawn yellow21Select(MouseEvent mouseEvent) {
+    public void yellow21Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceYellow21").setVisible(false);
         schoolBoard2.lookup("entranceYellow21").setDisable(true);
-        return ColorPawn.YELLOW;
     }
 
-    public ColorPawn yellow22Select(MouseEvent mouseEvent) {
+    public void yellow22Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceYellow22").setVisible(false);
         schoolBoard2.lookup("entranceYellow22").setDisable(true);
-        return ColorPawn.YELLOW;
     }
 
-    public ColorPawn yellow23Select(MouseEvent mouseEvent) {
+    public void yellow23Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceYellow23").setVisible(false);
         schoolBoard2.lookup("entranceYellow23").setDisable(true);
-        return ColorPawn.YELLOW;
     }
 
-    public ColorPawn yellow24Select(MouseEvent mouseEvent) {
+    public void yellow24Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceYellow24").setVisible(false);
         schoolBoard2.lookup("entranceYellow24").setDisable(true);
-        return ColorPawn.YELLOW;
     }
 
-    public ColorPawn yellow25Select(MouseEvent mouseEvent) {
+    public void yellow25Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceYellow25").setVisible(false);
         schoolBoard2.lookup("entranceYellow25").setDisable(true);
-        return ColorPawn.YELLOW;
     }
 
-    public ColorPawn yellow26Select(MouseEvent mouseEvent) {
+    public void yellow26Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceYellow26").setVisible(false);
         schoolBoard2.lookup("entranceYellow26").setDisable(true);
-        return ColorPawn.YELLOW;
     }
 
-    public ColorPawn yellow27Select(MouseEvent mouseEvent) {
+    public void yellow27Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceYellow25").setVisible(false);
         schoolBoard2.lookup("entranceYellow25").setDisable(true);
-        return ColorPawn.YELLOW;
     }
 
-    public ColorPawn yellow28Select(MouseEvent mouseEvent) {
+    public void yellow28Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceYellow25").setVisible(false);
         schoolBoard2.lookup("entranceYellow25").setDisable(true);
-        return ColorPawn.YELLOW;
     }
 
-    public ColorPawn pink20Select(MouseEvent mouseEvent) {
+    public void pink20Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entrancePink2").setVisible(false);
         schoolBoard2.lookup("entrancePink2").setDisable(true);
-        return ColorPawn.PINK;
     }
 
-    public ColorPawn pink21Select(MouseEvent mouseEvent) {
+    public void pink21Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entrancePink21").setVisible(false);
         schoolBoard2.lookup("entrancePink21").setDisable(true);
-        return ColorPawn.PINK;
     }
 
-    public ColorPawn pink22Select(MouseEvent mouseEvent) {
+    public void pink22Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entrancePink22").setVisible(false);
         schoolBoard2.lookup("entrancePink22").setDisable(true);
-        return ColorPawn.PINK;
     }
 
-    public ColorPawn pink23Select(MouseEvent mouseEvent) {
+    public void pink23Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entrancePink23").setVisible(false);
         schoolBoard2.lookup("entrancePink23").setDisable(true);
-        return ColorPawn.PINK;
     }
 
-    public ColorPawn pink24Select(MouseEvent mouseEvent) {
+    public void pink24Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entrancePink24").setVisible(false);
         schoolBoard2.lookup("entrancePink24").setDisable(true);
-        return ColorPawn.PINK;
     }
 
-    public ColorPawn pink25Select(MouseEvent mouseEvent) {
+    public void pink25Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entrancePink25").setVisible(false);
         schoolBoard2.lookup("entrancePink25").setDisable(true);
-        return ColorPawn.PINK;
     }
 
-    public ColorPawn pink26Select(MouseEvent mouseEvent) {
+    public void pink26Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entrancePink26").setVisible(false);
         schoolBoard2.lookup("entrancePink26").setDisable(true);
-        return ColorPawn.PINK;
     }
 
-    public ColorPawn pink27Select(MouseEvent mouseEvent) {
+    public void pink27Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entrancePink27").setVisible(false);
         schoolBoard2.lookup("entrancePink27").setDisable(true);
-        return ColorPawn.PINK;
     }
 
-    public ColorPawn pink28Select(MouseEvent mouseEvent) {
+    public void pink28Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entrancePink28").setVisible(false);
         schoolBoard2.lookup("entrancePink28").setDisable(true);
-        return ColorPawn.PINK;
     }
 
-    public ColorPawn blue20Select(MouseEvent mouseEvent) {
+    public void blue20Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceBlue2").setVisible(false);
         schoolBoard2.lookup("entranceBlue2").setDisable(true);
-        return ColorPawn.BLUE;
     }
 
-    public ColorPawn blue21Select(MouseEvent mouseEvent) {
+    public void blue21Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceBlue21").setVisible(false);
         schoolBoard2.lookup("entranceBlue21").setDisable(true);
-        return ColorPawn.BLUE;
     }
 
-    public ColorPawn blue22Select(MouseEvent mouseEvent) {
+    public void blue22Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceBlue22").setVisible(false);
         schoolBoard2.lookup("entranceBlue22").setDisable(true);
-        return ColorPawn.BLUE;
     }
 
-    public ColorPawn blue23Select(MouseEvent mouseEvent) {
+    public void blue23Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceBlue23").setVisible(false);
         schoolBoard2.lookup("entranceBlue23").setDisable(true);
-        return ColorPawn.BLUE;
     }
 
-    public ColorPawn blue24Select(MouseEvent mouseEvent) {
+    public void blue24Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceBlue24").setVisible(false);
         schoolBoard2.lookup("entranceBlue24").setDisable(true);
-        return ColorPawn.BLUE;
     }
 
-    public ColorPawn blue25Select(MouseEvent mouseEvent) {
+    public void blue25Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceBlue25").setVisible(false);
         schoolBoard2.lookup("entranceBlue25").setDisable(true);
-        return ColorPawn.BLUE;
     }
 
-    public ColorPawn blue26Select(MouseEvent mouseEvent) {
+    public void blue26Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceBlue26").setVisible(false);
         schoolBoard2.lookup("entranceBlue26").setDisable(true);
-        return ColorPawn.BLUE;
     }
 
-    public ColorPawn blue27Select(MouseEvent mouseEvent) {
+    public void blue27Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceBlue27").setVisible(false);
         schoolBoard2.lookup("entranceBlue27").setDisable(true);
-        return ColorPawn.BLUE;
     }
 
-    public ColorPawn blue28Select(MouseEvent mouseEvent) {
+    public void blue28Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("entranceBlue28").setVisible(false);
         schoolBoard2.lookup("entranceBlue28").setDisable(true);
-        return ColorPawn.BLUE;
     }
 
-    public ColorPawn selectSchoolGreen20(MouseEvent mouseEvent) {
+    public void selectSchoolGreen20(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Green0").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Green0").setDisable(true);
-        return ColorPawn.GREEN;
     }
-    public ColorPawn selectSchoolGreen21(MouseEvent mouseEvent) {
+    public void selectSchoolGreen21(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Green1").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Green1").setDisable(true);
-        return ColorPawn.GREEN;
     }
-    public ColorPawn selectSchoolGreen22(MouseEvent mouseEvent) {
+    public void selectSchoolGreen22(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Green2").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Green2").setDisable(true);
-        return ColorPawn.GREEN;
     }
-    public ColorPawn selectSchoolGreen23(MouseEvent mouseEvent) {
+    public void selectSchoolGreen23(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Green3").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Green3").setDisable(true);
-        return ColorPawn.GREEN;
     }
-    public ColorPawn selectSchoolGreen24(MouseEvent mouseEvent) {
+    public void selectSchoolGreen24(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Green4").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Green4").setDisable(true);
-        return ColorPawn.GREEN;
     }
-    public ColorPawn selectSchoolGreen25(MouseEvent mouseEvent) {
+    public void selectSchoolGreen25(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Green5").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Green5").setDisable(true);
-        return ColorPawn.GREEN;
     }
-    public ColorPawn selectSchoolGreen26(MouseEvent mouseEvent) {
+    public void selectSchoolGreen26(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Green6").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Green6").setDisable(true);
-        return ColorPawn.GREEN;
     }
-    public ColorPawn selectSchoolGreen27(MouseEvent mouseEvent) {
+    public void selectSchoolGreen27(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Green7").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Green7").setDisable(true);
-        return ColorPawn.GREEN;
     }
-    public ColorPawn selectSchoolGreen28(MouseEvent mouseEvent) {
+    public void selectSchoolGreen28(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Green8").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Green8").setDisable(true);
-        return ColorPawn.GREEN;
     }
-    public ColorPawn selectSchoolGreen29(MouseEvent mouseEvent) {
+    public void selectSchoolGreen29(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Green9").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Green9").setDisable(true);
-        return ColorPawn.GREEN;
     }
 
-    public ColorPawn selectSchoolRed20(MouseEvent mouseEvent) {
+    public void selectSchoolRed20(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Red0").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Red0").setDisable(true);
-        return ColorPawn.RED;
     }
-    public ColorPawn selectSchoolRed21(MouseEvent mouseEvent) {
+    public void selectSchoolRed21(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Red1").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Red1").setDisable(true);
-        return ColorPawn.RED;
     }
-    public ColorPawn selectSchoolRed22(MouseEvent mouseEvent) {
+    public void selectSchoolRed22(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Red2").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Red2").setDisable(true);
-        return ColorPawn.RED;
     }
-    public ColorPawn selectSchoolRed23(MouseEvent mouseEvent) {
+    public void selectSchoolRed23(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Red3").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Red3").setDisable(true);
-        return ColorPawn.RED;
     }
-    public ColorPawn selectSchoolRed24(MouseEvent mouseEvent) {
+    public void selectSchoolRed24(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Red4").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Red4").setDisable(true);
-        return ColorPawn.RED;
     }
-    public ColorPawn selectSchoolRed25(MouseEvent mouseEvent) {
+    public void selectSchoolRed25(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Red5").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Red5").setDisable(true);
-        return ColorPawn.RED;
     }
-    public ColorPawn selectSchoolRed26(MouseEvent mouseEvent) {
+    public void selectSchoolRed26(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Red6").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Red6").setDisable(true);
-        return ColorPawn.RED;
     }
-    public ColorPawn selectSchoolRed27(MouseEvent mouseEvent) {
+    public void selectSchoolRed27(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Red7").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Red7").setDisable(true);
-        return ColorPawn.RED;
     }
-    public ColorPawn selectSchoolRed28(MouseEvent mouseEvent) {
+    public void selectSchoolRed28(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Red8").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Red8").setDisable(true);
-        return ColorPawn.RED;
     }
-    public ColorPawn selectSchoolRed29(MouseEvent mouseEvent) {
+    public void selectSchoolRed29(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Red9").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Red9").setDisable(true);
-        return ColorPawn.RED;
     }
 
-    public ColorPawn selectSchoolYellow20(MouseEvent mouseEvent) {
+    public void selectSchoolYellow20(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Yellow0").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Yellow0").setDisable(true);
-        return ColorPawn.YELLOW;
     }
-    public ColorPawn selectSchoolYellow21(MouseEvent mouseEvent) {
+    public void selectSchoolYellow21(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Yellow1").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Yellow1").setDisable(true);
-        return ColorPawn.YELLOW;
     }
-    public ColorPawn selectSchoolYellow22(MouseEvent mouseEvent) {
+    public void selectSchoolYellow22(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Yellow2").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Yellow2").setDisable(true);
-        return ColorPawn.YELLOW;
     }
-    public ColorPawn selectSchoolYellow23(MouseEvent mouseEvent) {
+    public void selectSchoolYellow23(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Yellow3").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Yellow3").setDisable(true);
-        return ColorPawn.YELLOW;
     }
-    public ColorPawn selectSchoolYellow24(MouseEvent mouseEvent) {
+    public void selectSchoolYellow24(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Yellow4").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Yellow4").setDisable(true);
-        return ColorPawn.YELLOW;
     }
-    public ColorPawn selectSchoolYellow25(MouseEvent mouseEvent) {
+    public void selectSchoolYellow25(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Yellow5").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Yellow5").setDisable(true);
-        return ColorPawn.YELLOW;
     }
-    public ColorPawn selectSchoolYellow26(MouseEvent mouseEvent) {
+    public void selectSchoolYellow26(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Yellow6").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Yellow6").setDisable(true);
-        return ColorPawn.YELLOW;
     }
-    public ColorPawn selectSchoolYellow27(MouseEvent mouseEvent) {
+    public void selectSchoolYellow27(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Yellow7").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Yellow7").setDisable(true);
-        return ColorPawn.YELLOW;
     }
-    public ColorPawn selectSchoolYellow28(MouseEvent mouseEvent) {
+    public void selectSchoolYellow28(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Yellow8").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Yellow8").setDisable(true);
-        return ColorPawn.YELLOW;
     }
-    public ColorPawn selectSchoolYellow29(MouseEvent mouseEvent) {
+    public void selectSchoolYellow29(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Yellow9").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Yellow9").setDisable(true);
-        return ColorPawn.YELLOW;
     }
 
-    public ColorPawn selectSchoolPink20(MouseEvent mouseEvent) {
+    public void selectSchoolPink20(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Pink0").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Pink0").setDisable(true);
-        return ColorPawn.PINK;
     }
-    public ColorPawn selectSchoolPink21(MouseEvent mouseEvent) {
+    public void selectSchoolPink21(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Pink1").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Pink1").setDisable(true);
-        return ColorPawn.PINK;
     }
-    public ColorPawn selectSchoolPink22(MouseEvent mouseEvent) {
+    public void selectSchoolPink22(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Pink2").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Pink2").setDisable(true);
-        return ColorPawn.PINK;
     }
-    public ColorPawn selectSchoolPink23(MouseEvent mouseEvent) {
+    public void selectSchoolPink23(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Pink3").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Pink3").setDisable(true);
-        return ColorPawn.PINK;
     }
-    public ColorPawn selectSchoolPink24(MouseEvent mouseEvent) {
+    public void selectSchoolPink24(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Pink4").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Pink4").setDisable(true);
-        return ColorPawn.PINK;
     }
-    public ColorPawn selectSchoolPink25(MouseEvent mouseEvent) {
+    public void selectSchoolPink25(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Pink5").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Pink5").setDisable(true);
-        return ColorPawn.PINK;
     }
-    public ColorPawn selectSchoolPink26(MouseEvent mouseEvent) {
+    public void selectSchoolPink26(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Pink6").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Pink6").setDisable(true);
-        return ColorPawn.PINK;
     }
-    public ColorPawn selectSchoolPink27(MouseEvent mouseEvent) {
+    public void selectSchoolPink27(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Pink7").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Pink7").setDisable(true);
-        return ColorPawn.PINK;
     }
-    public ColorPawn selectSchoolPink28(MouseEvent mouseEvent) {
+    public void selectSchoolPink28(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Pink8").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Pink8").setDisable(true);
-        return ColorPawn.PINK;
     }
-    public ColorPawn selectSchoolPink29(MouseEvent mouseEvent) {
+    public void selectSchoolPink29(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Pink9").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Pink9").setDisable(true);
-        return ColorPawn.PINK;
     }
 
-    public ColorPawn selectSchoolBlue20(MouseEvent mouseEvent) {
+    public void selectSchoolBlue20(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Blue0").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Blue0").setDisable(true);
-        return ColorPawn.BLUE;
     }
-    public ColorPawn selectSchoolBlue21(MouseEvent mouseEvent) {
+    public void selectSchoolBlue21(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Blue1").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Blue1").setDisable(true);
-        return ColorPawn.BLUE;
     }
-    public ColorPawn selectSchoolBlue22(MouseEvent mouseEvent) {
+    public void selectSchoolBlue22(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Blue2").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Blue2").setDisable(true);
-        return ColorPawn.BLUE;
     }
-    public ColorPawn selectSchoolBlue23(MouseEvent mouseEvent) {
+    public void selectSchoolBlue23(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Blue3").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Blue3").setDisable(true);
-        return ColorPawn.BLUE;
     }
-    public ColorPawn selectSchoolBlue24(MouseEvent mouseEvent) {
+    public void selectSchoolBlue24(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Blue4").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Blue4").setDisable(true);
-        return ColorPawn.BLUE;
     }
-    public ColorPawn selectSchoolBlue25(MouseEvent mouseEvent) {
+    public void selectSchoolBlue25(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Blue5").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Blue5").setDisable(true);
-        return ColorPawn.BLUE;
     }
-    public ColorPawn selectSchoolBlue26(MouseEvent mouseEvent) {
+    public void selectSchoolBlue26(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Blue6").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Blue6").setDisable(true);
-        return ColorPawn.BLUE;
     }
-    public ColorPawn selectSchoolBlue27(MouseEvent mouseEvent) {
+    public void selectSchoolBlue27(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Blue7").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Blue7").setDisable(true);
-        return ColorPawn.BLUE;
     }
-    public ColorPawn selectSchoolBlue28(MouseEvent mouseEvent) {
+    public void selectSchoolBlue28(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Blue8").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Blue8").setDisable(true);
-        return ColorPawn.BLUE;
     }
-    public ColorPawn selectSchoolBlue29(MouseEvent mouseEvent) {
+    public void selectSchoolBlue29(MouseEvent mouseEvent) {
         schoolBoard2.lookup("schoolBoard2Blue9").setVisible(false);
         schoolBoard2.lookup("schoolBoard2Blue9").setDisable(true);
-        return ColorPawn.BLUE;
     }
 
 }
