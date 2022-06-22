@@ -117,7 +117,7 @@ public class SchoolBoard0Controller {
         }
     }
 
-    //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine che passiamo con numColore
+    //le 5 funzioni qui sotto mettono visibile/ non visibili/clickabili...  le pedine che passiamo con numColore
     public void greenEntrance0(boolean boolVisibility, boolean boolClickable, int numGreen){
         for(Node school : schoolBoard0.getChildren()){
             if(school.getId().equals("entranceGreen0" + numGreen)){
@@ -200,38 +200,49 @@ public class SchoolBoard0Controller {
     }
 
     //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine delle dining che passiamo con num
-    public void greenVisibilityDining0(boolean bool, int num){
+
+    public void greenDining0(boolean boolVisibility, boolean boolClickable, int num){
             for(Node school : schoolBoard0.getChildren()) {
-                if (school.getId().equals("schoolBoard0Green" + num))
-                    school.setVisible(bool);
+                if (school.getId().equals("schoolBoard0Green" + num)){
+                    school.setVisible(boolVisibility);
+                    school.setDisable(boolClickable);
+                }
             }
     }
-    public void redVisibilityDining0(boolean bool, int num){
+    public void redDining0(boolean boolVisibility, boolean boolClickable, int num){
         for(Node school : schoolBoard0.getChildren()) {
-            if (school.getId().equals("schoolBoard0Red" + num))
-                school.setVisible(bool);
+            if (school.getId().equals("schoolBoard0Red" + num)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
-    public void yellowVisibilityDining0(boolean bool, int num){
+    public void yellowDining0(boolean boolVisibility, boolean boolClickable, int num){
         for(Node school : schoolBoard0.getChildren()) {
-            if (school.getId().equals("schoolBoard0Yellow" + num))
-                school.setVisible(bool);
+            if (school.getId().equals("schoolBoard0Yellow" + num)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
-    public void pinkVisibilityDining0(boolean bool, int num){
+    public void pinkDining0(boolean boolVisibility, boolean boolClickable, int num){
         for(Node school : schoolBoard0.getChildren()) {
-            if (school.getId().equals("schoolBoard0Pink" + num))
-                school.setVisible(bool);
+            if (school.getId().equals("schoolBoard0Pink" + num)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
-    public void blueVisibilityDining0(boolean bool, int num){
+    public void blueDining0(boolean boolVisibility, boolean boolClickable, int num){
         for(Node school : schoolBoard0.getChildren()) {
-            if (school.getId().equals("schoolBoard0Blue" + num))
-                school.setVisible(bool);
+            if (school.getId().equals("schoolBoard0Blue" + num)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
 
-
+//questo devo rivederlo
     public void setProfessor0(){
         if(lightGame.getProfTable().getGreenProf() == 0){
             for(Node school : schoolBoard0.getChildren()) {

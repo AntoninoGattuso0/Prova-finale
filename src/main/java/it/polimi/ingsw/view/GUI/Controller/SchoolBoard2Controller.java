@@ -199,34 +199,44 @@ public class SchoolBoard2Controller {
         }
     }
     //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine delle dining che passiamo con num
-    public void greenVisibilityDining2(boolean bool, int num){
+    public void greenDining2(boolean boolVisibility, boolean boolClickable, int num){
         for(Node school : schoolBoard2.getChildren()) {
-            if (school.getId().equals("schoolBoard2Green" + num))
-                school.setVisible(bool);
+            if (school.getId().equals("schoolBoard2Green" + num)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
-    public void redVisibilityDining2(boolean bool, int num){
+    public void redDining2(boolean boolVisibility, boolean boolClickable, int num){
         for(Node school : schoolBoard2.getChildren()) {
-            if (school.getId().equals("schoolBoard2Red" + num))
-                school.setVisible(bool);
+            if (school.getId().equals("schoolBoard2Red" + num)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
-    public void yellowVisibilityDining2(boolean bool, int num){
+    public void yellowDining2(boolean boolVisibility, boolean boolClickable, int num){
         for(Node school : schoolBoard2.getChildren()) {
-            if (school.getId().equals("schoolBoard2Yellow" + num))
-                school.setVisible(bool);
+            if (school.getId().equals("schoolBoard2Yellow" + num)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
-    public void pinkVisibilityDining2(boolean bool, int num){
+    public void pinkDining2(boolean boolVisibility, boolean boolClickable, int num){
         for(Node school : schoolBoard2.getChildren()) {
-            if (school.getId().equals("schoolBoard2Pink" + num))
-                school.setVisible(bool);
+            if (school.getId().equals("schoolBoard2Pink" + num)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
-    public void blueVisibilityDining2(boolean bool, int num){
+    public void blueVDining2(boolean boolVisibility, boolean boolClickable, int num){
         for(Node school : schoolBoard2.getChildren()) {
-            if (school.getId().equals("schoolBoard2Blue" + num))
-                school.setVisible(bool);
+            if (school.getId().equals("schoolBoard2Blue" + num)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
 
