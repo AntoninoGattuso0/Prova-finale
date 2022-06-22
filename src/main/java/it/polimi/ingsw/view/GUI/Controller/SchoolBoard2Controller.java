@@ -64,7 +64,6 @@ public class SchoolBoard2Controller {
 
     public void setEntrance2(){
         int green = lightGame.getPlayers().get(2).getEntrance().getGreenPawn();
-        System.out.println(green);
         for(int i=0; i<green; i++){
             for(Node school : schoolBoard2.getChildren()){
                 if(school.getId().equals("entranceGreen2" + i))
