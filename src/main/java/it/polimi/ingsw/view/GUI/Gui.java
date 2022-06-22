@@ -12,11 +12,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -54,7 +52,7 @@ public class Gui extends Application implements View {
     }
     public LightGame getLightGame(){return this.lightGame;}
 
-    public GameTableController getGameTable(){return this.gameTable;}
+
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -166,7 +164,7 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayAssistantCard(int player) {
-        stage.show();
+       // stage.show();
      //  for(j=0;j<lightGame.getPlayers().get(player).getDeckAssistant().size();j++){
           // int n=lightGame.getPlayers().get(player).getDeckAssistant().get(j).getCardValue();
            //assistantCardController.setAble(n);
@@ -406,6 +404,27 @@ public class Gui extends Application implements View {
            gameStartedController.setGui(this);
            gameStartedController.setGameText(true);
             stage.show();
+            fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/GameTable.fxml"));;
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+                scene = new Scene(new Label("Error"));
+            }
+            gameTable=fxmlLoader.getController();
+            gameTable.setGui(this);
+          //  gameTable.setPawnVisible();
+           // gameTable.setMotherNatureVisible();
+            //gameTable.setAllIslands(true,false);
+            //gameTable.setCloudVisible();
+           // gameTable.setTowers();
+            //gameTable.setButtonOff();
+           // gameTable.setProhibited();
+           // gameTable.setAssistantSchoolBoardCharacter();
+            gameTable.initializeBorderPane();
+            stage.setScene(scene);
+            stage.show();
         });
     }
 
@@ -431,68 +450,10 @@ public class Gui extends Application implements View {
 
     @Override
     public void turnOrder(ArrayList<String> players) {
-
-
         Platform.runLater(()-> {
-            fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/GameTable.fxml"));
-            Scene scene=null;
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                e.printStackTrace();
-                scene = new Scene(new Label("Error"));
-            }
-            gameTable=fxmlLoader.getController();
-            gameTable.setGui(this);
-            gameTable.inizializeBorderPane();
             gameTable.setTurnOf(players);
-            gameTable.setPawnVisible();
-            gameTable.setMotherNatureVisible();
-            gameTable.setAllIslands(true,false);
-            gameTable.setCloudVisible();
-            gameTable.setTowers();
-            gameTable.setButtonOff();
-            gameTable.setProhibited();
-            gameTable.setAssistantSchoolBoardCharacter();
-            stage.setScene(scene);
-            stage.show();
-        });
-
-
-
-        //ANTONINO GUARDA QUA CHE FORSE CI CAPISCI QUALCOSA (FUNZIONA MA VA APPLICATO ANCHE AGLI ALTRI AGGIORNAMENTI)
-        Platform.runLater(()-> {
-            fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
-            Scene scene = null;
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                e.printStackTrace();
-                scene = new Scene(new Label("Error"));
-            }
-            schoolBoard0Controller=fxmlLoader.getController();
-            schoolBoard0Controller.setGui(this);
-            schoolBoard0Controller.setSchoolBoard0();
-
-            gameTable.getShowSchool0().setCenter(schoolBoard0Controller.getSchoolBoard0());
         });
     }
-
-    public Pane getPage(String fileName) {
-        Pane view = null;
-        try {
-            URL fileUrl = getClass().getResource("/"+fileName + ".fxml");
-            if (fileUrl == null)
-                throw new java.io.FileNotFoundException("Impossibile trovare file");
-            view = FXMLLoader.load(fileUrl);
-        } catch (Exception e) {
-            System.out.println("No Page Found");
-        }
-        return view;
-    }
-
     @Override
     public void startTurn(ArrayList<String> players, String actualPlayer) {
         if (Objects.equals(actualPlayer, socketNetworkHandler.getNicknameThisPlayer())) {

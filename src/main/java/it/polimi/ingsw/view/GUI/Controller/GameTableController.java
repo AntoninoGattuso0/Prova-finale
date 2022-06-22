@@ -6,20 +6,20 @@ import it.polimi.ingsw.view.GUI.Gui;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GameTableController {
+    @FXML AnchorPane root;
     @FXML BorderPane showSchool1;
     @FXML BorderPane showSchool2;
     @FXML BorderPane showSchool3;
@@ -102,11 +102,26 @@ public class GameTableController {
     @FXML Text turnOf;
     @FXML Text messages;
 
-    FXMLLoader fxmlLoader;
+    FXMLLoader school2fxmlLoader;
+    FXMLLoader assistantLoader;
+    FXMLLoader characterLoader;
+    FXMLLoader school0fxmlLoader;
+    FXMLLoader school1fxmlLoader;
+    FXMLLoader school3fxmlLoader;
 
+
+    int c=0;
+    int a=0;
+    int sb0=0;
+    int sb1=0;
+    int sb2=0;
+    int sb3=0;
     SchoolBoard0Controller schoolBoard0Controller;
-
+    CharacterCardController characterCardController;
     AssistantCardController assistantCardController;
+    SchoolBoard1Controller schoolBoard1Controller;
+    SchoolBoard2Controller schoolBoard2Controller;
+    SchoolBoard3Controller schoolBoard3Controller;
 
     public BorderPane getShowSchool0(){return showSchool0;}
 
@@ -158,21 +173,6 @@ public class GameTableController {
             SchoolBoard.getSelectionModel().selectedIndexProperty().addListener((ov, value, new_value) -> {
             // set the SchoolBoard for the selected item
                 if((int)new_value == 0){
-                    Platform.runLater(()-> {
-                        fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
-                        Scene scene = null;
-                        try {
-                            scene = new Scene(fxmlLoader.load());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            scene = new Scene(new Label("Error"));
-                        }
-                        schoolBoard0Controller=fxmlLoader.getController();
-                        schoolBoard0Controller.setGui(this.gui);
-                        schoolBoard0Controller.setAllInvisible();
-                    });
-
                     showAssistant.setVisible(false);
                     showCharacterCard.setVisible(false);
                     showSchool0.setVisible(true);
@@ -414,17 +414,50 @@ public class GameTableController {
         }
     }
 
-    public void island0Select(MouseEvent mouseEvent) {
+   public void island0Select(MouseEvent mouseEvent) {
     }
 
     public Pane getPage(String fileName) {
         Pane view = null;
         try {
             URL fileUrl = getClass().getResource("/"+fileName + ".fxml");
+
             if (fileUrl == null)
                 throw new java.io.FileNotFoundException("Impossibile trovare file");
+            if(Objects.equals(fileName, "AssistantCard") &&a==0) {
+                assistantLoader= new FXMLLoader();
+                assistantLoader.setLocation(getClass().getResource("/"+fileName+".fxml"));
+                assistantCardController=assistantLoader.getController();
+                a=1;
+            }else if(Objects.equals(fileName, "CharacterCard") &&c==0){
+                c=1;
+                characterLoader= new FXMLLoader();
+                characterLoader.setLocation(getClass().getResource("/"+fileName+".fxml"));
+                characterCardController= characterLoader.getController();
+            }else if(Objects.equals(fileName, "SchoolBoard0")&&sb0==0){
+               school0fxmlLoader= new FXMLLoader();
+                school0fxmlLoader.setLocation(getClass().getResource("/"+fileName+".fxml"));
+                school0fxmlLoader= school0fxmlLoader.getController();
+                sb0=1;
+            }else if(Objects.equals(fileName,"SchoolBoard1")&&sb1==0){
+                school1fxmlLoader= new FXMLLoader();
+                school1fxmlLoader.setLocation(getClass().getResource("/"+fileName+".fxml"));
+                school1fxmlLoader= school1fxmlLoader.getController();
+                sb1=1;
+            }else if(Objects.equals(fileName,"SchoolBoard2")&&sb2==0){
+                school2fxmlLoader= new FXMLLoader();
+                school2fxmlLoader.setLocation(getClass().getResource("/"+fileName+".fxml"));
+                school2fxmlLoader= school0fxmlLoader.getController();
+                sb2=1;
+            }else if(Objects.equals(fileName,"SchoolBoard3")&&sb3==0) {
+                school3fxmlLoader= new FXMLLoader();
+                school3fxmlLoader.setLocation(getClass().getResource("/"+fileName+".fxml"));
+                school3fxmlLoader= school3fxmlLoader.getController();
+                sb3=1;
+            }
             view = FXMLLoader.load(fileUrl);
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("No Page Found");
         }
     return view;
@@ -436,6 +469,10 @@ public class GameTableController {
        showSchool1.setVisible(false);
        showSchool2.setVisible(false);
        showSchool3.setVisible(false);
+        Platform.runLater(()->{
+            assistantCardController.setInvisibile(2);
+            assistantCardController.setInvisibile(4);
+        });
     }
 
 
@@ -446,60 +483,50 @@ public class GameTableController {
         showSchool1.setVisible(false);
         showSchool2.setVisible(false);
         showSchool3.setVisible(false);
+        Platform.runLater(()->{
+            assistantCardController.setInvisibile(2);
+            assistantCardController.setInvisibile(4);
+        });
     }
 
 
+public void initializeBorderPane(){
+        Platform.runLater(()->{
+            Pane view;
+            view = getPage("AssistantCard");
+            showAssistant.setCenter(view);
+            showAssistant.setVisible(false);
 
+            view = getPage("CharacterCard");
+            showCharacterCard.setCenter(view);
+            showCharacterCard.setVisible(false);
 
-    public void inizializeBorderPane(){
-        Pane view = getPage("AssistantCard");
-        showAssistant.setCenter(view);
-        showAssistant.setVisible(false);
+            view = getPage("SchoolBoard0");
+            showSchool0.setCenter(view);
+            showSchool0.setVisible(false);
 
-        view = getPage("CharacterCard");
-        showCharacterCard.setCenter(view);
-        showCharacterCard.setVisible(false);
-
-        view = getPage("SchoolBoard0");
-        showSchool0.setCenter(view);
-        showSchool0.setVisible(false);
-
-        view = getPage("SchoolBoard1");
-        showSchool1.setCenter(view);
-        showSchool1.setVisible(false);
-
-        view = getPage("SchoolBoard2");
-        showSchool2.setCenter(view);
-        showSchool2.setVisible(false);
-
-        view = getPage("SchoolBoard3");
-        showSchool3.setCenter(view);
-        showSchool3.setVisible(false);
-    }
-
-
-
-    public void switchToSchoolBoard(MouseEvent mouseEvent) {
-        int num = -1;
-        String ciao = SchoolBoard.getValue();
-        System.out.println(ciao);
-        if(SchoolBoard.getValue() != null) {
-            if (SchoolBoard.getValue().equals("Board " + lightGame.getPlayers().get(0).getNickname())) {
-                Pane view = getPage("SchoolBoard0");
-                showCharacterCard.setCenter(view);
-            } else if (SchoolBoard.getValue().equals("Board " + lightGame.getPlayers().get(1).getNickname())) {
-                Pane view = getPage("SchoolBoard1");
-                showCharacterCard.setCenter(view);
-            } else if (SchoolBoard.getValue().equals("Board " + lightGame.getPlayers().get(2).getNickname())) {
-                Pane view = getPage("SchoolBoard2");
-                showCharacterCard.setCenter(view);
-            } else if (SchoolBoard.getValue().equals("Board " + lightGame.getPlayers().get(3).getNickname())) {
-                Pane view = getPage("SchoolBoard3");
-                showCharacterCard.setCenter(view);
+            view = getPage("SchoolBoard1");
+            showSchool1.setCenter(view);
+            showSchool1.setVisible(false);
+            if(lightGame.getPlayers().size()>2) {
+                view = getPage("SchoolBoard2");
+                showSchool2.setCenter(view);
+                showSchool2.setVisible(false);
             }
-        }
+            if(lightGame.getPlayers().size()>3) {
+                view = getPage("SchoolBoard3");
+                showSchool3.setCenter(view);
+                showSchool3.setVisible(false);
+            }
+            System.out.println("ciao");
+        });
+        if(assistantCardController==null)
+            System.out.println("controller null fuori");
+        Platform.runLater(() ->{
+            if(assistantCardController==null)
+                System.out.println("controller null dentro");
+        });
     }
-
 
     public void island11Select(MouseEvent mouseEvent) {
     }
@@ -545,4 +572,37 @@ public class GameTableController {
 
     public void cloud3select(MouseEvent mouseEvent) {
     }
-}
+
+    public void switchToSchoolBoard0(MouseEvent mouseEvent)  {
+       /* URL fileUrl = getClass().getResource("/SchoolBoard0.fxml");
+        assert fileUrl != null;
+        BorderPane view=FXMLLoader.load(file
+        showAssistant.setCenter(view);
+        showAssistant.setVisible(true);*/
+    }
+
+    public void switchToSchoolBoard1(MouseEvent mouseEvent)  {
+       /* URL fileUrl= getClass().getResource("/SchoolBoard1.fxml");
+        assert fileUrl != null;
+        BorderPane view=FXMLLoader.load(fileUrl);
+        showSchool1.setCenter(view);
+        showSchool1.setVisible(true);*/
+    }
+
+    public void switchToSchoolBoard2(MouseEvent mouseEvent) {
+        /*URL fileUrl= getClass().getResource("/SchoolBoard2.fxml");
+        assert fileUrl != null;
+        BorderPane view=FXMLLoader.load(fileUrl);
+        showSchool2.setCenter(view);
+        showSchool2.setVisible(true);*/
+    }
+
+    public void switchToSchoolBoard3(MouseEvent mouseEvent) {
+      /*  URL fileUrl= getClass().getResource("/SchoolBoard3.fxml");
+        assert fileUrl != null;
+        BorderPane view=FXMLLoader.load(fileUrl);
+        showSchool3.setCenter(view);
+        showSchool3.setVisible(true);/+/
+
+       */
+    }}

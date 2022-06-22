@@ -26,7 +26,6 @@ public class CharacterCardController {
     public void setGui(Gui gui) {
         this.gui = gui;
         this.lightGame = gui.getLightGame();
-        this.gameTableController = gui.getGameTable();
     }
     
     public void setDisableAll() {
