@@ -3,6 +3,7 @@ package it.polimi.ingsw.view.GUI.Controller;
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.model.ColorTower;
 import it.polimi.ingsw.view.GUI.Gui;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -148,6 +149,9 @@ public class GameTableController {
                 if((int)new_value == 0){
                     showAssistant.setVisible(false);
                     showCharacterCard.setVisible(false);
+                    Platform.runLater(()-> {
+                        schoolBoard0Controller.setSchoolBoard0();
+                            });
                     showSchool0.setVisible(true);
                     showSchool1.setVisible(false);
                     showSchool2.setVisible(false);

@@ -427,7 +427,6 @@ public class Gui extends Application implements View {
             stage.setScene(scene);
             stage.show();
         });
-
         Platform.runLater(()-> {
             fxmlSchool0= new FXMLLoader();
             fxmlSchool0.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
@@ -440,10 +439,8 @@ public class Gui extends Application implements View {
             schoolBoard0Controller.setGui(this);
             schoolBoard0Controller.setSchoolBoard0();
             gameTable.getShowSchool0().setCenter(schoolBoard0Controller.getSchoolBoard0());
-            gameTable.getShowSchool0().getCenter().setVisible(true);
+            gameTable.getShowSchool0().getCenter().setVisible(false);
         });
-
-
 }
 
     public AssistantCardController getAssistantCardController() {
