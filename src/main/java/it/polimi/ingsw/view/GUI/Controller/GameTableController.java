@@ -414,7 +414,6 @@ public class GameTableController {
 
 
 
-
     public void initializeBorderPane(){
         Pane view = getPage("AssistantCard");
         showAssistant.setCenter(view);

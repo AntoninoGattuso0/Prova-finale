@@ -443,7 +443,6 @@ public class Gui extends Application implements View {
             gameTable.getShowSchool0().setCenter(schoolBoard0Controller.getSchoolBoard0());
         });
 
-
 }
 
     public AssistantCardController getAssistantCardController() {
