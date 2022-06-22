@@ -37,27 +37,44 @@ public class SchoolBoard2Controller {
         }
     }
 
+
     public void setEntrance2Clickable(){
         setEntrance2();
         int green = lightGame.getPlayers().get(2).getEntrance().getGreenPawn();
-        for(int i=2; i<green; i++){
-            schoolBoard2.lookup("entranceGreen2" + i).setDisable(false);
+        for(int i=0; i<green; i++){
+            for(Node school : schoolBoard2.getChildren()){
+                if(school.getId().equals("entranceGreen2" + i))
+                    school.setDisable(false);
+            }
         }
+
         int red = lightGame.getPlayers().get(2).getEntrance().getRedPawn() + green;
         for(int i=green; i<red; i++){
-            schoolBoard2.lookup("entranceRed2" + i).setDisable(false);
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("entranceRed2" + i))
+                    school.setDisable(false);
+            }
         }
-        int yellow = lightGame.getPlayers().get(2).getEntrance().getRedPawn() + red;
+        int yellow = lightGame.getPlayers().get(2).getEntrance().getYellowPawn() + red;
         for(int i=red; i<yellow; i++){
-            schoolBoard2.lookup("entranceYellow2" + i).setDisable(false);
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("entranceYellow2" + i))
+                    school.setDisable(false);
+            }
         }
         int pink = lightGame.getPlayers().get(2).getEntrance().getPinkPawn() + yellow;
         for(int i=yellow; i<pink; i++){
-            schoolBoard2.lookup("entrancePink2" + i).setDisable(false);
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("entrancePink2" + i))
+                    school.setDisable(false);
+            }
         }
-        int blue = lightGame.getPlayers().get(2).getEntrance().getPinkPawn() + pink;
+        int blue = lightGame.getPlayers().get(2).getEntrance().getBluePawn() + pink;
         for(int i=pink; i<blue; i++){
-            schoolBoard2.lookup("entranceBlue2" + i).setDisable(false);
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("entranceBlue2" + i))
+                    school.setDisable(false);
+            }
         }
     }
 
@@ -170,7 +187,7 @@ public class SchoolBoard2Controller {
             }
         }
     }
-
+    //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine delle dining che passiamo con num
     public void greenVisibilityDining2(boolean bool, int num){
         for(Node school : schoolBoard2.getChildren()) {
             if (school.getId().equals("schoolBoard2Green" + num))

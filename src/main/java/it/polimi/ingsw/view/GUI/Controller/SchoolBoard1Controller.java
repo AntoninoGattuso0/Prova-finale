@@ -189,7 +189,7 @@ public class SchoolBoard1Controller {
             }
         }
     }
-
+    //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine delle dining che passiamo con num
     public void greenVisibilityDining1(boolean bool, int num){
         for(Node school : schoolBoard1.getChildren()) {
             if (school.getId().equals("schoolBoard1Green" + num))

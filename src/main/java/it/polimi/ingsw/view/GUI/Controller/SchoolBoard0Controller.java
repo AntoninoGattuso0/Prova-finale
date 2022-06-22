@@ -38,23 +38,39 @@ public class SchoolBoard0Controller {
         setEntrance0();
         int green = lightGame.getPlayers().get(0).getEntrance().getGreenPawn();
         for(int i=0; i<green; i++){
-            schoolBoard0.lookup("entranceGreen0" + i).setDisable(false);
+            for(Node school : schoolBoard0.getChildren()){
+                if(school.getId().equals("entranceGreen0" + i))
+                    school.setDisable(false);
+            }
         }
+
         int red = lightGame.getPlayers().get(0).getEntrance().getRedPawn() + green;
         for(int i=green; i<red; i++){
-            schoolBoard0.lookup("entranceRed0" + i).setDisable(false);
+            for(Node school : schoolBoard0.getChildren()) {
+                if (school.getId().equals("entranceRed0" + i))
+                    school.setDisable(false);
+            }
         }
-        int yellow = lightGame.getPlayers().get(0).getEntrance().getRedPawn() + red;
+        int yellow = lightGame.getPlayers().get(0).getEntrance().getYellowPawn() + red;
         for(int i=red; i<yellow; i++){
-            schoolBoard0.lookup("entranceYellow0" + i).setDisable(false);
+            for(Node school : schoolBoard0.getChildren()) {
+                if (school.getId().equals("entranceYellow0" + i))
+                    school.setDisable(false);
+            }
         }
         int pink = lightGame.getPlayers().get(0).getEntrance().getPinkPawn() + yellow;
         for(int i=yellow; i<pink; i++){
-            schoolBoard0.lookup("entrancePink0" + i).setDisable(false);
+            for(Node school : schoolBoard0.getChildren()) {
+                if (school.getId().equals("entrancePink0" + i))
+                    school.setDisable(false);
+            }
         }
-        int blue = lightGame.getPlayers().get(0).getEntrance().getPinkPawn() + pink;
+        int blue = lightGame.getPlayers().get(0).getEntrance().getBluePawn() + pink;
         for(int i=pink; i<blue; i++){
-            schoolBoard0.lookup("entranceBlue0" + i).setDisable(false);
+            for(Node school : schoolBoard0.getChildren()) {
+                if (school.getId().equals("entranceBlue0" + i))
+                    school.setDisable(false);
+            }
         }
     }
 
