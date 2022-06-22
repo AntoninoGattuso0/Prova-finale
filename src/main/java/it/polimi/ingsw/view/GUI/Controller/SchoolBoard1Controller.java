@@ -190,6 +190,37 @@ public class SchoolBoard1Controller {
         }
     }
 
+    public void greenVisibilityDining1(boolean bool, int num){
+        for(Node school : schoolBoard1.getChildren()) {
+            if (school.getId().equals("schoolBoard1Green" + num))
+                school.setVisible(bool);
+        }
+    }
+    public void redVisibilityDining1(boolean bool, int num){
+        for(Node school : schoolBoard1.getChildren()) {
+            if (school.getId().equals("schoolBoard1Red" + num))
+                school.setVisible(bool);
+        }
+    }
+    public void yellowVisibilityDining1(boolean bool, int num){
+        for(Node school : schoolBoard1.getChildren()) {
+            if (school.getId().equals("schoolBoard1Yellow" + num))
+                school.setVisible(bool);
+        }
+    }
+    public void pinkVisibilityDining1(boolean bool, int num){
+        for(Node school : schoolBoard1.getChildren()) {
+            if (school.getId().equals("schoolBoard1Pink" + num))
+                school.setVisible(bool);
+        }
+    }
+    public void blueVisibilityDining1(boolean bool, int num){
+        for(Node school : schoolBoard1.getChildren()) {
+            if (school.getId().equals("schoolBoard1Blue" + num))
+                school.setVisible(bool);
+        }
+    }
+
     public void setProfessor1(){
         if(lightGame.getProfTable().getGreenProf() == 1)
             schoolBoard1.lookup("schoolGreenProf1").setVisible(true);

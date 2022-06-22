@@ -170,6 +170,40 @@ public class SchoolBoard0Controller {
         }
     }
 
+    //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine delle dining che passiamo con num
+    public void greenVisibilityDining0(boolean bool, int num){
+            for(Node school : schoolBoard0.getChildren()) {
+                if (school.getId().equals("schoolBoard0Green" + num))
+                    school.setVisible(bool);
+            }
+    }
+    public void redVisibilityDining0(boolean bool, int num){
+        for(Node school : schoolBoard0.getChildren()) {
+            if (school.getId().equals("schoolBoard0Red" + num))
+                school.setVisible(bool);
+        }
+    }
+    public void yellowVisibilityDining0(boolean bool, int num){
+        for(Node school : schoolBoard0.getChildren()) {
+            if (school.getId().equals("schoolBoard0Yellow" + num))
+                school.setVisible(bool);
+        }
+    }
+    public void pinkVisibilityDining0(boolean bool, int num){
+        for(Node school : schoolBoard0.getChildren()) {
+            if (school.getId().equals("schoolBoard0Pink" + num))
+                school.setVisible(bool);
+        }
+    }
+    public void blueVisibilityDining0(boolean bool, int num){
+        for(Node school : schoolBoard0.getChildren()) {
+            if (school.getId().equals("schoolBoard0Blue" + num))
+                school.setVisible(bool);
+        }
+    }
+
+
+
     public void setProfessor0(){
         if(lightGame.getProfTable().getGreenProf() == 0)
             schoolBoard0.lookup("schoolGreenProf0").setVisible(true);
