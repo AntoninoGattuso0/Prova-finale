@@ -20,6 +20,7 @@ public class GameTableController {
     @FXML BorderPane showSchool3;
     @FXML BorderPane showSchool0;
     @FXML BorderPane showAssistant;
+    @FXML BorderPane showCharacterCard;
     @FXML Button CharacterCard;
     @FXML ChoiceBox<String> SchoolBoard;
     @FXML Button AssistantCardButton;
@@ -92,8 +93,7 @@ public class GameTableController {
     LightGame lightGame;
     @FXML
     Pane gameTable;
-    @FXML
-    BorderPane showCharacterCard;
+
     @FXML Text turnOf;
     @FXML Text messages;
     FXMLLoader fxmlLoader;
