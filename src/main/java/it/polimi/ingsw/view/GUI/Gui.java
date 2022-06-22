@@ -103,7 +103,7 @@ public class Gui extends Application implements View {
                 scene = new Scene(new Label("Error"));
             }
             stage.setScene(scene);
-            numOfPlayerIsExpertController=new NumOfPlayerIsExpertController();
+            NumOfPlayerIsExpertController numOfPlayerIsExpertController=new NumOfPlayerIsExpertController();
             numOfPlayerIsExpertController=fxmlLoader.getController();
             numOfPlayerIsExpertController.setGui(this);
             numOfPlayerIsExpertController.setNumPlayerIsExpert();
@@ -248,7 +248,7 @@ public class Gui extends Application implements View {
                     scene = new Scene(new Label("Error"));
                 }
                 stage.setScene(scene);
-                winnerScene = fxmlLoader.getController();
+                WinnerSceneController winnerScene = fxmlLoader.getController();
                 winnerScene.setGui(this);
                 winnerScene.setNicknameWinner(finalNickname);
                 winnerScene.setWinnerScene(true);
@@ -274,7 +274,7 @@ public class Gui extends Application implements View {
                 scene = new Scene(new Label("Error"));
             }
             stage.setScene(scene);
-            warningNicknameController= fxmlLoader.getController();
+             WarningNicknameController warningNicknameController= fxmlLoader.getController();
             warningNicknameController.setGui(this);
             warningNicknameController.setOkButton();
             warningNicknameController.setWarningNickname(true);
@@ -359,11 +359,12 @@ public class Gui extends Application implements View {
                 scene = new Scene(new Label("Error"));
             }
             stage.setScene(scene);
-            waitingPlayersController=fxmlLoader.getController();
+            WaitingPlayersController waitingPlayersController=fxmlLoader.getController();
             waitingPlayersController.setGui(this);
             waitingPlayersController.setWaitingPlayers(true);
             requestNickPlayersController.setJoinButtonAble();
             stage.show();
+
         });
 
 
@@ -381,7 +382,6 @@ public class Gui extends Application implements View {
 
     @Override
     public void newGameStart() {
-        gameStartedController=new GameStartedController();
         if (lightGame.getNumPlayers() == 2 || lightGame.getNumPlayers() == 4) {
             pedineDaSpostare = 3;
             numPawnMove = 3;
@@ -401,7 +401,7 @@ public class Gui extends Application implements View {
                 scene = new Scene(new Label("Error"));
             }
             stage.setScene(scene);
-            gameStartedController=fxmlLoader.getController();
+           GameStartedController gameStartedController=fxmlLoader.getController();
            gameStartedController.setGui(this);
            gameStartedController.setGameText(true);
             stage.show();
@@ -431,9 +431,8 @@ public class Gui extends Application implements View {
         Platform.runLater(()-> {
             fxmlSchool0= new FXMLLoader();
             fxmlSchool0.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
-            Scene scene = null;
             try {
-                scene = new Scene(fxmlSchool0.load());
+                fxmlSchool0.load();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -441,7 +440,9 @@ public class Gui extends Application implements View {
             schoolBoard0Controller.setGui(this);
             schoolBoard0Controller.setSchoolBoard0();
             gameTable.getShowSchool0().setCenter(schoolBoard0Controller.getSchoolBoard0());
+            gameTable.getShowSchool0().getCenter().setVisible(true);
         });
+
 
 }
 
@@ -475,7 +476,6 @@ public class Gui extends Application implements View {
 
     @Override
     public void lobbyFull(){
-        lobbyIsFullController=new LobbyIsFullController();
         Platform.runLater(()-> {
             fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/LobbyIsFull.fxml"));
@@ -487,7 +487,7 @@ public class Gui extends Application implements View {
                 scene = new Scene(new Label("Error"));
             }
             stage.setScene(scene);
-            lobbyIsFullController=fxmlLoader.getController();
+            LobbyIsFullController lobbyIsFullController=fxmlLoader.getController();
             stage.show();
         });
         socketNetworkHandler.closeConnection();
