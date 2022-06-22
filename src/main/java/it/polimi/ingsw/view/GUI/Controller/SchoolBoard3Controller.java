@@ -159,6 +159,13 @@ public class SchoolBoard3Controller {
             }
     }
 
+    public void coinVisibility3(boolean bool, int numCoin){
+        for(Node school : schoolBoard3.getChildren()) {
+            if (schoolBoard3.getId().equals("coin" + numCoin))
+                school.setVisible(bool);
+        }
+    }
+
     public void green30Select(MouseEvent mouseEvent) {
         for(Node schoolBoard3 : schoolBoard3.getChildren()) {
             if (schoolBoard3.getId().equals("entranceGreen30"))

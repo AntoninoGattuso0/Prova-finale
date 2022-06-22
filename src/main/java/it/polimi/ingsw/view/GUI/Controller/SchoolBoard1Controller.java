@@ -179,6 +179,13 @@ public class SchoolBoard1Controller {
             }
     }
 
+    public void towerVisibility1(boolean bool, int numTower){
+        for(Node school : schoolBoard1.getChildren()) {
+            if (schoolBoard1.getId().equals("whiteTowerSchool" + numTower))
+                school.setVisible(bool);
+        }
+    }
+
     public void setCoin1() {
         for (int i = 0; i < lightGame.getPlayers().get(1).getNumCoin(); i++)
             for(Node school : schoolBoard1.getChildren()) {
@@ -187,6 +194,12 @@ public class SchoolBoard1Controller {
             }
     }
 
+    public void coinVisibility1(boolean bool, int numCoin){
+        for(Node school : schoolBoard1.getChildren()) {
+            if (schoolBoard1.getId().equals("coin" + numCoin))
+                school.setVisible(bool);
+        }
+    }
 
     //una volta cliccata la pedina sull'entrata per farla spostare
     //o sull'isola o sulla dining, la pedina sull entrata

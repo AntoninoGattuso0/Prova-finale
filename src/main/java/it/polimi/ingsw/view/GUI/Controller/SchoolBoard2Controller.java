@@ -159,12 +159,26 @@ public class SchoolBoard2Controller {
             }
     }
 
+    public void towerVisibility2(boolean bool, int numTower){
+        for(Node school : schoolBoard2.getChildren()) {
+            if (schoolBoard2.getId().equals("greyTowerSchool" + numTower))
+                school.setVisible(bool);
+        }
+    }
+
     public void setCoin2() {
         for (int i = 0; i < lightGame.getPlayers().get(2).getNumCoin(); i++)
             for(Node school : schoolBoard2.getChildren()) {
                 if (school.getId().equals("coin" + i))
                     school.setVisible(true);
             }
+    }
+
+    public void coinVisibility2(boolean bool, int numCoin){
+        for(Node school : schoolBoard2.getChildren()) {
+            if (schoolBoard2.getId().equals("coin" + numCoin))
+                school.setVisible(bool);
+        }
     }
 
 

@@ -164,15 +164,18 @@ public class SchoolBoard0Controller {
             }
     }
 
+    //ho aggiunto questa funzione che è particamente identica a quella sopea
+    //al  massimo se non servono entrambe cancelliamo questa sotto
+    // e a quella sopra passiamo come paramtri bool e numTower
+    //stessa cosa anche per le coin
     public void towerVisibility0(boolean bool, int numTower){
-                if (schoolBoard0.getId().equals("blackTowerSchool" + numTower))
-                    .setVisible(bool);
-            }
+        for(Node school : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("blackTowerSchool" + numTower))
+                school.setVisible(bool);
+        }
     }
 
-
-
-
+    //setta all'inizio solo la prima coin visibile
     public void setCoin0() {
         for (int i = 0; i < lightGame.getPlayers().get(0).getNumCoin(); i++)
             for(Node schoolBoard0 : schoolBoard0.getChildren()) {
@@ -180,6 +183,15 @@ public class SchoolBoard0Controller {
                     schoolBoard0.setVisible(true);
             }
     }
+
+
+    public void coinVisibility0(boolean bool, int numCoin){
+        for(Node school : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("coin" + numCoin))
+                school.setVisible(bool);
+        }
+    }
+
 
 
     public void green00Select(MouseEvent mouseEvent) {
