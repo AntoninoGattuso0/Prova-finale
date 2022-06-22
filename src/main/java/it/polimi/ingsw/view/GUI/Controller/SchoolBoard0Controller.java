@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
+
+//DEVO RIGUARDARE I PROFESSORI QUINDI MAGARI NON ANDRANNO, DEVO USARE METODO DI SCHOOL1
 public class SchoolBoard0Controller {
     Gui gui;
     LightGame lightGame;
