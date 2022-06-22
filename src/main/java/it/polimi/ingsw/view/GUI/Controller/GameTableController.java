@@ -1,19 +1,17 @@
 package it.polimi.ingsw.view.GUI.Controller;
+
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.model.ColorTower;
 import it.polimi.ingsw.view.GUI.Gui;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import java.io.IOException;
+
 import java.net.URL;
 import java.util.ArrayList;
 public class GameTableController {
