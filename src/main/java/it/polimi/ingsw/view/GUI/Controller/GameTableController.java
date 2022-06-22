@@ -436,6 +436,7 @@ public class GameTableController {
             showSchool3.setVisible(false);
         }
     }
+
     public void switchToSchoolBoard(MouseEvent mouseEvent) {
         int num = -1;
         String ciao = SchoolBoard.getValue();
