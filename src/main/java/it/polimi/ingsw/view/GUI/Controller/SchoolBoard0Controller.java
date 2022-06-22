@@ -58,11 +58,9 @@ public class SchoolBoard0Controller {
         }
     }
 
-
-
+    //setta le pedine dell'entrata visibili all'inizio del gioco
     public void setEntrance0(){
         int green = lightGame.getPlayers().get(0).getEntrance().getGreenPawn();
-        System.out.println(green);
         for(int i=0; i<green; i++){
             for(Node school : schoolBoard0.getChildren()){
                 if(school.getId().equals("entranceGreen0" + i))
@@ -100,7 +98,38 @@ public class SchoolBoard0Controller {
         }
     }
 
+    //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine che passiamo con numColore
+    public void greenVisibilityEntrance0(boolean bool, int numGreen){
+        for(Node school : schoolBoard0.getChildren()){
+            if(school.getId().equals("entranceGreen0" + numGreen))
+                school.setVisible(bool);
+        }
+    }
 
+    public void redVisibilityEntrance0(boolean bool, int numRed){
+        for(Node school : schoolBoard0.getChildren()){
+            if(school.getId().equals("entranceRed0" + numRed))
+                school.setVisible(bool);
+        }
+    }
+    public void yellowVisibilityEntrance0(boolean bool, int numYellow){
+        for(Node school : schoolBoard0.getChildren()){
+            if(school.getId().equals("entranceYellow0" + numYellow))
+                school.setVisible(bool);
+        }
+    }
+    public void pinkVisibilityEntrance0(boolean bool, int numPink){
+        for(Node school : schoolBoard0.getChildren()){
+            if(school.getId().equals("entrancePink0" + numPink))
+                school.setVisible(bool);
+        }
+    }
+    public void blueVisibilityEntrance0(boolean bool, int numBlue){
+        for(Node school : schoolBoard0.getChildren()){
+            if(school.getId().equals("entranceBlue0" + numBlue))
+                school.setVisible(bool);
+        }
+    }
 
 
     public void setDiningRoom0(){

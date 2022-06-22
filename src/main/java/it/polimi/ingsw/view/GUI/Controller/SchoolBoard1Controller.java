@@ -119,6 +119,39 @@ public class SchoolBoard1Controller {
         }
     }
 
+    //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine che passiamo con numColore
+    public void greenVisibilityEntrance1(boolean bool, int numGreen){
+        for(Node school : schoolBoard1.getChildren()){
+            if(school.getId().equals("entranceGreen1" + numGreen))
+                school.setVisible(bool);
+        }
+    }
+
+    public void redVisibilityEntrance1(boolean bool, int numRed){
+        for(Node school : schoolBoard1.getChildren()){
+            if(school.getId().equals("entranceRed1" + numRed))
+                school.setVisible(bool);
+        }
+    }
+    public void yellowVisibilityEntrance1(boolean bool, int numYellow){
+        for(Node school : schoolBoard1.getChildren()){
+            if(school.getId().equals("entranceYellow1" + numYellow))
+                school.setVisible(bool);
+        }
+    }
+    public void pinkVisibilityEntrance1(boolean bool, int numPink){
+        for(Node school : schoolBoard1.getChildren()){
+            if(school.getId().equals("entrancePink1" + numPink))
+                school.setVisible(bool);
+        }
+    }
+    public void blueVisibilityEntrance1(boolean bool, int numBlue){
+        for(Node school : schoolBoard1.getChildren()){
+            if(school.getId().equals("entranceBlue1" + numBlue))
+                school.setVisible(bool);
+        }
+    }
+
     public void setDiningRoom1(){
         int green = lightGame.getPlayers().get(1).getDiningRoom().getNumGreen();
         for(int i=0; i<green; i++){
