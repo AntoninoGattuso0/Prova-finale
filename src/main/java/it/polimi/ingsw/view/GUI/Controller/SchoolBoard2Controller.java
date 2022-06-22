@@ -12,11 +12,14 @@ public class SchoolBoard2Controller {
     Gui gui;
     LightGame lightGame;//da qualche parte ha bisogno di ricevere lightGame
 
-    public void setGui(Gui gui){this.gui=gui;}
-
-    public void setLightGame(LightGame lightGame){this.lightGame=lightGame;}
+    public void setGui(Gui gui){
+        this.gui=gui;
+        this.lightGame = gui.getLightGame();
+    }
 
     @FXML Pane schoolBoard2;
+
+    public Pane getSchoolBoard2(){return schoolBoard2;}
 
     public void setSchoolBoard2(){
         setAllInvisible();
@@ -30,6 +33,8 @@ public class SchoolBoard2Controller {
         for(Node all : schoolBoard2.getChildren()) {
             all.setVisible(false);
             all.setDisable(true);
+            if(all.getId().equals("backSchool2"))
+                all.setVisible(true);
         }
     }
 
@@ -59,47 +64,79 @@ public class SchoolBoard2Controller {
 
     public void setEntrance2(){
         int green = lightGame.getPlayers().get(2).getEntrance().getGreenPawn();
-        for(int i=2; i<green; i++){
-            schoolBoard2.lookup("entranceGreen2" + i).setVisible(true);
+        System.out.println(green);
+        for(int i=0; i<green; i++){
+            for(Node school : schoolBoard2.getChildren()){
+                if(school.getId().equals("entranceGreen2" + i))
+                    school.setVisible(true);
+            }
         }
+
         int red = lightGame.getPlayers().get(2).getEntrance().getRedPawn() + green;
         for(int i=green; i<red; i++){
-            schoolBoard2.lookup("entranceRed2" + i).setVisible(true);
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("entranceRed2" + i))
+                    school.setVisible(true);
+            }
         }
-        int yellow = lightGame.getPlayers().get(2).getEntrance().getRedPawn() + red;
+        int yellow = lightGame.getPlayers().get(2).getEntrance().getYellowPawn() + red;
         for(int i=red; i<yellow; i++){
-            schoolBoard2.lookup("entranceYellow2" + i).setVisible(true);
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("entranceYellow2" + i))
+                    school.setVisible(true);
+            }
         }
         int pink = lightGame.getPlayers().get(2).getEntrance().getPinkPawn() + yellow;
         for(int i=yellow; i<pink; i++){
-            schoolBoard2.lookup("entrancePink2" + i).setVisible(true);
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("entrancePink2" + i))
+                    school.setVisible(true);
+            }
         }
-        int blue = lightGame.getPlayers().get(2).getEntrance().getPinkPawn() + pink;
+        int blue = lightGame.getPlayers().get(2).getEntrance().getBluePawn() + pink;
         for(int i=pink; i<blue; i++){
-            schoolBoard2.lookup("entranceBlue2" + i).setVisible(true);
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("entranceBlue2" + i))
+                    school.setVisible(true);
+            }
         }
     }
 
     public void setDiningRoom2(){
         int green = lightGame.getPlayers().get(2).getDiningRoom().getNumGreen();
-        for(int i=2; i<green; i++){
-            schoolBoard2.lookup("schoolGreen2" + i).setVisible(true);
+        for(int i=0; i<green; i++){
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("schoolBoard2Green" + i))
+                    school.setVisible(true);
+            }
         }
         int red = lightGame.getPlayers().get(2).getDiningRoom().getNumRed();
-        for(int i=2; i<red; i++){
-            schoolBoard2.lookup("schoolRed2" + i).setVisible(true);
+        for(int i=0; i<red; i++){
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("schoolBoard2Red" + i))
+                    school.setVisible(true);
+            }
         }
         int yellow = lightGame.getPlayers().get(2).getDiningRoom().getNumYellow();
-        for(int i=2; i<yellow; i++){
-            schoolBoard2.lookup("schoolYellow2" + i).setVisible(true);
+        for(int i=0; i<yellow; i++){
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("schoolBoard2Yellow" + i))
+                    school.setVisible(true);
+            }
         }
         int pink = lightGame.getPlayers().get(2).getDiningRoom().getNumPink();
-        for(int i=2; i<pink; i++){
-            schoolBoard2.lookup("schoolPink2" + i).setVisible(true);
+        for(int i=0; i<pink; i++){
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("schoolBoard2Pink" + i))
+                    school.setVisible(true);
+            }
         }
         int blue = lightGame.getPlayers().get(2).getDiningRoom().getNumBlue();
-        for(int i=2; i<blue; i++){
-            schoolBoard2.lookup("schoolBlue2" + i).setVisible(true);
+        for(int i=0; i<blue; i++){
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("schoolBoard2Blue" + i))
+                    school.setVisible(true);
+            }
         }
     }
 
@@ -117,13 +154,19 @@ public class SchoolBoard2Controller {
     }
 
     public void setTower2(){
-        for(int i = 2; i<lightGame.getPlayers().get(2).getTowerSpace().getNumTower(); i++)
-            schoolBoard2.lookup("blackTowerSchool" + i).setVisible(true);
+        for(int i = 0; i<lightGame.getPlayers().get(2).getTowerSpace().getNumTower(); i++)
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("greyTowerSchool" + i))
+                    school.setVisible(true);
+            }
     }
 
     public void setCoin2() {
-        for (int i = 2; i < lightGame.getPlayers().get(2).getNumCoin(); i++)
-            schoolBoard2.lookup("coin" + i).setVisible(true);
+        for (int i = 0; i < lightGame.getPlayers().get(2).getNumCoin(); i++)
+            for(Node school : schoolBoard2.getChildren()) {
+                if (school.getId().equals("coin" + i))
+                    school.setVisible(true);
+            }
     }
 
 
