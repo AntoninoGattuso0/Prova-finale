@@ -49,6 +49,7 @@ public class Gui extends Application implements View {
     SchoolBoard3Controller schoolBoard3Controller;
     private FXMLLoader fxmlSchool0;
     private FXMLLoader fxmlAssistant;
+    private FXMLLoader fxmlCharacter;
 
     public Gui() {
     }
@@ -449,12 +450,24 @@ public class Gui extends Application implements View {
             }
             assistantCardController = fxmlAssistant.getController();
             assistantCardController.setGui(this);
-            lightGame.getPlayers().get(0).getDeckAssistant().remove(5);
             assistantCardController.setAssistantCards(0);
             gameTable.getShowAssistant().setCenter(assistantCardController.getAssistantCards());
             gameTable.getShowAssistant().getCenter().setVisible(true);
             gameTable.getShowSchool0().setCenter(schoolBoard0Controller.getSchoolBoard0());
             gameTable.getShowSchool0().getCenter().setVisible(true);
+//abbiamo provato a mettere il "runLater" sul click però dava problemi, prova magari anche te ma a me diceva che la gui era NULL
+            fxmlCharacter= new FXMLLoader();
+            fxmlCharacter.setLocation(getClass().getResource("/CharacterCard.fxml"));
+            try {
+                fxmlCharacter.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            characterCardController = fxmlCharacter.getController();
+            characterCardController.setGui(this);
+            characterCardController.setCharacterCards();
+            gameTable.getShowCharacterCard().setCenter(characterCardController.getCharacterCards());
+            gameTable.getShowCharacterCard().getCenter().setVisible(true);
         });
 
 

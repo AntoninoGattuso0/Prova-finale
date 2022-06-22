@@ -18,14 +18,18 @@ public class CharacterCardController {
     Gui gui;
     LightGame lightGame;
     GameTableController gameTableController;
-    
-    public void setLightGame(LightGame lightGame) {
-        this.lightGame = lightGame;
-    }
-    
+
+    public Pane getCharacterCards(){return characterCards;}
+
     public void setGui(Gui gui) {
         this.gui = gui;
         this.lightGame = gui.getLightGame();
+    }
+
+    public void setCharacterCards(){
+        setInvisibleAll();
+        setDisableAll();
+        showCharacter();
     }
     
     public void setDisableAll() {
@@ -33,6 +37,22 @@ public class CharacterCardController {
             character.setDisable(true);
         }
     }
+
+    public void setInvisibleAll(){
+        for (Node character : characterCards.getChildren()) {
+            character.setVisible(false);
+        }
+    }
+
+
+    public void showCharacter(){
+        for(int i = 0; i < lightGame.getCharacterCards().size(); i++){
+                for(Node character : characterCards.getChildren()){
+                    if(character.getId().equals(i + "characterCard" + lightGame.getCharacterCards().get(i).getNumCard()))
+                        character.setVisible(true);
+                }
+            }
+        }
 
     public void setDisable(int n, boolean disable) {
         String name = "#characterCard" + n;
