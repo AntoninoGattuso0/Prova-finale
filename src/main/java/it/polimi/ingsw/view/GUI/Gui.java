@@ -48,6 +48,7 @@ public class Gui extends Application implements View {
     SchoolBoard2Controller schoolBoard2Controller;
     SchoolBoard3Controller schoolBoard3Controller;
     private FXMLLoader fxmlSchool0;
+    private FXMLLoader fxmlAssistant;
 
     public Gui() {
     }
@@ -329,8 +330,7 @@ public class Gui extends Application implements View {
         int i;
         if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
             for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(),nickname);i++);
-            
-            displayAssistantCard(i);
+            assistantCardController.setAssistantCards(i);//maybe?
         }else{
             //Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+" CHOOSE AN ASSISTANT");
         }
@@ -427,6 +427,7 @@ public class Gui extends Application implements View {
             stage.setScene(scene);
             stage.show();
         });
+
         Platform.runLater(()-> {
             fxmlSchool0= new FXMLLoader();
             fxmlSchool0.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
@@ -438,9 +439,25 @@ public class Gui extends Application implements View {
             schoolBoard0Controller=fxmlSchool0.getController();
             schoolBoard0Controller.setGui(this);
             schoolBoard0Controller.setSchoolBoard0();
+
+            fxmlAssistant= new FXMLLoader();
+            fxmlAssistant.setLocation(getClass().getResource("/AssistantCard.fxml"));
+            try {
+                fxmlAssistant.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            assistantCardController = fxmlAssistant.getController();
+            assistantCardController.setGui(this);
+            lightGame.getPlayers().get(0).getDeckAssistant().remove(5);
+            assistantCardController.setAssistantCards(0);
+            gameTable.getShowAssistant().setCenter(assistantCardController.getAssistantCards());
+            gameTable.getShowAssistant().getCenter().setVisible(true);
             gameTable.getShowSchool0().setCenter(schoolBoard0Controller.getSchoolBoard0());
-            gameTable.getShowSchool0().getCenter().setVisible(false);
+            gameTable.getShowSchool0().getCenter().setVisible(true);
         });
+
+
 }
 
     public AssistantCardController getAssistantCardController() {

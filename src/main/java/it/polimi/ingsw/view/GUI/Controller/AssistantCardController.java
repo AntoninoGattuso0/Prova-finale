@@ -1,5 +1,6 @@
 package it.polimi.ingsw.view.GUI.Controller;
 
+import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseAssistantCardMessage;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
@@ -8,25 +9,52 @@ import javafx.scene.layout.Pane;
 
 public class AssistantCardController {
     Gui gui;
+    LightGame lightGame;
     @FXML public Pane assistantCards;
-    public void setGui(Gui gui){this.gui=gui;}
+    public void setGui(Gui gui){this.gui=gui;
+    this.lightGame = gui.getLightGame();}
+
+    public Pane getAssistantCards(){return assistantCards;}
+
+    public void setAssistantCards(int player){
+        setInvisibileAll();
+        for(int i = 0; i < lightGame.getPlayers().get(player).getDeckAssistant().size(); i++){
+            String name = "AssistantCard" + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue();
+            for(Node assistant : assistantCards.getChildren()){
+                if(assistant.getId().equals(name))
+                    assistant.setVisible(true);
+            }
+        }
+    }
 
     public void setDisableAll(){
         for(Node assistant : assistantCards.getChildren()){
             assistant.setDisable(true);
         }
     }
+
+    public void setInvisibleAll(){
+        for(Node assistant : assistantCards.getChildren())
+            assistant.setVisible(false);
+    }
     public void setAble(int n){
-        String name = "#AssistantCard" + n;
+        String name = "AssistantCard" + n;
         assistantCards.lookup(name).setDisable(false);
     }
+
     public void setVisible(int n){
-        String name= "#AssistantCard"+n;
-        assistantCards.lookup(name).setVisible(true);
+        String name= "AssistantCard"+n;
+        for(Node assistant : assistantCards.getChildren()){
+            if(assistant.getId().equals(name))
+                assistant.setVisible(true);
+        }
     }
     public void setInvisibile(int n){
-        String name= "#AssistantCard"+n;
-        assistantCards.lookup(name).setVisible(false);
+        String name= "AssistantCard"+n;
+        for(Node assistant : assistantCards.getChildren()){
+            if(assistant.getId().equals(name))
+                assistant.setVisible(false);
+        }
     }
     public void setInvisibileAll() {
         for (Node assistant : assistantCards.getChildren()) {

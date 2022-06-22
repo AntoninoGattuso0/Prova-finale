@@ -3,7 +3,6 @@ package it.polimi.ingsw.view.GUI.Controller;
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.model.ColorTower;
 import it.polimi.ingsw.view.GUI.Gui;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -101,9 +100,13 @@ public class GameTableController {
     SchoolBoard0Controller schoolBoard0Controller;
     AssistantCardController assistantCardController;
     public BorderPane getShowSchool0(){return showSchool0;}
+    public BorderPane getShowAssistant(){return showAssistant;}
+    public BorderPane getShowCharacterCard(){return showCharacterCard;}
     public void setGui(Gui gui) {
         this.gui = gui;
         this.lightGame = gui.getLightGame();
+        this.schoolBoard0Controller = gui.getSchoolBoard0Controller();
+        this.assistantCardController = gui.getAssistantCardController();
     }
     //Setta l'ordine del turno in alto a sinistra
     public void setTurnOf(ArrayList<String> player) {
@@ -149,9 +152,6 @@ public class GameTableController {
                 if((int)new_value == 0){
                     showAssistant.setVisible(false);
                     showCharacterCard.setVisible(false);
-                    Platform.runLater(()-> {
-                        schoolBoard0Controller.setSchoolBoard0();
-                            });
                     showSchool0.setVisible(true);
                     showSchool1.setVisible(false);
                     showSchool2.setVisible(false);
