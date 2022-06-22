@@ -77,35 +77,6 @@ public class SchoolBoard3Controller {
         }
     }
 
-    public void setGreenEntrance3Clickable(boolean bool, int num){
-        for(Node school : schoolBoard3.getChildren()){
-            if(school.getId().equals("entranceGreen3" + num))
-                school.setDisable(bool);
-        }
-    }
-    public void setRedEntrance3Clickable(boolean bool, int num){
-        for(Node school : schoolBoard3.getChildren()){
-            if(school.getId().equals("entranceRed3" + num))
-                school.setDisable(bool);
-        }
-    }
-    public void setYellowEntrance3Clickable(boolean bool, int num){
-        for(Node school : schoolBoard3.getChildren()){
-            if(school.getId().equals("entranceYellow3" + num))
-                school.setDisable(bool);
-        }
-    }
-    public void setPinkEntrance3Clickable(boolean bool, int num){
-        for(Node school : schoolBoard3.getChildren()){
-            if(school.getId().equals("entrancePink3" + num))
-                school.setDisable(bool);
-        }
-    } public void setBlueEntrance3Clickable(boolean bool, int num){
-        for(Node school : schoolBoard3.getChildren()){
-            if(school.getId().equals("entranceBlue3" + num))
-                school.setDisable(bool);
-        }
-    }
 
     public void setEntrance3(){
         int green = lightGame.getPlayers().get(3).getEntrance().getGreenPawn();
@@ -147,35 +118,45 @@ public class SchoolBoard3Controller {
     }
 
     //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine che passiamo con numColore
-    public void greenVisibilityEntrance3(boolean bool, int numGreen){
+    public void greenEntrance3(boolean boolVisibility, boolean boolClickable, int numGreen){
         for(Node school : schoolBoard3.getChildren()){
-            if(school.getId().equals("entranceGreen3" + numGreen))
-                school.setVisible(bool);
+            if(school.getId().equals("entranceGreen3" + numGreen)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
 
-    public void redVisibilityEntrance3(boolean bool, int numRed){
+    public void redEntrance3(boolean boolVisibility, boolean boolClickable, int numRed){
         for(Node school : schoolBoard3.getChildren()){
-            if(school.getId().equals("entranceRed3" + numRed))
-                school.setVisible(bool);
+            if(school.getId().equals("entranceRed3" + numRed)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
-    public void yellowVisibilityEntrance3(boolean bool, int numYellow){
+    public void yellowEntrance3(boolean boolVisibility, boolean boolClickable, int numYellow){
         for(Node school : schoolBoard3.getChildren()){
-            if(school.getId().equals("entranceYellow3" + numYellow))
-                school.setVisible(bool);
+            if(school.getId().equals("entranceYellow3" + numYellow)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
-    public void pinkVisibilityEntrance3(boolean bool, int numPink){
+    public void pinkEntrance3(boolean boolVisibility, boolean boolClickable, int numPink){
         for(Node school : schoolBoard3.getChildren()){
-            if(school.getId().equals("entrancePink3" + numPink))
-                school.setVisible(bool);
+            if(school.getId().equals("entrancePink3" + numPink)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
-    public void blueVisibilityEntrance3(boolean bool, int numBlue){
+    public void blueEntrance3(boolean boolVisibility, boolean boolClickable, int numBlue){
         for(Node school : schoolBoard3.getChildren()){
-            if(school.getId().equals("entranceBlue3" + numBlue))
-                school.setVisible(bool);
+            if(school.getId().equals("entranceBlue3" + numBlue)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
 

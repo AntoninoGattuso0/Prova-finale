@@ -80,35 +80,6 @@ public class SchoolBoard1Controller {
         }
     }
 
-    public void setGreenEntrance1Clickable(boolean bool, int num){
-        for(Node school : schoolBoard1.getChildren()){
-            if(school.getId().equals("entranceGreen1" + num))
-                school.setDisable(bool);
-        }
-    }
-    public void setRedEntrance1Clickable(boolean bool, int num){
-        for(Node school : schoolBoard1.getChildren()){
-            if(school.getId().equals("entranceRed1" + num))
-                school.setDisable(bool);
-        }
-    }
-    public void setYellowEntrance1Clickable(boolean bool, int num){
-        for(Node school : schoolBoard1.getChildren()){
-            if(school.getId().equals("entranceYellow1" + num))
-                school.setDisable(bool);
-        }
-    }
-    public void setPinkEntrance1Clickable(boolean bool, int num){
-        for(Node school : schoolBoard1.getChildren()){
-            if(school.getId().equals("entrancePink1" + num))
-                school.setDisable(bool);
-        }
-    } public void setBlueEntrance1Clickable(boolean bool, int num){
-        for(Node school : schoolBoard1.getChildren()){
-            if(school.getId().equals("entranceBlue1" + num))
-                school.setDisable(bool);
-        }
-    }
 
     public void setEntrance1(){
         int green = lightGame.getPlayers().get(1).getEntrance().getGreenPawn();
@@ -149,36 +120,46 @@ public class SchoolBoard1Controller {
         }
     }
 
-    //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine che passiamo con numColore
-    public void greenVisibilityEntrance1(boolean bool, int numGreen){
+    //le 5 funzioni qui sotto mettono visibile/ non visibili clickabili.. le pedine che passiamo con numColore
+    public void greenEntrance1(boolean boolVisibility, boolean boolClickable, int numGreen){
         for(Node school : schoolBoard1.getChildren()){
-            if(school.getId().equals("entranceGreen1" + numGreen))
-                school.setVisible(bool);
+            if(school.getId().equals("entranceGreen1" + numGreen)){
+                school.setVisible(boolVisibility);
+                school.setDisable(boolClickable);
+            }
         }
     }
 
-    public void redVisibilityEntrance1(boolean bool, int numRed){
-        for(Node school : schoolBoard1.getChildren()){
-            if(school.getId().equals("entranceRed1" + numRed))
-                school.setVisible(bool);
+    public void redEntrance1(boolean boolVisibility, boolean boolClickable, int numRed){
+            for(Node school : schoolBoard1.getChildren()){
+                if(school.getId().equals("entranceRed1" + numRed)){
+                    school.setVisible(boolVisibility);
+                    school.setDisable(boolClickable);
+            }
         }
     }
-    public void yellowVisibilityEntrance1(boolean bool, int numYellow){
-        for(Node school : schoolBoard1.getChildren()){
-            if(school.getId().equals("entranceYellow1" + numYellow))
-                school.setVisible(bool);
+    public void yellowEntrance1(boolean boolVisibility, boolean boolClickable, int numYellow){
+            for(Node school : schoolBoard1.getChildren()){
+                if(school.getId().equals("entranceYellow1" + numYellow)){
+                    school.setVisible(boolVisibility);
+                    school.setDisable(boolClickable);
+            }
         }
     }
-    public void pinkVisibilityEntrance1(boolean bool, int numPink){
-        for(Node school : schoolBoard1.getChildren()){
-            if(school.getId().equals("entrancePink1" + numPink))
-                school.setVisible(bool);
+    public void pinkEntrance1(boolean boolVisibility, boolean boolClickable, int numPink){
+            for(Node school : schoolBoard1.getChildren()){
+                if(school.getId().equals("entrancePink1" + numPink)){
+                    school.setVisible(boolVisibility);
+                    school.setDisable(boolClickable);
+            }
         }
     }
-    public void blueVisibilityEntrance1(boolean bool, int numBlue){
-        for(Node school : schoolBoard1.getChildren()){
-            if(school.getId().equals("entranceBlue1" + numBlue))
-                school.setVisible(bool);
+    public void blueEntrance1(boolean boolVisibility, boolean boolClickable, int numBlue){
+            for(Node school : schoolBoard1.getChildren()){
+                if(school.getId().equals("entranceBlue1" + numBlue)){
+                    school.setVisible(boolVisibility);
+                    school.setDisable(boolClickable);
+            }
         }
     }
 
@@ -251,17 +232,46 @@ public class SchoolBoard1Controller {
         }
     }
 
-    public void setProfessor1(){
-        if(lightGame.getProfTable().getGreenProf() == 1)
-            schoolBoard1.lookup("schoolGreenProf1").setVisible(true);
-        if(lightGame.getProfTable().getRedProf() == 1)
-            schoolBoard1.lookup("schoolRedProf1").setVisible(true);
-        if(lightGame.getProfTable().getYellowProf() == 1)
-            schoolBoard1.lookup("schoolYellowProf1").setVisible(true);
-        if(lightGame.getProfTable().getPinkProf() == 1)
-            schoolBoard1.lookup("schoolPinkProf1").setVisible(true);
-        if(lightGame.getProfTable().getBlueProf() == 1)
-            schoolBoard1.lookup("schoolBlueProf1").setVisible(true);
+    public void setGreenProfessor1(boolean bool){
+        if(lightGame.getProfTable().getGreenProf() == 1){
+            for(Node school : schoolBoard1.getChildren()) {
+                if (school.getId().equals("schoolGreenProf1"))
+                    school.setVisible(bool);
+            }
+        }
+    }
+    public void setRedProfessor1(boolean bool){
+        if(lightGame.getProfTable().getRedProf() == 1){
+            for(Node school : schoolBoard1.getChildren()) {
+                if (school.getId().equals("schoolRedProf1"))
+                    school.setVisible(bool);
+            }
+        }
+    }
+    public void setYellowProfessor1(boolean bool){
+        if(lightGame.getProfTable().getYellowProf() == 1){
+            for(Node school : schoolBoard1.getChildren()) {
+                if (school.getId().equals("schoolYellowProf1"))
+                    school.setVisible(bool);
+            }
+        }
+    }
+
+    public void setPinkProfessor1(boolean bool){
+        if(lightGame.getProfTable().getPinkProf() == 1){
+            for(Node school : schoolBoard1.getChildren()) {
+                if (school.getId().equals("schoolPinkProf1"))
+                    school.setVisible(bool);
+            }
+        }
+    }
+    public void setBlueProfessor1(boolean bool){
+        if(lightGame.getProfTable().getBlueProf() == 1){
+            for(Node school : schoolBoard1.getChildren()) {
+                if (school.getId().equals("schoolBlueProf1"))
+                    school.setVisible(bool);
+            }
+        }
     }
 
     //setta visibili le torri per la scena iniziale
