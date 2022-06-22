@@ -164,636 +164,832 @@ public class SchoolBoard0Controller {
             }
     }
 
+    public void towerVisibility0(boolean bool, int numTower){
+                if (schoolBoard0.getId().equals("blackTowerSchool" + numTower))
+                    .setVisible(bool);
+            }
+    }
+
 
 
 
     public void setCoin0() {
         for (int i = 0; i < lightGame.getPlayers().get(0).getNumCoin(); i++)
-            for(Node school : schoolBoard0.getChildren()) {
-                if (school.getId().equals("coin" + i))
-                    school.setVisible(true);
+            for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+                if (schoolBoard0.getId().equals("coin" + i))
+                    schoolBoard0.setVisible(true);
             }
     }
 
 
     public void green00Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceGreen00")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceGreen00"))
+                schoolBoard0.setVisible(true);
+                schoolBoard0.setDisable(true);
         }
     }
 
     public void green01Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceGreen01")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceGreen01")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void green02Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceGreen02")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceGreen02")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void green03Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceGreen03")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceGreen03")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void green04Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceGreen04")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceGreen04")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void green05Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceGreen05")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceGreen05")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void green06Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceGreen06")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceGreen06")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void green07Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceGreen07")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceGreen07")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void green08Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceGreen08")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceGreen08")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void red00Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceRed00")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceRed00")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void red01Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceRed01")){
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceRed01")){
             schoolBoard0.setVisible(false);
             schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void red02Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceRed02")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceRed02")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void red03Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceRed03")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceRed03")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void red04Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceRed04")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+         for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+             if (schoolBoard0.getId().equals("entranceRed04")){
+                 schoolBoard0.setVisible(false);
+                 schoolBoard0.setDisable(true);
+             }
         }
     }
 
     public void red05Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceRed05")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceRed05")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void red06Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceRed06")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceRed06")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void red07Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceRed07")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceRed07")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void red08Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceRed08")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceRed08")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void yellow00Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceYellow00")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceYellow00")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void yellow01Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceYellow01")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceYellow01")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void yellow02Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceYellow02")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceYellow02")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void yellow03Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceYellow03")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceYellow03")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void yellow04Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceYellow04")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceYellow04")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void yellow05Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceYellow05")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceYellow05")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void yellow06Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceYellow06")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceYellow06")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void yellow07Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceYellow07")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceYellow07")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void yellow08Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceYellow08")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceYellow08")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void pink00Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entrancePink00")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entrancePink00")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void pink01Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entrancePink01")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entrancePink01")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void pink02Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entrancePink02")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entrancePink02")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void pink03Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entrancePink03")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entrancePink03")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void pink04Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entrancePink04")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entrancePink04")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void pink05Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entrancePink05")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entrancePink05")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void pink06Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entrancePink06")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entrancePink06")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void pink07Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entrancePink07")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entrancePink07")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void pink08Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entrancePink08")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entrancePink08")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void blue00Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceBlue00")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceBlue00")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void blue01Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceBlue01")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceBlue01")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void blue02Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceBlue02")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceBlue02")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void blue03Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceBlue03")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceBlue03")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void blue04Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceBlue04")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceBlue04")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void blue05Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceBlue05")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceBlue05")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void blue06Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceBlue06")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceBlue06")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void blue07Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceBlue07")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceBlue07")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void blue08Select(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("entranceBlue08")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("entranceBlue08")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void selectSchoolGreen00(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Green0")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Green0")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void selectSchoolGreen01(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Green1")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Green1")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolGreen02(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Green2")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Green2")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolGreen03(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Green3")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Green3")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolGreen04(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Green4")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Green4")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolGreen05(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Green5")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Green5")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolGreen06(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Green6")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Green6")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolGreen07(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Green7")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Green7")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolGreen08(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Green8")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Green8")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolGreen09(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Green9")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Green9")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void selectSchoolRed00(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Red0")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Red0")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolRed01(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Red1")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Red1")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolRed02(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Red2")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Red2")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolRed03(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Red3")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Red3")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolRed04(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Red4")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Red4")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolRed05(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Red5")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Red5")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolRed06(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Red6")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Red6")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolRed07(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Red7")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Red7")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolRed08(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Red8")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Red8")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolRed09(MouseEvent mouseEvent) {
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
             if (schoolBoard0.getId().equals("schoolBoard0Red9")){
                 schoolBoard0.setVisible(false);
                 schoolBoard0.setDisable(true);
             }
+        }
     }
 
     public void selectSchoolYellow00(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Yellow0")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Yellow0")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolYellow01(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Yellow1")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Yellow1")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolYellow02(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Yellow2")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Yellow2")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolYellow03(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Yellow3")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Yellow3")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolYellow04(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Yellow4")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Yellow4")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolYellow05(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Yellow5")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Yellow5")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolYellow06(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Yellow6")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Yellow6")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolYellow07(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Yellow7")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Yellow7")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolYellow08(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Yellow8")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Yellow8")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolYellow09(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Yellow9")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Yellow9")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void selectSchoolPink00(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Pink0")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Pink0")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolPink01(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Pink1")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Pink1")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolPink02(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Pink2")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Pink2")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolPink03(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Pink3")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Pink3")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolPink04(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Pink4")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Pink4")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolPink05(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Pink5")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Pink5")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolPink06(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Pink6")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Pink6")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolPink07(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Pink7")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Pink7")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolPink08(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Pink8")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Pink8")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolPink09(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Pink9")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Pink9")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
     public void selectSchoolBlue00(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Blue0")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Blue0")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolBlue01(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Blue1")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Blue1")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolBlue02(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Blue2")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Blue2")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolBlue03(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Blue3")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Blue3")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolBlue04(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Blue4")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Blue4")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolBlue05(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Blue5")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Blue5")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolBlue06(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Blue6")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Blue6")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolBlue07(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Blue7")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Blue7")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolBlue08(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Blue8")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Blue8")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
     public void selectSchoolBlue09(MouseEvent mouseEvent) {
-        if (schoolBoard0.getId().equals("schoolBoard0Blue9")){
-            schoolBoard0.setVisible(false);
-            schoolBoard0.setDisable(true);
+        for(Node schoolBoard0 : schoolBoard0.getChildren()) {
+            if (schoolBoard0.getId().equals("schoolBoard0Blue9")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
         }
     }
 
