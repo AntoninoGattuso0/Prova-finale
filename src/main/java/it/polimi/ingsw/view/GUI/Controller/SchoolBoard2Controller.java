@@ -734,7 +734,7 @@ public class SchoolBoard2Controller {
         }
     }
     public void selectSchoolBlue21(MouseEvent mouseEvent) {
-        if (schoolBoard2.getId().equals("schoolBoard2Blue2")){
+        if (schoolBoard2.getId().equals("schoolBoard2Blue1")){
             schoolBoard2.setVisible(false);
             schoolBoard2.setDisable(true);
         }
