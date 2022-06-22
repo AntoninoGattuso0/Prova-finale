@@ -47,6 +47,7 @@ public class Gui extends Application implements View {
     SchoolBoard1Controller schoolBoard1Controller;
     SchoolBoard2Controller schoolBoard2Controller;
     SchoolBoard3Controller schoolBoard3Controller;
+    private FXMLLoader fxmlSchool0;
 
     public Gui() {
     }
@@ -426,6 +427,51 @@ public class Gui extends Application implements View {
             stage.setScene(scene);
             stage.show();
         });
+
+        Platform.runLater(()-> {
+            fxmlSchool0= new FXMLLoader();
+            fxmlSchool0.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlSchool0.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            schoolBoard0Controller=fxmlSchool0.getController();
+            schoolBoard0Controller.setGui(this);
+            schoolBoard0Controller.setSchoolBoard0();
+            gameTable.getShowSchool0().setCenter(schoolBoard0Controller.getSchoolBoard0());
+        });
+
+
+}
+
+    public AssistantCardController getAssistantCardController() {
+        return assistantCardController;
+    }
+
+    public GameTableController getGameTable() {
+        return gameTable;
+    }
+
+    public CharacterCardController getCharacterCardController() {
+        return characterCardController;
+    }
+
+    public SchoolBoard0Controller getSchoolBoard0Controller() {
+        return schoolBoard0Controller;
+    }
+
+    public SchoolBoard1Controller getSchoolBoard1Controller() {
+        return schoolBoard1Controller;
+    }
+
+    public SchoolBoard2Controller getSchoolBoard2Controller() {
+        return schoolBoard2Controller;
+    }
+
+    public SchoolBoard3Controller getSchoolBoard3Controller() {
+        return schoolBoard3Controller;
     }
 
     @Override
