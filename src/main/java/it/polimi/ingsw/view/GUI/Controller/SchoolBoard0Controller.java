@@ -492,208 +492,309 @@ public class SchoolBoard0Controller {
     }
 
     public void selectSchoolGreen00(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Green0").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Green0").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Green0")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
+
     public void selectSchoolGreen01(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Green1").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Green1").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Green1")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolGreen02(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Green2").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Green2").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Green2")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolGreen03(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Green3").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Green3").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Green3")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolGreen04(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Green4").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Green4").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Green4")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolGreen05(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Green5").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Green5").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Green5")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolGreen06(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Green6").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Green6").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Green6")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolGreen07(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Green7").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Green7").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Green7")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolGreen08(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Green8").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Green8").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Green8")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolGreen09(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Green9").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Green9").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Green9")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
 
     public void selectSchoolRed00(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Red0").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Red0").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Red0")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolRed01(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Red1").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Red1").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Red1")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolRed02(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Red2").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Red2").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Red2")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolRed03(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Red3").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Red3").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Red3")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolRed04(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Red4").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Red4").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Red4")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolRed05(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Red5").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Red5").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Red5")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolRed06(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Red6").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Red6").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Red6")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolRed07(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Red7").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Red7").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Red7")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolRed08(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Red8").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Red8").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Red8")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolRed09(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Red9").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Red9").setDisable(true);
+            if (schoolBoard0.getId().equals("schoolBoard0Red9")){
+                schoolBoard0.setVisible(false);
+                schoolBoard0.setDisable(true);
+            }
     }
 
     public void selectSchoolYellow00(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Yellow0").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Yellow0").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Yellow0")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolYellow01(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Yellow1").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Yellow1").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Yellow1")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolYellow02(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Yellow2").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Yellow2").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Yellow2")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolYellow03(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Yellow3").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Yellow3").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Yellow3")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolYellow04(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Yellow4").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Yellow4").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Yellow4")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolYellow05(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Yellow5").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Yellow5").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Yellow5")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolYellow06(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Yellow6").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Yellow6").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Yellow6")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolYellow07(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Yellow7").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Yellow7").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Yellow7")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolYellow08(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Yellow8").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Yellow8").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Yellow8")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolYellow09(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Yellow9").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Yellow9").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Yellow9")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
 
     public void selectSchoolPink00(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Pink0").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Pink0").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Pink0")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolPink01(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Pink1").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Pink1").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Pink1")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolPink02(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Pink2").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Pink2").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Pink2")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolPink03(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Pink3").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Pink3").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Pink3")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolPink04(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Pink4").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Pink4").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Pink4")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolPink05(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Pink5").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Pink5").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Pink5")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolPink06(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Pink6").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Pink6").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Pink6")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolPink07(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Pink7").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Pink7").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Pink7")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolPink08(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Pink8").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Pink8").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Pink8")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolPink09(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Pink9").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Pink9").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Pink9")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
 
     public void selectSchoolBlue00(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Blue0").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Blue0").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Blue0")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolBlue01(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Blue1").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Blue1").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Blue1")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolBlue02(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Blue2").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Blue2").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Blue2")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolBlue03(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Blue3").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Blue3").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Blue3")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolBlue04(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Blue4").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Blue4").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Blue4")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolBlue05(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Blue5").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Blue5").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Blue5")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolBlue06(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Blue6").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Blue6").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Blue6")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolBlue07(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Blue7").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Blue7").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Blue7")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolBlue08(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Blue8").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Blue8").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Blue8")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
     public void selectSchoolBlue09(MouseEvent mouseEvent) {
-        schoolBoard0.lookup("schoolBoard0Blue9").setVisible(false);
-        schoolBoard0.lookup("schoolBoard0Blue9").setDisable(true);
+        if (schoolBoard0.getId().equals("schoolBoard0Blue9")){
+            schoolBoard0.setVisible(false);
+            schoolBoard0.setDisable(true);
+        }
     }
 
 }
