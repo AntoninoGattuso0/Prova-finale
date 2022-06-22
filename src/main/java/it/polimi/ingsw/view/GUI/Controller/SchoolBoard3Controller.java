@@ -77,6 +77,36 @@ public class SchoolBoard3Controller {
         }
     }
 
+    public void setGreenEntrance3Clickable(boolean bool, int num){
+        for(Node school : schoolBoard3.getChildren()){
+            if(school.getId().equals("entranceGreen3" + num))
+                school.setDisable(bool);
+        }
+    }
+    public void setRedEntrance3Clickable(boolean bool, int num){
+        for(Node school : schoolBoard3.getChildren()){
+            if(school.getId().equals("entranceRed3" + num))
+                school.setDisable(bool);
+        }
+    }
+    public void setYellowEntrance3Clickable(boolean bool, int num){
+        for(Node school : schoolBoard3.getChildren()){
+            if(school.getId().equals("entranceYellow3" + num))
+                school.setDisable(bool);
+        }
+    }
+    public void setPinkEntrance3Clickable(boolean bool, int num){
+        for(Node school : schoolBoard3.getChildren()){
+            if(school.getId().equals("entrancePink3" + num))
+                school.setDisable(bool);
+        }
+    } public void setBlueEntrance3Clickable(boolean bool, int num){
+        for(Node school : schoolBoard3.getChildren()){
+            if(school.getId().equals("entranceBlue3" + num))
+                school.setDisable(bool);
+        }
+    }
+
     public void setEntrance3(){
         int green = lightGame.getPlayers().get(3).getEntrance().getGreenPawn();
         for(int i=0; i<green; i++){

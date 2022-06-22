@@ -78,6 +78,36 @@ public class SchoolBoard2Controller {
         }
     }
 
+    public void setGreenEntrance2Clickable(boolean bool, int num){
+        for(Node school : schoolBoard2.getChildren()){
+            if(school.getId().equals("entranceGreen2" + num))
+                school.setDisable(bool);
+        }
+    }
+    public void setRedEntrance2Clickable(boolean bool, int num){
+        for(Node school : schoolBoard2.getChildren()){
+            if(school.getId().equals("entranceRed2" + num))
+                school.setDisable(bool);
+        }
+    }
+    public void setYellowEntrance2Clickable(boolean bool, int num){
+        for(Node school : schoolBoard2.getChildren()){
+            if(school.getId().equals("entranceYellow0" + num))
+                school.setDisable(bool);
+        }
+    }
+    public void setPinkEntrance2Clickable(boolean bool, int num){
+        for(Node school : schoolBoard2.getChildren()){
+            if(school.getId().equals("entrancePink2" + num))
+                school.setDisable(bool);
+        }
+    } public void setBlueEntrance2Clickable(boolean bool, int num){
+        for(Node school : schoolBoard2.getChildren()){
+            if(school.getId().equals("entranceBlue2" + num))
+                school.setDisable(bool);
+        }
+    }
+
     public void setEntrance2(){
         int green = lightGame.getPlayers().get(2).getEntrance().getGreenPawn();
         for(int i=0; i<green; i++){

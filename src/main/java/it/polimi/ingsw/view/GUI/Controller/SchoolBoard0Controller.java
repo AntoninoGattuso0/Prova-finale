@@ -34,6 +34,7 @@ public class SchoolBoard0Controller {
         }
     }
 
+    //rende le pedine non cliccabili all'inizio
     public void setEntrance0Clickable(){
         setEntrance0();
         int green = lightGame.getPlayers().get(0).getEntrance().getGreenPawn();
@@ -73,6 +74,38 @@ public class SchoolBoard0Controller {
             }
         }
     }
+
+    //rende cliccabili o meno le pedine dell entrata
+    public void setGreenEntrance0Clickable(boolean bool, int num){
+        for(Node school : schoolBoard0.getChildren()){
+            if(school.getId().equals("entranceGreen0" + num))
+                school.setDisable(bool);
+        }
+    }
+    public void setRedEntrance0Clickable(boolean bool, int num){
+        for(Node school : schoolBoard0.getChildren()){
+            if(school.getId().equals("entranceRed0" + num))
+                school.setDisable(bool);
+        }
+    }
+    public void setYellowEntrance0Clickable(boolean bool, int num){
+        for(Node school : schoolBoard0.getChildren()){
+            if(school.getId().equals("entranceYellow0" + num))
+                school.setDisable(bool);
+        }
+    }
+    public void setPinkEntrance0Clickable(boolean bool, int num){
+        for(Node school : schoolBoard0.getChildren()){
+            if(school.getId().equals("entrancePink0" + num))
+                school.setDisable(bool);
+        }
+    } public void setBlueEntrance0Clickable(boolean bool, int num){
+        for(Node school : schoolBoard0.getChildren()){
+            if(school.getId().equals("entranceBlue0" + num))
+                school.setDisable(bool);
+        }
+    }
+
 
     //setta le pedine dell'entrata visibili all'inizio del gioco
     public void setEntrance0(){
