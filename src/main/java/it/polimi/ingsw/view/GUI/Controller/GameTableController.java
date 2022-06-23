@@ -205,7 +205,7 @@ public class GameTableController {
                     showCharacterCard.setVisible(false);
                     showSchool0.setVisible(false);
                     showSchool1.setVisible(false);
-                    showSchool2.setVisible(false);;
+                    showSchool2.setVisible(false);
                 }
 
             });

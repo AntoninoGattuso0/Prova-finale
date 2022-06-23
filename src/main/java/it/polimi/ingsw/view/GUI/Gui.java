@@ -231,6 +231,7 @@ public class Gui extends Application implements View {
     @Override
     public void displaySchoolBoard() {
         //non penso serva ma in caso va lasciata vuota
+
     }
 
     @Override
