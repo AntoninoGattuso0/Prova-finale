@@ -507,14 +507,6 @@ public class GameTableController {
     }
 
     public void moveToIsland(MouseEvent mouseEvent) {
-        phase = ISLAND;
-        color
-
-
-        if(gui.phase == ISLAND)
-
-            else if(gui.phase == DINING)
-
 
     }
 }

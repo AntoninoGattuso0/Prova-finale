@@ -2,6 +2,7 @@ package it.polimi.ingsw.view.GUI;
 
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
+import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.network.Message.ClientToServer.ReadyTodisconnection;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
 import it.polimi.ingsw.view.GUI.Controller.*;
@@ -22,6 +23,12 @@ import java.util.Objects;
 //NINO GUARDA A RIGA 462, L'AGGIORNAMENTO INIZIALE DI DININGROOM FUNZIONA!!!!!!!!!!!!!!!!
 
 public class Gui extends Application implements View {
+
+    //Variabili per salvarsi "quale bottone/pedina/isola è stata cliccata precedentemente
+    private Button buttonClicked;
+    private ArrayList<ColorPawn> colorPawns;
+    private int islandSelected;
+    private int numPawns;
 
 
     private LightGame lightGame;
@@ -49,6 +56,17 @@ public class Gui extends Application implements View {
 
     public Gui() {
     }
+
+    public Button getButtonClicked(){return this.buttonClicked;}
+    public ArrayList<ColorPawn> getColorPawns(){return this.colorPawns;}
+    public int getIslandSelected(){return this.islandSelected;}
+    public int getNumPawns(){return this.numPawns;}
+
+    public void setButtonClicked(Button buttonClicked){this.buttonClicked = buttonClicked;}
+    public void setColorPawns(ArrayList<ColorPawn> colorPawns){this.colorPawns = colorPawns;}
+    public void setIslandSelected(int islandSelected){this.islandSelected = islandSelected;}
+    public void setNumPawns(int numpawns){this.numPawns = numpawns;}
+
     public AssistantCardController getAssistantCardController() {
         return assistantCardController;
     }
