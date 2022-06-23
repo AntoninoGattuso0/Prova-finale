@@ -352,7 +352,7 @@ public class Gui extends Application implements View {
                     gameTable.setMessages("CHOOSE AN ASSISTANT");
 
         }else{
-           gameTable.setMessages(socketNetworkHandler.getNicknameThisPlayer()+" CHOOSE AN ASSISTANT");
+           gameTable.setMessages(socketNetworkHandler.getNicknameThisPlayer()+" IS CHOOSING AN ASSISTANT");
         }
         });
     }
