@@ -29,7 +29,7 @@ public class Gui extends Application implements View {
     private ArrayList<ColorPawn> colorPawns;
     private int islandSelected;
     private int numPawns;
-
+    private int pedineDaSpostare;//da settare (numero fisso, o 3 o 4)
 
     private LightGame lightGame;
     private Stage stage;
@@ -40,7 +40,7 @@ public class Gui extends Application implements View {
     private CharacterCardController characterCardController;
     private RequestNickPlayersController requestNickPlayersController;
     private FXMLLoader fxmlLoader;
-    private int pedineDaSpostare;
+
     private int numPawnMove;
     private boolean endGame=false;
     private SchoolBoard0Controller schoolBoard0Controller;
@@ -61,11 +61,13 @@ public class Gui extends Application implements View {
     public ArrayList<ColorPawn> getColorPawns(){return this.colorPawns;}
     public int getIslandSelected(){return this.islandSelected;}
     public int getNumPawns(){return this.numPawns;}
+    public int getPedineDaSpostare(){return this.pedineDaSpostare;}
 
     public void setButtonClicked(ButtonAction buttonClicked){this.buttonClicked = buttonClicked;}
     public void setColorPawns(ArrayList<ColorPawn> colorPawns){this.colorPawns = colorPawns;}
     public void setIslandSelected(int islandSelected){this.islandSelected = islandSelected;}
     public void setNumPawns(int numpawns){this.numPawns = numpawns;}
+    public void setPedineDaSpostare(int pedineDaSpostare){this.pedineDaSpostare = pedineDaSpostare;}
 
     public AssistantCardController getAssistantCardController() {
         return assistantCardController;

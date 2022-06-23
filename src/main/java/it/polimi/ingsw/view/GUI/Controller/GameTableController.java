@@ -14,6 +14,10 @@ import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 public class GameTableController {
+    @FXML Button number0;
+    @FXML Button number1;
+    @FXML Button number2;
+    @FXML Button number3;
     @FXML Text whatToDo;//Testo bianco da poter cambiare
     @FXML BorderPane showSchool1;
     @FXML BorderPane showSchool2;
@@ -127,6 +131,13 @@ public class GameTableController {
         }
     }
     public void setButtonOff(){
+        number0.setDisable(true);
+        number0.setVisible(false);
+        number1.setDisable(true);
+        number1.setVisible(false);
+        number2.setDisable(true);
+        number2.setVisible(false);
+
         firstButton.setDisable(true);
         firstButton.setVisible(false);
         secondButton.setVisible(false);
@@ -509,8 +520,22 @@ public class GameTableController {
 
     public void islandButton(MouseEvent mouseEvent) {
         gui.setButtonClicked(ButtonAction.ISLAND);
-        whatToDo.setText("Scegli il numero di pedine da spostare su un Island");
 
+        for(int i = 0; i < gui.get)
+        number0.setText("1");
+        number1.setText("2");
+        number3.setText("3");
+        number0.setVisible(true);
+        number0.setDisable(false);
+        number1.setVisible(true);
+        number1.setDisable(false);
+        number2.setVisible(true);
+        number2.setDisable(false);
+        number3.setVisible(true);
+        number3.setDisable(false);
+
+        whatToDo.setText("Scegli il numero di pedine da spostare su un Island: ");
+        whatToDo.setVisible(true);
     }
 
     public void characterButton(MouseEvent mouseEvent) {
