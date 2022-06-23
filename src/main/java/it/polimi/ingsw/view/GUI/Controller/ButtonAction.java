@@ -1,6 +1,6 @@
 package it.polimi.ingsw.view.GUI.Controller;
 
-public enum Button {
+public enum ButtonAction {
 
     ISLAND,
     DININGROOM,
