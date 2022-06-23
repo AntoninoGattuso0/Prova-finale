@@ -10,6 +10,8 @@ import javafx.scene.layout.Pane;
 public class SchoolBoard0Controller {
     Gui gui;
 
+    int buttonSelection;
+
 
     public void setGui(Gui gui){this.gui=gui;}
 
@@ -262,6 +264,12 @@ public class SchoolBoard0Controller {
     public void green00Select(MouseEvent mouseEvent) {
         schoolBoard0.lookup("#entranceGreen00").setVisible(false);
         schoolBoard0.lookup("#entranceGreen00").setDisable(true);
+        if(buttonSelection==1){
+            for(int i=0; i<12; i++)
+                gui.getGameTable().getGameTablePane().lookup("#island"+ i).setDisable(false);
+        }else if(buttonSelection==2)
+
+
     }
 
     public void green01Select(MouseEvent mouseEvent) {

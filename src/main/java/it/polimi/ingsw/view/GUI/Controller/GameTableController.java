@@ -104,6 +104,7 @@ public class GameTableController {
     public BorderPane getShowSchool0(){return showSchool0;}
     public BorderPane getShowAssistant(){return showAssistant;}
     public BorderPane getShowCharacterCard(){return showCharacterCard;}
+    public Pane getGameTablePane(){return gameTable;}
     public void setGui(Gui gui) {
         this.gui = gui;
     }
@@ -507,14 +508,6 @@ public class GameTableController {
     }
 
     public void moveToIsland(MouseEvent mouseEvent) {
-        phase = ISLAND;
-        color
-
-
-        if(gui.phase == ISLAND)
-
-            else if(gui.phase == DINING)
-
 
     }
 }
