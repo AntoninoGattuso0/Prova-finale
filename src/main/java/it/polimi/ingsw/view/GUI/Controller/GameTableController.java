@@ -506,7 +506,13 @@ public class GameTableController {
         gameTable.lookup("#cloud3").setVisible(false);
     }
 
-    public void moveToIsland(MouseEvent mouseEvent) {
+    public void islandButton(MouseEvent mouseEvent) {
+        
+    }
 
+    public void characterButton(MouseEvent mouseEvent) {
+    }
+
+    public void diningButton(MouseEvent mouseEvent) {
     }
 }
