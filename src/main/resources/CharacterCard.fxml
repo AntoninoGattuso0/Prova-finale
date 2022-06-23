@@ -31,7 +31,7 @@
       <Image url="@images/CharacterCard3.jpg" />
    </ImageView>
    <ImageView id="2characterCard2" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
-      <Image url="@images/CharacterCard1.jpg" />
+      <Image url="@images/CharacterCard3.jpg" />
    </ImageView>
    <ImageView id="0characterCard3" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
       <Image url="@images/CharacterCard4.jpg" />
