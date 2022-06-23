@@ -29,7 +29,7 @@ public class Gui extends Application implements View {
     private ArrayList<ColorPawn> colorPawns;//colori che si passano per messaggio
     private int islandSelected = -1;
     private int numPawns = -1;//numero pedine che sposta in quel momento verso la dining/isola (inviate per messaggio)
-    private int pedineDaSpostare;//da settare (numero fisso, o 3 o 4)
+    private int pedineDaSpostare;//da inizializzare (numero fisso, o 3 o 4)
 
     private LightGame lightGame;
     private Stage stage;

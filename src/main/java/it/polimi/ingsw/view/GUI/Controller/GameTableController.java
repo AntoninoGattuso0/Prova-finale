@@ -1,6 +1,7 @@
 package it.polimi.ingsw.view.GUI.Controller;
 
 import it.polimi.ingsw.model.ColorTower;
+import it.polimi.ingsw.network.Message.ClientToServer.MovePawnToIslandMessage;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -484,30 +485,7 @@ public class GameTableController {
         }
         });
     }
-    public void island0Select(MouseEvent mouseEvent) {
-    }
-    public void island11Select(MouseEvent mouseEvent) {
-    }
-    public void island10Select(MouseEvent mouseEvent) {
-    }
-    public void island9Select(MouseEvent mouseEvent) {
-    }
-    public void island8Select(MouseEvent mouseEvent) {
-    }
-    public void island1Select(MouseEvent mouseEvent) {
-    }
-    public void island2Select(MouseEvent mouseEvent) {
-    }
-    public void island3Select(MouseEvent mouseEvent) {
-    }
-    public void island4Select(MouseEvent mouseEvent) {
-    }
-    public void island5elect(MouseEvent mouseEvent) {
-    }
-    public void island6Select(MouseEvent mouseEvent) {
-    }
-    public void island7Select(MouseEvent mouseEvent) {
-    }
+
     public void cloud0select(MouseEvent mouseEvent) {
         gameTable.lookup("#cloud0").setVisible(false);
     }
@@ -522,6 +500,13 @@ public class GameTableController {
     }
 
     public void islandButton(MouseEvent mouseEvent) {
+        diningButton.setVisible(false);
+        diningButton.setDisable(true);
+        characterButton.setVisible(false);
+        characterButton.setDisable(true);
+        islandButton.setVisible(false);
+        islandButton.setDisable(true);
+
         gui.setButtonClicked(ButtonAction.ISLAND);
 
         for(int i = 0; i < gui.getPedineDaSpostare(); i++){
@@ -557,7 +542,10 @@ public class GameTableController {
     public void diningButton(MouseEvent mouseEvent) {
         diningButton.setVisible(false);
         diningButton.setDisable(true);
-
+        characterButton.setVisible(false);
+        characterButton.setDisable(true);
+        islandButton.setVisible(false);
+        islandButton.setDisable(true);
 
         gui.setButtonClicked(ButtonAction.DININGROOM);
 
@@ -589,7 +577,17 @@ public class GameTableController {
     }
 
     public void number0Button(MouseEvent mouseEvent) {
+        number0.setVisible(false);
+        number0.setDisable(true);
+        number1.setVisible(false);
+        number1.setDisable(true);
+        number2.setVisible(false);
+        number2.setDisable(true);
+        number3.setVisible(false);
+        number3.setDisable(true);
+
         gui.setNumPawns(parseInt(number0.getText()));
+
         if(gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
             schoolBoard0Controller.setEntrance0Clickable();
         }
@@ -605,7 +603,17 @@ public class GameTableController {
     }
 
     public void number1Button(MouseEvent mouseEvent) {
+        number0.setVisible(false);
+        number0.setDisable(true);
+        number1.setVisible(false);
+        number1.setDisable(true);
+        number2.setVisible(false);
+        number2.setDisable(true);
+        number3.setVisible(false);
+        number3.setDisable(true);
+
         gui.setNumPawns(parseInt(number1.getText()));
+
         if(gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
             schoolBoard0Controller.setEntrance0Clickable();
         }
@@ -621,7 +629,17 @@ public class GameTableController {
     }
 
     public void number2Button(MouseEvent mouseEvent) {
+        number0.setVisible(false);
+        number0.setDisable(true);
+        number1.setVisible(false);
+        number1.setDisable(true);
+        number2.setVisible(false);
+        number2.setDisable(true);
+        number3.setVisible(false);
+        number3.setDisable(true);
+
         gui.setNumPawns(parseInt(number2.getText()));
+
         if(gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
             schoolBoard0Controller.setEntrance0Clickable();
         }
@@ -637,7 +655,17 @@ public class GameTableController {
     }
 
     public void number3Button(MouseEvent mouseEvent) {
+        number0.setVisible(false);
+        number0.setDisable(true);
+        number1.setVisible(false);
+        number1.setDisable(true);
+        number2.setVisible(false);
+        number2.setDisable(true);
+        number3.setVisible(false);
+        number3.setDisable(true);
+
         gui.setNumPawns(parseInt(number3.getText()));
+
         if(gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
             schoolBoard0Controller.setEntrance0Clickable();
         }
@@ -649,6 +677,90 @@ public class GameTableController {
         }
         else if(gui.getLightGame().getPlayers().get(3).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
             schoolBoard3Controller.setEntrance3Clickable();
+        }
+    }
+
+    public void island0Select(MouseEvent mouseEvent) {
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
+            gui.setIslandSelected(0);
+            gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }
+    }
+
+    public void island1Select(MouseEvent mouseEvent) {
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
+            gui.setIslandSelected(1);
+            gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }
+    }
+
+    public void island2Select(MouseEvent mouseEvent) {
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
+            gui.setIslandSelected(2);
+            gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }
+    }
+
+    public void island3Select(MouseEvent mouseEvent) {
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
+            gui.setIslandSelected(3);
+            gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }
+    }
+
+    public void island4Select(MouseEvent mouseEvent) {
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
+            gui.setIslandSelected(4);
+            gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }
+    }
+
+    public void island5elect(MouseEvent mouseEvent) {
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
+            gui.setIslandSelected(5);
+            gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }
+    }
+
+    public void island6Select(MouseEvent mouseEvent) {
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
+            gui.setIslandSelected(6);
+            gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }
+    }
+
+    public void island7Select(MouseEvent mouseEvent) {
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
+            gui.setIslandSelected(7);
+            gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }
+    }
+
+    public void island8Select(MouseEvent mouseEvent) {
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
+            gui.setIslandSelected(8);
+            gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }
+    }
+
+    public void island9Select(MouseEvent mouseEvent) {
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
+            gui.setIslandSelected(9);
+            gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }
+    }
+
+    public void island10Select(MouseEvent mouseEvent) {
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
+            gui.setIslandSelected(10);
+            gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }
+    }
+
+    public void island11Select(MouseEvent mouseEvent) {
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
+            gui.setIslandSelected(11);
+            gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
         }
     }
 }
