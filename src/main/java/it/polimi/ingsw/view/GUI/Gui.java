@@ -26,10 +26,10 @@ public class Gui extends Application implements View {
 
     //Variabili per salvarsi "quale bottone/pedina/isola è stata cliccata precedentemente
     private ButtonAction buttonClicked;
-    private ArrayList<ColorPawn> colorPawns;
-    private int islandSelected;
-    private int numPawns;
-
+    private ArrayList<ColorPawn> colorPawns;//colori che si passano per messaggio
+    private int islandSelected = -1;
+    private int numPawns = -1;//numero pedine che sposta in quel momento verso la dining/isola (inviate per messaggio)
+    private int pedineDaSpostare;//da settare (numero fisso, o 3 o 4)
 
     private LightGame lightGame;
     private Stage stage;
@@ -40,7 +40,7 @@ public class Gui extends Application implements View {
     private CharacterCardController characterCardController;
     private RequestNickPlayersController requestNickPlayersController;
     private FXMLLoader fxmlLoader;
-    private int pedineDaSpostare;
+
     private int numPawnMove;
     private boolean endGame=false;
     private SchoolBoard0Controller schoolBoard0Controller;
@@ -61,11 +61,13 @@ public class Gui extends Application implements View {
     public ArrayList<ColorPawn> getColorPawns(){return this.colorPawns;}
     public int getIslandSelected(){return this.islandSelected;}
     public int getNumPawns(){return this.numPawns;}
+    public int getPedineDaSpostare(){return this.pedineDaSpostare;}
 
     public void setButtonClicked(ButtonAction buttonClicked){this.buttonClicked = buttonClicked;}
     public void setColorPawns(ArrayList<ColorPawn> colorPawns){this.colorPawns = colorPawns;}
     public void setIslandSelected(int islandSelected){this.islandSelected = islandSelected;}
     public void setNumPawns(int numpawns){this.numPawns = numpawns;}
+    public void setPedineDaSpostare(int pedineDaSpostare){this.pedineDaSpostare = pedineDaSpostare;}
 
     public AssistantCardController getAssistantCardController() {
         return assistantCardController;
