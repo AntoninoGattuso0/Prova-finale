@@ -501,4 +501,8 @@ public class GameTableController {
     }
     public void cloud3select(MouseEvent mouseEvent) {
     }
+
+    public void moveToIsland(MouseEvent mouseEvent) {
+
+    }
 }

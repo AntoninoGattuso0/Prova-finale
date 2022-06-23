@@ -1,0 +1,9 @@
+package it.polimi.ingsw.view.GUI.Controller;
+
+public enum Button {
+
+    ISLAND,
+    DININGROOM,
+    CHARACTER; //AGGIUNGERE POI I BOTTONI PER TUTTI I CHARACTER CHE RICHIEDONO DI CLICCARE QUALCOSA
+
+}
