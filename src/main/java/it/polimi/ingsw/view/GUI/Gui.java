@@ -345,9 +345,9 @@ public class Gui extends Application implements View {
             Platform.runLater(()-> {
                 if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
                     gameTable.setChooseViewOff();
-                gameTable.switchToAssistantCard();
-                assistantCardController.setAsssistantsAble(nickname);
-                gameTable.setMessages("CHOOSE AN ASSISTANT");
+                    assistantCardController.setAsssistantsAble(nickname);
+                    gameTable.switchToAssistantCard();
+                    gameTable.setMessages("CHOOSE AN ASSISTANT");
 
         }else{
            gameTable.setMessages(socketNetworkHandler.getNicknameThisPlayer()+" CHOOSE AN ASSISTANT");
