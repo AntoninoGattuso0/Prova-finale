@@ -5,7 +5,6 @@ import it.polimi.ingsw.view.GUI.Gui;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
@@ -508,6 +507,14 @@ public class GameTableController {
     }
 
     public void moveToIsland(MouseEvent mouseEvent) {
+        phase = ISLAND;
+        color
+
+
+        if(gui.phase == ISLAND)
+
+            else if(gui.phase == DINING)
+
 
     }
 }
