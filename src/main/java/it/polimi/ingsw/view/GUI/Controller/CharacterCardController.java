@@ -171,4 +171,31 @@ public class CharacterCardController {
 
     public void moveRedCharacter1(MouseEvent mouseEvent) {
     }
+
+    public void moveYellowCharacter1(MouseEvent mouseEvent) {
+    }
+
+    public void moveRedCharacter0(MouseEvent mouseEvent) {
+    }
+
+    public void moveBlueCharacter2(MouseEvent mouseEvent) {
+    }
+
+    public void movePinkCharacter2(MouseEvent mouseEvent) {
+    }
+
+    public void moveYellowCharacter2(MouseEvent mouseEvent) {
+    }
+
+    public void moveRedCharacter2(MouseEvent mouseEvent) {
+    }
+
+    public void moveGreenCharacter2(MouseEvent mouseEvent) {
+    }
+
+    public void movePinkCharacter1(MouseEvent mouseEvent) {
+    }
+
+    public void moveBlueCharacter1(MouseEvent mouseEvent) {
+    }
 }

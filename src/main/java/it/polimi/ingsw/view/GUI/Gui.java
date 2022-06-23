@@ -43,19 +43,20 @@ public class Gui extends Application implements View {
     private int numPawnMove;
     private boolean endGame=false;
 
-    SchoolBoard0Controller schoolBoard0Controller;
-    SchoolBoard1Controller schoolBoard1Controller;
-    SchoolBoard2Controller schoolBoard2Controller;
-    SchoolBoard3Controller schoolBoard3Controller;
+    private SchoolBoard0Controller schoolBoard0Controller;
+    private SchoolBoard1Controller schoolBoard1Controller;
+    private SchoolBoard2Controller schoolBoard2Controller;
+    private SchoolBoard3Controller schoolBoard3Controller;
     private FXMLLoader fxmlSchool0;
     private FXMLLoader fxmlAssistant;
     private FXMLLoader fxmlCharacter;
+    private FXMLLoader fxmlSchool1;
+    private FXMLLoader fxmlSchool2;
+    private FXMLLoader fxmlSchool3;
 
     public Gui() {
     }
     public LightGame getLightGame(){return this.lightGame;}
-
-
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -326,12 +327,13 @@ public class Gui extends Application implements View {
 
     @Override
     public void selectAssistantCard(String nickname) {
-
         //si deve capire come gestire il gameTableController
-        int i;
         if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
-            for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(),nickname);i++);
-            assistantCardController.setAssistantCards(i);//maybe?
+            Platform.runLater(()-> {
+                int i;
+                for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(),nickname);i++);
+                assistantCardController.setAssistantCards(i);
+            });
         }else{
             //Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+" CHOOSE AN ASSISTANT");
         }
@@ -440,7 +442,40 @@ public class Gui extends Application implements View {
             schoolBoard0Controller=fxmlSchool0.getController();
             schoolBoard0Controller.setGui(this);
             schoolBoard0Controller.setSchoolBoard0();
-
+            fxmlSchool1= new FXMLLoader();
+            fxmlSchool1.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
+            try {
+                fxmlSchool1.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            schoolBoard1Controller=fxmlSchool1.getController();
+            schoolBoard1Controller.setGui(this);
+            schoolBoard1Controller.setSchoolBoard1();
+            if(lightGame.getNumPlayers()>2) {
+                fxmlSchool2 = new FXMLLoader();
+                fxmlSchool2.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
+                try {
+                    fxmlSchool2.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                schoolBoard2Controller = fxmlSchool2.getController();
+                schoolBoard2Controller.setGui(this);
+                schoolBoard2Controller.setSchoolBoard2();
+            }
+            if(lightGame.getNumPlayers()>3) {
+                fxmlSchool3 = new FXMLLoader();
+                fxmlSchool3.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
+                try {
+                    fxmlSchool3.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                schoolBoard3Controller = fxmlSchool3.getController();
+                schoolBoard3Controller.setGui(this);
+                schoolBoard3Controller.setSchoolBoard3();
+            }
             fxmlAssistant= new FXMLLoader();
             fxmlAssistant.setLocation(getClass().getResource("/AssistantCard.fxml"));
             try {
@@ -456,20 +491,21 @@ public class Gui extends Application implements View {
             gameTable.getShowSchool0().setCenter(schoolBoard0Controller.getSchoolBoard0());
             gameTable.getShowSchool0().getCenter().setVisible(true);
 //abbiamo provato a mettere il "runLater" sul click però dava problemi, prova magari anche te ma a me diceva che la gui era NULL
-            fxmlCharacter= new FXMLLoader();
-            fxmlCharacter.setLocation(getClass().getResource("/CharacterCard.fxml"));
-            try {
-                fxmlCharacter.load();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(lightGame.getIsExpert()) {
+                fxmlCharacter = new FXMLLoader();
+                fxmlCharacter.setLocation(getClass().getResource("/CharacterCard.fxml"));
+                try {
+                    fxmlCharacter.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                characterCardController = fxmlCharacter.getController();
+                characterCardController.setGui(this);
+                characterCardController.setCharacterCards();
+                gameTable.getShowCharacterCard().setCenter(characterCardController.getCharacterCards());
+                gameTable.getShowCharacterCard().getCenter().setVisible(true);
             }
-            characterCardController = fxmlCharacter.getController();
-            characterCardController.setGui(this);
-            characterCardController.setCharacterCards();
-            gameTable.getShowCharacterCard().setCenter(characterCardController.getCharacterCards());
-            gameTable.getShowCharacterCard().getCenter().setVisible(true);
         });
-
 
 }
 
