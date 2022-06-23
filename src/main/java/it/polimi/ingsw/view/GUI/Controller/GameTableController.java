@@ -20,7 +20,7 @@ public class GameTableController {
     @FXML BorderPane showSchool0;
     @FXML BorderPane showAssistant;
     @FXML BorderPane showCharacterCard;
-    @FXML Button CharacterCard;
+    @FXML Button CharacterCardButton;
     @FXML ChoiceBox<String> SchoolBoard;
     @FXML Button AssistantCardButton;
     @FXML Button fourthButton;
@@ -115,8 +115,8 @@ public class GameTableController {
         for (i = 1; i < player.size(); i++)
             turnOf.setText(turnOf.getText()+player.get(i) + "\n");
     }
-    public void setMessages(Text messages) {
-        this.messages = messages;
+    public void setMessages(String messages) {
+        this.messages.setText(messages);
     }
     public void setAllIslands(boolean visible, boolean disabled) {
         for (int i = 0; i < gui.getLightGame().getIslands().size(); i++) {
@@ -140,8 +140,8 @@ public class GameTableController {
     public void setAssistantSchoolBoardCharacter(){
         AssistantCardButton.setDisable(false);
         AssistantCardButton.setVisible(true);
-        CharacterCard.setVisible(true);
-        CharacterCard.setDisable(false);
+        CharacterCardButton.setVisible(true);
+        CharacterCardButton.setDisable(false);
         SchoolBoard.setVisible(true);
         int i;
         for(i=0;i<gui.getLightGame().getPlayers().size();i++) {
@@ -196,6 +196,11 @@ public class GameTableController {
 
             });
         }
+    }
+    public void setChooseViewOff(){
+        SchoolBoard.setDisable(true);
+        AssistantCardButton.setDisable(true);
+        CharacterCardButton.setDisable(true);
     }
     public void setPawnVisible() {
         int n;
@@ -397,14 +402,13 @@ public class GameTableController {
         }
     }
 
-    public void switchToAssistantCard(MouseEvent mouseEvent) {
+    public void switchToAssistantCard() {
         showCharacterCard.setVisible(false);
         showSchool0.setVisible(false);
         showSchool1.setVisible(false);
         showSchool2.setVisible(false);
         showSchool3.setVisible(false);
         Platform.runLater(()-> {
-            System.out.println("ciao");
                     assistantCardController = gui.getAssistantCardController();
                     assistantCardController.setAssistantCards(gui.getSocketNetworkHandler().getNicknameThisPlayer());
                     showAssistant.setCenter(assistantCardController.getAssistantCards());

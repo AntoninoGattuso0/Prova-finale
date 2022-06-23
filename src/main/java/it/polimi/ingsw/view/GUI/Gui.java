@@ -342,14 +342,17 @@ public class Gui extends Application implements View {
 
     @Override
     public void selectAssistantCard(String nickname) {
-        //si deve capire come gestire il gameTableController
-        if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
             Platform.runLater(()-> {
-                assistantCardController.setAssistantCards(nickname);
-            });
+                if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
+                    gameTable.setChooseViewOff();
+                gameTable.switchToAssistantCard();
+                assistantCardController.setAsssistantsAble(nickname);
+                gameTable.setMessages("CHOOSE AN ASSISTANT");
+
         }else{
-            //Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+" CHOOSE AN ASSISTANT");
+           gameTable.setMessages(socketNetworkHandler.getNicknameThisPlayer()+" CHOOSE AN ASSISTANT");
         }
+        });
     }
 
     @Override
