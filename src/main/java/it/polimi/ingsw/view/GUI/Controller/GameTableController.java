@@ -6,6 +6,8 @@ import it.polimi.ingsw.view.GUI.Gui;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
@@ -713,7 +715,7 @@ public class GameTableController {
         }
     }
 
-    public void island5elect(MouseEvent mouseEvent) {
+    public void island5Select(MouseEvent mouseEvent) {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(5);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
@@ -761,4 +763,90 @@ public class GameTableController {
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
         }
     }
+
+    public void island0Entered() {
+        for(Node island : gameTable.getChildren()){
+            if(island.getId().equals("island0")){
+                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
+            }
+        }
+    }
+    public void island1Entered() {
+        for(Node island : gameTable.getChildren()){
+            if(island.getId().equals("island1")){
+                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
+            }
+        }
+    }
+    public void island2Entered() {
+        for(Node island : gameTable.getChildren()){
+            if(island.getId().equals("island2")){
+                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
+            }
+        }
+    }
+    public void island3Entered() {
+        for(Node island : gameTable.getChildren()){
+            if(island.getId().equals("island3")){
+                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
+            }
+        }
+    }
+    public void island4Entered() {
+        for(Node island : gameTable.getChildren()){
+            if(island.getId().equals("island4")){
+                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
+            }
+        }
+    }
+    public void island5Entered() {
+        for(Node island : gameTable.getChildren()){
+            if(island.getId().equals("island5")){
+                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
+            }
+        }
+    }
+    public void island6Entered() {
+        for(Node island : gameTable.getChildren()){
+            if(island.getId().equals("island6")){
+                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
+            }
+        }
+    }
+    public void island7Entered() {
+        for(Node island : gameTable.getChildren()){
+            if(island.getId().equals("island7")){
+                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
+            }
+        }
+    }
+    public void island8Entered() {
+        for(Node island : gameTable.getChildren()){
+            if(island.getId().equals("island8")){
+                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
+            }
+        }
+    }
+    public void island9Entered() {
+        for(Node island : gameTable.getChildren()){
+            if(island.getId().equals("island9")){
+                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
+            }
+        }
+    }
+    public void island10Entered() {
+        for(Node island : gameTable.getChildren()){
+            if(island.getId().equals("island10")){
+                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
+            }
+        }
+    }
+    public void island11Entered() {
+        for(Node island : gameTable.getChildren()){
+            if(island.getId().equals("island11")){
+                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
+            }
+        }
+    }
+
 }

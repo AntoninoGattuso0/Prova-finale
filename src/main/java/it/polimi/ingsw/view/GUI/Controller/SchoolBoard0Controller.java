@@ -260,6 +260,12 @@ public class SchoolBoard0Controller {
         }
     }
 
+
+    //per tuttte le funzioni dell'entrata una volta cliccata la pedina diventa non selezionabile ed invisbile
+    //si aggiunge una pedina all array in base al colore della pedina
+    //se ha schiacciato il bottone delle isole allora si rendono selezionabili le isole
+    //se invece ha schiacciato il bottone della dining allora manda il messaggio quando
+    //sono state scelte tutte le pedine che voleva spostare
     public void green00Select(MouseEvent mouseEvent) {
         schoolBoard0.lookup("#entranceGreen00").setVisible(false);
         schoolBoard0.lookup("#entranceGreen00").setDisable(true);
