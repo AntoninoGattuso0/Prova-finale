@@ -5,6 +5,7 @@ import it.polimi.ingsw.view.GUI.Gui;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
@@ -494,11 +495,15 @@ public class GameTableController {
     public void island7Select(MouseEvent mouseEvent) {
     }
     public void cloud0select(MouseEvent mouseEvent) {
+        gameTable.lookup("#cloud0").setVisible(false);
     }
     public void cloud1select(MouseEvent mouseEvent) {
+        gameTable.lookup("#cloud0").setVisible(false);
     }
     public void cloud2select(MouseEvent mouseEvent) {
+        gameTable.lookup("#cloud").setVisible(false);
     }
     public void cloud3select(MouseEvent mouseEvent) {
+        gameTable.lookup("#cloud3").setVisible(false);
     }
 }
