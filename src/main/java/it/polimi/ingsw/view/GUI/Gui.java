@@ -58,6 +58,7 @@ public class Gui extends Application implements View {
     public Gui() {
     }
 
+
     public ButtonAction getButtonClicked(){return this.buttonClicked;}
     public ArrayList<ColorPawn> getColorPawns(){return this.colorPawns;}
     public int getIslandSelected(){return this.islandSelected;}
