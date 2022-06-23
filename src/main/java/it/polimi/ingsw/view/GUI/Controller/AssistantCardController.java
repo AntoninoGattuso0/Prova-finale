@@ -2,7 +2,9 @@ package it.polimi.ingsw.view.GUI.Controller;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseAssistantCardMessage;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 import java.util.Objects;
@@ -108,4 +110,76 @@ public class AssistantCardController {
             gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(9));
             gui.assistantSelected();
         }
-    }
+
+        public void assistant1Entered() {
+            for(Node assistant : assistantCards.getChildren()){
+                if(assistant.getId().equals("AssistantCard1")){
+                    assistant.setOnMouseEntered(mouseEvent -> assistant.setCursor(Cursor.HAND));
+                }
+            }
+        }
+        public void assistant2Entered() {
+            for(Node assistant : assistantCards.getChildren()){
+                if(assistant.getId().equals("AssistantCard2")){
+                    assistant.setOnMouseEntered(mouseEvent -> assistant.setCursor(Cursor.HAND));
+                }
+            }
+        }
+        public void assistant3Entered() {
+            for(Node assistant : assistantCards.getChildren()){
+                if(assistant.getId().equals("AssistantCard3")){
+                    assistant.setOnMouseEntered(mouseEvent -> assistant.setCursor(Cursor.HAND));
+                }
+            }
+        }
+        public void assistant4Entered() {
+            for(Node assistant : assistantCards.getChildren()){
+                if(assistant.getId().equals("AssistantCard4")){
+                    assistant.setOnMouseEntered(mouseEvent -> assistant.setCursor(Cursor.HAND));
+                }
+            }
+        }
+        public void assistant5Entered() {
+            for(Node assistant : assistantCards.getChildren()){
+                if(assistant.getId().equals("AssistantCard5")){
+                    assistant.setOnMouseEntered(mouseEvent -> assistant.setCursor(Cursor.HAND));
+                }
+            }
+        }
+        public void assistant6Entered() {
+            for(Node assistant : assistantCards.getChildren()){
+                if(assistant.getId().equals("AssistantCard6")){
+                    assistant.setOnMouseEntered(mouseEvent -> assistant.setCursor(Cursor.HAND));
+                }
+            }
+        }
+        public void assistant7Entered() {
+            for(Node assistant : assistantCards.getChildren()){
+                if(assistant.getId().equals("AssistantCard7")){
+                    assistant.setOnMouseEntered(mouseEvent -> assistant.setCursor(Cursor.HAND));
+                }
+            }
+        }
+        public void assistant8Entered() {
+            for(Node assistant : assistantCards.getChildren()){
+                if(assistant.getId().equals("AssistantCard8")){
+                    assistant.setOnMouseEntered(mouseEvent -> assistant.setCursor(Cursor.HAND));
+                }
+            }
+        }
+
+        public void assistant9Entered() {
+            for(Node assistant : assistantCards.getChildren()){
+                if(assistant.getId().equals("AssistantCard9")){
+                    assistant.setOnMouseEntered(mouseEvent -> assistant.setCursor(Cursor.HAND));
+                }
+            }
+        }
+        public void assistant10Entered() {
+            for(Node assistant : assistantCards.getChildren()){
+                if(assistant.getId().equals("AssistantCard10")){
+                    assistant.setOnMouseEntered(mouseEvent -> assistant.setCursor(Cursor.HAND));
+                }
+            }
+        }
+}

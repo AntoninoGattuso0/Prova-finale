@@ -6,34 +6,34 @@
 
 <Pane fx:id="assistantCards" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.Controller.AssistantCardController">
     <children>
-        <ImageView id="AssistantCard1" fitHeight="150.0" fitWidth="115.0" onMouseClicked="#assistant1Select" pickOnBounds="true" preserveRatio="true">
+        <ImageView id="AssistantCard1" fitHeight="150.0" fitWidth="115.0" onMouseClicked="#assistant1Select" onMouseEntered="#assistant1Entered" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/AssistantCard1.png" />
         </ImageView>
-        <ImageView id="AssistantCard2" fitHeight="150.0" fitWidth="115.0" layoutX="116.0" onMouseClicked="#assistant2Select" pickOnBounds="true" preserveRatio="true">
+        <ImageView id="AssistantCard2" fitHeight="150.0" fitWidth="115.0" layoutX="116.0" onMouseClicked="#assistant2Select" onMouseEntered="#assistant2Entered" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/AssistantCard2.png" />
         </ImageView>
-        <ImageView id="AssistantCard3" fitHeight="150.0" fitWidth="117.0" layoutX="232.0" onMouseClicked="#assistant3Select" pickOnBounds="true" preserveRatio="true">
+        <ImageView id="AssistantCard3" fitHeight="150.0" fitWidth="117.0" layoutX="232.0" onMouseClicked="#assistant3Select" onMouseEntered="#assistant3Entered" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/AssistantCard3.png" />
         </ImageView>
-        <ImageView id="AssistantCard4" fitHeight="150.0" fitWidth="116.0" layoutY="150.0" onMouseClicked="#assistant4Select" pickOnBounds="true" preserveRatio="true">
+        <ImageView id="AssistantCard4" fitHeight="150.0" fitWidth="116.0" layoutY="150.0" onMouseClicked="#assistant4Select" onMouseEntered="#assistant4Entered" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/AssistantCard4.png" />
         </ImageView>
-        <ImageView id="AssistantCard5" fitHeight="150.0" fitWidth="116.0" layoutX="116.0" layoutY="150.0" onMouseClicked="#assistant5Select" pickOnBounds="true" preserveRatio="true">
+        <ImageView id="AssistantCard5" fitHeight="150.0" fitWidth="116.0" layoutX="116.0" layoutY="150.0" onMouseClicked="#assistant5Select" onMouseEntered="#assistant5Entered" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/AssistantCard5.png" />
         </ImageView>
-        <ImageView id="AssistantCard6" fitHeight="150.0" fitWidth="117.0" layoutX="232.0" layoutY="150.0" onMouseClicked="#assistant6Select" pickOnBounds="true" preserveRatio="true">
+        <ImageView id="AssistantCard6" fitHeight="150.0" fitWidth="117.0" layoutX="232.0" layoutY="150.0" onMouseClicked="#assistant6Select" onMouseEntered="#assistant6Entered" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/AssistantCard6.png" />
         </ImageView>
-        <ImageView id="AssistantCard7" fitHeight="150.0" fitWidth="115.0" layoutY="309.0" onMouseClicked="#assistant7Selected" pickOnBounds="true" preserveRatio="true">
+        <ImageView id="AssistantCard7" fitHeight="150.0" fitWidth="115.0" layoutY="309.0" onMouseClicked="#assistant7Selected" onMouseEntered="#assistant7Entered" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/AssistantCard7.png" />
         </ImageView>
-        <ImageView id="AssistantCard8" fitHeight="150.0" fitWidth="116.0" layoutX="116.0" layoutY="309.0" onMouseClicked="#assistant8Select" pickOnBounds="true" preserveRatio="true">
+        <ImageView id="AssistantCard8" fitHeight="150.0" fitWidth="116.0" layoutX="116.0" layoutY="309.0" onMouseClicked="#assistant8Select" onMouseEntered="#assistant8Entered" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/AssistantCard8.png" />
         </ImageView>
-        <ImageView id="AssistantCard9" fitHeight="150.0" fitWidth="117.0" layoutX="232.0" layoutY="309.0" onMouseClicked="#assistant9Select" pickOnBounds="true" preserveRatio="true">
+        <ImageView id="AssistantCard9" fitHeight="150.0" fitWidth="117.0" layoutX="232.0" layoutY="309.0" onMouseClicked="#assistant9Select" onMouseEntered="#assistant9Entered" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/AssistantCard9.png" />
         </ImageView>
-        <ImageView id="AssistantCard10" fitHeight="150.0" fitWidth="116.0" layoutX="116.0" layoutY="469.0" onMouseClicked="#assistant10Select" pickOnBounds="true" preserveRatio="true">
+        <ImageView id="AssistantCard10" fitHeight="150.0" fitWidth="116.0" layoutX="116.0" layoutY="469.0" onMouseClicked="#assistant10Select" onMouseEntered="#assistant10Entered" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/AssistantCard10.png" />
         </ImageView>
     </children>
