@@ -23,4 +23,8 @@ public class CharacterCard implements Serializable {
     public int getNumCard() {
         return numCard;
     }
+
+    public void setNumCard(int numCard){
+        this.numCard = numCard;
+    }
 }

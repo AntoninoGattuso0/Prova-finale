@@ -6,12 +6,28 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 
 public class CharacterCardController {
     @FXML
     public Pane characterCards;
+    public Text textGreenCharacter0;
+    public Text textRedCharacter0;
+    public Text textYellowCharacter0;
+    public Text textPinkCharacter0;
+    public Text textBlueCharacter0;
+    public Text textGreenCharacter1;
+    public Text textRedCharacter1;
+    public Text textYellowCharacter1;
+    public Text textPinkCharacter1;
+    public Text textBlueCharacter1;
+    public Text textGreenCharacter2;
+    public Text textRedCharacter2;
+    public Text textYellowCharacter2;
+    public Text textPinkCharacter2;
+    public Text textBlueCharacter2;
     ArrayList<ColorPawn> colori = new ArrayList<>();
     int island = -1;
     Gui gui;
@@ -27,6 +43,7 @@ public class CharacterCardController {
         setInvisibleAll();
         setDisableAll();
         showCharacter();
+        showCharacterPawn();
     }
     
     public void setDisableAll() {
@@ -50,6 +67,111 @@ public class CharacterCardController {
                 }
             }
         }
+
+
+    public void showCharacterPawn(){
+        ArrayList<Integer> characterPawn = new ArrayList<>();
+        characterPawn.add(0);
+        characterPawn.add(6);
+        characterPawn.add(10);
+        for(int i = 0; i<gui.getLightGame().getCharacterCards().size();i++){
+            if(characterPawn.contains(gui.getLightGame().getCharacterCards().get(i).getNumCard())){
+                for(Node character : characterCards.getChildren()){
+                    if(character.getId().equals("greenCharacter" + i))
+                        character.setVisible(true);
+                    else if(character.getId().equals("redCharacter" + i))
+                        character.setVisible(true);
+                    else if(character.getId().equals("yellowCharacter" + i))
+                        character.setVisible(true);
+                    else if(character.getId().equals("pinkCharacter" + i))
+                        character.setVisible(true);
+                    else if(character.getId().equals("blueCharacter" + i))
+                        character.setVisible(true);
+                    else if(character.getId().equals("redCharacter" + i))
+                        character.setVisible(true);
+                    if (i == 0) {
+                        if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 0) {
+                            textGreenCharacter0.setText(Integer.toString(gui.getLightGame().getAntonio().getGreenPawn()));
+                            textRedCharacter0.setText(Integer.toString(gui.getLightGame().getAntonio().getRedPawn()));
+                            textYellowCharacter0.setText(Integer.toString(gui.getLightGame().getAntonio().getYellowPawn()));
+                            textPinkCharacter0.setText(Integer.toString(gui.getLightGame().getAntonio().getPinkPawn()));
+                            textBlueCharacter0.setText(Integer.toString(gui.getLightGame().getAntonio().getBluePawn()));
+                        } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 6) {
+                            textGreenCharacter0.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumGreenPawn()));
+                            textRedCharacter0.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumRedPawn()));
+                            textYellowCharacter0.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumYellowPawn()));
+                            textPinkCharacter0.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumPinkPawn()));
+                            textBlueCharacter0.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumBluePawn()));
+                        } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 10) {
+                            textGreenCharacter0.setText(Integer.toString(gui.getLightGame().getNicola().getGreenPawn()));
+                            textRedCharacter0.setText(Integer.toString(gui.getLightGame().getNicola().getRedPawn()));
+                            textYellowCharacter0.setText(Integer.toString(gui.getLightGame().getNicola().getYellowPawn()));
+                            textPinkCharacter0.setText(Integer.toString(gui.getLightGame().getNicola().getPinkPawn()));
+                            textBlueCharacter0.setText(Integer.toString(gui.getLightGame().getNicola().getBluePawn()));
+                        }
+                        textGreenCharacter0.setVisible(true);
+                        textRedCharacter0.setVisible(true);
+                        textYellowCharacter0.setVisible(true);
+                        textPinkCharacter0.setVisible(true);
+                        textBlueCharacter0.setVisible(true);
+                    }
+                    else if(i == 1){
+                        if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 0) {
+                            textGreenCharacter1.setText(Integer.toString(gui.getLightGame().getAntonio().getGreenPawn()));
+                            textRedCharacter1.setText(Integer.toString(gui.getLightGame().getAntonio().getRedPawn()));
+                            textYellowCharacter1.setText(Integer.toString(gui.getLightGame().getAntonio().getYellowPawn()));
+                            textPinkCharacter1.setText(Integer.toString(gui.getLightGame().getAntonio().getPinkPawn()));
+                            textBlueCharacter1.setText(Integer.toString(gui.getLightGame().getAntonio().getBluePawn()));
+                        } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 6) {
+                            textGreenCharacter1.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumGreenPawn()));
+                            textRedCharacter1.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumRedPawn()));
+                            textYellowCharacter1.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumYellowPawn()));
+                            textPinkCharacter1.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumPinkPawn()));
+                            textBlueCharacter1.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumBluePawn()));
+                        } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 10) {
+                            textGreenCharacter1.setText(Integer.toString(gui.getLightGame().getNicola().getGreenPawn()));
+                            textRedCharacter1.setText(Integer.toString(gui.getLightGame().getNicola().getRedPawn()));
+                            textYellowCharacter1.setText(Integer.toString(gui.getLightGame().getNicola().getYellowPawn()));
+                            textPinkCharacter1.setText(Integer.toString(gui.getLightGame().getNicola().getPinkPawn()));
+                            textBlueCharacter1.setText(Integer.toString(gui.getLightGame().getNicola().getBluePawn()));
+                        }
+                        textGreenCharacter1.setVisible(true);
+                        textRedCharacter1.setVisible(true);
+                        textYellowCharacter1.setVisible(true);
+                        textPinkCharacter1.setVisible(true);
+                        textBlueCharacter1.setVisible(true);
+                    }
+                    else if(i == 2){
+                        if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 0) {
+                            textGreenCharacter2.setText(Integer.toString(gui.getLightGame().getAntonio().getGreenPawn()));
+                            textRedCharacter2.setText(Integer.toString(gui.getLightGame().getAntonio().getRedPawn()));
+                            textYellowCharacter2.setText(Integer.toString(gui.getLightGame().getAntonio().getYellowPawn()));
+                            textPinkCharacter2.setText(Integer.toString(gui.getLightGame().getAntonio().getPinkPawn()));
+                            textBlueCharacter2.setText(Integer.toString(gui.getLightGame().getAntonio().getBluePawn()));
+                        } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 6) {
+                            textGreenCharacter2.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumGreenPawn()));
+                            textRedCharacter2.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumRedPawn()));
+                            textYellowCharacter2.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumYellowPawn()));
+                            textPinkCharacter2.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumPinkPawn()));
+                            textBlueCharacter2.setText(Integer.toString(gui.getLightGame().getGiuseppe().getNumBluePawn()));
+                        } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 10) {
+                            textGreenCharacter2.setText(Integer.toString(gui.getLightGame().getNicola().getGreenPawn()));
+                            textRedCharacter2.setText(Integer.toString(gui.getLightGame().getNicola().getRedPawn()));
+                            textYellowCharacter2.setText(Integer.toString(gui.getLightGame().getNicola().getYellowPawn()));
+                            textPinkCharacter2.setText(Integer.toString(gui.getLightGame().getNicola().getPinkPawn()));
+                            textBlueCharacter2.setText(Integer.toString(gui.getLightGame().getNicola().getBluePawn()));
+                        }
+                        textGreenCharacter2.setVisible(true);
+                        textRedCharacter2.setVisible(true);
+                        textYellowCharacter2.setVisible(true);
+                        textPinkCharacter2.setVisible(true);
+                        textBlueCharacter2.setVisible(true);
+                    }
+                }
+            }
+        }
+    }
+
 
     public void setDisable(int n, boolean disable) {
         String name = "#characterCard" + n;

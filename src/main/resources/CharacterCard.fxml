@@ -168,19 +168,19 @@
    <ImageView id="coin2" fitHeight="35.0" fitWidth="35.0" layoutX="147.0" layoutY="565.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@images/Coin.png" />
    </ImageView>
-   <Text id="textGreenCharacter0" layoutX="178.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textRedCharacter0" layoutX="178.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textYellowCharacter0" layoutX="178.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textPinkCharacter0" layoutX="178.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textBlueCharacter0" layoutX="175.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textGreenCharacter1" layoutX="150.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textRedCharacter1" layoutX="150.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textYellowCharacter1" layoutX="150.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textPinkCharacter1" layoutX="150.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textBlueCharacter1" layoutX="150.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textGreenCharacter2" layoutX="178.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textRedCharacter2" layoutX="178.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textYellowCharacter2" layoutX="178.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textPinkCharacter2" layoutX="178.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text id="textBlueCharacter2" layoutX="175.0" layoutY="552.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textGreenCharacter0" layoutX="178.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textRedCharacter0" layoutX="178.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textYellowCharacter0" layoutX="178.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textPinkCharacter0" layoutX="178.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textBlueCharacter0" layoutX="175.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textGreenCharacter1" layoutX="150.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textRedCharacter1" layoutX="150.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textYellowCharacter1" layoutX="150.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textPinkCharacter1" layoutX="150.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textBlueCharacter1" layoutX="150.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textGreenCharacter2" layoutX="178.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textRedCharacter2" layoutX="178.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textYellowCharacter2" layoutX="178.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textPinkCharacter2" layoutX="178.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="textBlueCharacter2" layoutX="175.0" layoutY="552.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
 </Pane>
