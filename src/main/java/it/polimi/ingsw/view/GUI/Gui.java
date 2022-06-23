@@ -29,6 +29,7 @@ public class Gui extends Application implements View {
     private ArrayList<ColorPawn> colorPawns;//colori che si passano per messaggio
     private int islandSelected = -1;
     private int numPawns = -1;//numero pedine che sposta in quel momento verso la dining/isola (inviate per messaggio)
+    private int numPawnsCount = -1;
     private int pedineDaSpostare;//da inizializzare (numero fisso, o 3 o 4)
 
     private LightGame lightGame;
@@ -62,6 +63,10 @@ public class Gui extends Application implements View {
     public int getIslandSelected(){return this.islandSelected;}
     public int getNumPawns(){return this.numPawns;}
     public int getPedineDaSpostare(){return this.pedineDaSpostare;}
+
+    public int getNumPawnsCount() {return numPawnsCount;}
+
+    public void setNumPawnsCount(int numPawnCount) {this.numPawnsCount = numPawnsCount;}
 
     public void setButtonClicked(ButtonAction buttonClicked){this.buttonClicked = buttonClicked;}
     public void setColorPawns(ArrayList<ColorPawn> colorPawns){this.colorPawns = colorPawns;}

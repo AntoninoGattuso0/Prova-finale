@@ -32,7 +32,6 @@ public class GameTableController {
     @FXML Button CharacterCardButton;
     @FXML ChoiceBox<String> SchoolBoard;
     @FXML Button AssistantCardButton;
-    @FXML Button fourthButton;
     @FXML Button diningButton;
     @FXML Button characterButton;
     @FXML Button islandButton;
@@ -149,8 +148,6 @@ public class GameTableController {
         characterButton.setDisable(true);
         diningButton.setDisable(true);
         diningButton.setVisible(false);
-        fourthButton.setVisible(false);
-        fourthButton.setDisable(true);
         messagesActions.setVisible(false);
         messagesActions.setDisable(true);
     }
