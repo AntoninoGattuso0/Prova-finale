@@ -13,6 +13,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
+
+import static java.lang.Integer.parseInt;
+
 public class GameTableController {
     @FXML Button number0;
     @FXML Button number1;
@@ -29,9 +32,9 @@ public class GameTableController {
     @FXML ChoiceBox<String> SchoolBoard;
     @FXML Button AssistantCardButton;
     @FXML Button fourthButton;
-    @FXML Button thirdButton;
-    @FXML Button secondButton;
-    @FXML Button firstButton;
+    @FXML Button diningButton;
+    @FXML Button characterButton;
+    @FXML Button islandButton;
     @FXML Pane messagesActions;
     @FXML Text textRed0;
     @FXML Text textBlue0;
@@ -138,12 +141,12 @@ public class GameTableController {
         number2.setDisable(true);
         number2.setVisible(false);
 
-        firstButton.setDisable(true);
-        firstButton.setVisible(false);
-        secondButton.setVisible(false);
-        secondButton.setDisable(true);
-        thirdButton.setDisable(true);
-        thirdButton.setVisible(false);
+        islandButton.setDisable(true);
+        islandButton.setVisible(false);
+        characterButton.setVisible(false);
+        characterButton.setDisable(true);
+        diningButton.setDisable(true);
+        diningButton.setVisible(false);
         fourthButton.setVisible(false);
         fourthButton.setDisable(true);
         messagesActions.setVisible(false);
@@ -521,18 +524,28 @@ public class GameTableController {
     public void islandButton(MouseEvent mouseEvent) {
         gui.setButtonClicked(ButtonAction.ISLAND);
 
-        for(int i = 0; i < gui.get)
-        number0.setText("1");
-        number1.setText("2");
-        number3.setText("3");
-        number0.setVisible(true);
-        number0.setDisable(false);
-        number1.setVisible(true);
-        number1.setDisable(false);
-        number2.setVisible(true);
-        number2.setDisable(false);
-        number3.setVisible(true);
-        number3.setDisable(false);
+        for(int i = 0; i < gui.getPedineDaSpostare(); i++){
+            if(i == 0){
+                number0.setText("1");
+                number0.setVisible(true);
+                number0.setDisable(false);
+            }
+            else if(i == 1){
+                number1.setText("2");
+                number1.setVisible(true);
+                number1.setDisable(false);
+            }
+            else if(i == 2){
+                number2.setText("3");
+                number2.setVisible(true);
+                number2.setDisable(false);
+            }
+            else if(i == 3){
+                number3.setText("4");
+                number3.setVisible(true);
+                number3.setDisable(false);
+            }
+        }
 
         whatToDo.setText("Scegli il numero di pedine da spostare su un Island: ");
         whatToDo.setVisible(true);
@@ -542,5 +555,100 @@ public class GameTableController {
     }
 
     public void diningButton(MouseEvent mouseEvent) {
+        diningButton.setVisible(false);
+        diningButton.setDisable(true);
+
+
+        gui.setButtonClicked(ButtonAction.DININGROOM);
+
+        for(int i = 0; i < gui.getPedineDaSpostare(); i++){
+            if(i == 0){
+                number0.setText("1");
+                number0.setVisible(true);
+                number0.setDisable(false);
+            }
+            else if(i == 1){
+                number1.setText("2");
+                number1.setVisible(true);
+                number1.setDisable(false);
+            }
+            else if(i == 2){
+                number2.setText("3");
+                number2.setVisible(true);
+                number2.setDisable(false);
+            }
+            else if(i == 3){
+                number3.setText("4");
+                number3.setVisible(true);
+                number3.setDisable(false);
+            }
+        }
+
+        whatToDo.setText("Scegli il numero di pedine da spostare verso la DiningRoom: ");
+        whatToDo.setVisible(true);
+    }
+
+    public void number0Button(MouseEvent mouseEvent) {
+        gui.setNumPawns(parseInt(number0.getText()));
+        if(gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard0Controller.setEntrance0Clickable();
+        }
+        else if(gui.getLightGame().getPlayers().get(1).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard1Controller.setEntrance1Clickable();
+        }
+        else if(gui.getLightGame().getPlayers().get(2).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard2Controller.setEntrance2Clickable();
+        }
+        else if(gui.getLightGame().getPlayers().get(3).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard3Controller.setEntrance3Clickable();
+        }
+    }
+
+    public void number1Button(MouseEvent mouseEvent) {
+        gui.setNumPawns(parseInt(number1.getText()));
+        if(gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard0Controller.setEntrance0Clickable();
+        }
+        else if(gui.getLightGame().getPlayers().get(1).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard1Controller.setEntrance1Clickable();
+        }
+        else if(gui.getLightGame().getPlayers().get(2).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard2Controller.setEntrance2Clickable();
+        }
+        else if(gui.getLightGame().getPlayers().get(3).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard3Controller.setEntrance3Clickable();
+        }
+    }
+
+    public void number2Button(MouseEvent mouseEvent) {
+        gui.setNumPawns(parseInt(number2.getText()));
+        if(gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard0Controller.setEntrance0Clickable();
+        }
+        else if(gui.getLightGame().getPlayers().get(1).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard1Controller.setEntrance1Clickable();
+        }
+        else if(gui.getLightGame().getPlayers().get(2).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard2Controller.setEntrance2Clickable();
+        }
+        else if(gui.getLightGame().getPlayers().get(3).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard3Controller.setEntrance3Clickable();
+        }
+    }
+
+    public void number3Button(MouseEvent mouseEvent) {
+        gui.setNumPawns(parseInt(number3.getText()));
+        if(gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard0Controller.setEntrance0Clickable();
+        }
+        else if(gui.getLightGame().getPlayers().get(1).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard1Controller.setEntrance1Clickable();
+        }
+        else if(gui.getLightGame().getPlayers().get(2).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard2Controller.setEntrance2Clickable();
+        }
+        else if(gui.getLightGame().getPlayers().get(3).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
+            schoolBoard3Controller.setEntrance3Clickable();
+        }
     }
 }
