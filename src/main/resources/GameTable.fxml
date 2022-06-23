@@ -732,7 +732,7 @@
                <font>
                   <Font size="18.0" />
                </font></Text>
-            <Text fx:id="messages" fill="RED" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ROUND FINISHED, A NEW ONE BEGINS">
+            <Text fx:id="messages" fill="RED" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font size="24.0" />
                </font>

@@ -352,7 +352,7 @@ public class Gui extends Application implements View {
                     gameTable.setMessages("CHOOSE AN ASSISTANT");
 
         }else{
-           gameTable.setMessages(socketNetworkHandler.getNicknameThisPlayer()+" IS CHOOSING AN ASSISTANT");
+           gameTable.setMessages(nickname+" IS CHOOSING AN ASSISTANT");
         }
         });
     }
@@ -442,14 +442,14 @@ public class Gui extends Application implements View {
             }
             gameTable=fxmlLoader.getController();
             gameTable.setGui(this);
-           gameTable.setPawnVisible();
+            gameTable.setPawnVisible();
             gameTable.setMotherNatureVisible();
             gameTable.setAllIslands(true,false);
             gameTable.setCloudVisible();
-             gameTable.setTowers();
+            gameTable.setTowers();
             gameTable.setButtonOff();
             gameTable.setProhibited();
-           gameTable.setAssistantSchoolBoardCharacter();
+            gameTable.setAssistantSchoolBoardCharacter();
             gameTable.initializeBorderPane();
             stage.setScene(scene);
             stage.show();
@@ -585,9 +585,12 @@ public class Gui extends Application implements View {
     //potrei usarla per attivare la singola schoolboard quando un giocatore clicca sulla specifica schoolboard dal menù a tendina
     }
 
+
     @Override
     public void disconnectionAll(String playerDisconnected) throws IOException {
     if(!endGame){
+        gameTable.setMessages(playerDisconnected+ " DISCONNECTED FROM THE GAME.");
+
         //scrivere nel pannello il fatto che un giocatore è stato disconnesso per problemi
 
         //RISPOSTA: IN BASSO A SINISTRA HO MESSO UN TESTO MOFICABILE
@@ -601,6 +604,7 @@ public class Gui extends Application implements View {
         socketNetworkHandler.sendMessage(new ReadyTodisconnection());
         socketNetworkHandler.closeConnection();
     }
+
 
     @Override
     public void wrongSameAssistantMessage() {
