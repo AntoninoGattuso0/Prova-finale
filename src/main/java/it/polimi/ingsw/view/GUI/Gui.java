@@ -31,18 +31,11 @@ public class Gui extends Application implements View {
     private GameTableController gameTable;
     private AssistantCardController assistantCardController;
     private CharacterCardController characterCardController;
-    private NumOfPlayerIsExpertController numOfPlayerIsExpertController;
-    private WaitingPlayersController waitingPlayersController;
-    private WinnerSceneController winnerScene;
-    private WarningNicknameController warningNicknameController;
-    private GameStartedController gameStartedController;
     private RequestNickPlayersController requestNickPlayersController;
-    private LobbyIsFullController lobbyIsFullController;
     private FXMLLoader fxmlLoader;
     private int pedineDaSpostare;
     private int numPawnMove;
     private boolean endGame=false;
-
     private SchoolBoard0Controller schoolBoard0Controller;
     private SchoolBoard1Controller schoolBoard1Controller;
     private SchoolBoard2Controller schoolBoard2Controller;
@@ -55,6 +48,28 @@ public class Gui extends Application implements View {
     private FXMLLoader fxmlSchool3;
 
     public Gui() {
+    }
+    public AssistantCardController getAssistantCardController() {
+        return assistantCardController;
+    }
+
+    public GameTableController getGameTable() {
+        return gameTable;
+    }
+    public CharacterCardController getCharacterCardController() {
+        return characterCardController;
+    }
+    public SchoolBoard0Controller getSchoolBoard0Controller() {
+        return schoolBoard0Controller;
+    }
+    public SchoolBoard1Controller getSchoolBoard1Controller() {
+        return schoolBoard1Controller;
+    }
+    public SchoolBoard2Controller getSchoolBoard2Controller() {
+        return schoolBoard2Controller;
+    }
+    public SchoolBoard3Controller getSchoolBoard3Controller() {
+        return schoolBoard3Controller;
     }
     public LightGame getLightGame(){return this.lightGame;}
 
@@ -330,9 +345,7 @@ public class Gui extends Application implements View {
         //si deve capire come gestire il gameTableController
         if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
             Platform.runLater(()-> {
-                int i;
-                for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(),nickname);i++);
-                assistantCardController.setAssistantCards(i);
+                assistantCardController.setAssistantCards(nickname);
             });
         }else{
             //Pannellodiscrittura.writetext(socketNetworkHandler.getNicknameThisPlayer()+" CHOOSE AN ASSISTANT");
@@ -443,7 +456,7 @@ public class Gui extends Application implements View {
             schoolBoard0Controller.setGui(this);
             schoolBoard0Controller.setSchoolBoard0();
             fxmlSchool1= new FXMLLoader();
-            fxmlSchool1.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
+            fxmlSchool1.setLocation(getClass().getResource("/SchoolBoard1.fxml"));
             try {
                 fxmlSchool1.load();
             } catch (IOException e) {
@@ -454,7 +467,7 @@ public class Gui extends Application implements View {
             schoolBoard1Controller.setSchoolBoard1();
             if(lightGame.getNumPlayers()>2) {
                 fxmlSchool2 = new FXMLLoader();
-                fxmlSchool2.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
+                fxmlSchool2.setLocation(getClass().getResource("/SchoolBoard2.fxml"));
                 try {
                     fxmlSchool2.load();
                 } catch (IOException e) {
@@ -466,7 +479,7 @@ public class Gui extends Application implements View {
             }
             if(lightGame.getNumPlayers()>3) {
                 fxmlSchool3 = new FXMLLoader();
-                fxmlSchool3.setLocation(getClass().getResource("/SchoolBoard0.fxml"));
+                fxmlSchool3.setLocation(getClass().getResource("/SchoolBoard3.fxml"));
                 try {
                     fxmlSchool3.load();
                 } catch (IOException e) {
@@ -485,7 +498,7 @@ public class Gui extends Application implements View {
             }
             assistantCardController = fxmlAssistant.getController();
             assistantCardController.setGui(this);
-            assistantCardController.setAssistantCards(0);
+            assistantCardController.setAssistantCards(this.getSocketNetworkHandler().getNicknameThisPlayer());
             gameTable.getShowAssistant().setCenter(assistantCardController.getAssistantCards());
             gameTable.getShowAssistant().getCenter().setVisible(true);
             gameTable.getShowSchool0().setCenter(schoolBoard0Controller.getSchoolBoard0());
@@ -509,33 +522,6 @@ public class Gui extends Application implements View {
 
 }
 
-    public AssistantCardController getAssistantCardController() {
-        return assistantCardController;
-    }
-
-    public GameTableController getGameTable() {
-        return gameTable;
-    }
-
-    public CharacterCardController getCharacterCardController() {
-        return characterCardController;
-    }
-
-    public SchoolBoard0Controller getSchoolBoard0Controller() {
-        return schoolBoard0Controller;
-    }
-
-    public SchoolBoard1Controller getSchoolBoard1Controller() {
-        return schoolBoard1Controller;
-    }
-
-    public SchoolBoard2Controller getSchoolBoard2Controller() {
-        return schoolBoard2Controller;
-    }
-
-    public SchoolBoard3Controller getSchoolBoard3Controller() {
-        return schoolBoard3Controller;
-    }
 
     @Override
     public void lobbyFull(){

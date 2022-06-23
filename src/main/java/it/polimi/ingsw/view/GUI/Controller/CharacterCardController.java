@@ -1,6 +1,5 @@
 package it.polimi.ingsw.view.GUI.Controller;
 
-import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
@@ -16,14 +15,12 @@ public class CharacterCardController {
     ArrayList<ColorPawn> colori = new ArrayList<>();
     int island = -1;
     Gui gui;
-    LightGame lightGame;
     GameTableController gameTableController;
 
     public Pane getCharacterCards(){return characterCards;}
 
     public void setGui(Gui gui) {
         this.gui = gui;
-        this.lightGame = gui.getLightGame();
     }
 
     public void setCharacterCards(){
@@ -46,9 +43,9 @@ public class CharacterCardController {
 
 
     public void showCharacter(){
-        for(int i = 0; i < lightGame.getCharacterCards().size(); i++){
+        for(int i = 0; i < gui.getLightGame().getCharacterCards().size(); i++){
                 for(Node character : characterCards.getChildren()){
-                    if(character.getId().equals(i + "characterCard" + lightGame.getCharacterCards().get(i).getNumCard()))
+                    if(character.getId().equals(i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()))
                         character.setVisible(true);
                 }
             }
@@ -123,11 +120,11 @@ public class CharacterCardController {
 
     public void character0Select(MouseEvent mouseEvent) {
         int player = -1;
-        for (int i = 0; i < lightGame.getNumPlayers(); i++) {
-            if (lightGame.getPlayers().get(i).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer()))
+        for (int i = 0; i < gui.getLightGame().getNumPlayers(); i++) {
+            if (gui.getLightGame().getPlayers().get(i).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer()))
                 player = i;
         }
-        if (lightGame.getCharacterCards().get(0).getNumCard() == 0) {
+        if (gui.getLightGame().getCharacterCards().get(0).getNumCard() == 0) {
                 for(int i = 0; i < 3; i++)
                     setDisable(i, true);
                 characterCards.lookup("greenCharacter0").setDisable(false);
@@ -141,7 +138,7 @@ public class CharacterCardController {
 
     public void moveGreenCharacter0(MouseEvent mouseEvent) {
         colori.add(ColorPawn.GREEN);
-        if (lightGame.getCharacterCards().get(0).getNumCard() == 0) {
+        if (gui.getLightGame().getCharacterCards().get(0).getNumCard() == 0) {
             characterCards.lookup("greenCharacter0").setDisable(true);
             characterCards.lookup("redCharacter0").setDisable(true);
             characterCards.lookup("yellowCharacter0").setDisable(true);

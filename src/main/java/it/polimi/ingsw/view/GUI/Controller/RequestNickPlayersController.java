@@ -34,6 +34,7 @@ RequestNickPlayersController {
 
     //Viene Cliccato join: viene inviato il nome al server e il bottone non visibile e non cliccabile
     public void buttonClickNickname(MouseEvent mouseEvent) {
+        gui.getSocketNetworkHandler().setNicknameThisPlayer(nickname.getText());
         gui.getSocketNetworkHandler().sendMessage(new RequestNickname(nickname.getText()));
         setJoinButtonDisable();
     }

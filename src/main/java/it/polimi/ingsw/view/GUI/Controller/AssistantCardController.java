@@ -1,28 +1,39 @@
 package it.polimi.ingsw.view.GUI.Controller;
-
-import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseAssistantCardMessage;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
+import java.util.Objects;
+
 public class AssistantCardController {
     Gui gui;
-    LightGame lightGame;
     @FXML public Pane assistantCards;
     public void setGui(Gui gui){this.gui=gui;
-    this.lightGame = gui.getLightGame();}
+   }
 
     public Pane getAssistantCards(){return assistantCards;}
 
-    public void setAssistantCards(int player){
+    public void setAssistantCards(String nick){
         setInvisibileAll();
-        for(int i = 0; i < lightGame.getPlayers().get(player).getDeckAssistant().size(); i++){
-            String name = "AssistantCard" + lightGame.getPlayers().get(player).getDeckAssistant().get(i).getCardValue();
+        int j;
+        int k;
+        for(j=0; !Objects.equals(gui.getLightGame().getPlayers().get(j).getNickname(), nick); j++);
+        for(int i = 0; i < gui.getLightGame().getPlayers().get(j).getDeckAssistant().size(); i++){
+            String name = "AssistantCard" + gui.getLightGame().getPlayers().get(j).getDeckAssistant().get(i).getCardValue();
             for(Node assistant : assistantCards.getChildren()){
-                if(assistant.getId().equals(name))
+                for(k=0;k<gui.getLightGame().getPlayers().size();k++){
+                    if(assistant.getId().equals(name))
                     assistant.setVisible(true);
+            }
+        }
+        }
+        for(k=0;k<gui.getLightGame().getPlayers().size();k++){
+            System.out.println("fuori");
+            if(gui.getLightGame().getPlayers().get(k).getCurrentAssistant()!=null){
+                System.out.println("dentro");
+                assistantCards.getChildren().get(gui.getLightGame().getPlayers().get(k).getCurrentAssistant().getCardValue()-1).setOpacity(0.6D);
             }
         }
     }

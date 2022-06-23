@@ -1,6 +1,4 @@
 package it.polimi.ingsw.view.GUI.Controller;
-
-import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -9,11 +7,9 @@ import javafx.scene.layout.Pane;
 
 public class SchoolBoard3Controller {
     Gui gui;
-    LightGame lightGame;//da qualche parte ha bisogno di ricevere lightGame
 
     public void setGui(Gui gui){
         this.gui=gui;
-        this.lightGame = gui.getLightGame();
     }
 
     @FXML Pane schoolBoard3;
@@ -39,7 +35,7 @@ public class SchoolBoard3Controller {
 
     public void setEntrance3Clickable(){
         setEntrance3();
-        int green = lightGame.getPlayers().get(3).getEntrance().getGreenPawn();
+        int green = gui.getLightGame().getPlayers().get(3).getEntrance().getGreenPawn();
         for(int i=0; i<green; i++){
             for(Node school : schoolBoard3.getChildren()){
                 if(school.getId().equals("entranceGreen3" + i))
@@ -47,28 +43,28 @@ public class SchoolBoard3Controller {
             }
         }
 
-        int red = lightGame.getPlayers().get(3).getEntrance().getRedPawn() + green;
+        int red = gui.getLightGame().getPlayers().get(3).getEntrance().getRedPawn() + green;
         for(int i=green; i<red; i++){
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("entranceRed3" + i))
                     school.setDisable(false);
             }
         }
-        int yellow = lightGame.getPlayers().get(3).getEntrance().getYellowPawn() + red;
+        int yellow = gui.getLightGame().getPlayers().get(3).getEntrance().getYellowPawn() + red;
         for(int i=red; i<yellow; i++){
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("entranceYellow3" + i))
                     school.setDisable(false);
             }
         }
-        int pink = lightGame.getPlayers().get(3).getEntrance().getPinkPawn() + yellow;
+        int pink = gui.getLightGame().getPlayers().get(3).getEntrance().getPinkPawn() + yellow;
         for(int i=yellow; i<pink; i++){
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("entrancePink3" + i))
                     school.setDisable(false);
             }
         }
-        int blue = lightGame.getPlayers().get(3).getEntrance().getBluePawn() + pink;
+        int blue = gui.getLightGame().getPlayers().get(3).getEntrance().getBluePawn() + pink;
         for(int i=pink; i<blue; i++){
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("entranceBlue3" + i))
@@ -79,7 +75,7 @@ public class SchoolBoard3Controller {
 
 
     public void setEntrance3(){
-        int green = lightGame.getPlayers().get(3).getEntrance().getGreenPawn();
+        int green = gui.getLightGame().getPlayers().get(3).getEntrance().getGreenPawn();
         for(int i=0; i<green; i++){
             for(Node school : schoolBoard3.getChildren()){
                 if(school.getId().equals("entranceGreen3" + i))
@@ -87,28 +83,28 @@ public class SchoolBoard3Controller {
             }
         }
 
-        int red = lightGame.getPlayers().get(3).getEntrance().getRedPawn() + green;
+        int red = gui.getLightGame().getPlayers().get(3).getEntrance().getRedPawn() + green;
         for(int i=green; i<red; i++){
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("entranceRed3" + i))
                     school.setVisible(true);
             }
         }
-        int yellow = lightGame.getPlayers().get(3).getEntrance().getYellowPawn() + red;
+        int yellow = gui.getLightGame().getPlayers().get(3).getEntrance().getYellowPawn() + red;
         for(int i=red; i<yellow; i++){
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("entranceYellow3" + i))
                     school.setVisible(true);
             }
         }
-        int pink = lightGame.getPlayers().get(3).getEntrance().getPinkPawn() + yellow;
+        int pink = gui.getLightGame().getPlayers().get(3).getEntrance().getPinkPawn() + yellow;
         for(int i=yellow; i<pink; i++){
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("entrancePink3" + i))
                     school.setVisible(true);
             }
         }
-        int blue = lightGame.getPlayers().get(3).getEntrance().getBluePawn() + pink;
+        int blue = gui.getLightGame().getPlayers().get(3).getEntrance().getBluePawn() + pink;
         for(int i=pink; i<blue; i++){
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("entranceBlue3" + i))
@@ -161,35 +157,35 @@ public class SchoolBoard3Controller {
     }
 
     public void setDiningRoom3(){
-        int green = lightGame.getPlayers().get(3).getDiningRoom().getNumGreen();
+        int green = gui.getLightGame().getPlayers().get(3).getDiningRoom().getNumGreen();
         for(int i=0; i<green; i++){
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("schoolBoard3Green" + i))
                     school.setVisible(true);
             }
         }
-        int red = lightGame.getPlayers().get(3).getDiningRoom().getNumRed();
+        int red = gui.getLightGame().getPlayers().get(3).getDiningRoom().getNumRed();
         for(int i=0; i<red; i++){
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("schoolBoard3Red" + i))
                     school.setVisible(true);
             }
         }
-        int yellow = lightGame.getPlayers().get(3).getDiningRoom().getNumYellow();
+        int yellow = gui.getLightGame().getPlayers().get(3).getDiningRoom().getNumYellow();
         for(int i=0; i<yellow; i++){
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("schoolBoard3Yellow" + i))
                     school.setVisible(true);
             }
         }
-        int pink = lightGame.getPlayers().get(3).getDiningRoom().getNumPink();
+        int pink = gui.getLightGame().getPlayers().get(3).getDiningRoom().getNumPink();
         for(int i=0; i<pink; i++){
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("schoolBoard3Pink" + i))
                     school.setVisible(true);
             }
         }
-        int blue = lightGame.getPlayers().get(3).getDiningRoom().getNumBlue();
+        int blue = gui.getLightGame().getPlayers().get(3).getDiningRoom().getNumBlue();
         for(int i=0; i<blue; i++){
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("schoolBoard3Blue" + i))
@@ -241,21 +237,21 @@ public class SchoolBoard3Controller {
     }
 
     public void setProfessor3(){
-        if(lightGame.getProfTable().getGreenProf() == 3)
+        if(gui.getLightGame().getProfTable().getGreenProf() == 3)
             schoolBoard3.lookup("schoolGreenProf3").setVisible(true);
-        if(lightGame.getProfTable().getRedProf() == 3)
+        if(gui.getLightGame().getProfTable().getRedProf() == 3)
             schoolBoard3.lookup("schoolRedProf3").setVisible(true);
-        if(lightGame.getProfTable().getYellowProf() == 3)
+        if(gui.getLightGame().getProfTable().getYellowProf() == 3)
             schoolBoard3.lookup("schoolYellowProf3").setVisible(true);
-        if(lightGame.getProfTable().getPinkProf() == 3)
+        if(gui.getLightGame().getProfTable().getPinkProf() == 3)
             schoolBoard3.lookup("schoolPinkProf3").setVisible(true);
-        if(lightGame.getProfTable().getBlueProf() == 3)
+        if(gui.getLightGame().getProfTable().getBlueProf() == 3)
             schoolBoard3.lookup("schoolBlueProf3").setVisible(true);
     }
 
 
     public void setCoin3() {
-        for (int i = 0; i < lightGame.getPlayers().get(3).getNumCoin(); i++)
+        for (int i = 0; i < gui.getLightGame().getPlayers().get(3).getNumCoin(); i++)
             for(Node school : schoolBoard3.getChildren()) {
                 if (school.getId().equals("coin" + i))
                     school.setVisible(true);
