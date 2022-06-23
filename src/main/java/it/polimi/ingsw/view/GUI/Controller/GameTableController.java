@@ -113,6 +113,7 @@ public class GameTableController {
     public BorderPane getShowSchool0(){return showSchool0;}
     public BorderPane getShowAssistant(){return showAssistant;}
     public BorderPane getShowCharacterCard(){return showCharacterCard;}
+    public Pane getGameTablePane(){return gameTable;}
     public void setGui(Gui gui) {
         this.gui = gui;
     }
