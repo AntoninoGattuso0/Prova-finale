@@ -202,6 +202,18 @@ public class GameTableController {
         AssistantCardButton.setDisable(true);
         CharacterCardButton.setDisable(true);
     }
+
+    public void setShowAssistant() {
+        showSchool0.setVisible(false);
+        showCharacterCard.setVisible(false);
+        showSchool1.setVisible(false);
+        showSchool2.setVisible(false);
+        showSchool3.setVisible(false);
+        assistantCardController=gui.getAssistantCardController();
+        showAssistant.setCenter(assistantCardController.getAssistantCards());
+        showAssistant.setVisible(true);
+    }
+
     public void setPawnVisible() {
         int n;
         int i;
