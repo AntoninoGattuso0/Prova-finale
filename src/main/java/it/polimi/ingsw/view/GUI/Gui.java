@@ -366,6 +366,12 @@ public class Gui extends Application implements View {
     public void registerClient() {
 
     }
+    public void assistantSelected(){
+        Platform.runLater(()-> {
+            assistantCardController.setDisableAll();
+            gameTable.initializeBorderPane();
+        });
+    }
 
     @Override
     public void waitOtherPlayers() {
