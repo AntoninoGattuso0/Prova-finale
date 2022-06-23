@@ -117,45 +117,25 @@ public class SchoolBoard2Controller {
 
     //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine che passiamo con numColore
     public void greenEntrance2(boolean boolVisibility, boolean boolClickable, int numGreen){
-        for(Node school : schoolBoard2.getChildren()){
-            if(school.getId().equals("entranceGreen2" + numGreen)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
+        schoolBoard2.lookup("#entranceGreen2"+ numGreen).setVisible(boolVisibility);
+        schoolBoard2.lookup("#entranceGreen2"+ numGreen).setDisable(boolClickable);
     }
 
     public void redEntrance2(boolean boolVisibility, boolean boolClickable, int numRed){
-        for(Node school : schoolBoard2.getChildren()){
-            if(school.getId().equals("entranceRed2" + numRed)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
+        schoolBoard2.lookup("#entranceRed2"+ numRed).setVisible(boolVisibility);
+        schoolBoard2.lookup("#entranceRed2"+ numRed).setDisable(boolClickable);
     }
     public void yellowEntrance2(boolean boolVisibility, boolean boolClickable, int numYellow){
-        for(Node school : schoolBoard2.getChildren()){
-            if(school.getId().equals("entranceYellow2" + numYellow)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
+        schoolBoard2.lookup("#entranceYellow2"+ numYellow).setVisible(boolVisibility);
+        schoolBoard2.lookup("#entranceYellow2"+ numYellow).setDisable(boolClickable);
     }
-    public void pinkVEntrance2(boolean boolVisibility, boolean boolClickable, int numPink){
-        for(Node school : schoolBoard2.getChildren()){
-            if(school.getId().equals("entrancePink2" + numPink)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
+    public void pinkEntrance2(boolean boolVisibility, boolean boolClickable, int numPink){
+        schoolBoard2.lookup("#entrancePink2"+ numPink).setVisible(boolVisibility);
+        schoolBoard2.lookup("#entrancePink2"+ numPink).setDisable(boolClickable);
     }
     public void blueEntrance2(boolean boolVisibility, boolean boolClickable, int numBlue){
-        for(Node school : schoolBoard2.getChildren()){
-            if(school.getId().equals("entranceBlue2" + numBlue)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
+        schoolBoard2.lookup("#entranceBlue2"+ numBlue).setVisible(boolVisibility);
+        schoolBoard2.lookup("#entranceBlue2"+ numBlue).setDisable(boolClickable);
     }
 
     public void setDiningRoom2(){
