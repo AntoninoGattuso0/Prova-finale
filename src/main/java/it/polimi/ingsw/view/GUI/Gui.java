@@ -25,7 +25,7 @@ import java.util.Objects;
 public class Gui extends Application implements View {
 
     //Variabili per salvarsi "quale bottone/pedina/isola è stata cliccata precedentemente
-    private Button buttonClicked;
+    private ButtonAction buttonClicked;
     private ArrayList<ColorPawn> colorPawns;
     private int islandSelected;
     private int numPawns;
@@ -57,12 +57,12 @@ public class Gui extends Application implements View {
     public Gui() {
     }
 
-    public Button getButtonClicked(){return this.buttonClicked;}
+    public ButtonAction getButtonClicked(){return this.buttonClicked;}
     public ArrayList<ColorPawn> getColorPawns(){return this.colorPawns;}
     public int getIslandSelected(){return this.islandSelected;}
     public int getNumPawns(){return this.numPawns;}
 
-    public void setButtonClicked(Button buttonClicked){this.buttonClicked = buttonClicked;}
+    public void setButtonClicked(ButtonAction buttonClicked){this.buttonClicked = buttonClicked;}
     public void setColorPawns(ArrayList<ColorPawn> colorPawns){this.colorPawns = colorPawns;}
     public void setIslandSelected(int islandSelected){this.islandSelected = islandSelected;}
     public void setNumPawns(int numpawns){this.numPawns = numpawns;}

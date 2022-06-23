@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 public class GameTableController {
+    @FXML Text whatToDo;//Testo bianco da poter cambiare
     @FXML BorderPane showSchool1;
     @FXML BorderPane showSchool2;
     @FXML BorderPane showSchool3;
@@ -508,7 +509,9 @@ public class GameTableController {
     }
 
     public void islandButton(MouseEvent mouseEvent) {
-        
+        gui.setButtonClicked(ButtonAction.ISLAND);
+        whatToDo.setText("Scegli il numero di pedine da spostare su un Island");
+
     }
 
     public void characterButton(MouseEvent mouseEvent) {
