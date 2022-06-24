@@ -123,7 +123,7 @@ public class GameTableController {
     public void setGui(Gui gui) {
         this.gui = gui;
     }
-
+//SETCLOUDDISABLE SERVE DOPO CHE SCEGLIE E CHE INVII IL MESSAGGIO CON LA CLOUD SCELTA!
     //Setta l'ordine del turno in alto a sinistra
     public void setTurnOf(ArrayList<String> player) {
         int i;
