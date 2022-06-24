@@ -32,7 +32,7 @@ public class Gui extends Application implements View {
 
     //Variabili per salvarsi "quale bottone/pedina/isola è stata cliccata precedentemente
     private ButtonAction buttonClicked;
-    private ArrayList<ColorPawn> colorPawns;//colori che si passano per messaggio
+    private ArrayList<ColorPawn> colorPawns = new ArrayList<>();//colori che si passano per messaggio
     private int islandSelected = -1;
     private int numPawns = -1;//numero pedine che sposta in quel momento verso la dining/isola (inviate per messaggio)
     private int numPawnsCount = -1;
