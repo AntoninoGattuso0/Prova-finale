@@ -444,7 +444,14 @@ public class GameTableController {
             gameTable.lookup(text).setVisible(true);
         }
     }
-
+    public void setAssisBoardCharacOn(){
+        CharacterCardButton.setDisable(false);
+        CharacterCardButton.setVisible(true);
+        AssistantCardButton.setVisible(true);
+        AssistantCardButton.setDisable(false);
+        SchoolBoard.setDisable(false);
+        SchoolBoard.setVisible(true);
+    }
     public void switchToAssistantCard() {
         showCharacterCard.setVisible(false);
         showSchool0.setVisible(false);

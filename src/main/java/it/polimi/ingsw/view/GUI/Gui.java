@@ -166,6 +166,13 @@ public class Gui extends Application implements View {
     @Override
     public void requestMovePawn(String nickname, int numPawnMoved) {
         Platform.runLater(()-> {
+            assistantCardController.setAssistantCards(socketNetworkHandler.getNicknameThisPlayer());
+            characterCardController.setCharacterCards();
+            schoolBoard0Controller.setSchoolBoard0();
+            schoolBoard1Controller.setSchoolBoard1();
+            schoolBoard2Controller.setSchoolBoard2();
+            schoolBoard3Controller.setSchoolBoard3();
+            gameTable.setAssisBoardCharacOn();
             if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())) {
                 gameTable.setMessages("CHOOSE YOUR ACTION");
                 gameTable.setButtonForRequestMovePawn();
