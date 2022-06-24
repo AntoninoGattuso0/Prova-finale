@@ -167,6 +167,12 @@ public class Gui extends Application implements View {
     public void requestMovePawn(String nickname, int numPawnMoved) {
         Platform.runLater(()-> {
             if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())) {
+                schoolBoard1Controller.setSchoolBoard1();
+                schoolBoard0Controller.setSchoolBoard0();
+                if(schoolBoard2Controller!=null)
+                schoolBoard2Controller.setSchoolBoard2();
+                if(schoolBoard2Controller!=null)
+                schoolBoard3Controller.setSchoolBoard3();
                 gameTable.setMessages("CHOOSE YOUR ACTION");
                 gameTable.setButtonForRequestMovePawn();
             }else{
