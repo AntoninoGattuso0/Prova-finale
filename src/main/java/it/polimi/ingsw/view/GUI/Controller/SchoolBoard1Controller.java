@@ -142,7 +142,6 @@ public class SchoolBoard1Controller {
     }
     public void setDiningRoom1(){
         int green = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumGreen();
-        System.out.println(green);
         for(int i=0; i<green; i++){
             for(Node school : schoolBoard1.getChildren()) {
                 if (school.getId().equals("schoolBoard1Green" + i))
@@ -150,7 +149,6 @@ public class SchoolBoard1Controller {
             }
         }
         int red = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumRed();
-        System.out.println(gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumRed());
         for(int i=0; i<red; i++){
             for(Node school : schoolBoard1.getChildren()) {
                 if (school.getId().equals("schoolBoard1Red" + i))
@@ -158,7 +156,6 @@ public class SchoolBoard1Controller {
             }
         }
         int yellow = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumYellow();
-        System.out.println(gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumYellow());
         for(int i=0; i<yellow; i++){
             for(Node school : schoolBoard1.getChildren()) {
                 if (school.getId().equals("schoolBoard1Yellow" + i))
@@ -166,7 +163,6 @@ public class SchoolBoard1Controller {
             }
         }
         int pink = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumPink();
-        System.out.println(gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumPink());
         for(int i=0; i<pink; i++){
             for(Node school : schoolBoard1.getChildren()) {
                 if (school.getId().equals("schoolBoard1Pink" + i))
@@ -174,7 +170,6 @@ public class SchoolBoard1Controller {
             }
         }
         int blue = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumBlue();
-        System.out.println(gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumBlue());
         for(int i=0; i<blue; i++){
             for(Node school : schoolBoard1.getChildren()) {
                 if (school.getId().equals("schoolBoard1Blue" + i))
