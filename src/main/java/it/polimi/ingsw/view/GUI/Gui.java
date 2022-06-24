@@ -392,6 +392,7 @@ public class Gui extends Application implements View {
         });
     }
 
+
     @Override
     public void requestMoveMotherNature(String nickname) {
         //va gestito sempre capendo come funziona il game table
