@@ -219,9 +219,11 @@ public class GameTableController {
         }
     }
     public void setChooseViewOff(){
+        Platform.runLater(()->{
         SchoolBoard.setDisable(true);
         AssistantCardButton.setDisable(true);
         CharacterCardButton.setDisable(true);
+    });
     }
 
     public void setChooseViewOn(){
@@ -251,9 +253,13 @@ public class GameTableController {
         showSchool1.setVisible(false);
         showSchool2.setVisible(false);
         showSchool3.setVisible(false);
-        assistantCardController=gui.getAssistantCardController();
-        showAssistant.setCenter(assistantCardController.getAssistantCards());
-        showAssistant.setVisible(true);
+        Platform.runLater(()-> {
+            assistantCardController = gui.getAssistantCardController();
+            assistantCardController.setAssistantCards(gui.getSocketNetworkHandler().getNicknameThisPlayer());
+            assistantCardController.setAsssistantsAble(gui.getSocketNetworkHandler().getNicknameThisPlayer());
+            showAssistant.setCenter(assistantCardController.getAssistantCards());
+            showAssistant.setVisible(true);
+        });
     }
 
     public void setPawnVisible() {

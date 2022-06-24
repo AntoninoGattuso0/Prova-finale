@@ -1,10 +1,10 @@
 package it.polimi.ingsw.view.GUI.Controller;
+
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseAssistantCardMessage;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 import java.util.Objects;
@@ -26,12 +26,10 @@ public class AssistantCardController {
         for(int i = 0; i < gui.getLightGame().getPlayers().get(j).getDeckAssistant().size(); i++){
             String name = "AssistantCard" + gui.getLightGame().getPlayers().get(j).getDeckAssistant().get(i).getCardValue();
             for(Node assistant : assistantCards.getChildren()){
-                for(k=0;k<gui.getLightGame().getPlayers().size();k++){
                     if(assistant.getId().equals(name)) {
                         assistant.setOpacity(1);
                         assistant.setVisible(true);
                     }
-            }
         }
         }
         for(k=0;k<gui.getLightGame().getPlayers().size();k++){
@@ -52,11 +50,9 @@ public class AssistantCardController {
         for(int i = 0; i < gui.getLightGame().getPlayers().get(j).getDeckAssistant().size(); i++){
             String name = "AssistantCard" + gui.getLightGame().getPlayers().get(j).getDeckAssistant().get(i).getCardValue();
             for(Node assistant : assistantCards.getChildren()){
-                for(k=0;k<gui.getLightGame().getPlayers().size();k++){
                     if(assistant.getId().equals(name)) {
                         assistant.setDisable(false);
                     }
-                }
             }
         }
         for(k=0;k<gui.getLightGame().getPlayers().size();k++){

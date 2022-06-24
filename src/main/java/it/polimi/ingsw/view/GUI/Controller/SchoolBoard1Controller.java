@@ -142,6 +142,7 @@ public class SchoolBoard1Controller {
     }
     public void setDiningRoom1(){
         int green = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumGreen();
+        System.out.println(green);
         for(int i=0; i<green; i++){
             for(Node school : schoolBoard1.getChildren()) {
                 if (school.getId().equals("schoolBoard1Green" + i))
@@ -149,6 +150,7 @@ public class SchoolBoard1Controller {
             }
         }
         int red = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumRed();
+        System.out.println(gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumRed());
         for(int i=0; i<red; i++){
             for(Node school : schoolBoard1.getChildren()) {
                 if (school.getId().equals("schoolBoar1Red" + i))
@@ -156,6 +158,7 @@ public class SchoolBoard1Controller {
             }
         }
         int yellow = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumYellow();
+        System.out.println(gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumYellow());
         for(int i=0; i<yellow; i++){
             for(Node school : schoolBoard1.getChildren()) {
                 if (school.getId().equals("schoolBoard1Yellow" + i))
@@ -163,6 +166,7 @@ public class SchoolBoard1Controller {
             }
         }
         int pink = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumPink();
+        System.out.println(gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumPink());
         for(int i=0; i<pink; i++){
             for(Node school : schoolBoard1.getChildren()) {
                 if (school.getId().equals("schoolBoard1Pink" + i))
@@ -170,6 +174,7 @@ public class SchoolBoard1Controller {
             }
         }
         int blue = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumBlue();
+        System.out.println(gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumBlue());
         for(int i=0; i<blue; i++){
             for(Node school : schoolBoard1.getChildren()) {
                 if (school.getId().equals("schoolBoard1Blue" + i))
@@ -303,7 +308,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceGreen10").setVisible(false);
         schoolBoard1.lookup("#entranceGreen10").setDisable(true);
         gui.getColorPawns().add(ColorPawn.GREEN);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -311,7 +315,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceGreen11").setVisible(false);
         schoolBoard1.lookup("#entranceGreen11").setDisable(true);
         gui.getColorPawns().add(ColorPawn.GREEN);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -319,7 +322,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceGreen12").setVisible(false);
         schoolBoard1.lookup("#entranceGreen12").setDisable(true);
         gui.getColorPawns().add(ColorPawn.GREEN);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -327,7 +329,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceGreen13").setVisible(false);
         schoolBoard1.lookup("#entranceGreen13").setDisable(true);
         gui.getColorPawns().add(ColorPawn.GREEN);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -335,7 +336,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceGreen14").setVisible(false);
         schoolBoard1.lookup("#entranceGreen14").setDisable(true);
         gui.getColorPawns().add(ColorPawn.GREEN);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -343,7 +343,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceGreen15").setVisible(false);
         schoolBoard1.lookup("#entranceGreen15").setDisable(true);
         gui.getColorPawns().add(ColorPawn.GREEN);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -351,7 +350,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceGreen16").setVisible(false);
         schoolBoard1.lookup("#entranceGreen16").setDisable(true);
         gui.getColorPawns().add(ColorPawn.GREEN);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -359,7 +357,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceGreen17").setVisible(false);
         schoolBoard1.lookup("#entranceGreen17").setDisable(true);
         gui.getColorPawns().add(ColorPawn.GREEN);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -367,7 +364,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceGreen18").setVisible(false);
         schoolBoard1.lookup("#entranceGreen18").setDisable(true);
         gui.getColorPawns().add(ColorPawn.GREEN);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -375,7 +371,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceRed10").setVisible(false);
         schoolBoard1.lookup("#entranceRed10").setDisable(true);
         gui.getColorPawns().add(ColorPawn.RED);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -383,7 +378,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceRed11").setVisible(false);
         schoolBoard1.lookup("#entranceRed11").setDisable(true);
         gui.getColorPawns().add(ColorPawn.RED);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -391,7 +385,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceRed12").setVisible(false);
         schoolBoard1.lookup("#entranceRed12").setDisable(true);
         gui.getColorPawns().add(ColorPawn.RED);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -399,7 +392,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceRed13").setVisible(false);
         schoolBoard1.lookup("#entranceRed13").setDisable(true);
         gui.getColorPawns().add(ColorPawn.RED);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -407,7 +399,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceRed14").setVisible(false);
         schoolBoard1.lookup("#entranceRed14").setDisable(true);
         gui.getColorPawns().add(ColorPawn.RED);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -415,7 +406,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceRed15").setVisible(false);
         schoolBoard1.lookup("#entranceRed15").setDisable(true);
         gui.getColorPawns().add(ColorPawn.RED);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -423,7 +413,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceRed16").setVisible(false);
         schoolBoard1.lookup("#entranceRed16").setDisable(true);
         gui.getColorPawns().add(ColorPawn.RED);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -431,7 +420,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceRed17").setVisible(false);
         schoolBoard1.lookup("#entranceRed17").setDisable(true);
         gui.getColorPawns().add(ColorPawn.RED);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -439,7 +427,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceRed18").setVisible(false);
         schoolBoard1.lookup("#entranceRed18").setDisable(true);
         gui.getColorPawns().add(ColorPawn.RED);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -447,7 +434,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceYellow10").setVisible(false);
         schoolBoard1.lookup("#entranceYellow10").setDisable(true);
         gui.getColorPawns().add(ColorPawn.YELLOW);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -455,7 +441,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceYellow11").setVisible(false);
         schoolBoard1.lookup("#entranceYellow11").setDisable(true);
         gui.getColorPawns().add(ColorPawn.YELLOW);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -463,7 +448,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceYellow12").setVisible(false);
         schoolBoard1.lookup("#entranceYellow12").setDisable(true);
         gui.getColorPawns().add(ColorPawn.YELLOW);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -471,7 +455,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceYellow13").setVisible(false);
         schoolBoard1.lookup("#entranceYellow13").setDisable(true);
         gui.getColorPawns().add(ColorPawn.YELLOW);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -479,7 +462,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceYellow14").setVisible(false);
         schoolBoard1.lookup("#entranceYellow14").setDisable(true);
         gui.getColorPawns().add(ColorPawn.YELLOW);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -487,7 +469,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceYellow15").setVisible(false);
         schoolBoard1.lookup("#entranceYellow15").setDisable(true);
         gui.getColorPawns().add(ColorPawn.YELLOW);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -495,7 +476,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceYellow16").setVisible(false);
         schoolBoard1.lookup("#entranceYellow16").setDisable(true);
         gui.getColorPawns().add(ColorPawn.YELLOW);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -503,7 +483,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceYellow17").setVisible(false);
         schoolBoard1.lookup("#entranceYellow17").setDisable(true);
         gui.getColorPawns().add(ColorPawn.YELLOW);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -511,7 +490,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceYellow18").setVisible(false);
         schoolBoard1.lookup("#entranceYellow18").setDisable(true);
         gui.getColorPawns().add(ColorPawn.YELLOW);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -519,7 +497,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entrancePink10").setVisible(false);
         schoolBoard1.lookup("#entrancePink10").setDisable(true);
         gui.getColorPawns().add(ColorPawn.PINK);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -527,7 +504,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entrancePink11").setVisible(false);
         schoolBoard1.lookup("#entrancePink11").setDisable(true);
         gui.getColorPawns().add(ColorPawn.PINK);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -535,7 +511,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entrancePink12").setVisible(false);
         schoolBoard1.lookup("#entrancePink12").setDisable(true);
         gui.getColorPawns().add(ColorPawn.PINK);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -543,7 +518,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entrancePink13").setVisible(false);
         schoolBoard1.lookup("#entrancePink13").setDisable(true);
         gui.getColorPawns().add(ColorPawn.PINK);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -551,7 +525,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entrancePink14").setVisible(false);
         schoolBoard1.lookup("#entrancePink14").setDisable(true);
         gui.getColorPawns().add(ColorPawn.PINK);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -559,7 +532,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entrancePink15").setVisible(false);
         schoolBoard1.lookup("#entrancePink15").setDisable(true);
         gui.getColorPawns().add(ColorPawn.PINK);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -567,14 +539,12 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entrancePink16").setVisible(false);
         schoolBoard1.lookup("#entrancePink16").setDisable(true);
         gui.getColorPawns().add(ColorPawn.PINK);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
     public void pink17Select(MouseEvent mouseEvent) {
         schoolBoard1.lookup("#entrancePink17").setVisible(false);
         schoolBoard1.lookup("#entrancePink17").setDisable(true);
         gui.getColorPawns().add(ColorPawn.PINK);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -582,7 +552,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entrancePink18").setVisible(false);
         schoolBoard1.lookup("#entrancePink18").setDisable(true);
         gui.getColorPawns().add(ColorPawn.PINK);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -590,7 +559,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceBlue10").setVisible(false);
         schoolBoard1.lookup("#entranceBlue10").setDisable(true);
         gui.getColorPawns().add(ColorPawn.BLUE);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -598,7 +566,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceBlue11").setVisible(false);
         schoolBoard1.lookup("#entranceBlue11").setDisable(true);
         gui.getColorPawns().add(ColorPawn.BLUE);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -606,7 +573,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceBlue12").setVisible(false);
         schoolBoard1.lookup("#entranceBlue12").setDisable(true);
         gui.getColorPawns().add(ColorPawn.BLUE);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -614,7 +580,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceBlue13").setVisible(false);
         schoolBoard1.lookup("#entranceBlue13").setDisable(true);
         gui.getColorPawns().add(ColorPawn.BLUE);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -622,7 +587,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceBlue14").setVisible(false);
         schoolBoard1.lookup("#entranceBlue14").setDisable(true);
         gui.getColorPawns().add(ColorPawn.BLUE);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -630,7 +594,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceBlue15").setVisible(false);
         schoolBoard1.lookup("#entranceBlue15").setDisable(true);
         gui.getColorPawns().add(ColorPawn.BLUE);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -638,7 +601,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceBlue16").setVisible(false);
         schoolBoard1.lookup("#entranceBlue16").setDisable(true);
         gui.getColorPawns().add(ColorPawn.BLUE);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -646,7 +608,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceBlue17").setVisible(false);
         schoolBoard1.lookup("#entranceBlue17").setDisable(true);
         gui.getColorPawns().add(ColorPawn.BLUE);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -654,7 +615,6 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceBlue18").setVisible(false);
         schoolBoard1.lookup("#entranceBlue18").setDisable(true);
         gui.getColorPawns().add(ColorPawn.BLUE);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -866,8 +826,9 @@ public class SchoolBoard1Controller {
     }
 
     public void selection(){
+        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
-        for(int i=0; i<12; i++)
+        for(int i=0; i<gui.getLightGame().getIslands().size(); i++)
             gui.getGameTable().getGameTablePane().lookup("#island"+ i).setDisable(false);
         }else if(gui.getButtonClicked().equals(ButtonAction.DININGROOM)){
             if(gui.getNumPawnsCount()==0){
@@ -875,9 +836,9 @@ public class SchoolBoard1Controller {
                     school.setDisable(true);
                 }
                 gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
-                gui.getSchoolBoard1Controller().setSchoolBoard1();
-                gui.getGameTable().showSchool1.setCenter(gui.getSchoolBoard1Controller().getSchoolBoard1());
-                gui.getGameTable().showSchool1.setVisible(true);
+                gui.getSchoolBoard1Controller().setDiningRoom1();
+                gui.getGameTable().getShowSchool1().setCenter(gui.getSchoolBoard1Controller().getSchoolBoard1());
+                gui.getGameTable().getShowSchool1().setVisible(true);
                 gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             }
         }
