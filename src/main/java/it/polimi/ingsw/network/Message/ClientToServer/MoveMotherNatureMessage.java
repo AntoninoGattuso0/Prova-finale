@@ -9,13 +9,13 @@ import java.io.Serializable;
 public class MoveMotherNatureMessage extends ClientToServer implements Serializable {
     @Serial
     private static final long serialVersionUID = 8471854035572910652L;
-    private final int island;
+    private final int steps;
 
-    public MoveMotherNatureMessage(int island) {
-        this.island = island;
+    public MoveMotherNatureMessage(int steps) {
+        this.steps = steps;
     }
 
     public int getIsland() {
-        return island;
+        return steps;
     }
 }

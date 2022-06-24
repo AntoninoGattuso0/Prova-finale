@@ -413,8 +413,9 @@ public class Gui extends Application implements View {
         Platform.runLater(()->{
         if(Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), nickname)){
             int i;
-            for(i=0; !Objects.equals(nickname, lightGame.getPlayers().get(i).getNickname()); i++)
+            for(i=0; !Objects.equals(nickname, lightGame.getPlayers().get(i).getNickname()); i++);
             gameTable.setMessages("MOVE MOTHER NATURE: MAX "+ lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
+            setButtonClicked(ButtonAction.MOTHERNATURE);
             gameTable.setIslandForMotherNature(lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
         }
     });
