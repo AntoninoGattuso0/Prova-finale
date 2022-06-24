@@ -73,7 +73,7 @@ public class Gui extends Application implements View {
 
     public int getNumPawnsCount() {return numPawnsCount;}
 
-    public void setNumPawnsCount(int numPawnCount) {this.numPawnsCount = numPawnsCount;}
+    public void setNumPawnsCount(int numPawnsCount) {this.numPawnsCount = numPawnsCount;}
 
     public void setButtonClicked(ButtonAction buttonClicked){this.buttonClicked = buttonClicked;}
     public void setColorPawns(ArrayList<ColorPawn> colorPawns){this.colorPawns = colorPawns;}
