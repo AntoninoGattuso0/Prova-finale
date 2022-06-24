@@ -836,6 +836,7 @@ public class SchoolBoard1Controller {
                     school.setDisable(true);
                 }
                 gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
+                gui.getColorPawns().clear();
                 gui.getSchoolBoard1Controller().setDiningRoom1();
                 gui.getGameTable().getShowSchool1().setCenter(gui.getSchoolBoard1Controller().getSchoolBoard1());
                 gui.getGameTable().getShowSchool1().setVisible(true);
