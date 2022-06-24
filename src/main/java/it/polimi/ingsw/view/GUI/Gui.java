@@ -383,16 +383,17 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayAll() {
-
     }
 
     @Override
     public void displayStartRound() {
-
     }
     @Override
     public void selectCloud(String nickname) {
-        //gestire con gametable
+        Platform.runLater(()->{
+           gameTable.setCloudVisible();
+           gameTable.setCloudAble();
+        });
     }
 
     @Override
@@ -419,6 +420,8 @@ public class Gui extends Application implements View {
             gameTable.setMessages("MOVE MOTHER NATURE: MAX "+ lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
             setButtonClicked(ButtonAction.MOTHERNATURE);
             gameTable.setIslandForMotherNature(lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
+        }else{
+            gameTable.setMessages(nickname + " IS IN MOVE MOTHER NATURE PHASE");
         }
     });
     }

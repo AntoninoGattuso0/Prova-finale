@@ -393,41 +393,61 @@ public class GameTableController {
             }
         }
         for (i = 0; i < gui.getLightGame().getPlayers().size(); i++) {
-            k=0;
-            String name = "#cloud" + i;
-            gameTable.lookup(name).setVisible(true);
-            gameTable.lookup(name).setDisable(true);
-            n=gui.getLightGame().getClouds().get(i).getGreenPawn();
-            while(n>0){
-                gameTable.lookup("#greenCloud"+i+k).setVisible(true);
-                k++;
-                n--;
-            }
-            n=gui.getLightGame().getClouds().get(i).getRedPawn();
-            while(n>0){
-                gameTable.lookup("#redCloud"+i+k).setVisible(true);
-                k++;
-                n--;
-            }
-            n=gui.getLightGame().getClouds().get(i).getYellowPawn();
-            while(n>0){
-                gameTable.lookup("#yellowCloud"+i+k).setVisible(true);
-                k++;
-                n--;
-            }
-            n=gui.getLightGame().getClouds().get(i).getPinkPawn();
-            while(n>0){
-                gameTable.lookup("#pinkCloud"+i+k).setVisible(true);
-                k++;
-                n--;
-            }
-            n=gui.getLightGame().getClouds().get(i).getBluePawn();
-            while(n>0){
-                gameTable.lookup("#blueCloud"+i+k).setVisible(true);
-                k++;
-                n--;
+            if ((gui.getLightGame().getClouds().get(i).getGreenPawn() + gui.getLightGame().getClouds().get(i).getPinkPawn() + gui.getLightGame().getClouds().get(i).getRedPawn() + gui.getLightGame().getClouds().get(i).getBluePawn() + gui.getLightGame().getClouds().get(i).getYellowPawn()) > 0) {
+                k = 0;
+                String name = "#cloud" + i;
+                gameTable.lookup(name).setVisible(true);
+                gameTable.lookup(name).setDisable(true);
+                n = gui.getLightGame().getClouds().get(i).getGreenPawn();
+                while (n > 0) {
+                    gameTable.lookup("#greenCloud" + i + k).setVisible(true);
+                    k++;
+                    n--;
+                }
+                n = gui.getLightGame().getClouds().get(i).getRedPawn();
+                while (n > 0) {
+                    gameTable.lookup("#redCloud" + i + k).setVisible(true);
+                    k++;
+                    n--;
+                }
+                n = gui.getLightGame().getClouds().get(i).getYellowPawn();
+                while (n > 0) {
+                    gameTable.lookup("#yellowCloud" + i + k).setVisible(true);
+                    k++;
+                    n--;
+                }
+                n = gui.getLightGame().getClouds().get(i).getPinkPawn();
+                while (n > 0) {
+                    gameTable.lookup("#pinkCloud" + i + k).setVisible(true);
+                    k++;
+                    n--;
+                }
+                n = gui.getLightGame().getClouds().get(i).getBluePawn();
+                while (n > 0) {
+                    gameTable.lookup("#blueCloud" + i + k).setVisible(true);
+                    k++;
+                    n--;
+                }
             }
         }
+    }
+    public void setCloudAble(){
+        Platform.runLater(()-> {
+            int i;
+            for (i = 0; i < gui.getLightGame().getClouds().size(); i++) {
+                if ((gui.getLightGame().getClouds().get(i).getGreenPawn() + gui.getLightGame().getClouds().get(i).getPinkPawn() + gui.getLightGame().getClouds().get(i).getRedPawn() + gui.getLightGame().getClouds().get(i).getBluePawn() + gui.getLightGame().getClouds().get(i).getYellowPawn()) > 0) {
+                    gameTable.lookup("#cloud" + i).setDisable(false);
+                }
+            }
+        });
+    }
+    public void setCloudDisable(){
+        Platform.runLater(()->{
+        int i;
+        for(i=0;i<gui.getLightGame().getClouds().size();i++) {
+            gameTable.lookup("#cloud" + i).setDisable(false);
+        }
+        });
     }
     public void setMotherNatureVisible() {
         int i;

@@ -108,35 +108,35 @@ public class SchoolBoard0Controller {
         int green = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumGreen();
         for(int i=0; i<green; i++){
             for(Node school : schoolBoard0.getChildren()) {
-                if (school.getId().equals("#schoolBoard0Green" + i))
+                if (school.getId().equals("schoolBoard0Green" + i))
                     school.setVisible(true);
             }
         }
         int red = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumRed();
         for(int i=0; i<red; i++){
             for(Node school : schoolBoard0.getChildren()) {
-                if (school.getId().equals("#schoolBoard0Red" + i))
+                if (school.getId().equals("schoolBoard0Red" + i))
                     school.setVisible(true);
             }
         }
         int yellow = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumYellow();
         for(int i=0; i<yellow; i++){
             for(Node school : schoolBoard0.getChildren()) {
-                if (school.getId().equals("#schoolBoard0Yellow" + i))
+                if (school.getId().equals("schoolBoard0Yellow" + i))
                     school.setVisible(true);
             }
         }
         int pink = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumPink();
         for(int i=0; i<pink; i++){
             for(Node school : schoolBoard0.getChildren()) {
-                if (school.getId().equals("#schoolBoard0Pink" + i))
+                if (school.getId().equals("schoolBoard0Pink" + i))
                     school.setVisible(true);
             }
         }
         int blue = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumBlue();
         for(int i=0; i<blue; i++){
             for(Node school : schoolBoard0.getChildren()) {
-                if (school.getId().equals("#schoolBoard0Blue" + i))
+                if (school.getId().equals("schoolBoard0Blue" + i))
                     school.setVisible(true);
             }
         }
