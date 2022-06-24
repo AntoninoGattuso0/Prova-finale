@@ -317,6 +317,7 @@ public class SchoolBoard1Controller {
                 gui.getGameTable().showSchool1.setVisible(true);
                 gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             }
+
         }
     }
 
