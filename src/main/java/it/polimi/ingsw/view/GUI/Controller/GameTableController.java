@@ -524,7 +524,13 @@ public class GameTableController {
         number3.setVisible(false);
         number3.setDisable(true);
 
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND))
+            messages.setText("Choose Pawns from Entrance to Island");
+        else if(gui.getButtonClicked().equals(ButtonAction.DININGROOM))
+            messages.setText("Choose Pawns from Entrance to DiningRoom");
+
         gui.setNumPawns(parseInt(number0.getText()));
+        gui.setNumPawnsCount(parseInt(number0.getText()));
 
         if(gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
             schoolBoard0Controller = gui.getSchoolBoard0Controller();
@@ -567,7 +573,13 @@ public class GameTableController {
         number3.setVisible(false);
         number3.setDisable(true);
 
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND))
+            messages.setText("Choose Pawns from Entrance to Island");
+        else if(gui.getButtonClicked().equals(ButtonAction.DININGROOM))
+            messages.setText("Choose Pawns from Entrance to DiningRoom");
+
         gui.setNumPawns(parseInt(number1.getText()));
+        gui.setNumPawnsCount(parseInt(number0.getText()));
 
         if(gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
             schoolBoard0Controller = gui.getSchoolBoard0Controller();
@@ -610,7 +622,13 @@ public class GameTableController {
         number3.setVisible(false);
         number3.setDisable(true);
 
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND))
+            messages.setText("Choose Pawns from Entrance to Island");
+        else if(gui.getButtonClicked().equals(ButtonAction.DININGROOM))
+            messages.setText("Choose Pawns from Entrance to DiningRoom");
+
         gui.setNumPawns(parseInt(number2.getText()));
+        gui.setNumPawnsCount(parseInt(number0.getText()));
 
         if(gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
             schoolBoard0Controller = gui.getSchoolBoard0Controller();
@@ -653,7 +671,13 @@ public class GameTableController {
         number3.setVisible(false);
         number3.setDisable(true);
 
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND))
+            messages.setText("Choose Pawns from Entrance to Island");
+        else if(gui.getButtonClicked().equals(ButtonAction.DININGROOM))
+            messages.setText("Choose Pawns from Entrance to DiningRoom");
+
         gui.setNumPawns(parseInt(number3.getText()));
+        gui.setNumPawnsCount(parseInt(number0.getText()));
 
         if(gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
             schoolBoard0Controller = gui.getSchoolBoard0Controller();
@@ -863,6 +887,8 @@ public class GameTableController {
         islandButton.setVisible(false);
         islandButton.setDisable(true);
 
+        messages.setText("Choose Pawns: ");
+
         gui.setButtonClicked(ButtonAction.ISLAND);
 
         for(int i = 0; i < gui.getPedineDaSpostare(); i++){
@@ -888,7 +914,7 @@ public class GameTableController {
             }
         }
 
-        messages.setText("Scegli il numero di pedine da spostare su un Island: ");
+        messages.setText("Choose Pawn to Island: ");
         whatToDo.setVisible(true);
     }
 
@@ -902,6 +928,8 @@ public class GameTableController {
         characterButton.setDisable(true);
         islandButton.setVisible(false);
         islandButton.setDisable(true);
+
+        messages.setText("Choose Pawns: ");
 
         gui.setButtonClicked(ButtonAction.DININGROOM);
 
@@ -928,7 +956,7 @@ public class GameTableController {
             }
         }
 
-        whatToDo.setText("Scegli il numero di pedine da spostare verso la DiningRoom: ");
+        whatToDo.setText("Choose Pawn to DiningRoom: ");
         whatToDo.setVisible(true);
     }
 }
