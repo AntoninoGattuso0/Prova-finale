@@ -642,7 +642,6 @@ public class GameTableController {
             showSchool3.setVisible(true);
         }
     }
-
     public void number3Button(MouseEvent mouseEvent) {
         number0.setVisible(false);
         number0.setDisable(true);
