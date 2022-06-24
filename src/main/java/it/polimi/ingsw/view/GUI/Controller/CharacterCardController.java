@@ -266,7 +266,7 @@ public class CharacterCardController {
             characterCards.lookup("yellowCharacter0").setDisable(true);
             characterCards.lookup("pinkCharacter0").setDisable(true);
             characterCards.lookup("blueCharacter0").setDisable(true);
-            gameTableController.setAllIslands(true, false);
+            gameTableController.setAllIslands(false);
         }
     }
 

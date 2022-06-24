@@ -495,7 +495,7 @@ public class Gui extends Application implements View {
             gameTable.setGui(this);
             gameTable.setPawnVisible();
             gameTable.setMotherNatureVisible();
-            gameTable.setAllIslands(true,false);
+            gameTable.setAllIslands(false);
             gameTable.setCloudVisible();
             gameTable.setTowers();
             gameTable.setButtonOff();

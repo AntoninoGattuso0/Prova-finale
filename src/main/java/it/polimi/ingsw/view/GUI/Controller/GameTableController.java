@@ -133,10 +133,10 @@ public class GameTableController {
     public void setMessages(String messages) {
         this.messages.setText(messages);
     }
-    public void setAllIslands(boolean visible, boolean disabled) {
+    public void setAllIslands(boolean disabled) {
         for (int i = 0; i < gui.getLightGame().getIslands().size(); i++) {
             String name = "#island" + i;
-            gameTable.lookup(name).setVisible(visible);
+            gameTable.lookup(name).setVisible(true);
             gameTable.lookup(name).setDisable(disabled);
         }
     }
