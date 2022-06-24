@@ -143,7 +143,8 @@ public class GameTableController {
         number1.setVisible(false);
         number2.setDisable(true);
         number2.setVisible(false);
-
+        number3.setVisible(false);
+        number3.setDisable(true);
         islandButton.setDisable(true);
         islandButton.setVisible(false);
         characterButton.setVisible(false);
@@ -218,7 +219,19 @@ public class GameTableController {
         AssistantCardButton.setDisable(true);
         CharacterCardButton.setDisable(true);
     }
-
+    public void setButtonForRequestMovePawn(){
+       islandButton.setText("MoveToIsland");
+        islandButton.setDisable(false);
+        islandButton.setVisible(true);
+        diningButton.setText("MoveToDining");
+        diningButton.setVisible(true);
+        diningButton.setDisable(false);
+        if(gui.getLightGame().getIsExpert()){
+            characterButton.setText("ChooseCharacterCard");
+            characterButton.setVisible(true);
+            characterButton.setDisable(false);
+        }
+    }
     public void setShowAssistant() {
         showSchool0.setVisible(false);
         showCharacterCard.setVisible(false);
@@ -499,83 +512,6 @@ public class GameTableController {
         gameTable.lookup("#cloud3").setVisible(false);
     }
 
-    public void islandButton(MouseEvent mouseEvent) {
-        diningButton.setVisible(false);
-        diningButton.setDisable(true);
-        characterButton.setVisible(false);
-        characterButton.setDisable(true);
-        islandButton.setVisible(false);
-        islandButton.setDisable(true);
-
-        gui.setButtonClicked(ButtonAction.ISLAND);
-
-        for(int i = 0; i < gui.getPedineDaSpostare(); i++){
-            if(i == 0){
-                number0.setText("1");
-                number0.setVisible(true);
-                number0.setDisable(false);
-            }
-            else if(i == 1){
-                number1.setText("2");
-                number1.setVisible(true);
-                number1.setDisable(false);
-            }
-            else if(i == 2){
-                number2.setText("3");
-                number2.setVisible(true);
-                number2.setDisable(false);
-            }
-            else if(i == 3){
-                number3.setText("4");
-                number3.setVisible(true);
-                number3.setDisable(false);
-            }
-        }
-
-        whatToDo.setText("Scegli il numero di pedine da spostare su un Island: ");
-        whatToDo.setVisible(true);
-    }
-
-    public void characterButton(MouseEvent mouseEvent) {
-    }
-
-    public void diningButton(MouseEvent mouseEvent) {
-        diningButton.setVisible(false);
-        diningButton.setDisable(true);
-        characterButton.setVisible(false);
-        characterButton.setDisable(true);
-        islandButton.setVisible(false);
-        islandButton.setDisable(true);
-
-        gui.setButtonClicked(ButtonAction.DININGROOM);
-
-        for(int i = 0; i < gui.getPedineDaSpostare(); i++){
-            if(i == 0){
-                number0.setText("1");
-                number0.setVisible(true);
-                number0.setDisable(false);
-            }
-            else if(i == 1){
-                number1.setText("2");
-                number1.setVisible(true);
-                number1.setDisable(false);
-            }
-            else if(i == 2){
-                number2.setText("3");
-                number2.setVisible(true);
-                number2.setDisable(false);
-            }
-            else if(i == 3){
-                number3.setText("4");
-                number3.setVisible(true);
-                number3.setDisable(false);
-            }
-        }
-
-        whatToDo.setText("Scegli il numero di pedine da spostare verso la DiningRoom: ");
-        whatToDo.setVisible(true);
-    }
-
     public void number0Button(MouseEvent mouseEvent) {
         number0.setVisible(false);
         number0.setDisable(true);
@@ -849,4 +785,80 @@ public class GameTableController {
         }
     }
 
+    public void islandButtonClicked(MouseEvent mouseEvent) {
+        diningButton.setVisible(false);
+        diningButton.setDisable(true);
+        characterButton.setVisible(false);
+        characterButton.setDisable(true);
+        islandButton.setVisible(false);
+        islandButton.setDisable(true);
+
+        gui.setButtonClicked(ButtonAction.ISLAND);
+
+        for(int i = 0; i < gui.getPedineDaSpostare(); i++){
+            if(i == 0){
+                number0.setText("1");
+                number0.setVisible(true);
+                number0.setDisable(false);
+            }
+            else if(i == 1){
+                number1.setText("2");
+                number1.setVisible(true);
+                number1.setDisable(false);
+            }
+            else if(i == 2){
+                number2.setText("3");
+                number2.setVisible(true);
+                number2.setDisable(false);
+            }
+            else if(i == 3){
+                number3.setText("4");
+                number3.setVisible(true);
+                number3.setDisable(false);
+            }
+        }
+
+        whatToDo.setText("Scegli il numero di pedine da spostare su un Island: ");
+        whatToDo.setVisible(true);
+    }
+
+    public void characterButtonClicked(MouseEvent mouseEvent) {
+    }
+
+    public void diningButtonClicked(MouseEvent mouseEvent) {
+        diningButton.setVisible(false);
+        diningButton.setDisable(true);
+        characterButton.setVisible(false);
+        characterButton.setDisable(true);
+        islandButton.setVisible(false);
+        islandButton.setDisable(true);
+
+        gui.setButtonClicked(ButtonAction.DININGROOM);
+
+        for(int i = 0; i < gui.getPedineDaSpostare(); i++){
+            if(i == 0){
+                number0.setText("1");
+                number0.setVisible(true);
+                number0.setDisable(false);
+            }
+            else if(i == 1){
+                number1.setText("2");
+                number1.setVisible(true);
+                number1.setDisable(false);
+            }
+            else if(i == 2){
+                number2.setText("3");
+                number2.setVisible(true);
+                number2.setDisable(false);
+            }
+            else if(i == 3){
+                number3.setText("4");
+                number3.setVisible(true);
+                number3.setDisable(false);
+            }
+        }
+
+        whatToDo.setText("Scegli il numero di pedine da spostare verso la DiningRoom: ");
+        whatToDo.setVisible(true);
+    }
 }

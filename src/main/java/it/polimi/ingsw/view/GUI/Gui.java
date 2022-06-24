@@ -165,12 +165,14 @@ public class Gui extends Application implements View {
     }
     @Override
     public void requestMovePawn(String nickname, int numPawnMoved) {
-        //si devono settare i bottoni aggiunti nella gametable e stampargli "clicca "isole" per ecc..., clicca "dining" per...ecc"
-
-        //IO METTEREI setText("CHOOSE YOUR ACTION")
-        //NOME BOTTONI MoveToIsland, MoveToDining, ChooseCharacter
-        //TI FACCIO UN AUDIO PER SPIEGARTI COME HO PENSATO A QUESTO
-
+        Platform.runLater(()-> {
+            if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())) {
+                gameTable.setMessages("CHOOSE YOUR ACTION");
+                gameTable.setButtonForRequestMovePawn();
+            }else{
+                gameTable.setMessages(nickname+" IS IN MOVE PAWN PHASE");
+            }
+        });
     }
 
     @Override
@@ -555,11 +557,13 @@ public class Gui extends Application implements View {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                characterCardController = fxmlCharacter.getController();
-                characterCardController.setGui(this);
-                characterCardController.setCharacterCards();
-                gameTable.getShowCharacterCard().setCenter(characterCardController.getCharacterCards());
-                gameTable.getShowCharacterCard().getCenter().setVisible(true);
+                if (lightGame.getIsExpert()) {
+                    characterCardController = fxmlCharacter.getController();
+                    characterCardController.setGui(this);
+                    characterCardController.setCharacterCards();
+                    gameTable.getShowCharacterCard().setCenter(characterCardController.getCharacterCards());
+                    gameTable.getShowCharacterCard().getCenter().setVisible(true);
+                }
             }
         });
 
