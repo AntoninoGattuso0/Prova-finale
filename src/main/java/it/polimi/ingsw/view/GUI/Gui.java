@@ -365,14 +365,18 @@ public class Gui extends Application implements View {
                 displayStartRound();
             }
         }
-        schoolBoard1Controller.setSchoolBoard1();
-        schoolBoard0Controller.setSchoolBoard0();
-        if(schoolBoard2Controller!=null)
-            schoolBoard2Controller.setSchoolBoard2();
-        if(schoolBoard2Controller!=null)
-            schoolBoard3Controller.setSchoolBoard3();
-        assistantCardController.setAssistantCards(socketNetworkHandler.getNicknameThisPlayer());
-        characterCardController.setCharacterCards();
+        Platform.runLater(()-> {
+            if (schoolBoard1Controller != null) {
+                schoolBoard1Controller.setSchoolBoard1();
+                schoolBoard0Controller.setSchoolBoard0();
+                if (schoolBoard2Controller != null)
+                    schoolBoard2Controller.setSchoolBoard2();
+                if (schoolBoard2Controller != null)
+                    schoolBoard3Controller.setSchoolBoard3();
+                assistantCardController.setAssistantCards(socketNetworkHandler.getNicknameThisPlayer());
+                characterCardController.setCharacterCards();
+            }
+        });
     }
 
     @Override
