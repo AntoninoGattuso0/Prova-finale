@@ -312,9 +312,10 @@ public class SchoolBoard1Controller {
                 for(Node school : schoolBoard1.getChildren())
                     school.setDisable(true);
                 gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
-                setSchoolBoard1();
-                gui.getGameTable().showSchool1.setCenter(this.getSchoolBoard1());
+                gui.getSchoolBoard1Controller().setSchoolBoard1();
+                gui.getGameTable().showSchool1.setCenter(gui.getSchoolBoard1Controller().getSchoolBoard1());
                 gui.getGameTable().showSchool1.setVisible(true);
+                gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             }
         }
     }
@@ -332,8 +333,8 @@ public class SchoolBoard1Controller {
                 for(Node school : schoolBoard1.getChildren())
                     school.setDisable(true);
                 gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
-                setSchoolBoard1();
-                gui.getGameTable().showSchool1.setCenter(getSchoolBoard1());
+                this.setSchoolBoard1();
+                gui.getGameTable().showSchool1.setCenter(this.getSchoolBoard1());
                 gui.getGameTable().showSchool1.setVisible(true);
             }
         }
