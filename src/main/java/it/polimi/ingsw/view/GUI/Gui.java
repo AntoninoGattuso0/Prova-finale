@@ -547,7 +547,6 @@ public class Gui extends Application implements View {
             gameTable.getShowAssistant().getCenter().setVisible(true);
             gameTable.getShowSchool0().setCenter(schoolBoard0Controller.getSchoolBoard0());
             gameTable.getShowSchool0().getCenter().setVisible(true);
-//abbiamo provato a mettere il "runLater" sul click però dava problemi, prova magari anche te ma a me diceva che la gui era NULL
             if(lightGame.getIsExpert()) {
                 fxmlCharacter = new FXMLLoader();
                 fxmlCharacter.setLocation(getClass().getResource("/CharacterCard.fxml"));
@@ -598,20 +597,22 @@ public class Gui extends Application implements View {
             //displayEndTurn();
             //va gestito nella parte di testo in gameTable
         }
-        int i;
-        int j;
+        Platform.runLater(() -> {
+            int i;
+            int j;
         for (j = 0; !Objects.equals(players.get(j), actualPlayer); j++) ;
         if (j< players.size()-1) {
             for (i = j; Objects.equals(players.get(i), actualPlayer); i++) ;
             if (Objects.equals(players.get(i), socketNetworkHandler.getNicknameThisPlayer())) {
                 // displayStartTurn();
                 //va gestito nella parte di testo in game table
-            } else
-                System.out.println(players.get(i) + " sta iniziando il suo turno");   //IN ALTO A SINISTRA C'E UN TESTO TURN OF: NOMEPLAYER
-        }else{
-            //System.out.println("ROUND FINISHED, A NEW ONE BEGINS");  //RISPOSTA: questo e il messaggio da metter come setText per farlo stare all'interno della schermata
-            //va gestito nell parte di testo in game table
-        }
+            } else {
+                    gameTable.setMessages(players.get(i) + " START YOUR TURN");
+            }
+        }else {
+                gameTable.setMessages("ROUND FINISHED, A NEW ONE BEGINS");
+            }
+        });
     }
     @Override
     public void displayOnePlayerBoard(String nickname) {
