@@ -375,6 +375,8 @@ public class Gui extends Application implements View {
                     schoolBoard3Controller.setSchoolBoard3();
                 assistantCardController.setAssistantCards(socketNetworkHandler.getNicknameThisPlayer());
                 characterCardController.setCharacterCards();
+                gameTable.setMotherNatureVisible();
+                gameTable.setAllIslands(true);
             }
         });
     }
