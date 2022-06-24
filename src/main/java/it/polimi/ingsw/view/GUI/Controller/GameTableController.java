@@ -222,7 +222,6 @@ public class GameTableController {
     public void setButtonForRequestMovePawn(){
         Platform.runLater(()-> {
             whatToDo.setVisible(true);
-            System.out.println("ciao");
             islandButton.setDisable(false);
             islandButton.setVisible(true);
             diningButton.setVisible(true);
@@ -230,6 +229,7 @@ public class GameTableController {
             if (gui.getLightGame().getIsExpert()) {
                 characterButton.setVisible(true);
                 characterButton.setDisable(false);
+                messagesActions.setVisible(true);
             }
         });
     }
