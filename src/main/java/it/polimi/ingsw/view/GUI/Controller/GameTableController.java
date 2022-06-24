@@ -931,8 +931,6 @@ public class GameTableController {
         islandButton.setVisible(false);
         islandButton.setDisable(true);
 
-        whatToDo.setText("Choose Pawns: ");
-
         gui.setButtonClicked(ButtonAction.DININGROOM);
 
         for(int i = 0; i < gui.getPedineDaSpostare(); i++){
