@@ -1,6 +1,7 @@
 package it.polimi.ingsw.view.GUI.Controller;
 
 import it.polimi.ingsw.model.ColorTower;
+import it.polimi.ingsw.network.Message.ClientToServer.MoveMotherNatureMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.MovePawnToIslandMessage;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.application.Platform;
@@ -144,13 +145,15 @@ public class GameTableController {
     public void setIslandForMotherNature(int steps){
         int mn, i=0;
         for(mn = 0; mn<gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(mn).getMotherNature(); mn++);
+        setAllIslands(true);
         while(i<steps){
             mn++;
             if(mn == 12)
                 mn = 0;
-            gameTable.lookup("#island" + i).setDisable(false);
+            gameTable.lookup("#island" + mn).setDisable(false);
             i++;
         }
+        whatToDo.setText("Select new MN Island");
     }
 
     public void setButtonOff(){
@@ -730,12 +733,39 @@ public class GameTableController {
             gui.setIslandSelected(0);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
         }
+        else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
+            int i;
+            for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
+            gui.getLightGame().getIslands().get(i).setMotherNature(false);
+            gui.getLightGame().getIslands().get(0).setMotherNature(true);
+            int step = 0;
+            while(i!=0){
+                step++;
+                i++;
+                if(i==12)
+                    i=0;
+            }
+            gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
+        }
     }
 
     public void island1Select(MouseEvent mouseEvent) {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(1);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
+            int i;
+            for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
+            gui.getLightGame().getIslands().get(i).setMotherNature(false);
+            gui.getLightGame().getIslands().get(1).setMotherNature(true);
+            int step = 0;
+            while(i!=1){
+                step++;
+                i++;
+                if(i==12)
+                    i=0;
+            }
+            gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
 
@@ -743,6 +773,19 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(2);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
+            int i;
+            for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
+            gui.getLightGame().getIslands().get(i).setMotherNature(false);
+            gui.getLightGame().getIslands().get(2).setMotherNature(true);
+            int step = 0;
+            while(i!=2){
+                step++;
+                i++;
+                if(i==12)
+                    i=0;
+            }
+            gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
 
@@ -750,6 +793,19 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(3);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
+            int i;
+            for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
+            gui.getLightGame().getIslands().get(i).setMotherNature(false);
+            gui.getLightGame().getIslands().get(3).setMotherNature(true);
+            int step = 0;
+            while(i!=3){
+                step++;
+                i++;
+                if(i==12)
+                    i=0;
+            }
+            gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
 
@@ -757,6 +813,19 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(4);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
+            int i;
+            for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
+            gui.getLightGame().getIslands().get(i).setMotherNature(false);
+            gui.getLightGame().getIslands().get(4).setMotherNature(true);
+            int step = 0;
+            while(i!=4){
+                step++;
+                i++;
+                if(i==12)
+                    i=0;
+            }
+            gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
 
@@ -764,6 +833,19 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(5);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
+            int i;
+            for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
+            gui.getLightGame().getIslands().get(i).setMotherNature(false);
+            gui.getLightGame().getIslands().get(5).setMotherNature(true);
+            int step = 0;
+            while(i!=5){
+                step++;
+                i++;
+                if(i==12)
+                    i=0;
+            }
+            gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
 
@@ -771,6 +853,19 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(6);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
+            int i;
+            for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
+            gui.getLightGame().getIslands().get(i).setMotherNature(false);
+            gui.getLightGame().getIslands().get(6).setMotherNature(true);
+            int step = 0;
+            while(i!=6){
+                step++;
+                i++;
+                if(i==12)
+                    i=0;
+            }
+            gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
 
@@ -778,6 +873,19 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(7);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
+            int i;
+            for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
+            gui.getLightGame().getIslands().get(i).setMotherNature(false);
+            gui.getLightGame().getIslands().get(7).setMotherNature(true);
+            int step = 0;
+            while(i!=7){
+                step++;
+                i++;
+                if(i==12)
+                    i=0;
+            }
+            gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
 
@@ -785,6 +893,19 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(8);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
+            int i;
+            for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
+            gui.getLightGame().getIslands().get(i).setMotherNature(false);
+            gui.getLightGame().getIslands().get(8).setMotherNature(true);
+            int step = 0;
+            while(i!=8){
+                step++;
+                i++;
+                if(i==12)
+                    i=0;
+            }
+            gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
 
@@ -792,6 +913,19 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(9);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
+            int i;
+            for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
+            gui.getLightGame().getIslands().get(i).setMotherNature(false);
+            gui.getLightGame().getIslands().get(9).setMotherNature(true);
+            int step = 0;
+            while(i!=9){
+                step++;
+                i++;
+                if(i==12)
+                    i=0;
+            }
+            gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
 
@@ -799,6 +933,19 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(10);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
+            int i;
+            for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
+            gui.getLightGame().getIslands().get(i).setMotherNature(false);
+            gui.getLightGame().getIslands().get(10).setMotherNature(true);
+            int step = 0;
+            while(i!=10){
+                step++;
+                i++;
+                if(i==12)
+                    i=0;
+            }
+            gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
 
@@ -806,6 +953,19 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(11);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+        }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
+            int i;
+            for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
+            gui.getLightGame().getIslands().get(i).setMotherNature(false);
+            gui.getLightGame().getIslands().get(11).setMotherNature(true);
+            int step = 0;
+            while(i!=11){
+                step++;
+                i++;
+                if(i==12)
+                    i=0;
+            }
+            gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
 
