@@ -410,6 +410,14 @@ public class Gui extends Application implements View {
     @Override
     public void requestMoveMotherNature(String nickname) {
         //va gestito sempre capendo come funziona il game table
+        Platform.runLater(()->{
+        if(Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), nickname)){
+            int i;
+            for(i=0; !Objects.equals(nickname, lightGame.getPlayers().get(i).getNickname()); i++)
+            gameTable.setMessages("MOVE MOTHER NATURE: MAX "+ lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
+            gameTable.setIslandForMotherNature(lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
+        }
+    });
     }
 
     @Override
@@ -495,7 +503,7 @@ public class Gui extends Application implements View {
             gameTable.setGui(this);
             gameTable.setPawnVisible();
             gameTable.setMotherNatureVisible();
-            gameTable.setAllIslands(true,false);
+            gameTable.setAllIslands(false);
             gameTable.setCloudVisible();
             gameTable.setTowers();
             gameTable.setButtonOff();

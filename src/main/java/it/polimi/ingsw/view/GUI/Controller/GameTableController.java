@@ -133,13 +133,26 @@ public class GameTableController {
     public void setMessages(String messages) {
         this.messages.setText(messages);
     }
-    public void setAllIslands(boolean visible, boolean disabled) {
+    public void setAllIslands(boolean disabled) {
         for (int i = 0; i < gui.getLightGame().getIslands().size(); i++) {
-            String name = "#island" + String.valueOf(i);
-            gameTable.lookup(name).setVisible(visible);
+            String name = "#island" + i;
+            gameTable.lookup(name).setVisible(true);
             gameTable.lookup(name).setDisable(disabled);
         }
     }
+
+    public void setIslandForMotherNature(int steps){
+        int mn, i=0;
+        for(mn = 0; mn<gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(mn).getMotherNature(); mn++);
+        while(i<steps){
+            mn++;
+            if(mn == 12)
+                mn = 0;
+            gameTable.lookup("#island" + i).setDisable(false);
+            i++;
+        }
+    }
+
     public void setButtonOff(){
         number0.setDisable(true);
         number0.setVisible(false);
