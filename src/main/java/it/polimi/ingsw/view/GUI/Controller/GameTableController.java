@@ -1,6 +1,7 @@
 package it.polimi.ingsw.view.GUI.Controller;
 
 import it.polimi.ingsw.model.ColorTower;
+import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.MoveMotherNatureMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.MovePawnToIslandMessage;
 import it.polimi.ingsw.view.GUI.Gui;
@@ -556,15 +557,19 @@ public class GameTableController {
 
     public void cloud0select(MouseEvent mouseEvent) {
         gameTable.lookup("#cloud0").setVisible(false);
+        gui.getSocketNetworkHandler().sendMessage(new ChooseCloudMessage(0));
     }
     public void cloud1select(MouseEvent mouseEvent) {
-        gameTable.lookup("#cloud0").setVisible(false);
+        gameTable.lookup("#cloud1").setVisible(false);
+        gui.getSocketNetworkHandler().sendMessage(new ChooseCloudMessage(1));
     }
     public void cloud2select(MouseEvent mouseEvent) {
-        gameTable.lookup("#cloud").setVisible(false);
+        gameTable.lookup("#cloud2").setVisible(false);
+        gui.getSocketNetworkHandler().sendMessage(new ChooseCloudMessage(2));
     }
     public void cloud3select(MouseEvent mouseEvent) {
         gameTable.lookup("#cloud3").setVisible(false);
+        gui.getSocketNetworkHandler().sendMessage(new ChooseCloudMessage(3));
     }
 
     public void number0Button(MouseEvent mouseEvent) {

@@ -391,8 +391,14 @@ public class Gui extends Application implements View {
     @Override
     public void selectCloud(String nickname) {
         Platform.runLater(()->{
-           gameTable.setCloudVisible();
-           gameTable.setCloudAble();
+            if(Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
+                gameTable.setButtonOff();
+                gameTable.setMessages("CHOOSE CLOUD");
+                gameTable.setCloudVisible();
+                gameTable.setCloudAble();
+            }else{
+                gameTable.setMessages(nickname+" CHOOSE CLOUD");
+            }
         });
     }
 
