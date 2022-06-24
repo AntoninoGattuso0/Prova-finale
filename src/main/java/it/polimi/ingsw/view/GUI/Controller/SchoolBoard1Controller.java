@@ -333,9 +333,9 @@ public class SchoolBoard1Controller {
                 for(Node school : schoolBoard1.getChildren())
                     school.setDisable(true);
                 gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
-                this.setSchoolBoard1();
-                gui.getGameTable().showSchool1.setCenter(this.getSchoolBoard1());
-                gui.getGameTable().showSchool1.setVisible(true);
+                setSchoolBoard1();
+                gui.getGameTable().showSchool1.setCenter(getSchoolBoard1());
+                gui.getGameTable().showSchool1.getCenter().setVisible(true);
             }
         }
     }
