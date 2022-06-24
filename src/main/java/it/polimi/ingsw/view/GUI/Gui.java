@@ -405,6 +405,7 @@ public class Gui extends Application implements View {
         Platform.runLater(()-> {
             assistantCardController.setDisableAll();
             gameTable.initializeBorderPane();
+            gameTable.setChooseViewOn();
         });
     }
 

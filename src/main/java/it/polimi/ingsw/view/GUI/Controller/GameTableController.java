@@ -112,6 +112,10 @@ public class GameTableController {
     SchoolBoard2Controller schoolBoard2Controller;
     SchoolBoard3Controller schoolBoard3Controller;
     public BorderPane getShowSchool0(){return showSchool0;}
+    public BorderPane getShowSchool1(){return showSchool1;}
+    public BorderPane getShowSchool2(){return showSchool2;}
+    public BorderPane getShowSchool3(){return showSchool3;}
+
     public BorderPane getShowAssistant(){return showAssistant;}
     public BorderPane getShowCharacterCard(){return showCharacterCard;}
     public Pane getGameTablePane(){return gameTable;}
@@ -219,6 +223,13 @@ public class GameTableController {
         AssistantCardButton.setDisable(true);
         CharacterCardButton.setDisable(true);
     }
+
+    public void setChooseViewOn(){
+        SchoolBoard.setDisable(false);
+        AssistantCardButton.setDisable(false);
+        CharacterCardButton.setDisable(false);
+    }
+
     public void setButtonForRequestMovePawn(){
         Platform.runLater(()-> {
             whatToDo.setVisible(true);
