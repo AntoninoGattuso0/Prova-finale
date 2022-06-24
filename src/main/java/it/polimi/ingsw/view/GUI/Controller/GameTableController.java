@@ -444,14 +444,7 @@ public class GameTableController {
             gameTable.lookup(text).setVisible(true);
         }
     }
-    public void setAssisBoardCharacOn(){
-        CharacterCardButton.setDisable(false);
-        CharacterCardButton.setVisible(true);
-        AssistantCardButton.setVisible(true);
-        AssistantCardButton.setDisable(false);
-        SchoolBoard.setDisable(false);
-        SchoolBoard.setVisible(true);
-    }
+
     public void switchToAssistantCard() {
         showCharacterCard.setVisible(false);
         showSchool0.setVisible(false);
@@ -459,11 +452,11 @@ public class GameTableController {
         showSchool2.setVisible(false);
         showSchool3.setVisible(false);
         Platform.runLater(()-> {
-                    assistantCardController = gui.getAssistantCardController();
-                    assistantCardController.setAssistantCards(gui.getSocketNetworkHandler().getNicknameThisPlayer());
-                    showAssistant.setCenter(assistantCardController.getAssistantCards());
+            assistantCardController = gui.getAssistantCardController();
+            assistantCardController.setAssistantCards(gui.getSocketNetworkHandler().getNicknameThisPlayer());
+            showAssistant.setCenter(assistantCardController.getAssistantCards());
             showAssistant.setVisible(true);
-                });
+        });
     }
     public void switchToCharacterCard(MouseEvent mouseEvent) {
         showAssistant.setVisible(false);
@@ -483,28 +476,28 @@ public class GameTableController {
 
     public void initializeBorderPane(){
         Platform.runLater(()->{
-        assistantCardController=gui.getAssistantCardController();
-        showAssistant.setCenter(assistantCardController.getAssistantCards());
-        showAssistant.setVisible(false);
-        characterCardController= gui.getCharacterCardController();
-        showCharacterCard.setCenter(characterCardController.getCharacterCards());
-        showCharacterCard.setVisible(false);
-        schoolBoard0Controller= gui.getSchoolBoard0Controller();
-        showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
-        showSchool0.setVisible(false);
-        schoolBoard1Controller=gui.getSchoolBoard1Controller();
-        showSchool1.setCenter(schoolBoard1Controller.getSchoolBoard1());
-        showSchool1.setVisible(false);
-        if(gui.getLightGame().getNumPlayers()>2){
-            schoolBoard2Controller= gui.getSchoolBoard2Controller();
-            showSchool2.setCenter(schoolBoard2Controller.getSchoolBoard2());
-            showSchool2.setVisible(false);
-        }
-        if(gui.getLightGame().getNumPlayers()>3){
-           schoolBoard3Controller= gui.getSchoolBoard3Controller();
-            showSchool3.setCenter(schoolBoard3Controller.getSchoolBoard3());
-            showSchool3.setVisible(false);
-        }
+            assistantCardController=gui.getAssistantCardController();
+            showAssistant.setCenter(assistantCardController.getAssistantCards());
+            showAssistant.setVisible(false);
+            characterCardController= gui.getCharacterCardController();
+            showCharacterCard.setCenter(characterCardController.getCharacterCards());
+            showCharacterCard.setVisible(false);
+            schoolBoard0Controller= gui.getSchoolBoard0Controller();
+            showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
+            showSchool0.setVisible(false);
+            schoolBoard1Controller=gui.getSchoolBoard1Controller();
+            showSchool1.setCenter(schoolBoard1Controller.getSchoolBoard1());
+            showSchool1.setVisible(false);
+            if(gui.getLightGame().getNumPlayers()>2){
+                schoolBoard2Controller= gui.getSchoolBoard2Controller();
+                showSchool2.setCenter(schoolBoard2Controller.getSchoolBoard2());
+                showSchool2.setVisible(false);
+            }
+            if(gui.getLightGame().getNumPlayers()>3){
+                schoolBoard3Controller= gui.getSchoolBoard3Controller();
+                showSchool3.setCenter(schoolBoard3Controller.getSchoolBoard3());
+                showSchool3.setVisible(false);
+            }
         });
     }
 
@@ -537,8 +530,8 @@ public class GameTableController {
             schoolBoard0Controller = gui.getSchoolBoard0Controller();
             schoolBoard0Controller.setSchoolBoard0();
             schoolBoard0Controller.setEntrance0Clickable();
-           showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
-           showSchool0.setVisible(true);
+            showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
+            showSchool0.setVisible(true);
 
         }
         else if(gui.getLightGame().getPlayers().get(1).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())){
@@ -649,6 +642,7 @@ public class GameTableController {
             showSchool3.setVisible(true);
         }
     }
+
     public void number3Button(MouseEvent mouseEvent) {
         number0.setVisible(false);
         number0.setDisable(true);

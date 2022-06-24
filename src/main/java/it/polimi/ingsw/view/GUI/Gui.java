@@ -166,13 +166,6 @@ public class Gui extends Application implements View {
     @Override
     public void requestMovePawn(String nickname, int numPawnMoved) {
         Platform.runLater(()-> {
-            assistantCardController.setAssistantCards(socketNetworkHandler.getNicknameThisPlayer());
-            characterCardController.setCharacterCards();
-            schoolBoard0Controller.setSchoolBoard0();
-            schoolBoard1Controller.setSchoolBoard1();
-            schoolBoard2Controller.setSchoolBoard2();
-            schoolBoard3Controller.setSchoolBoard3();
-            gameTable.setAssisBoardCharacOn();
             if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())) {
                 gameTable.setMessages("CHOOSE YOUR ACTION");
                 gameTable.setButtonForRequestMovePawn();
@@ -190,7 +183,7 @@ public class Gui extends Application implements View {
         if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
             if(!bool){
                 if(lightGame.getIsExpert()){
-                   //pannellodiscrittura.writetext("Clicca si se vuoi giocare un characterCard e no per non giocarlo");
+                    //pannellodiscrittura.writetext("Clicca si se vuoi giocare un characterCard e no per non giocarlo");
 
                     //SE E ESPERTO MOSTRA IL BOTTONE DEI CHARACTR CARD
                     //IO LO METTEREI TRA LE ALTRE AZIONI DA SCEGLIERE
@@ -202,7 +195,7 @@ public class Gui extends Application implements View {
             }
             if(bool){
                 displayCharacterCard();
-               // pannellodiscrittura.writetest("Scegli il CharacterCard da utilizzare");
+                // pannellodiscrittura.writetest("Scegli il CharacterCard da utilizzare");
             }
         }
     }
@@ -224,12 +217,12 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayAssistantCard(int player) {
-       // stage.show();
-     //  for(j=0;j<lightGame.getPlayers().get(player).getDeckAssistant().size();j++){
-          // int n=lightGame.getPlayers().get(player).getDeckAssistant().get(j).getCardValue();
-           //assistantCardController.setAble(n);
-           //assistantCardController.setVisible(n);
-    //   }
+        // stage.show();
+        //  for(j=0;j<lightGame.getPlayers().get(player).getDeckAssistant().size();j++){
+        // int n=lightGame.getPlayers().get(player).getDeckAssistant().get(j).getCardValue();
+        //assistantCardController.setAble(n);
+        //assistantCardController.setVisible(n);
+        //   }
     }
 
     @Override
@@ -282,7 +275,7 @@ public class Gui extends Application implements View {
             //characterCardController.setVisible(i);
             //characterCardController.setCoinVisible(i,true);
             if(coin<lightGame.getPlayers().get(player).getNumCoin()){
-              //  characterCardController.setAble(i);
+                //  characterCardController.setAble(i);
             }
         }
     }
@@ -298,23 +291,23 @@ public class Gui extends Application implements View {
         }
         String finalNickname = nickname;
         Platform.runLater(() -> {
-                fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/RequestNickPlayers.fxml"));
-                Scene scene;
-                try {
-                    scene = new Scene(fxmlLoader.load());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    scene = new Scene(new Label("Error"));
-                }
-                stage.setScene(scene);
-                WinnerSceneController winnerScene = fxmlLoader.getController();
-                winnerScene.setGui(this);
-                winnerScene.setNicknameWinner(finalNickname);
-                winnerScene.setWinnerScene(true);
-                stage.show();
-            });
-        }
+            fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/RequestNickPlayers.fxml"));
+            Scene scene;
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+                scene = new Scene(new Label("Error"));
+            }
+            stage.setScene(scene);
+            WinnerSceneController winnerScene = fxmlLoader.getController();
+            winnerScene.setGui(this);
+            winnerScene.setNicknameWinner(finalNickname);
+            winnerScene.setWinnerScene(true);
+            stage.show();
+        });
+    }
 
     @Override
     public void displayNetError() {
@@ -334,7 +327,7 @@ public class Gui extends Application implements View {
                 scene = new Scene(new Label("Error"));
             }
             stage.setScene(scene);
-             WarningNicknameController warningNicknameController= fxmlLoader.getController();
+            WarningNicknameController warningNicknameController= fxmlLoader.getController();
             warningNicknameController.setGui(this);
             warningNicknameController.setOkButton();
             warningNicknameController.setWarningNickname(true);
@@ -384,21 +377,20 @@ public class Gui extends Application implements View {
 
     @Override
     public void selectAssistantCard(String nickname) {
-            Platform.runLater(()-> {
-                if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
-                    gameTable.setChooseViewOff();
+        Platform.runLater(()-> {
+            if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
+                gameTable.setChooseViewOff();
 
-                    assistantCardController.setAssistantCards(nickname);
-                    assistantCardController.setAsssistantsAble(nickname);
-                    gameTable.setShowAssistant();
-                    gameTable.setMessages("CHOOSE AN ASSISTANT");
+                assistantCardController.setAssistantCards(nickname);
+                assistantCardController.setAsssistantsAble(nickname);
+                gameTable.setShowAssistant();
+                gameTable.setMessages("CHOOSE AN ASSISTANT");
 
-        }else{
-           gameTable.setMessages(nickname+" IS CHOOSING AN ASSISTANT");
-        }
+            }else{
+                gameTable.setMessages(nickname+" IS CHOOSING AN ASSISTANT");
+            }
         });
     }
-
 
     @Override
     public void requestMoveMotherNature(String nickname) {
@@ -471,9 +463,9 @@ public class Gui extends Application implements View {
                 scene = new Scene(new Label("Error"));
             }
             stage.setScene(scene);
-           GameStartedController gameStartedController=fxmlLoader.getController();
-           gameStartedController.setGui(this);
-           gameStartedController.setGameText(true);
+            GameStartedController gameStartedController=fxmlLoader.getController();
+            gameStartedController.setGui(this);
+            gameStartedController.setGameText(true);
             stage.show();
             fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/GameTable.fxml"));;
@@ -575,7 +567,7 @@ public class Gui extends Application implements View {
             }
         });
 
-}
+    }
 
 
     @Override
@@ -612,39 +604,39 @@ public class Gui extends Application implements View {
         Platform.runLater(() -> {
             int i;
             int j;
-        for (j = 0; !Objects.equals(players.get(j), actualPlayer); j++) ;
-        if (j< players.size()-1) {
-            for (i = j; Objects.equals(players.get(i), actualPlayer); i++) ;
-            if (Objects.equals(players.get(i), socketNetworkHandler.getNicknameThisPlayer())) {
-                // displayStartTurn();
-                //va gestito nella parte di testo in game table
-            } else {
+            for (j = 0; !Objects.equals(players.get(j), actualPlayer); j++) ;
+            if (j< players.size()-1) {
+                for (i = j; Objects.equals(players.get(i), actualPlayer); i++) ;
+                if (Objects.equals(players.get(i), socketNetworkHandler.getNicknameThisPlayer())) {
+                    // displayStartTurn();
+                    //va gestito nella parte di testo in game table
+                } else {
                     gameTable.setMessages(players.get(i) + " START YOUR TURN");
-            }
-        }else {
+                }
+            }else {
                 gameTable.setMessages("ROUND FINISHED, A NEW ONE BEGINS");
             }
         });
     }
     @Override
     public void displayOnePlayerBoard(String nickname) {
-    //potrei usarla per attivare la singola schoolboard quando un giocatore clicca sulla specifica schoolboard dal menù a tendina
+        //potrei usarla per attivare la singola schoolboard quando un giocatore clicca sulla specifica schoolboard dal menù a tendina
     }
 
 
     @Override
     public void disconnectionAll(String playerDisconnected) throws IOException {
-    if(!endGame){
-        gameTable.setMessages(playerDisconnected+ " DISCONNECTED FROM THE GAME.");
+        if(!endGame){
+            gameTable.setMessages(playerDisconnected+ " DISCONNECTED FROM THE GAME.");
 
-        //scrivere nel pannello il fatto che un giocatore è stato disconnesso per problemi
+            //scrivere nel pannello il fatto che un giocatore è stato disconnesso per problemi
 
-        //RISPOSTA: IN BASSO A SINISTRA HO MESSO UN TESTO MOFICABILE
-        //POTREMMO FARE CHE PER GLI ERRORI SI METTE IL MESSAGGIO IN ROSSO
-        //per cambiare colore messaggio penso che si possa usare setFill
-        //messaggio da far vedere setText("NOMEPLAYER DISCONNECTED PER BOH NETERROR")
-        //Puoi mettere il messaggio che vuoi basta che non superi quello del wrongSameAssistant perche esce fuori
-    }
+            //RISPOSTA: IN BASSO A SINISTRA HO MESSO UN TESTO MOFICABILE
+            //POTREMMO FARE CHE PER GLI ERRORI SI METTE IL MESSAGGIO IN ROSSO
+            //per cambiare colore messaggio penso che si possa usare setFill
+            //messaggio da far vedere setText("NOMEPLAYER DISCONNECTED PER BOH NETERROR")
+            //Puoi mettere il messaggio che vuoi basta che non superi quello del wrongSameAssistant perche esce fuori
+        }
         socketNetworkHandler.getOut().reset();
         socketNetworkHandler.getOut().flush();
         socketNetworkHandler.sendMessage(new ReadyTodisconnection());
