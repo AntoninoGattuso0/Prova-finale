@@ -867,7 +867,7 @@ public class SchoolBoard1Controller {
 
     public void selection(){
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
-        for(int i=0; i<12; i++)
+        for(int i=0; i<gui.getLightGame().getIslands().size(); i++)
             gui.getGameTable().getGameTablePane().lookup("#island"+ i).setDisable(false);
         }else if(gui.getButtonClicked().equals(ButtonAction.DININGROOM)){
             if(gui.getNumPawnsCount()==0){
@@ -875,9 +875,9 @@ public class SchoolBoard1Controller {
                     school.setDisable(true);
                 }
                 gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
-                gui.getSchoolBoard1Controller().setSchoolBoard1();
-                gui.getGameTable().showSchool1.setCenter(gui.getSchoolBoard1Controller().getSchoolBoard1());
-                gui.getGameTable().showSchool1.setVisible(true);
+                gui.getSchoolBoard1Controller().setDiningRoom1();
+                gui.getGameTable().getShowSchool1().setCenter(gui.getSchoolBoard1Controller().getSchoolBoard1());
+                gui.getGameTable().getShowSchool1().setVisible(true);
                 gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             }
         }
