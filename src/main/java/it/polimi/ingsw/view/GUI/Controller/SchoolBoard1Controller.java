@@ -334,7 +334,7 @@ public class SchoolBoard1Controller {
                 gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
                 setSchoolBoard1();
                 gui.getGameTable().showSchool1.setCenter(getSchoolBoard1());
-                gui.getGameTable().showSchool1.setVisible(true);
+                gui.getGameTable().showSchool1.getCenter().setVisible(true);
             }
         }
     }
