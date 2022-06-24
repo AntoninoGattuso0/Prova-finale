@@ -153,7 +153,7 @@ public class SchoolBoard1Controller {
         System.out.println(gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumRed());
         for(int i=0; i<red; i++){
             for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("schoolBoar1Red" + i))
+                if (school.getId().equals("schoolBoard1Red" + i))
                     school.setVisible(true);
             }
         }
