@@ -304,12 +304,17 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#entranceGreen10").setDisable(true);
         gui.getColorPawns().add(ColorPawn.GREEN);
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
-        if(gui.getButtonClicked() == ButtonAction.ISLAND){
+        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             for(int i=0; i<12; i++)
                 gui.getGameTable().getGameTablePane().lookup("#island"+ i).setDisable(false);
-        }else if(gui.getButtonClicked() == ButtonAction.DININGROOM){
-            if(gui.getNumPawnsCount()==0)
+        }else if(gui.getButtonClicked().equals(ButtonAction.DININGROOM)){
+            if(gui.getNumPawnsCount()==0){
+                for(Node school : schoolBoard1.getChildren()){
+                    school.setDisable(true);
+                    System.out.println("Hello");
+                }
                 gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
+            }
         }
     }
 
@@ -434,8 +439,11 @@ public class SchoolBoard1Controller {
             for(int i=0; i<12; i++)
                 gui.getGameTable().getGameTablePane().lookup("#island"+ i).setDisable(false);
         }else if(gui.getButtonClicked() == ButtonAction.DININGROOM){
-            if(gui.getNumPawnsCount()==0)
+            if(gui.getNumPawnsCount()==0){
+                for(Node school : schoolBoard1.getChildren())
+                    school.setDisable(true);
                 gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
+            }
         }
     }
 
