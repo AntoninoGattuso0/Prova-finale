@@ -220,17 +220,18 @@ public class GameTableController {
         CharacterCardButton.setDisable(true);
     }
     public void setButtonForRequestMovePawn(){
-       islandButton.setText("MoveToIsland");
-        islandButton.setDisable(false);
-        islandButton.setVisible(true);
-        diningButton.setText("MoveToDining");
-        diningButton.setVisible(true);
-        diningButton.setDisable(false);
-        if(gui.getLightGame().getIsExpert()){
-            characterButton.setText("ChooseCharacterCard");
-            characterButton.setVisible(true);
-            characterButton.setDisable(false);
-        }
+        Platform.runLater(()-> {
+            whatToDo.setVisible(true);
+            System.out.println("ciao");
+            islandButton.setDisable(false);
+            islandButton.setVisible(true);
+            diningButton.setVisible(true);
+            diningButton.setDisable(false);
+            if (gui.getLightGame().getIsExpert()) {
+                characterButton.setVisible(true);
+                characterButton.setDisable(false);
+            }
+        });
     }
     public void setShowAssistant() {
         showSchool0.setVisible(false);
