@@ -557,18 +557,94 @@ public class GameTableController {
 
     public void cloud0select(MouseEvent mouseEvent) {
         gameTable.lookup("#cloud0").setVisible(false);
+        gameTable.lookup("#cloud0").setDisable(true);
+
+        gameTable.lookup("#cloud1").setDisable(true);
+        gameTable.lookup("#cloud2").setDisable(true);
+        gameTable.lookup("#cloud3").setDisable(true);
+
+        for(int i = 0; i<4; i++) {
+            gameTable.lookup("#greenCloud0"+i).setVisible(false);
+            gameTable.lookup("#greenCloud0"+i).setDisable(true);
+            gameTable.lookup("#redCloud0"+i).setVisible(false);
+            gameTable.lookup("#redCloud0"+i).setDisable(true);
+            gameTable.lookup("#yellowCloud0"+i).setVisible(false);
+            gameTable.lookup("#yellowCloud0"+i).setDisable(true);
+            gameTable.lookup("#pinkCloud0"+i).setVisible(false);
+            gameTable.lookup("#pinkCloud0"+i).setDisable(true);
+            gameTable.lookup("#blueCloud0"+i).setVisible(false);
+            gameTable.lookup("#blueCloud0"+i).setDisable(true);
+        }
+
         gui.getSocketNetworkHandler().sendMessage(new ChooseCloudMessage(0));
     }
     public void cloud1select(MouseEvent mouseEvent) {
         gameTable.lookup("#cloud1").setVisible(false);
+        gameTable.lookup("#cloud1").setDisable(true);
+
+        gameTable.lookup("#cloud0").setDisable(true);
+        gameTable.lookup("#cloud2").setDisable(true);
+        gameTable.lookup("#cloud3").setDisable(true);
+
+        for(int i = 0; i<4; i++) {
+            gameTable.lookup("#greenCloud1"+i).setVisible(false);
+            gameTable.lookup("#greenCloud1"+i).setDisable(true);
+            gameTable.lookup("#redCloud1"+i).setVisible(false);
+            gameTable.lookup("#redCloud1"+i).setDisable(true);
+            gameTable.lookup("#yellowCloud1"+i).setVisible(false);
+            gameTable.lookup("#yellowCloud1"+i).setDisable(true);
+            gameTable.lookup("#pinkCloud1"+i).setVisible(false);
+            gameTable.lookup("#pinkCloud1"+i).setDisable(true);
+            gameTable.lookup("#blueCloud1"+i).setVisible(false);
+            gameTable.lookup("#blueCloud1"+i).setDisable(true);
+        }
+
         gui.getSocketNetworkHandler().sendMessage(new ChooseCloudMessage(1));
     }
     public void cloud2select(MouseEvent mouseEvent) {
         gameTable.lookup("#cloud2").setVisible(false);
+        gameTable.lookup("#cloud2").setDisable(true);
+
+        gameTable.lookup("#cloud0").setDisable(true);
+        gameTable.lookup("#cloud1").setDisable(true);
+        gameTable.lookup("#cloud3").setDisable(true);
+
+        for(int i = 0; i<4; i++) {
+            gameTable.lookup("#greenCloud2"+i).setVisible(false);
+            gameTable.lookup("#greenCloud2"+i).setDisable(true);
+            gameTable.lookup("#redCloud2"+i).setVisible(false);
+            gameTable.lookup("#redCloud2"+i).setDisable(true);
+            gameTable.lookup("#yellowCloud2"+i).setVisible(false);
+            gameTable.lookup("#yellowCloud2"+i).setDisable(true);
+            gameTable.lookup("#pinkCloud2"+i).setVisible(false);
+            gameTable.lookup("#pinkCloud2"+i).setDisable(true);
+            gameTable.lookup("#blueCloud2"+i).setVisible(false);
+            gameTable.lookup("#blueCloud2"+i).setDisable(true);
+        }
+
         gui.getSocketNetworkHandler().sendMessage(new ChooseCloudMessage(2));
     }
     public void cloud3select(MouseEvent mouseEvent) {
         gameTable.lookup("#cloud3").setVisible(false);
+        gameTable.lookup("#cloud3").setDisable(true);
+
+        gameTable.lookup("#cloud0").setDisable(true);
+        gameTable.lookup("#cloud2").setDisable(true);
+        gameTable.lookup("#cloud1").setDisable(true);
+
+        for(int i = 0; i<4; i++) {
+            gameTable.lookup("#greenCloud3"+i).setVisible(false);
+            gameTable.lookup("#greenCloud3"+i).setDisable(true);
+            gameTable.lookup("#redCloud3"+i).setVisible(false);
+            gameTable.lookup("#redCloud3"+i).setDisable(true);
+            gameTable.lookup("#yellowCloud3"+i).setVisible(false);
+            gameTable.lookup("#yellowCloud3"+i).setDisable(true);
+            gameTable.lookup("#pinkCloud3"+i).setVisible(false);
+            gameTable.lookup("#pinkCloud3"+i).setDisable(true);
+            gameTable.lookup("#blueCloud3"+i).setVisible(false);
+            gameTable.lookup("#blueCloud3"+i).setDisable(true);
+        }
+
         gui.getSocketNetworkHandler().sendMessage(new ChooseCloudMessage(3));
     }
 
