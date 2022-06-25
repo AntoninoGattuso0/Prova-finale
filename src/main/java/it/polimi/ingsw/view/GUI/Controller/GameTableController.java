@@ -855,6 +855,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(0);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
         }
         else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
@@ -876,6 +877,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(1);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -896,6 +898,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(2);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -916,6 +919,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(3);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -936,6 +940,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(4);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -956,6 +961,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(5);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -976,6 +982,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(6);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -996,6 +1003,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(7);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1016,6 +1024,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(8);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1036,6 +1045,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(9);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1056,6 +1066,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(10);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1076,6 +1087,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(11);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1094,84 +1106,84 @@ public class GameTableController {
 
     public void island0Entered() {
         for(Node island : gameTable.getChildren()){
-            if(gameTable.getId().equals("island0")){
+            if(island.getId().equals("island0")){
                 island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
             }
         }
     }
     public void island1Entered() {
         for(Node island : gameTable.getChildren()){
-            if(gameTable.getId().equals("island1")){
+            if(island.getId().equals("island1")){
                 island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
             }
         }
     }
     public void island2Entered() {
         for(Node island : gameTable.getChildren()){
-            if(gameTable.getId().equals("island2")){
+            if(island.getId().equals("island2")){
                 island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
             }
         }
     }
     public void island3Entered() {
         for(Node island : gameTable.getChildren()){
-            if(gameTable.getId().equals("island3")){
+            if(island.getId().equals("island3")){
                 island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
             }
         }
     }
     public void island4Entered() {
         for(Node island : gameTable.getChildren()){
-            if(gameTable.getId().equals("island4")){
+            if(island.getId().equals("island4")){
                 island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
             }
         }
     }
     public void island5Entered() {
         for(Node island : gameTable.getChildren()){
-            if(gameTable.getId().equals("island5")){
+            if(island.getId().equals("island5")){
                 island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
             }
         }
     }
     public void island6Entered() {
         for(Node island : gameTable.getChildren()){
-            if(gameTable.getId().equals("island6")){
+            if(island.getId().equals("island6")){
                 island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
             }
         }
     }
     public void island7Entered() {
         for(Node island : gameTable.getChildren()){
-            if(gameTable.getId().equals("island7")){
+            if(island.getId().equals("island7")){
                 island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
             }
         }
     }
     public void island8Entered() {
         for(Node island : gameTable.getChildren()){
-            if(gameTable.getId().equals("island8")){
+            if(island.getId().equals("island8")){
                 island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
             }
         }
     }
     public void island9Entered() {
         for(Node island : gameTable.getChildren()){
-            if(gameTable.getId().equals("island9")){
+            if(island.getId().equals("island9")){
                 island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
             }
         }
     }
     public void island10Entered() {
         for(Node island : gameTable.getChildren()){
-            if(gameTable.getId().equals("island10")){
+            if(island.getId().equals("island10")){
                 island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
             }
         }
     }
     public void island11Entered() {
         for(Node island : gameTable.getChildren()){
-            if(gameTable.getId().equals("island11")){
+            if(island.getId().equals("island11")){
                 island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
             }
         }

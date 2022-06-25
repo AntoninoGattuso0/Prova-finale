@@ -219,17 +219,21 @@ public class SchoolBoard2Controller {
         }
     }
 
-    public void setProfessor2(){
-        if(gui.getLightGame().getProfTable().getGreenProf() == 2)
-            schoolBoard2.lookup("schoolGreenProf2").setVisible(true);
-        if(gui.getLightGame().getProfTable().getRedProf() == 2)
-            schoolBoard2.lookup("schoolRedProf2").setVisible(true);
-        if(gui.getLightGame().getProfTable().getYellowProf() == 2)
-            schoolBoard2.lookup("schoolYellowProf2").setVisible(true);
-        if(gui.getLightGame().getProfTable().getPinkProf() == 2)
-            schoolBoard2.lookup("schoolPinkProf2").setVisible(true);
-        if(gui.getLightGame().getProfTable().getBlueProf() == 2)
-            schoolBoard2.lookup("schoolBlueProf2").setVisible(true);
+    public void setGreenProfessor2(boolean bool){
+        schoolBoard2.lookup("#schoolGreenProf2").setVisible(bool);
+    }
+    public void setRedProfessor2(boolean bool){
+        schoolBoard2.lookup("#schoolRedProf2").setVisible(bool);
+    }
+    public void setYellowProfessor2(boolean bool){
+        schoolBoard2.lookup("#schoolYellowProf2").setVisible(bool);
+    }
+
+    public void setPinkProfessor2(boolean bool){
+        schoolBoard2.lookup("#schoolPinkProf2").setVisible(bool);
+    }
+    public void setBlueProfessor2(boolean bool){
+        schoolBoard2.lookup("#schoolBlueProf2").setVisible(bool);
     }
 
     public void setTower2(){

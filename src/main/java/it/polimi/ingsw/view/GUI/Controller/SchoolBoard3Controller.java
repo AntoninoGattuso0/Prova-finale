@@ -218,17 +218,21 @@ public class SchoolBoard3Controller {
         }
     }
 
-    public void setProfessor3(){
-        if(gui.getLightGame().getProfTable().getGreenProf() == 3)
-            schoolBoard3.lookup("schoolGreenProf3").setVisible(true);
-        if(gui.getLightGame().getProfTable().getRedProf() == 3)
-            schoolBoard3.lookup("schoolRedProf3").setVisible(true);
-        if(gui.getLightGame().getProfTable().getYellowProf() == 3)
-            schoolBoard3.lookup("schoolYellowProf3").setVisible(true);
-        if(gui.getLightGame().getProfTable().getPinkProf() == 3)
-            schoolBoard3.lookup("schoolPinkProf3").setVisible(true);
-        if(gui.getLightGame().getProfTable().getBlueProf() == 3)
-            schoolBoard3.lookup("schoolBlueProf3").setVisible(true);
+    public void setGreenProfessor3(boolean bool){
+        schoolBoard3.lookup("#schoolGreenProf3").setVisible(bool);
+    }
+    public void setRedProfessor3(boolean bool){
+        schoolBoard3.lookup("#schoolRedProf3").setVisible(bool);
+    }
+    public void setYellowProfessor3(boolean bool){
+        schoolBoard3.lookup("#schoolYellowProf3").setVisible(bool);
+    }
+
+    public void setPinkProfessor3(boolean bool){
+        schoolBoard3.lookup("#schoolPinkProf3").setVisible(bool);
+    }
+    public void setBlueProfessor3(boolean bool){
+        schoolBoard3.lookup("#schoolBlueProf3").setVisible(bool);
     }
 
 

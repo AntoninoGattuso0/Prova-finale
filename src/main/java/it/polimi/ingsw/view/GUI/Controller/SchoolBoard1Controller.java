@@ -219,48 +219,21 @@ public class SchoolBoard1Controller {
         }
     }
 
-
-    //QUESTO lo usero per i prof delle altre school
     public void setGreenProfessor1(boolean bool){
-        if(gui.getLightGame().getProfTable().getGreenProf() == 1){
-            for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("schoolGreenProf1"))
-                    school.setVisible(bool);
-            }
-        }
+        schoolBoard1.lookup("#schoolGreenProf1").setVisible(bool);
     }
     public void setRedProfessor1(boolean bool){
-        if(gui.getLightGame().getProfTable().getRedProf() == 1){
-            for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("schoolRedProf1"))
-                    school.setVisible(bool);
-            }
-        }
+        schoolBoard1.lookup("#schoolRedProf1").setVisible(bool);
     }
     public void setYellowProfessor1(boolean bool){
-        if(gui.getLightGame().getProfTable().getYellowProf() == 1){
-            for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("schoolYellowProf1"))
-                    school.setVisible(bool);
-            }
-        }
+        schoolBoard1.lookup("#schoolYellowProf1").setVisible(bool);
     }
 
     public void setPinkProfessor1(boolean bool){
-        if(gui.getLightGame().getProfTable().getPinkProf() == 1){
-            for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("schoolPinkProf1"))
-                    school.setVisible(bool);
-            }
-        }
+        schoolBoard1.lookup("#schoolPinkProf1").setVisible(bool);
     }
     public void setBlueProfessor1(boolean bool){
-        if(gui.getLightGame().getProfTable().getBlueProf() == 1){
-            for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("schoolBlueProf1"))
-                    school.setVisible(bool);
-            }
-        }
+        schoolBoard1.lookup("#schoolBlueProf1").setVisible(bool);
     }
 
     //setta visibili le torri per la scena iniziale

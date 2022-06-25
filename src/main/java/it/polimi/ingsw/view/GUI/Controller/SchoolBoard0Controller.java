@@ -3,6 +3,7 @@ import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.network.Message.ClientToServer.MovePawnToDiningMessage;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -185,43 +186,22 @@ public class SchoolBoard0Controller {
         }
     }
 
-//questo devo rivederlo
-    public void setProfessor0(){
-        if(gui.getLightGame().getProfTable().getGreenProf() == 0){
-            for(Node school : schoolBoard0.getChildren()) {
-                if (school.getId().equals("schoolGreenProf0"))
-                    school.setVisible(true);
-            }
-        }
-        if(gui.getLightGame().getProfTable().getRedProf() == 0){
-            for(Node school : schoolBoard0.getChildren()) {
-                if (school.getId().equals("schoolRedProf0"))
-                    school.setVisible(true);
-            }
-        }
-
-        if(gui.getLightGame().getProfTable().getYellowProf() == 0){
-            for(Node school : schoolBoard0.getChildren()) {
-                if (school.getId().equals("schoolYellowProf0"))
-                    school.setVisible(true);
-            }
-        }
-
-        if(gui.getLightGame().getProfTable().getPinkProf() == 0){
-            for(Node school : schoolBoard0.getChildren()) {
-                if (school.getId().equals("schoolPinkProf0"))
-                    school.setVisible(true);
-            }
-        }
-
-        if(gui.getLightGame().getProfTable().getBlueProf() == 0){
-            for(Node school : schoolBoard0.getChildren()) {
-                if (school.getId().equals("schoolBlueProf0"))
-                    school.setVisible(true);
-            }
-        }
+    public void setGreenProfessor0(boolean bool){
+        schoolBoard0.lookup("#schoolGreenProf0").setVisible(bool);
+    }
+    public void setRedProfessor0(boolean bool){
+        schoolBoard0.lookup("#schoolRedProf0").setVisible(bool);
+    }
+    public void setYellowProfessor0(boolean bool){
+        schoolBoard0.lookup("#schoolYellowProf0").setVisible(bool);
     }
 
+    public void setPinkProfessor0(boolean bool){
+        schoolBoard0.lookup("#schoolPinkProf0").setVisible(bool);
+    }
+    public void setBlueProfessor0(boolean bool){
+        schoolBoard0.lookup("#schoolBlueProf0").setVisible(bool);
+    }
 
 
     public void setTower0(){
@@ -581,7 +561,6 @@ public class SchoolBoard0Controller {
         selection();
     }
 
-
     public void selectSchoolGreen00(MouseEvent mouseEvent) {
         schoolBoard0.lookup("#schoolBoard0Green0").setVisible(false);
         schoolBoard0.lookup("#schoolBoard0Green0").setDisable(true);
@@ -810,4 +789,5 @@ public class SchoolBoard0Controller {
             }
         }
     }
+
 }
