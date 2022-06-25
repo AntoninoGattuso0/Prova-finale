@@ -168,20 +168,15 @@ public class GameTableController {
             gameTable.lookup("#island" + mn).setDisable(false);
             i++;
         }
-        for(int j = mn; j<12-i; j++){
+        /*for(int j = mn; j<12-i; j++){
             mn++;
             if(mn==12)
                 mn=0;
             gameTable.lookup("#island" + mn).setOpacity(0.5);
-        }
+        }*/
         whatToDo.setText("Select new MN Island");
     }
 
-    public void setOpacity1(){
-        for(int i = 0; i < gui.getLightGame().getIslands().size(); i++){
-            gameTable.lookup("island"+i).setOpacity(1);
-        }
-    }
 
     public void setButtonOff(){
         useCC.setDisable(true);
@@ -587,7 +582,6 @@ public class GameTableController {
     }
 
     public void cloud0select(MouseEvent mouseEvent) {
-        gameTable.lookup("#cloud0").setVisible(false);
         gameTable.lookup("#cloud0").setDisable(true);
 
         gameTable.lookup("#cloud1").setDisable(true);
@@ -610,7 +604,6 @@ public class GameTableController {
         gui.getSocketNetworkHandler().sendMessage(new ChooseCloudMessage(0));
     }
     public void cloud1select(MouseEvent mouseEvent) {
-        gameTable.lookup("#cloud1").setVisible(false);
         gameTable.lookup("#cloud1").setDisable(true);
 
         gameTable.lookup("#cloud0").setDisable(true);
@@ -633,7 +626,6 @@ public class GameTableController {
         gui.getSocketNetworkHandler().sendMessage(new ChooseCloudMessage(1));
     }
     public void cloud2select(MouseEvent mouseEvent) {
-        gameTable.lookup("#cloud2").setVisible(false);
         gameTable.lookup("#cloud2").setDisable(true);
 
         gameTable.lookup("#cloud0").setDisable(true);
@@ -656,7 +648,6 @@ public class GameTableController {
         gui.getSocketNetworkHandler().sendMessage(new ChooseCloudMessage(2));
     }
     public void cloud3select(MouseEvent mouseEvent) {
-        gameTable.lookup("#cloud3").setVisible(false);
         gameTable.lookup("#cloud3").setDisable(true);
 
         gameTable.lookup("#cloud0").setDisable(true);
@@ -877,7 +868,6 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
-            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -898,7 +888,6 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
-            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -919,7 +908,6 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
-            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -940,7 +928,6 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
-            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -961,7 +948,6 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
-            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -982,7 +968,6 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
-            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -1003,7 +988,6 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
-            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -1024,7 +1008,6 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
-            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -1045,7 +1028,6 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
-            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -1066,7 +1048,6 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
-            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -1087,7 +1068,6 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
-            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -1108,7 +1088,6 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
-            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
