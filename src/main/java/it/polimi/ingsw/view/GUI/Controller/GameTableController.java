@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import static java.lang.Integer.parseInt;
 
 public class GameTableController {
+    @FXML Button useCC;
+    @FXML Button endTurn;
     @FXML Button number0;
     @FXML Button number1;
     @FXML Button number2;
@@ -104,6 +106,7 @@ public class GameTableController {
     @FXML
     Pane gameTable;
 
+
     @FXML Text turnOf;
     @FXML Text messages;
     FXMLLoader fxmlLoader;
@@ -121,6 +124,12 @@ public class GameTableController {
     public BorderPane getShowAssistant(){return showAssistant;}
     public BorderPane getShowCharacterCard(){return showCharacterCard;}
     public Pane getGameTablePane(){return gameTable;}
+
+    public Text getWhatToDo(){return this.whatToDo;}
+
+    public Button getUseCC(){return this.useCC;}
+    public Button getEndTurn(){return this.endTurn;}
+
     public void setGui(Gui gui) {
         this.gui = gui;
     }
@@ -135,6 +144,11 @@ public class GameTableController {
     public void setMessages(String messages) {
         this.messages.setText(messages);
     }
+
+    public void setUseCC(String useCC){
+        this.useCC.setText(useCC);
+    }
+
     public void setAllIslands(boolean disabled) {
         for (int i = 0; i < gui.getLightGame().getIslands().size(); i++) {
             String name = "#island" + i;
@@ -154,10 +168,27 @@ public class GameTableController {
             gameTable.lookup("#island" + mn).setDisable(false);
             i++;
         }
+        for(int j = mn; j<12-i; j++){
+            mn++;
+            if(mn==12)
+                mn=0;
+            gameTable.lookup("#island" + mn).setOpacity(0.5);
+        }
         whatToDo.setText("Select new MN Island");
     }
 
+    public void setOpacity1(){
+        for(int i = 0; i < gui.getLightGame().getIslands().size(); i++){
+            gameTable.lookup("island"+i).setOpacity(1);
+        }
+    }
+
     public void setButtonOff(){
+        useCC.setDisable(true);
+        useCC.setVisible(false);
+        endTurn.setDisable(true);
+        endTurn.setVisible(false);
+
         number0.setDisable(true);
         number0.setVisible(false);
         number1.setDisable(true);
@@ -846,6 +877,7 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
+            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -866,6 +898,7 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
+            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -886,6 +919,7 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
+            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -906,6 +940,7 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
+            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -926,6 +961,7 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
+            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -946,6 +982,7 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
+            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -966,6 +1003,7 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
+            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -986,6 +1024,7 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
+            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -1006,6 +1045,7 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
+            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -1026,6 +1066,7 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
+            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -1046,6 +1087,7 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
+            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -1066,6 +1108,7 @@ public class GameTableController {
                 if(i==12)
                     i=0;
             }
+            setOpacity1();
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
         }
     }
@@ -1232,5 +1275,32 @@ public class GameTableController {
 
         whatToDo.setText("Choose Num to DiningRoom: ");
         whatToDo.setVisible(true);
+    }
+
+    public void useCCButton(MouseEvent mouseEvent) {
+        setMessages("Choose CC");
+
+        useCC.setVisible(false);
+        useCC.setDisable(true);
+        endTurn.setVisible(false);
+        endTurn.setDisable(true);
+
+        characterCardController.setDisable(0, false);
+        characterCardController.setDisable(1, false);
+        characterCardController.setDisable(2, false);
+    }
+
+    public void endTurnButton(MouseEvent mouseEvent) {
+        //messaggio di endTurn
+    }
+
+    public void setLastCCMessage(){
+        whatToDo.setText("Do you want to: ");
+        whatToDo.setVisible(true);
+        setUseCC("Ramarro");
+        useCC.setVisible(true);
+        useCC.setDisable(false);
+        endTurn.setVisible(true);
+        endTurn.setDisable(false);
     }
 }

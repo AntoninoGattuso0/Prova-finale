@@ -183,7 +183,23 @@ public class Gui extends Application implements View {
 
     @Override
     public void requestCharacterCard(String nickname, boolean bool) {
-        int i;
+        Platform.runLater(() -> {
+            if (Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), nickname)) {
+                gameTable.setMessages("fork u");
+                gameTable.getWhatToDo().setText("HOLAF");
+                gameTable.getWhatToDo().setVisible(true);
+                gameTable.setUseCC("Ramarro");
+                gameTable.getUseCC().setVisible(true);
+                gameTable.getUseCC().setDisable(false);
+            } else {
+                gameTable.setMessages(nickname + " IS IN MOVE MOTHER NATURE PHASE");
+            }
+        });
+    }
+
+
+
+        /*int i;
         for(i=0;i<lightGame.getNumPlayers()&&!(lightGame.getPlayers().get(i).getNickname().equals(nickname));i++);
         int player =i;
         if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
@@ -203,8 +219,7 @@ public class Gui extends Application implements View {
                 displayCharacterCard();
                 // pannellodiscrittura.writetest("Scegli il CharacterCard da utilizzare");
             }
-        }
-    }
+        }*/
 
     @Override
     public void displayNick() {
@@ -390,6 +405,8 @@ public class Gui extends Application implements View {
     }
     @Override
     public void selectCloud(String nickname) {
+
+
         Platform.runLater(()->{
             if(Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
                 gameTable.setButtonOff();
