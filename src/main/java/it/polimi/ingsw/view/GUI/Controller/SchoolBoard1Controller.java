@@ -825,6 +825,9 @@ public class SchoolBoard1Controller {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
         for(int i=0; i<gui.getLightGame().getIslands().size(); i++)
             gui.getGameTable().getGameTablePane().lookup("#island"+ i).setDisable(false);
+            if(gui.getNumPawnsCount()==0)
+                for(Node school : schoolBoard1.getChildren())
+                    school.setDisable(true);
         }else if(gui.getButtonClicked().equals(ButtonAction.DININGROOM)){
             if(gui.getNumPawnsCount()==0){
                 for(Node school : schoolBoard1.getChildren()){
