@@ -235,6 +235,19 @@ public class SchoolBoard3Controller {
         schoolBoard3.lookup("#schoolBlueProf3").setVisible(bool);
     }
 
+    public void setProfessor3(int numColor, boolean bool){
+        if(numColor == 0)
+            setGreenProfessor3(bool);
+        if(numColor == 1)
+            setRedProfessor3(bool);
+        if(numColor == 2)
+            setYellowProfessor3(bool);
+        if(numColor == 3)
+            setPinkProfessor3(bool);
+        if(numColor == 4)
+            setBlueProfessor3(bool);
+    }
+
 
     public void setCoin3() {
         for (int i = 0; i < gui.getLightGame().getPlayers().get(3).getNumCoin(); i++)

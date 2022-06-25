@@ -236,6 +236,20 @@ public class SchoolBoard2Controller {
         schoolBoard2.lookup("#schoolBlueProf2").setVisible(bool);
     }
 
+    public void setProfessor2(int numColor, boolean bool){
+        if(numColor == 0)
+            setGreenProfessor2(bool);
+        if(numColor == 1)
+            setRedProfessor2(bool);
+        if(numColor == 2)
+            setYellowProfessor2(bool);
+        if(numColor == 3)
+            setPinkProfessor2(bool);
+        if(numColor == 4)
+            setBlueProfessor2(bool);
+    }
+
+
     public void setTower2(){
         for(int i = 0; i<gui.getLightGame().getPlayers().get(2).getTowerSpace().getNumTower(); i++)
             for(Node school : schoolBoard2.getChildren()) {

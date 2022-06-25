@@ -228,7 +228,6 @@ public class SchoolBoard1Controller {
     public void setYellowProfessor1(boolean bool){
         schoolBoard1.lookup("#schoolYellowProf1").setVisible(bool);
     }
-
     public void setPinkProfessor1(boolean bool){
         schoolBoard1.lookup("#schoolPinkProf1").setVisible(bool);
     }
@@ -236,6 +235,18 @@ public class SchoolBoard1Controller {
         schoolBoard1.lookup("#schoolBlueProf1").setVisible(bool);
     }
 
+    public void setProfessor1(int numColor, boolean bool){
+        if(numColor == 0)
+            setGreenProfessor1(bool);
+        if(numColor == 1)
+            setRedProfessor1(bool);
+        if(numColor == 2)
+            setYellowProfessor1(bool);
+        if(numColor == 3)
+            setPinkProfessor1(bool);
+        if(numColor == 4)
+            setBlueProfessor1(bool);
+    }
     //setta visibili le torri per la scena iniziale
     public void setTower1(){
         for(int i = 0; i<gui.getLightGame().getPlayers().get(1).getTowerSpace().getNumTower(); i++)

@@ -670,6 +670,91 @@ public class GameTableController {
         gui.getSocketNetworkHandler().sendMessage(new ChooseCloudMessage(3));
     }
 
+    public void setGreenProfessorTable(boolean bool){
+        gameTable.lookup("#greenProf").setVisible(bool);
+    }
+    public void setRedProfessorTable(boolean bool){
+        gameTable.lookup("#redProf").setVisible(bool);
+    }
+    public void setYellowProfessorTable(boolean bool){
+        gameTable.lookup("#yellowProf").setVisible(bool);
+    }
+    public void setPinkProfessorTable(boolean bool){
+        gameTable.lookup("#pinkProf").setVisible(bool);
+    }
+    public void setBlueProfessorTable(boolean bool){
+        gameTable.lookup("#blueProf").setVisible(bool);
+    }
+
+    public void setProfessorTable(int numColor, boolean bool){
+        if(numColor == 0)
+            setGreenProfessorTable(bool);
+        if(numColor == 1)
+            setRedProfessorTable(bool);
+        if(numColor == 2)
+            setYellowProfessorTable(bool);
+        if(numColor == 3)
+            setPinkProfessorTable(bool);
+        if(numColor == 4)
+            setBlueProfessorTable(bool);
+
+    }
+
+    public void setProfessor(){
+        int color;
+        int prof = -1;
+        for(color = 0; color< 5; color++){
+            if(color==0) prof = gui.getLightGame().getProfTable().getGreenProf();
+            else if(color==1) prof = gui.getLightGame().getProfTable().getRedProf();
+            else if(color==2) prof = gui.getLightGame().getProfTable().getYellowProf();
+            else if(color==3) prof = gui.getLightGame().getProfTable().getPinkProf();
+            else if(color==4) prof = gui.getLightGame().getProfTable().getBlueProf();
+
+            switch(prof){
+                case -1 -> {
+                    setProfessorTable(color, true);
+                    gui.getSchoolBoard0Controller().setProfessor0(color, false);
+                    gui.getSchoolBoard1Controller().setProfessor1(color, false);
+                    if (schoolBoard2Controller!=null)  gui.getSchoolBoard2Controller().setProfessor2(color, false);
+                    if (schoolBoard3Controller!=null) gui.getSchoolBoard3Controller().setProfessor3(color, false);
+
+                }
+                case 0 -> {
+                    setProfessorTable(color, false);
+                    gui.getSchoolBoard0Controller().setProfessor0(color,true);
+                    gui.getSchoolBoard1Controller().setProfessor1(color, false);
+                    if (schoolBoard2Controller!=null) gui.getSchoolBoard2Controller().setProfessor2(color,false);
+                    if (schoolBoard3Controller!=null) gui.getSchoolBoard3Controller().setProfessor3(color, false);
+                }
+                case 1 -> {
+                    setProfessorTable(color, false);
+                    gui.getSchoolBoard0Controller().setProfessor0(color, false);
+                    gui.getSchoolBoard1Controller().setProfessor1(color, true);
+                    if (schoolBoard2Controller!=null) gui.getSchoolBoard2Controller().setProfessor2(color, false);
+                    if (schoolBoard3Controller!=null) gui.getSchoolBoard3Controller().setProfessor3(color, false);
+                }
+                case 2 -> {
+                    if (schoolBoard2Controller!=null) {
+                        setProfessorTable(color, false);
+                        gui.getSchoolBoard0Controller().setProfessor0(color, false);
+                        gui.getSchoolBoard1Controller().setProfessor1(color, false);
+                        if (schoolBoard2Controller!=null) gui.getSchoolBoard2Controller().setProfessor2(color, true);
+                        if (schoolBoard3Controller!=null) gui.getSchoolBoard3Controller().setProfessor3(color,false);
+                    }
+                }
+                case 3 -> {
+                    if (schoolBoard3Controller!=null) {
+                        setProfessorTable(color,false);
+                        gui.getSchoolBoard0Controller().setProfessor0(color, false);
+                        gui.getSchoolBoard1Controller().setProfessor1(color, false);
+                        if (schoolBoard2Controller!=null) gui.getSchoolBoard2Controller().setProfessor2(color, false);
+                        if (schoolBoard3Controller!=null) gui.getSchoolBoard3Controller().setProfessor3(color, true);
+                    }
+                }
+            }
+        }
+    }
+
     public void number0Button(MouseEvent mouseEvent) {
         number0.setVisible(false);
         number0.setDisable(true);
@@ -1104,90 +1189,6 @@ public class GameTableController {
         }
     }
 
-    public void island0Entered() {
-        for(Node island : gameTable.getChildren()){
-            if(island.getId().equals("island0")){
-                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
-            }
-        }
-    }
-    public void island1Entered() {
-        for(Node island : gameTable.getChildren()){
-            if(island.getId().equals("island1")){
-                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
-            }
-        }
-    }
-    public void island2Entered() {
-        for(Node island : gameTable.getChildren()){
-            if(island.getId().equals("island2")){
-                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
-            }
-        }
-    }
-    public void island3Entered() {
-        for(Node island : gameTable.getChildren()){
-            if(island.getId().equals("island3")){
-                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
-            }
-        }
-    }
-    public void island4Entered() {
-        for(Node island : gameTable.getChildren()){
-            if(island.getId().equals("island4")){
-                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
-            }
-        }
-    }
-    public void island5Entered() {
-        for(Node island : gameTable.getChildren()){
-            if(island.getId().equals("island5")){
-                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
-            }
-        }
-    }
-    public void island6Entered() {
-        for(Node island : gameTable.getChildren()){
-            if(island.getId().equals("island6")){
-                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
-            }
-        }
-    }
-    public void island7Entered() {
-        for(Node island : gameTable.getChildren()){
-            if(island.getId().equals("island7")){
-                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
-            }
-        }
-    }
-    public void island8Entered() {
-        for(Node island : gameTable.getChildren()){
-            if(island.getId().equals("island8")){
-                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
-            }
-        }
-    }
-    public void island9Entered() {
-        for(Node island : gameTable.getChildren()){
-            if(island.getId().equals("island9")){
-                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
-            }
-        }
-    }
-    public void island10Entered() {
-        for(Node island : gameTable.getChildren()){
-            if(island.getId().equals("island10")){
-                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
-            }
-        }
-    }
-    public void island11Entered() {
-        for(Node island : gameTable.getChildren()){
-            if(island.getId().equals("island11")){
-                island.setOnMouseEntered(mouseEvent -> island.setCursor(Cursor.HAND));
-            }
-        }
-    }
 
     public void islandButtonClicked(MouseEvent mouseEvent) {
         diningButton.setVisible(false);

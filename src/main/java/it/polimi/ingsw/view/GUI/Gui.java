@@ -392,6 +392,8 @@ public class Gui extends Application implements View {
                 characterCardController.setCharacterCards();
                 gameTable.setMotherNatureVisible();
                 gameTable.setAllIslands(true);
+                gameTable.setProfessor();
+
             }
         });
     }

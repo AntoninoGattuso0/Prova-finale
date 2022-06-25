@@ -195,12 +195,26 @@ public class SchoolBoard0Controller {
     public void setYellowProfessor0(boolean bool){
         schoolBoard0.lookup("#schoolYellowProf0").setVisible(bool);
     }
-
     public void setPinkProfessor0(boolean bool){
         schoolBoard0.lookup("#schoolPinkProf0").setVisible(bool);
     }
     public void setBlueProfessor0(boolean bool){
         schoolBoard0.lookup("#schoolBlueProf0").setVisible(bool);
+    }
+
+    //qua le funzioni dentro l' if potremmo sostituirle direttamente con le funzioni sopra se non serve
+    //averle separate
+    public void setProfessor0(int numColor, boolean bool){
+        if(numColor == 0)
+            setGreenProfessor0(bool);
+        if(numColor == 1)
+            setRedProfessor0(bool);
+        if(numColor == 2)
+            setYellowProfessor0(bool);
+        if(numColor == 3)
+            setPinkProfessor0(bool);
+        if(numColor == 4)
+            setBlueProfessor0(bool);
     }
 
 
