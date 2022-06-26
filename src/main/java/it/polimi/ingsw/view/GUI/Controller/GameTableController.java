@@ -1266,19 +1266,29 @@ public class GameTableController {
     }
 
     public void useCCButton(MouseEvent mouseEvent) {
-        setMessages("Choose CC");
-
-        useCC.setVisible(false);
-        useCC.setDisable(true);
-        endTurn.setVisible(false);
-        endTurn.setDisable(true);
-
+        Platform.runLater(()-> {
+            messagesActions.setDisable(true);
+            messagesActions.setVisible(false);
+            useCC.setDisable(true);
+            useCC.setVisible(false);
+            endTurn.setVisible(false);
+            endTurn.setDisable(true);
+        messages.setText("CHOOSE CHARACTERCARD");
         characterCardController.setDisable(0, false);
         characterCardController.setDisable(1, false);
         characterCardController.setDisable(2, false);
+        });
     }
 
     public void endTurnButton(MouseEvent mouseEvent) {
+       Platform.runLater(()-> {
+                   messagesActions.setDisable(true);
+                   messagesActions.setVisible(false);
+                   useCC.setDisable(true);
+                   useCC.setVisible(false);
+                   endTurn.setVisible(false);
+                   endTurn.setDisable(true);
+               });
         ArrayList<ColorPawn>  color=new ArrayList<>();
         gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(0,0,0,color,false));
     }
