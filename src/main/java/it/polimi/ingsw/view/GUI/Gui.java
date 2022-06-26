@@ -433,7 +433,6 @@ public class Gui extends Application implements View {
 
     @Override
     public void requestMoveMotherNature(String nickname) {
-        //va gestito sempre capendo come funziona il game table
         Platform.runLater(()->{
         if(Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), nickname)){
             int i;

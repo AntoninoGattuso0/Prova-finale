@@ -143,11 +143,6 @@ public class GameTableController {
         this.messages.setText(messages);
     }
 
-    public void setUseCC(String useCC){
-        this.useCC.setText(useCC);
-    }
-    public void setUseCCVisible(){this.useCC.setVisible(true);}
-
     public void setAllIslands(boolean disabled) {
         for (int i = 0; i < gui.getLightGame().getIslands().size(); i++) {
             String name = "#island" + i;
@@ -1287,14 +1282,14 @@ public class GameTableController {
 
     public void setLastCCMessage(){
         Platform.runLater(()-> {
-            setMessages("PORCO CAZZO");
-            whatToDo.setText("Do you want to: ");
+            messagesActions.setVisible(true);
+            whatToDo.setText("Do you want to:");
             whatToDo.setVisible(true);
-            setUseCC("per favore dai");
-            setUseCCVisible();
+            useCC.setText("CharacterCard");
+            useCC.setVisible(true);
+            endTurn.setText("EndTurn");
             endTurn.setVisible(true);
             endTurn.setDisable(false);
         });
-
     }
 }
