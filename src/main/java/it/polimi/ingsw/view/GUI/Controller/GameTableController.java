@@ -1283,6 +1283,7 @@ public class GameTableController {
         gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(0,0,0,color,false));
     }
 
+
     public void setLastCCMessage(){
         Platform.runLater(()-> {
             messagesActions.setVisible(true);
