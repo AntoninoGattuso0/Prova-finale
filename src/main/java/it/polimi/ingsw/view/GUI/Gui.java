@@ -388,7 +388,7 @@ public class Gui extends Application implements View {
                 gameTable.setMotherNatureVisible();
                 gameTable.setAllIslands(true);
                 gameTable.setProfessor();
-
+                gameTable.setCloudVisible();
             }
         });
     }

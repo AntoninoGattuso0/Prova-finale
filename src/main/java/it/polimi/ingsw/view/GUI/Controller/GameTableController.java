@@ -127,14 +127,10 @@ public class GameTableController {
 
     public Text getWhatToDo(){return this.whatToDo;}
 
-    public Button getUseCC(){return this.useCC;}
-    public Button getEndTurn(){return this.endTurn;}
 
     public void setGui(Gui gui) {
         this.gui = gui;
     }
-//SETCLOUDDISABLE SERVE DOPO CHE SCEGLIE E CHE INVII IL MESSAGGIO CON LA CLOUD SCELTA!
-    //Setta l'ordine del turno in alto a sinistra
     public void setTurnOf(ArrayList<String> player) {
         int i;
         turnOf.setText("TURN ORDER:\n"+player.get(0)+"\n");
