@@ -1279,7 +1279,6 @@ public class GameTableController {
         characterCardController.setDisable(2, false);
         });
     }
-
     public void endTurnButton(MouseEvent mouseEvent) {
        Platform.runLater(()-> {
                    messagesActions.setDisable(true);
