@@ -8,8 +8,6 @@ import it.polimi.ingsw.view.GUI.Gui;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
@@ -148,6 +146,7 @@ public class GameTableController {
     public void setUseCC(String useCC){
         this.useCC.setText(useCC);
     }
+    public void setUseCCVisible(){this.useCC.setVisible(true);}
 
     public void setAllIslands(boolean disabled) {
         for (int i = 0; i < gui.getLightGame().getIslands().size(); i++) {
@@ -1287,12 +1286,15 @@ public class GameTableController {
     }
 
     public void setLastCCMessage(){
-        whatToDo.setText("Do you want to: ");
-        whatToDo.setVisible(true);
-        setUseCC("Ramarro");
-        useCC.setVisible(true);
-        useCC.setDisable(false);
-        endTurn.setVisible(true);
-        endTurn.setDisable(false);
+        Platform.runLater(()-> {
+            setMessages("PORCO CAZZO");
+            whatToDo.setText("Do you want to: ");
+            whatToDo.setVisible(true);
+            setUseCC("per favore dai");
+            setUseCCVisible();
+            endTurn.setVisible(true);
+            endTurn.setDisable(false);
+        });
+
     }
 }

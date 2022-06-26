@@ -170,9 +170,9 @@ public class Gui extends Application implements View {
                 schoolBoard1Controller.setSchoolBoard1();
                 schoolBoard0Controller.setSchoolBoard0();
                 if(schoolBoard2Controller!=null)
-                schoolBoard2Controller.setSchoolBoard2();
-                if(schoolBoard2Controller!=null)
-                schoolBoard3Controller.setSchoolBoard3();
+                    schoolBoard2Controller.setSchoolBoard2();
+                if(schoolBoard3Controller!=null)
+                    schoolBoard3Controller.setSchoolBoard3();
                 gameTable.setMessages("CHOOSE YOUR ACTION");
                 gameTable.setButtonForRequestMovePawn();
             }else{
@@ -183,16 +183,11 @@ public class Gui extends Application implements View {
 
     @Override
     public void requestCharacterCard(String nickname, boolean bool) {
-        Platform.runLater(() -> {
-            if (Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), nickname)) {
-                gameTable.setMessages("fork u");
-                gameTable.getWhatToDo().setText("HOLAF");
-                gameTable.getWhatToDo().setVisible(true);
-                gameTable.setUseCC("Ramarro");
-                gameTable.getUseCC().setVisible(true);
-                gameTable.getUseCC().setDisable(false);
-            } else {
-                gameTable.setMessages(nickname + " IS IN MOVE MOTHER NATURE PHASE");
+        Platform.runLater(()-> {
+            if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())) {
+                gameTable.setLastCCMessage();;
+            }else{
+                gameTable.setMessages(nickname+" IS IN CHOOSING PHASE");
             }
         });
     }
@@ -412,6 +407,7 @@ public class Gui extends Application implements View {
         Platform.runLater(()->{
             if(Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
                 gameTable.setButtonOff();
+                gameTable.getWhatToDo().setText("Choose Cloud");
                 gameTable.setMessages("CHOOSE CLOUD");
                 gameTable.setCloudVisible();
                 gameTable.setCloudAble();
