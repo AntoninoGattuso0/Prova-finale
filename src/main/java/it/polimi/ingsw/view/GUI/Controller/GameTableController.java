@@ -1,6 +1,8 @@
 package it.polimi.ingsw.view.GUI.Controller;
 
+import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.model.ColorTower;
+import it.polimi.ingsw.network.Message.ClientToServer.ChooseCharacterCardMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseCloudMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.MoveMotherNatureMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.MovePawnToIslandMessage;
@@ -1277,17 +1279,19 @@ public class GameTableController {
     }
 
     public void endTurnButton(MouseEvent mouseEvent) {
-        //messaggio di endTurn
+        ArrayList<ColorPawn>  color=new ArrayList<>();
+        gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(0,0,0,color,false));
     }
 
     public void setLastCCMessage(){
         Platform.runLater(()-> {
             messagesActions.setVisible(true);
+            messagesActions.setDisable(false);
+            messages.setText("LAST PHASE");
             whatToDo.setText("Do you want to:");
             whatToDo.setVisible(true);
-            useCC.setText("CharacterCard");
             useCC.setVisible(true);
-            endTurn.setText("EndTurn");
+            useCC.setDisable(false);
             endTurn.setVisible(true);
             endTurn.setDisable(false);
         });
