@@ -354,7 +354,6 @@ public class GameTableController {
         moveMnButton.setVisible(false);
         cloudButton.setDisable(true);
         cloudButton.setVisible(false);
-
         useCC.setDisable(true);
         useCC.setVisible(false);
         endTurn.setDisable(true);
