@@ -32,12 +32,13 @@ public class NumOfPlayerIsExpertController {
         int num = -1;
         joinButton.setVisible(false);
         joinButton.setDisable(true);
-        switch (numPlayerBox.getValue()) {
-            case "2" -> num = 2;
-            case "3" -> num = 3;
-            case "4" -> num = 4;
-        }
-        if(numPlayerBox.getValue()==null){
+        if(numPlayerBox.getValue()!=null) {
+            switch (numPlayerBox.getValue()) {
+                case "2" -> num = 2;
+                case "3" -> num = 3;
+                case "4" -> num = 4;
+            }
+        }else if(numPlayerBox.getValue()==null){
             num=2;
         }
         if (num != -1) {
