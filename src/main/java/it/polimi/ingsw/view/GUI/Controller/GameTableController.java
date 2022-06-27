@@ -963,6 +963,12 @@ public class GameTableController {
         }
     }
 
+    public void prohibitedIsland(int island, boolean bool){
+        gameTable.lookup("#prohibited"+island).setVisible(bool);
+
+    }
+
+
     public void island0Select(MouseEvent mouseEvent) {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(0);
