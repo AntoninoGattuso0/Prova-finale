@@ -314,6 +314,9 @@ public class GameTableController {
             String nameY = "yellow" + j;
             String nameB = "#blue" + j;
             String textIsland = "#textIsland" + j;
+            String black="#blackTower"+j;
+            String white="#whiteTower"+j;
+            String grey="#greyTower"+j;
             gameTable.lookup(name).setVisible(false);
             gameTable.lookup(name).setDisable(true);
             gameTable.lookup(nameP).setVisible(false);
@@ -322,6 +325,9 @@ public class GameTableController {
             gameTable.lookup(nameR).setVisible(false);
             gameTable.lookup(nameY).setVisible(false);
             gameTable.lookup(textIsland).setVisible(false);
+            gameTable.lookup(black).setVisible(false);
+            gameTable.lookup(white).setVisible(false);
+            gameTable.lookup(grey).setVisible(false);
         }
 
     }
