@@ -2,6 +2,7 @@ package it.polimi.ingsw.view.GUI.Controller;
 import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.network.Message.ClientToServer.MovePawnToDiningMessage;
 import it.polimi.ingsw.view.GUI.Gui;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
@@ -59,43 +60,45 @@ public class SchoolBoard1Controller {
 
     //rende le pedine dei colori presenti sul entrata come cliccabili
     public void setEntrance1Clickable(){
-        setEntrance1();
-        int green = gui.getLightGame().getPlayers().get(1).getEntrance().getGreenPawn();
-        for(int i=0; i<green; i++){
-            for(Node school : schoolBoard1.getChildren()){
-                if(school.getId().equals("entranceGreen1" + i))
-                    school.setDisable(false);
+        Platform.runLater(()-> {
+            setEntrance1();
+            int green = gui.getLightGame().getPlayers().get(1).getEntrance().getGreenPawn();
+            for (int i = 0; i < green; i++) {
+                for (Node school : schoolBoard1.getChildren()) {
+                    if (school.getId().equals("entranceGreen1" + i))
+                        school.setDisable(false);
+                }
             }
-        }
 
-        int red = gui.getLightGame().getPlayers().get(1).getEntrance().getRedPawn() + green;
-        for(int i=green; i<red; i++){
-            for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("entranceRed1" + i))
-                    school.setDisable(false);
+            int red = gui.getLightGame().getPlayers().get(1).getEntrance().getRedPawn() + green;
+            for (int i = green; i < red; i++) {
+                for (Node school : schoolBoard1.getChildren()) {
+                    if (school.getId().equals("entranceRed1" + i))
+                        school.setDisable(false);
+                }
             }
-        }
-        int yellow = gui.getLightGame().getPlayers().get(1).getEntrance().getYellowPawn() + red;
-        for(int i=red; i<yellow; i++){
-            for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("entranceYellow1" + i))
-                    school.setDisable(false);
+            int yellow = gui.getLightGame().getPlayers().get(1).getEntrance().getYellowPawn() + red;
+            for (int i = red; i < yellow; i++) {
+                for (Node school : schoolBoard1.getChildren()) {
+                    if (school.getId().equals("entranceYellow1" + i))
+                        school.setDisable(false);
+                }
             }
-        }
-        int pink = gui.getLightGame().getPlayers().get(1).getEntrance().getPinkPawn() + yellow;
-        for(int i=yellow; i<pink; i++){
-            for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("entrancePink1" + i))
-                    school.setDisable(false);
+            int pink = gui.getLightGame().getPlayers().get(1).getEntrance().getPinkPawn() + yellow;
+            for (int i = yellow; i < pink; i++) {
+                for (Node school : schoolBoard1.getChildren()) {
+                    if (school.getId().equals("entrancePink1" + i))
+                        school.setDisable(false);
+                }
             }
-        }
-        int blue = gui.getLightGame().getPlayers().get(1).getEntrance().getBluePawn() + pink;
-        for(int i=pink; i<blue; i++){
-            for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("entranceBlue1" + i))
-                    school.setDisable(false);
+            int blue = gui.getLightGame().getPlayers().get(1).getEntrance().getBluePawn() + pink;
+            for (int i = pink; i < blue; i++) {
+                for (Node school : schoolBoard1.getChildren()) {
+                    if (school.getId().equals("entranceBlue1" + i))
+                        school.setDisable(false);
+                }
             }
-        }
+        });
     }
 
 
