@@ -3,6 +3,7 @@ package it.polimi.ingsw.view.GUI;
 import it.polimi.ingsw.client.ModelLight.LightGame;
 import it.polimi.ingsw.client.SocketNetworkHandler;
 import it.polimi.ingsw.model.ColorPawn;
+import it.polimi.ingsw.network.Message.ClientToServer.ChooseCharacterCardMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.ReadyTodisconnection;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
 import it.polimi.ingsw.view.GUI.Controller.*;
@@ -188,8 +189,12 @@ public class Gui extends Application implements View {
     public void requestCharacterCard(String nickname, boolean bool) {
         Platform.runLater(()-> {
             if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())) {
-                if(lightGame.getIsExpert())
-                gameTable.setLastCCMessage();;
+                if(lightGame.getIsExpert()) {
+                    gameTable.setLastCCMessage();
+                }else{
+                    ArrayList<ColorPawn> colorPawns=null;
+                    socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0,0,0,colorPawns,false));
+                }
             }else{
                 gameTable.setMessages(nickname+" IS IN CHOOSING PHASE");
             }
