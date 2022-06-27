@@ -1,6 +1,7 @@
 package it.polimi.ingsw.view.GUI.Controller;
 
 import it.polimi.ingsw.model.ColorPawn;
+import it.polimi.ingsw.network.Message.ClientToServer.ChooseCharacterCardMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.MovePawnToDiningMessage;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
@@ -809,6 +810,8 @@ public class SchoolBoard0Controller {
                 if(gui.getNumPawnsCount()==0)
                     for(Node school : schoolBoard0.getChildren())
                         school.setDisable(true);
+                if(gui.getPedineDaSpostare()==0)
+                    gui.setPedineDaSpostare(gui.getNumPawnMove());
             }else if(gui.getButtonClicked().equals(ButtonAction.DININGROOM)){
                 if(gui.getNumPawnsCount()==0){
                     for(Node school : schoolBoard0.getChildren()){
@@ -821,9 +824,14 @@ public class SchoolBoard0Controller {
                     gui.getGameTable().getShowSchool0().setVisible(true);
                     gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
                 }
+                if(gui.getPedineDaSpostare()==0)
+                    gui.setPedineDaSpostare(gui.getNumPawnMove());
+            }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+                gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
+                if(gui.getNumPawnsCount() == 0)
+                    gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(6, gui.getNumPawns()/2, gui.getIslandSelected(), gui.getColorPawns(), true));
             }
-            if(gui.getPedineDaSpostare()==0){
-                gui.setPedineDaSpostare(gui.getNumPawnMove());
-            }
+
+
         }
     }

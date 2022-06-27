@@ -1000,35 +1000,52 @@ public class GameTableController {
         number3.setVisible(false);
         number3.setDisable(true);
 
-        if (gui.getButtonClicked().equals(ButtonAction.ISLAND))
-            whatToDo.setText("Choose Island Pawns");
-        else if (gui.getButtonClicked().equals(ButtonAction.DININGROOM))
-            whatToDo.setText("Choose DiningRoom Pawns");
-
         gui.setNumPawns(parseInt(number0.getText()));
         gui.setNumPawnsCount(parseInt(number0.getText()));
 
-        if (gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard0Controller = gui.getSchoolBoard0Controller();
-            schoolBoard0Controller.setEntrance0Clickable();
-            showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
-            showSchool0.setVisible(true);
+        if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            int i;
+            for(i = 0; i < 3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=6; i++);
+            gui.getCharacterCardController().setColorCharacterVisible(0, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(1, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(2, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(3, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(4, i, true);
+            gui.getCharacterCardController().setColorCharacterDisabled(0, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(1, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(2, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(3, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(4, i, false);
 
-        } else if (gui.getLightGame().getPlayers().get(1).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard1Controller = gui.getSchoolBoard1Controller();
-            schoolBoard1Controller.setEntrance1Clickable();
-            showSchool1.setCenter(schoolBoard1Controller.getSchoolBoard1());
-            showSchool1.setVisible(true);
-        } else if (gui.getLightGame().getPlayers().get(2).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard2Controller = gui.getSchoolBoard2Controller();
-            schoolBoard2Controller.setEntrance2Clickable();
-            showSchool2.setCenter(schoolBoard2Controller.getSchoolBoard2());
-            showSchool2.setVisible(true);
-        } else if (gui.getLightGame().getPlayers().get(3).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard3Controller = gui.getSchoolBoard3Controller();
-            schoolBoard3Controller.setEntrance3Clickable();
-            showSchool3.setCenter(schoolBoard3Controller.getSchoolBoard3());
-            showSchool3.setVisible(true);
+        } else {
+
+            if (gui.getButtonClicked().equals(ButtonAction.ISLAND))
+                whatToDo.setText("Choose Island Pawns");
+            else if (gui.getButtonClicked().equals(ButtonAction.DININGROOM))
+                whatToDo.setText("Choose DiningRoom Pawns");
+
+            if (gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard0Controller = gui.getSchoolBoard0Controller();
+                schoolBoard0Controller.setEntrance0Clickable();
+                showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
+                showSchool0.setVisible(true);
+
+            } else if (gui.getLightGame().getPlayers().get(1).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard1Controller = gui.getSchoolBoard1Controller();
+                schoolBoard1Controller.setEntrance1Clickable();
+                showSchool1.setCenter(schoolBoard1Controller.getSchoolBoard1());
+                showSchool1.setVisible(true);
+            } else if (gui.getLightGame().getPlayers().get(2).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard2Controller = gui.getSchoolBoard2Controller();
+                schoolBoard2Controller.setEntrance2Clickable();
+                showSchool2.setCenter(schoolBoard2Controller.getSchoolBoard2());
+                showSchool2.setVisible(true);
+            } else if (gui.getLightGame().getPlayers().get(3).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard3Controller = gui.getSchoolBoard3Controller();
+                schoolBoard3Controller.setEntrance3Clickable();
+                showSchool3.setCenter(schoolBoard3Controller.getSchoolBoard3());
+                showSchool3.setVisible(true);
+            }
         }
     }
 
@@ -1042,35 +1059,52 @@ public class GameTableController {
         number3.setVisible(false);
         number3.setDisable(true);
 
-        if (gui.getButtonClicked().equals(ButtonAction.ISLAND))
-            whatToDo.setText("Choose Island Pawns");
-        else if (gui.getButtonClicked().equals(ButtonAction.DININGROOM))
-            whatToDo.setText("Choose DiningRoom Pawns");
-
         gui.setNumPawns(parseInt(number1.getText()));
         gui.setNumPawnsCount(parseInt(number1.getText()));
 
-        if (gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard0Controller = gui.getSchoolBoard0Controller();
-            schoolBoard0Controller.setEntrance0Clickable();
-            showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
-            showSchool0.setVisible(true);
+        if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            int i;
+            for(i = 0; i < 3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=6; i++);
+            gui.getCharacterCardController().setColorCharacterVisible(0, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(1, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(2, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(3, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(4, i, true);
+            gui.getCharacterCardController().setColorCharacterDisabled(0, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(1, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(2, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(3, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(4, i, false);
 
-        } else if (gui.getLightGame().getPlayers().get(1).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard1Controller = gui.getSchoolBoard1Controller();
-            schoolBoard1Controller.setEntrance1Clickable();
-            showSchool1.setCenter(schoolBoard1Controller.getSchoolBoard1());
-            showSchool1.setVisible(true);
-        } else if (gui.getLightGame().getPlayers().get(2).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard2Controller = gui.getSchoolBoard2Controller();
-            schoolBoard2Controller.setEntrance2Clickable();
-            showSchool2.setCenter(schoolBoard2Controller.getSchoolBoard2());
-            showSchool2.setVisible(true);
-        } else if (gui.getLightGame().getPlayers().get(3).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard3Controller = gui.getSchoolBoard3Controller();
-            schoolBoard3Controller.setEntrance3Clickable();
-            showSchool3.setCenter(schoolBoard3Controller.getSchoolBoard3());
-            showSchool3.setVisible(true);
+        } else {
+
+            if (gui.getButtonClicked().equals(ButtonAction.ISLAND))
+                whatToDo.setText("Choose Island Pawns");
+            else if (gui.getButtonClicked().equals(ButtonAction.DININGROOM))
+                whatToDo.setText("Choose DiningRoom Pawns");
+
+            if (gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard0Controller = gui.getSchoolBoard0Controller();
+                schoolBoard0Controller.setEntrance0Clickable();
+                showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
+                showSchool0.setVisible(true);
+
+            } else if (gui.getLightGame().getPlayers().get(1).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard1Controller = gui.getSchoolBoard1Controller();
+                schoolBoard1Controller.setEntrance1Clickable();
+                showSchool1.setCenter(schoolBoard1Controller.getSchoolBoard1());
+                showSchool1.setVisible(true);
+            } else if (gui.getLightGame().getPlayers().get(2).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard2Controller = gui.getSchoolBoard2Controller();
+                schoolBoard2Controller.setEntrance2Clickable();
+                showSchool2.setCenter(schoolBoard2Controller.getSchoolBoard2());
+                showSchool2.setVisible(true);
+            } else if (gui.getLightGame().getPlayers().get(3).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard3Controller = gui.getSchoolBoard3Controller();
+                schoolBoard3Controller.setEntrance3Clickable();
+                showSchool3.setCenter(schoolBoard3Controller.getSchoolBoard3());
+                showSchool3.setVisible(true);
+            }
         }
     }
 
@@ -1084,35 +1118,55 @@ public class GameTableController {
         number3.setVisible(false);
         number3.setDisable(true);
 
-        if (gui.getButtonClicked().equals(ButtonAction.ISLAND))
-            whatToDo.setText("Choose Island Pawns");
-        else if (gui.getButtonClicked().equals(ButtonAction.DININGROOM))
-            whatToDo.setText("Choose DiningRoom Pawns");
-
         gui.setNumPawns(parseInt(number2.getText()));
         gui.setNumPawnsCount(parseInt(number2.getText()));
 
-        if (gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard0Controller = gui.getSchoolBoard0Controller();
-            schoolBoard0Controller.setEntrance0Clickable();
-            showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
-            showSchool0.setVisible(true);
+        if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            gui.setNumPawns(gui.getNumPawns() * 2);
+            gui.setNumPawnsCount(gui.getNumPawnsCount() * 2);
 
-        } else if (gui.getLightGame().getPlayers().get(1).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard1Controller = gui.getSchoolBoard1Controller();
-            schoolBoard1Controller.setEntrance1Clickable();
-            showSchool1.setCenter(schoolBoard1Controller.getSchoolBoard1());
-            showSchool1.setVisible(true);
-        } else if (gui.getLightGame().getPlayers().get(2).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard2Controller = gui.getSchoolBoard2Controller();
-            schoolBoard2Controller.setEntrance2Clickable();
-            showSchool2.setCenter(schoolBoard2Controller.getSchoolBoard2());
-            showSchool2.setVisible(true);
-        } else if (gui.getLightGame().getPlayers().get(3).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard3Controller = gui.getSchoolBoard3Controller();
-            schoolBoard3Controller.setEntrance3Clickable();
-            showSchool3.setCenter(schoolBoard3Controller.getSchoolBoard3());
-            showSchool3.setVisible(true);
+            int i;
+            for(i = 0; i < 3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=6; i++);
+            gui.getCharacterCardController().setColorCharacterVisible(0, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(1, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(2, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(3, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(4, i, true);
+            gui.getCharacterCardController().setColorCharacterDisabled(0, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(1, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(2, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(3, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(4, i, false);
+
+        } else {
+
+            if (gui.getButtonClicked().equals(ButtonAction.ISLAND))
+                whatToDo.setText("Choose Island Pawns");
+            else if (gui.getButtonClicked().equals(ButtonAction.DININGROOM))
+                whatToDo.setText("Choose DiningRoom Pawns");
+
+            if (gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard0Controller = gui.getSchoolBoard0Controller();
+                schoolBoard0Controller.setEntrance0Clickable();
+                showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
+                showSchool0.setVisible(true);
+
+            } else if (gui.getLightGame().getPlayers().get(1).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard1Controller = gui.getSchoolBoard1Controller();
+                schoolBoard1Controller.setEntrance1Clickable();
+                showSchool1.setCenter(schoolBoard1Controller.getSchoolBoard1());
+                showSchool1.setVisible(true);
+            } else if (gui.getLightGame().getPlayers().get(2).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard2Controller = gui.getSchoolBoard2Controller();
+                schoolBoard2Controller.setEntrance2Clickable();
+                showSchool2.setCenter(schoolBoard2Controller.getSchoolBoard2());
+                showSchool2.setVisible(true);
+            } else if (gui.getLightGame().getPlayers().get(3).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard3Controller = gui.getSchoolBoard3Controller();
+                schoolBoard3Controller.setEntrance3Clickable();
+                showSchool3.setCenter(schoolBoard3Controller.getSchoolBoard3());
+                showSchool3.setVisible(true);
+            }
         }
     }
 
@@ -1126,36 +1180,52 @@ public class GameTableController {
         number3.setVisible(false);
         number3.setDisable(true);
 
-        if (gui.getButtonClicked().equals(ButtonAction.ISLAND))
-            whatToDo.setText("Choose Island Pawns");
-        else if (gui.getButtonClicked().equals(ButtonAction.DININGROOM))
-            whatToDo.setText("Choose DiningRoom Pawns");
-
         gui.setNumPawns(parseInt(number3.getText()));
         gui.setNumPawnsCount(parseInt(number3.getText()));
 
+        if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            int i;
+            for(i = 0; i < 3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=6; i++);
+            gui.getCharacterCardController().setColorCharacterVisible(0, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(1, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(2, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(3, i, true);
+            gui.getCharacterCardController().setColorCharacterVisible(4, i, true);
+            gui.getCharacterCardController().setColorCharacterDisabled(0, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(1, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(2, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(3, i, false);
+            gui.getCharacterCardController().setColorCharacterDisabled(4, i, false);
 
-        if (gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard0Controller = gui.getSchoolBoard0Controller();
-            schoolBoard0Controller.setEntrance0Clickable();
-            showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
-            showSchool0.setVisible(true);
+        } else {
 
-        } else if (gui.getLightGame().getPlayers().get(1).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard1Controller = gui.getSchoolBoard1Controller();
-            schoolBoard1Controller.setEntrance1Clickable();
-            showSchool1.setCenter(schoolBoard1Controller.getSchoolBoard1());
-            showSchool1.setVisible(true);
-        } else if (gui.getLightGame().getPlayers().get(2).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard2Controller = gui.getSchoolBoard2Controller();
-            schoolBoard2Controller.setEntrance2Clickable();
-            showSchool2.setCenter(schoolBoard2Controller.getSchoolBoard2());
-            showSchool2.setVisible(true);
-        } else if (gui.getLightGame().getPlayers().get(3).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
-            schoolBoard3Controller = gui.getSchoolBoard3Controller();
-            schoolBoard3Controller.setEntrance3Clickable();
-            showSchool3.setCenter(schoolBoard3Controller.getSchoolBoard3());
-            showSchool3.setVisible(true);
+            if (gui.getButtonClicked().equals(ButtonAction.ISLAND))
+                whatToDo.setText("Choose Island Pawns");
+            else if (gui.getButtonClicked().equals(ButtonAction.DININGROOM))
+                whatToDo.setText("Choose DiningRoom Pawns");
+
+            if (gui.getLightGame().getPlayers().get(0).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard0Controller = gui.getSchoolBoard0Controller();
+                schoolBoard0Controller.setEntrance0Clickable();
+                showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
+                showSchool0.setVisible(true);
+
+            } else if (gui.getLightGame().getPlayers().get(1).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard1Controller = gui.getSchoolBoard1Controller();
+                schoolBoard1Controller.setEntrance1Clickable();
+                showSchool1.setCenter(schoolBoard1Controller.getSchoolBoard1());
+                showSchool1.setVisible(true);
+            } else if (gui.getLightGame().getPlayers().get(2).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard2Controller = gui.getSchoolBoard2Controller();
+                schoolBoard2Controller.setEntrance2Clickable();
+                showSchool2.setCenter(schoolBoard2Controller.getSchoolBoard2());
+                showSchool2.setVisible(true);
+            } else if (gui.getLightGame().getPlayers().get(3).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer())) {
+                schoolBoard3Controller = gui.getSchoolBoard3Controller();
+                schoolBoard3Controller.setEntrance3Clickable();
+                showSchool3.setCenter(schoolBoard3Controller.getSchoolBoard3());
+                showSchool3.setVisible(true);
+            }
         }
     }
 
@@ -1166,6 +1236,8 @@ public class GameTableController {
 
 
     public void islandSelectedEffect(int numIsland){
+        for(int i = 0; i < gui.getLightGame().getIslands().size(); i++)
+            gameTable.lookup("#island" + i).setDisable(true);
         if (gui.getButtonClicked().equals(ButtonAction.ISLAND)) {
             gui.setIslandSelected(numIsland);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
@@ -1187,8 +1259,17 @@ public class GameTableController {
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
-        } else if((gui.getButtonClicked().equals(ButtonAction.ANTONIO))){
+            gui.getGameTable().getGameTablePane().lookup("prohibited" + numIsland).setVisible(false);
+        } else if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
             gui.setIslandSelected(numIsland);
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(0, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+        } else if(gui.getButtonClicked().equals(ButtonAction.CIRO)){
+            gui.setIslandSelected(numIsland);
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(2, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+        } else if(gui.getButtonClicked().equals(ButtonAction.ERNESTO)){
+            gui.setIslandSelected(numIsland);
+            gui.getGameTable().getGameTablePane().lookup("prohibited" + numIsland).setVisible(true);
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(4, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
         }
     }
 
