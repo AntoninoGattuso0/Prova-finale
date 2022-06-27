@@ -188,6 +188,7 @@ public class Gui extends Application implements View {
     public void requestCharacterCard(String nickname, boolean bool) {
         Platform.runLater(()-> {
             if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())) {
+                if(lightGame.getIsExpert())
                 gameTable.setLastCCMessage();;
             }else{
                 gameTable.setMessages(nickname+" IS IN CHOOSING PHASE");
