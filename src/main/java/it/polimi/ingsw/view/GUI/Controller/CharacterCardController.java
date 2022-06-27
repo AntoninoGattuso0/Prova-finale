@@ -3,6 +3,7 @@ package it.polimi.ingsw.view.GUI.Controller;
 import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.network.Message.ClientToServer.ChooseCharacterCardMessage;
 import it.polimi.ingsw.view.GUI.Gui;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
@@ -219,6 +220,7 @@ public class CharacterCardController {
 
     public void setColorCharacterDisabled(int color, int character, boolean disabled) {
         String name;
+        characterCards.setDisable(disabled);
         if (color == 0) {
             name = "#greenCharacter" + character;
             characterCards.lookup(name).setDisable(disabled);
@@ -244,120 +246,124 @@ public class CharacterCardController {
 
 
     public void characterEffects(int characterPosition){
-        gui.getColorPawns().clear();
-        gui.setNumPawns(-1);
-        gui.setIslandSelected(-1);
-        int player;
-        for(player = 0; player < gui.getLightGame().getNumPlayers() && !gui.getLightGame().getPlayers().get(player).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer()); player++);
-        if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 0) {
-            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getAntonio().getCoinPrice());
-            gui.setButtonClicked(ButtonAction.ANTONIO);
-            gui.getGameTable().setMessages("Select Pawn From CC");
-            if (gui.getLightGame().getAntonio().getGreenPawn() > 0) {
+        Platform.runLater(()-> {
+            gui.getColorPawns().clear();
+            gui.setNumPawns(-1);
+            gui.setIslandSelected(-1);
+            int player;
+            for (player = 0; player < gui.getLightGame().getNumPlayers() && !gui.getLightGame().getPlayers().get(player).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer()); player++)
+                ;
+            if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 0) {
+                gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getAntonio().getCoinPrice());
+                gui.setButtonClicked(ButtonAction.ANTONIO);
+                gui.getGameTable().setMessages("Select Pawn From CC");
+                if (gui.getLightGame().getAntonio().getGreenPawn() > 0) {
+                    setColorCharacterDisabled(0, characterPosition, false);
+                }
+                if (gui.getLightGame().getAntonio().getRedPawn() > 0) {
+                    setColorCharacterDisabled(1, characterPosition, false);
+                }
+                if (gui.getLightGame().getAntonio().getYellowPawn() > 0) {
+                    setColorCharacterDisabled(2, characterPosition, false);
+                }
+                if (gui.getLightGame().getAntonio().getPinkPawn() > 0) {
+                    setColorCharacterDisabled(3, characterPosition, false);
+                }
+                if (gui.getLightGame().getAntonio().getBluePawn() > 0) {
+                    setColorCharacterDisabled(4, characterPosition, false);
+                }
+            } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 1) {
+                gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getBarbara().getCoinPrice());
+                gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(1, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 2) {
+                gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getCiro().getCoinPrice());
+                gui.setButtonClicked(ButtonAction.CIRO);
+                gui.getGameTable().setMessages("Select Island for CC");
+                for (int i = 0; i < gui.getLightGame().getIslands().size(); i++)
+                    gui.getGameTable().getGameTablePane().lookup("#island" + i).setDisable(false);
+            } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 3) {
+                gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getDante().getCoinPrice());
+                gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(3, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 4) {
+                gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getErnesto().getCoinPrice());
+                gui.setButtonClicked(ButtonAction.ERNESTO);
+                gui.getGameTable().setMessages("Select Island for CC");
+                for (int i = 0; i < gui.getLightGame().getIslands().size(); i++)
+                    gui.getGameTable().getGameTablePane().lookup("#island" + i).setDisable(false);
+            } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 5) {
+                gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getFelix().getCoinPrice());
+                gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(5, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 6) {
+                gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getGiuseppe().getCoinPrice());
+                gui.setButtonClicked(ButtonAction.GIUSEPPE);
+                gui.getGameTable().setMessages("Select Num Pawn");
+                gui.getGameTable().number0.setVisible(true);
+                gui.getGameTable().number0.setDisable(false);
+                gui.getGameTable().number1.setVisible(true);
+                gui.getGameTable().number1.setDisable(false);
+                gui.getGameTable().number2.setVisible(true);
+                gui.getGameTable().number2.setDisable(false);
+            } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 7) {
+                gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getIvan().getCoinPrice());
+                gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(7, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 8) {
+                gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getLancillotto().getCoinPrice());
+                gui.setButtonClicked(ButtonAction.LANCILLOTTO);
                 setColorCharacterDisabled(0, characterPosition, false);
-            }
-            if (gui.getLightGame().getAntonio().getRedPawn() > 0) {
+                setColorCharacterVisible(0, characterPosition, true);
                 setColorCharacterDisabled(1, characterPosition, false);
-            }
-            if (gui.getLightGame().getAntonio().getYellowPawn() > 0) {
+                setColorCharacterVisible(1, characterPosition, true);
                 setColorCharacterDisabled(2, characterPosition, false);
-            }
-            if (gui.getLightGame().getAntonio().getPinkPawn() > 0) {
+                setColorCharacterVisible(2, characterPosition, true);
                 setColorCharacterDisabled(3, characterPosition, false);
-            }
-            if (gui.getLightGame().getAntonio().getBluePawn() > 0) {
+                setColorCharacterVisible(3, characterPosition, true);
                 setColorCharacterDisabled(4, characterPosition, false);
-            }
-        } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 1) {
-            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getBarbara().getCoinPrice());
-            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(1, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
-        } else if(gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 2){
-            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getCiro().getCoinPrice());
-            gui.setButtonClicked(ButtonAction.CIRO);
-            gui.getGameTable().setMessages("Select Island for CC");
-            for(int i = 0; i < gui.getLightGame().getIslands().size(); i++)
-                gui.getGameTable().getGameTablePane().lookup("#island" + i).setDisable(false);
-        } else if(gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 3){
-            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getDante().getCoinPrice());
-            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(3, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
-        } else if(gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 4){
-            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getErnesto().getCoinPrice());
-            gui.setButtonClicked(ButtonAction.ERNESTO);
-            gui.getGameTable().setMessages("Select Island for CC");
-            for(int i = 0; i < gui.getLightGame().getIslands().size(); i++)
-                gui.getGameTable().getGameTablePane().lookup("#island" + i).setDisable(false);
-        } else if(gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 5){
-            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getFelix().getCoinPrice());
-            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(5, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
-        } else if(gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 6){
-            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getGiuseppe().getCoinPrice());
-            gui.setButtonClicked(ButtonAction.GIUSEPPE);
-            gui.getGameTable().setMessages("Select Num Pawn");
-            gui.getGameTable().number0.setVisible(true);
-            gui.getGameTable().number0.setDisable(false);
-            gui.getGameTable().number1.setVisible(true);
-            gui.getGameTable().number1.setDisable(false);
-            gui.getGameTable().number2.setVisible(true);
-            gui.getGameTable().number2.setDisable(false);
-        } else if(gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 7){
-            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getIvan().getCoinPrice());
-            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(7, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
-        } else if(gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 8){
-            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getLancillotto().getCoinPrice());
-            gui.setButtonClicked(ButtonAction.LANCILLOTTO);
-            setColorCharacterDisabled(0, characterPosition, false);
-            setColorCharacterVisible(0, characterPosition, true);
-            setColorCharacterDisabled(1, characterPosition, false);
-            setColorCharacterVisible(1, characterPosition, true);
-            setColorCharacterDisabled(2, characterPosition, false);
-            setColorCharacterVisible(2, characterPosition, true);
-            setColorCharacterDisabled(3, characterPosition, false);
-            setColorCharacterVisible(3, characterPosition, true);
-            setColorCharacterDisabled(4, characterPosition, false);
-            setColorCharacterVisible(4, characterPosition, true);
-        } else if(gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 9){
-            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getMaria().getCoinPrice());
-            gui.setButtonClicked(ButtonAction.MARIA);
-            gui.getGameTable().setMessages("Select Num Pawn to Swap");
-            gui.getGameTable().number0.setVisible(true);
-            gui.getGameTable().number0.setDisable(false);
-            gui.getGameTable().number1.setVisible(true);
-            gui.getGameTable().number1.setDisable(false);
-        } else if(gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 10){
-            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getNicola().getCoinPrice());
-            gui.setButtonClicked(ButtonAction.NICOLA);
-            if (gui.getLightGame().getNicola().getGreenPawn() > 0) {
+                setColorCharacterVisible(4, characterPosition, true);
+            } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 9) {
+                gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getMaria().getCoinPrice());
+                gui.setButtonClicked(ButtonAction.MARIA);
+                gui.getGameTable().setMessages("Select Num Pawn to Swap");
+                gui.getGameTable().number0.setVisible(true);
+                gui.getGameTable().number0.setDisable(false);
+                gui.getGameTable().number1.setVisible(true);
+                gui.getGameTable().number1.setDisable(false);
+            } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 10) {
+                gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getNicola().getCoinPrice());
+                gui.setButtonClicked(ButtonAction.NICOLA);
+                if (gui.getLightGame().getNicola().getGreenPawn() > 0) {
+                    setColorCharacterDisabled(0, characterPosition, false);
+                }
+                if (gui.getLightGame().getNicola().getRedPawn() > 0) {
+                    setColorCharacterDisabled(1, characterPosition, false);
+                }
+                if (gui.getLightGame().getNicola().getYellowPawn() > 0) {
+                    setColorCharacterDisabled(2, characterPosition, false);
+                }
+                if (gui.getLightGame().getNicola().getPinkPawn() > 0) {
+                    setColorCharacterDisabled(3, characterPosition, false);
+                }
+                if (gui.getLightGame().getNicola().getBluePawn() > 0) {
+                    setColorCharacterDisabled(4, characterPosition, false);
+                }
+            } else if (gui.getLightGame().getCharacterCards().get(0).getNumCard() == 11) {
+                gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getOmnia().getCoinPrice());
+                gui.setButtonClicked(ButtonAction.OMNIA);
                 setColorCharacterDisabled(0, characterPosition, false);
-            }
-            if (gui.getLightGame().getNicola().getRedPawn() > 0) {
+                setColorCharacterVisible(0, characterPosition, true);
                 setColorCharacterDisabled(1, characterPosition, false);
-            }
-            if (gui.getLightGame().getNicola().getYellowPawn() > 0) {
+                setColorCharacterVisible(1, characterPosition, true);
                 setColorCharacterDisabled(2, characterPosition, false);
-            }
-            if (gui.getLightGame().getNicola().getPinkPawn() > 0) {
+                setColorCharacterVisible(2, characterPosition, true);
                 setColorCharacterDisabled(3, characterPosition, false);
-            }
-            if (gui.getLightGame().getNicola().getBluePawn() > 0) {
+                setColorCharacterVisible(3, characterPosition, true);
                 setColorCharacterDisabled(4, characterPosition, false);
+                setColorCharacterVisible(4, characterPosition, true);
             }
-        } else if(gui.getLightGame().getCharacterCards().get(0).getNumCard() == 11){
-            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getOmnia().getCoinPrice());
-            gui.setButtonClicked(ButtonAction.OMNIA);
-            setColorCharacterDisabled(0, characterPosition, false);
-            setColorCharacterVisible(0, characterPosition, true);
-            setColorCharacterDisabled(1, characterPosition, false);
-            setColorCharacterVisible(1, characterPosition, true);
-            setColorCharacterDisabled(2, characterPosition, false);
-            setColorCharacterVisible(2, characterPosition, true);
-            setColorCharacterDisabled(3, characterPosition, false);
-            setColorCharacterVisible(3, characterPosition, true);
-            setColorCharacterDisabled(4, characterPosition, false);
-            setColorCharacterVisible(4, characterPosition, true);
-        }
+        });
     }
 
     public void character0Select(MouseEvent mouseEvent) {
+        System.out.println("ho cliccato antonio");
         characterEffects(0);
     }
 
@@ -373,8 +379,11 @@ public class CharacterCardController {
     public void antonioEff(ColorPawn colorPawn){
         gui.getCharacterCardController().setDisableAll();
         gui.getColorPawns().add(colorPawn);
-        for(int i = 0; i < gui.getLightGame().getIslands().size(); i++)
+        gui.getGameTable().getGameTablePane().setDisable(false);
+        for(int i = 0; i < gui.getLightGame().getIslands().size(); i++){
             gui.getGameTable().getGameTablePane().lookup("#island" + i).setDisable(false);
+            System.out.println(i);
+        }
     }
 
     public void giuseppeEff(ColorPawn colorPawn){
