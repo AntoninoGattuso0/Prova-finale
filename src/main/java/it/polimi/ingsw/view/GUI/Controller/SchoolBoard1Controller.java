@@ -845,5 +845,9 @@ public class SchoolBoard1Controller {
                 gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             }
         }
+        if(gui.getPedineDaSpostare()==0){
+            gui.setPedineDaSpostare(gui.getNumPawnMove());
+        }
     }
+
 }

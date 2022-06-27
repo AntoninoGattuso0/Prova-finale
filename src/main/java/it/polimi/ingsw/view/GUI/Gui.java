@@ -392,6 +392,8 @@ public class Gui extends Application implements View {
                 assistantCardController.setAssistantCards(socketNetworkHandler.getNicknameThisPlayer());
                 characterCardController.setCharacterCards();
                 gameTable.setMotherNatureVisible();
+                gameTable.setPawnVisible();
+                gameTable.setTowers();
                 gameTable.setAllIslands(true);
                 gameTable.setProfessor();
                 gameTable.setCloudVisible();
