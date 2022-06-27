@@ -371,14 +371,38 @@ public class CharacterCardController {
 
 
     public void antonioEff(ColorPawn colorPawn){
+        gui.getCharacterCardController().setDisableAll();
         gui.getColorPawns().add(colorPawn);
         for(int i = 0; i < gui.getLightGame().getIslands().size(); i++)
             gui.getGameTable().getGameTablePane().lookup("#island" + i).setDisable(false);
     }
 
+    public void giuseppeEff(ColorPawn colorPawn){
+        String name = gui.getSocketNetworkHandler().getNicknameThisPlayer();
+        int player;
+        for(player = 0; player<gui.getLightGame().getNumPlayers() && !gui.getLightGame().getPlayers().get(player).getNickname().equals(name); player++)
+        gui.getCharacterCardController().setDisableAll();
+        gui.getColorPawns().add(colorPawn);
+        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
+        if(gui.getNumPawnsCount() == gui.getNumPawns()/2){
+            if(player==0)
+                gui.getSchoolBoard0Controller().setEntrance0Clickable();
+            else if(player == 1)
+                gui.getSchoolBoard1Controller().setEntrance1Clickable();
+            else if(player == 2)
+                gui.getSchoolBoard2Controller().setEntrance2Clickable();
+            else if(player == 3)
+                gui.getSchoolBoard3Controller().setEntrance3Clickable();
+            setDisableAll();
+        }
+    }
+
     public void moveGreenCharacter0(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.GREEN;
         if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
-            antonioEff(ColorPawn.GREEN);
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
         }
     }
 
