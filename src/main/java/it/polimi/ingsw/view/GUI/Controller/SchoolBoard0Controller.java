@@ -58,6 +58,14 @@ public class SchoolBoard0Controller {
         }
     }
 
+    public void setAllDisabled(){
+        for(Node all : schoolBoard0.getChildren()) {
+            all.setDisable(true);
+            if(all.getId().equals("backSchool0"))
+                all.setVisible(true);
+        }
+    }
+
     //rende le pedine non cliccabili all'inizio
     public void setEntrance0Clickable(){
         setEntrance0();
@@ -76,6 +84,26 @@ public class SchoolBoard0Controller {
         int blue = gui.getLightGame().getPlayers().get(0).getEntrance().getBluePawn() + pink;
         for(int i=pink; i<blue; i++)
             schoolBoard0.lookup("#entranceBlue0"+ i).setDisable(false);
+
+    }
+
+    public void setEntrance0NOTClickable(){
+        setEntrance0();
+        int green = gui.getLightGame().getPlayers().get(0).getEntrance().getGreenPawn();
+        for(int i=0; i<green; i++)
+            schoolBoard0.lookup("#entranceGreen0"+ i).setDisable(true);
+        int red = gui.getLightGame().getPlayers().get(0).getEntrance().getRedPawn() + green;
+        for(int i=green; i<red; i++)
+            schoolBoard0.lookup("#entranceRed0"+ i).setDisable(true);
+        int yellow = gui.getLightGame().getPlayers().get(0).getEntrance().getYellowPawn() + red;
+        for(int i=red; i<yellow; i++)
+            schoolBoard0.lookup("#entranceYellow0" + i).setDisable(true);
+        int pink = gui.getLightGame().getPlayers().get(0).getEntrance().getPinkPawn() + yellow;
+        for(int i=yellow; i<pink; i++)
+            schoolBoard0.lookup("#entrancePink0"+ i).setDisable(true);
+        int blue = gui.getLightGame().getPlayers().get(0).getEntrance().getBluePawn() + pink;
+        for(int i=pink; i<blue; i++)
+            schoolBoard0.lookup("#entranceBlue0"+ i).setDisable(true);
 
     }
 
@@ -595,7 +623,7 @@ public class SchoolBoard0Controller {
         gui.getColorPawns().add(ColorPawn.BLUE);
         selection();
     }
-
+/*
     public void selectSchoolGreen00(MouseEvent mouseEvent) {
         schoolBoard0.lookup("#schoolBoard0Green0").setVisible(false);
         schoolBoard0.lookup("#schoolBoard0Green0").setDisable(true);
@@ -801,7 +829,7 @@ public class SchoolBoard0Controller {
         schoolBoard0.lookup("#schoolBoard0Blue9").setVisible(false);
         schoolBoard0.lookup("#schoolBoard0Blue9").setDisable(true);
     }
-
+*/
     public void selection(){
             gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
             if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
@@ -830,8 +858,128 @@ public class SchoolBoard0Controller {
                 gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
                 if(gui.getNumPawnsCount() == 0)
                     gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(6, gui.getNumPawns()/2, gui.getIslandSelected(), gui.getColorPawns(), true));
+            }else if(gui.getButtonClicked().equals(ButtonAction.MARIA)){
+                gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
+                if(gui.getNumPawnsCount() == gui.getNumPawns()/2){
+                    setEntrance0NOTClickable();
+                    int green = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumGreen();
+                    for(int i = 0; i < green; i++)
+                        schoolBoard0.lookup("#schoolBoard0Green" + i).setDisable(false);
+                    int red = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumRed();
+                    for(int i = 0; i < red; i++)
+                        schoolBoard0.lookup("#schoolBoard0Red" + i).setDisable(false);
+                    int yellow = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumYellow();
+                    for(int i = 0; i < yellow; i++)
+                        schoolBoard0.lookup("#schoolBoard0Yellow" + i).setDisable(false);
+                    int pink = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumPink();
+                    for(int i = 0; i < pink; i++)
+                        schoolBoard0.lookup("#schoolBoard0Pink" + i).setDisable(false);
+                    int blue = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumBlue();
+                    for(int i = 0; i < blue; i++)
+                        schoolBoard0.lookup("#schoolBoard0Blue" + i).setDisable(false);
+                }
             }
 
 
         }
+
+    public void selectSchoolGreen0(MouseEvent mouseEvent) {
+        gui.getColorPawns().add(ColorPawn.GREEN);
+        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
+        int green = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumGreen();
+        if(schoolBoard0.lookup("#schoolBoard0Green" + (green - 1)).isVisible()) {
+            schoolBoard0.lookup("#schoolBoard0Green" + (green - 1)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Green" + (green - 1)).setDisable(true);
+        }else if(schoolBoard0.lookup("#schoolBoard0Green" + (green - 2)).isVisible()){
+            schoolBoard0.lookup("#schoolBoard0Green" + (green - 2)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Green" + (green - 2)).setDisable(true);
+        }else{
+            schoolBoard0.lookup("#schoolBoard0Green" + (green - 3)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Green" + (green - 3)).setDisable(true);
+        }
+        if(gui.getNumPawnsCount() == 0){
+            setAllDisabled();
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(9, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+        }
     }
+
+    public void selectSchoolRed0(MouseEvent mouseEvent) {
+        gui.getColorPawns().add(ColorPawn.RED);
+        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
+        int red = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumRed();
+        if(schoolBoard0.lookup("#schoolBoard0Red" + (red - 1)).isVisible()) {
+            schoolBoard0.lookup("#schoolBoard0Red" + (red - 1)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Red" + (red - 1)).setDisable(true);
+        }else if(schoolBoard0.lookup("#schoolBoard0Red" + (red - 2)).isVisible()){
+            schoolBoard0.lookup("#schoolBoard0Red" + (red - 2)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Red" + (red - 2)).setDisable(true);
+        }else{
+            schoolBoard0.lookup("#schoolBoard0Red" + (red - 3)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Red" + (red - 3)).setDisable(true);
+        }
+        if(gui.getNumPawnsCount() == 0){
+            setAllDisabled();
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(9, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+        }
+    }
+
+    public void selectSchoolYellow0(MouseEvent mouseEvent) {
+        gui.getColorPawns().add(ColorPawn.YELLOW);
+        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
+        int yellow = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumYellow();
+        if(schoolBoard0.lookup("#schoolBoard0Yellow" + (yellow - 1)).isVisible()) {
+            schoolBoard0.lookup("#schoolBoard0Yellow" + (yellow - 1)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Yellow" + (yellow - 1)).setDisable(true);
+        }else if(schoolBoard0.lookup("#schoolBoard0Yellow" + (yellow - 2)).isVisible()){
+            schoolBoard0.lookup("#schoolBoard0Yellow" + (yellow - 2)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Yellow" + (yellow - 2)).setDisable(true);
+        }else{
+            schoolBoard0.lookup("#schoolBoard0Yellow" + (yellow - 3)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Yellow" + (yellow - 3)).setDisable(true);
+        }
+        if(gui.getNumPawnsCount() == 0){
+            setAllDisabled();
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(9, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+        }
+    }
+
+    public void selectSchoolPink0(MouseEvent mouseEvent) {
+        gui.getColorPawns().add(ColorPawn.PINK);
+        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
+        int pink = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumPink();
+        if(schoolBoard0.lookup("#schoolBoard0Pink" + (pink - 1)).isVisible()) {
+            schoolBoard0.lookup("#schoolBoard0Pink" + (pink - 1)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Pink" + (pink - 1)).setDisable(true);
+        }else if(schoolBoard0.lookup("#schoolBoard0Pink" + (pink - 2)).isVisible()){
+            schoolBoard0.lookup("#schoolBoard0Pink" + (pink - 2)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Pink" + (pink - 2)).setDisable(true);
+        }else{
+            schoolBoard0.lookup("#schoolBoard0Pink" + (pink - 3)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Pink" + (pink - 3)).setDisable(true);
+        }
+        if(gui.getNumPawnsCount() == 0){
+            setAllDisabled();
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(9, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+        }
+    }
+
+    public void selectSchoolBlue0(MouseEvent mouseEvent) {
+        gui.getColorPawns().add(ColorPawn.BLUE);
+        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
+        int blue = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumBlue();
+        if(schoolBoard0.lookup("#schoolBoard0Blue" + (blue - 1)).isVisible()) {
+            schoolBoard0.lookup("#schoolBoard0Blue" + (blue - 1)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Blue" + (blue - 1)).setDisable(true);
+        }else if(schoolBoard0.lookup("#schoolBoard0Blue" + (blue - 2)).isVisible()){
+            schoolBoard0.lookup("#schoolBoard0Blue" + (blue - 2)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Blue" + (blue - 2)).setDisable(true);
+        }else{
+            schoolBoard0.lookup("#schoolBoard0Blue" + (blue - 3)).setVisible(false);
+            schoolBoard0.lookup("#schoolBoard0Blue" + (blue - 3)).setDisable(true);
+        }
+        if(gui.getNumPawnsCount() == 0){
+            setAllDisabled();
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(9, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+        }
+    }
+}

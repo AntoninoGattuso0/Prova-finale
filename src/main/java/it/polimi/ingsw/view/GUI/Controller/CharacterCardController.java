@@ -397,66 +397,258 @@ public class CharacterCardController {
         }
     }
 
+    public void lancillottoEff(ColorPawn colorPawn){
+        gui.getColorPawns().add(colorPawn);
+        int card;
+        for(card = 0; card<3 && gui.getLightGame().getCharacterCards().get(card).getNumCard()!=8; card++);
+        gui.getCharacterCardController().setColorCharacterVisible(0, card, false);
+        gui.getCharacterCardController().setColorCharacterVisible(1, card, false);
+        gui.getCharacterCardController().setColorCharacterVisible(2, card, false);
+        gui.getCharacterCardController().setColorCharacterVisible(3, card, false);
+        gui.getCharacterCardController().setColorCharacterVisible(4, card, false);
+        gui.getCharacterCardController().setColorCharacterDisabled(0, card, true);
+        gui.getCharacterCardController().setColorCharacterDisabled(1, card, true);
+        gui.getCharacterCardController().setColorCharacterDisabled(2, card, true);
+        gui.getCharacterCardController().setColorCharacterDisabled(3, card, true);
+        gui.getCharacterCardController().setColorCharacterDisabled(4, card, true);
+        gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(8, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+    }
+
+    public void nicolaEff(ColorPawn colorPawn){
+        gui.getColorPawns().add(colorPawn);
+        gui.setNumPawns(1);
+        setDisableAll();
+        gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(10, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+    }
+
+    public void omniaEff(ColorPawn colorPawn){
+        gui.getColorPawns().add(colorPawn);
+        setDisableAll();
+        gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(11, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+    }
+
     public void moveGreenCharacter0(MouseEvent mouseEvent) {
         ColorPawn colorPawn = ColorPawn.GREEN;
         if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
             antonioEff(colorPawn);
         }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
             giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
         }
     }
 
     public void moveRedCharacter0(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.RED;
         if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
-            antonioEff(ColorPawn.RED);
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
         }
     }
 
     public void moveYellowCharacter0(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.YELLOW;
         if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
-            antonioEff(ColorPawn.YELLOW);
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
         }
     }
 
     public void movePinkCharacter0(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.PINK;
         if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
-            antonioEff(ColorPawn.PINK);
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
         }
     }
 
     public void moveBlueCharacter0(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.BLUE;
         if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
-            antonioEff(ColorPawn.BLUE);
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
         }
     }
 
     public void moveGreenCharacter1(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.GREEN;
+        if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
+        }
     }
 
     public void moveRedCharacter1(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.RED;
+        if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
+        }
     }
 
     public void moveYellowCharacter1(MouseEvent mouseEvent) {
-    }
-
-    public void moveBlueCharacter2(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.YELLOW;
+        if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
+        }
     }
 
     public void movePinkCharacter2(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.PINK;
+        if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
+        }
     }
 
-    public void moveYellowCharacter2(MouseEvent mouseEvent) {
-    }
-
-    public void moveRedCharacter2(MouseEvent mouseEvent) {
+    public void moveBlueCharacter2(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.BLUE;
+        if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
+        }
     }
 
     public void moveGreenCharacter2(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.GREEN;
+        if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
+        }
+    }
+
+    public void moveRedCharacter2(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.RED;
+        if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
+        }
+    }
+
+    public void moveYellowCharacter2(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.YELLOW;
+        if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
+        }
     }
 
     public void movePinkCharacter1(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.PINK;
+        if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
+        }
     }
 
     public void moveBlueCharacter1(MouseEvent mouseEvent) {
+        ColorPawn colorPawn = ColorPawn.BLUE;
+        if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
+            antonioEff(colorPawn);
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            giuseppeEff(colorPawn);
+        } else if (gui.getButtonClicked().equals(ButtonAction.LANCILLOTTO)) {
+            lancillottoEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.NICOLA)){
+            nicolaEff(colorPawn);
+        } else if(gui.getButtonClicked().equals(ButtonAction.OMNIA)){
+            omniaEff(colorPawn);
+        }
     }
 }
