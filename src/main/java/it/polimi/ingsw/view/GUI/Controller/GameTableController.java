@@ -937,6 +937,9 @@ public class GameTableController {
             gui.setIslandSelected(0);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+            if(gui.getPedineDaSpostare()==0){
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
+            }
         }
         else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
@@ -959,6 +962,9 @@ public class GameTableController {
             gui.setIslandSelected(1);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+            if(gui.getPedineDaSpostare()==0){
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
+            }
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -980,6 +986,9 @@ public class GameTableController {
             gui.setIslandSelected(2);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+            if(gui.getPedineDaSpostare()==0){
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
+            }
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1001,6 +1010,9 @@ public class GameTableController {
             gui.setIslandSelected(3);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+            if(gui.getPedineDaSpostare()==0){
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
+            }
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1022,6 +1034,9 @@ public class GameTableController {
             gui.setIslandSelected(4);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+            if(gui.getPedineDaSpostare()==0){
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
+            }
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1043,6 +1058,9 @@ public class GameTableController {
             gui.setIslandSelected(5);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+            if(gui.getPedineDaSpostare()==0){
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
+            }
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1064,6 +1082,9 @@ public class GameTableController {
             gui.setIslandSelected(6);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+            if(gui.getPedineDaSpostare()==0){
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
+            }
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1085,6 +1106,9 @@ public class GameTableController {
             gui.setIslandSelected(7);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+            if(gui.getPedineDaSpostare()==0){
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
+            }
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1106,6 +1130,9 @@ public class GameTableController {
             gui.setIslandSelected(8);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+            if(gui.getPedineDaSpostare()==0){
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
+            }
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1127,6 +1154,9 @@ public class GameTableController {
             gui.setIslandSelected(9);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+            if(gui.getPedineDaSpostare()==0){
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
+            }
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1148,6 +1178,9 @@ public class GameTableController {
             gui.setIslandSelected(10);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+            if(gui.getPedineDaSpostare()==0){
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
+            }
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1169,6 +1202,9 @@ public class GameTableController {
             gui.setIslandSelected(11);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+            if(gui.getPedineDaSpostare()==0){
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
+            }
         }else if(gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)){
             int i;
             for(i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++);
@@ -1197,7 +1233,8 @@ public class GameTableController {
         whatToDo.setText("Choose Pawns: ");
 
         gui.setButtonClicked(ButtonAction.ISLAND);
-
+        messagesActions.setDisable(false);
+        messagesActions.setVisible(true);
         for(int i = 0; i < gui.getPedineDaSpostare(); i++){
             if(i == 0){
                 number0.setText("1");
@@ -1220,7 +1257,6 @@ public class GameTableController {
                 number3.setDisable(false);
             }
         }
-        gui.setPedineDaSpostare(gui.getNumPawnMove());
         whatToDo.setText("Choose Num to Island: ");
         whatToDo.setVisible(true);
     }
@@ -1237,7 +1273,8 @@ public class GameTableController {
         islandButton.setDisable(true);
 
         gui.setButtonClicked(ButtonAction.DININGROOM);
-
+        messagesActions.setVisible(true);
+        messagesActions.setDisable(false);
         for(int i = 0; i < gui.getPedineDaSpostare(); i++){
             if(i == 0){
                 number0.setText("1");
@@ -1260,7 +1297,7 @@ public class GameTableController {
                 number3.setDisable(false);
             }
         }
-        gui.setPedineDaSpostare(gui.getNumPawnMove());
+
         whatToDo.setText("Choose Num to DiningRoom: ");
         whatToDo.setVisible(true);
     }
