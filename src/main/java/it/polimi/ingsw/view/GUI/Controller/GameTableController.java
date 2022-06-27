@@ -1653,9 +1653,15 @@ public class GameTableController {
     }
 
     public void CloudButton(MouseEvent mouseEvent) {
-        getWhatToDo().setText("Choose Cloud");
-        setMessages("CHOOSE CLOUD");
-        setCloudVisible();
-        setCloudAble();
+        Platform.runLater(()-> {
+            cloudButton.setVisible(false);
+            cloudButton.setDisable(true);
+            useCC.setDisable(true);
+            useCC.setVisible(false);
+            getWhatToDo().setText("Choose Cloud");
+            setMessages("CHOOSE CLOUD");
+            setCloudVisible();
+            setCloudAble();
+        });
     }
 }
