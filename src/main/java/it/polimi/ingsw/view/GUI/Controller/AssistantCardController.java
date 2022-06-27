@@ -67,43 +67,83 @@ public class AssistantCardController {
         }
     }
         public void assistant1Select () {
-            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(0));
+            int i;
+            int j;
+            for(i=0; !Objects.equals(gui.getSocketNetworkHandler().getNicknameThisPlayer(), gui.getLightGame().getPlayers().get(i).getNickname()); i++);
+            for(j=0;1!=gui.getLightGame().getPlayers().get(i).getDeckAssistant().get(j).getCardValue();j++);
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(j));
             gui.assistantSelected();
         }
         public void assistant2Select () {
-            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(1));
+            int i;
+            int j;
+            for(i=0; !Objects.equals(gui.getSocketNetworkHandler().getNicknameThisPlayer(), gui.getLightGame().getPlayers().get(i).getNickname()); i++);
+            for(j=0;2!=gui.getLightGame().getPlayers().get(i).getDeckAssistant().get(j).getCardValue();j++);
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(j));
             gui.assistantSelected();
         }
         public void assistant3Select () {
-            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(2));
+            int i;
+            int j;
+            for(i=0; !Objects.equals(gui.getSocketNetworkHandler().getNicknameThisPlayer(), gui.getLightGame().getPlayers().get(i).getNickname()); i++);
+            for(j=0;3!=gui.getLightGame().getPlayers().get(i).getDeckAssistant().get(j).getCardValue();j++);
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(j));
             gui.assistantSelected();
         }
         public void assistant4Select () {
-            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(3));
+            int i;
+            int j;
+            for(i=0; !Objects.equals(gui.getSocketNetworkHandler().getNicknameThisPlayer(), gui.getLightGame().getPlayers().get(i).getNickname()); i++);
+            for(j=0;4!=gui.getLightGame().getPlayers().get(i).getDeckAssistant().get(j).getCardValue();j++);
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(j));
             gui.assistantSelected();
         }
         public void assistant5Select () {
-            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(4));
+            int i;
+            int j;
+            for(i=0; !Objects.equals(gui.getSocketNetworkHandler().getNicknameThisPlayer(), gui.getLightGame().getPlayers().get(i).getNickname()); i++);
+            for(j=0;5!=gui.getLightGame().getPlayers().get(i).getDeckAssistant().get(j).getCardValue();j++);
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(j));
             gui.assistantSelected();
         }
         public void assistant6Select () {
-            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(5));
+            int i;
+            int j;
+            for(i=0; !Objects.equals(gui.getSocketNetworkHandler().getNicknameThisPlayer(), gui.getLightGame().getPlayers().get(i).getNickname()); i++);
+            for(j=0;6!=gui.getLightGame().getPlayers().get(i).getDeckAssistant().get(j).getCardValue();j++);
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(j));
             gui.assistantSelected();
         }
         public void assistant7Selected () {
-            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(6));
+            int i;
+            int j;
+            for(i=0; !Objects.equals(gui.getSocketNetworkHandler().getNicknameThisPlayer(), gui.getLightGame().getPlayers().get(i).getNickname()); i++);
+            for(j=0;7!=gui.getLightGame().getPlayers().get(i).getDeckAssistant().get(j).getCardValue();j++);
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(j));
             gui.assistantSelected();
         }
         public void assistant8Select () {
-            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(7));
+            int i;
+            int j;
+            for(i=0; !Objects.equals(gui.getSocketNetworkHandler().getNicknameThisPlayer(), gui.getLightGame().getPlayers().get(i).getNickname()); i++);
+            for(j=0;8!=gui.getLightGame().getPlayers().get(i).getDeckAssistant().get(j).getCardValue();j++);
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(j));
             gui.assistantSelected();
         }
         public void assistant9Select () {
-            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(8));
+           int i;
+           int j;
+            for(i=0; !Objects.equals(gui.getSocketNetworkHandler().getNicknameThisPlayer(), gui.getLightGame().getPlayers().get(i).getNickname()); i++);
+            for(j=0;9!=gui.getLightGame().getPlayers().get(i).getDeckAssistant().get(j).getCardValue();j++);
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(j));
             gui.assistantSelected();
         }
         public void assistant10Select () {
-            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(9));
+            int i;
+            int j;
+            for(i=0; !Objects.equals(gui.getSocketNetworkHandler().getNicknameThisPlayer(), gui.getLightGame().getPlayers().get(i).getNickname()); i++);
+            for(j=0;10!=gui.getLightGame().getPlayers().get(i).getDeckAssistant().get(j).getCardValue();j++);
+            gui.getSocketNetworkHandler().sendMessage(new ChooseAssistantCardMessage(j));
             gui.assistantSelected();
         }
 
