@@ -731,9 +731,11 @@
                   <Button fx:id="number2" layoutX="122.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#number2Button" text="3" />
                   <Button fx:id="number3" layoutX="123.0" layoutY="92.0" mnemonicParsing="false" onMouseClicked="#number3Button" text="4" />
 
-                  <Button fx:id="useCC" layoutX="35.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#useCCButton" text="Use CC" />
+                  <Button fx:id="useCC" layoutX="106.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#useCCButton" text="Use CC" />
 
-                  <Button fx:id="endTurn" layoutX="102.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#endTurnButton" text="End Turn" />
+                  <Button fx:id="endTurn" layoutX="27.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#endTurnButton" text="End Turn" />
+                  <Button fx:id="endTurn1" layoutX="28.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#endTurnButton" text="Move MN" />
+                  <Button fx:id="cloudButton" layoutX="40.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#endTurnButton" text="Cloud" />
 
                </children>
             </Pane>
