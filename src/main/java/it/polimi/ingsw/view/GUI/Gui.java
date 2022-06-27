@@ -351,13 +351,17 @@ public class Gui extends Application implements View {
     public void selectCloud(String nickname) {
         Platform.runLater(()->{
             if(Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
-                gameTable.setButtonOff();
-                gameTable.getMessagesActions().setDisable(false);
-                gameTable.getMessagesActions().setVisible(true);
-                gameTable.getCloudButton().setVisible(true);
-                gameTable.getCloudButton().setDisable(false);
-                gameTable.getUseCC().setDisable(false);
-                gameTable.getUseCC().setVisible(true);
+                if(lightGame.getIsExpert()) {
+                    gameTable.setButtonOff();
+                    gameTable.getMessagesActions().setDisable(false);
+                    gameTable.getMessagesActions().setVisible(true);
+                    gameTable.getCloudButton().setVisible(true);
+                    gameTable.getCloudButton().setDisable(false);
+                    gameTable.getUseCC().setDisable(false);
+                    gameTable.getUseCC().setVisible(true);
+                }else {
+                    gameTable.CloudButton();
+                }
             }else{
                 gameTable.setMessages(nickname+" CHOOSE CLOUD");
             }

@@ -1678,7 +1678,7 @@ public class GameTableController {
         return cloudButton;
     }
 
-    public void CloudButton(MouseEvent mouseEvent) {
+    public void CloudButton() {
         Platform.runLater(()-> {
             cloudButton.setVisible(false);
             cloudButton.setDisable(true);
