@@ -6,7 +6,6 @@ import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.network.Message.ClientToServer.ReadyTodisconnection;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
 import it.polimi.ingsw.view.GUI.Controller.*;
-import it.polimi.ingsw.view.GUI.Controller.WarningNicknameController;
 import it.polimi.ingsw.view.View;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -240,32 +239,6 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayCharacterCard() {
-       /* int i;
-        int coin=0;
-        int player;
-        for(i=0; !Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), lightGame.getPlayers().get(i).getNickname()); i++);
-        player=i;
-        for(i=0;i<lightGame.getCharacterCards().size();i++){
-            switch (lightGame.getCharacterCards().get(i).getNumCard()){
-                case 0 -> coin=lightGame.getAntonio().getCoinPrice();
-                case 1 -> coin=lightGame.getBarbara().getCoinPrice();
-                case 2 -> coin=lightGame.getCiro().getCoinPrice();
-                case 3 -> coin=lightGame.getDante().getCoinPrice();
-                case 4 -> coin=lightGame.getErnesto().getCoinPrice();
-                case 5 -> coin=lightGame.getFelix().getCoinPrice();
-                case 6 -> coin=lightGame.getGiuseppe().getCoinPrice();
-                case 7 -> coin=lightGame.getIvan().getCoinPrice();
-                case 8 -> coin=lightGame.getLancillotto().getCoinPrice();
-                case 9 -> coin=lightGame.getMaria().getCoinPrice();
-                case 10 -> coin=lightGame.getNicola().getCoinPrice();
-                case 11 -> coin=lightGame.getOmnia().getCoinPrice();
-            }
-            //characterCardController.setVisible(i);
-            //characterCardController.setCoinVisible(i,true);
-            if(coin<lightGame.getPlayers().get(player).getNumCoin()){
-                //  characterCardController.setAble(i);
-            }
-        }*/
     }
 
     @Override
@@ -280,7 +253,7 @@ public class Gui extends Application implements View {
         String finalNickname = nickname;
         Platform.runLater(() -> {
             fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/RequestNickPlayers.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/WinnerScene.fxml"));
             Scene scene;
             try {
                 scene = new Scene(fxmlLoader.load());
@@ -356,7 +329,7 @@ public class Gui extends Application implements View {
                     schoolBoard3Controller.setSchoolBoard3();
                 }
                 assistantCardController.setAssistantCards(socketNetworkHandler.getNicknameThisPlayer());
-                characterCardController.setCharacterCards();
+                if(lightGame.getIsExpert()) characterCardController.setCharacterCards();
                 gameTable.setMotherNatureVisible();
                 gameTable.setPawnVisible();
                 gameTable.setTowers();
@@ -409,12 +382,16 @@ public class Gui extends Application implements View {
     public void requestMoveMotherNature(String nickname) {
     Platform.runLater(()->{
         if(Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), nickname)){
-            gameTable.getUseCC().setDisable(false);
-            gameTable.getMoveMnButton().setDisable(false);
-            gameTable.getUseCC().setVisible(true);
-            gameTable.getMoveMnButton().setVisible(true);
-            gameTable.getMessagesActions().setVisible(true);
-            gameTable.getMessagesActions().setDisable(false);
+            if(lightGame.getIsExpert()) {
+                gameTable.getUseCC().setDisable(false);
+                gameTable.getMoveMnButton().setDisable(false);
+                gameTable.getUseCC().setVisible(true);
+                gameTable.getMoveMnButton().setVisible(true);
+                gameTable.getMessagesActions().setVisible(true);
+                gameTable.getMessagesActions().setDisable(false);
+            }else {
+                gameTable.moveMnButton();
+            }
         }else{
         gameTable.setMessages(nickname + " IS IN MOVE MOTHER NATURE PHASE");
     }

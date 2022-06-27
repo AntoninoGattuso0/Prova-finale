@@ -380,8 +380,10 @@ public class GameTableController {
     public void setAssistantSchoolBoardCharacter() {
         AssistantCardButton.setDisable(false);
         AssistantCardButton.setVisible(true);
-        CharacterCardButton.setVisible(true);
-        CharacterCardButton.setDisable(false);
+        if(gui.getLightGame().getIsExpert()) {
+            CharacterCardButton.setVisible(true);
+            CharacterCardButton.setDisable(false);
+        }
         SchoolBoard.setVisible(true);
         int i;
         for (i = 0; i < gui.getLightGame().getPlayers().size(); i++) {
@@ -446,6 +448,7 @@ public class GameTableController {
     public void setChooseViewOn() {
         SchoolBoard.setDisable(false);
         AssistantCardButton.setDisable(false);
+        if(gui.getLightGame().getIsExpert())
         CharacterCardButton.setDisable(false);
     }
 
@@ -459,9 +462,9 @@ public class GameTableController {
             if (gui.getLightGame().getIsExpert()) {
                 characterButton.setVisible(true);
                 characterButton.setDisable(false);
+            }
                 messagesActions.setVisible(true);
                 messagesActions.setDisable(false);
-            }
         });
     }
 
@@ -704,7 +707,7 @@ public class GameTableController {
         }
     }
 
-    public void moveMnButton(MouseEvent mouseEvent) {
+    public void moveMnButton() {
         Platform.runLater(() -> {
             getMoveMnButton().setVisible(false);
             getMoveMnButton().setDisable(true);
@@ -764,6 +767,7 @@ public class GameTableController {
     }
 
     public void switchToCharacterCard(MouseEvent mouseEvent) {
+        if(gui.getLightGame().getIsExpert()) {
         showAssistant.setVisible(false);
         showSchool0.setVisible(false);
         showSchool1.setVisible(false);
@@ -775,6 +779,7 @@ public class GameTableController {
             showCharacterCard.setCenter(characterCardController.getCharacterCards());
             showCharacterCard.setVisible(true);
         });
+        }
     }
 
 
@@ -783,9 +788,11 @@ public class GameTableController {
             assistantCardController = gui.getAssistantCardController();
             showAssistant.setCenter(assistantCardController.getAssistantCards());
             showAssistant.setVisible(false);
-            characterCardController = gui.getCharacterCardController();
-            showCharacterCard.setCenter(characterCardController.getCharacterCards());
-            showCharacterCard.setVisible(false);
+            if(gui.getLightGame().getIsExpert()) {
+                characterCardController = gui.getCharacterCardController();
+                showCharacterCard.setCenter(characterCardController.getCharacterCards());
+                showCharacterCard.setVisible(false);
+            }
             schoolBoard0Controller = gui.getSchoolBoard0Controller();
             showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
             showSchool0.setVisible(false);
@@ -1566,6 +1573,7 @@ public class GameTableController {
 
 
     public void islandButtonClicked(MouseEvent mouseEvent) {
+        Platform.runLater(()->{
         diningButton.setVisible(false);
         diningButton.setDisable(true);
         characterButton.setVisible(false);
@@ -1599,44 +1607,46 @@ public class GameTableController {
         }
         whatToDo.setText("Choose Num to Island: ");
         whatToDo.setVisible(true);
+    });
     }
-
     public void characterButtonClicked(MouseEvent mouseEvent) {
     }
 
     public void diningButtonClicked(MouseEvent mouseEvent) {
-        diningButton.setVisible(false);
-        diningButton.setDisable(true);
-        characterButton.setVisible(false);
-        characterButton.setDisable(true);
-        islandButton.setVisible(false);
-        islandButton.setDisable(true);
+        Platform.runLater(()-> {
+            diningButton.setVisible(false);
+            diningButton.setDisable(true);
+            characterButton.setVisible(false);
+            characterButton.setDisable(true);
+            islandButton.setVisible(false);
+            islandButton.setDisable(true);
 
-        gui.setButtonClicked(ButtonAction.DININGROOM);
-        messagesActions.setVisible(true);
-        messagesActions.setDisable(false);
-        for (int i = 0; i < gui.getPedineDaSpostare(); i++) {
-            if (i == 0) {
-                number0.setText("1");
-                number0.setVisible(true);
-                number0.setDisable(false);
-            } else if (i == 1) {
-                number1.setText("2");
-                number1.setVisible(true);
-                number1.setDisable(false);
-            } else if (i == 2) {
-                number2.setText("3");
-                number2.setVisible(true);
-                number2.setDisable(false);
-            } else if (i == 3) {
-                number3.setText("4");
-                number3.setVisible(true);
-                number3.setDisable(false);
+            gui.setButtonClicked(ButtonAction.DININGROOM);
+            messagesActions.setVisible(true);
+            messagesActions.setDisable(false);
+            for (int i = 0; i < gui.getPedineDaSpostare(); i++) {
+                if (i == 0) {
+                    number0.setText("1");
+                    number0.setVisible(true);
+                    number0.setDisable(false);
+                } else if (i == 1) {
+                    number1.setText("2");
+                    number1.setVisible(true);
+                    number1.setDisable(false);
+                } else if (i == 2) {
+                    number2.setText("3");
+                    number2.setVisible(true);
+                    number2.setDisable(false);
+                } else if (i == 3) {
+                    number3.setText("4");
+                    number3.setVisible(true);
+                    number3.setDisable(false);
+                }
             }
-        }
 
-        whatToDo.setText("Choose Num to DiningRoom: ");
-        whatToDo.setVisible(true);
+            whatToDo.setText("Choose Num to DiningRoom: ");
+            whatToDo.setVisible(true);
+        });
     }
 
     public void useCCButton(MouseEvent mouseEvent) {
