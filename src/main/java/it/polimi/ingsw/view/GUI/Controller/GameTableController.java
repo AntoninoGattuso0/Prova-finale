@@ -580,15 +580,15 @@ public class GameTableController {
         for (i = gui.getLightGame().getIslands().size(); i < 12; i++) {
             String str = "#island" + i;
             gameTable.lookup(str).setVisible(false);
-            str = "#textGreen" + n;
+            str = "#textGreen" + i;
             gameTable.lookup(str).setVisible(false);
-            str = "#textRed" + n;
+            str = "#textRed" + i;
             gameTable.lookup(str).setVisible(false);
-            str = "#textYellow" + n;
+            str = "#textYellow" + i;
             gameTable.lookup(str).setVisible(false);
-            str = "#textBlue" + n;
+            str = "#textBlue" + i;
             gameTable.lookup(str).setVisible(false);
-            str = "#textPink" + n;
+            str = "#textPink" + i;
             gameTable.lookup(str).setVisible(false);
 
         }
