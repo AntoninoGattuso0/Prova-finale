@@ -407,16 +407,17 @@ public class Gui extends Application implements View {
 
     @Override
     public void requestMoveMotherNature(String nickname) {
-        Platform.runLater(()->{
+    Platform.runLater(()->{
         if(Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), nickname)){
-            int i;
-            for(i=0; !Objects.equals(nickname, lightGame.getPlayers().get(i).getNickname()); i++);
-            gameTable.setMessages("MOVE MOTHER NATURE: MAX "+ lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
-            setButtonClicked(ButtonAction.MOTHERNATURE);
-            gameTable.setIslandForMotherNature(lightGame.getPlayers().get(i).getCurrentAssistant().getStep());
+            gameTable.getUseCC().setDisable(false);
+            gameTable.getMoveMnButton().setDisable(false);
+            gameTable.getUseCC().setVisible(true);
+            gameTable.getMoveMnButton().setVisible(true);
+            gameTable.getMessagesActions().setVisible(true);
+            gameTable.getMessagesActions().setDisable(false);
         }else{
-            gameTable.setMessages(nickname + " IS IN MOVE MOTHER NATURE PHASE");
-        }
+        gameTable.setMessages(nickname + " IS IN MOVE MOTHER NATURE PHASE");
+    }
     });
     }
 
