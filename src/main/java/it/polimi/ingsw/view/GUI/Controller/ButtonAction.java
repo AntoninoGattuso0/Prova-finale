@@ -5,6 +5,7 @@ public enum ButtonAction {
     ISLAND,
     DININGROOM,
     MOTHERNATURE,
+    CHARACTER,
     ANTONIO,
     CIRO,
     ERNESTO,

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.view.GUI.warnings;
+package it.polimi.ingsw.view.GUI.Controller;
 
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;

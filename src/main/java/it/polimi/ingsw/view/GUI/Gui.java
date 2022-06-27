@@ -6,7 +6,7 @@ import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.network.Message.ClientToServer.ReadyTodisconnection;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
 import it.polimi.ingsw.view.GUI.Controller.*;
-import it.polimi.ingsw.view.GUI.warnings.WarningNicknameController;
+import it.polimi.ingsw.view.GUI.Controller.WarningNicknameController;
 import it.polimi.ingsw.view.View;
 import javafx.application.Application;
 import javafx.application.Platform;

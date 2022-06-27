@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="warningNickname" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.warnings.WarningNicknameController">
-      <ImageView fitHeight="355.0" fitWidth="345.0" layoutX="2.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@images/Warning.png" />
+<Pane fx:id="warningNickname" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.Controller.WarningNicknameController">
+      <ImageView fitHeight="480.0" fitWidth="480.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/Background.png" />
       </ImageView>
-      <ImageView fx:id="okButton" fitHeight="34.0" fitWidth="80.0" layoutX="253.0" layoutY="295.0" onMouseClicked="#onButtonClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="okButton" fitHeight="34.0" fitWidth="80.0" layoutX="371.0" layoutY="413.0" onMouseClicked="#onButtonClicked" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/OkButton.png" />
       </ImageView>
-      <Label layoutX="7.0" layoutY="1.0" text="NICKNAME IS ALREDY USED OR WRONG!">
+      <Label layoutY="64.0" prefHeight="57.0" prefWidth="480.0" text="NICKNAME IS ALREADY USED" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font size="36.0" />
          </font>
       </Label>
 
