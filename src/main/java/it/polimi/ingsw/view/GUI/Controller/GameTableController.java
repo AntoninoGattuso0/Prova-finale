@@ -1263,7 +1263,7 @@ public class GameTableController {
             while (i != numIsland) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
