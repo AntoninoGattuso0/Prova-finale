@@ -1010,9 +1010,12 @@ public class GameTableController {
         gui.setNumPawns(parseInt(number0.getText()));
         gui.setNumPawnsCount(parseInt(number0.getText()));
 
-        if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+        if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)) {
+            gui.getGameTable().whatToDo.setText("Select Pawn from CC");
+            gui.setNumPawns(gui.getNumPawns() * 2);
+            gui.setNumPawnsCount(gui.getNumPawnsCount() * 2);
             int i;
-            for(i = 0; i < 3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=6; i++);
+            for (i = 0; i < 3 && gui.getLightGame().getCharacterCards().get(i).getNumCard() != 6; i++) ;
             gui.getCharacterCardController().setColorCharacterVisible(0, i, true);
             gui.getCharacterCardController().setColorCharacterVisible(1, i, true);
             gui.getCharacterCardController().setColorCharacterVisible(2, i, true);
@@ -1023,7 +1026,20 @@ public class GameTableController {
             gui.getCharacterCardController().setColorCharacterDisabled(2, i, false);
             gui.getCharacterCardController().setColorCharacterDisabled(3, i, false);
             gui.getCharacterCardController().setColorCharacterDisabled(4, i, false);
-
+        }else if(gui.getButtonClicked().equals(ButtonAction.MARIA)){
+            gui.getGameTable().whatToDo.setText("Select Pawn from Entrance");
+            gui.setNumPawns(gui.getNumPawns() * 2);
+            gui.setNumPawnsCount(gui.getNumPawnsCount() * 2);
+            int player;
+            for(player = 0; player < gui.getLightGame().getNumPlayers() && !gui.getLightGame().getPlayers().get(player).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer()); player++);
+            if(player == 0)
+                gui.getSchoolBoard0Controller().setEntrance0Clickable();
+            else if(player == 1)
+                gui.getSchoolBoard1Controller().setEntrance1Clickable();
+            else if(player == 2)
+                gui.getSchoolBoard2Controller().setEntrance2Clickable();
+            else if(player == 3)
+                gui.getSchoolBoard3Controller().setEntrance3Clickable();
         } else {
 
             if (gui.getButtonClicked().equals(ButtonAction.ISLAND))
