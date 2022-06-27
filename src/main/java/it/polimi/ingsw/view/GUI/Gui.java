@@ -280,7 +280,7 @@ public class Gui extends Application implements View {
         String finalNickname = nickname;
         Platform.runLater(() -> {
             fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/RequestNickPlayers.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/WinnerScene.fxml"));
             Scene scene;
             try {
                 scene = new Scene(fxmlLoader.load());
@@ -356,7 +356,7 @@ public class Gui extends Application implements View {
                     schoolBoard3Controller.setSchoolBoard3();
                 }
                 assistantCardController.setAssistantCards(socketNetworkHandler.getNicknameThisPlayer());
-                characterCardController.setCharacterCards();
+                if(lightGame.getIsExpert()) characterCardController.setCharacterCards();
                 gameTable.setMotherNatureVisible();
                 gameTable.setPawnVisible();
                 gameTable.setTowers();

@@ -764,6 +764,7 @@ public class GameTableController {
     }
 
     public void switchToCharacterCard(MouseEvent mouseEvent) {
+        if(gui.getLightGame().getIsExpert()) {
         showAssistant.setVisible(false);
         showSchool0.setVisible(false);
         showSchool1.setVisible(false);
@@ -775,6 +776,7 @@ public class GameTableController {
             showCharacterCard.setCenter(characterCardController.getCharacterCards());
             showCharacterCard.setVisible(true);
         });
+        }
     }
 
 
@@ -783,8 +785,10 @@ public class GameTableController {
             assistantCardController = gui.getAssistantCardController();
             showAssistant.setCenter(assistantCardController.getAssistantCards());
             showAssistant.setVisible(false);
-            characterCardController = gui.getCharacterCardController();
-            showCharacterCard.setCenter(characterCardController.getCharacterCards());
+            if(gui.getLightGame().getIsExpert()){
+                characterCardController = gui.getCharacterCardController();
+                showCharacterCard.setCenter(characterCardController.getCharacterCards());
+            }
             showCharacterCard.setVisible(false);
             schoolBoard0Controller = gui.getSchoolBoard0Controller();
             showSchool0.setCenter(schoolBoard0Controller.getSchoolBoard0());
