@@ -6,7 +6,6 @@ import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.network.Message.ClientToServer.ReadyTodisconnection;
 import it.polimi.ingsw.network.Message.ClientToServer.RequestNicknameAfterFirstLoginMessage;
 import it.polimi.ingsw.view.GUI.Controller.*;
-import it.polimi.ingsw.view.GUI.Controller.WarningNicknameController;
 import it.polimi.ingsw.view.View;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -383,12 +382,16 @@ public class Gui extends Application implements View {
     public void requestMoveMotherNature(String nickname) {
     Platform.runLater(()->{
         if(Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), nickname)){
-            gameTable.getUseCC().setDisable(false);
-            gameTable.getMoveMnButton().setDisable(false);
-            gameTable.getUseCC().setVisible(true);
-            gameTable.getMoveMnButton().setVisible(true);
-            gameTable.getMessagesActions().setVisible(true);
-            gameTable.getMessagesActions().setDisable(false);
+            if(lightGame.getIsExpert()) {
+                gameTable.getUseCC().setDisable(false);
+                gameTable.getMoveMnButton().setDisable(false);
+                gameTable.getUseCC().setVisible(true);
+                gameTable.getMoveMnButton().setVisible(true);
+                gameTable.getMessagesActions().setVisible(true);
+                gameTable.getMessagesActions().setDisable(false);
+            }else {
+                gameTable.moveMnButton();
+            }
         }else{
         gameTable.setMessages(nickname + " IS IN MOVE MOTHER NATURE PHASE");
     }

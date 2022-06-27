@@ -707,7 +707,7 @@ public class GameTableController {
         }
     }
 
-    public void moveMnButton(MouseEvent mouseEvent) {
+    public void moveMnButton() {
         Platform.runLater(() -> {
             getMoveMnButton().setVisible(false);
             getMoveMnButton().setDisable(true);
