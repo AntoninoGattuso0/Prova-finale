@@ -454,6 +454,7 @@ public class GameTableController {
 
     public void setButtonForRequestMovePawn() {
         Platform.runLater(() -> {
+            whatToDo.setText("Choose your action:");
             whatToDo.setVisible(true);
             islandButton.setDisable(false);
             islandButton.setVisible(true);
@@ -1278,7 +1279,7 @@ public class GameTableController {
             while (i != numIsland) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
@@ -1775,7 +1776,7 @@ public class GameTableController {
         return cloudButton;
     }
 
-    public void CloudButton(MouseEvent mouseEvent) {
+    public void CloudButton() {
         Platform.runLater(()-> {
             cloudButton.setVisible(false);
             cloudButton.setDisable(true);

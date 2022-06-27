@@ -32,6 +32,7 @@ public class NumOfPlayerIsExpertController {
         int num = -1;
         joinButton.setVisible(false);
         joinButton.setDisable(true);
+        System.out.println(numPlayerBox.getValue());
         switch (numPlayerBox.getValue()) {
             case "2" -> num = 2;
             case "3" -> num = 3;
