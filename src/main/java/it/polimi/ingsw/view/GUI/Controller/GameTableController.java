@@ -329,7 +329,6 @@ public class GameTableController {
             gameTable.lookup(white).setVisible(false);
             gameTable.lookup(grey).setVisible(false);
         }
-
     }
 
     public void setIslandForMotherNature(int steps) {
