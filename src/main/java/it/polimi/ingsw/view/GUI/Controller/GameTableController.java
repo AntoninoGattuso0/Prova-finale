@@ -18,6 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static java.lang.Integer.parseInt;
 
@@ -398,6 +399,19 @@ public class GameTableController {
             }
         }
     }
+
+    public Button getUseCC() {
+        return useCC;
+    }
+
+    public Pane getMessagesActions() {
+        return messagesActions;
+    }
+
+    public Button getMoveMnButton() {
+        return moveMnButton;
+    }
+
     public void setCloudVisible() {
         int n;
         int i;
@@ -494,6 +508,16 @@ public class GameTableController {
                 gameTable.lookup("#prohibited"+i).setVisible(false);
             }
         }
+    }
+    public void moveMnButton(MouseEvent mouseEvent){
+        Platform.runLater(()->{
+                int i;
+                for(i=0; !Objects.equals(gui.getSocketNetworkHandler().getNicknameThisPlayer(), gui.getLightGame().getPlayers().get(i).getNickname()); i++);
+                setMessages("MOVE MOTHER NATURE: MAX "+ gui.getLightGame().getPlayers().get(i).getCurrentAssistant().getStep());
+                gui.setButtonClicked(ButtonAction.MOTHERNATURE);
+                setIslandForMotherNature(gui.getLightGame().getPlayers().get(i).getCurrentAssistant().getStep());
+        });
+
     }
     public void setTowers() {
         int i;
@@ -1423,5 +1447,8 @@ public class GameTableController {
             endTurn.setVisible(true);
             endTurn.setDisable(false);
         });
+    }
+
+    public void CloudButton(MouseEvent mouseEvent) {
     }
 }
