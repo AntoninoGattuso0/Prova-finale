@@ -734,7 +734,7 @@
                   <Button fx:id="useCC" layoutX="106.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#useCCButton" text="Use CC" />
 
                   <Button fx:id="endTurn" layoutX="27.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#endTurnButton" text="End Turn" />
-                  <Button fx:id="endTurn1" layoutX="28.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#endTurnButton" text="Move MN" />
+                  <Button fx:id="moveMnButton" layoutX="28.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#endTurnButton" text="Move MN" />
                   <Button fx:id="cloudButton" layoutX="40.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#endTurnButton" text="Cloud" />
 
                </children>

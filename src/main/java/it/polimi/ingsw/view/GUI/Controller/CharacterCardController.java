@@ -173,15 +173,16 @@ public class CharacterCardController {
     }
 
 
-    public void setDisable(int n, boolean disable) {
+    /*public void setDisable(int n, boolean disable) {
         String name = "#characterCard" + n;
         characterCards.lookup(name).setDisable(disable);
     }
+    ABBIAMO CAMBIATO I NOMI DEI CC
 
     public void setVisible(int n, boolean visible) {
         String name = "#characterCard" + n;
         characterCards.lookup(name).setVisible(visible);
-    }
+    }*/
 
     public void setColorCharacterVisible(int color, int character, boolean visible) {
         String name;
@@ -248,7 +249,7 @@ public class CharacterCardController {
         }
         if (gui.getLightGame().getCharacterCards().get(0).getNumCard() == 0) {
                 for(int i = 0; i < 3; i++)
-                    setDisable(i, true);
+                    //setDisable(i, true);
                 characterCards.lookup("greenCharacter0").setDisable(false);
                 characterCards.lookup("redCharacter0").setDisable(false);
                 characterCards.lookup("yellowCharacter0").setDisable(false);

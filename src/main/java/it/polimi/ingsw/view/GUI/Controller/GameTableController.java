@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import static java.lang.Integer.parseInt;
 
 public class GameTableController {
+    @FXML Button moveMnButton;
+    @FXML Button cloudButton;
     @FXML Button useCC;
     @FXML Button endTurn;
     @FXML Button number0;
@@ -171,6 +173,11 @@ public class GameTableController {
 
 
     public void setButtonOff(){
+        moveMnButton.setDisable(true);
+        moveMnButton.setVisible(false);
+        cloudButton.setDisable(true);
+        cloudButton.setVisible(false);
+
         useCC.setDisable(true);
         useCC.setVisible(false);
         endTurn.setDisable(true);
@@ -936,6 +943,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(0);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.getColorPawns().clear();
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             if(gui.getPedineDaSpostare()==0){
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
@@ -961,6 +969,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(1);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.getColorPawns().clear();
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             if(gui.getPedineDaSpostare()==0){
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
@@ -985,6 +994,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(2);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.getColorPawns().clear();
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             if(gui.getPedineDaSpostare()==0){
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
@@ -1009,6 +1019,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(3);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.getColorPawns().clear();
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             if(gui.getPedineDaSpostare()==0){
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
@@ -1033,6 +1044,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(4);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.getColorPawns().clear();
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             if(gui.getPedineDaSpostare()==0){
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
@@ -1057,6 +1069,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(5);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.getColorPawns().clear();
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             if(gui.getPedineDaSpostare()==0){
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
@@ -1081,6 +1094,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(6);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.getColorPawns().clear();
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             if(gui.getPedineDaSpostare()==0){
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
@@ -1105,6 +1119,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(7);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.getColorPawns().clear();
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             if(gui.getPedineDaSpostare()==0){
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
@@ -1129,6 +1144,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(8);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.getColorPawns().clear();
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             if(gui.getPedineDaSpostare()==0){
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
@@ -1153,6 +1169,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(9);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.getColorPawns().clear();
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             if(gui.getPedineDaSpostare()==0){
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
@@ -1177,6 +1194,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(10);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.getColorPawns().clear();
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             if(gui.getPedineDaSpostare()==0){
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
@@ -1201,6 +1219,7 @@ public class GameTableController {
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
             gui.setIslandSelected(11);
             gui.getSocketNetworkHandler().sendMessage(new MovePawnToIslandMessage(gui.getIslandSelected(), gui.getNumPawns(), gui.getColorPawns()));
+            gui.getColorPawns().clear();
             gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             if(gui.getPedineDaSpostare()==0){
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
@@ -1310,10 +1329,72 @@ public class GameTableController {
             useCC.setVisible(false);
             endTurn.setVisible(false);
             endTurn.setDisable(true);
-        messages.setText("CHOOSE CHARACTERCARD");
-        characterCardController.setDisable(0, false);
-        characterCardController.setDisable(1, false);
-        characterCardController.setDisable(2, false);
+            messages.setText("CHOOSE CHARACTERCARD");
+            int player;
+            for(player = 0; player<gui.getLightGame().getNumPlayers() && !gui.getLightGame().getPlayers().get(player).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer()); player++);
+            for(int i = 0; i < 3; i++){
+                if(gui.getLightGame().getCharacterCards().get(i).getNumCard() == 0){
+                    if(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getAntonio().getCoinPrice())
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                    else
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                }else if(gui.getLightGame().getCharacterCards().get(i).getNumCard() == 1){
+                    if(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getBarbara().getCoinPrice())
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                    else
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                }else if(gui.getLightGame().getCharacterCards().get(i).getNumCard() == 2){
+                    if(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getCiro().getCoinPrice())
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                    else
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                }else if(gui.getLightGame().getCharacterCards().get(i).getNumCard() == 3){
+                    if(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getDante().getCoinPrice())
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                    else
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                }else if(gui.getLightGame().getCharacterCards().get(i).getNumCard() == 4){
+                    if(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getErnesto().getCoinPrice())
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                    else
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                }else if(gui.getLightGame().getCharacterCards().get(i).getNumCard() == 5){
+                    if(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getFelix().getCoinPrice())
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                    else
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                }else if(gui.getLightGame().getCharacterCards().get(i).getNumCard() == 6){
+                    if(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getGiuseppe().getCoinPrice())
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                    else
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                }else if(gui.getLightGame().getCharacterCards().get(i).getNumCard() == 7){
+                    if(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getIvan().getCoinPrice())
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                    else
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                }else if(gui.getLightGame().getCharacterCards().get(i).getNumCard() == 8){
+                    if(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getLancillotto().getCoinPrice())
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                    else
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                }else if(gui.getLightGame().getCharacterCards().get(i).getNumCard() == 9){
+                    if(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getMaria().getCoinPrice())
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                    else
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                }else if(gui.getLightGame().getCharacterCards().get(i).getNumCard() == 10){
+                    if(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getNicola().getCoinPrice())
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                    else
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                }else if(gui.getLightGame().getCharacterCards().get(i).getNumCard() == 11){
+                    if(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getOmnia().getCoinPrice())
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                    else
+                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                }
+            }
         });
     }
     public void endTurnButton(MouseEvent mouseEvent) {
