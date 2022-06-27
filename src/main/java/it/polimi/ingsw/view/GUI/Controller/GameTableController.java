@@ -311,7 +311,7 @@ public class GameTableController {
             String nameG = "#green" + j;
             String nameR = "#red" + j;
             String nameP = "#pink" + j;
-            String nameY = "yellow" + j;
+            String nameY = "#yellow" + j;
             String nameB = "#blue" + j;
             String textIsland = "#textIsland" + j;
             String black="#blackTower"+j;

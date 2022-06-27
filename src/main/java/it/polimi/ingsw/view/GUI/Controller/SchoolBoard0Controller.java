@@ -802,29 +802,28 @@ public class SchoolBoard0Controller {
     }
 
     public void selection(){
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
-        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
-            for(int i=0; i<gui.getLightGame().getIslands().size(); i++)
-                gui.getGameTable().getGameTablePane().lookup("#island"+ i).setDisable(false);
-            if(gui.getNumPawnsCount()==0)
-                for(Node school : schoolBoard0.getChildren())
-                    school.setDisable(true);
-        }else if(gui.getButtonClicked().equals(ButtonAction.DININGROOM)){
-            if(gui.getNumPawnsCount()==0){
-                for(Node school : schoolBoard0.getChildren()){
-                    school.setDisable(true);
+            gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
+            if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
+                for(int i=0; i<gui.getLightGame().getIslands().size(); i++)
+                    gui.getGameTable().getGameTablePane().lookup("#island"+ i).setDisable(false);
+                if(gui.getNumPawnsCount()==0)
+                    for(Node school : schoolBoard0.getChildren())
+                        school.setDisable(true);
+            }else if(gui.getButtonClicked().equals(ButtonAction.DININGROOM)){
+                if(gui.getNumPawnsCount()==0){
+                    for(Node school : schoolBoard0.getChildren()){
+                        school.setDisable(true);
+                    }
+                    gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
+                    gui.getColorPawns().clear();
+                    gui.getSchoolBoard0Controller().setDiningRoom0();
+                    gui.getGameTable().getShowSchool0().setCenter(gui.getSchoolBoard0Controller().getSchoolBoard0());
+                    gui.getGameTable().getShowSchool0().setVisible(true);
+                    gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
                 }
-                gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
-                gui.getColorPawns().clear();
-                gui.getSchoolBoard0Controller().setDiningRoom0();
-                gui.getGameTable().getShowSchool0().setCenter(gui.getSchoolBoard0Controller().getSchoolBoard0());
-                gui.getGameTable().getShowSchool0().setVisible(true);
-                gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+            }
+            if(gui.getPedineDaSpostare()==0){
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
             }
         }
-        if(gui.getPedineDaSpostare()==0){
-            gui.setPedineDaSpostare(gui.getNumPawnMove());
-        }
     }
-
-}
