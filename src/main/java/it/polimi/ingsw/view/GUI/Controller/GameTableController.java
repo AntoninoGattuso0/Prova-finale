@@ -34,6 +34,7 @@ public class GameTableController {
     @FXML Text textIsland8;
     @FXML Text textIsland9;
     @FXML Text textIsland10;
+    @FXML Text textIsland11;
     @FXML Button moveMnButton;
     @FXML Button cloudButton;
     @FXML Button useCC;
@@ -179,6 +180,8 @@ public class GameTableController {
         textIsland8.setText("Tot Islands:"+gui.getLightGame().getIslands().get(8).getTotIsland());
         textIsland9.setText("Tot Islands:"+gui.getLightGame().getIslands().get(9).getTotIsland());
         textIsland10.setText("Tot Islands:"+gui.getLightGame().getIslands().get(10).getTotIsland());
+        textIsland11.setText("Tot Islands: "+gui.getLightGame().getIslands().get(11).getTotIsland());
+
     }
 
     public void setIslandForMotherNature(int steps){
@@ -426,6 +429,21 @@ public class GameTableController {
                     }
                 }
             }
+        }
+        for(i=gui.getLightGame().getIslands().size();i<12;i++){
+            String str="#island"+ i;
+            gameTable.lookup(str).setVisible(false);
+            str="#textGreen"+n;
+            gameTable.lookup(str).setVisible(false);
+            str="#textRed"+n;
+            gameTable.lookup(str).setVisible(false);
+            str="#textYellow"+n;
+            gameTable.lookup(str).setVisible(false);
+            str="#textBlue"+n;
+            gameTable.lookup(str).setVisible(false);
+            str="#textPink"+n;
+            gameTable.lookup(str).setVisible(false);
+
         }
     }
 
