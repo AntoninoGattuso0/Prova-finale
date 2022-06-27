@@ -288,23 +288,23 @@ public class GameTableController {
         textIsland0.setText("Tot Islands:" + gui.getLightGame().getIslands().get(0).getTotIsland());
         textIsland1.setText("Tot Islands:" + gui.getLightGame().getIslands().get(1).getTotIsland());
         textIsland2.setText("Tot Islands:" + gui.getLightGame().getIslands().get(2).getTotIsland());
-        if(gui.getLightGame().getIslands().size()>2)
-        textIsland3.setText("Tot Islands:" + gui.getLightGame().getIslands().get(3).getTotIsland());
         if(gui.getLightGame().getIslands().size()>3)
-        textIsland4.setText("Tot Islands:" + gui.getLightGame().getIslands().get(4).getTotIsland());
+        textIsland3.setText("Tot Islands:" + gui.getLightGame().getIslands().get(3).getTotIsland());
         if(gui.getLightGame().getIslands().size()>4)
-        textIsland5.setText("Tot Islands:" + gui.getLightGame().getIslands().get(5).getTotIsland());
+        textIsland4.setText("Tot Islands:" + gui.getLightGame().getIslands().get(4).getTotIsland());
         if(gui.getLightGame().getIslands().size()>5)
-        textIsland6.setText("Tot Islands:" + gui.getLightGame().getIslands().get(6).getTotIsland());
+        textIsland5.setText("Tot Islands:" + gui.getLightGame().getIslands().get(5).getTotIsland());
         if(gui.getLightGame().getIslands().size()>6)
-        textIsland7.setText("Tot Islands:" + gui.getLightGame().getIslands().get(7).getTotIsland());
+        textIsland6.setText("Tot Islands:" + gui.getLightGame().getIslands().get(6).getTotIsland());
         if(gui.getLightGame().getIslands().size()>7)
-        textIsland8.setText("Tot Islands:" + gui.getLightGame().getIslands().get(8).getTotIsland());
+        textIsland7.setText("Tot Islands:" + gui.getLightGame().getIslands().get(7).getTotIsland());
         if(gui.getLightGame().getIslands().size()>8)
-        textIsland9.setText("Tot Islands:" + gui.getLightGame().getIslands().get(9).getTotIsland());
+        textIsland8.setText("Tot Islands:" + gui.getLightGame().getIslands().get(8).getTotIsland());
         if(gui.getLightGame().getIslands().size()>9)
-        textIsland10.setText("Tot Islands:" + gui.getLightGame().getIslands().get(10).getTotIsland());
+        textIsland9.setText("Tot Islands:" + gui.getLightGame().getIslands().get(9).getTotIsland());
         if(gui.getLightGame().getIslands().size()>10)
+        textIsland10.setText("Tot Islands:" + gui.getLightGame().getIslands().get(10).getTotIsland());
+        if(gui.getLightGame().getIslands().size()>11)
         textIsland11.setText("Tot Islands: " + gui.getLightGame().getIslands().get(11).getTotIsland());
         for (j = i; j < 12; j++) {
             String name = "#island" + j;
