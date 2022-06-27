@@ -166,8 +166,18 @@ public class GameTableController {
         }
         for(j=i;j<12;j++){
             String name= "#island"+j;
+            String nameG="#green"+j;
+            String nameR="#red"+j;
+            String nameP="#pink"+j;
+            String nameY="yellow"+j;
+            String nameB="#blue"+j;
             gameTable.lookup(name).setVisible(false);
             gameTable.lookup(name).setDisable(true);
+            gameTable.lookup(nameP).setVisible(false);
+            gameTable.lookup(nameB).setVisible(false);
+            gameTable.lookup(nameG).setVisible(false);
+            gameTable.lookup(nameR).setVisible(false);
+            gameTable.lookup(nameY).setVisible(false);
         }
         textIsland0.setText("Tot Islands:"+gui.getLightGame().getIslands().get(0).getTotIsland());
         textIsland1.setText("Tot Islands:"+gui.getLightGame().getIslands().get(1).getTotIsland());
