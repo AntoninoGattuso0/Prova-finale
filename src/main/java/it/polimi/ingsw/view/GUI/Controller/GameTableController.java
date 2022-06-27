@@ -85,8 +85,7 @@ public class GameTableController {
     Button AssistantCardButton;
     @FXML
     Button diningButton;
-    @FXML
-    Button characterButton;
+
     @FXML
     Button islandButton;
     @FXML
@@ -369,8 +368,8 @@ public class GameTableController {
         number3.setDisable(true);
         islandButton.setDisable(true);
         islandButton.setVisible(false);
-        characterButton.setVisible(false);
-        characterButton.setDisable(true);
+        useCC.setVisible(false);
+        useCC.setDisable(true);
         diningButton.setDisable(true);
         diningButton.setVisible(false);
         messagesActions.setVisible(false);
@@ -461,8 +460,8 @@ public class GameTableController {
             diningButton.setVisible(true);
             diningButton.setDisable(false);
             if (gui.getLightGame().getIsExpert()) {
-                characterButton.setVisible(true);
-                characterButton.setDisable(false);
+                useCC.setVisible(true);
+                useCC.setDisable(false);
             }
                 messagesActions.setVisible(true);
                 messagesActions.setDisable(false);
@@ -1283,7 +1282,7 @@ public class GameTableController {
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
-            gui.getGameTable().getGameTablePane().lookup("prohibited" + numIsland).setVisible(false);
+            gui.getGameTable().getGameTablePane().lookup("#prohibited" + numIsland).setVisible(false);
         } else if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
             gui.setIslandSelected(numIsland);
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(0, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
@@ -1292,7 +1291,7 @@ public class GameTableController {
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(2, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
         } else if(gui.getButtonClicked().equals(ButtonAction.ERNESTO)){
             gui.setIslandSelected(numIsland);
-            gui.getGameTable().getGameTablePane().lookup("prohibited" + numIsland).setVisible(true);
+            gui.getGameTable().getGameTablePane().lookup("#prohibited" + numIsland).setVisible(true);
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(4, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
         }
     }
@@ -1351,8 +1350,8 @@ public class GameTableController {
         Platform.runLater(()->{
         diningButton.setVisible(false);
         diningButton.setDisable(true);
-        characterButton.setVisible(false);
-        characterButton.setDisable(true);
+        useCC.setVisible(false);
+        useCC.setDisable(true);
         islandButton.setVisible(false);
         islandButton.setDisable(true);
 
@@ -1384,15 +1383,13 @@ public class GameTableController {
         whatToDo.setVisible(true);
     });
     }
-    public void characterButtonClicked(MouseEvent mouseEvent) {
-    }
 
     public void diningButtonClicked(MouseEvent mouseEvent) {
         Platform.runLater(()-> {
             diningButton.setVisible(false);
             diningButton.setDisable(true);
-            characterButton.setVisible(false);
-            characterButton.setDisable(true);
+            useCC.setVisible(false);
+            useCC.setDisable(true);
             islandButton.setVisible(false);
             islandButton.setDisable(true);
 
@@ -1427,6 +1424,11 @@ public class GameTableController {
     public void useCCButton(MouseEvent mouseEvent) {
         Platform.runLater(() -> {
             characterCardController = gui.getCharacterCardController();
+            showSchool0.setVisible(false);
+            showSchool1.setVisible(false);
+            showSchool2.setVisible(false);
+            showSchool3.setVisible(false);
+            showAssistant.setVisible(false);
             showCharacterCard.setVisible(true);
             showCharacterCard.setDisable(false);
             messagesActions.setDisable(true);
@@ -1443,10 +1445,8 @@ public class GameTableController {
                 if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 0) {
                     if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getAntonio().getCoinPrice())
                         characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
-                    else {
-                        System.out.println("Ho reso cliccabile antonio");
+                    else
                         characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
-                    }
                 } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 1) {
                     if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getBarbara().getCoinPrice())
                         characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);

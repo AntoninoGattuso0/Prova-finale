@@ -273,6 +273,7 @@ public class CharacterCardController {
                     setColorCharacterDisabled(4, characterPosition, false);
                 }
             } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 1) {
+                setDisableAll();
                 gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getBarbara().getCoinPrice());
                 gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(1, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
             } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 2) {
@@ -282,6 +283,7 @@ public class CharacterCardController {
                 for (int i = 0; i < gui.getLightGame().getIslands().size(); i++)
                     gui.getGameTable().getGameTablePane().lookup("#island" + i).setDisable(false);
             } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 3) {
+                setDisableAll();
                 gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getDante().getCoinPrice());
                 gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(3, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
             } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 4) {
@@ -363,11 +365,11 @@ public class CharacterCardController {
     }
 
     public void character0Select(MouseEvent mouseEvent) {
-        System.out.println("ho cliccato antonio");
         characterEffects(0);
     }
 
     public void character1Select(MouseEvent mouseEvent) {
+        System.out.println("ho cliccato barbara");
         characterEffects(1);
     }
 
