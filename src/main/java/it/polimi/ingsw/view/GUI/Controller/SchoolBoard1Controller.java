@@ -24,6 +24,26 @@ public class SchoolBoard1Controller {
         setEntrance1();
         setDiningRoom1();
         setTower1();
+        int n;
+        n=gui.getLightGame().getProfTable().getRedProf();
+        if(n==1){
+            setRedProfessor1(true);
+        }
+        n=gui.getLightGame().getProfTable().getPinkProf();
+        if(n==1){
+            setPinkProfessor1(true);
+        }
+        n=gui.getLightGame().getProfTable().getGreenProf();
+        if(n==1){
+            setGreenProfessor1(true);
+        }
+        n=gui.getLightGame().getProfTable().getBlueProf();
+        if(n==1){setBlueProfessor1(true);
+        }
+        n=gui.getLightGame().getProfTable().getYellowProf();
+        if(n==1){
+            setYellowProfessor1(true);
+        }
         setCoin1();
     }
 

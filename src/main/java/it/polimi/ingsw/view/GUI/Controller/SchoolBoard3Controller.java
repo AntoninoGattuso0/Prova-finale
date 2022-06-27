@@ -23,6 +23,26 @@ public class SchoolBoard3Controller {
         setEntrance3();
         setDiningRoom3();
         setCoin3();
+        int n;
+        n=gui.getLightGame().getProfTable().getRedProf();
+        if(n==3){
+            setRedProfessor3(true);
+        }
+        n=gui.getLightGame().getProfTable().getPinkProf();
+        if(n==3){
+            setPinkProfessor3(true);
+        }
+        n=gui.getLightGame().getProfTable().getGreenProf();
+        if(n==3){
+            setGreenProfessor3(true);
+        }
+        n=gui.getLightGame().getProfTable().getBlueProf();
+        if(n==3){setBlueProfessor3(true);
+        }
+        n=gui.getLightGame().getProfTable().getYellowProf();
+        if(n==3){
+            setYellowProfessor3(true);
+        }
     }
 
     public void setAllInvisible(){

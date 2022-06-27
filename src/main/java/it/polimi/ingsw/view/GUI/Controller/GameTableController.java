@@ -693,6 +693,10 @@ public class GameTableController {
     }
 
     public void setProfessor(){
+        schoolBoard0Controller= gui.getSchoolBoard0Controller();
+        schoolBoard1Controller= gui.getSchoolBoard1Controller();
+        schoolBoard2Controller=gui.getSchoolBoard2Controller();
+        schoolBoard3Controller= gui.getSchoolBoard3Controller();
         int color;
         int prof = -1;
         for(color = 0; color< 5; color++){
@@ -705,42 +709,42 @@ public class GameTableController {
             switch(prof){
                 case -1 -> {
                     setProfessorTable(color, true);
-                    gui.getSchoolBoard0Controller().setProfessor0(color, false);
-                    gui.getSchoolBoard1Controller().setProfessor1(color, false);
-                    if (schoolBoard2Controller!=null)  gui.getSchoolBoard2Controller().setProfessor2(color, false);
-                    if (schoolBoard3Controller!=null) gui.getSchoolBoard3Controller().setProfessor3(color, false);
+                    schoolBoard0Controller.setProfessor0(color, false);
+                   schoolBoard1Controller.setProfessor1(color, false);
+                    if (schoolBoard2Controller!=null)  schoolBoard2Controller.setProfessor2(color, false);
+                    if (schoolBoard3Controller!=null) schoolBoard3Controller.setProfessor3(color, false);
 
                 }
                 case 0 -> {
                     setProfessorTable(color, false);
-                    gui.getSchoolBoard0Controller().setProfessor0(color,true);
-                    gui.getSchoolBoard1Controller().setProfessor1(color, false);
-                    if (schoolBoard2Controller!=null) gui.getSchoolBoard2Controller().setProfessor2(color,false);
-                    if (schoolBoard3Controller!=null) gui.getSchoolBoard3Controller().setProfessor3(color, false);
+                    schoolBoard0Controller.setProfessor0(color,true);
+                    schoolBoard1Controller.setProfessor1(color, false);
+                    if (schoolBoard2Controller!=null) schoolBoard2Controller.setProfessor2(color,false);
+                    if (schoolBoard3Controller!=null) schoolBoard3Controller.setProfessor3(color, false);
                 }
                 case 1 -> {
                     setProfessorTable(color, false);
-                    gui.getSchoolBoard0Controller().setProfessor0(color, false);
-                    gui.getSchoolBoard1Controller().setProfessor1(color, true);
-                    if (schoolBoard2Controller!=null) gui.getSchoolBoard2Controller().setProfessor2(color, false);
-                    if (schoolBoard3Controller!=null) gui.getSchoolBoard3Controller().setProfessor3(color, false);
+                    schoolBoard0Controller.setProfessor0(color, false);
+                    schoolBoard1Controller.setProfessor1(color, true);
+                    if (schoolBoard2Controller!=null) schoolBoard2Controller.setProfessor2(color, false);
+                    if (schoolBoard3Controller!=null) schoolBoard3Controller.setProfessor3(color, false);
                 }
                 case 2 -> {
                     if (schoolBoard2Controller!=null) {
                         setProfessorTable(color, false);
-                        gui.getSchoolBoard0Controller().setProfessor0(color, false);
-                        gui.getSchoolBoard1Controller().setProfessor1(color, false);
-                        if (schoolBoard2Controller!=null) gui.getSchoolBoard2Controller().setProfessor2(color, true);
-                        if (schoolBoard3Controller!=null) gui.getSchoolBoard3Controller().setProfessor3(color,false);
+                        schoolBoard0Controller.setProfessor0(color, false);
+                        schoolBoard1Controller.setProfessor1(color, false);
+                        if (schoolBoard2Controller!=null) schoolBoard2Controller.setProfessor2(color, true);
+                        if (schoolBoard3Controller!=null) schoolBoard3Controller.setProfessor3(color,false);
                     }
                 }
                 case 3 -> {
                     if (schoolBoard3Controller!=null) {
                         setProfessorTable(color,false);
-                        gui.getSchoolBoard0Controller().setProfessor0(color, false);
-                        gui.getSchoolBoard1Controller().setProfessor1(color, false);
-                        if (schoolBoard2Controller!=null) gui.getSchoolBoard2Controller().setProfessor2(color, false);
-                        if (schoolBoard3Controller!=null) gui.getSchoolBoard3Controller().setProfessor3(color, true);
+                        schoolBoard0Controller.setProfessor0(color, false);
+                        schoolBoard1Controller.setProfessor1(color, false);
+                        if (schoolBoard2Controller!=null) schoolBoard2Controller.setProfessor2(color, false);
+                        if (schoolBoard3Controller!=null) schoolBoard3Controller.setProfessor3(color, true);
                     }
                 }
             }
@@ -1216,7 +1220,7 @@ public class GameTableController {
                 number3.setDisable(false);
             }
         }
-
+        gui.setPedineDaSpostare(gui.getNumPawnMove());
         whatToDo.setText("Choose Num to Island: ");
         whatToDo.setVisible(true);
     }
@@ -1256,7 +1260,7 @@ public class GameTableController {
                 number3.setDisable(false);
             }
         }
-
+        gui.setPedineDaSpostare(gui.getNumPawnMove());
         whatToDo.setText("Choose Num to DiningRoom: ");
         whatToDo.setVisible(true);
     }

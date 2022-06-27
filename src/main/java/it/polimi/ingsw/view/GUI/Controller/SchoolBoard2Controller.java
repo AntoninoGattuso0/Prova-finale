@@ -24,6 +24,26 @@ public class SchoolBoard2Controller {
         setEntrance2();
         setDiningRoom2();
         setTower2();
+        int n;
+        n=gui.getLightGame().getProfTable().getRedProf();
+        if(n==2){
+            setRedProfessor2(true);
+        }
+        n=gui.getLightGame().getProfTable().getPinkProf();
+        if(n==2){
+            setPinkProfessor2(true);
+        }
+        n=gui.getLightGame().getProfTable().getGreenProf();
+        if(n==2){
+            setGreenProfessor2(true);
+        }
+        n=gui.getLightGame().getProfTable().getBlueProf();
+        if(n==2){setBlueProfessor2(true);
+        }
+        n=gui.getLightGame().getProfTable().getYellowProf();
+        if(n==2){
+            setYellowProfessor2(true);
+        }
         setCoin2();
     }
 

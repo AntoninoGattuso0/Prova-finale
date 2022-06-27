@@ -1,9 +1,9 @@
 package it.polimi.ingsw.view.GUI.Controller;
+
 import it.polimi.ingsw.model.ColorPawn;
 import it.polimi.ingsw.network.Message.ClientToServer.MovePawnToDiningMessage;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -23,6 +23,26 @@ public class SchoolBoard0Controller {
         setAllInvisible();
         setEntrance0();
         setDiningRoom0();
+        int n;
+        n=gui.getLightGame().getProfTable().getRedProf();
+        if(n==0){
+            setRedProfessor0(true);
+        }
+        n=gui.getLightGame().getProfTable().getPinkProf();
+        if(n==0){
+           setPinkProfessor0(true);
+        }
+        n=gui.getLightGame().getProfTable().getGreenProf();
+        if(n==0){
+            setGreenProfessor0(true);
+        }
+        n=gui.getLightGame().getProfTable().getBlueProf();
+        if(n==0){setBlueProfessor0(true);
+        }
+        n=gui.getLightGame().getProfTable().getYellowProf();
+        if(n==0){
+            setYellowProfessor0(true);
+        }
         setTower0();
         setCoin0();
     }

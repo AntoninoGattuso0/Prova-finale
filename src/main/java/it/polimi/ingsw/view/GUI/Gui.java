@@ -71,6 +71,10 @@ public class Gui extends Application implements View {
     public int getNumPawns(){return this.numPawns;}
     public int getPedineDaSpostare(){return this.pedineDaSpostare;}
 
+    public int getNumPawnMove() {
+        return numPawnMove;
+    }
+
     public int getNumPawnsCount() {return numPawnsCount;}
 
     public void setNumPawnsCount(int numPawnsCount) {this.numPawnsCount = numPawnsCount;}
@@ -379,10 +383,12 @@ public class Gui extends Application implements View {
             if (schoolBoard1Controller != null) {
                 schoolBoard1Controller.setSchoolBoard1();
                 schoolBoard0Controller.setSchoolBoard0();
-                if (schoolBoard2Controller != null)
+                if (schoolBoard2Controller != null) {
                     schoolBoard2Controller.setSchoolBoard2();
-                if (schoolBoard2Controller != null)
+                }
+                if (schoolBoard2Controller != null) {
                     schoolBoard3Controller.setSchoolBoard3();
+                }
                 assistantCardController.setAssistantCards(socketNetworkHandler.getNicknameThisPlayer());
                 characterCardController.setCharacterCards();
                 gameTable.setMotherNatureVisible();
