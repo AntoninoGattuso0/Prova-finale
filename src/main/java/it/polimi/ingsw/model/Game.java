@@ -374,17 +374,14 @@ public class Game {
         public void setCharacterCards (Game game){
             if (game.isExpert) {
                 Random rnd = new Random();
-                /*int random = rnd.nextInt(12);
+                int random = rnd.nextInt(12);
                 int random1 = rnd.nextInt(12);
                 int random2 = rnd.nextInt(12);
                 while (random == random1 || random1 == random2 || random == random2) {
                     random = rnd.nextInt(12);
                     random1 = rnd.nextInt(12);
                     random2 = rnd.nextInt(12);
-                }*/
-                int random = 0;
-                int random1 = 1;
-                int random2 = 2;
+                }
 
                 if (random == 0 || random1 == 0 || random2 == 0) {
                     antonio = new Antonio(game.studentBag);
