@@ -454,6 +454,7 @@ public class GameTableController {
 
     public void setButtonForRequestMovePawn() {
         Platform.runLater(() -> {
+            whatToDo.setText("Choose your action:");
             whatToDo.setVisible(true);
             islandButton.setDisable(false);
             islandButton.setVisible(true);

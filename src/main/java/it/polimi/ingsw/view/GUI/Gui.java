@@ -192,6 +192,8 @@ public class Gui extends Application implements View {
                 if(lightGame.getIsExpert()) {
                     gameTable.setLastCCMessage();
                 }else{
+                    gameTable.getMessagesActions().setVisible(false);
+                    gameTable.getMessagesActions().setDisable(true);
                     ArrayList<ColorPawn> colorPawns=null;
                     socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0,0,0,colorPawns,false));
                 }
