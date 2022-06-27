@@ -174,30 +174,7 @@
     <ImageView id="schoolBlueProf1" fitHeight="35.0" fitWidth="35.0" layoutX="205.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/blueProf3D.png" />
     </ImageView>
-    <ImageView id="whiteTowerSchool0" fitHeight="45.0" fitWidth="45.0" layoutX="24.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool1" fitHeight="45.0" fitWidth="45.0" layoutX="24.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool2" fitHeight="45.0" fitWidth="45.0" layoutX="74.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool3" fitHeight="45.0" fitWidth="45.0" layoutX="74.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool4" fitHeight="45.0" fitWidth="45.0" layoutX="117.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool5" fitHeight="45.0" fitWidth="45.0" layoutX="117.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool6" fitHeight="45.0" fitWidth="45.0" layoutX="160.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool7" fitHeight="45.0" fitWidth="45.0" layoutX="160.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
+
     <ImageView id="entranceGreen10" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" onMouseClicked="#green10Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/greenStudent3D.png" />
     </ImageView>
@@ -213,6 +190,30 @@
     <ImageView id="entranceGreen14" fitHeight="20.0" fitWidth="20.0" layoutX="124.0" layoutY="541.0" onMouseClicked="#green14Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/greenStudent3D.png" />
     </ImageView>
+        <ImageView id="blackTowerSchool0" fitHeight="45.0" fitWidth="45.0" layoutX="24.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool1" fitHeight="45.0" fitWidth="45.0" layoutX="24.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool2" fitHeight="45.0" fitWidth="45.0" layoutX="74.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool3" fitHeight="45.0" fitWidth="45.0" layoutX="74.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool4" fitHeight="45.0" fitWidth="45.0" layoutX="117.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool5" fitHeight="45.0" fitWidth="45.0" layoutX="117.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool6" fitHeight="45.0" fitWidth="45.0" layoutX="160.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/BlackTower.png" />
+        </ImageView>
+        <ImageView id="blackTowerSchool7" fitHeight="45.0" fitWidth="45.0" layoutX="160.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/BlackTower.png" />
+        </ImageView>
     <ImageView id="entranceGreen15" fitHeight="20.0" fitWidth="20.0" layoutX="167.0" layoutY="576.0" onMouseClicked="#green15Select" pickOnBounds="true" preserveRatio="true">
         <Image url="@images/greenStudent3D.png" />
     </ImageView>

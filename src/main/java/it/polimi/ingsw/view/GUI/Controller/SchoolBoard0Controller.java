@@ -241,7 +241,7 @@ public class SchoolBoard0Controller {
     public void setTower0(){
         for(int i = 0; i<gui.getLightGame().getPlayers().get(0).getTowerSpace().getNumTower(); i++)
             for(Node school : schoolBoard0.getChildren()) {
-                if (school.getId().equals("blackTowerSchool" + i))
+                if (school.getId().equals("whiteTowerSchool" + i))
                     school.setVisible(true);
             }
     }
@@ -252,7 +252,7 @@ public class SchoolBoard0Controller {
     //stessa cosa anche per le coin
     public void towerVisibility0(boolean bool, int numTower){
         for(Node school : schoolBoard0.getChildren()) {
-            if (schoolBoard0.getId().equals("blackTowerSchool" + numTower))
+            if (schoolBoard0.getId().equals("whiteTowerSchool" + numTower))
                 school.setVisible(bool);
         }
     }

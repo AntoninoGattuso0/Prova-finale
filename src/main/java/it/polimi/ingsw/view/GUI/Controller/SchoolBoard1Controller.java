@@ -271,14 +271,14 @@ public class SchoolBoard1Controller {
     public void setTower1(){
         for(int i = 0; i<gui.getLightGame().getPlayers().get(1).getTowerSpace().getNumTower(); i++)
             for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("whiteTowerSchool" + i))
+                if (school.getId().equals("blackTowerSchool" + i))
                     school.setVisible(true);
             }
     }
 
     public void towerVisibility1(boolean bool, int numTower){
         for(Node school : schoolBoard1.getChildren()) {
-            if (schoolBoard1.getId().equals("whiteTowerSchool" + numTower))
+            if (schoolBoard1.getId().equals("blackTowerSchool" + numTower))
                 school.setVisible(bool);
         }
     }
