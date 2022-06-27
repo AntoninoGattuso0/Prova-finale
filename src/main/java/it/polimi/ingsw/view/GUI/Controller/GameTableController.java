@@ -23,6 +23,17 @@ import java.util.Objects;
 import static java.lang.Integer.parseInt;
 
 public class GameTableController {
+    @FXML Text textIsland0;
+    @FXML Text textIsland1;
+    @FXML Text textIsland2;
+    @FXML Text textIsland3;
+    @FXML Text textIsland4;
+    @FXML Text textIsland5;
+    @FXML Text textIsland6;
+    @FXML Text textIsland7;
+    @FXML Text textIsland8;
+    @FXML Text textIsland9;
+    @FXML Text textIsland10;
     @FXML Button moveMnButton;
     @FXML Button cloudButton;
     @FXML Button useCC;
@@ -145,11 +156,29 @@ public class GameTableController {
     }
 
     public void setAllIslands(boolean disabled) {
-        for (int i = 0; i < gui.getLightGame().getIslands().size(); i++) {
+        int i;
+        int j;
+        for ( i = 0; i < gui.getLightGame().getIslands().size(); i++) {
             String name = "#island" + i;
             gameTable.lookup(name).setVisible(true);
             gameTable.lookup(name).setDisable(disabled);
         }
+        for(j=i;j<12;j++){
+            String name= "#island"+j;
+            gameTable.lookup(name).setVisible(false);
+            gameTable.lookup(name).setDisable(true);
+        }
+        textIsland0.setText("Tot Islands:"+gui.getLightGame().getIslands().get(0).getTotIsland());
+        textIsland1.setText("Tot Islands:"+gui.getLightGame().getIslands().get(1).getTotIsland());
+        textIsland2.setText("Tot Islands:"+gui.getLightGame().getIslands().get(2).getTotIsland());
+        textIsland3.setText("Tot Islands:"+gui.getLightGame().getIslands().get(3).getTotIsland());
+        textIsland4.setText("Tot Islands:"+gui.getLightGame().getIslands().get(4).getTotIsland());
+        textIsland5.setText("Tot Islands:"+gui.getLightGame().getIslands().get(5).getTotIsland());
+        textIsland6.setText("Tot Islands:"+gui.getLightGame().getIslands().get(6).getTotIsland());
+        textIsland7.setText("Tot Islands:"+gui.getLightGame().getIslands().get(7).getTotIsland());
+        textIsland8.setText("Tot Islands:"+gui.getLightGame().getIslands().get(8).getTotIsland());
+        textIsland9.setText("Tot Islands:"+gui.getLightGame().getIslands().get(9).getTotIsland());
+        textIsland10.setText("Tot Islands:"+gui.getLightGame().getIslands().get(10).getTotIsland());
     }
 
     public void setIslandForMotherNature(int steps){

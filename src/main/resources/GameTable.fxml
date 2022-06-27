@@ -704,18 +704,18 @@
             <ImageView id="blueCloud33" fitHeight="20.0" fitWidth="20.0" layoutX="452.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
                <Image url="@images/blueStudent3D.png" />
             </ImageView>
-            <Text id="textIsland0" layoutX="16.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
-            <Text id="textIsland1" layoutX="60.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
-            <Text id="textIsland2" layoutX="159.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
-            <Text id="textIsland3" layoutX="376.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
-            <Text id="textIsland4" layoutX="501.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
-            <Text id="textIsland5" layoutX="559.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
-            <Text id="textIsland6" layoutX="576.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
-            <Text id="textIsland7" layoutX="559.0" layoutY="487.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
-            <Text id="textIsland8" layoutX="488.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
-            <Text id="textIsland9" layoutX="381.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
-            <Text id="textIsland10" layoutX="159.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
-            <Text id="textIsland11" layoutX="68.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
+            <Text fx:id="textIsland0" layoutX="16.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
+            <Text fx:id="textIsland1" layoutX="60.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
+            <Text fx:id="textIsland2" layoutX="159.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
+            <Text fx:id="textIsland3" layoutX="376.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
+            <Text fx:id="textIsland4" layoutX="501.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
+            <Text fx:id="textIsland5" layoutX="559.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
+            <Text fx:id="textIsland6" layoutX="576.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
+            <Text fx:id="textIsland7" layoutX="559.0" layoutY="487.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
+            <Text fx:id="textIsland8" layoutX="488.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
+            <Text fx:id="textIsland9" layoutX="381.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
+            <Text fx:id="textIsland10" layoutX="159.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
+            <Text fx:id="textIsland11" layoutX="68.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tot Islands: 1" />
             <Pane fx:id="messagesActions" layoutX="230.0" layoutY="313.0" prefHeight="163.0" prefWidth="210.0">
                <children>
                   <Text fx:id="whatToDo" fill="WHITE" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHOOSE YOUR ACTION">
