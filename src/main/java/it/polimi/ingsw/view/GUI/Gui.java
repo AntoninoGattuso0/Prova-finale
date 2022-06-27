@@ -240,32 +240,6 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayCharacterCard() {
-       /* int i;
-        int coin=0;
-        int player;
-        for(i=0; !Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), lightGame.getPlayers().get(i).getNickname()); i++);
-        player=i;
-        for(i=0;i<lightGame.getCharacterCards().size();i++){
-            switch (lightGame.getCharacterCards().get(i).getNumCard()){
-                case 0 -> coin=lightGame.getAntonio().getCoinPrice();
-                case 1 -> coin=lightGame.getBarbara().getCoinPrice();
-                case 2 -> coin=lightGame.getCiro().getCoinPrice();
-                case 3 -> coin=lightGame.getDante().getCoinPrice();
-                case 4 -> coin=lightGame.getErnesto().getCoinPrice();
-                case 5 -> coin=lightGame.getFelix().getCoinPrice();
-                case 6 -> coin=lightGame.getGiuseppe().getCoinPrice();
-                case 7 -> coin=lightGame.getIvan().getCoinPrice();
-                case 8 -> coin=lightGame.getLancillotto().getCoinPrice();
-                case 9 -> coin=lightGame.getMaria().getCoinPrice();
-                case 10 -> coin=lightGame.getNicola().getCoinPrice();
-                case 11 -> coin=lightGame.getOmnia().getCoinPrice();
-            }
-            //characterCardController.setVisible(i);
-            //characterCardController.setCoinVisible(i,true);
-            if(coin<lightGame.getPlayers().get(player).getNumCoin()){
-                //  characterCardController.setAble(i);
-            }
-        }*/
     }
 
     @Override
