@@ -12,6 +12,7 @@ public enum ButtonAction {
     GIUSEPPE,
     LANCILLOTTO,
     MARIA,
+    NICOLA,
     OMNIA;
 
 }

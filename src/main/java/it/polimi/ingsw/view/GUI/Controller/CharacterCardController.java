@@ -74,7 +74,9 @@ public class CharacterCardController {
         ArrayList<Integer> characterPawn = new ArrayList<>();
         characterPawn.add(0);
         characterPawn.add(6);
+        characterPawn.add(8);
         characterPawn.add(10);
+        characterPawn.add(11);
         for(int i = 0; i<gui.getLightGame().getCharacterCards().size();i++){
             if(characterPawn.contains(gui.getLightGame().getCharacterCards().get(i).getNumCard())){
                 for(Node character : characterCards.getChildren()){
@@ -110,11 +112,13 @@ public class CharacterCardController {
                             textPinkCharacter0.setText(Integer.toString(gui.getLightGame().getNicola().getPinkPawn()));
                             textBlueCharacter0.setText(Integer.toString(gui.getLightGame().getNicola().getBluePawn()));
                         }
-                        textGreenCharacter0.setVisible(true);
-                        textRedCharacter0.setVisible(true);
-                        textYellowCharacter0.setVisible(true);
-                        textPinkCharacter0.setVisible(true);
-                        textBlueCharacter0.setVisible(true);
+                        if(gui.getLightGame().getCharacterCards().get(i).getNumCard() != 8 && gui.getLightGame().getCharacterCards().get(i).getNumCard() != 11) {
+                            textGreenCharacter0.setVisible(true);
+                            textRedCharacter0.setVisible(true);
+                            textYellowCharacter0.setVisible(true);
+                            textPinkCharacter0.setVisible(true);
+                            textBlueCharacter0.setVisible(true);
+                        }
                     }
                     else if(i == 1){
                         if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 0) {
@@ -136,11 +140,13 @@ public class CharacterCardController {
                             textPinkCharacter1.setText(Integer.toString(gui.getLightGame().getNicola().getPinkPawn()));
                             textBlueCharacter1.setText(Integer.toString(gui.getLightGame().getNicola().getBluePawn()));
                         }
-                        textGreenCharacter1.setVisible(true);
-                        textRedCharacter1.setVisible(true);
-                        textYellowCharacter1.setVisible(true);
-                        textPinkCharacter1.setVisible(true);
-                        textBlueCharacter1.setVisible(true);
+                        if(gui.getLightGame().getCharacterCards().get(i).getNumCard() != 8 && gui.getLightGame().getCharacterCards().get(i).getNumCard() != 11) {
+                            textGreenCharacter1.setVisible(true);
+                            textRedCharacter1.setVisible(true);
+                            textYellowCharacter1.setVisible(true);
+                            textPinkCharacter1.setVisible(true);
+                            textBlueCharacter1.setVisible(true);
+                        }
                     }
                     else if(i == 2){
                         if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 0) {
@@ -162,11 +168,13 @@ public class CharacterCardController {
                             textPinkCharacter2.setText(Integer.toString(gui.getLightGame().getNicola().getPinkPawn()));
                             textBlueCharacter2.setText(Integer.toString(gui.getLightGame().getNicola().getBluePawn()));
                         }
-                        textGreenCharacter2.setVisible(true);
-                        textRedCharacter2.setVisible(true);
-                        textYellowCharacter2.setVisible(true);
-                        textPinkCharacter2.setVisible(true);
-                        textBlueCharacter2.setVisible(true);
+                        if(gui.getLightGame().getCharacterCards().get(i).getNumCard() != 8 && gui.getLightGame().getCharacterCards().get(i).getNumCard() != 11) {
+                            textGreenCharacter2.setVisible(true);
+                            textRedCharacter2.setVisible(true);
+                            textYellowCharacter2.setVisible(true);
+                            textPinkCharacter2.setVisible(true);
+                            textBlueCharacter2.setVisible(true);
+                        }
                     }
                 }
             }
@@ -293,10 +301,46 @@ public class CharacterCardController {
             gui.setButtonClicked(ButtonAction.GIUSEPPE);
             gui.getGameTable().setMessages("Select Num Pawn");
             gui.getGameTable().number0.setVisible(true);
+            gui.getGameTable().number0.setDisable(false);
             gui.getGameTable().number1.setVisible(true);
+            gui.getGameTable().number1.setDisable(false);
             gui.getGameTable().number2.setVisible(true);
-
-
+            gui.getGameTable().number2.setDisable(false);
+        } else if(gui.getLightGame().getCharacterCards().get(0).getNumCard() == 7){
+            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getIvan().getCoinPrice());
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(7, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+        } else if(gui.getLightGame().getCharacterCards().get(0).getNumCard() == 8){
+            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getLancillotto().getCoinPrice());
+            gui.setButtonClicked(ButtonAction.LANCILLOTTO);
+            characterCards.lookup("#greenCharacterCard0").setDisable(false);
+            characterCards.lookup("#redCharacterCard0").setDisable(false);
+            characterCards.lookup("#yellowCharacterCard0").setDisable(false);
+            characterCards.lookup("#pinkCharacterCard0").setDisable(false);
+            characterCards.lookup("#blueCharacterCard0").setDisable(false);
+        } else if(gui.getLightGame().getCharacterCards().get(0).getNumCard() == 9){
+            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getMaria().getCoinPrice());
+            gui.setButtonClicked(ButtonAction.MARIA);
+            gui.getGameTable().setMessages("Select Num Pawn to Swap");
+            gui.getGameTable().number0.setVisible(true);
+            gui.getGameTable().number0.setDisable(false);
+            gui.getGameTable().number1.setVisible(true);
+            gui.getGameTable().number1.setDisable(false);
+        } else if(gui.getLightGame().getCharacterCards().get(0).getNumCard() == 10){
+            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getNicola().getCoinPrice());
+            gui.setButtonClicked(ButtonAction.NICOLA);
+            characterCards.lookup("#greenCharacterCard0").setDisable(false);
+            characterCards.lookup("#redCharacterCard0").setDisable(false);
+            characterCards.lookup("#yellowCharacterCard0").setDisable(false);
+            characterCards.lookup("#pinkCharacterCard0").setDisable(false);
+            characterCards.lookup("#blueCharacterCard0").setDisable(false);
+        } else if(gui.getLightGame().getCharacterCards().get(0).getNumCard() == 11){
+            gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getOmnia().getCoinPrice());
+            gui.setButtonClicked(ButtonAction.OMNIA);
+            characterCards.lookup("#greenCharacterCard0").setDisable(false);
+            characterCards.lookup("#redCharacterCard0").setDisable(false);
+            characterCards.lookup("#yellowCharacterCard0").setDisable(false);
+            characterCards.lookup("#pinkCharacterCard0").setDisable(false);
+            characterCards.lookup("#blueCharacterCard0").setDisable(false);
         }
     }
 
