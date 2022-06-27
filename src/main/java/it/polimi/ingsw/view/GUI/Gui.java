@@ -308,7 +308,7 @@ public class Gui extends Application implements View {
     public void displayWrongNickname() {
         Platform.runLater(() -> {
             fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/RequestNickPlayers.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/WarningNickname.fxml"));
             Scene scene;
             try {
                 scene = new Scene(fxmlLoader.load());
