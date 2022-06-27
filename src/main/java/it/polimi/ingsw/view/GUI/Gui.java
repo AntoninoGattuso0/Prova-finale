@@ -125,7 +125,6 @@ public class Gui extends Application implements View {
         addressSock=address;
     }
 
-    //per le altre funzioni che sono scritte sono uguali a questa
     @Override
     public void requestNickname() {
         Platform.runLater(()-> {
@@ -198,29 +197,6 @@ public class Gui extends Application implements View {
     }
 
 
-
-        /*int i;
-        for(i=0;i<lightGame.getNumPlayers()&&!(lightGame.getPlayers().get(i).getNickname().equals(nickname));i++);
-        int player =i;
-        if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())){
-            if(!bool){
-                if(lightGame.getIsExpert()){
-                    //pannellodiscrittura.writetext("Clicca si se vuoi giocare un characterCard e no per non giocarlo");
-
-                    //SE E ESPERTO MOSTRA IL BOTTONE DEI CHARACTR CARD
-                    //IO LO METTEREI TRA LE ALTRE AZIONI DA SCEGLIERE
-                    //TIPO SCEGLI AZIONE E LI C'E SCRITTO SPOSTARE PEDINA SU ISOLA O DINING O USARE CHARACT
-                    //SE SCEGLIE DI SPOSTARE LE PEDINE FA VEDERE 1, 2, 3, 4
-                    //DOPO CHE HA SCELTO QUANTE E FA QUESTE MOSSE
-                    //FA VEDERE DI NUOVO CHOOSE ACTION DOVE FA VEDERE DI NUOVO COME PRIMA RIGA 130
-                }
-            }
-            if(bool){
-                displayCharacterCard();
-                // pannellodiscrittura.writetest("Scegli il CharacterCard da utilizzare");
-            }
-        }*/
-
     @Override
     public void displayNick() {
 
@@ -238,28 +214,20 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayAssistantCard(int player) {
-        // stage.show();
-        //  for(j=0;j<lightGame.getPlayers().get(player).getDeckAssistant().size();j++){
-        // int n=lightGame.getPlayers().get(player).getDeckAssistant().get(j).getCardValue();
-        //assistantCardController.setAble(n);
-        //assistantCardController.setVisible(n);
-        //   }
+
     }
 
     @Override
     public void displayCloud() {
-
     }
 
     @Override
     public void displayIslands() {
-        //va gestito con il game table totale
 
     }
 
     @Override
     public void displaySchoolBoard() {
-        //non penso serva ma in caso va lasciata vuota
 
     }
 
@@ -272,8 +240,7 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayCharacterCard() {
-
-        int i;
+       /* int i;
         int coin=0;
         int player;
         for(i=0; !Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), lightGame.getPlayers().get(i).getNickname()); i++);
@@ -298,7 +265,7 @@ public class Gui extends Application implements View {
             if(coin<lightGame.getPlayers().get(player).getNumCoin()){
                 //  characterCardController.setAble(i);
             }
-        }
+        }*/
     }
 
     @Override
@@ -332,7 +299,9 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayNetError() {
-
+        Platform.runLater(()->{
+            gameTable.setMessages("NET ERROR");
+        });
     }
 
     @Override
@@ -358,13 +327,9 @@ public class Gui extends Application implements View {
 
     @Override
     public void displayWrongTurn() {
-        //quando saprò come gestire la game table la inserisco come testo in caso di errore nel fare mosse non durante il suo turno
-
-        //RISPOSTA: IN BASSO A SINISTRA HO MESSO UN TESTO MOFICABILE
-        //POTREMMO FARE CHE PER GLI ERRORI SI METTE IL MESSAGGIO IN ROSSO
-        //per cambiare colore messaggio penso che si possa usare setFill
-        //messaggio da far vedere per farcelo stare nella schermata setText("IT'S NOT YOUR TURN")
-
+        Platform.runLater(()-> {
+                    gameTable.setMessages("IT'S NOT YOUT TURN");
+                });
     }
 
     @Override
@@ -493,6 +458,7 @@ public class Gui extends Application implements View {
 
     @Override
     public void setSocketNetworkHandler(SocketNetworkHandler socketNetworkHandler) {
+        this.socketNetworkHandler=socketNetworkHandler;
     }
 
     @Override
@@ -656,19 +622,17 @@ public class Gui extends Application implements View {
     }
     @Override
     public void startTurn(ArrayList<String> players, String actualPlayer) {
+        Platform.runLater(()->{
         if (Objects.equals(actualPlayer, socketNetworkHandler.getNicknameThisPlayer())) {
-            //displayEndTurn();
-            //va gestito nella parte di testo in gameTable
+            gameTable.setMessages("YOUR TURN IS FINISHED");
         }
-        Platform.runLater(() -> {
             int i;
             int j;
             for (j = 0; !Objects.equals(players.get(j), actualPlayer); j++) ;
             if (j< players.size()-1) {
                 for (i = j; Objects.equals(players.get(i), actualPlayer); i++) ;
                 if (Objects.equals(players.get(i), socketNetworkHandler.getNicknameThisPlayer())) {
-                    // displayStartTurn();
-                    //va gestito nella parte di testo in game table
+                    gameTable.setMessages("IT'S YOUR TURN");
                 } else {
                     gameTable.setMessages(players.get(i) + " START YOUR TURN");
                 }
@@ -679,7 +643,6 @@ public class Gui extends Application implements View {
     }
     @Override
     public void displayOnePlayerBoard(String nickname) {
-        //potrei usarla per attivare la singola schoolboard quando un giocatore clicca sulla specifica schoolboard dal menù a tendina
     }
 
 
@@ -687,14 +650,6 @@ public class Gui extends Application implements View {
     public void disconnectionAll(String playerDisconnected) throws IOException {
         if(!endGame){
             gameTable.setMessages(playerDisconnected+ " DISCONNECTED FROM THE GAME.");
-
-            //scrivere nel pannello il fatto che un giocatore è stato disconnesso per problemi
-
-            //RISPOSTA: IN BASSO A SINISTRA HO MESSO UN TESTO MOFICABILE
-            //POTREMMO FARE CHE PER GLI ERRORI SI METTE IL MESSAGGIO IN ROSSO
-            //per cambiare colore messaggio penso che si possa usare setFill
-            //messaggio da far vedere setText("NOMEPLAYER DISCONNECTED PER BOH NETERROR")
-            //Puoi mettere il messaggio che vuoi basta che non superi quello del wrongSameAssistant perche esce fuori
         }
         socketNetworkHandler.getOut().reset();
         socketNetworkHandler.getOut().flush();
@@ -706,11 +661,7 @@ public class Gui extends Application implements View {
     @Override
     public void wrongSameAssistantMessage() {
         //parte di testo in gametable:"ERRORE: assistente già usato da un altro player"
-
-        //RISPOSTA: IN BASSO A SINISTRA HO MESSO UN TESTO MOFICABILE
-        //POTREMMO FARE CHE PER GLI ERRORI SI METTE IL MESSAGGIO IN ROSSO
-        //per cambiare colore messaggio penso che si possa usare setFill
-        //messaggio da far vedere per farcelo stare nella schermata setText("ASSISTANTCARD ALREADY SELECTED BY ANOTHER PLAYER")
-
+        gameTable.setMessages("ASSISTANTCARD ALREADY SELECTED BY ANOTHER PLAYER");
+        selectAssistantCard(socketNetworkHandler.getNicknameThisPlayer());
     }
 }

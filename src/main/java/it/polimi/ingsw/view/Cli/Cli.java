@@ -1990,6 +1990,7 @@ public class Cli implements Runnable, View {
     @Override
     public void wrongSameAssistantMessage(){
         out.println("ERRORE: assistente già usato da un altro Player!");
+        selectAssistantCard(socketNetworkHandler.getNicknameThisPlayer());
     }
 
 }
