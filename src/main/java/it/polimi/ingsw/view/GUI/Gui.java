@@ -54,6 +54,7 @@ public class Gui extends Application implements View {
     private SchoolBoard1Controller schoolBoard1Controller;
     private SchoolBoard2Controller schoolBoard2Controller;
     private SchoolBoard3Controller schoolBoard3Controller;
+    private WarningNicknameController warningNicknameController;
     private FXMLLoader fxmlSchool0;
     private FXMLLoader fxmlAssistant;
     private FXMLLoader fxmlCharacter;
@@ -346,11 +347,11 @@ public class Gui extends Application implements View {
                 e.printStackTrace();
                 scene = new Scene(new Label("Error"));
             }
-            stage.setScene(scene);
-            WarningNicknameController warningNicknameController= fxmlLoader.getController();
+            warningNicknameController= fxmlLoader.getController();
             warningNicknameController.setGui(this);
             warningNicknameController.setOkButton();
             warningNicknameController.setWarningNickname(true);
+            stage.setScene(scene);
             stage.show();
         });
     }
