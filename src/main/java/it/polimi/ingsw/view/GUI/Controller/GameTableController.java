@@ -340,17 +340,11 @@ public class GameTableController {
         setAllIslands(true);
         while (i < steps) {
             mn++;
-            if (mn == 12)
+            if (mn == gui.getLightGame().getIslands().size())
                 mn = 0;
             gameTable.lookup("#island" + mn).setDisable(false);
             i++;
         }
-        /*for(int j = mn; j<12-i; j++){
-            mn++;
-            if(mn==12)
-                mn=0;
-            gameTable.lookup("#island" + mn).setOpacity(0.5);
-        }*/
         whatToDo.setText("Select new MN Island");
     }
 
@@ -1183,15 +1177,14 @@ public class GameTableController {
             }
         } else if (gui.getButtonClicked().equals(ButtonAction.MOTHERNATURE)) {
             int i;
-            for (i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++)
-                ;
+            for (i = 0; i < gui.getLightGame().getIslands().size() && !gui.getLightGame().getIslands().get(i).getMotherNature(); i++) ;
             gui.getLightGame().getIslands().get(i).setMotherNature(false);
             gui.getLightGame().getIslands().get(0).setMotherNature(true);
             int step = 0;
             while (i != 0) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
@@ -1217,7 +1210,7 @@ public class GameTableController {
             while (i != 1) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
@@ -1243,7 +1236,7 @@ public class GameTableController {
             while (i != 2) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
@@ -1269,7 +1262,7 @@ public class GameTableController {
             while (i != 3) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
@@ -1295,7 +1288,7 @@ public class GameTableController {
             while (i != 4) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
@@ -1321,7 +1314,7 @@ public class GameTableController {
             while (i != 5) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
@@ -1347,7 +1340,7 @@ public class GameTableController {
             while (i != 6) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
@@ -1373,7 +1366,7 @@ public class GameTableController {
             while (i != 7) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
@@ -1399,7 +1392,7 @@ public class GameTableController {
             while (i != 8) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
@@ -1425,7 +1418,7 @@ public class GameTableController {
             while (i != 9) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
@@ -1451,7 +1444,7 @@ public class GameTableController {
             while (i != 10) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
@@ -1477,7 +1470,7 @@ public class GameTableController {
             while (i != 11) {
                 step++;
                 i++;
-                if (i == 12)
+                if (i == gui.getLightGame().getIslands().size())
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
