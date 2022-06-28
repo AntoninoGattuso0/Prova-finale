@@ -333,7 +333,7 @@ public class Gui extends Application implements View {
                 if (schoolBoard2Controller != null) {
                     schoolBoard2Controller.setSchoolBoard2();
                 }
-                if (schoolBoard2Controller != null) {
+                if (schoolBoard3Controller != null) {
                     schoolBoard3Controller.setSchoolBoard3();
                 }
                 assistantCardController.setAssistantCards(socketNetworkHandler.getNicknameThisPlayer());
