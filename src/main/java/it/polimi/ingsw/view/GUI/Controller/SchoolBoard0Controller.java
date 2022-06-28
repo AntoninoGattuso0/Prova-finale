@@ -20,7 +20,6 @@ public class SchoolBoard0Controller {
 
     public void setSchoolBoard0(){
         setAllInvisible();
-        setAllDisabled();
         setEntrance0();
         setDiningRoom0();
         int n;

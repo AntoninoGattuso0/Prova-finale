@@ -25,7 +25,6 @@ public class SchoolBoard1Controller {
 
     public void setSchoolBoard1() {
         setAllInvisible();
-        setAllDisabled();
         setEntrance1();
         setDiningRoom1();
         setTower1();
