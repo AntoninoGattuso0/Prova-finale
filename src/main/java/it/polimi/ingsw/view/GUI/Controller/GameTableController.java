@@ -478,7 +478,7 @@ public class GameTableController {
         Platform.runLater(() -> {
             assistantCardController = gui.getAssistantCardController();
             assistantCardController.setAssistantCards(gui.getSocketNetworkHandler().getNicknameThisPlayer());
-            assistantCardController.setAssistantsAble(gui.getSocketNetworkHandler().getNicknameThisPlayer());
+            assistantCardController.setAsssistantsAble(gui.getSocketNetworkHandler().getNicknameThisPlayer());
             showAssistant.setCenter(assistantCardController.getAssistantCards());
             showAssistant.setVisible(true);
         });
@@ -999,6 +999,7 @@ public class GameTableController {
     }
 
     public void number0Button(MouseEvent mouseEvent) {
+        setChooseViewOff();
         number0.setVisible(false);
         number0.setDisable(true);
         number1.setVisible(false);
@@ -1074,6 +1075,7 @@ public class GameTableController {
     }
 
     public void number1Button(MouseEvent mouseEvent) {
+        setChooseViewOff();
         number0.setVisible(false);
         number0.setDisable(true);
         number1.setVisible(false);
@@ -1133,6 +1135,7 @@ public class GameTableController {
     }
 
     public void number2Button(MouseEvent mouseEvent) {
+        setChooseViewOff();
         number0.setVisible(false);
         number0.setDisable(true);
         number1.setVisible(false);
@@ -1195,6 +1198,7 @@ public class GameTableController {
     }
 
     public void number3Button(MouseEvent mouseEvent) {
+        setChooseViewOff();
         number0.setVisible(false);
         number0.setDisable(true);
         number1.setVisible(false);
@@ -1349,6 +1353,7 @@ public class GameTableController {
 
     public void islandButtonClicked(MouseEvent mouseEvent) {
         Platform.runLater(()->{
+            setChooseViewOff();
             diningButton.setVisible(false);
             diningButton.setDisable(true);
             characterButton.setVisible(false);
@@ -1426,6 +1431,7 @@ public class GameTableController {
 
     public void useCCButton(MouseEvent mouseEvent) {
         Platform.runLater(() -> {
+            setChooseViewOff();
             characterCardController = gui.getCharacterCardController();
             showCharacterCard.setVisible(true);
             showCharacterCard.setDisable(false);
