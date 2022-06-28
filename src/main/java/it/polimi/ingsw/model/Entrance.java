@@ -108,12 +108,20 @@ public class Entrance {
             }
         }
     }
+
+    /**sets the starting num of pawns on the entrance
+     * based on the num of players
+     */
     public void startNumPawn(Game game){
         if(game.totPlayer == 2 || game.totPlayer == 4)
             setNumPawn(7);
         else if(game.totPlayer == 3)
             setNumPawn(9);
     }
+
+    /**
+     * @return
+     */
     public boolean checkNum(Game game){
         if((game.totPlayer == 2 || game.totPlayer == 4) && numPawn > 4 )
             return true;
@@ -121,6 +129,10 @@ public class Entrance {
             return true;
        else return false;
     }
+
+    /**it allows to move the pawns from the entrance to the island selected
+     * @param island is the island selected
+     */
     public void movePawnToIsland(ColorPawn colorPawn, Island island, Game game){
                if(Objects.equals(colorPawn.toString(), "GREEN") && this.greenPawn > 0){
                    island.setGreenPawn(island.getGreenPawn() + 1);
@@ -148,7 +160,7 @@ public class Entrance {
     /**
      * invokes the function MovePawnToIsland
      * @param n number of Pawns
-     * @param colorPawn array whit Pawns
+     * @param colorPawn array with Pawns
      */
     public void moveToIsland(int n, ArrayList<ColorPawn> colorPawn, Island island,Game game) {
         if((game.totPlayer == 2 || game.totPlayer == 4) && (n > 0 &&  n < 4 )){
@@ -168,7 +180,7 @@ public class Entrance {
     }
 
     /**
-     * after choosing teh cloud ì, refill the Entrance
+     * after choosing the cloud i, it refills the Entrance with the pawns on the cloud selected
      */
     public void chooseCloud (Cloud cloud,Game game,Player player){
         if(cloud.getNumPawn()!=0){

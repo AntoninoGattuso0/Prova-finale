@@ -54,7 +54,7 @@ public class DiningRoom {
     }
 
     /**
-     *add pawn to DiningRoom
+     *add pawns to DiningRoom
      * @param colorPawn Color of the Pawn to be added to the DiningRoom
      */
     public void addPawnToDiningRoom(ColorPawn colorPawn, Player player, Game game) {
@@ -123,6 +123,7 @@ public class DiningRoom {
     }
 
     /**
+     * it allows to remove pawns from the diningRoom
      * is used for the effect of
      * @see Omnia
      */
@@ -180,7 +181,7 @@ public class DiningRoom {
         }
     }
 
-    /**
+    /**it allows to move pawns from dining to entrance
      * is used for the effect of
      * @see Maria
      */
