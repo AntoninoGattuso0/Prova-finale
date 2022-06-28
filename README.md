@@ -16,7 +16,7 @@ The network protocol(link) describes the communication between the server and th
 ## JavaDoc
 JavaDoc(link) provides a descripition of the classes and the methos.
 
-# TOOL, PLUGINS AND EXTERNAL LIBRARIES USED
+## TOOL, PLUGINS AND EXTERNAL LIBRARIES USED
 Intellij IDEA, JUnit, Maven, JavaFX + Scene Builder, Github
 
 # FUNCTIONALITIES
