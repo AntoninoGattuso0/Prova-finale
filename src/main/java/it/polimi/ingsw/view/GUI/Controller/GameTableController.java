@@ -476,7 +476,6 @@ public class GameTableController {
             showSchool1.setVisible(false);
             showSchool2.setVisible(false);
             showSchool3.setVisible(false);
-
             assistantCardController = gui.getAssistantCardController();
             assistantCardController.setAssistantCards(gui.getSocketNetworkHandler().getNicknameThisPlayer());
             assistantCardController.setAsssistantsAble(gui.getSocketNetworkHandler().getNicknameThisPlayer());
@@ -756,12 +755,12 @@ public class GameTableController {
     }
 
     public void switchToAssistantCard() {
+        Platform.runLater(() -> {
         showCharacterCard.setVisible(false);
         showSchool0.setVisible(false);
         showSchool1.setVisible(false);
         showSchool2.setVisible(false);
         showSchool3.setVisible(false);
-        Platform.runLater(() -> {
             assistantCardController = gui.getAssistantCardController();
             assistantCardController.setAssistantCards(gui.getSocketNetworkHandler().getNicknameThisPlayer());
             showAssistant.setCenter(assistantCardController.getAssistantCards());
