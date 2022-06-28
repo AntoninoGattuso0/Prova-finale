@@ -34,8 +34,8 @@ Intellij IDEA, JUnit, Maven, JavaFX + Scene Builder, Github
 
 ## JAR
 The following jars allow to launch the game as descriped 
-CLI 
-GUI 
+Server: 
+Client:
 
 ## DEVELOPERS:
 PAOLO GAMBARIN, ANTONINO GATTUSO, REBECA MERSAM
