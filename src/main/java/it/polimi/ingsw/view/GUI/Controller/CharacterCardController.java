@@ -403,15 +403,17 @@ public class CharacterCardController {
 
     public void character0Select(MouseEvent mouseEvent) {;
         characterEffects(0);
-
+        setCoinVisible(0,true);
     }
 
     public void character1Select(MouseEvent mouseEvent) {
         characterEffects(1);
+        setCoinVisible(1,true);
     }
 
     public void character2Select(MouseEvent mouseEvent) {
         characterEffects(2);
+        setCoinVisible(2,true);
     }
 
 
