@@ -47,7 +47,7 @@ Client: java -jar ClientMain.jar
 You can choose to play in CLI or GUI, writing C or G.
 
 ## DEVELOPERS:
-PAOLO GAMBARIN, ANTONINO GATTUSO, REBECA MERSAM
+[PAOLO GAMBARIN](https://github.com/paologambarin), [ANTONINO GATTUSO](https://github.com/AntoninoGattuso0), [REBECA MERSAM](https://github.com/RebecaMersamF)
 
 
 
