@@ -289,23 +289,23 @@ public class GameTableController {
         textIsland1.setText("Tot Islands:" + gui.getLightGame().getIslands().get(1).getTotIsland());
         textIsland2.setText("Tot Islands:" + gui.getLightGame().getIslands().get(2).getTotIsland());
         if(gui.getLightGame().getIslands().size()>3)
-        textIsland3.setText("Tot Islands:" + gui.getLightGame().getIslands().get(3).getTotIsland());
+            textIsland3.setText("Tot Islands:" + gui.getLightGame().getIslands().get(3).getTotIsland());
         if(gui.getLightGame().getIslands().size()>4)
-        textIsland4.setText("Tot Islands:" + gui.getLightGame().getIslands().get(4).getTotIsland());
+            textIsland4.setText("Tot Islands:" + gui.getLightGame().getIslands().get(4).getTotIsland());
         if(gui.getLightGame().getIslands().size()>5)
-        textIsland5.setText("Tot Islands:" + gui.getLightGame().getIslands().get(5).getTotIsland());
+            textIsland5.setText("Tot Islands:" + gui.getLightGame().getIslands().get(5).getTotIsland());
         if(gui.getLightGame().getIslands().size()>6)
-        textIsland6.setText("Tot Islands:" + gui.getLightGame().getIslands().get(6).getTotIsland());
+            textIsland6.setText("Tot Islands:" + gui.getLightGame().getIslands().get(6).getTotIsland());
         if(gui.getLightGame().getIslands().size()>7)
-        textIsland7.setText("Tot Islands:" + gui.getLightGame().getIslands().get(7).getTotIsland());
+            textIsland7.setText("Tot Islands:" + gui.getLightGame().getIslands().get(7).getTotIsland());
         if(gui.getLightGame().getIslands().size()>8)
-        textIsland8.setText("Tot Islands:" + gui.getLightGame().getIslands().get(8).getTotIsland());
+            textIsland8.setText("Tot Islands:" + gui.getLightGame().getIslands().get(8).getTotIsland());
         if(gui.getLightGame().getIslands().size()>9)
-        textIsland9.setText("Tot Islands:" + gui.getLightGame().getIslands().get(9).getTotIsland());
+            textIsland9.setText("Tot Islands:" + gui.getLightGame().getIslands().get(9).getTotIsland());
         if(gui.getLightGame().getIslands().size()>10)
-        textIsland10.setText("Tot Islands:" + gui.getLightGame().getIslands().get(10).getTotIsland());
+            textIsland10.setText("Tot Islands:" + gui.getLightGame().getIslands().get(10).getTotIsland());
         if(gui.getLightGame().getIslands().size()>11)
-        textIsland11.setText("Tot Islands: " + gui.getLightGame().getIslands().get(11).getTotIsland());
+            textIsland11.setText("Tot Islands: " + gui.getLightGame().getIslands().get(11).getTotIsland());
         for (j = i; j < 12; j++) {
             String name = "#island" + j;
             String nameG = "#green" + j;
@@ -449,7 +449,7 @@ public class GameTableController {
         SchoolBoard.setDisable(false);
         AssistantCardButton.setDisable(false);
         if(gui.getLightGame().getIsExpert())
-        CharacterCardButton.setDisable(false);
+            CharacterCardButton.setDisable(false);
     }
 
     public void setButtonForRequestMovePawn() {
@@ -464,8 +464,8 @@ public class GameTableController {
                 characterButton.setVisible(true);
                 characterButton.setDisable(false);
             }
-                messagesActions.setVisible(true);
-                messagesActions.setDisable(false);
+            messagesActions.setVisible(true);
+            messagesActions.setDisable(false);
         });
     }
 
@@ -769,17 +769,17 @@ public class GameTableController {
 
     public void switchToCharacterCard(MouseEvent mouseEvent) {
         if(gui.getLightGame().getIsExpert()) {
-        showAssistant.setVisible(false);
-        showSchool0.setVisible(false);
-        showSchool1.setVisible(false);
-        showSchool2.setVisible(false);
-        showSchool3.setVisible(false);
-        Platform.runLater(() -> {
-            characterCardController = gui.getCharacterCardController();
-            characterCardController.setCharacterCards();
-            showCharacterCard.setCenter(characterCardController.getCharacterCards());
-            showCharacterCard.setVisible(true);
-        });
+            showAssistant.setVisible(false);
+            showSchool0.setVisible(false);
+            showSchool1.setVisible(false);
+            showSchool2.setVisible(false);
+            showSchool3.setVisible(false);
+            Platform.runLater(() -> {
+                characterCardController = gui.getCharacterCardController();
+                characterCardController.setCharacterCards();
+                showCharacterCard.setCenter(characterCardController.getCharacterCards());
+                showCharacterCard.setVisible(true);
+            });
         }
     }
 
@@ -1349,44 +1349,42 @@ public class GameTableController {
 
     public void islandButtonClicked(MouseEvent mouseEvent) {
         Platform.runLater(()->{
-        diningButton.setVisible(false);
-        diningButton.setDisable(true);
-        characterButton.setVisible(false);
-        characterButton.setDisable(true);
-        islandButton.setVisible(false);
-        islandButton.setDisable(true);
+            diningButton.setVisible(false);
+            diningButton.setDisable(true);
+            characterButton.setVisible(false);
+            characterButton.setDisable(true);
+            islandButton.setVisible(false);
+            islandButton.setDisable(true);
 
-        whatToDo.setText("Choose Pawns: ");
+            whatToDo.setText("Choose Pawns: ");
 
-        gui.setButtonClicked(ButtonAction.ISLAND);
-        messagesActions.setDisable(false);
-        messagesActions.setVisible(true);
-        for (int i = 0; i < gui.getPedineDaSpostare(); i++) {
-            if (i == 0) {
-                number0.setText("1");
-                number0.setVisible(true);
-                number0.setDisable(false);
-            } else if (i == 1) {
-                number1.setText("2");
-                number1.setVisible(true);
-                number1.setDisable(false);
-            } else if (i == 2) {
-                number2.setText("3");
-                number2.setVisible(true);
-                number2.setDisable(false);
-            } else if (i == 3) {
-                number3.setText("4");
-                number3.setVisible(true);
-                number3.setDisable(false);
+            gui.setButtonClicked(ButtonAction.ISLAND);
+            messagesActions.setDisable(false);
+            messagesActions.setVisible(true);
+            for (int i = 0; i < gui.getPedineDaSpostare(); i++) {
+                if (i == 0) {
+                    number0.setText("1");
+                    number0.setVisible(true);
+                    number0.setDisable(false);
+                } else if (i == 1) {
+                    number1.setText("2");
+                    number1.setVisible(true);
+                    number1.setDisable(false);
+                } else if (i == 2) {
+                    number2.setText("3");
+                    number2.setVisible(true);
+                    number2.setDisable(false);
+                } else if (i == 3) {
+                    number3.setText("4");
+                    number3.setVisible(true);
+                    number3.setDisable(false);
+                }
             }
-        }
-        whatToDo.setText("Choose Num to Island: ");
-        whatToDo.setVisible(true);
-    });
+            whatToDo.setText("Choose Num to Island: ");
+            whatToDo.setVisible(true);
+        });
     }
-
     public void characterButtonClicked(MouseEvent mouseEvent) {
-
     }
 
     public void diningButtonClicked(MouseEvent mouseEvent) {

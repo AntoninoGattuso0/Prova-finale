@@ -308,8 +308,8 @@ public class Gui extends Application implements View {
     @Override
     public void displayWrongTurn() {
         Platform.runLater(()-> {
-                    gameTable.setMessages("IT'S NOT YOUT TURN");
-                });
+            gameTable.setMessages("IT'S NOT YOUT TURN");
+        });
     }
 
     @Override
@@ -332,7 +332,7 @@ public class Gui extends Application implements View {
                 if (schoolBoard2Controller != null) {
                     schoolBoard2Controller.setSchoolBoard2();
                 }
-                if (schoolBoard3Controller != null) {
+                if (schoolBoard2Controller != null) {
                     schoolBoard3Controller.setSchoolBoard3();
                 }
                 assistantCardController.setAssistantCards(socketNetworkHandler.getNicknameThisPlayer());
@@ -391,22 +391,22 @@ public class Gui extends Application implements View {
 
     @Override
     public void requestMoveMotherNature(String nickname) {
-    Platform.runLater(()->{
-        if(Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), nickname)){
-            if(lightGame.getIsExpert()) {
-                gameTable.getUseCC().setDisable(false);
-                gameTable.getMoveMnButton().setDisable(false);
-                gameTable.getUseCC().setVisible(true);
-                gameTable.getMoveMnButton().setVisible(true);
-                gameTable.getMessagesActions().setVisible(true);
-                gameTable.getMessagesActions().setDisable(false);
-            }else {
-                gameTable.moveMnButton();
+        Platform.runLater(()->{
+            if(Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), nickname)){
+                if(lightGame.getIsExpert()) {
+                    gameTable.getUseCC().setDisable(false);
+                    gameTable.getMoveMnButton().setDisable(false);
+                    gameTable.getUseCC().setVisible(true);
+                    gameTable.getMoveMnButton().setVisible(true);
+                    gameTable.getMessagesActions().setVisible(true);
+                    gameTable.getMessagesActions().setDisable(false);
+                }else {
+                    gameTable.moveMnButton();
+                }
+            }else{
+                gameTable.setMessages(nickname + " IS IN MOVE MOTHER NATURE PHASE");
             }
-        }else{
-        gameTable.setMessages(nickname + " IS IN MOVE MOTHER NATURE PHASE");
-    }
-    });
+        });
     }
 
     @Override
@@ -612,9 +612,9 @@ public class Gui extends Application implements View {
     @Override
     public void startTurn(ArrayList<String> players, String actualPlayer) {
         Platform.runLater(()->{
-        if (Objects.equals(actualPlayer, socketNetworkHandler.getNicknameThisPlayer())) {
-            gameTable.setMessages("YOUR TURN IS FINISHED");
-        }
+            if (Objects.equals(actualPlayer, socketNetworkHandler.getNicknameThisPlayer())) {
+                gameTable.setMessages("YOUR TURN IS FINISHED");
+            }
             int i;
             int j;
             for (j = 0; !Objects.equals(players.get(j), actualPlayer); j++) ;

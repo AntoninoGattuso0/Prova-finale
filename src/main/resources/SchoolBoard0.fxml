@@ -6,7 +6,7 @@
 
 <Pane fx:id="schoolBoard0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.Controller.SchoolBoard0Controller">
     <children>
-    <ImageView id="backSchool0" fitHeight="350.0" fitWidth="620.0" layoutX="-176.0" layoutY="175.0" opacity="0.9" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+        <ImageView id="backSchool0" fitHeight="350.0" fitWidth="620.0" layoutX="-176.0" layoutY="175.0" opacity="0.9" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
             <Image url="@images/SchoolTable.png" />
         </ImageView>
         <ImageView id="schoolBoard0Green0" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="481.0" onMouseClicked="#selectSchoolGreen0" pickOnBounds="true" preserveRatio="true">
@@ -76,7 +76,7 @@
             <Image url="@images/yellowStudent3D.png" />
         </ImageView>
         <ImageView id="schoolBoard0Yellow2" fitHeight="20.0" fitWidth="20.0" layoutX="125.0" layoutY="422.0" onMouseClicked="#selectSchoolYellow0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/yellowStudent3D.png" />
+            <Image url="@images/yellowStudent3D.png" />
         </ImageView>
         <ImageView id="schoolBoard0Yellow3" fitHeight="20.0" fitWidth="20.0" layoutX="125.0" layoutY="393.0" onMouseClicked="#selectSchoolYellow0" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/yellowStudent3D.png" />
@@ -174,30 +174,30 @@
         <ImageView id="schoolBlueProf0" fitHeight="35.0" fitWidth="35.0" layoutX="205.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/blueProf3D.png" />
         </ImageView>
-    <ImageView id="whiteTowerSchool0" fitHeight="45.0" fitWidth="45.0" layoutX="24.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool1" fitHeight="45.0" fitWidth="45.0" layoutX="24.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool2" fitHeight="45.0" fitWidth="45.0" layoutX="74.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool3" fitHeight="45.0" fitWidth="45.0" layoutX="74.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool4" fitHeight="45.0" fitWidth="45.0" layoutX="117.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool5" fitHeight="45.0" fitWidth="45.0" layoutX="117.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool6" fitHeight="45.0" fitWidth="45.0" layoutX="160.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
-    <ImageView id="whiteTowerSchool7" fitHeight="45.0" fitWidth="45.0" layoutX="160.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/WhiteTower.png" />
-    </ImageView>
+        <ImageView id="whiteTowerSchool0" fitHeight="45.0" fitWidth="45.0" layoutX="24.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/WhiteTower.png" />
+        </ImageView>
+        <ImageView id="whiteTowerSchool1" fitHeight="45.0" fitWidth="45.0" layoutX="24.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/WhiteTower.png" />
+        </ImageView>
+        <ImageView id="whiteTowerSchool2" fitHeight="45.0" fitWidth="45.0" layoutX="74.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/WhiteTower.png" />
+        </ImageView>
+        <ImageView id="whiteTowerSchool3" fitHeight="45.0" fitWidth="45.0" layoutX="74.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/WhiteTower.png" />
+        </ImageView>
+        <ImageView id="whiteTowerSchool4" fitHeight="45.0" fitWidth="45.0" layoutX="117.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/WhiteTower.png" />
+        </ImageView>
+        <ImageView id="whiteTowerSchool5" fitHeight="45.0" fitWidth="45.0" layoutX="117.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/WhiteTower.png" />
+        </ImageView>
+        <ImageView id="whiteTowerSchool6" fitHeight="45.0" fitWidth="45.0" layoutX="160.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/WhiteTower.png" />
+        </ImageView>
+        <ImageView id="whiteTowerSchool7" fitHeight="45.0" fitWidth="45.0" layoutX="160.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/WhiteTower.png" />
+        </ImageView>
         <ImageView id="entranceGreen00" fitHeight="20.0" fitWidth="20.0" layoutX="36.0" layoutY="541.0" onMouseClicked="#green00Select" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/greenStudent3D.png" />
         </ImageView>
@@ -333,23 +333,23 @@
         <ImageView id="entranceBlue08" fitHeight="20.0" fitWidth="20.0" layoutX="212.0" layoutY="541.0" onMouseClicked="#blue08Select" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/blueStudent3D.png" />
         </ImageView>
-    <ImageView id="coin0" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/Coin.png" />
-    </ImageView>
-    <ImageView id="coin1" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/Coin.png" />
-    </ImageView>
-    <ImageView id="coin2" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/Coin.png" />
-    </ImageView>
-    <ImageView id="coin3" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/Coin.png" />
-    </ImageView>
-    <ImageView id="coin4" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/Coin.png" />
-    </ImageView>
-    <ImageView id="coin5" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@images/Coin.png" />
-    </ImageView>
+        <ImageView id="coin0" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/Coin.png" />
+        </ImageView>
+        <ImageView id="coin1" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/Coin.png" />
+        </ImageView>
+        <ImageView id="coin2" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/Coin.png" />
+        </ImageView>
+        <ImageView id="coin3" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/Coin.png" />
+        </ImageView>
+        <ImageView id="coin4" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/Coin.png" />
+        </ImageView>
+        <ImageView id="coin5" fitHeight="45.0" fitWidth="45.0" layoutX="268.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@images/Coin.png" />
+        </ImageView>
     </children>
- </Pane>
+</Pane>

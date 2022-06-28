@@ -827,8 +827,8 @@ public class SchoolBoard1Controller {
     public void selection(){
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
-        for(int i=0; i<gui.getLightGame().getIslands().size(); i++)
-            gui.getGameTable().getGameTablePane().lookup("#island"+ i).setDisable(false);
+            for(int i=0; i<gui.getLightGame().getIslands().size(); i++)
+                gui.getGameTable().getGameTablePane().lookup("#island"+ i).setDisable(false);
             if(gui.getNumPawnsCount()==0)
                 for(Node school : schoolBoard1.getChildren())
                     school.setDisable(true);
@@ -845,7 +845,6 @@ public class SchoolBoard1Controller {
                 gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             }
         }
-
         if(gui.getPedineDaSpostare()==0){
             gui.setPedineDaSpostare(gui.getNumPawnMove());
         }
