@@ -144,23 +144,23 @@ public class SchoolBoard1Controller {
 
 
     public void setEntrance1() {
-        int green = gui.getLightGame().getPlayers().get(0).getEntrance().getGreenPawn();
+        int green = gui.getLightGame().getPlayers().get(1).getEntrance().getGreenPawn();
         for (int i = 0; i < green; i++)
             schoolBoard1.lookup("#entranceGreen1" + i).setVisible(true);
 
-        int red = gui.getLightGame().getPlayers().get(0).getEntrance().getRedPawn() + green;
+        int red = gui.getLightGame().getPlayers().get(1).getEntrance().getRedPawn() + green;
         for (int i = green; i < red; i++)
             schoolBoard1.lookup("#entranceRed1" + i).setVisible(true);
 
-        int yellow = gui.getLightGame().getPlayers().get(0).getEntrance().getYellowPawn() + red;
+        int yellow = gui.getLightGame().getPlayers().get(1).getEntrance().getYellowPawn() + red;
         for (int i = red; i < yellow; i++)
             schoolBoard1.lookup("#entranceYellow1" + i).setVisible(true);
 
-        int pink = gui.getLightGame().getPlayers().get(0).getEntrance().getPinkPawn() + yellow;
+        int pink = gui.getLightGame().getPlayers().get(1).getEntrance().getPinkPawn() + yellow;
         for (int i = yellow; i < pink; i++)
             schoolBoard1.lookup("#entrancePink1" + i).setVisible(true);
 
-        int blue = gui.getLightGame().getPlayers().get(0).getEntrance().getBluePawn() + pink;
+        int blue = gui.getLightGame().getPlayers().get(1).getEntrance().getBluePawn() + pink;
         for (int i = pink; i < blue; i++)
             schoolBoard1.lookup("#entranceBlue1" + i).setVisible(true);
     }
@@ -924,7 +924,7 @@ public class SchoolBoard1Controller {
                 for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
                 gui.getColorPawns().add(ColorPawn.GREEN);
                 gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
-                int green = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumGreen();
+                int green = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumGreen();
                 if(schoolBoard1.lookup("#schoolBoard1Green" + (green - 1)).isVisible()) {
                     schoolBoard1.lookup("#schoolBoard1Green" + (green - 1)).setVisible(false);
                     schoolBoard1.lookup("#schoolBoard1Green" + (green - 1)).setDisable(true);
@@ -946,7 +946,7 @@ public class SchoolBoard1Controller {
                 for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
                 gui.getColorPawns().add(ColorPawn.RED);
                 gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
-                int red = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumRed();
+                int red = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumRed();
                 if(schoolBoard1.lookup("#schoolBoard1Red" + (red - 1)).isVisible()) {
                     schoolBoard1.lookup("#schoolBoard1Red" + (red - 1)).setVisible(false);
                     schoolBoard1.lookup("#schoolBoard1Red" + (red - 1)).setDisable(true);
@@ -968,7 +968,7 @@ public class SchoolBoard1Controller {
                 for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
                 gui.getColorPawns().add(ColorPawn.YELLOW);
                 gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
-                int yellow = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumYellow();
+                int yellow = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumYellow();
                 if(schoolBoard1.lookup("#schoolBoard1Yellow" + (yellow - 1)).isVisible()) {
                     schoolBoard1.lookup("#schoolBoard1Yellow" + (yellow - 1)).setVisible(false);
                     schoolBoard1.lookup("#schoolBoard1Yellow" + (yellow - 1)).setDisable(true);
@@ -990,7 +990,7 @@ public class SchoolBoard1Controller {
                 for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
                 gui.getColorPawns().add(ColorPawn.PINK);
                 gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
-                int pink = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumPink();
+                int pink = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumPink();
                 if(schoolBoard1.lookup("#schoolBoard1Pink" + (pink - 1)).isVisible()) {
                     schoolBoard1.lookup("#schoolBoard1Pink" + (pink - 1)).setVisible(false);
                     schoolBoard1.lookup("#schoolBoard1Pink" + (pink - 1)).setDisable(true);
@@ -1012,7 +1012,7 @@ public class SchoolBoard1Controller {
                 for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
                 gui.getColorPawns().add(ColorPawn.BLUE);
                 gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
-                int blue = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumBlue();
+                int blue = gui.getLightGame().getPlayers().get(1).getDiningRoom().getNumBlue();
                 if(schoolBoard1.lookup("#schoolBoard1Blue" + (blue - 1)).isVisible()) {
                     schoolBoard1.lookup("#schoolBoard1Blue" + (blue - 1)).setVisible(false);
                     schoolBoard1.lookup("#schoolBoard1Blue" + (blue - 1)).setDisable(true);
