@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.Random;
 
 /**
- * represents the Cloud and hos the number of Pawn
+ * represents the Cloud, the attributes are the number of pawns per color
  */
 public class Cloud {
     private int numPawn;
@@ -60,7 +60,7 @@ public class Cloud {
     }
 
     /**
-     * if the players are 2 or 4, the NumPawn on the cloud are 3, else are 4
+     * if the players are 2 or 4, the NumPawn on the cloud are 3, otherwise are 4
      * @return the numPawn
      */
     public int requiredNumPawn(Game game) {
@@ -70,6 +70,12 @@ public class Cloud {
             setNumPawn(4);
          return getNumPawn();
     }
+
+    /**
+     * it allows the refill of the clouds with pawns from the studentBag
+     * @param studentBag
+     * @param game
+     */
     public void refillCloud(StudentBag studentBag, Game game) {
         int i;
         Random rnd = new Random();
