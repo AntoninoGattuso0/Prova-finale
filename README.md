@@ -17,7 +17,7 @@ The [initial UML](deliveries/initial_uml.png) features an initial and  general i
 The network protocol(link) describes the communication between the server and the client.
 
 ## JavaDoc
-JavaDoc(link) provides a descripition of the classes and the methos.
+[JavaDoc](docs) provides a descripition of the classes and the methos.
 
 ## TOOL, PLUGINS AND EXTERNAL LIBRARIES USED:
 - Intellij IDEA,
