@@ -34,7 +34,7 @@ The network protocol(link) describes the communication between the server and th
 |Cli| **X** |
 |Gui| **X** |
 |**ADVANCED FUNCTIONALITIES**|**IMPLEMENTED**|
-|Character Card| **X**  |
+|12 Character Cards| **X**  |
 |4 – Player Game| **X** |
 
 ## JAR:
