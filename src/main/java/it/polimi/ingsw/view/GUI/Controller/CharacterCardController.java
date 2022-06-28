@@ -310,12 +310,18 @@ public class CharacterCardController {
                 gui.getGameTable().characterButton.setDisable(true);
                 gui.getGameTable().useCC.setVisible(false);
                 gui.getGameTable().useCC.setDisable(true);
-                gui.getGameTable().number0.setVisible(true);
-                gui.getGameTable().number0.setDisable(false);
-                gui.getGameTable().number1.setVisible(true);
-                gui.getGameTable().number1.setDisable(false);
-                gui.getGameTable().number2.setVisible(true);
-                gui.getGameTable().number2.setDisable(false);
+                if(gui.getLightGame().getPlayers().get(player).getEntrance().getGreenPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getRedPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getYellowPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getPinkPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getBluePawn() > 0){
+                    gui.getGameTable().number0.setVisible(true);
+                    gui.getGameTable().number0.setDisable(false);
+                }
+                if(gui.getLightGame().getPlayers().get(player).getEntrance().getGreenPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getRedPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getYellowPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getPinkPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getBluePawn() > 1){
+                    gui.getGameTable().number1.setVisible(true);
+                    gui.getGameTable().number1.setDisable(false);
+                }
+                if(gui.getLightGame().getPlayers().get(player).getEntrance().getGreenPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getRedPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getYellowPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getPinkPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getBluePawn() > 2){
+                    gui.getGameTable().number2.setVisible(true);
+                    gui.getGameTable().number2.setDisable(false);
+                }
             } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 7) {
                 gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getIvan().getCoinPrice());
                 gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(characterPosition, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
@@ -345,10 +351,18 @@ public class CharacterCardController {
                 gui.getGameTable().diningButton.setVisible(false);
                 gui.getGameTable().characterButton.setDisable(true);
                 gui.getGameTable().characterButton.setVisible(false);
-                gui.getGameTable().number0.setVisible(true);
-                gui.getGameTable().number0.setDisable(false);
-                gui.getGameTable().number1.setVisible(true);
-                gui.getGameTable().number1.setDisable(false);
+                if(gui.getLightGame().getPlayers().get(player).getEntrance().getGreenPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getRedPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getYellowPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getPinkPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getBluePawn() > 0){
+                    if(gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumGreen() + gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumRed() + gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumYellow() + gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumPink() + gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumBlue() > 0){
+                        gui.getGameTable().number0.setVisible(true);
+                        gui.getGameTable().number0.setDisable(false);
+                    }
+                }
+                if(gui.getLightGame().getPlayers().get(player).getEntrance().getGreenPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getRedPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getYellowPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getPinkPawn() + gui.getLightGame().getPlayers().get(player).getEntrance().getBluePawn() > 1){
+                    if(gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumGreen() + gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumRed() + gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumYellow() + gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumPink() + gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumBlue() > 1){
+                        gui.getGameTable().number1.setVisible(true);
+                        gui.getGameTable().number1.setDisable(false);
+                    }
+                }
                 gui.getGameTable().messagesActions.setDisable(false);
                 gui.getGameTable().messagesActions.setVisible(true);
             } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 10) {

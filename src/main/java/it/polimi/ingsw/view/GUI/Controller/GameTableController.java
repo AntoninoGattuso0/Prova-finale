@@ -1604,7 +1604,6 @@ public class GameTableController {
                     if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getAntonio().getCoinPrice())
                         characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
                     else {
-                        System.out.println("Ho reso cliccabile antonio");
                         characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
                     }
                 } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 1) {
@@ -1623,7 +1622,7 @@ public class GameTableController {
                     else
                         characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
                 } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 4) {
-                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getErnesto().getCoinPrice())
+                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getErnesto().getCoinPrice() || gui.getLightGame().getErnesto().getNumProhibitionCard() == 0)
                         characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
                     else
                         characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
