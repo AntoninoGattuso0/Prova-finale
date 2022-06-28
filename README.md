@@ -5,7 +5,7 @@ It is a game full of strategy and twists. Plan your moves carefully and try to c
 
 The *target* of the projet is the implementation of a distributed system composed by a single server capable of managing one game at a time and multiple clients (one per player) that can participate in only one game at a time. The game has been implemented according to the architectural pattern MVC (Model-View-Controller) and a TCP network using sockets.
 
-# DOCUMENTATION:
+## DOCUMENTATION:
 In this paragraph will be shown the documentation of the project:
 ## UML
 The [initial UML](deliveries/initial_uml.png) features an initial and  general idea of the game, later the diagram has been modified according to a more defined implementation for reaching the [final UML](link).
@@ -19,23 +19,23 @@ JavaDoc(link) provides a descripition of the classes and the methos.
 ## TOOL, PLUGINS AND EXTERNAL LIBRARIES USED
 Intellij IDEA, JUnit, Maven, JavaFX + Scene Builder, Github
 
-# FUNCTIONALITIES
+## FUNCTIONALITIES
 |FUNCTIONALITIES|IMPLEMENTED|
 |-----|---|
 |Complete Rules|   |
 |Socket Connection|   |
 |Cli|  |
 |Gui|  |
-|ADVANCED FUNCTIONALITIES|IMPLEMENTED|
+|**ADVANCED FUNCTIONALITIES**|**IMPLEMENTED**|
 |Character Card|   |
 |4 – Player Game|   |
 
-# JAR
+## JAR
 The following jars allow to launch the game as descriped 
 CLI 
 GUI 
 
-# DEVELOPERS:
+## DEVELOPERS:
 PAOLO GAMBARIN, ANTONINO GATTUSO, REBECA MERSAM
 
 
