@@ -326,6 +326,7 @@ public class Gui extends Application implements View {
             }
         }
         Platform.runLater(()-> {
+            gameTable.setChooseViewOn();
             if (schoolBoard1Controller != null) {
                 schoolBoard1Controller.setSchoolBoard1();
                 schoolBoard0Controller.setSchoolBoard0();
