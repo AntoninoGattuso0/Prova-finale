@@ -6,25 +6,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane fx:id="gameStarted" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0"
-      prefWidth="420.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.Controller.GameStartedController">
-   <ImageView fitHeight="407.0" fitWidth="453.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@images/Background.png"/>
+<Pane fx:id="gameStarted" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.view.GUI.Controller.GameStartedController">
+   <ImageView fitHeight="480.0" fitWidth="480.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/Background.png" />
    </ImageView>
-   <Text fill="WHITE" layoutX="114.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ALL THE PLAYERS">
+   <Text fill="WHITE" layoutX="144.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ALL THE PLAYERS">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Text>
-   <Text fill="WHITE" layoutX="116.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ARE CONNECTED">
+   <Text fill="WHITE" layoutX="146.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ARE CONNECTED">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Text>
-   <Text fill="WHITE" layoutX="62.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAME START!">
+   <Text fill="WHITE" layoutX="92.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAME START!">
       <font>
-         <Font size="48.0"/>
+         <Font size="48.0" />
       </font>
    </Text>
 </Pane>
