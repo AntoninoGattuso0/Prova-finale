@@ -126,30 +126,6 @@ public class SchoolBoard0Controller {
             schoolBoard0.lookup("#entranceBlue0"+ i).setVisible(true);
     }
 
-    //le 5 funzioni qui sotto mettono visibile/ non visibili/clickabili...  le pedine che passiamo con numColore
-    public void greenEntrance0(boolean boolVisibility, boolean boolClickable, int numGreen){
-        schoolBoard0.lookup("#entranceGreen0"+ numGreen).setVisible(boolVisibility);
-        schoolBoard0.lookup("#entranceGreen0"+ numGreen).setDisable(boolClickable);
-    }
-
-    public void redEntrance0(boolean boolVisibility, boolean boolClickable, int numRed){
-        schoolBoard0.lookup("#entranceRed0"+ numRed).setVisible(boolVisibility);
-        schoolBoard0.lookup("#entranceRed0"+ numRed).setDisable(boolClickable);
-    }
-    public void yellowEntrance0(boolean boolVisibility, boolean boolClickable, int numYellow){
-        schoolBoard0.lookup("#entranceYellow0"+ numYellow).setVisible(boolVisibility);
-        schoolBoard0.lookup("#entranceYellow0"+ numYellow).setDisable(boolClickable);
-    }
-    public void pinkEntrance0(boolean boolVisibility, boolean boolClickable, int numPink){
-        schoolBoard0.lookup("#entrancePink0"+ numPink).setVisible(boolVisibility);
-        schoolBoard0.lookup("#entrancePink0"+ numPink).setDisable(boolClickable);
-    }
-    public void blueEntrance0(boolean boolVisibility, boolean boolClickable, int numBlue){
-        schoolBoard0.lookup("#entranceBlue0"+ numBlue).setVisible(boolVisibility);
-        schoolBoard0.lookup("#entranceBlue0"+ numBlue).setDisable(boolClickable);
-    }
-
-
     public void setDiningRoom0(){
         int green = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumGreen();
         for(int i=0; i<green; i++){
@@ -190,46 +166,6 @@ public class SchoolBoard0Controller {
 
     //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine delle dining che passiamo con num
 
-    public void greenDining0(boolean boolVisibility, boolean boolClickable, int num){
-        for(Node school : schoolBoard0.getChildren()) {
-            if (school.getId().equals("#schoolBoard0Green" + num)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
-    public void redDining0(boolean boolVisibility, boolean boolClickable, int num){
-        for(Node school : schoolBoard0.getChildren()) {
-            if (school.getId().equals("#schoolBoard0Red" + num)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
-    public void yellowDining0(boolean boolVisibility, boolean boolClickable, int num){
-        for(Node school : schoolBoard0.getChildren()) {
-            if (school.getId().equals("#schoolBoard0Yellow" + num)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
-    public void pinkDining0(boolean boolVisibility, boolean boolClickable, int num){
-        for(Node school : schoolBoard0.getChildren()) {
-            if (school.getId().equals("#schoolBoard0Pink" + num)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
-    public void blueDining0(boolean boolVisibility, boolean boolClickable, int num){
-        for(Node school : schoolBoard0.getChildren()) {
-            if (school.getId().equals("#schoolBoard0Blue" + num)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
 
     public void setGreenProfessor0(boolean bool){
         schoolBoard0.lookup("#schoolGreenProf0").setVisible(bool);
@@ -275,12 +211,6 @@ public class SchoolBoard0Controller {
     //al  massimo se non servono entrambe cancelliamo questa sotto
     // e a quella sopra passiamo come paramtri bool e numTower
     //stessa cosa anche per le coin
-    public void towerVisibility0(boolean bool, int numTower){
-        for(Node school : schoolBoard0.getChildren()) {
-            if (schoolBoard0.getId().equals("whiteTowerSchool" + numTower))
-                school.setVisible(bool);
-        }
-    }
 
     //setta all'inizio solo la prima coin visibile
     public void setCoin0() {
@@ -292,12 +222,6 @@ public class SchoolBoard0Controller {
     }
 
 
-    public void coinVisibility0(boolean bool, int numCoin){
-        for(Node school : schoolBoard0.getChildren()) {
-            if (schoolBoard0.getId().equals("coin" + numCoin))
-                school.setVisible(bool);
-        }
-    }
 
 
     //per tuttte le funzioni dell'entrata una volta cliccata la pedina diventa non selezionabile ed invisbile
@@ -851,8 +775,10 @@ public class SchoolBoard0Controller {
             if(gui.getPedineDaSpostare()==0)
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
         }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            int i;
+            for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=6; i++);
             if(gui.getNumPawnsCount() == 0)
-                gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(6, gui.getNumPawns()/2, gui.getIslandSelected(), gui.getColorPawns(), true));
+                gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns()/2, gui.getIslandSelected(), gui.getColorPawns(), true));
         }else if(gui.getButtonClicked().equals(ButtonAction.MARIA)){
             System.out.println("ho cliccato una pedina nel entrata");
             if(gui.getNumPawnsCount() == gui.getNumPawns()/2){
