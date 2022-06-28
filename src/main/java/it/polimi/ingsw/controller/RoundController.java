@@ -26,9 +26,8 @@ public class RoundController {
     }
 
     /**This function decides the order of the player (it depends on the AssistantCard used)
-     *
      * @param game
-     * @return ArrayList</Player> containing the order of the players
+     * @return ArrayList Player containing the order of the players
      */
     public synchronized ArrayList<Player> newRoundOrder(Game game) {
         int i, j, w, k;
