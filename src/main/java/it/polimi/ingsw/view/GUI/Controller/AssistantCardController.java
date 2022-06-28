@@ -43,7 +43,7 @@ public class AssistantCardController {
             assistant.setDisable(true);
         }
     }
-    public void setAsssistantsAble(String nick){
+    public void setAssistantsAble(String nick){
         int j;
         int k;
         for(j=0; !Objects.equals(gui.getLightGame().getPlayers().get(j).getNickname(), nick); j++);
