@@ -64,7 +64,7 @@ public class Player {
         setActive(true);
         int j, k;
         setNickname(nick);
-        if (game.isExpert) setNumCoin(1);
+        if (game.isExpert) setNumCoin(900);
         else setNumCoin(-1);
         k = 1;
         for (j = 1; j < 11; j++) {
