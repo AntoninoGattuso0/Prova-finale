@@ -325,27 +325,29 @@ public class Gui extends Application implements View {
                 displayStartRound();
             }
         }
-        Platform.runLater(()-> {
-            if (schoolBoard1Controller != null) {
-                schoolBoard1Controller.setSchoolBoard1();
-                schoolBoard0Controller.setSchoolBoard0();
+        if(assistantCardController!=null) {
+            Platform.runLater(() -> {
+                if (schoolBoard1Controller != null) {
+                    schoolBoard1Controller.setSchoolBoard1();
+                    schoolBoard0Controller.setSchoolBoard0();
+                }
                 if (schoolBoard2Controller != null) {
                     schoolBoard2Controller.setSchoolBoard2();
                 }
-                if (schoolBoard2Controller != null) {
+                if (schoolBoard3Controller != null) {
                     schoolBoard3Controller.setSchoolBoard3();
                 }
                 assistantCardController.setAssistantCards(socketNetworkHandler.getNicknameThisPlayer());
-                if(lightGame.getIsExpert()) characterCardController.setCharacterCards();
+                if (lightGame.getIsExpert()) characterCardController.setCharacterCards();
                 gameTable.setMotherNatureVisible();
                 gameTable.setPawnVisible();
                 gameTable.setTowers();
                 gameTable.setAllIslands(true);
                 gameTable.setProfessor();
                 gameTable.setCloudVisible();
-            }
-            gameTable.setChooseViewOn();
-        });
+                gameTable.setChooseViewOn();
+            });
+        }
     }
 
     @Override
