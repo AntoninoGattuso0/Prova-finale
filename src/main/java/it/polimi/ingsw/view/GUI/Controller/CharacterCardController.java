@@ -305,6 +305,8 @@ public class CharacterCardController {
                 gui.getGameTable().diningButton.setDisable(true);
                 gui.getGameTable().characterButton.setVisible(false);
                 gui.getGameTable().characterButton.setDisable(true);
+                gui.getGameTable().useCC.setVisible(false);
+                gui.getGameTable().useCC.setDisable(true);
                 gui.getGameTable().number0.setVisible(true);
                 gui.getGameTable().number0.setDisable(false);
                 gui.getGameTable().number1.setVisible(true);
@@ -334,6 +336,8 @@ public class CharacterCardController {
                 gui.getGameTable().islandButton.setDisable(true);
                 gui.getGameTable().islandButton.setVisible(false);
                 gui.getGameTable().diningButton.setDisable(true);
+                gui.getGameTable().useCC.setVisible(false);
+                gui.getGameTable().useCC.setDisable(true);
                 gui.getGameTable().diningButton.setVisible(false);
                 gui.getGameTable().characterButton.setDisable(true);
                 gui.getGameTable().characterButton.setVisible(false);
@@ -379,9 +383,9 @@ public class CharacterCardController {
         });
     }
 
-    public void character0Select(MouseEvent mouseEvent) {
-        System.out.println("ho cliccato antonio");
+    public void character0Select(MouseEvent mouseEvent) {;
         characterEffects(0);
+
     }
 
     public void character1Select(MouseEvent mouseEvent) {
