@@ -1696,7 +1696,7 @@ public class GameTableController {
                         else
                             characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
                     } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 9) {
-                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getMaria().getCoinPrice())
+                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getMaria().getCoinPrice() || gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumGreen() + gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumRed() + gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumYellow() + gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumPink() + gui.getLightGame().getPlayers().get(player).getDiningRoom().getNumBlue() == 0)
                             characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
                         else
                             characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
