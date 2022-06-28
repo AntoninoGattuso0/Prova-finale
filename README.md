@@ -16,27 +16,26 @@ The network protocol(link) describes the communication between the server and th
 ## JavaDoc
 JavaDoc(link) provides a descripition of the classes and the methos.
 
-#TOOL, PLUGINS AND EXTERNAL LIBRARIES USED
+# TOOL, PLUGINS AND EXTERNAL LIBRARIES USED
 Intellij IDEA, JUnit, Maven, JavaFX + Scene Builder, Github
 
-#FUNCTIONALITIES
+# FUNCTIONALITIES
 |FUNCTIONALITIES|IMPLEMENTED|
 |-----|---|
 |Complete Rules|   |
 |Socket Connection|   |
 |Cli|  |
 |Gui|  |
-|----|---|
 |ADVANCED FUNCTIONALITIES|IMPLEMENTED|
 |Character Card|   |
 |4 – Player Game|   |
 
-#JAR
+# JAR
 The following jars allow to launch the game as descriped 
 CLI 
 GUI 
 
-#DEVELOPERS:
+# DEVELOPERS:
 PAOLO GAMBARIN, ANTONINO GATTUSO, REBECA MERSAM
 
 
