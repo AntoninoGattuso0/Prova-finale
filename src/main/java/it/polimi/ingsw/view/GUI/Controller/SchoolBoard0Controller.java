@@ -897,8 +897,6 @@ public class SchoolBoard0Controller {
                         schoolBoard0.lookup("#schoolBoard0Blue" + i).setDisable(false);
                 }
             }
-
-
         }
 
     public void selectSchoolGreen0(MouseEvent mouseEvent) {
@@ -1010,4 +1008,5 @@ public class SchoolBoard0Controller {
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
         }
     }
+
 }
