@@ -9,10 +9,10 @@
    <ImageView id="0characterCard0" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
       <Image url="@images/CharacterCard1.jpg" />
    </ImageView>
-     <ImageView id="1characterCard0" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
+   <ImageView id="1characterCard0" fitHeight="200.0" fitWidth="150.0" layoutX="200.0" layoutY="200.0" onMouseClicked="#character1Select" pickOnBounds="true" preserveRatio="true">
       <Image url="@images/CharacterCard1.jpg" />
    </ImageView>
-     <ImageView id="2characterCard0" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
+   <ImageView id="2characterCard0" fitHeight="200.0" fitWidth="150.0" layoutY="400.0" onMouseClicked="#character2Select" pickOnBounds="true" preserveRatio="true">
       <Image url="@images/CharacterCard1.jpg" />
    </ImageView>
    <ImageView id="0characterCard1" fitHeight="200.0" fitWidth="150.0" onMouseClicked="#character0Select" pickOnBounds="true" preserveRatio="true">
