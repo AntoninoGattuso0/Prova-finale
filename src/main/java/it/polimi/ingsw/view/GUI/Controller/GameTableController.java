@@ -1423,17 +1423,20 @@ public class GameTableController {
             for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=0; i++);
             gui.setIslandSelected(numIsland);
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            gui.getColorPawns().clear();
         } else if(gui.getButtonClicked().equals(ButtonAction.CIRO)){
             int i;
             for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=2; i++);
             gui.setIslandSelected(numIsland);
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            gui.getColorPawns().clear();
         } else if(gui.getButtonClicked().equals(ButtonAction.ERNESTO)){
             int i;
             for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=4; i++);
             gui.setIslandSelected(numIsland);
             gui.getGameTable().getGameTablePane().lookup("#prohibited" + numIsland).setVisible(true);
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            gui.getColorPawns().clear();
         }
     }
 
@@ -1675,6 +1678,7 @@ public class GameTableController {
         });
         ArrayList<ColorPawn> color = new ArrayList<>();
         gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(0, 0, 0, color, false));
+        gui.getColorPawns().clear();
     }
 
 

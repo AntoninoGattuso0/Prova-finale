@@ -819,8 +819,10 @@ public class SchoolBoard2Controller {
         }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
             int i;
             for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=6; i++);
-            if(gui.getNumPawnsCount() == 0)
-                gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns()/2, gui.getIslandSelected(), gui.getColorPawns(), true));
+            if(gui.getNumPawnsCount() == 0) {
+                gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns() / 2, gui.getIslandSelected(), gui.getColorPawns(), true));
+                gui.getColorPawns().clear();
+            }
         }else if(gui.getButtonClicked().equals(ButtonAction.MARIA)){
             System.out.println("ho cliccato una pedina nel entrata");
             if(gui.getNumPawnsCount() == gui.getNumPawns()/2){
@@ -882,6 +884,7 @@ public class SchoolBoard2Controller {
         if(gui.getNumPawnsCount() == 0){
             setAllDisabled();
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            gui.getColorPawns().clear();
         }
     }
     public void setAllDisabled(){
@@ -910,6 +913,7 @@ public class SchoolBoard2Controller {
         if(gui.getNumPawnsCount() == 0){
             setAllDisabled();
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            gui.getColorPawns().clear();
         }
     }
 
@@ -932,6 +936,7 @@ public class SchoolBoard2Controller {
         if(gui.getNumPawnsCount() == 0){
             setAllDisabled();
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            gui.getColorPawns().clear();
         }
     }
 
@@ -954,6 +959,7 @@ public class SchoolBoard2Controller {
         if(gui.getNumPawnsCount() == 0){
             setAllDisabled();
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            gui.getColorPawns().clear();
         }
     }
 
@@ -976,6 +982,7 @@ public class SchoolBoard2Controller {
         if(gui.getNumPawnsCount() == 0){
             setAllDisabled();
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            gui.getColorPawns().clear();
         }
     }
 }
