@@ -23,14 +23,14 @@ Intellij IDEA, JUnit, Maven, JavaFX + Scene Builder, Github
 
 ## FUNCTIONALITIES
 |FUNCTIONALITIES|IMPLEMENTED|
-|-----|---|
-|Complete Rules|   |
-|Socket Connection|   |
-|Cli|  |
-|Gui|  |
+|-----|:---:|
+|Complete Rules| **X** |
+|Socket Connection| **X** |
+|Cli| **X** |
+|Gui| **X** |
 |**ADVANCED FUNCTIONALITIES**|**IMPLEMENTED**|
-|Character Card|   |
-|4 – Player Game|   |
+|Character Card| **X**  |
+|4 – Player Game| **X** |
 
 ## JAR
 The following jars allow to launch the game as descriped 
