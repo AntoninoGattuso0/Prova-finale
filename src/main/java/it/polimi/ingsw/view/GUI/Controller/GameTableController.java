@@ -1567,103 +1567,153 @@ public class GameTableController {
             whatToDo.setVisible(true);
         });
     }
+    
+    public boolean notEnoughCoin() {
+        boolean notEnoughCoin = true;
+        int player;
+        for (player = 0; player < gui.getLightGame().getNumPlayers() && !gui.getLightGame().getPlayers().get(player).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer()); player++) ;
+        for (int i = 0; i < 3 && notEnoughCoin; i++) {
+            if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 0) {
+                if (!(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getAntonio().getCoinPrice()))
+                    notEnoughCoin = false;
+            } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 1) {
+                if (!(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getBarbara().getCoinPrice()))
+                    notEnoughCoin = false;                
+            } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 2) {
+                if (!(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getCiro().getCoinPrice()))
+                    notEnoughCoin = false;
+            } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 3) {
+                if (!(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getDante().getCoinPrice()))
+                    notEnoughCoin = false;
+            } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 4) {
+                if (!(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getErnesto().getCoinPrice() || gui.getLightGame().getErnesto().getNumProhibitionCard() == 0))
+                    notEnoughCoin = false;
+            } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 5) {
+                if (!(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getFelix().getCoinPrice()))
+                    notEnoughCoin = false;
+            } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 6) {
+                if (!(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getGiuseppe().getCoinPrice()))
+                    notEnoughCoin = false;
+            } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 7) {
+                if (!(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getIvan().getCoinPrice()))
+                    notEnoughCoin = false;
+            } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 8) {
+                if (!(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getLancillotto().getCoinPrice()))
+                    notEnoughCoin = false;
+            } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 9) {
+                if (!(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getMaria().getCoinPrice()))
+                    notEnoughCoin = false;
+            } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 10) {
+                if (!(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getNicola().getCoinPrice()))
+                    notEnoughCoin = false;
+            } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 11) {
+                if (!(gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getOmnia().getCoinPrice()))
+                    notEnoughCoin = false;
+            }
+        }
+        return notEnoughCoin;
+    }
 
     public void useCCButton(MouseEvent mouseEvent) {
-        Platform.runLater(() -> {
-            setChooseViewOff();
-            characterCardController = gui.getCharacterCardController();
-            characterCardController.setCharacterCards();
-            characterCardController.getCharacterCards().setDisable(false);
-            characterCardController.getCharacterCards().setVisible(true);
-            showCharacterCard.setVisible(true);
-            showCharacterCard.setDisable(false);
-            messagesActions.setDisable(true);
-            moveMnButton.setVisible(false);
-            moveMnButton.setDisable(true);
-            cloudButton.setDisable(true);
-            cloudButton.setVisible(false);
-            messagesActions.setVisible(false);
-            showSchool0.setVisible(false);
-            showSchool1.setVisible(false);
-            showSchool2.setVisible(false);
-            showSchool3.setVisible(false);
-            showSchool0.setDisable(true);
-            showSchool1.setDisable(true);
-            showSchool2.setDisable(true);
-            showSchool3.setDisable(true);
-            showAssistant.setVisible(false);
-            showAssistant.setDisable(true);
-            endTurn.setVisible(false);
-            endTurn.setDisable(true);
-            messages.setText("CHOOSE CHARACTERCARD");
-            int player;
-            for (player = 0; player < gui.getLightGame().getNumPlayers() && !gui.getLightGame().getPlayers().get(player).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer()); player++)
-                ;
-            for (int i = 0; i < 3; i++) {
-                if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 0) {
-                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getAntonio().getCoinPrice())
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
-                    else {
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+        if(notEnoughCoin()){
+            gui.getGameTable().whatToDo.setText("NOT ENOUGH COIN!!");
+        }else {
+            Platform.runLater(() -> {
+                setChooseViewOff();
+                characterCardController = gui.getCharacterCardController();
+                characterCardController.setCharacterCards();
+                characterCardController.getCharacterCards().setDisable(false);
+                characterCardController.getCharacterCards().setVisible(true);
+                showCharacterCard.setVisible(true);
+                showCharacterCard.setDisable(false);
+                messagesActions.setDisable(true);
+                moveMnButton.setVisible(false);
+                moveMnButton.setDisable(true);
+                cloudButton.setDisable(true);
+                cloudButton.setVisible(false);
+                messagesActions.setVisible(false);
+                showSchool0.setVisible(false);
+                showSchool1.setVisible(false);
+                showSchool2.setVisible(false);
+                showSchool3.setVisible(false);
+                showSchool0.setDisable(true);
+                showSchool1.setDisable(true);
+                showSchool2.setDisable(true);
+                showSchool3.setDisable(true);
+                showAssistant.setVisible(false);
+                showAssistant.setDisable(true);
+                endTurn.setVisible(false);
+                endTurn.setDisable(true);
+                messages.setText("CHOOSE CHARACTERCARD");
+                int player;
+                for (player = 0; player < gui.getLightGame().getNumPlayers() && !gui.getLightGame().getPlayers().get(player).getNickname().equals(gui.getSocketNetworkHandler().getNicknameThisPlayer()); player++)
+                    ;
+                for (int i = 0; i < 3; i++) {
+                    if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 0) {
+                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getAntonio().getCoinPrice())
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                        else {
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                        }
+                    } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 1) {
+                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getBarbara().getCoinPrice())
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                        else
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                    } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 2) {
+                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getCiro().getCoinPrice())
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                        else
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                    } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 3) {
+                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getDante().getCoinPrice())
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                        else
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                    } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 4) {
+                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getErnesto().getCoinPrice() || gui.getLightGame().getErnesto().getNumProhibitionCard() == 0)
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                        else
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                    } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 5) {
+                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getFelix().getCoinPrice())
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                        else
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                    } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 6) {
+                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getGiuseppe().getCoinPrice())
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                        else
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                    } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 7) {
+                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getIvan().getCoinPrice())
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                        else
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                    } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 8) {
+                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getLancillotto().getCoinPrice())
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                        else
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                    } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 9) {
+                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getMaria().getCoinPrice())
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                        else
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                    } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 10) {
+                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getNicola().getCoinPrice())
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                        else
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
+                    } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 11) {
+                        if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getOmnia().getCoinPrice())
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
+                        else
+                            characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
                     }
-                } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 1) {
-                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getBarbara().getCoinPrice())
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
-                    else
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
-                } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 2) {
-                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getCiro().getCoinPrice())
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
-                    else
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
-                } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 3) {
-                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getDante().getCoinPrice())
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
-                    else
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
-                } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 4) {
-                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getErnesto().getCoinPrice() || gui.getLightGame().getErnesto().getNumProhibitionCard() == 0)
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
-                    else
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
-                } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 5) {
-                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getFelix().getCoinPrice())
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
-                    else
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
-                } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 6) {
-                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getGiuseppe().getCoinPrice())
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
-                    else
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
-                } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 7) {
-                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getIvan().getCoinPrice())
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
-                    else
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
-                } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 8) {
-                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getLancillotto().getCoinPrice())
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
-                    else
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
-                } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 9) {
-                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getMaria().getCoinPrice())
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
-                    else
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
-                } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 10) {
-                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getNicola().getCoinPrice())
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
-                    else
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
-                } else if (gui.getLightGame().getCharacterCards().get(i).getNumCard() == 11) {
-                    if (gui.getLightGame().getPlayers().get(player).getNumCoin() < gui.getLightGame().getOmnia().getCoinPrice())
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setOpacity(0.6);
-                    else
-                        characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
                 }
-            }
-        });
+            });
+        }
     }
 
     public void endTurnButton(MouseEvent mouseEvent) {
