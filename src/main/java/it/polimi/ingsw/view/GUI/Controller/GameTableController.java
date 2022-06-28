@@ -1587,8 +1587,6 @@ public class GameTableController {
             showSchool3.setDisable(true);
             showAssistant.setVisible(false);
             showAssistant.setDisable(true);
-            useCC.setDisable(true);
-            useCC.setVisible(false);
             endTurn.setVisible(false);
             endTurn.setDisable(true);
             messages.setText("CHOOSE CHARACTERCARD");
