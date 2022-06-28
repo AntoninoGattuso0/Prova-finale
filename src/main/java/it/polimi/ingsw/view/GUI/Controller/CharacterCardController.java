@@ -34,6 +34,9 @@ public class CharacterCardController {
     int island = -1;
     Gui gui;
     GameTableController gameTableController;
+    boolean zeroUse=false;
+    boolean oneUse=false;
+    boolean twoUse=false;
 
     public Pane getCharacterCards(){return characterCards;}
 
@@ -64,8 +67,12 @@ public class CharacterCardController {
     public void showCharacter(){
         for(int i = 0; i < gui.getLightGame().getCharacterCards().size(); i++){
             for(Node character : characterCards.getChildren()){
-                if(character.getId().equals(i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()))
+                if(character.getId().equals(i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard())) {
                     character.setVisible(true);
+                }
+                setCoinVisible(0,zeroUse);
+                setCoinVisible(1,oneUse);
+                setCoinVisible(2,twoUse);
             }
         }
     }
@@ -403,17 +410,17 @@ public class CharacterCardController {
 
     public void character0Select(MouseEvent mouseEvent) {;
         characterEffects(0);
-        setCoinVisible(0,true);
+        zeroUse=true;
     }
 
     public void character1Select(MouseEvent mouseEvent) {
         characterEffects(1);
-        setCoinVisible(1,true);
+        oneUse=true;
     }
 
     public void character2Select(MouseEvent mouseEvent) {
         characterEffects(2);
-        setCoinVisible(2,true);
+        twoUse=true;
     }
 
 
