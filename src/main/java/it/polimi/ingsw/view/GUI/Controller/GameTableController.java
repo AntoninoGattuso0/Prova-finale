@@ -1437,6 +1437,16 @@ public class GameTableController {
             showCharacterCard.setDisable(false);
             messagesActions.setDisable(true);
             messagesActions.setVisible(false);
+            showSchool0.setVisible(false);
+            showSchool1.setVisible(false);
+            showSchool2.setVisible(false);
+            showSchool3.setVisible(false);
+            showSchool0.setDisable(true);
+            showSchool1.setDisable(true);
+            showSchool2.setDisable(true);
+            showSchool3.setDisable(true);
+            showAssistant.setVisible(false);
+            showAssistant.setDisable(true);
             useCC.setDisable(true);
             useCC.setVisible(false);
             endTurn.setVisible(false);
