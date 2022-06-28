@@ -38,9 +38,9 @@ JavaDoc(link) provides a descripition of the classes and the methos.
 |4 – Player Game| **X** |
 
 ## JAR:
-The following jars allow to launch the game as descriped 
-Server: JAVA -jar ServerMain.jar
-Client: JAVA -jar ClientMain.jar
+The following jars allow to launch the game as descriped: \n
+Server: java -jar ServerMain.jar \n
+Client: java -jar ClientMain.jar \n
 You can choose to play in CLI or GUI, writing C or G.
 
 ## DEVELOPERS:

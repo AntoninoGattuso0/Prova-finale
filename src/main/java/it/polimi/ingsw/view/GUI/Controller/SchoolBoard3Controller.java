@@ -597,7 +597,7 @@ public class SchoolBoard3Controller {
         gui.getColorPawns().add(ColorPawn.BLUE);
         selection();
     }
-
+/*
 
     public void selectSchoolGreen30(MouseEvent mouseEvent) {
         schoolBoard3.lookup("##schoolBoard3Green0").setVisible(false);
@@ -804,7 +804,7 @@ public class SchoolBoard3Controller {
         schoolBoard3.lookup("#schoolBoard3Blue9").setVisible(false);
         schoolBoard3.lookup("#schoolBoard3Blue9").setDisable(true);
     }
-
+*/
     public void selection(){
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
