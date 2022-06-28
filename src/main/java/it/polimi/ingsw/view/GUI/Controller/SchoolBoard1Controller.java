@@ -100,42 +100,25 @@ public class SchoolBoard1Controller {
 
 
     public void setEntrance1(){
-        int green = gui.getLightGame().getPlayers().get(1).getEntrance().getGreenPawn();
-        for(int i=0; i<green; i++){
-            for(Node school : schoolBoard1.getChildren()){
-                if(school.getId().equals("entranceGreen1" + i))
-                    school.setVisible(true);
-            }
-        }
+        int green = gui.getLightGame().getPlayers().get(0).getEntrance().getGreenPawn();
+        for(int i=0; i<green; i++)
+            schoolBoard1.lookup("#entranceGreen1"+ i).setVisible(true);
 
-        int red = gui.getLightGame().getPlayers().get(1).getEntrance().getRedPawn() + green;
-        for(int i=green; i<red; i++){
-            for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("entranceRed1" + i))
-                    school.setVisible(true);
-            }
-        }
-        int yellow = gui.getLightGame().getPlayers().get(1).getEntrance().getYellowPawn() + red;
-        for(int i=red; i<yellow; i++){
-            for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("entranceYellow1" + i))
-                    school.setVisible(true);
-            }
-        }
-        int pink = gui.getLightGame().getPlayers().get(1).getEntrance().getPinkPawn() + yellow;
-        for(int i=yellow; i<pink; i++){
-            for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("entrancePink1" + i))
-                    school.setVisible(true);
-            }
-        }
-        int blue = gui.getLightGame().getPlayers().get(1).getEntrance().getBluePawn() + pink;
-        for(int i=pink; i<blue; i++){
-            for(Node school : schoolBoard1.getChildren()) {
-                if (school.getId().equals("entranceBlue1" + i))
-                    school.setVisible(true);
-            }
-        }
+        int red = gui.getLightGame().getPlayers().get(0).getEntrance().getRedPawn() + green;
+        for(int i=green; i<red; i++)
+            schoolBoard1.lookup("#entranceRed1"+ i).setVisible(true);
+
+        int yellow = gui.getLightGame().getPlayers().get(0).getEntrance().getYellowPawn() + red;
+        for(int i=red; i<yellow; i++)
+            schoolBoard1.lookup("#entranceYellow1"+ i).setVisible(true);
+
+        int pink = gui.getLightGame().getPlayers().get(0).getEntrance().getPinkPawn() + yellow;
+        for(int i=yellow; i<pink; i++)
+            schoolBoard1.lookup("#entrancePink1"+ i).setVisible(true);
+
+        int blue = gui.getLightGame().getPlayers().get(0).getEntrance().getBluePawn() + pink;
+        for(int i=pink; i<blue; i++)
+            schoolBoard1.lookup("#entranceBlue1"+ i).setVisible(true);
     }
 
     //le 5 funzioni qui sotto mettono visibile/ non visibili clickabili.. le pedine che passiamo con numColore

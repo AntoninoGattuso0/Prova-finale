@@ -85,7 +85,6 @@ public class SchoolBoard0Controller {
     }
 
     public void setEntrance0NOTClickable(){
-        setEntrance0();
         int green = gui.getLightGame().getPlayers().get(0).getEntrance().getGreenPawn();
         for(int i=0; i<green; i++)
             schoolBoard0.lookup("#entranceGreen0"+ i).setDisable(true);
@@ -852,12 +851,12 @@ public class SchoolBoard0Controller {
             if(gui.getPedineDaSpostare()==0)
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
         }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
-            gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
             if(gui.getNumPawnsCount() == 0)
                 gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(6, gui.getNumPawns()/2, gui.getIslandSelected(), gui.getColorPawns(), true));
         }else if(gui.getButtonClicked().equals(ButtonAction.MARIA)){
-            gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
+            System.out.println("ho cliccato una pedina nel entrata");
             if(gui.getNumPawnsCount() == gui.getNumPawns()/2){
+                gui.getGameTable().whatToDo.setText("Select Pawn from Dining");
                 setEntrance0NOTClickable();
                 int green = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumGreen();
                 for(int i = 0; i < green; i++)
@@ -881,6 +880,8 @@ public class SchoolBoard0Controller {
     }
 
     public void selectSchoolGreen0(MouseEvent mouseEvent) {
+        int i;
+        for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
         gui.getColorPawns().add(ColorPawn.GREEN);
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         int green = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumGreen();
@@ -896,11 +897,13 @@ public class SchoolBoard0Controller {
         }
         if(gui.getNumPawnsCount() == 0){
             setAllDisabled();
-            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(9, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
         }
     }
 
     public void selectSchoolRed0(MouseEvent mouseEvent) {
+        int i;
+        for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
         gui.getColorPawns().add(ColorPawn.RED);
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         int red = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumRed();
@@ -916,11 +919,13 @@ public class SchoolBoard0Controller {
         }
         if(gui.getNumPawnsCount() == 0){
             setAllDisabled();
-            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(9, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
         }
     }
 
     public void selectSchoolYellow0(MouseEvent mouseEvent) {
+        int i;
+        for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
         gui.getColorPawns().add(ColorPawn.YELLOW);
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         int yellow = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumYellow();
@@ -936,11 +941,13 @@ public class SchoolBoard0Controller {
         }
         if(gui.getNumPawnsCount() == 0){
             setAllDisabled();
-            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(9, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
         }
     }
 
     public void selectSchoolPink0(MouseEvent mouseEvent) {
+        int i;
+        for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
         gui.getColorPawns().add(ColorPawn.PINK);
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         int pink = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumPink();
@@ -956,11 +963,13 @@ public class SchoolBoard0Controller {
         }
         if(gui.getNumPawnsCount() == 0){
             setAllDisabled();
-            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(9, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
         }
     }
 
     public void selectSchoolBlue0(MouseEvent mouseEvent) {
+        int i;
+        for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
         gui.getColorPawns().add(ColorPawn.BLUE);
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         int blue = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumBlue();
@@ -976,7 +985,7 @@ public class SchoolBoard0Controller {
         }
         if(gui.getNumPawnsCount() == 0){
             setAllDisabled();
-            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(9, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+            gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
         }
     }
 }

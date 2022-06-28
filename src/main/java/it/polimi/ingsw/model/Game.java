@@ -382,9 +382,9 @@ public class Game {
                     random1 = rnd.nextInt(12);
                     random2 = rnd.nextInt(12);
                 }*/
-                int random = 9;
-                int random1 = 10;
-                int random2 = 11;
+                int random = 3;
+                int random1 = 4;
+                int random2 = 5;
 
                 if (random == 0 || random1 == 0 || random2 == 0) {
                     antonio = new Antonio(game.studentBag);
