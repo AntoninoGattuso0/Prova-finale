@@ -28,6 +28,7 @@ RequestNickPlayersController {
         joinButton.setDisable(true);
     }
 
+
     public void setGui(Gui gui) {
         this.gui = gui;
     }

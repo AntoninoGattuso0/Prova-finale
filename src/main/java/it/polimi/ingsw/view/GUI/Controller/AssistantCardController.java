@@ -43,6 +43,7 @@ public class AssistantCardController {
             assistant.setDisable(true);
         }
     }
+
     public void setAsssistantsAble(String nick){
         int j;
         int k;

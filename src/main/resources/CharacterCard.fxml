@@ -184,3 +184,4 @@
    <Text fx:id="textPinkCharacter2" layoutX="178.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
    <Text fx:id="textBlueCharacter2" layoutX="175.0" layoutY="552.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
 </Pane>
+

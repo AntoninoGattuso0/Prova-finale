@@ -184,7 +184,6 @@ public class Gui extends Application implements View {
             }
         });
     }
-
     @Override
     public void requestCharacterCard(String nickname, boolean bool) {
         Platform.runLater(()-> {

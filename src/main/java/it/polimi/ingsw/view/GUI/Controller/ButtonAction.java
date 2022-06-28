@@ -14,5 +14,4 @@ public enum ButtonAction {
     MARIA,
     NICOLA,
     OMNIA;
-
 }

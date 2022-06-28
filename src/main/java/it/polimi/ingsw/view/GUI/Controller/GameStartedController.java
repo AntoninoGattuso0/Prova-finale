@@ -14,7 +14,6 @@ public class GameStartedController {
             game.setVisible(visible);
         }
     }
-
     public void setGui(Gui gui) {
         this.gui = gui;
     }

@@ -65,7 +65,6 @@ public class SchoolBoard0Controller {
                 all.setVisible(true);
         }
     }
-
     //rende le pedine non cliccabili all'inizio
     public void setEntrance0Clickable(){
         setEntrance0();

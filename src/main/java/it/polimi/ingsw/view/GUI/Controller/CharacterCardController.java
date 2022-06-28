@@ -185,7 +185,6 @@ public class CharacterCardController {
         String name = "#characterCard" + n;
         characterCards.lookup(name).setVisible(visible);
     }*/
-
     public void setColorCharacterVisible(int color, int character, boolean visible) {
         String name;
         String text;

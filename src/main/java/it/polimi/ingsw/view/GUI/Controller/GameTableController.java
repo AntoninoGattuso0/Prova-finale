@@ -1384,7 +1384,9 @@ public class GameTableController {
         whatToDo.setVisible(true);
     });
     }
+
     public void characterButtonClicked(MouseEvent mouseEvent) {
+
     }
 
     public void diningButtonClicked(MouseEvent mouseEvent) {

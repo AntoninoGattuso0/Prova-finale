@@ -175,6 +175,7 @@ public class SchoolBoard2Controller {
                     school.setVisible(true);
             }
         }
+
         int yellow = gui.getLightGame().getPlayers().get(2).getDiningRoom().getNumYellow();
         for(int i=0; i<yellow; i++){
             for(Node school : schoolBoard2.getChildren()) {
