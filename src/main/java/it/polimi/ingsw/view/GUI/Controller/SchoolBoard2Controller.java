@@ -1,6 +1,7 @@
 package it.polimi.ingsw.view.GUI.Controller;
 
 import it.polimi.ingsw.model.ColorPawn;
+import it.polimi.ingsw.network.Message.ClientToServer.ChooseCharacterCardMessage;
 import it.polimi.ingsw.network.Message.ClientToServer.MovePawnToDiningMessage;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
@@ -99,42 +100,25 @@ public class SchoolBoard2Controller {
 
 
     public void setEntrance2(){
-        int green = gui.getLightGame().getPlayers().get(2).getEntrance().getGreenPawn();
-        for(int i=0; i<green; i++){
-            for(Node school : schoolBoard2.getChildren()){
-                if(school.getId().equals("entranceGreen2" + i))
-                    school.setVisible(true);
-            }
-        }
+        int green = gui.getLightGame().getPlayers().get(0).getEntrance().getGreenPawn();
+        for(int i=0; i<green; i++)
+            schoolBoard2.lookup("#entranceGreen2"+ i).setVisible(true);
 
-        int red = gui.getLightGame().getPlayers().get(2).getEntrance().getRedPawn() + green;
-        for(int i=green; i<red; i++){
-            for(Node school : schoolBoard2.getChildren()) {
-                if (school.getId().equals("entranceRed2" + i))
-                    school.setVisible(true);
-            }
-        }
-        int yellow = gui.getLightGame().getPlayers().get(2).getEntrance().getYellowPawn() + red;
-        for(int i=red; i<yellow; i++){
-            for(Node school : schoolBoard2.getChildren()) {
-                if (school.getId().equals("entranceYellow2" + i))
-                    school.setVisible(true);
-            }
-        }
-        int pink = gui.getLightGame().getPlayers().get(2).getEntrance().getPinkPawn() + yellow;
-        for(int i=yellow; i<pink; i++){
-            for(Node school : schoolBoard2.getChildren()) {
-                if (school.getId().equals("entrancePink2" + i))
-                    school.setVisible(true);
-            }
-        }
-        int blue = gui.getLightGame().getPlayers().get(2).getEntrance().getBluePawn() + pink;
-        for(int i=pink; i<blue; i++){
-            for(Node school : schoolBoard2.getChildren()) {
-                if (school.getId().equals("entranceBlue2" + i))
-                    school.setVisible(true);
-            }
-        }
+        int red = gui.getLightGame().getPlayers().get(0).getEntrance().getRedPawn() + green;
+        for(int i=green; i<red; i++)
+            schoolBoard2.lookup("#entranceRed2"+ i).setVisible(true);
+
+        int yellow = gui.getLightGame().getPlayers().get(0).getEntrance().getYellowPawn() + red;
+        for(int i=red; i<yellow; i++)
+            schoolBoard2.lookup("#entranceYellow2"+ i).setVisible(true);
+
+        int pink = gui.getLightGame().getPlayers().get(0).getEntrance().getPinkPawn() + yellow;
+        for(int i=yellow; i<pink; i++)
+            schoolBoard2.lookup("#entrancePink2"+ i).setVisible(true);
+
+        int blue = gui.getLightGame().getPlayers().get(0).getEntrance().getBluePawn() + pink;
+        for(int i=pink; i<blue; i++)
+            schoolBoard2.lookup("#entranceBlue2"+ i).setVisible(true);
     }
 
     //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine che passiamo con numColore
@@ -623,7 +607,7 @@ public class SchoolBoard2Controller {
         selection();
     }
 
-
+/*
     public void selectSchoolGreen20(MouseEvent mouseEvent) {
         schoolBoard2.lookup("##schoolBoard2Green0").setVisible(false);
         schoolBoard2.lookup("##schoolBoard2Green0").setDisable(true);
@@ -829,7 +813,7 @@ public class SchoolBoard2Controller {
         schoolBoard2.lookup("#schoolBoard2Blue9").setVisible(false);
         schoolBoard2.lookup("#schoolBoard2Blue9").setDisable(true);
     }
-
+*/
     public void selection(){
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
@@ -838,6 +822,8 @@ public class SchoolBoard2Controller {
             if(gui.getNumPawnsCount()==0)
                 for(Node school : schoolBoard2.getChildren())
                     school.setDisable(true);
+            if(gui.getPedineDaSpostare()==0)
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
         }else if(gui.getButtonClicked().equals(ButtonAction.DININGROOM)){
             if(gui.getNumPawnsCount()==0){
                 for(Node school : schoolBoard2.getChildren()){
@@ -846,13 +832,55 @@ public class SchoolBoard2Controller {
                 gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
                 gui.getColorPawns().clear();
                 gui.getSchoolBoard2Controller().setDiningRoom2();
-                gui.getGameTable().getShowSchool2().setCenter(gui.getSchoolBoard2Controller().getSchoolBoard2());
-                gui.getGameTable().getShowSchool2().setVisible(true);
+                gui.getGameTable().getShowSchool0().setCenter(gui.getSchoolBoard2Controller().getSchoolBoard2());
+                gui.getGameTable().getShowSchool0().setVisible(true);
                 gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             }
+            if(gui.getPedineDaSpostare()==0)
+                gui.setPedineDaSpostare(gui.getNumPawnMove());
+        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            if(gui.getNumPawnsCount() == 0)
+                gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(6, gui.getNumPawns()/2, gui.getIslandSelected(), gui.getColorPawns(), true));
+        }else if(gui.getButtonClicked().equals(ButtonAction.MARIA)){
+            System.out.println("ho cliccato una pedina nel entrata");
+            if(gui.getNumPawnsCount() == gui.getNumPawns()/2){
+                gui.getGameTable().whatToDo.setText("Select Pawn from Dining");
+                setEntrance2NOTClickable();
+                int green = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumGreen();
+                for(int i = 0; i < green; i++)
+                    schoolBoard2.lookup("#schoolBoard2Green" + i).setDisable(false);
+                int red = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumRed();
+                for(int i = 0; i < red; i++)
+                    schoolBoard2.lookup("#schoolBoard2Red" + i).setDisable(false);
+                int yellow = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumYellow();
+                for(int i = 0; i < yellow; i++)
+                    schoolBoard2.lookup("#schoolBoard2Yellow" + i).setDisable(false);
+                int pink = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumPink();
+                for(int i = 0; i < pink; i++)
+                    schoolBoard2.lookup("#schoolBoard2Pink" + i).setDisable(false);
+                int blue = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumBlue();
+                for(int i = 0; i < blue; i++)
+                    schoolBoard2.lookup("#schoolBoard2Blue" + i).setDisable(false);
+            }
         }
-        if(gui.getPedineDaSpostare()==0){
-            gui.setPedineDaSpostare(gui.getNumPawnMove());
-        }
+    }
+
+    private void setEntrance2NOTClickable() {
+        int green = gui.getLightGame().getPlayers().get(0).getEntrance().getGreenPawn();
+        for(int i=0; i<green; i++)
+            schoolBoard2.lookup("#entranceGreen2"+ i).setDisable(true);
+        int red = gui.getLightGame().getPlayers().get(0).getEntrance().getRedPawn() + green;
+        for(int i=green; i<red; i++)
+            schoolBoard2.lookup("#entranceRed2"+ i).setDisable(true);
+        int yellow = gui.getLightGame().getPlayers().get(0).getEntrance().getYellowPawn() + red;
+        for(int i=red; i<yellow; i++)
+            schoolBoard2.lookup("#entranceYellow2" + i).setDisable(true);
+        int pink = gui.getLightGame().getPlayers().get(0).getEntrance().getPinkPawn() + yellow;
+        for(int i=yellow; i<pink; i++)
+            schoolBoard2.lookup("#entrancePinkw2"+ i).setDisable(true);
+        int blue = gui.getLightGame().getPlayers().get(0).getEntrance().getBluePawn() + pink;
+        for(int i=pink; i<blue; i++)
+            schoolBoard2.lookup("#entranceBlue2"+ i).setDisable(true);
+
     }
 }
