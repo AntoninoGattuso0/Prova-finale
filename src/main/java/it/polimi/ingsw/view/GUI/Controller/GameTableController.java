@@ -1569,6 +1569,9 @@ public class GameTableController {
         Platform.runLater(() -> {
             setChooseViewOff();
             characterCardController = gui.getCharacterCardController();
+            characterCardController.setCharacterCards();
+            characterCardController.getCharacterCards().setDisable(false);
+            characterCardController.getCharacterCards().setVisible(true);
             showCharacterCard.setVisible(true);
             showCharacterCard.setDisable(false);
             messagesActions.setDisable(true);
