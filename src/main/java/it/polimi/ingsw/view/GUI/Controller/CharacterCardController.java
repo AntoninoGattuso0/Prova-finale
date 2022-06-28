@@ -297,6 +297,14 @@ public class CharacterCardController {
                 gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getGiuseppe().getCoinPrice());
                 gui.setButtonClicked(ButtonAction.GIUSEPPE);
                 gui.getGameTable().setMessages("Select Num Pawn");
+                gui.getGameTable().getMessagesActions().setVisible(true);
+                gui.getGameTable().getMessagesActions().setDisable(false);
+                gui.getGameTable().islandButton.setVisible(false);
+                gui.getGameTable().islandButton.setDisable(true);
+                gui.getGameTable().diningButton.setVisible(false);
+                gui.getGameTable().diningButton.setDisable(true);
+                gui.getGameTable().characterButton.setVisible(false);
+                gui.getGameTable().characterButton.setDisable(true);
                 gui.getGameTable().number0.setVisible(true);
                 gui.getGameTable().number0.setDisable(false);
                 gui.getGameTable().number1.setVisible(true);
