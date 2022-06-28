@@ -717,19 +717,19 @@ public class SchoolBoard3Controller {
         schoolBoard3.lookup("#schoolBoard3Blue9").setDisable(true);
     }
 */
-    public void selection(){
+    public void selection() {
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
-        if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
-            for(int i=0; i<gui.getLightGame().getIslands().size(); i++)
-                gui.getGameTable().getGameTablePane().lookup("#island"+ i).setDisable(false);
-            if(gui.getNumPawnsCount()==0)
-                for(Node school : schoolBoard3.getChildren())
+        if (gui.getButtonClicked().equals(ButtonAction.ISLAND)) {
+            for (int i = 0; i < gui.getLightGame().getIslands().size(); i++)
+                gui.getGameTable().getGameTablePane().lookup("#island" + i).setDisable(false);
+            if (gui.getNumPawnsCount() == 0)
+                for (Node school : schoolBoard3.getChildren())
                     school.setDisable(true);
-            if(gui.getPedineDaSpostare()==0)
+            if (gui.getPedineDaSpostare() == 0)
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
-        }else if(gui.getButtonClicked().equals(ButtonAction.DININGROOM)){
-            if(gui.getNumPawnsCount()==0){
-                for(Node school : schoolBoard3.getChildren()){
+        } else if (gui.getButtonClicked().equals(ButtonAction.DININGROOM)) {
+            if (gui.getNumPawnsCount() == 0) {
+                for (Node school : schoolBoard3.getChildren()) {
                     school.setDisable(true);
                 }
                 gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
@@ -737,36 +737,38 @@ public class SchoolBoard3Controller {
                 gui.getSchoolBoard3Controller().setDiningRoom3();
                 gui.getGameTable().getShowSchool3().setCenter(gui.getSchoolBoard3Controller().getSchoolBoard3());
                 gui.getGameTable().getShowSchool3().setVisible(true);
-                gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
+                gui.setPedineDaSpostare(gui.getPedineDaSpostare() - gui.getNumPawns());
             }
-            if(gui.getPedineDaSpostare()==0)
+            if (gui.getPedineDaSpostare() == 0)
                 gui.setPedineDaSpostare(gui.getNumPawnMove());
-        }else if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+        } else if (gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)) {
             int i;
-            for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=6; i++);
-            if(gui.getNumPawnsCount() == 0)
-                gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns()/2, gui.getIslandSelected(), gui.getColorPawns(), true));
-        }else if(gui.getButtonClicked().equals(ButtonAction.MARIA)){
+            for (i = 0; i < 3 && gui.getLightGame().getCharacterCards().get(i).getNumCard() != 6; i++) ;
+            if (gui.getNumPawnsCount() == 0)
+                gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns() / 2, gui.getIslandSelected(), gui.getColorPawns(), true));
+        } else if (gui.getButtonClicked().equals(ButtonAction.MARIA)) {
             System.out.println("ho cliccato una pedina nel entrata");
-            if(gui.getNumPawnsCount() == gui.getNumPawns()/2){
+            if (gui.getNumPawnsCount() == gui.getNumPawns() / 2) {
                 gui.getGameTable().whatToDo.setText("Select Pawn from Dining");
                 setEntrance3NOTClickable();
                 int green = gui.getLightGame().getPlayers().get(3).getDiningRoom().getNumGreen();
-                for(int i = 0; i < green; i++)
+                for (int i = 0; i < green; i++)
                     schoolBoard3.lookup("#schoolBoard3Green" + i).setDisable(false);
                 int red = gui.getLightGame().getPlayers().get(3).getDiningRoom().getNumRed();
-                for(int i = 0; i < red; i++)
+                for (int i = 0; i < red; i++)
                     schoolBoard3.lookup("#schoolBoard3Red" + i).setDisable(false);
                 int yellow = gui.getLightGame().getPlayers().get(3).getDiningRoom().getNumYellow();
-                for(int i = 0; i < yellow; i++)
+                for (int i = 0; i < yellow; i++)
                     schoolBoard3.lookup("#schoolBoard3Yellow" + i).setDisable(false);
                 int pink = gui.getLightGame().getPlayers().get(3).getDiningRoom().getNumPink();
-                for(int i = 0; i < pink; i++)
+                for (int i = 0; i < pink; i++)
                     schoolBoard3.lookup("#schoolBoard3Pink" + i).setDisable(false);
                 int blue = gui.getLightGame().getPlayers().get(3).getDiningRoom().getNumBlue();
-                for(int i = 0; i < blue; i++)
+                for (int i = 0; i < blue; i++)
                     schoolBoard3.lookup("#schoolBoard3Blue" + i).setDisable(false);
             }
+        }
+    }
 
             public void selectSchoolGreen3(MouseEvent mouseEvent) {
                 int i;
@@ -877,9 +879,6 @@ public class SchoolBoard3Controller {
                     gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
                 }
             }
-
-        }
-    }
 
     public void setAllDisabled(){
         for(Node all : schoolBoard3.getChildren()) {
