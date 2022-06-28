@@ -1283,7 +1283,7 @@ public class GameTableController {
                     i = 0;
             }
             gui.getSocketNetworkHandler().sendMessage(new MoveMotherNatureMessage(step));
-            gui.getGameTable().getGameTablePane().lookup("prohibited" + numIsland).setVisible(false);
+            gui.getGameTable().getGameTablePane().lookup("#prohibited" + numIsland).setVisible(false);
         } else if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
             gui.setIslandSelected(numIsland);
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(0, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
@@ -1292,7 +1292,7 @@ public class GameTableController {
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(2, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
         } else if(gui.getButtonClicked().equals(ButtonAction.ERNESTO)){
             gui.setIslandSelected(numIsland);
-            gui.getGameTable().getGameTablePane().lookup("prohibited" + numIsland).setVisible(true);
+            gui.getGameTable().getGameTablePane().lookup("#prohibited" + numIsland).setVisible(true);
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(4, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
         }
     }
