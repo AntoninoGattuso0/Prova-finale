@@ -478,7 +478,7 @@ public class GameTableController {
         Platform.runLater(() -> {
             assistantCardController = gui.getAssistantCardController();
             assistantCardController.setAssistantCards(gui.getSocketNetworkHandler().getNicknameThisPlayer());
-            assistantCardController.setAsssistantsAble(gui.getSocketNetworkHandler().getNicknameThisPlayer());
+            assistantCardController.setAssistantsAble(gui.getSocketNetworkHandler().getNicknameThisPlayer());
             showAssistant.setCenter(assistantCardController.getAssistantCards());
             showAssistant.setVisible(true);
         });
