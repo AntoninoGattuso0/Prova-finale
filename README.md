@@ -1,6 +1,6 @@
 # PROVA FINALE DI INGEGNERIA DEL SOFTWARE 2021-2022
 
-![](src/main/resources/images/Logo.png)
+![](src/main/resources/images/LogoEriantys.png)
 
 *Eriantys* is an Italian board game, for 2-4 players, created by Leo Colovini.
 It is a game full of strategy and twists. Plan your moves carefully and try to control the moves of your opponents. With three different game modes, including a team game, Eriantys offers always different and interesting matches. Also, if you play with the expert variant, you can use the fantastic abilities of the special characters. *Manage your Eriantys’ school and compete with other wizards to increase your fame!*
