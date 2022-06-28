@@ -470,12 +470,12 @@ public class GameTableController {
     }
 
     public void setShowAssistant() {
-        showSchool0.setVisible(false);
-        showCharacterCard.setVisible(false);
-        showSchool1.setVisible(false);
-        showSchool2.setVisible(false);
-        showSchool3.setVisible(false);
         Platform.runLater(() -> {
+            showSchool0.setVisible(false);
+            showCharacterCard.setVisible(false);
+            showSchool1.setVisible(false);
+            showSchool2.setVisible(false);
+            showSchool3.setVisible(false);
             assistantCardController = gui.getAssistantCardController();
             assistantCardController.setAssistantCards(gui.getSocketNetworkHandler().getNicknameThisPlayer());
             assistantCardController.setAsssistantsAble(gui.getSocketNetworkHandler().getNicknameThisPlayer());
