@@ -154,7 +154,7 @@ public class Giuseppe extends UseEffect implements Serializable {
             swap = true;
         if(swap){
             for(i = 0, j = colorPawn.size() - 1; i < colorPawn.size()/2 && j >= colorPawn.size()/2; i++, j--){
-                swapPawn(colorPawn.get(j), colorPawn.get(i), player);
+                swapPawn(colorPawn.get(i), colorPawn.get(j), player);
             }
         }
         setCoinPrice(2);
