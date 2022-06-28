@@ -25,6 +25,7 @@ public class Barbara extends UseEffect implements Serializable {
      * @param i is the index of the player that used Barbara
      */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
+        for(i = 0; i<game.totPlayer && !game.getPlayers().get(i).getNickname().equals(player.getNickname()); i++);
         int j;
         int max;
         max = 0;
