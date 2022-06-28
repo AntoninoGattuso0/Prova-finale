@@ -327,13 +327,17 @@ public class CharacterCardController {
                 gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getMaria().getCoinPrice());
                 gui.setButtonClicked(ButtonAction.MARIA);
                 gui.getGameTable().setMessages("Select Num Pawn to Swap");
+                gui.getGameTable().whatToDo.setText("Select Num Pawn to Swap");
+                setDisableAll();
                 gui.getGameTable().number0.setVisible(true);
                 gui.getGameTable().number0.setDisable(false);
                 gui.getGameTable().number1.setVisible(true);
                 gui.getGameTable().number1.setDisable(false);
             } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 10) {
                 gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getNicola().getCoinPrice());
+                setDisableAll();
                 gui.setButtonClicked(ButtonAction.NICOLA);
+                gui.getGameTable().whatToDo.setText("Choose one Pawn");
                 if (gui.getLightGame().getNicola().getGreenPawn() > 0) {
                     setColorCharacterDisabled(0, characterPosition, false);
                 }
@@ -349,9 +353,11 @@ public class CharacterCardController {
                 if (gui.getLightGame().getNicola().getBluePawn() > 0) {
                     setColorCharacterDisabled(4, characterPosition, false);
                 }
-            } else if (gui.getLightGame().getCharacterCards().get(0).getNumCard() == 11) {
+            } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 11) {
                 gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getOmnia().getCoinPrice());
                 gui.setButtonClicked(ButtonAction.OMNIA);
+                setDisableAll();
+                gui.getGameTable().whatToDo.setText("Choose one Color");
                 setColorCharacterDisabled(0, characterPosition, false);
                 setColorCharacterVisible(0, characterPosition, true);
                 setColorCharacterDisabled(1, characterPosition, false);
@@ -448,6 +454,7 @@ public class CharacterCardController {
         Platform.runLater(()-> {
             int i;
             for(i = 0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=11; i++);
+            gui.getColorPawns().clear();
             gui.getColorPawns().add(colorPawn);
             setDisableAll();
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));

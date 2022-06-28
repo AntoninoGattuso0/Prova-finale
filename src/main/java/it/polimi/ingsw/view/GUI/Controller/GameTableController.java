@@ -470,17 +470,19 @@ public class GameTableController {
     }
 
     public void setShowAssistant() {
-        showSchool0.setVisible(false);
-        showCharacterCard.setVisible(false);
-        showSchool1.setVisible(false);
-        showSchool2.setVisible(false);
-        showSchool3.setVisible(false);
         Platform.runLater(() -> {
+            showSchool0.setVisible(false);
+            showCharacterCard.setVisible(false);
+            showSchool1.setVisible(false);
+            showSchool2.setVisible(false);
+            showSchool3.setVisible(false);
+
             assistantCardController = gui.getAssistantCardController();
             assistantCardController.setAssistantCards(gui.getSocketNetworkHandler().getNicknameThisPlayer());
             assistantCardController.setAsssistantsAble(gui.getSocketNetworkHandler().getNicknameThisPlayer());
             showAssistant.setCenter(assistantCardController.getAssistantCards());
             showAssistant.setVisible(true);
+            showAssistant.setDisable(false);
         });
     }
 
@@ -1044,7 +1046,6 @@ public class GameTableController {
                 else if (player == 3)
                     gui.getSchoolBoard3Controller().setEntrance3Clickable();
             } else {
-
                 if (gui.getButtonClicked().equals(ButtonAction.ISLAND))
                     whatToDo.setText("Choose Island Pawns");
                 else if (gui.getButtonClicked().equals(ButtonAction.DININGROOM))
@@ -1493,8 +1494,6 @@ public class GameTableController {
             showSchool2.setVisible(false);
             showSchool3.setVisible(false);
             showAssistant.setVisible(false);
-            showCharacterCard.setVisible(true);
-            showCharacterCard.setDisable(false);
             islandButton.setVisible(false);
             islandButton.setDisable(true);
             diningButton.setVisible(false);
@@ -1570,6 +1569,10 @@ public class GameTableController {
                         characterCardController.getCharacterCards().lookup("#" + i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard()).setDisable(false);
                 }
             }
+            characterCardController.getCharacterCards().setVisible(true);
+            characterCardController.getCharacterCards().setDisable(false);
+            showCharacterCard.setVisible(true);
+            showCharacterCard.setDisable(false);
         });
     }
 
