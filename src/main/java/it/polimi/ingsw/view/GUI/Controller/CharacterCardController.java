@@ -305,7 +305,7 @@ public class CharacterCardController {
                 gui.getGameTable().number2.setDisable(false);
             } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 7) {
                 gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getIvan().getCoinPrice());
-                gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(7, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
+                gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(characterPosition, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
             } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 8) {
                 gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getLancillotto().getCoinPrice());
                 gui.setButtonClicked(ButtonAction.LANCILLOTTO);
