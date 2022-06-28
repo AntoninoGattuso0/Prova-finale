@@ -406,20 +406,32 @@ public class CharacterCardController {
     public void giuseppeEff(ColorPawn colorPawn){
         String name = gui.getSocketNetworkHandler().getNicknameThisPlayer();
         int player;
-        for(player = 0; player<gui.getLightGame().getNumPlayers() && !gui.getLightGame().getPlayers().get(player).getNickname().equals(name); player++)
-            gui.getCharacterCardController().setDisableAll();
+        for(player = 0; player<gui.getLightGame().getNumPlayers() && !gui.getLightGame().getPlayers().get(player).getNickname().equals(name); player++);
         gui.getColorPawns().add(colorPawn);
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         if(gui.getNumPawnsCount() == gui.getNumPawns()/2){
-            if(player==0)
+            if(player==0) {
+                gui.getGameTable().showSchool0.setVisible(true);
+                gui.getGameTable().showSchool0.setDisable(false);
                 gui.getSchoolBoard0Controller().setEntrance0Clickable();
-            else if(player == 1)
+            }
+            else if(player == 1){
+                gui.getGameTable().showSchool1.setVisible(true);
+                gui.getGameTable().showSchool1.setDisable(false);
                 gui.getSchoolBoard1Controller().setEntrance1Clickable();
-            else if(player == 2)
+            }
+            else if(player == 2){
+                gui.getGameTable().showSchool2.setVisible(true);
+                gui.getGameTable().showSchool2.setDisable(false);
                 gui.getSchoolBoard2Controller().setEntrance2Clickable();
-            else if(player == 3)
+            }
+            else if(player == 3){
+                gui.getGameTable().showSchool3.setVisible(true);
+                gui.getGameTable().showSchool3.setDisable(false);
                 gui.getSchoolBoard3Controller().setEntrance3Clickable();
-            setDisableAll();
+            }
+            gui.getCharacterCardController().setDisableAll();
+            gui.getCharacterCardController().getCharacterCards().setVisible(false);
         }
     }
 
