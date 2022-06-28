@@ -60,41 +60,41 @@ public class SchoolBoard2Controller {
 
     public void setEntrance2Clickable(){
         setEntrance2();
-        int green = gui.getLightGame().getPlayers().get(0).getEntrance().getGreenPawn();
+        int green = gui.getLightGame().getPlayers().get(2).getEntrance().getGreenPawn();
         for(int i=0; i<green; i++)
             schoolBoard2.lookup("#entranceGreen2"+ i).setDisable(false);
-        int red = gui.getLightGame().getPlayers().get(0).getEntrance().getRedPawn() + green;
+        int red = gui.getLightGame().getPlayers().get(2).getEntrance().getRedPawn() + green;
         for(int i=green; i<red; i++)
             schoolBoard2.lookup("#entranceRed2"+ i).setDisable(false);
-        int yellow = gui.getLightGame().getPlayers().get(0).getEntrance().getYellowPawn() + red;
+        int yellow = gui.getLightGame().getPlayers().get(2).getEntrance().getYellowPawn() + red;
         for(int i=red; i<yellow; i++)
             schoolBoard2.lookup("#entranceYellow2" + i).setDisable(false);
-        int pink = gui.getLightGame().getPlayers().get(0).getEntrance().getPinkPawn() + yellow;
+        int pink = gui.getLightGame().getPlayers().get(2).getEntrance().getPinkPawn() + yellow;
         for(int i=yellow; i<pink; i++)
             schoolBoard2.lookup("#entrancePink2"+ i).setDisable(false);
-        int blue = gui.getLightGame().getPlayers().get(0).getEntrance().getBluePawn() + pink;
+        int blue = gui.getLightGame().getPlayers().get(2).getEntrance().getBluePawn() + pink;
         for(int i=pink; i<blue; i++)
             schoolBoard2.lookup("#entranceBlue2"+ i).setDisable(false);
 
     }
     public void setEntrance2(){
-        int green = gui.getLightGame().getPlayers().get(0).getEntrance().getGreenPawn();
+        int green = gui.getLightGame().getPlayers().get(2).getEntrance().getGreenPawn();
         for(int i=0; i<green; i++)
             schoolBoard2.lookup("#entranceGreen2"+ i).setVisible(true);
 
-        int red = gui.getLightGame().getPlayers().get(0).getEntrance().getRedPawn() + green;
+        int red = gui.getLightGame().getPlayers().get(2).getEntrance().getRedPawn() + green;
         for(int i=green; i<red; i++)
             schoolBoard2.lookup("#entranceRed2"+ i).setVisible(true);
 
-        int yellow = gui.getLightGame().getPlayers().get(0).getEntrance().getYellowPawn() + red;
+        int yellow = gui.getLightGame().getPlayers().get(2).getEntrance().getYellowPawn() + red;
         for(int i=red; i<yellow; i++)
             schoolBoard2.lookup("#entranceYellow2"+ i).setVisible(true);
 
-        int pink = gui.getLightGame().getPlayers().get(0).getEntrance().getPinkPawn() + yellow;
+        int pink = gui.getLightGame().getPlayers().get(2).getEntrance().getPinkPawn() + yellow;
         for(int i=yellow; i<pink; i++)
             schoolBoard2.lookup("#entrancePink2"+ i).setVisible(true);
 
-        int blue = gui.getLightGame().getPlayers().get(0).getEntrance().getBluePawn() + pink;
+        int blue = gui.getLightGame().getPlayers().get(2).getEntrance().getBluePawn() + pink;
         for(int i=pink; i<blue; i++)
             schoolBoard2.lookup("#entranceBlue2"+ i).setVisible(true);
     }
@@ -810,8 +810,8 @@ public class SchoolBoard2Controller {
                 gui.getSocketNetworkHandler().sendMessage(new MovePawnToDiningMessage(gui.getNumPawns(), gui.getColorPawns()));
                 gui.getColorPawns().clear();
                 gui.getSchoolBoard2Controller().setDiningRoom2();
-                gui.getGameTable().getShowSchool0().setCenter(gui.getSchoolBoard2Controller().getSchoolBoard2());
-                gui.getGameTable().getShowSchool0().setVisible(true);
+                gui.getGameTable().getShowSchool2().setCenter(gui.getSchoolBoard2Controller().getSchoolBoard2());
+                gui.getGameTable().getShowSchool2().setVisible(true);
                 gui.setPedineDaSpostare(gui.getPedineDaSpostare()- gui.getNumPawns());
             }
             if(gui.getPedineDaSpostare()==0)
@@ -826,19 +826,19 @@ public class SchoolBoard2Controller {
             if(gui.getNumPawnsCount() == gui.getNumPawns()/2){
                 gui.getGameTable().whatToDo.setText("Select Pawn from Dining");
                 setEntrance2NOTClickable();
-                int green = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumGreen();
+                int green = gui.getLightGame().getPlayers().get(2).getDiningRoom().getNumGreen();
                 for(int i = 0; i < green; i++)
                     schoolBoard2.lookup("#schoolBoard2Green" + i).setDisable(false);
-                int red = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumRed();
+                int red = gui.getLightGame().getPlayers().get(2).getDiningRoom().getNumRed();
                 for(int i = 0; i < red; i++)
                     schoolBoard2.lookup("#schoolBoard2Red" + i).setDisable(false);
-                int yellow = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumYellow();
+                int yellow = gui.getLightGame().getPlayers().get(2).getDiningRoom().getNumYellow();
                 for(int i = 0; i < yellow; i++)
                     schoolBoard2.lookup("#schoolBoard2Yellow" + i).setDisable(false);
-                int pink = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumPink();
+                int pink = gui.getLightGame().getPlayers().get(2).getDiningRoom().getNumPink();
                 for(int i = 0; i < pink; i++)
                     schoolBoard2.lookup("#schoolBoard2Pink" + i).setDisable(false);
-                int blue = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumBlue();
+                int blue = gui.getLightGame().getPlayers().get(2).getDiningRoom().getNumBlue();
                 for(int i = 0; i < blue; i++)
                     schoolBoard2.lookup("#schoolBoard2Blue" + i).setDisable(false);
             }
@@ -846,29 +846,29 @@ public class SchoolBoard2Controller {
     }
 
     private void setEntrance2NOTClickable() {
-        int green = gui.getLightGame().getPlayers().get(0).getEntrance().getGreenPawn();
+        int green = gui.getLightGame().getPlayers().get(2).getEntrance().getGreenPawn();
         for(int i=0; i<green; i++)
             schoolBoard2.lookup("#entranceGreen2"+ i).setDisable(true);
-        int red = gui.getLightGame().getPlayers().get(0).getEntrance().getRedPawn() + green;
+        int red = gui.getLightGame().getPlayers().get(2).getEntrance().getRedPawn() + green;
         for(int i=green; i<red; i++)
             schoolBoard2.lookup("#entranceRed2"+ i).setDisable(true);
-        int yellow = gui.getLightGame().getPlayers().get(0).getEntrance().getYellowPawn() + red;
+        int yellow = gui.getLightGame().getPlayers().get(2).getEntrance().getYellowPawn() + red;
         for(int i=red; i<yellow; i++)
             schoolBoard2.lookup("#entranceYellow2" + i).setDisable(true);
-        int pink = gui.getLightGame().getPlayers().get(0).getEntrance().getPinkPawn() + yellow;
+        int pink = gui.getLightGame().getPlayers().get(2).getEntrance().getPinkPawn() + yellow;
         for(int i=yellow; i<pink; i++)
             schoolBoard2.lookup("#entrancePinkw2"+ i).setDisable(true);
-        int blue = gui.getLightGame().getPlayers().get(0).getEntrance().getBluePawn() + pink;
+        int blue = gui.getLightGame().getPlayers().get(2).getEntrance().getBluePawn() + pink;
         for(int i=pink; i<blue; i++)
             schoolBoard2.lookup("#entranceBlue2"+ i).setDisable(true);
 
     }
-    public void selectSchoolGreen0(MouseEvent mouseEvent) {
+    public void selectSchoolGreen2(MouseEvent mouseEvent) {
         int i;
         for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
         gui.getColorPawns().add(ColorPawn.GREEN);
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
-        int green = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumGreen();
+        int green = gui.getLightGame().getPlayers().get(2).getDiningRoom().getNumGreen();
         if(schoolBoard2.lookup("#schoolBoard2Green" + (green - 1)).isVisible()) {
             schoolBoard2.lookup("#schoolBoard2Green" + (green - 1)).setVisible(false);
             schoolBoard2.lookup("#schoolBoard2Green" + (green - 1)).setDisable(true);
@@ -891,12 +891,12 @@ public class SchoolBoard2Controller {
                 all.setVisible(true);
         }
     }
-    public void selectSchoolRed0(MouseEvent mouseEvent) {
+    public void selectSchoolRed2(MouseEvent mouseEvent) {
         int i;
         for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
         gui.getColorPawns().add(ColorPawn.RED);
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
-        int red = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumRed();
+        int red = gui.getLightGame().getPlayers().get(2).getDiningRoom().getNumRed();
         if(schoolBoard2.lookup("#schoolBoard2Red" + (red - 1)).isVisible()) {
             schoolBoard2.lookup("#schoolBoard2Red" + (red - 1)).setVisible(false);
             schoolBoard2.lookup("#schoolBoard2Red" + (red - 1)).setDisable(true);
@@ -913,12 +913,12 @@ public class SchoolBoard2Controller {
         }
     }
 
-    public void selectSchoolYellow0(MouseEvent mouseEvent) {
+    public void selectSchoolYellow2(MouseEvent mouseEvent) {
         int i;
         for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
         gui.getColorPawns().add(ColorPawn.YELLOW);
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
-        int yellow = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumYellow();
+        int yellow = gui.getLightGame().getPlayers().get(2).getDiningRoom().getNumYellow();
         if(schoolBoard2.lookup("#schoolBoard2Yellow" + (yellow - 1)).isVisible()) {
             schoolBoard2.lookup("#schoolBoard2Yellow" + (yellow - 1)).setVisible(false);
             schoolBoard2.lookup("#schoolBoard2Yellow" + (yellow - 1)).setDisable(true);
@@ -935,12 +935,12 @@ public class SchoolBoard2Controller {
         }
     }
 
-    public void selectSchoolPink0(MouseEvent mouseEvent) {
+    public void selectSchoolPink2(MouseEvent mouseEvent) {
         int i;
         for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
         gui.getColorPawns().add(ColorPawn.PINK);
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
-        int pink = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumPink();
+        int pink = gui.getLightGame().getPlayers().get(2).getDiningRoom().getNumPink();
         if(schoolBoard2.lookup("#schoolBoard2Pink" + (pink - 1)).isVisible()) {
             schoolBoard2.lookup("#schoolBoard2Pink" + (pink - 1)).setVisible(false);
             schoolBoard2.lookup("#schoolBoard2Pink" + (pink - 1)).setDisable(true);
@@ -957,12 +957,12 @@ public class SchoolBoard2Controller {
         }
     }
 
-    public void selectSchoolBlue0(MouseEvent mouseEvent) {
+    public void selectSchoolBlue2(MouseEvent mouseEvent) {
         int i;
         for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
         gui.getColorPawns().add(ColorPawn.BLUE);
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
-        int blue = gui.getLightGame().getPlayers().get(0).getDiningRoom().getNumBlue();
+        int blue = gui.getLightGame().getPlayers().get(2).getDiningRoom().getNumBlue();
         if(schoolBoard2.lookup("#schoolBoard2Blue" + (blue - 1)).isVisible()) {
             schoolBoard2.lookup("#schoolBoard2Blue" + (blue - 1)).setVisible(false);
             schoolBoard2.lookup("#schoolBoard2Blue" + (blue - 1)).setDisable(true);
