@@ -1572,6 +1572,10 @@ public class GameTableController {
             showCharacterCard.setVisible(true);
             showCharacterCard.setDisable(false);
             messagesActions.setDisable(true);
+            moveMnButton.setVisible(false);
+            moveMnButton.setDisable(true);
+            cloudButton.setDisable(true);
+            cloudButton.setVisible(false);
             messagesActions.setVisible(false);
             showSchool0.setVisible(false);
             showSchool1.setVisible(false);
