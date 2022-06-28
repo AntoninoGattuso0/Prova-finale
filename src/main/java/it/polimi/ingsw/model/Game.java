@@ -208,7 +208,7 @@ public class Game {
     }
 
     /**
-     * This function is useful to create fast an array of the color that are in the StudentBag (if a color miss
+     * This function is useful to create fast an array of the color that are in the StudentBag (if a color misses
      * it doesn't get added to the array)
      * @return ArrayPawn with the color
      */
@@ -294,7 +294,7 @@ public class Game {
     }
 
     /**
-     * Calculates the influence of the island and eventually call function UnifyIsland
+     * Calculates the influence of the island and eventually calls the function UnifyIsland
      */
     public void topInfluence(Island island, Game game) {
         int i, j, k, n, color, max;
@@ -369,7 +369,7 @@ public class Game {
     }
 
     /**
-     * Randomizer the 3 CharacterCards of that Game and pu this in the characterCards array
+     * Randomizer the 3 CharacterCards of that Game and puts these in the characterCards array
      */
         public void setCharacterCards (Game game){
             if (game.isExpert) {
@@ -451,6 +451,8 @@ public class Game {
 
     /**
      * Assign the Professor to the correct index of player
+     * by comparing in the dining room of the players the number of pawns, with the same color of the prof,
+     * The player who have the bigger number of pawns of that color wins the prof
      * @see ProfTable
      */
     public void moveProf() {

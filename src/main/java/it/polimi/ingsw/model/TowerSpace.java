@@ -18,7 +18,7 @@ public class TowerSpace {
     }
 
     /**
-     * set the number of tower
+     * set the number of tower based on the number of the player
      */
     public void setStartNumTower(Game game){
         if(game.totPlayer == 2 || game.totPlayer == 4) setNumTower(8);

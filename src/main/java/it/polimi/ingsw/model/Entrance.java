@@ -119,8 +119,10 @@ public class Entrance {
             setNumPawn(9);
     }
 
-    /**
-     * @return
+    /**checks if the number of pawns on an entrance is more then 4 if the players are 2 or 4
+     * more then 5 if the players are 3
+     * this check allows to know if the pawns moved in a turn are less or more then that required
+     * @return boolean true or false
      */
     public boolean checkNum(Game game){
         if((game.totPlayer == 2 || game.totPlayer == 4) && numPawn > 4 )

@@ -50,7 +50,7 @@ public class ProfTable implements Serializable {
     }
 
     /**
-     * ProfTable is initialized all to -1 (-1 because no ine has the professor )
+     * ProfTable is initialized all to -1 (-1 because no one has the professor )
      */
     public ProfTable() {
         setGreenProf(-1);
@@ -59,6 +59,12 @@ public class ProfTable implements Serializable {
         setPinkProf(-1);
         setBlueProf(-1);
     }
+
+    /**
+     * checks which of the player has the prof
+     * @param color color of the prof
+     * @return the number of the player that has the prof
+     */
     public int checkProf(int color) {
         if (color == 0) return greenProf;
         else if (color == 1) return redProf;
