@@ -897,6 +897,7 @@ public class SchoolBoard1Controller {
             if (gui.getNumPawnsCount() == 0) {
                 gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns() / 2, gui.getIslandSelected(), gui.getColorPawns(), true));
                 gui.getColorPawns().clear();
+                gui.setVar(true);
             }
         } else if (gui.getButtonClicked().equals(ButtonAction.MARIA)) {
             System.out.println("ho cliccato una pedina nel entrata");
@@ -941,6 +942,7 @@ public class SchoolBoard1Controller {
                     setAllDisabled();
                     gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
                     gui.getColorPawns().clear();
+                    gui.setVar(true);
                 }
             }
 
@@ -964,6 +966,7 @@ public class SchoolBoard1Controller {
                     setAllDisabled();
                     gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
                     gui.getColorPawns().clear();
+                    gui.setVar(true);
                 }
             }
 
@@ -987,6 +990,7 @@ public class SchoolBoard1Controller {
                     setAllDisabled();
                     gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
                     gui.getColorPawns().clear();
+                    gui.setVar(true);
                 }
             }
 
@@ -1010,6 +1014,7 @@ public class SchoolBoard1Controller {
                     setAllDisabled();
                     gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
                     gui.getColorPawns().clear();
+                    gui.setVar(true);
                 }
             }
 
@@ -1033,6 +1038,7 @@ public class SchoolBoard1Controller {
                     setAllDisabled();
                     gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
                     gui.getColorPawns().clear();
+                    gui.setVar(true);
                 }
             }
     public void setAllDisabled(){

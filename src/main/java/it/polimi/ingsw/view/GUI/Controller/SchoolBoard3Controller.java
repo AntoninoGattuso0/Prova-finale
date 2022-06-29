@@ -792,6 +792,7 @@ public class SchoolBoard3Controller {
                     setAllDisabled();
                     gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
                     gui.getColorPawns().clear();
+                    gui.setVar(true);
                 }
             }
 
@@ -815,6 +816,7 @@ public class SchoolBoard3Controller {
                     setAllDisabled();
                     gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
                     gui.getColorPawns().clear();
+                    gui.setVar(true);
                 }
             }
 
@@ -838,6 +840,7 @@ public class SchoolBoard3Controller {
                     setAllDisabled();
                     gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
                     gui.getColorPawns().clear();
+                    gui.setVar(true);
                 }
             }
 
@@ -861,6 +864,7 @@ public class SchoolBoard3Controller {
                     setAllDisabled();
                     gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
                     gui.getColorPawns().clear();
+                    gui.setVar(true);
                 }
             }
 
@@ -884,6 +888,7 @@ public class SchoolBoard3Controller {
                     setAllDisabled();
                     gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
                     gui.getColorPawns().clear();
+                    gui.setVar(true);
                 }
             }
 

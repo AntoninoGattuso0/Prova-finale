@@ -780,6 +780,7 @@ public class SchoolBoard0Controller {
             if(gui.getNumPawnsCount() == 0){
                 gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
                 gui.getColorPawns().clear();
+                gui.setVar(true);
             }
         }else if(gui.getButtonClicked().equals(ButtonAction.MARIA)){
             System.out.println("ho cliccato una pedina nel entrata");
@@ -825,6 +826,7 @@ public class SchoolBoard0Controller {
             setAllDisabled();
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
             gui.getColorPawns().clear();
+            gui.setVar(true);
         }
     }
 
@@ -848,6 +850,7 @@ public class SchoolBoard0Controller {
             setAllDisabled();
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
             gui.getColorPawns().clear();
+            gui.setVar(true);
         }
     }
 
@@ -871,6 +874,7 @@ public class SchoolBoard0Controller {
             setAllDisabled();
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
             gui.getColorPawns().clear();
+            gui.setVar(true);
         }
     }
 
@@ -894,6 +898,7 @@ public class SchoolBoard0Controller {
             setAllDisabled();
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
             gui.getColorPawns().clear();
+            gui.setVar(true);
         }
     }
 
@@ -917,6 +922,7 @@ public class SchoolBoard0Controller {
             setAllDisabled();
             gui.getSocketNetworkHandler().sendMessage(new ChooseCharacterCardMessage(i, gui.getNumPawns(), gui.getIslandSelected(), gui.getColorPawns(), true));
             gui.getColorPawns().clear();
+            gui.setVar(true);
         }
     }
 }

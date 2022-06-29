@@ -61,11 +61,14 @@ public class Gui extends Application implements View {
     private FXMLLoader fxmlSchool1;
     private FXMLLoader fxmlSchool2;
     private FXMLLoader fxmlSchool3;
+    private boolean var=false;
 
     public Gui() {
     }
 
-
+    public void setVar(boolean var) {
+        this.var = var;
+    }
     public ButtonAction getButtonClicked(){return this.buttonClicked;}
     public ArrayList<ColorPawn> getColorPawns(){return this.colorPawns;}
     public int getIslandSelected(){return this.islandSelected;}
@@ -188,7 +191,7 @@ public class Gui extends Application implements View {
     public void requestCharacterCard(String nickname, boolean bool) {
         Platform.runLater(()-> {
             if(Objects.equals(nickname,socketNetworkHandler.getNicknameThisPlayer())) {
-                if(lightGame.getIsExpert()) {
+                if(lightGame.getIsExpert()&&!var) {
                     gameTable.setLastCCMessage();
                 }else{
                     gameTable.getMessagesActions().setVisible(false);
@@ -365,7 +368,7 @@ public class Gui extends Application implements View {
     public void selectCloud(String nickname) {
         Platform.runLater(()->{
             if(Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
-                if(lightGame.getIsExpert()) {
+                if(lightGame.getIsExpert()&& !var) {
                     gameTable.setButtonOff();
                     gameTable.getMessagesActions().setDisable(false);
                     gameTable.getMessagesActions().setVisible(true);
@@ -400,7 +403,7 @@ public class Gui extends Application implements View {
     public void requestMoveMotherNature(String nickname) {
         Platform.runLater(()->{
             if(Objects.equals(socketNetworkHandler.getNicknameThisPlayer(), nickname)){
-                if(lightGame.getIsExpert()) {
+                if(lightGame.getIsExpert()&&!var) {
                     gameTable.getUseCC().setDisable(false);
                     gameTable.getMoveMnButton().setDisable(false);
                     gameTable.getUseCC().setVisible(true);
@@ -640,6 +643,7 @@ public class Gui extends Application implements View {
         Platform.runLater(()-> {
             gameTable.setTurnOf(players);
         });
+        var=false;
     }
     @Override
     public void startTurn(ArrayList<String> players, String actualPlayer) {

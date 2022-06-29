@@ -20,6 +20,7 @@ public class Cli implements Runnable, View {
     private SocketNetworkHandler socketNetworkHandler;//controlli se è esperto, su cc e sul numero di dining room
     private int pedineDaSpostare;                     //display coin
     private int numPawnMove;
+    boolean var=false;
 
     public Cli() {
         out = System.out;
@@ -96,7 +97,7 @@ public class Cli implements Runnable, View {
             pedineDaSpostare = pedineDaSpostare - numPawnMoved;
             out.println("Digita 1 per spostare delle pedine verso la DiningRoom");
             out.println("Digita 2 per spostare delle pedine verso un'Isola");
-            if(lightGame.getIsExpert())
+            if(lightGame.getIsExpert()&&!var)
                 out.println("Digita 3 per usare una Character Card");
 
             try {
@@ -105,7 +106,7 @@ public class Cli implements Runnable, View {
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
-            if(lightGame.getIsExpert()){
+            if(lightGame.getIsExpert()&&!var){
                 while (scelta < 1 || scelta > 3) {
                     out.println("Numero Errato!");
                     out.println("Digita 1 per spostare delle pedine verso la DiningRoom");
@@ -625,7 +626,7 @@ public class Cli implements Runnable, View {
             int numPawn = -1, numIsland = -1;
             if (Objects.equals(nickname, socketNetworkHandler.getNicknameThisPlayer())) {
                 if (!bool) {
-                    if(lightGame.getIsExpert()) {
+                    if(lightGame.getIsExpert()&&!var) {
                         boolean check = false;
                         String b = null;
                         System.out.println("Vuoi giocare un CharacterCard? SI per giocarlo, NO per saltare questa fase");
@@ -731,6 +732,7 @@ public class Cli implements Runnable, View {
                             numPawn = 1;
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getAntonio().getCoinPrice());
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
+                            var=true;
                         }
 
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 1) {
@@ -741,6 +743,7 @@ public class Cli implements Runnable, View {
                         } else {
                             int j;
                             for(j=0; !Objects.equals(lightGame.getPlayers().get(j).getNickname(), nickname); j++);
+                            var=true;
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected,j, numIsland, colori, bool));
                         }
 
@@ -768,6 +771,7 @@ public class Cli implements Runnable, View {
                             }
                             numIsland = numIsland - 1;
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getCiro().getCoinPrice());
+                            var=true;
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
                         }
 
@@ -777,6 +781,7 @@ public class Cli implements Runnable, View {
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getDante().getCoinPrice());
+                            var=true;
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
                         }
 
@@ -804,6 +809,7 @@ public class Cli implements Runnable, View {
                             }
                             numIsland = numIsland - 1;
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getErnesto().getCoinPrice());
+                            var=true;
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
                         }
 
@@ -813,6 +819,7 @@ public class Cli implements Runnable, View {
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(0, 0, 0, colori, false));
                         } else {
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getFelix().getCoinPrice());
+                            var=true;
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
                         }
 
@@ -925,6 +932,7 @@ public class Cli implements Runnable, View {
                                     colori.add(nomeColore);
                                 }
                                 lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getGiuseppe().getCoinPrice());
+                                var=true;
                                 socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
                             }
                         }
@@ -936,6 +944,7 @@ public class Cli implements Runnable, View {
                         } else {
                             int j;
                             for(j=0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); j++);
+                            var=true;
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, j, numIsland, colori, bool));
                         }
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 8) {
@@ -967,6 +976,7 @@ public class Cli implements Runnable, View {
                             }
                             colori.add(nomeColore);
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getLancillotto().getCoinPrice());
+                            var=true;
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
                         }
                     } else if (lightGame.getCharacterCards().get(selected).getNumCard() == 9) {
@@ -1123,6 +1133,7 @@ public class Cli implements Runnable, View {
                                     colori.add(nomeColore);
                                 }
                                 lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getMaria().getCoinPrice());
+                                var=true;
                                 socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
                             }
                         }
@@ -1217,6 +1228,7 @@ public class Cli implements Runnable, View {
                             }
                             colori.add(nomeColore);
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getNicola().getCoinPrice());
+                            var=true;
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
                         }
 
@@ -1266,6 +1278,7 @@ public class Cli implements Runnable, View {
                             }
                             colori.add(nomeColore);
                             lightGame.getPlayers().get(player).setNumCoin(lightGame.getPlayers().get(player).getNumCoin() - lightGame.getOmnia().getCoinPrice());
+                            var=true;
                             socketNetworkHandler.sendMessage(new ChooseCharacterCardMessage(selected, numPawn, numIsland, colori, bool));
                         }
                     }
@@ -1429,6 +1442,7 @@ public class Cli implements Runnable, View {
         for(int i = 0; i<orderNamePlayers.size(); i++){
             out.println((i+1) + ") " + orderNamePlayers.get(i));
         }
+        var=false;
     }
     @Override
     public void startTurn(ArrayList<String> players, String player) {
@@ -1535,7 +1549,7 @@ public class Cli implements Runnable, View {
             displayCloud();
             String sceltaString;
             int scelta = -1;
-            if (lightGame.getIsExpert()) {
+            if (lightGame.getIsExpert()&&!var) {
                 out.println("Digita 1 per scegliere una Cloud");
                 out.println("Digita 2 per usare una Character Card");
                 try {
@@ -1689,7 +1703,7 @@ public class Cli implements Runnable, View {
             displaySchoolBoard();
             String sceltaString;
             int scelta = -1;
-            if (lightGame.getIsExpert()) {
+            if (lightGame.getIsExpert()&&!var) {
                 out.println("Digita 1 per spostare MadreNatura");
                 out.println("Digita 2 per usare una Character Card");
                 try {
