@@ -22,8 +22,8 @@ The [network protocol](deliveries/communicationProtocol.pdf) describes the commu
 ## PeerReview
 - [UML PeerReview Ricevuta](deliveries/Peer_Review_Ricevuta.md)
 - [UML PeerReview Inviata](deliveries/Peer_Review_55_UML.tex)
-- [Protocol PeerReview Ricevuta](deliveries/Peer_Review_Ricevuta_Communication_Protocol.tex)
-- [Protocol PeerReview Inviata](deliveries/Peer_Review_55_Communication_Protocol.md)
+- [Protocol PeerReview Ricevuta](deliveries/Peer_Review_Ricevuta_Communication_Protocol.md)
+- [Protocol PeerReview Inviata](deliveries/Peer_Review_55_Comunication_Protocol.tex)
 
 ## TOOL, PLUGINS AND EXTERNAL LIBRARIES USED:
 - Intellij IDEA,
