@@ -45,7 +45,8 @@ public class SchoolBoard3Controller {
             setYellowProfessor3(true);
         }
     }
-
+    /**sets all the images on the school board invisible except the schoolBoard's images
+     */
     public void setAllInvisible(){
         for(Node all : schoolBoard3.getChildren()) {
             all.setVisible(false);
@@ -55,7 +56,8 @@ public class SchoolBoard3Controller {
         }
     }
 
-
+    /**sets the pawns on the entrance clickable at the begging of the game
+     */
     public void setEntrance3Clickable(){
         setEntrance3();
         int green = gui.getLightGame().getPlayers().get(3).getEntrance().getGreenPawn();
@@ -74,7 +76,10 @@ public class SchoolBoard3Controller {
         for(int i=pink; i<blue; i++)
             schoolBoard3.lookup("#entranceBlue3"+ i).setDisable(false);
     }
-    
+
+    /**sets the pawns on the entrance not clickable
+     */
+
     public void setEntrance3NOTClickable(){
         int green = gui.getLightGame().getPlayers().get(3).getEntrance().getGreenPawn();
         for(int i=0; i<green; i++)
@@ -93,7 +98,8 @@ public class SchoolBoard3Controller {
             schoolBoard3.lookup("#entranceBlue3"+ i).setDisable(true);
     }
 
-
+    /**sets the pawns visible on the entrance
+     */
     public void setEntrance3(){
         int green = gui.getLightGame().getPlayers().get(3).getEntrance().getGreenPawn();
         for(int i=0; i<green; i++)
@@ -117,6 +123,8 @@ public class SchoolBoard3Controller {
 
     }
 
+    /**sets visible the pawns of the dining room
+     */
     public void setDiningRoom3(){
         int green = gui.getLightGame().getPlayers().get(3).getDiningRoom().getNumGreen();
         for(int i=0; i<green; i++){
@@ -154,7 +162,9 @@ public class SchoolBoard3Controller {
             }
         }
     }
-    
+    /**sets visible the Professor on the schoolPlayer that owns it
+     * @param bool true if visible, false if not
+     */
     public void setGreenProfessor3(boolean bool){
         schoolBoard3.lookup("#schoolGreenProf3").setVisible(bool);
     }
@@ -171,7 +181,11 @@ public class SchoolBoard3Controller {
     public void setBlueProfessor3(boolean bool){
         schoolBoard3.lookup("#schoolBlueProf3").setVisible(bool);
     }
-
+    /**sets the professor visible
+     * @param numColor the number corresponds to the color of the professor
+     *                 0 = green, 1 = red, 2 = yellow, 3 = pink, 4 = blue
+     * @param bool true if visible, false if not
+     */
     public void setProfessor3(int numColor, boolean bool){
         if(numColor == 0)
             setGreenProfessor3(bool);
@@ -185,7 +199,8 @@ public class SchoolBoard3Controller {
             setBlueProfessor3(bool);
     }
 
-
+    /**sets the coins visible
+     */
     public void setCoin3() {
         for (int i = 0; i < gui.getLightGame().getPlayers().get(3).getNumCoin(); i++)
             for(Node school : schoolBoard3.getChildren()) {
@@ -892,6 +907,8 @@ public class SchoolBoard3Controller {
                 }
             }
 
+    /**sets all the images disabled for the click
+     */
     public void setAllDisabled(){
         for(Node all : schoolBoard3.getChildren()) {
             all.setDisable(true);

@@ -47,7 +47,8 @@ public class SchoolBoard2Controller {
         }
         setCoin2();
     }
-
+    /**sets all the images on the school board invisible except the schoolBoard's images
+     */
     public void setAllInvisible(){
         for(Node all : schoolBoard2.getChildren()) {
             all.setVisible(false);
@@ -57,7 +58,8 @@ public class SchoolBoard2Controller {
         }
     }
 
-
+    /**sets the pawns on the entrance clickable at the begging of the game
+     */
     public void setEntrance2Clickable(){
         setEntrance2();
         int green = gui.getLightGame().getPlayers().get(2).getEntrance().getGreenPawn();
@@ -122,6 +124,8 @@ public class SchoolBoard2Controller {
         schoolBoard2.lookup("#entranceBlue2"+ numBlue).setDisable(boolClickable);
     }
 
+    /**sets visible the pawns of the dining room
+     */
     public void setDiningRoom2(){
         int green = gui.getLightGame().getPlayers().get(2).getDiningRoom().getNumGreen();
         for(int i=0; i<green; i++){
@@ -202,6 +206,9 @@ public class SchoolBoard2Controller {
         }
     }
 
+    /**sets visible the Professor on the schoolPlayer that owns it
+     * @param bool true if visible, false if not
+     */
     public void setGreenProfessor2(boolean bool){
         schoolBoard2.lookup("#schoolGreenProf2").setVisible(bool);
     }
@@ -218,7 +225,11 @@ public class SchoolBoard2Controller {
     public void setBlueProfessor2(boolean bool){
         schoolBoard2.lookup("#schoolBlueProf2").setVisible(bool);
     }
-
+    /**sets the professor visible
+     * @param numColor the number corresponds to the color of the professor
+     *                 0 = green, 1 = red, 2 = yellow, 3 = pink, 4 = blue
+     * @param bool true if visible, false if not
+     */
     public void setProfessor2(int numColor, boolean bool){
         if(numColor == 0)
             setGreenProfessor2(bool);
@@ -232,7 +243,8 @@ public class SchoolBoard2Controller {
             setBlueProfessor2(bool);
     }
 
-
+    /**sets visible the towers on the schoolBoards
+     */
     public void setTower2(){
         for(int i = 0; i<gui.getLightGame().getPlayers().get(2).getTowerSpace().getNumTower(); i++)
             for(Node school : schoolBoard2.getChildren()) {
@@ -247,7 +259,8 @@ public class SchoolBoard2Controller {
                 school.setVisible(bool);
         }
     }
-
+    /**sets the coins visible
+     */
     public void setCoin2() {
         for (int i = 0; i < gui.getLightGame().getPlayers().get(2).getNumCoin(); i++)
             for(Node school : schoolBoard2.getChildren()) {
@@ -847,6 +860,8 @@ public class SchoolBoard2Controller {
         }
     }
 
+    /**sets the pawns on the entrance not clickable
+     */
     private void setEntrance2NOTClickable() {
         int green = gui.getLightGame().getPlayers().get(2).getEntrance().getGreenPawn();
         for(int i=0; i<green; i++)
@@ -865,6 +880,8 @@ public class SchoolBoard2Controller {
             schoolBoard2.lookup("#entranceBlue2"+ i).setDisable(true);
 
     }
+    /**sets the pawns visible on the entrance
+     */
     public void selectSchoolGreen2(MouseEvent mouseEvent) {
         int i;
         for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
@@ -887,6 +904,9 @@ public class SchoolBoard2Controller {
             gui.getColorPawns().clear();
         }
     }
+
+    /**sets all the images disabled for the click
+     */
     public void setAllDisabled(){
         for(Node all : schoolBoard2.getChildren()) {
             all.setDisable(true);
@@ -894,6 +914,7 @@ public class SchoolBoard2Controller {
                 all.setVisible(true);
         }
     }
+
     public void selectSchoolRed2(MouseEvent mouseEvent) {
         int i;
         for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
