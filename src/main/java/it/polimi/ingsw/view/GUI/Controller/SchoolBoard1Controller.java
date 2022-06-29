@@ -170,32 +170,6 @@ public class SchoolBoard1Controller {
             schoolBoard1.lookup("#entranceBlue1" + i).setVisible(true);
     }
 
-    //le 5 funzioni qui sotto mettono visibile/ non visibili clickabili.. le pedine che passiamo con numColore
-    public void greenEntrance1(boolean boolVisibility, boolean boolClickable, int numGreen) {
-        schoolBoard1.lookup("#entranceGreen1" + numGreen).setVisible(boolVisibility);
-        schoolBoard1.lookup("#entranceGreen1" + numGreen).setDisable(boolClickable);
-    }
-
-    public void redEntrance1(boolean boolVisibility, boolean boolClickable, int numRed) {
-        schoolBoard1.lookup("#entranceRed1" + numRed).setVisible(boolVisibility);
-        schoolBoard1.lookup("#entranceRed1" + numRed).setDisable(boolClickable);
-    }
-
-    public void yellowEntrance1(boolean boolVisibility, boolean boolClickable, int numYellow) {
-        schoolBoard1.lookup("#entranceYellow1" + numYellow).setVisible(boolVisibility);
-        schoolBoard1.lookup("#entranceYellow1" + numYellow).setDisable(boolClickable);
-    }
-
-    public void pinkEntrance1(boolean boolVisibility, boolean boolClickable, int numPink) {
-        schoolBoard1.lookup("#entrancePink1" + numPink).setVisible(boolVisibility);
-        schoolBoard1.lookup("#entrancePink1" + numPink).setDisable(boolClickable);
-    }
-
-    public void blueEntrance1(boolean boolVisibility, boolean boolClickable, int numBlue) {
-        schoolBoard1.lookup("#entranceBlue1" + numBlue).setVisible(boolVisibility);
-        schoolBoard1.lookup("#entranceBlue1" + numBlue).setDisable(boolClickable);
-    }
-
     /**sets visible the pawns of the dining room
      */
     public void setDiningRoom1() {
@@ -232,52 +206,6 @@ public class SchoolBoard1Controller {
             for (Node school : schoolBoard1.getChildren()) {
                 if (school.getId().equals("schoolBoard1Blue" + i))
                     school.setVisible(true);
-            }
-        }
-    }
-
-    //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine delle dining che passiamo con num
-    public void greenDining1(boolean boolVisibility, boolean boolClickable, int num) {
-        for (Node school : schoolBoard1.getChildren()) {
-            if (school.getId().equals("schoolBoard1Green" + num)) {
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
-
-    public void redDining1(boolean boolVisibility, boolean boolClickable, int num) {
-        for (Node school : schoolBoard1.getChildren()) {
-            if (school.getId().equals("schoolBoard1Red" + num)) {
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
-
-    public void yellowDining1(boolean boolVisibility, boolean boolClickable, int num) {
-        for (Node school : schoolBoard1.getChildren()) {
-            if (school.getId().equals("schoolBoard1Yellow" + num)) {
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
-
-    public void pinkDining1(boolean boolVisibility, boolean boolClickable, int num) {
-        for (Node school : schoolBoard1.getChildren()) {
-            if (school.getId().equals("schoolBoard1Pink" + num)) {
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
-
-    public void blueDining1(boolean boolVisibility, boolean boolClickable, int num) {
-        for (Node school : schoolBoard1.getChildren()) {
-            if (school.getId().equals("schoolBoard1Blue" + num)) {
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
             }
         }
     }
@@ -332,12 +260,6 @@ public class SchoolBoard1Controller {
             }
     }
 
-    public void towerVisibility1(boolean bool, int numTower) {
-        for (Node school : schoolBoard1.getChildren()) {
-            if (schoolBoard1.getId().equals("blackTowerSchool" + numTower))
-                school.setVisible(bool);
-        }
-    }
     /**sets the coins visible
      */
     public void setCoin1() {
@@ -354,11 +276,6 @@ public class SchoolBoard1Controller {
                 school.setVisible(bool);
         }
     }
-
-    //una volta cliccata la pedina sull'entrata per farla spostare
-    //o sull'isola o sulla dining, la pedina sull entrata
-    //diventa invisibile e non selezionabile
-    ///tutte le funzioni qua sotto fino alla 462 fanno sta cosa
 
     public void green10Select(MouseEvent mouseEvent) {
         schoolBoard1.lookup("#entranceGreen10").setVisible(false);
@@ -675,213 +592,6 @@ public class SchoolBoard1Controller {
         selection();
     }
 
-    /*
-        public void selectSchoolGreen10(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("##schoolBoard1Green0").setVisible(false);
-            schoolBoard1.lookup("##schoolBoard1Green0").setDisable(true);
-        }
-
-        public void selectSchoolGreen11(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Green1").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Green1").setDisable(true);
-        }
-        public void selectSchoolGreen12(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Green2").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Green2").setDisable(true);
-        }
-        public void selectSchoolGreen13(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Green3").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Green3").setDisable(true);
-        }
-        public void selectSchoolGreen14(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Green4").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Green4").setDisable(true);
-        }
-        public void selectSchoolGreen15(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Green5").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Green5").setDisable(true);
-        }
-        public void selectSchoolGreen16(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Green6").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Green6").setDisable(true);
-        }
-        public void selectSchoolGreen17(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Green7").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Green7").setDisable(true);
-        }
-        public void selectSchoolGreen18(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Green8").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Green8").setDisable(true);
-        }
-        public void selectSchoolGreen19(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Green9").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Green9").setDisable(true);
-        }
-
-        public void selectSchoolRed10(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Red0").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Red0").setDisable(true);
-        }
-        public void selectSchoolRed11(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Red1").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Red1").setDisable(true);
-        }
-        public void selectSchoolRed12(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Red2").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Red2").setDisable(true);
-        }
-        public void selectSchoolRed13(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Red3").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Red3").setDisable(true);
-        }
-        public void selectSchoolRed14(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Red4").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Red4").setDisable(true);
-        }
-        public void selectSchoolRed15(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Red5").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Red5").setDisable(true);
-        }
-        public void selectSchoolRed16(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Red6").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Red6").setDisable(true);
-        }
-        public void selectSchoolRed17(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Red7").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Red7").setDisable(true);
-        }
-        public void selectSchoolRed18(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Red8").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Red8").setDisable(true);
-        }
-        public void selectSchoolRed19(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Red9").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Red9").setDisable(true);
-        }
-
-        public void selectSchoolYellow10(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Yellow0").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Yellow0").setDisable(true);
-        }
-        public void selectSchoolYellow11(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Yellow1").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Yellow1").setDisable(true);
-        }
-        public void selectSchoolYellow12(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Yellow2").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Yellow2").setDisable(true);
-        }
-        public void selectSchoolYellow13(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Yellow3").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Yellow3").setDisable(true);
-        }
-        public void selectSchoolYellow14(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Yellow4").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Yellow4").setDisable(true);
-        }
-        public void selectSchoolYellow15(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Yellow5").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Yellow5").setDisable(true);
-        }
-        public void selectSchoolYellow16(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Yellow6").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Yellow6").setDisable(true);
-        }
-        public void selectSchoolYellow17(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Yellow7").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Yellow7").setDisable(true);
-        }
-        public void selectSchoolYellow18(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Yellow8").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Yellow8").setDisable(true);
-        }
-        public void selectSchoolYellow19(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Yellow9").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Yellow9").setDisable(true);
-        }
-
-        public void selectSchoolPink10(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Pink0").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Pink0").setDisable(true);
-        }
-        public void selectSchoolPink11(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Pink1").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Pink1").setDisable(true);
-        }
-        public void selectSchoolPink12(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Pink2").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Pink2").setDisable(true);
-        }
-        public void selectSchoolPink13(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Pink3").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Pink3").setDisable(true);
-        }
-        public void selectSchoolPink14(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Pink4").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Pink4").setDisable(true);
-        }
-        public void selectSchoolPink15(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Pink5").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Pink5").setDisable(true);
-        }
-        public void selectSchoolPink16(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Pink6").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Pink6").setDisable(true);
-        }
-        public void selectSchoolPink17(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Pink7").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Pink7").setDisable(true);
-        }
-        public void selectSchoolPink18(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Pink8").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Pink8").setDisable(true);
-        }
-        public void selectSchoolPink19(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Pink9").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Pink9").setDisable(true);
-        }
-
-        public void selectSchoolBlue10(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Blue0").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Blue0").setDisable(true);
-        }
-        public void selectSchoolBlue11(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Blue1").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Blue1").setDisable(true);
-        }
-        public void selectSchoolBlue12(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Blue2").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Blue2").setDisable(true);
-        }
-        public void selectSchoolBlue13(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Blue3").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Blue3").setDisable(true);
-        }
-        public void selectSchoolBlue14(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Blue4").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Blue4").setDisable(true);
-        }
-        public void selectSchoolBlue15(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Blue5").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Blue5").setDisable(true);
-        }
-        public void selectSchoolBlue16(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Blue6").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Blue6").setDisable(true);
-        }
-        public void selectSchoolBlue17(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Blue7").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Blue7").setDisable(true);
-        }
-        public void selectSchoolBlue18(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Blue8").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Blue8").setDisable(true);
-        }
-        public void selectSchoolBlue19(MouseEvent mouseEvent) {
-            schoolBoard1.lookup("#schoolBoard1Blue9").setVisible(false);
-            schoolBoard1.lookup("#schoolBoard1Blue9").setDisable(true);
-        }
-    */
     public void selection() {
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         if (gui.getButtonClicked().equals(ButtonAction.ISLAND)) {

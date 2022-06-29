@@ -222,7 +222,6 @@ public class SchoolBoard0Controller {
             }
     }
 
-
     /**sets the coins visible
      */
     public void setCoin0() {
@@ -232,7 +231,6 @@ public class SchoolBoard0Controller {
                     schoolBoard0.setVisible(true);
             }
     }
-
 
     /**when the first green pawn of the entrance is clicked becomes invisible and not clickable
      * the function calls the method selection at the line 560
