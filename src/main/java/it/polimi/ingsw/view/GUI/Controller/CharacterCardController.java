@@ -576,8 +576,6 @@ public class CharacterCardController {
     }
 
     /**What happens when a color of a CC is clicked
-     *
-     * @param mouseEvent
      */
     public void moveGreenCharacter0(MouseEvent mouseEvent) {
         ColorPawn colorPawn = ColorPawn.GREEN;

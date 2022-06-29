@@ -76,4 +76,3 @@ public interface View {
 
     void wrongSameAssistantMessage();
 }
-//CLI E GUI dovranno implementare quest interfaccia

@@ -28,7 +28,6 @@ public class ServerMain {
                         networkInterface.getDisplayName(), addr.getHostAddress()));
             }
         }
-        //System.out.println("l'indirizzo ip del server è: " + address);
         server.start();
     }
 }
