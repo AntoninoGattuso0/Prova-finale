@@ -416,7 +416,8 @@ public class SchoolBoard3Controller {
 
     public void pink32Select(MouseEvent mouseEvent) {
         schoolBoard3.lookup("#entrancePink32").setVisible(false);
-        schoolBoard3.lookup("#entrancePink32").setDisable(true); gui.getColorPawns().add(ColorPawn.PINK);
+        schoolBoard3.lookup("#entrancePink32").setDisable(true);
+        gui.getColorPawns().add(ColorPawn.PINK);
         selection();
     }
 
@@ -450,7 +451,8 @@ public class SchoolBoard3Controller {
 
     public void pink37Select(MouseEvent mouseEvent) {
         schoolBoard3.lookup("#entrancePink37").setVisible(false);
-        schoolBoard3.lookup("#entrancePink37").setDisable(true); gui.getColorPawns().add(ColorPawn.PINK);
+        schoolBoard3.lookup("#entrancePink37").setDisable(true);
+        gui.getColorPawns().add(ColorPawn.PINK);
         selection();
     }
 
