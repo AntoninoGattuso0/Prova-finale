@@ -19,7 +19,6 @@ public class ServerMain {
 
         while (interfaces.hasMoreElements()) {
             NetworkInterface networkInterface = interfaces.nextElement();
-            // drop inactive
             if (!networkInterface.isUp())
                 continue;
             Enumeration<InetAddress> addresses = networkInterface.getInetAddresses();
