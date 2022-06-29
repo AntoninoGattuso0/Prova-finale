@@ -33,7 +33,9 @@ RequestNickPlayersController {
         this.gui = gui;
     }
 
-    //Viene Cliccato join: viene inviato il nome al server e il bottone non visibile e non cliccabile
+    /**when the button join is clicked, the nick of the player is sent to the sever
+     * and the button is not clickable and invisible
+     */
     public void buttonClickNickname(MouseEvent mouseEvent) {
         gui.getSocketNetworkHandler().setNicknameThisPlayer(nickname.getText());
         gui.getSocketNetworkHandler().sendMessage(new RequestNickname(nickname.getText()));
