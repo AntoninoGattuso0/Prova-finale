@@ -13,9 +13,7 @@ public enum ColorCli {
     YELLOW("\033[0;33m"),
     PINK("\033[0;35m"),
     BLUE("\033[0;34m"),
-    BLACK("\033[0;30m"),
-    GREY("\033[0;30m"),   //PROVVISORIO
-    BOLDCYAN("\033[1;36m"), //Per tabelle
+    BOLDCYAN("\033[1;36m"),
     BOLDWITE("\033[1;37m"),
     BACKGROUND_RED("\033[41m");
 

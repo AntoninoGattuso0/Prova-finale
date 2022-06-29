@@ -17,8 +17,8 @@ public class Cli implements Runnable, View {
     private final PrintStream out;            //nel controllo del movimento di pedine inserire il controllo che se in diningroom hanno 10 pedine già inserite, non ne può spostare altre
     private boolean endGame=false;
     private LightGame lightGame;
-    private SocketNetworkHandler socketNetworkHandler;//controlli se è esperto, su cc e sul numero di dining room
-    private int pedineDaSpostare;                     //display coin
+    private SocketNetworkHandler socketNetworkHandler;
+    private int pedineDaSpostare;
     private int numPawnMove;
     boolean var=false;
 
@@ -134,7 +134,7 @@ public class Cli implements Runnable, View {
             }
 
             if (scelta == 1){
-                requestMovePawnToDiningRoom(nickname, pedineDaSpostare);//mando in ingresso il numero di pedine così controlli il numero che ti da in ingresso
+                requestMovePawnToDiningRoom(nickname, pedineDaSpostare);
                 pedineDaSpostare = numPawnMove;
             }
             else if (scelta == 2) {
@@ -157,7 +157,7 @@ public class Cli implements Runnable, View {
             out.println("Non hai più pedine da spostare!");
             requestCharacterCard(nickname, false);
         } else {
-            out.println("Quante pedine vuoi spostare verso la DiningRoom? puoi spostare fino a " + pedineDaSpostare + " pedine.");// va fatto il controllo sul numero di pedine possibili da spostare
+            out.println("Quante pedine vuoi spostare verso la DiningRoom? puoi spostare fino a " + pedineDaSpostare + " pedine.");
             String numDiningStr;
             int numDining = -1;
             try {

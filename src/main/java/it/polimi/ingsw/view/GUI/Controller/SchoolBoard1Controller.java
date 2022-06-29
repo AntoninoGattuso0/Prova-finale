@@ -270,13 +270,6 @@ public class SchoolBoard1Controller {
             }
     }
 
-    public void coinVisibility1(boolean bool, int numCoin) {
-        for (Node school : schoolBoard1.getChildren()) {
-            if (schoolBoard1.getId().equals("coin" + numCoin))
-                school.setVisible(bool);
-        }
-    }
-
     public void green10Select(MouseEvent mouseEvent) {
         schoolBoard1.lookup("#entranceGreen10").setVisible(false);
         schoolBoard1.lookup("#entranceGreen10").setDisable(true);

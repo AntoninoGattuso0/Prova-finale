@@ -64,7 +64,7 @@ public class GameTableController {
     @FXML
     Button number3;
     @FXML
-    Text whatToDo;//Testo bianco da poter cambiare
+    Text whatToDo;
     @FXML
     BorderPane showSchool1;
     @FXML
@@ -674,15 +674,6 @@ public class GameTableController {
                 if ((gui.getLightGame().getClouds().get(i).getGreenPawn() + gui.getLightGame().getClouds().get(i).getPinkPawn() + gui.getLightGame().getClouds().get(i).getRedPawn() + gui.getLightGame().getClouds().get(i).getBluePawn() + gui.getLightGame().getClouds().get(i).getYellowPawn()) > 0) {
                     gameTable.lookup("#cloud" + i).setDisable(false);
                 }
-            }
-        });
-    }
-
-    public void setCloudDisable() {
-        Platform.runLater(() -> {
-            int i;
-            for (i = 0; i < gui.getLightGame().getClouds().size(); i++) {
-                gameTable.lookup("#cloud" + i).setDisable(false);
             }
         });
     }
@@ -1388,11 +1379,6 @@ public class GameTableController {
         }
     }
 
-    public void prohibitedIsland(int island, boolean bool) {
-        gameTable.lookup("#prohibited" + island).setVisible(bool);
-
-    }
-
 
     public void islandSelectedEffect(int numIsland){
         for(int i = 0; i < gui.getLightGame().getIslands().size(); i++)
@@ -1531,8 +1517,6 @@ public class GameTableController {
             whatToDo.setText("Choose Num to Island: ");
             whatToDo.setVisible(true);
         });
-    }
-    public void characterButtonClicked(MouseEvent mouseEvent) {
     }
 
     public void diningButtonClicked(MouseEvent mouseEvent) {
