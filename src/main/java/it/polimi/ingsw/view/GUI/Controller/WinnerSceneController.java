@@ -3,10 +3,11 @@ package it.polimi.ingsw.view.GUI.Controller;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class WinnerSceneController {
-    public javafx.scene.text.Text NickPlayer;
+    @FXML javafx.scene.text.Text NickPlayer;
     Gui gui;
     @FXML
     Pane winnerScene;
@@ -16,12 +17,15 @@ public class WinnerSceneController {
     public void setWinnerScene(boolean visible){
         for(Node winner : winnerScene.getChildren())
             winner.setVisible(visible);
+        NickPlayer.setDisable(false);
+        NickPlayer.setVisible(true);
     }
     public void setNicknameWinner(String nick){
         NickPlayer.setText(nick);
     }
-    //C'è UN BOTTONE CHE TI FA USCIRE NEL FILE FXML. GIUSTO O SBAGLIATO IN BASE ALLA CLI? CONTROLLATE E MODIFICATE IN CASO
-    //risolto -> l'ho cancellato :)
 
+    public void exit(MouseEvent mouseEvent) throws Exception {
+        gui.closeAll();
+    }
 }
 

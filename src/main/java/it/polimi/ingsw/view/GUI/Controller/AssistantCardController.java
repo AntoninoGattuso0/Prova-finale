@@ -33,7 +33,7 @@ public class AssistantCardController {
         }
         }
         for(k=0;k<gui.getLightGame().getPlayers().size();k++){
-            if(gui.getLightGame().getPlayers().get(k).getCurrentAssistant()!=null){
+            if(gui.getLightGame().getPlayers().get(k).getCurrentAssistant()!=null&&gui.getLightGame().getPlayers().get(k).getDeckAssistant().size()!=0){
                 assistantCards.getChildren().get(gui.getLightGame().getPlayers().get(k).getCurrentAssistant().getCardValue()-1).setOpacity(0.6D);
             }
         }
@@ -57,7 +57,7 @@ public class AssistantCardController {
             }
         }
         for(k=0;k<gui.getLightGame().getPlayers().size();k++){
-            if(gui.getLightGame().getPlayers().get(k).getCurrentAssistant()!=null){
+            if(gui.getLightGame().getPlayers().get(k).getCurrentAssistant()!=null&&gui.getLightGame().getPlayers().get(k).getDeckAssistant().size()!=0){
                 assistantCards.getChildren().get(gui.getLightGame().getPlayers().get(k).getCurrentAssistant().getCardValue()-1).setDisable(true);
             }
         }

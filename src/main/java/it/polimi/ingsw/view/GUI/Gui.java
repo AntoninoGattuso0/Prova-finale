@@ -249,7 +249,7 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    public void displayWinner(String nickname) {
+    public void displayWinner(String nickname) throws IOException {
         int i;
         int j;
         for (i = 0; !Objects.equals(lightGame.getPlayers().get(i).getNickname(), nickname); i++) ;
@@ -275,6 +275,10 @@ public class Gui extends Application implements View {
             winnerScene.setWinnerScene(true);
             stage.show();
         });
+        socketNetworkHandler.getOut().reset();
+        socketNetworkHandler.getOut().flush();
+        socketNetworkHandler.sendMessage(new ReadyTodisconnection());
+        socketNetworkHandler.closeConnection();
     }
 
     @Override
@@ -460,6 +464,27 @@ public class Gui extends Application implements View {
     }
 
     @Override
+    public void stop(){
+        try {
+            System.exit(0);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void closeAll(){
+        try {
+            socketNetworkHandler.getOut().reset();
+            socketNetworkHandler.getOut().flush();
+            socketNetworkHandler.sendMessage(new ReadyTodisconnection());
+            socketNetworkHandler.closeConnection();
+            Platform.exit();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void newGameStart() {
         if (lightGame.getNumPlayers() == 2 || lightGame.getNumPlayers() == 4) {
             pedineDaSpostare = 3;
@@ -606,6 +631,10 @@ public class Gui extends Application implements View {
         socketNetworkHandler.closeConnection();
     }
 
+    public Stage getStage() {
+        return stage;
+    }
+
     @Override
     public void turnOrder(ArrayList<String> players) {
         Platform.runLater(()-> {
@@ -643,10 +672,7 @@ public class Gui extends Application implements View {
         if(!endGame){
             gameTable.setMessages(playerDisconnected+ " DISCONNECTED FROM THE GAME.");
         }
-        socketNetworkHandler.getOut().reset();
-        socketNetworkHandler.getOut().flush();
-        socketNetworkHandler.sendMessage(new ReadyTodisconnection());
-        socketNetworkHandler.closeConnection();
+        closeAll();
     }
 
 

@@ -16,7 +16,7 @@
                 <Font name="Bangla Sangam MN" size="48.0" />
             </font>
         </Text>
-        <Text fx:id="NickPlayer" fill="WHITE" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="600.0">
+        <Text fx:id="NickPlayer" fill="WHITE" layoutY="164.0" strokeType="OUTSIDE" onMouseClicked="#exit" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="600.0">
             <font>
                 <Font size="48.0" />
             </font>
