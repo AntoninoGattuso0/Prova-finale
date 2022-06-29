@@ -3,7 +3,6 @@ package it.polimi.ingsw.view.GUI.Controller;
 import it.polimi.ingsw.view.GUI.Gui;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class WinnerSceneController {
@@ -17,15 +16,10 @@ public class WinnerSceneController {
     public void setWinnerScene(boolean visible){
         for(Node winner : winnerScene.getChildren())
             winner.setVisible(visible);
-        NickPlayer.setDisable(false);
-        NickPlayer.setVisible(true);
     }
     public void setNicknameWinner(String nick){
         NickPlayer.setText(nick);
     }
 
-    public void exit(MouseEvent mouseEvent) throws Exception {
-        gui.closeAll();
-    }
 }
 
