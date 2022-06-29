@@ -20,8 +20,8 @@ The network protocol(link) describes the communication between the server and th
 [JavaDoc](docs) provides a descripition of the classes and the methos.
 
 ## PeerReview
-- [UML PeerReview](deliveries/Peer_Review Ricevuta.md)
-- [Protocol PeerReviwe]
+- [UML PeerReview](deliveries/initial_uml.png)
+- [Protocol PeerReview]
 
 ## TOOL, PLUGINS AND EXTERNAL LIBRARIES USED:
 - Intellij IDEA,
