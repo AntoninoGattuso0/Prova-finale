@@ -75,47 +75,47 @@ public class CharacterCardController {
                             setCoinVisible(i,true);
                         }
                     }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getBarbara()) {
-                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                        if (gui.getLightGame().getBarbara().getCoinPrice() > 2) {
                             setCoinVisible(i,true);
                         }
                     }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getCiro()) {
-                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                        if (gui.getLightGame().getCiro().getCoinPrice() > 3) {
                             setCoinVisible(i,true);
                         }
                     }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getDante()) {
-                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                        if (gui.getLightGame().getDante().getCoinPrice() > 1) {
                             setCoinVisible(i,true);
                         }
                     }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getErnesto()) {
-                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                        if (gui.getLightGame().getErnesto().getCoinPrice() > 2) {
                             setCoinVisible(i,true);
                         }
                     } else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getFelix()) {
-                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                        if (gui.getLightGame().getFelix().getCoinPrice() > 3) {
                             setCoinVisible(i,true);
                         }
                     }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getGiuseppe()) {
-                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                        if (gui.getLightGame().getGiuseppe().getCoinPrice() > 1) {
                             setCoinVisible(i,true);
                         }
                     }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getIvan()) {
-                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                        if (gui.getLightGame().getIvan().getCoinPrice() > 2) {
                             setCoinVisible(i,true);
                         }
                     }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getLancillotto()) {
-                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                        if (gui.getLightGame().getLancillotto().getCoinPrice() > 3) {
                             setCoinVisible(i,true);
                         }
                     }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getMaria()) {
-                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                        if (gui.getLightGame().getMaria().getCoinPrice() > 1) {
                             setCoinVisible(i,true);
                         }
                     }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getNicola()) {
-                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                        if (gui.getLightGame().getNicola().getCoinPrice() > 2) {
                             setCoinVisible(i,true);
                         }
                     }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getOmnia()) {
-                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                        if (gui.getLightGame().getOmnia().getCoinPrice() > 3) {
                             setCoinVisible(i,true);
                         }
                     }
