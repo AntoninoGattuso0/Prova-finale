@@ -70,7 +70,56 @@ public class CharacterCardController {
                 if(character.getId().equals(i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard())) {
                     character.setVisible(true);
                 }
-            }
+                    if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getAntonio()) {
+                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                            setCoinVisible(i,true);
+                        }
+                    }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getBarbara()) {
+                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                            setCoinVisible(i,true);
+                        }
+                    }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getCiro()) {
+                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                            setCoinVisible(i,true);
+                        }
+                    }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getDante()) {
+                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                            setCoinVisible(i,true);
+                        }
+                    }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getErnesto()) {
+                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                            setCoinVisible(i,true);
+                        }
+                    } else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getFelix()) {
+                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                            setCoinVisible(i,true);
+                        }
+                    }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getGiuseppe()) {
+                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                            setCoinVisible(i,true);
+                        }
+                    }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getIvan()) {
+                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                            setCoinVisible(i,true);
+                        }
+                    }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getLancillotto()) {
+                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                            setCoinVisible(i,true);
+                        }
+                    }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getMaria()) {
+                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                            setCoinVisible(i,true);
+                        }
+                    }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getNicola()) {
+                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                            setCoinVisible(i,true);
+                        }
+                    }else if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getOmnia()) {
+                        if (gui.getLightGame().getAntonio().getCoinPrice() > 1) {
+                            setCoinVisible(i,true);
+                        }
+                    }
+                }
         }
     }
 
