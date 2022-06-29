@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+
+\title{Peer-Review 55: Protocollo di Comunicazione}
+\author{Gambarin Paolo, Gattuso Antonino, Mersam Rebeca\\Gruppo 56}
+
+\begin{document}
+
+\maketitle
+
+Valutazione della documentazione del protocollo di comunicazione del gruppo 55.
+
+\section{Lati positivi}
+
+Il protocollo è molto dettagliato nel tipo di messaggio e mossa, in quanto fornisce in modo specifico
+argomenti e possibili risposte. Ogni messaggio scambiato tra Client e Server è molto semplice e
+intuitivo, anche chi non conosce la struttura del progetto riesce a capire qual è l’intenzione dei
+progettisti.
+La struttura del protocollo di comunicazione è molto orientata alla scrittura della CLI e GUI.
+
+\section{Lati negativi}
+
+Nel protocollo di comunicazione sono presenti solo i sequence diagram di Ping e Login, mancano i
+restanti.
+È abbastanza confusionaria la suddivisone delle fasi, perché i messaggi di errore sono separati da
+quelli a cui si riferiscono; inoltre, in caso di errore non vengono forniti i successivi messaggi per
+reinserimento della scelta (carta assistente, nuvola, pedina, etc.) o altre azioni.
+In “Ping” abbiamo osservato una piccola differenza tra sequence diagram e descrizione: i messaggi
+di ping vengono inviati ogni 10s (secondo la descrizione), mentre nel sequence diagram ogni 15s.
+In “TurnStart” l’argomento TypePhase è poco specifico in quanto divide le azioni in “PlanningPhase”
+o “ActionPhase”, senza specificare il tipo di ActionPhase: movimento studenti, movimento Madre
+Natura e scelta nuvola.
+
+\section{Confronto}
+
+Confrontando i due protocolli ci siamo resi conto che la loro logica è molto simile, tuttavia i nostri
+messaggi sono in formato JSON che possono essere meno intuitivi rispetto a quelli dei nostri
+compagni. Potremmo integrare i nostri messaggi con descrizioni più dettagliate.
+Consigliamo, invece, al gruppo 55 di inserire i sequence diagram mancanti, per maggiore chiarezza
+di scambio messaggi tra mittente e destinatario.
+
+\end{document}
