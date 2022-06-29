@@ -20,8 +20,10 @@ The [network protocol](deliveries/communicationProtocol.pdf) describes the commu
 [JavaDoc](docs) provides a descripition of the classes and the methos.
 
 ## PeerReview
-- [UML PeerReview](deliveries/Peer_Review Ricevuta.md)
-- [Protocol PeerReview]
+- [UML PeerReview Ricevuta](deliveries/Peer_Review_Ricevuta.md)
+- [UML PeerReview Inviata](deliveries/Peer_Review_55_UML.tex)
+- [Protocol PeerReview Ricevuta](deliveries/Peer_Review_55_UML.md)
+- [Protocol PeerReview Inviata](deliveries/Peer_Review_55_Communication_Protocol.tex)
 
 ## TOOL, PLUGINS AND EXTERNAL LIBRARIES USED:
 - Intellij IDEA,
