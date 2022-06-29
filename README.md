@@ -11,7 +11,7 @@ The *target* of the projet is the implementation of a distributed system compose
 ## DOCUMENTATION:
 In this paragraph will be shown the documentation of the project:
 ## UML
-The [initial UML](deliveries/initial_uml.png) features an initial and  general idea of the game, later the diagram has been modified according to a more defined implementation for reaching the [final UML](link).
+The [initial UML](deliveries/initial_uml.png) features an initial and  general idea of the game, later the diagram has been modified according to a more defined implementation for reaching the [final UML](deliveries/final_uml.png).
 
 ## Network Protocol
 The [network protocol](deliveries/communicationProtocol.pdf) describes the communication between the server and the client.
