@@ -498,7 +498,6 @@ public class CharacterCardController {
         gui.getGameTable().getGameTablePane().setDisable(false);
         for(int i = 0; i < gui.getLightGame().getIslands().size(); i++){
             gui.getGameTable().getGameTablePane().lookup("#island" + i).setDisable(false);
-            System.out.println(i);
         }
     }
 
