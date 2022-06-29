@@ -745,7 +745,7 @@
                </font></Text>
             <Text fx:id="messages" fill="RED" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
-                  <Font size="24.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Text>
             <ImageView id="prohibited0" fitHeight="53.0" fitWidth="35.0" layoutX="18.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
