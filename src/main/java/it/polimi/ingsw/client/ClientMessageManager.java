@@ -28,11 +28,11 @@ public class ClientMessageManager {
             socketNetworkHandler.getView().requestNumPlayersIsExpert();
         } else if (object instanceof SetNickMessage) {
             socketNetworkHandler.getView().requestNickname();
-        } else if (object instanceof ClientAcceptedMessage) { //Serve per dire al player che è entrato in lobby
+        } else if (object instanceof ClientAcceptedMessage) {
             socketNetworkHandler.getView().registerClient();
         } else if (object instanceof WinnerMessage message) {
             socketNetworkHandler.getView().displayWinner(message.getNickname());
-        } else if (object instanceof GameStartedMessage) { //Serve a dire che il game è iniziato
+        } else if (object instanceof GameStartedMessage) {
             socketNetworkHandler.getView().newGameStart();
         } else if (object instanceof WrongNicknameMessage) {
             socketNetworkHandler.getView().displayWrongNickname();
@@ -40,7 +40,7 @@ public class ClientMessageManager {
             socketNetworkHandler.getView().displayWrongTurn();
         } else if (object instanceof AllUpdateMessage m) {
             socketNetworkHandler.getView().updateAll(m.getLightGame());
-        } else if (object instanceof LoginAcceptedMessage) {// serve a dire all' ultimo player che è entrato in lobby e che era l'ultimo player che mancava
+        } else if (object instanceof LoginAcceptedMessage) {
             socketNetworkHandler.getView().playerWait();
         } else if (object instanceof SetAssistantMessage) {
             socketNetworkHandler.getView().selectAssistantCard(((SetAssistantMessage) object).getNickname());
@@ -50,7 +50,7 @@ public class ClientMessageManager {
            socketNetworkHandler.getView().requestMoveMotherNature(((SetMoveMotherNature) object).getNickname());
         } else if (object instanceof SetCloudMessage) {
            socketNetworkHandler.getView().selectCloud(((SetCloudMessage) object).getNickname());
-        } else if (object instanceof EndTurnMessage) {//dice a tutti che il turno di "giocatore che gioca" è finito e che tocca a "giocatore successivo"
+        } else if (object instanceof EndTurnMessage) {
            socketNetworkHandler.getView().startTurn(((EndTurnMessage) object).getPlayers(),((EndTurnMessage) object).getActualPlayer());
         }else if(object instanceof WrongNumPlayerIsExpertMessage){
              socketNetworkHandler.getView().displayWrongNickname();

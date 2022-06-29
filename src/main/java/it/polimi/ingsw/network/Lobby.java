@@ -18,7 +18,7 @@ import java.util.Objects;
  * @see VirtualView
  * @see Controller
  */
-public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA----
+public class Lobby implements ConnectionObserver {
     private Controller controller;
     private ArrayList<String> namePlayer;
     private ArrayList<Player> players;
@@ -28,7 +28,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
     private int numPawnExe;
     private boolean lobbyOk;
     private final ArrayList<ClientHandlerInterface> clients;
-    private boolean isExpert;
     private boolean numinsert;
     private final Object lock;
     private Game game;
@@ -207,7 +206,6 @@ public class Lobby implements ConnectionObserver {//DA COMPLETARE: PROMEMORIA---
                 return;
             }
             this.numPlayers = numPlayers;
-            this.isExpert = isExpert;
             game = new Game(numPlayers, isExpert);
             game.start(game);
             game.newPlayer(namePlayer.get(0), game);

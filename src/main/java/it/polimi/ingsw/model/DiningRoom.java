@@ -58,7 +58,7 @@ public class DiningRoom {
      * @param colorPawn Color of the Pawn to be added to the DiningRoom
      */
     public void addPawnToDiningRoom(ColorPawn colorPawn, Player player, Game game) {
-        int j; //variabile che serve a iterare dentro le righe della sala
+        int j;
         if (colorPawn.equals(ColorPawn.GREEN) && player.entrance.getGreenPawn() > 0) {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[0][j] != 1) {
@@ -107,7 +107,7 @@ public class DiningRoom {
                     break;
                 }
             }
-        } else if (colorPawn.equals(ColorPawn.BLUE) && player.entrance.getBluePawn() > 0) { //metodo toString restituisce la rappresentazione di stringa delle costanti enum
+        } else if (colorPawn.equals(ColorPawn.BLUE) && player.entrance.getBluePawn() > 0) {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[4][j] != 1) {
                     player.diningRoom.position[4][j] = 1;
@@ -127,7 +127,7 @@ public class DiningRoom {
      * is used for the effect of
      * @see Omnia
      */
-    public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player, Game game) { //le sposta da dining al sacchetto
+    public void removePawnFromDiningRoom(ColorPawn colorPawn, Player player, Game game) {
         int j;
         if (colorPawn.equals(ColorPawn.GREEN)) {
             for (j = 9; j > -1; j--) {
@@ -168,7 +168,7 @@ public class DiningRoom {
                         break;
                 }
             }
-        } else if (colorPawn.equals(ColorPawn.BLUE)) { //metodo toString restituisce la rappresentazione di stringa delle costanti enum
+        } else if (colorPawn.equals(ColorPawn.BLUE)) {
                 for (j = 9; j > -1; j--) {
                     if (player.diningRoom.position[4][j] != 0) {
                         player.diningRoom.position[4][j] = 0;
@@ -185,7 +185,7 @@ public class DiningRoom {
      * is used for the effect of
      * @see Maria
      */
-    public void removePawnFromDiningRoomToEntrance(ColorPawn colorPawn, Player player, Game game) {//le sposta da dining all'entrance
+    public void removePawnFromDiningRoomToEntrance(ColorPawn colorPawn, Player player, Game game) {
         int j; //variabile che serve a iterare dentro le righe della sala
         if (colorPawn.equals(ColorPawn.GREEN) && player.diningRoom.getNumGreen() > 0) {
             for (j = 9; j > -1; j--) {
@@ -227,7 +227,7 @@ public class DiningRoom {
                     break;
                 }
             }
-        } else if (colorPawn.equals(ColorPawn.BLUE) && player.diningRoom.getNumBlue() > 0) { //metodo toString restituisce la rappresentazione di stringa delle costanti enum
+        } else if (colorPawn.equals(ColorPawn.BLUE) && player.diningRoom.getNumBlue() > 0) {
             for (j = 9; j > -1; j--) {
                 if (player.diningRoom.position[4][j] != 0) {
                     player.diningRoom.position[4][j] = 0;

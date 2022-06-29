@@ -140,26 +140,22 @@ public class Game {
         studentBag = new StudentBag();
         profTable = new ProfTable();
 
-        //Islands Creations
 
         for(i=0; i<12; i++){
             Island island = new Island();
             islands.add(island);
         }
 
-        //Randomizer MN position
         Random rnd = new Random();
         int n = rnd.nextInt(12);
         islands.get(n).setMotherNature(true);
 
-        //Randomizer starting pawn for each island (except for the MN one and the opposite one)
         int g = 2;
         int r = 2;
         int y = 2;
         int p = 2;
         int b = 2;
 
-        //ArrayList to count each color
         ArrayList<ColorPawn> startingPawn = new ArrayList<>(5);
         startingPawn.add(ColorPawn.GREEN);
         startingPawn.add(ColorPawn.RED);
@@ -197,7 +193,6 @@ public class Game {
             i++;
             if (i >= 12) i = 0;
         }
-        //Clouds creation
         clouds = new ArrayList<>();
         for (i = 0; i < totPlayer; i++) {
             Cloud cloud = new Cloud();
@@ -516,7 +511,7 @@ public class Game {
         for(int i = 0; i<players.size(); i++) numProf.add(0);
         for(int i = 0; i<5; i++){//for the 5 colors
             if(profTable.checkProf(i)!=-1) {
-                numProf.set(profTable.checkProf(i), numProf.get(profTable.checkProf(i)) + 1);//if the player got the professor, the arrayList get a +1 in the count
+                numProf.set(profTable.checkProf(i), numProf.get(profTable.checkProf(i)) + 1);
             }
         }
         for (Island island : islands) {
@@ -542,30 +537,30 @@ public class Game {
 
         if(totPlayer!=4) {
             for (int i = 0; i < totPlayer; i++) {
-                if (players.get(i).towerSpace.getNumTower() <= 0) { //caso 1, torri finite per 2 o 3 giocatori
+                if (players.get(i).towerSpace.getNumTower() <= 0) {
                     System.out.println("1 " + players.get(max).getNickname());
                     return players.get(max);
                 }
             }
         }else{
             for(int i=0;i<totPlayer/2;i++){
-                if (players.get(i).towerSpace.getNumTower() == 0) { //caso 1, torri finite per 4 giocatori
+                if (players.get(i).towerSpace.getNumTower() == 0) {
                     System.out.println("1 " + players.get(max).getNickname());
                     return players.get(max);
                 }
             }
         }
-        if(islands.size() <= 3){//caso 2, 3 gruppi di isole
+        if(islands.size() <= 3){
             System.out.println("2"+ players.get(max).getNickname());
             return players.get(max);
         }
 
-        if(studentBag.getNum()==0) {//caso 3, fine studenti nel sacchetto
+        if(studentBag.getNum()==0) {
             System.out.println("3"+ players.get(max).getNickname());
             return players.get(max);
         }
 
-        if((players.get(0).getDeckAssistant().size() == 0) && lastTurn)//caso 4, finiti gli assistenti & ultimo turno
+        if((players.get(0).getDeckAssistant().size() == 0) && lastTurn)
             return players.get(max);
         return null;
     }

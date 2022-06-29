@@ -13,7 +13,7 @@ import java.net.Socket;
 /**
  * is used for create an instance of client
  */
-public class ClientHandler implements ClientHandlerInterface,Runnable {//DA RIVEDERE
+public class ClientHandler implements ClientHandlerInterface,Runnable {
     private final Lobby lobby;
     private final Socket mySocket;
     private String userNickname;

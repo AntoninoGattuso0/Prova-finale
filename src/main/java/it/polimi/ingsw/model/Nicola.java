@@ -25,27 +25,27 @@ public class Nicola extends UseEffect implements Serializable {
         for(int i = 0; i < 4; i++) {
             if (studentBag.getNum() > 0) {
                 int random = rnd.nextInt(cards.size());
-                if (Objects.equals(cards.get(random), ColorPawn.GREEN)) {//verde
+                if (Objects.equals(cards.get(random), ColorPawn.GREEN)) {
                     setGreenPawn(getGreenPawn() + 1);
                     studentBag.setNum(studentBag.getNum() - 1);
                     studentBag.setGreenNum(studentBag.getGreenNum() - 1);
                     if (studentBag.getGreenNum() == 0) cards.remove(random);
-                } else if (Objects.equals(cards.get(random), ColorPawn.RED)) {//rosso
+                } else if (Objects.equals(cards.get(random), ColorPawn.RED)) {
                     setRedPawn(getRedPawn() + 1);
                     studentBag.setNum(studentBag.getNum() - 1);
                     studentBag.setRedNum(studentBag.getRedNum() - 1);
                     if (studentBag.getRedNum() == 0) cards.remove(random);
-                } else if (Objects.equals(cards.get(random), ColorPawn.YELLOW)) {//giallo
+                } else if (Objects.equals(cards.get(random), ColorPawn.YELLOW)) {
                     setYellowPawn(getYellowPawn() + 1);
                     studentBag.setNum(studentBag.getNum() - 1);
                     studentBag.setYellowNum(studentBag.getYellowNum() - 1);
                     if (studentBag.getYellowNum() == 0) cards.remove(random);
-                } else if (Objects.equals(cards.get(random), ColorPawn.PINK)) {//rosa
+                } else if (Objects.equals(cards.get(random), ColorPawn.PINK)) {
                     setPinkPawn(getPinkPawn() + 1);
                     studentBag.setNum(studentBag.getNum() - 1);
                     studentBag.setPinkNum(studentBag.getPinkNum() - 1);
                     if (studentBag.getPinkNum() == 0) cards.remove(random);
-                } else if (Objects.equals(cards.get(random), ColorPawn.BLUE)) {//blu
+                } else if (Objects.equals(cards.get(random), ColorPawn.BLUE)) {
                     setBluePawn(getBluePawn() + 1);
                     studentBag.setNum(studentBag.getNum() - 1);
                     studentBag.setBlueNum(studentBag.getBlueNum() - 1);
@@ -141,7 +141,7 @@ public class Nicola extends UseEffect implements Serializable {
                 }
             }
         }
-        if (colorPawn.get(0).equals(ColorPawn.BLUE)) { //metodo toString restituisce la rappresentazione di stringa delle costanti enum
+        if (colorPawn.get(0).equals(ColorPawn.BLUE)) {
             for (j = 0; j < 10; j++) {
                 if (player.diningRoom.position[4][j] != 1) {
                     player.diningRoom.position[4][j] = 1;
@@ -187,7 +187,7 @@ public class Nicola extends UseEffect implements Serializable {
         }
         setCoinPrice(3);
     }
-    static ArrayList<ColorPawn> createArrayPawn(StudentBag studentBag) {//crea un array per ogni colore (utilizzato per funzioni random)
+    static ArrayList<ColorPawn> createArrayPawn(StudentBag studentBag) {
         ArrayList<ColorPawn> arrayPawn = new ArrayList<>();
         if (studentBag.getGreenNum() != 0)
             arrayPawn.add(ColorPawn.GREEN);

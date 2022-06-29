@@ -16,7 +16,7 @@ public class Player {
     private String nickname;
     private boolean active;
     private int numCoin;
-    protected ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10); //mi servirebbe protected o un metodo per accedervi
+    protected ArrayList<AssistantCard> deckAssistant= new ArrayList<>(10);
     private AssistantCard currentAssistant;
     protected Entrance entrance;
     protected DiningRoom diningRoom;
