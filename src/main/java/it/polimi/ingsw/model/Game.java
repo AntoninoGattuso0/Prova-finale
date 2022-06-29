@@ -382,7 +382,7 @@ public class Game {
                     random1 = rnd.nextInt(12);
                     random2 = rnd.nextInt(12);
                 }
-
+                random=10;
                 if (random == 0 || random1 == 0 || random2 == 0) {
                     antonio = new Antonio(game.studentBag);
                     CharacterCard card = new CharacterCard(antonio, 0);

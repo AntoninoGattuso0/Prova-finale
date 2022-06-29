@@ -460,7 +460,7 @@ public class GameTableController {
             islandButton.setVisible(true);
             diningButton.setVisible(true);
             diningButton.setDisable(false);
-            if (gui.getLightGame().getIsExpert()) {
+            if (gui.getLightGame().getIsExpert()&& !gui.getVar()) {
                 characterButton.setVisible(true);
                 characterButton.setDisable(false);
             }

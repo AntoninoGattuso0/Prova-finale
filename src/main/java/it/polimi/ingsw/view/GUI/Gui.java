@@ -69,6 +69,9 @@ public class Gui extends Application implements View {
     public void setVar(boolean var) {
         this.var = var;
     }
+    public boolean getVar(){
+        return this.var;
+    }
     public ButtonAction getButtonClicked(){return this.buttonClicked;}
     public ArrayList<ColorPawn> getColorPawns(){return this.colorPawns;}
     public int getIslandSelected(){return this.islandSelected;}
