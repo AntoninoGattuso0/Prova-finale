@@ -226,18 +226,6 @@ public class CharacterCardController {
             }
         }
     }
-
-
-    /*public void setDisable(int n, boolean disable) {
-        String name = "#characterCard" + n;
-        characterCards.lookup(name).setDisable(disable);
-    }
-    ABBIAMO CAMBIATO I NOMI DEI CC
-
-    public void setVisible(int n, boolean visible) {
-        String name = "#characterCard" + n;
-        characterCards.lookup(name).setVisible(visible);
-    }*/
     public void setColorCharacterVisible(int color, int character, boolean visible) {
         String name;
         String text;
@@ -251,28 +239,28 @@ public class CharacterCardController {
         } else if (color == 1) {
             name = "#redCharacter" + character;
             characterCards.lookup(name).setVisible(visible);
-            if(gui.getButtonClicked()!=ButtonAction.LANCILLOTTO) {
+            if(gui.getButtonClicked()!=ButtonAction.LANCILLOTTO&&gui.getButtonClicked()!=ButtonAction.OMNIA) {
                 text = "#textRedCharacter" + character;
                 characterCards.lookup(text).setVisible(visible);
             }
         } else if (color == 2) {
             name = "#yellowCharacter" + character;
             characterCards.lookup(name).setVisible(visible);
-            if(gui.getButtonClicked()!=ButtonAction.LANCILLOTTO) {
+            if(gui.getButtonClicked()!=ButtonAction.LANCILLOTTO&&gui.getButtonClicked()!=ButtonAction.OMNIA) {
                 text = "#textYellowCharacter" + character;
                 characterCards.lookup(text).setVisible(visible);
             }
         } else if (color == 3) {
             name = "#pinkCharacter" + character;
             characterCards.lookup(name).setVisible(visible);
-            if(gui.getButtonClicked()!=ButtonAction.LANCILLOTTO) {
+            if(gui.getButtonClicked()!=ButtonAction.LANCILLOTTO&&gui.getButtonClicked()!=ButtonAction.OMNIA) {
                 text = "#textPinkCharacter" + character;
                 characterCards.lookup(text).setVisible(visible);
             }
         } else if (color == 4) {
             name = "#blueCharacter" + character;
             characterCards.lookup(name).setVisible(visible);
-            if(gui.getButtonClicked()!=ButtonAction.LANCILLOTTO) {
+            if(gui.getButtonClicked()!=ButtonAction.LANCILLOTTO&&gui.getButtonClicked()!=ButtonAction.OMNIA) {
                 text = "#textBlueCharacter" + character;
                 characterCards.lookup(text).setVisible(visible);
             }
