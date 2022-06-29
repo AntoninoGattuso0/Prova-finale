@@ -123,7 +123,9 @@ public class CharacterCardController {
         }
     }
 
-
+    /**
+     * Show pawns for characters that have pawns on them
+     */
     public void showCharacterPawn(){
         ArrayList<Integer> characterPawn = new ArrayList<>();
         characterPawn.add(0);
@@ -226,6 +228,13 @@ public class CharacterCardController {
             }
         }
     }
+
+    /**Set visible a specific color of a specific CC
+     *
+     * @param color
+     * @param character
+     * @param visible
+     */
     public void setColorCharacterVisible(int color, int character, boolean visible) {
         String name;
         String text;
@@ -267,7 +276,12 @@ public class CharacterCardController {
         }
     }
 
-
+    /**Set disable a specific color of a specific CC
+     *
+     * @param color
+     * @param character
+     * @param disabled
+     */
     public void setColorCharacterDisabled(int color, int character, boolean disabled) {
         String name;
         characterCards.setDisable(disabled);
@@ -294,7 +308,10 @@ public class CharacterCardController {
         characterCards.lookup(name).setVisible(visible);
     }
 
-
+    /**All the possible effect the CC can do
+     *
+     * @param characterPosition
+     */
     public void characterEffects(int characterPosition){
         Platform.runLater(()-> {
             gui.getColorPawns().clear();
@@ -455,6 +472,10 @@ public class CharacterCardController {
         });
     }
 
+    /**What happens when a CC is clicked
+     *
+     * @param mouseEvent
+     */
     public void character0Select(MouseEvent mouseEvent) {;
         characterEffects(0);
         zeroUse=true;
@@ -555,6 +576,10 @@ public class CharacterCardController {
         gui.setVar(true);
     }
 
+    /**What happens when a color of a CC is clicked
+     *
+     * @param mouseEvent
+     */
     public void moveGreenCharacter0(MouseEvent mouseEvent) {
         ColorPawn colorPawn = ColorPawn.GREEN;
         if(gui.getButtonClicked().equals(ButtonAction.ANTONIO)){
