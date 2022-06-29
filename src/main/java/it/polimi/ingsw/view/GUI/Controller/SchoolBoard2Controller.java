@@ -859,7 +859,7 @@ public class SchoolBoard2Controller {
             schoolBoard2.lookup("#entranceYellow2" + i).setDisable(true);
         int pink = gui.getLightGame().getPlayers().get(2).getEntrance().getPinkPawn() + yellow;
         for(int i=yellow; i<pink; i++)
-            schoolBoard2.lookup("#entrancePinkw2"+ i).setDisable(true);
+            schoolBoard2.lookup("#entrancePink2"+ i).setDisable(true);
         int blue = gui.getLightGame().getPlayers().get(2).getEntrance().getBluePawn() + pink;
         for(int i=pink; i<blue; i++)
             schoolBoard2.lookup("#entranceBlue2"+ i).setDisable(true);
