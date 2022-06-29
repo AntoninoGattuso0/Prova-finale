@@ -1410,7 +1410,7 @@ public class Cli implements Runnable, View {
         int j;
         for(i=0;!Objects.equals(lightGame.getPlayers().get(i).getNickname(), winner); i++);
         if(lightGame.getPlayers().size()==4){
-            for(j=0;lightGame.getPlayers().get(i).getTowerSpace().getColorTower()!=lightGame.getPlayers().get(j).getTowerSpace().getColorTower();j++);
+            for(j=(i+1);lightGame.getPlayers().get(i).getTowerSpace().getColorTower()!=lightGame.getPlayers().get(j).getTowerSpace().getColorTower();j++);
             out.println("I vincitori sono "+ winner+" e "+lightGame.getPlayers().get(j).getNickname());
         }else{
         out.println("The winner is: " + winner);
