@@ -481,7 +481,6 @@ public class SchoolBoard3Controller {
         schoolBoard3.lookup("#entranceBlue32").setVisible(false);
         schoolBoard3.lookup("#entranceBlue32").setDisable(true);
         gui.getColorPawns().add(ColorPawn.BLUE);
-        gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         selection();
     }
 
@@ -559,7 +558,6 @@ public class SchoolBoard3Controller {
                 gui.getColorPawns().clear();
             }
         } else if (gui.getButtonClicked().equals(ButtonAction.MARIA)) {
-            System.out.println("ho cliccato una pedina nel entrata");
             if (gui.getNumPawnsCount() == gui.getNumPawns() / 2) {
                 gui.getGameTable().whatToDo.setText("Select Pawn from Dining");
                 setEntrance3NOTClickable();

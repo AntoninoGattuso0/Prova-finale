@@ -626,7 +626,6 @@ public class SchoolBoard1Controller {
                 gui.setVar(true);
             }
         } else if (gui.getButtonClicked().equals(ButtonAction.MARIA)) {
-            System.out.println("ho cliccato una pedina nel entrata");
             if (gui.getNumPawnsCount() == gui.getNumPawns() / 2) {
                 gui.getGameTable().whatToDo.setText("Select Pawn from Dining");
                 setEntrance1NOTClickable();
