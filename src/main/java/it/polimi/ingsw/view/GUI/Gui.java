@@ -483,6 +483,7 @@ public class Gui extends Application implements View {
             socketNetworkHandler.getOut().reset();
             socketNetworkHandler.getOut().flush();
             socketNetworkHandler.sendMessage(new ReadyTodisconnection());
+            System.out.println("c'è stata una disconnessione improvvisa. La lobby è stata chiusa");
             socketNetworkHandler.closeConnection();
             Platform.exit();
         }catch (Exception e){
