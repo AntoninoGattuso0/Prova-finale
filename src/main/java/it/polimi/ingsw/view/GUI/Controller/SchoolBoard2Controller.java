@@ -47,7 +47,8 @@ public class SchoolBoard2Controller {
         }
         setCoin2();
     }
-
+    /**sets all the images on the school board invisible except the schoolBoard's images
+     */
     public void setAllInvisible(){
         for(Node all : schoolBoard2.getChildren()) {
             all.setVisible(false);
@@ -57,7 +58,8 @@ public class SchoolBoard2Controller {
         }
     }
 
-
+    /**sets the pawns on the entrance clickable at the begging of the game
+     */
     public void setEntrance2Clickable(){
         setEntrance2();
         int green = gui.getLightGame().getPlayers().get(2).getEntrance().getGreenPawn();
@@ -99,29 +101,8 @@ public class SchoolBoard2Controller {
             schoolBoard2.lookup("#entranceBlue2"+ i).setVisible(true);
     }
 
-    //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine che passiamo con numColore
-    public void greenEntrance2(boolean boolVisibility, boolean boolClickable, int numGreen){
-        schoolBoard2.lookup("#entranceGreen2"+ numGreen).setVisible(boolVisibility);
-        schoolBoard2.lookup("#entranceGreen2"+ numGreen).setDisable(boolClickable);
-    }
-
-    public void redEntrance2(boolean boolVisibility, boolean boolClickable, int numRed){
-        schoolBoard2.lookup("#entranceRed2"+ numRed).setVisible(boolVisibility);
-        schoolBoard2.lookup("#entranceRed2"+ numRed).setDisable(boolClickable);
-    }
-    public void yellowEntrance2(boolean boolVisibility, boolean boolClickable, int numYellow){
-        schoolBoard2.lookup("#entranceYellow2"+ numYellow).setVisible(boolVisibility);
-        schoolBoard2.lookup("#entranceYellow2"+ numYellow).setDisable(boolClickable);
-    }
-    public void pinkEntrance2(boolean boolVisibility, boolean boolClickable, int numPink){
-        schoolBoard2.lookup("#entrancePink2"+ numPink).setVisible(boolVisibility);
-        schoolBoard2.lookup("#entrancePink2"+ numPink).setDisable(boolClickable);
-    }
-    public void blueEntrance2(boolean boolVisibility, boolean boolClickable, int numBlue){
-        schoolBoard2.lookup("#entranceBlue2"+ numBlue).setVisible(boolVisibility);
-        schoolBoard2.lookup("#entranceBlue2"+ numBlue).setDisable(boolClickable);
-    }
-
+    /**sets visible the pawns of the dining room
+     */
     public void setDiningRoom2(){
         int green = gui.getLightGame().getPlayers().get(2).getDiningRoom().getNumGreen();
         for(int i=0; i<green; i++){
@@ -160,48 +141,10 @@ public class SchoolBoard2Controller {
             }
         }
     }
-    //le 5 funzioni qui sotto mettono visibile/ non visibili le pedine delle dining che passiamo con num
-    public void greenDining2(boolean boolVisibility, boolean boolClickable, int num){
-        for(Node school : schoolBoard2.getChildren()) {
-            if (school.getId().equals("schoolBoard2Green" + num)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
-    public void redDining2(boolean boolVisibility, boolean boolClickable, int num){
-        for(Node school : schoolBoard2.getChildren()) {
-            if (school.getId().equals("schoolBoard2Red" + num)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
-    public void yellowDining2(boolean boolVisibility, boolean boolClickable, int num){
-        for(Node school : schoolBoard2.getChildren()) {
-            if (school.getId().equals("schoolBoard2Yellow" + num)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
-    public void pinkDining2(boolean boolVisibility, boolean boolClickable, int num){
-        for(Node school : schoolBoard2.getChildren()) {
-            if (school.getId().equals("schoolBoard2Pink" + num)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
-    public void blueVDining2(boolean boolVisibility, boolean boolClickable, int num){
-        for(Node school : schoolBoard2.getChildren()) {
-            if (school.getId().equals("schoolBoard2Blue" + num)){
-                school.setVisible(boolVisibility);
-                school.setDisable(boolClickable);
-            }
-        }
-    }
 
+    /**sets visible the Professor on the schoolPlayer that owns it
+     * @param bool true if visible, false if not
+     */
     public void setGreenProfessor2(boolean bool){
         schoolBoard2.lookup("#schoolGreenProf2").setVisible(bool);
     }
@@ -218,7 +161,11 @@ public class SchoolBoard2Controller {
     public void setBlueProfessor2(boolean bool){
         schoolBoard2.lookup("#schoolBlueProf2").setVisible(bool);
     }
-
+    /**sets the professor visible
+     * @param numColor the number corresponds to the color of the professor
+     *                 0 = green, 1 = red, 2 = yellow, 3 = pink, 4 = blue
+     * @param bool true if visible, false if not
+     */
     public void setProfessor2(int numColor, boolean bool){
         if(numColor == 0)
             setGreenProfessor2(bool);
@@ -232,7 +179,8 @@ public class SchoolBoard2Controller {
             setBlueProfessor2(bool);
     }
 
-
+    /**sets visible the towers on the schoolBoards
+     */
     public void setTower2(){
         for(int i = 0; i<gui.getLightGame().getPlayers().get(2).getTowerSpace().getNumTower(); i++)
             for(Node school : schoolBoard2.getChildren()) {
@@ -241,13 +189,8 @@ public class SchoolBoard2Controller {
             }
     }
 
-    public void towerVisibility2(boolean bool, int numTower){
-        for(Node school : schoolBoard2.getChildren()) {
-            if (schoolBoard2.getId().equals("greyTowerSchool" + numTower))
-                school.setVisible(bool);
-        }
-    }
-
+    /**sets the coins visible
+     */
     public void setCoin2() {
         for (int i = 0; i < gui.getLightGame().getPlayers().get(2).getNumCoin(); i++)
             for(Node school : schoolBoard2.getChildren()) {
@@ -255,14 +198,6 @@ public class SchoolBoard2Controller {
                     school.setVisible(true);
             }
     }
-
-    public void coinVisibility2(boolean bool, int numCoin){
-        for(Node school : schoolBoard2.getChildren()) {
-            if (schoolBoard2.getId().equals("coin" + numCoin))
-                school.setVisible(bool);
-        }
-    }
-
 
     public void green20Select(MouseEvent mouseEvent) {
         schoolBoard2.lookup("#entranceGreen20").setVisible(false);
@@ -585,213 +520,6 @@ public class SchoolBoard2Controller {
         selection();
     }
 
-/*
-    public void selectSchoolGreen20(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("##schoolBoard2Green0").setVisible(false);
-        schoolBoard2.lookup("##schoolBoard2Green0").setDisable(true);
-    }
-
-    public void selectSchoolGreen21(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Green1").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Green1").setDisable(true);
-    }
-    public void selectSchoolGreen22(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Green2").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Green2").setDisable(true);
-    }
-    public void selectSchoolGreen23(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Green3").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Green3").setDisable(true);
-    }
-    public void selectSchoolGreen24(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Green4").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Green4").setDisable(true);
-    }
-    public void selectSchoolGreen25(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Green5").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Green5").setDisable(true);
-    }
-    public void selectSchoolGreen26(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Green6").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Green6").setDisable(true);
-    }
-    public void selectSchoolGreen27(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Green7").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Green7").setDisable(true);
-    }
-    public void selectSchoolGreen28(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Green8").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Green8").setDisable(true);
-    }
-    public void selectSchoolGreen29(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Green9").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Green9").setDisable(true);
-    }
-
-    public void selectSchoolRed20(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Red0").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Red0").setDisable(true);
-    }
-    public void selectSchoolRed21(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Red1").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Red1").setDisable(true);
-    }
-    public void selectSchoolRed22(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Red2").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Red2").setDisable(true);
-    }
-    public void selectSchoolRed23(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Red3").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Red3").setDisable(true);
-    }
-    public void selectSchoolRed24(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Red4").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Red4").setDisable(true);
-    }
-    public void selectSchoolRed25(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Red5").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Red5").setDisable(true);
-    }
-    public void selectSchoolRed26(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Red6").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Red6").setDisable(true);
-    }
-    public void selectSchoolRed27(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Red7").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Red7").setDisable(true);
-    }
-    public void selectSchoolRed28(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Red8").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Red8").setDisable(true);
-    }
-    public void selectSchoolRed29(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Red9").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Red9").setDisable(true);
-    }
-
-    public void selectSchoolYellow20(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Yellow0").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Yellow0").setDisable(true);
-    }
-    public void selectSchoolYellow21(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Yellow1").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Yellow1").setDisable(true);
-    }
-    public void selectSchoolYellow22(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Yellow2").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Yellow2").setDisable(true);
-    }
-    public void selectSchoolYellow23(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Yellow3").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Yellow3").setDisable(true);
-    }
-    public void selectSchoolYellow24(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Yellow4").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Yellow4").setDisable(true);
-    }
-    public void selectSchoolYellow25(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Yellow5").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Yellow5").setDisable(true);
-    }
-    public void selectSchoolYellow26(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Yellow6").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Yellow6").setDisable(true);
-    }
-    public void selectSchoolYellow27(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Yellow7").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Yellow7").setDisable(true);
-    }
-    public void selectSchoolYellow28(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Yellow8").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Yellow8").setDisable(true);
-    }
-    public void selectSchoolYellow29(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Yellow9").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Yellow9").setDisable(true);
-    }
-
-    public void selectSchoolPink20(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Pink0").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Pink0").setDisable(true);
-    }
-    public void selectSchoolPink21(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Pink1").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Pink1").setDisable(true);
-    }
-    public void selectSchoolPink22(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Pink2").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Pink2").setDisable(true);
-    }
-    public void selectSchoolPink23(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Pink3").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Pink3").setDisable(true);
-    }
-    public void selectSchoolPink24(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Pink4").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Pink4").setDisable(true);
-    }
-    public void selectSchoolPink25(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Pink5").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Pink5").setDisable(true);
-    }
-    public void selectSchoolPink26(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Pink6").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Pink6").setDisable(true);
-    }
-    public void selectSchoolPink27(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Pink7").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Pink7").setDisable(true);
-    }
-    public void selectSchoolPink28(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Pink8").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Pink8").setDisable(true);
-    }
-    public void selectSchoolPink29(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Pink9").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Pink9").setDisable(true);
-    }
-
-    public void selectSchoolBlue20(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Blue0").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Blue0").setDisable(true);
-    }
-    public void selectSchoolBlue21(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Blue1").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Blue1").setDisable(true);
-    }
-    public void selectSchoolBlue22(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Blue2").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Blue2").setDisable(true);
-    }
-    public void selectSchoolBlue23(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Blue3").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Blue3").setDisable(true);
-    }
-    public void selectSchoolBlue24(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Blue4").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Blue4").setDisable(true);
-    }
-    public void selectSchoolBlue25(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Blue5").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Blue5").setDisable(true);
-    }
-    public void selectSchoolBlue26(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Blue6").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Blue6").setDisable(true);
-    }
-    public void selectSchoolBlue27(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Blue7").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Blue7").setDisable(true);
-    }
-    public void selectSchoolBlue28(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Blue8").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Blue8").setDisable(true);
-    }
-    public void selectSchoolBlue29(MouseEvent mouseEvent) {
-        schoolBoard2.lookup("#schoolBoard2Blue9").setVisible(false);
-        schoolBoard2.lookup("#schoolBoard2Blue9").setDisable(true);
-    }
-*/
     public void selection(){
         gui.setNumPawnsCount(gui.getNumPawnsCount() - 1);
         if(gui.getButtonClicked().equals(ButtonAction.ISLAND)){
@@ -847,6 +575,8 @@ public class SchoolBoard2Controller {
         }
     }
 
+    /**sets the pawns on the entrance not clickable
+     */
     private void setEntrance2NOTClickable() {
         int green = gui.getLightGame().getPlayers().get(2).getEntrance().getGreenPawn();
         for(int i=0; i<green; i++)
@@ -865,6 +595,8 @@ public class SchoolBoard2Controller {
             schoolBoard2.lookup("#entranceBlue2"+ i).setDisable(true);
 
     }
+    /**sets the pawns visible on the entrance
+     */
     public void selectSchoolGreen2(MouseEvent mouseEvent) {
         int i;
         for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
@@ -887,6 +619,9 @@ public class SchoolBoard2Controller {
             gui.getColorPawns().clear();
         }
     }
+
+    /**sets all the images disabled for the click
+     */
     public void setAllDisabled(){
         for(Node all : schoolBoard2.getChildren()) {
             all.setDisable(true);
@@ -894,6 +629,7 @@ public class SchoolBoard2Controller {
                 all.setVisible(true);
         }
     }
+
     public void selectSchoolRed2(MouseEvent mouseEvent) {
         int i;
         for(i=0; i<3 && gui.getLightGame().getCharacterCards().get(i).getNumCard()!=9; i++);
