@@ -219,22 +219,6 @@ public class Gui extends Application implements View {
         });
     }
 
-
-    @Override
-    public void displayNick() {
-
-    }
-
-    @Override
-    public void displayNumPlayers() {
-
-    }
-
-    @Override
-    public void displayIsExpert() {
-
-    }
-
     @Override
     public void displayAssistantCard(int player) {
 
