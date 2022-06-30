@@ -22,7 +22,7 @@ public class Barbara extends UseEffect implements Serializable {
     }
 
     /**CharacterCard 2: During this turn you obtain the professor even if the pawn in your DiningRoom are the same of the player who already has the professor
-     * @param i is the index of the player that used Barbara
+     * @param player is the player that used Barbara
      */
     public void useEffect(Game game, int i, Island island, Player player, ArrayList<ColorPawn> colorPawn) {
         for(i = 0; i<game.totPlayer && !game.getPlayers().get(i).getNickname().equals(player.getNickname()); i++);
