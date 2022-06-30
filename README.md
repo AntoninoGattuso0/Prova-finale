@@ -47,6 +47,7 @@ Server: java -jar ServerMain.jar
 
 Client: java -jar ClientMain.jar
 
+After launching the server you can choose the ip for the clients, choose the local ip for a local game, ip ethernet or Wi-Fi for online game. 
 Once the Client started, follow the displayed text to play in CLI or GUI (press "C" for CLI or "G" for GUI)
 
 ## DEVELOPERS:
