@@ -8,6 +8,9 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
+/**
+ * Controller for the fourth board
+ */
 public class SchoolBoard3Controller {
     Gui gui;
 

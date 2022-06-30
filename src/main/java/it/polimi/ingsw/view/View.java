@@ -17,12 +17,6 @@ public interface View {
 
     void requestCharacterCard(String nickname,boolean bool);
 
-    void displayNick();
-
-    void displayNumPlayers();
-
-    void displayIsExpert();
-
     void displayAssistantCard(int player);
 
     void displayCloud();
@@ -44,7 +38,6 @@ public interface View {
     void displayWrongTurn();
 
     void updateAll(LightGame object);
-    void displayAll();
 
     void displayStartRound();
 

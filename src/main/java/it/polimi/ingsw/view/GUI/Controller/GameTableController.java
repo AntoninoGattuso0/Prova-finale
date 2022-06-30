@@ -22,6 +22,9 @@ import java.util.Objects;
 
 import static java.lang.Integer.parseInt;
 
+/**
+ *Main scene whit islands,clouds and professors
+ */
 public class GameTableController {
     @FXML
     Text textIsland0;
@@ -348,7 +351,6 @@ public class GameTableController {
         whatToDo.setText("Select new MN Island");
     }
 
-
     public void setButtonOff() {
         moveMnButton.setDisable(true);
         moveMnButton.setVisible(false);
@@ -377,6 +379,9 @@ public class GameTableController {
         messagesActions.setDisable(true);
     }
 
+    /**
+     * Set AssistantCard, all SchoolBoards and CharacterCard scenes
+     */
     public void setAssistantSchoolBoardCharacter() {
         AssistantCardButton.setDisable(false);
         AssistantCardButton.setVisible(true);
@@ -388,9 +393,7 @@ public class GameTableController {
         int i;
         for (i = 0; i < gui.getLightGame().getPlayers().size(); i++) {
             SchoolBoard.getItems().add("Board " + gui.getLightGame().getPlayers().get(i).getNickname());
-            // if the item of the list is changed
             SchoolBoard.getSelectionModel().selectedIndexProperty().addListener((ov, value, new_value) -> {
-                // set the SchoolBoard for the selected item
                 if ((int) new_value == 0) {
                     schoolBoard0Controller = gui.getSchoolBoard0Controller();
                     schoolBoard0Controller.setSchoolBoard0();
@@ -437,6 +440,9 @@ public class GameTableController {
         }
     }
 
+    /**
+     * Set switch button off
+     */
     public void setChooseViewOff() {
         Platform.runLater(() -> {
             SchoolBoard.setDisable(true);
@@ -445,6 +451,9 @@ public class GameTableController {
         });
     }
 
+    /**
+     * Set switch button on
+     */
     public void setChooseViewOn() {
         SchoolBoard.setDisable(false);
         AssistantCardButton.setDisable(false);
@@ -485,6 +494,9 @@ public class GameTableController {
         });
     }
 
+    /**
+     * This function set visible all islands and their pawns
+     */
     public void setPawnVisible() {
         int n;
         int i;
@@ -607,6 +619,9 @@ public class GameTableController {
         return moveMnButton;
     }
 
+    /**
+     * This function set visible all Clouds anf their pawns
+     */
     public void setCloudVisible() {
         int n;
         int i;
@@ -745,6 +760,9 @@ public class GameTableController {
         }
     }
 
+    /**
+     * Is activated when click the assistants button
+     */
     public void switchToAssistantCard() {
         showCharacterCard.setVisible(false);
         showSchool0.setVisible(false);
@@ -758,7 +776,9 @@ public class GameTableController {
             showAssistant.setVisible(true);
         });
     }
-
+    /**
+     * Is activated when click the CharacterCard button
+     */
     public void switchToCharacterCard(MouseEvent mouseEvent) {
         if(gui.getLightGame().getIsExpert()) {
             showAssistant.setVisible(false);
@@ -775,7 +795,9 @@ public class GameTableController {
         }
     }
 
-
+    /**
+     * Initialize the pane on the right
+     */
     public void initializeBorderPane() {
         Platform.runLater(() -> {
             assistantCardController = gui.getAssistantCardController();
@@ -1379,7 +1401,10 @@ public class GameTableController {
         }
     }
 
-
+    /**
+     * handles the island click differently based on the ButtonAction
+     * @param numIsland
+     */
     public void islandSelectedEffect(int numIsland){
         for(int i = 0; i < gui.getLightGame().getIslands().size(); i++)
             gameTable.lookup("#island" + i).setDisable(true);

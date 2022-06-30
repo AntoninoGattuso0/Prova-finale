@@ -19,24 +19,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
-
-//NINO GUARDA A RIGA 462, L'AGGIORNAMENTO INIZIALE DI DININGROOM FUNZIONA!!!!!!!!!!!!!!!!
-//AGGIORNAMENTI 23/07 ;) ABBIAMO AGGIUNTO DELLE FUNZIONI PER QUANDO VENGONO SELEZIONATI I BOTTONI AL CENTRO DELLA GAMETABLE
-//E LE FUNZIONI QUANDO VENGONO SCHIACCIATE LE PEDINE DELL'ENTRATA, O LE ISOLE
-//SONO I CASI GENERALI CI MANCANO DEI CONTROLLI E I CASI PARTICOLARI
-//DOBBIAMO CONTINUARE DAL FATTO CHE QUANDO IL GIOCATORE SCEGLIE L'ASSISTENTE POI DEVE POTER VEDERE LE SCHOOL
-//QUANDO RISOLVIAMO QUALCOSA AGGIORNATE QUESTO COMMENTO COSI E PIU FACILE CAPIRE COSA FACCIAMO
-//DA SISTEMARE IL FATTO CHE QUANDO NON E VARIANTE ESPERTO NON DEVE ESSERE VISIBILE IN ALTO A DX IL BOTTONE DELLE CC
-
 public class Gui extends Application implements View {
 
-    //Variabili per salvarsi "quale bottone/pedina/isola è stata cliccata precedentemente
+
     private ButtonAction buttonClicked;
-    private ArrayList<ColorPawn> colorPawns = new ArrayList<>();//colori che si passano per messaggio
+    private ArrayList<ColorPawn> colorPawns = new ArrayList<>();
     private int islandSelected = -1;
-    private int numPawns = -1;//numero pedine che sposta in quel momento verso la dining/isola (inviate per messaggio)
+    private int numPawns = -1;
     private int numPawnsCount = -1;
-    private int pedineDaSpostare;//da inizializzare (numero fisso, o 3 o 4)
+    private int pedineDaSpostare;
 
     private LightGame lightGame;
     private Stage stage;
@@ -116,19 +107,14 @@ public class Gui extends Application implements View {
     }
     public LightGame getLightGame(){return this.lightGame;}
 
-    /**Start the game with Gui settings
-     *
-     * @param stage
-     * @throws Exception
-     */
     @Override
     public void start(Stage stage) throws Exception {
         this.stage=stage;
         startGame();
     }
 
-    /**Connection with socket
-     *
+    /**
+     * is used to create and start socketNetworkHandler
      */
     @Override
     public void startGame() {
@@ -137,16 +123,13 @@ public class Gui extends Application implements View {
         socketNetworkHandler.run();
     }
 
-    /**Set the address as the input of the player
-     *
-     * @param address
-     */
     public static void setAddress(String address){
         addressSock=address;
     }
 
-    /**Show the fxml of requestNickName
-     *
+    /**
+     * set the nickname through RequestNickPlayersController
+     * @see RequestNickPlayersController
      */
     @Override
     public void requestNickname() {
@@ -168,8 +151,9 @@ public class Gui extends Application implements View {
         });
     }
 
-    /**Show the fxml of requestNumPlayerIsExpert
-     *
+    /**
+     * Requests to the first player the number of players and if the game is expert
+     * @see NumOfPlayerIsExpertController
      */
     @Override
     public void requestNumPlayersIsExpert() {
@@ -191,15 +175,11 @@ public class Gui extends Application implements View {
             stage.show();
         });
     }
-
     public SocketNetworkHandler getSocketNetworkHandler() {
         return socketNetworkHandler;
     }
-
-    /**Ask the player what he want to do after choosing the assistant: Move a pawn to the dining, to the island or using a CC
-     *
-     * @param nickname
-     * @param numPawnMoved
+    /**
+     * You have to choose if you want to move the pawn or to use a CharacterCard(in expert mode)
      */
     @Override
     public void requestMovePawn(String nickname, int numPawnMoved) {
@@ -218,11 +198,8 @@ public class Gui extends Application implements View {
             }
         });
     }
-
-    /**Ask the player if he want to use a CC (if he didn't use one before)
-     *
-     * @param nickname
-     * @param bool
+    /**
+     * Check which CharacterCard a player has decided to use
      */
     @Override
     public void requestCharacterCard(String nickname, boolean bool) {
@@ -287,7 +264,11 @@ public class Gui extends Application implements View {
     @Override
     public void displayCharacterCard() {
     }
-
+    /**
+     * display when player win
+     * @see ReadyTodisconnection
+     * @see WinnerSceneController
+     */
     @Override
     public void displayWinner(String nickname) throws IOException {
         int i;
@@ -356,9 +337,9 @@ public class Gui extends Application implements View {
         });
     }
 
-    /**Update the view for all the players
-     *
-     * @param object
+    /**
+     * is used to update the lightGame and the controllers
+     * @param object lightGame
      */
     @Override
     public void updateAll(LightGame object) {
@@ -397,18 +378,12 @@ public class Gui extends Application implements View {
             });
         }
     }
-
-    @Override
-    public void displayAll() {
-    }
-
     @Override
     public void displayStartRound() {
     }
 
-    /**You can click on a cloud in the "choose cloud" phase
-     *
-     * @param nickname
+    /**
+     *function to set button: cloud or CharacterCard
      */
     @Override
     public void selectCloud(String nickname) {
@@ -430,10 +405,8 @@ public class Gui extends Application implements View {
             }
         });
     }
-
-    /**You can click on an assistant during the "choose assistant" phase
-     *
-     * @param nickname
+    /**
+     *function for choose an Assistant
      */
     @Override
     public void selectAssistantCard(String nickname) {
@@ -449,9 +422,8 @@ public class Gui extends Application implements View {
         });
     }
 
-    /**You can choose an island during "move MN" phase
-     *
-     * @param nickname
+    /**
+     * function for set the button: useCC moveMotherNature
      */
     @Override
     public void requestMoveMotherNature(String nickname) {
@@ -477,10 +449,6 @@ public class Gui extends Application implements View {
     public void registerClient() {
 
     }
-
-    /**if someone choose an assistant, the other players can't choose the same for that round
-     *
-     */
     public void assistantSelected(){
         Platform.runLater(()-> {
             assistantCardController.setDisableAll();
@@ -489,8 +457,9 @@ public class Gui extends Application implements View {
         });
     }
 
-    /**Wait until all the players join
-     *
+    /**
+     * Function to display the WaitingPlayersController
+     * @see WaitingPlayersController
      */
     @Override
     public void waitOtherPlayers() {
@@ -522,6 +491,7 @@ public class Gui extends Application implements View {
     }
 
     @Override
+    //va bene vuota
     public void playerWait() {
 
     }
@@ -535,15 +505,12 @@ public class Gui extends Application implements View {
         }
     }
 
-    /**If a player quit all the others are warned
-     *
-     */
     public void closeAll(){
         try {
             socketNetworkHandler.getOut().reset();
             socketNetworkHandler.getOut().flush();
             socketNetworkHandler.sendMessage(new ReadyTodisconnection());
-            System.out.println("C'è stata una disconnessione improvvisa. La lobby è stata chiusa");
+            System.out.println("c'è stata una disconnessione improvvisa. La lobby è stata chiusa");
             socketNetworkHandler.closeConnection();
             Platform.exit();
         }catch (Exception e){
@@ -551,8 +518,15 @@ public class Gui extends Application implements View {
         }
     }
 
-    /**Set all the initial view of the game
-     *
+    /**
+     * Initialize the pawns, inform all that the game started and initialize controllers
+     * @see SchoolBoard3Controller
+     * @see SchoolBoard2Controller
+     * @see SchoolBoard1Controller
+     * @see SchoolBoard0Controller
+     * @see GameStartedController
+     * @see CharacterCardController
+     * @see AssistantCardController
      */
     @Override
     public void newGameStart() {
@@ -745,7 +719,6 @@ public class Gui extends Application implements View {
             }
         });
     }
-
     @Override
     public void displayOnePlayerBoard(String nickname) {
     }
