@@ -493,6 +493,7 @@ public class CharacterCardController {
 
 
     public void antonioEff(ColorPawn colorPawn){
+        gui.getGameTable().setMessages("Select Island");
         gui.getCharacterCardController().setDisableAll();
         gui.getColorPawns().add(colorPawn);
         gui.getGameTable().getGameTablePane().setDisable(false);
