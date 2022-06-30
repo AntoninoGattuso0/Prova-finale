@@ -13,10 +13,15 @@
       <ImageView fx:id="okButton" fitHeight="34.0" fitWidth="80.0" layoutX="371.0" layoutY="413.0" onMouseClicked="#onButtonClicked" pickOnBounds="true" preserveRatio="true">
             <Image url="@images/OkButton.png" />
       </ImageView>
-      <Label layoutY="64.0" prefHeight="57.0" prefWidth="480.0" text="NICKNAME IS ALREADY USED" textFill="WHITE">
+      <Label layoutX="113.0" layoutY="64.0" prefHeight="57.0" prefWidth="286.0" text="NICKNAME NULL " textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
+   <Label layoutX="103.0" layoutY="172.0" text="OR ALREADY USED" textFill="WHITE">
+      <font>
+         <Font size="36.0" />
+      </font>
+   </Label>
 
 </Pane>
