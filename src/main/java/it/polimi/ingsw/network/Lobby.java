@@ -162,7 +162,7 @@ public class Lobby implements ConnectionObserver {
      */
     public synchronized void insertNickname(String nickname, ClientHandler clientHandler) {
             if (!contr || numinsert) {
-                if (nickname == null) {
+                if (nickname == null|| nickname.equals("")) {
                     clientHandler.sendObject(new WrongNicknameMessage());
                     return;
                 } else {
