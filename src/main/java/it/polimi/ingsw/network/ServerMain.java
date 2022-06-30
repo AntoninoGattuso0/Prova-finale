@@ -14,18 +14,22 @@ public class ServerMain {
      */
     public static void main(String[] args) throws IOException {
         Server server = new Server(4000);
-        InetAddress address = InetAddress.getByAddress(Inet4Address.getLocalHost().getAddress());
-        Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+        if(System.getProperty("os.name").contains("Mac")){
+            System.out.println("Prendi l'indirizzo ip wifi, ethernet o localhost dal tuo dispositivo");
+        }else{
+            InetAddress address = InetAddress.getByAddress(Inet4Address.getLocalHost().getAddress());
+            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
 
-        while (interfaces.hasMoreElements()) {
-            NetworkInterface networkInterface = interfaces.nextElement();
-            if (!networkInterface.isUp())
-                continue;
-            Enumeration<InetAddress> addresses = networkInterface.getInetAddresses();
-            while (addresses.hasMoreElements()) {
-                InetAddress addr = addresses.nextElement();
-                System.out.println(String.format("NetInterface: name '%s', ip: %s",
-                        networkInterface.getDisplayName(), addr.getHostAddress()));
+            while (interfaces.hasMoreElements()) {
+                NetworkInterface networkInterface = interfaces.nextElement();
+                if (!networkInterface.isUp())
+                    continue;
+                Enumeration<InetAddress> addresses = networkInterface.getInetAddresses();
+                while (addresses.hasMoreElements()) {
+                    InetAddress addr = addresses.nextElement();
+                    System.out.println(String.format("NetInterface: name '%s', ip: %s",
+                            networkInterface.getDisplayName(), addr.getHostAddress()));
+                }
             }
         }
         server.start();
