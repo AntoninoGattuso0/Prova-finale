@@ -448,6 +448,12 @@ public class GameTableController {
             SchoolBoard.setDisable(true);
             AssistantCardButton.setDisable(true);
             CharacterCardButton.setDisable(true);
+            showAssistant.setVisible(false);
+            showCharacterCard.setVisible(false);
+            showSchool2.setVisible(false);
+            showSchool1.setVisible(false);
+            showSchool0.setVisible(false);
+            showSchool1.setVisible(false);
         });
     }
 
