@@ -68,6 +68,7 @@ public class CharacterCardController {
         for(int i = 0; i < gui.getLightGame().getCharacterCards().size(); i++){
             for(Node character : characterCards.getChildren()){
                 if(character.getId().equals(i + "characterCard" + gui.getLightGame().getCharacterCards().get(i).getNumCard())) {
+                    character.setOpacity(1);
                     character.setVisible(true);
                 }
                     if(gui.getLightGame().getCharacterCards().get(i).getUseEffect()== gui.getLightGame().getAntonio()) {
