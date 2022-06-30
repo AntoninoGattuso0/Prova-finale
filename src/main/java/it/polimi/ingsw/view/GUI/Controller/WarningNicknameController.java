@@ -6,6 +6,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
+/**
+ * Controller for the nickname error
+ */
 public class WarningNicknameController {
     Gui gui;
 

@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
+/**
+ * Controller for the winner's scene
+ */
 public class WinnerSceneController {
     @FXML javafx.scene.text.Text NickPlayer;
     Gui gui;

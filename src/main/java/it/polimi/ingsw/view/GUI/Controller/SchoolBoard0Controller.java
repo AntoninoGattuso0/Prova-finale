@@ -8,7 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-
+/**
+ * Controller for the first board
+ */
 public class SchoolBoard0Controller {
     Gui gui;
 
