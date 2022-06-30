@@ -1401,7 +1401,10 @@ public class GameTableController {
         }
     }
 
-
+    /**
+     * handles the island click differently based on the ButtonAction
+     * @param numIsland
+     */
     public void islandSelectedEffect(int numIsland){
         for(int i = 0; i < gui.getLightGame().getIslands().size(); i++)
             gameTable.lookup("#island" + i).setDisable(true);
