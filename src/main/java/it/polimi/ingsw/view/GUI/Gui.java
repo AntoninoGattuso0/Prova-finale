@@ -219,9 +219,6 @@ public class Gui extends Application implements View {
         });
     }
 
-
-
-
     @Override
     public void displayAssistantCard(int player) {
 
@@ -642,7 +639,9 @@ public class Gui extends Application implements View {
 
     }
 
-
+    /**If someone try to join but the lobby is full
+     *
+     */
     @Override
     public void lobbyFull(){
         Platform.runLater(()-> {
@@ -666,6 +665,10 @@ public class Gui extends Application implements View {
         return stage;
     }
 
+    /**Show the order of that turn
+     *
+     * @param players
+     */
     @Override
     public void turnOrder(ArrayList<String> players) {
         Platform.runLater(()-> {
@@ -673,6 +676,12 @@ public class Gui extends Application implements View {
         });
         var=false;
     }
+
+    /**Show the current player that it's his turn
+     *
+     * @param players
+     * @param actualPlayer
+     */
     @Override
     public void startTurn(ArrayList<String> players, String actualPlayer) {
         Platform.runLater(()->{
@@ -710,7 +719,6 @@ public class Gui extends Application implements View {
 
     @Override
     public void wrongSameAssistantMessage() {
-        //parte di testo in gametable:"ERRORE: assistente già usato da un altro player"
         gameTable.setMessages("ASSISTANTCARD ALREADY SELECTED BY ANOTHER PLAYER");
         selectAssistantCard(socketNetworkHandler.getNicknameThisPlayer());
     }
