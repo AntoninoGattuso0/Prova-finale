@@ -366,7 +366,7 @@ public class Cli implements Runnable, View {
     }
 
     /**
-     * Requests to the first player the number of player and if the game is expert
+     * Requests to the first player the number of players and if the game is expert
      * @see RequestNumPlayersIsExpert
      */
     @Override
@@ -399,29 +399,12 @@ public class Cli implements Runnable, View {
             e.printStackTrace();
         }
     }
-    @Override
-    public void displayNick() {
-        for (int i = 0; i < lightGame.getNumPlayers(); i++) {
-            out.println("Giocatore " + (i + 1) + " ha il nickname: " + lightGame.getPlayers().get(i).getNickname());
-        }
-    }
+
     @Override
     public void playerWait(){
         System.out.println("sei l'ultimo ad entrare in lobby!");
     }
 
-    @Override
-    public void displayNumPlayers() {
-        out.println("Player totali: " + lightGame.getNumPlayers());
-    }
-
-    @Override
-    public void displayIsExpert() {
-        if (lightGame.getIsExpert())
-            out.println("Il gioco è in modalità esperta");
-        else
-            out.println("Il gioco è in modalità normale");
-    }
 
     /**
      * Display all the AssistantCard that a player still has
@@ -1435,6 +1418,7 @@ public class Cli implements Runnable, View {
     @Override
     public void displayWrongTurn() {
         out.println("Non è il tuo turno, aspetta...");}
+
     @Override
     public void turnOrder(ArrayList<String> orderNamePlayers){
         out.println(ColorCli.RESET);
@@ -1444,6 +1428,7 @@ public class Cli implements Runnable, View {
         }
         var=false;
     }
+
     @Override
     public void startTurn(ArrayList<String> players, String player) {
         if (Objects.equals(player, socketNetworkHandler.getNicknameThisPlayer())) {
@@ -1494,24 +1479,13 @@ public class Cli implements Runnable, View {
     public void displayEndTurn(){
         out.println("Il tuo turno è finito.");
     }
-    @Override
-    public void displayAll(){
-        displayIslands();
-        displayCloud();
-        out.println();
-        out.println();
-        displayCharacterCard();
-        displayNick();
-        out.println();
-        displaySchoolBoard();
-        displayIsExpert();
-        displayNumPlayers();
-    }
+
     @Override
     public void lobbyFull(){
         System.out.println("Sorry,lobby is full");
         socketNetworkHandler.closeConnection();
     }
+
     @Override
     public void updateAll(LightGame object) {
         this.lightGame = object;
