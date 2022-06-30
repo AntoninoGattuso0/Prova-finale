@@ -16,9 +16,6 @@ The [initial UML](deliveries/initial_uml.png) features an initial and  general i
 ## Network Protocol
 The [network protocol](deliveries/communicationProtocol.pdf) describes the communication between the server and the client.
 
-## JavaDoc
-[JavaDoc](docs) provides a descripition of the classes and the methos.
-
 ## PeerReview
 - [UML PeerReview Ricevuta](deliveries/Peer_Review_Ricevuta.md)
 - [UML PeerReview Inviata](deliveries/Peer_Review_55_UML.tex)
