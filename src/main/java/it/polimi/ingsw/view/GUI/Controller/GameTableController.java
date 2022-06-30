@@ -1014,6 +1014,12 @@ public class GameTableController {
 
     public void number0Button(MouseEvent mouseEvent) {
         setChooseViewOff();
+        showSchool0.setVisible(false);
+        showSchool1.setVisible(false);
+        showSchool2.setVisible(false);
+        showSchool3.setVisible(false);
+        showAssistant.setVisible(false);
+        showCharacterCard.setVisible(false);
         number0.setVisible(false);
         number0.setDisable(true);
         number1.setVisible(false);
@@ -1109,6 +1115,12 @@ public class GameTableController {
 
     public void number1Button(MouseEvent mouseEvent) {
         setChooseViewOff();
+        showSchool0.setVisible(false);
+        showSchool1.setVisible(false);
+        showSchool2.setVisible(false);
+        showSchool3.setVisible(false);
+        showAssistant.setVisible(false);
+        showCharacterCard.setVisible(false);
         number0.setVisible(false);
         number0.setDisable(true);
         number1.setVisible(false);
@@ -1207,6 +1219,12 @@ public class GameTableController {
 
     public void number2Button(MouseEvent mouseEvent) {
         setChooseViewOff();
+        showSchool0.setVisible(false);
+        showSchool1.setVisible(false);
+        showSchool2.setVisible(false);
+        showSchool3.setVisible(false);
+        showAssistant.setVisible(false);
+        showCharacterCard.setVisible(false);
         number0.setVisible(false);
         number0.setDisable(true);
         number1.setVisible(false);
@@ -1305,6 +1323,12 @@ public class GameTableController {
 
     public void number3Button(MouseEvent mouseEvent) {
         setChooseViewOff();
+        showSchool0.setVisible(false);
+        showSchool1.setVisible(false);
+        showSchool2.setVisible(false);
+        showSchool3.setVisible(false);
+        showAssistant.setVisible(false);
+        showCharacterCard.setVisible(false);
         number0.setVisible(false);
         number0.setDisable(true);
         number1.setVisible(false);
