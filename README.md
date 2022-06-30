@@ -50,7 +50,7 @@ Server: java -jar ServerMain.jar
 
 Client: java -jar ClientMain.jar
 
-You can choose to play in CLI or GUI, writing C or G.
+Once the Client started, follow the displayed text to play in CLI or GUI (press "C" for CLI or "G" for GUI)
 
 ## DEVELOPERS:
 [PAOLO GAMBARIN](https://github.com/paologambarin), [ANTONINO GATTUSO](https://github.com/AntoninoGattuso0), [REBECA MERSAM](https://github.com/RebecaMersamF)
