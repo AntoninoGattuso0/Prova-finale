@@ -116,21 +116,38 @@ public class Gui extends Application implements View {
     }
     public LightGame getLightGame(){return this.lightGame;}
 
+    /**Start the game with Gui settings
+     *
+     * @param stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
         this.stage=stage;
         startGame();
     }
+
+    /**Connection with socket
+     *
+     */
     @Override
     public void startGame() {
         socketNetworkHandler=new SocketNetworkHandler(this);
         socketNetworkHandler.updateConnection(addressSock, String.valueOf(4000));
         socketNetworkHandler.run();
     }
+
+    /**Set the address as the input of the player
+     *
+     * @param address
+     */
     public static void setAddress(String address){
         addressSock=address;
     }
 
+    /**Show the fxml of requestNickName
+     *
+     */
     @Override
     public void requestNickname() {
         Platform.runLater(()-> {
@@ -150,6 +167,10 @@ public class Gui extends Application implements View {
             stage.show();
         });
     }
+
+    /**Show the fxml of requestNumPlayerIsExpert
+     *
+     */
     @Override
     public void requestNumPlayersIsExpert() {
         Platform.runLater(()-> {
@@ -170,9 +191,16 @@ public class Gui extends Application implements View {
             stage.show();
         });
     }
+
     public SocketNetworkHandler getSocketNetworkHandler() {
         return socketNetworkHandler;
     }
+
+    /**Ask the player what he want to do after choosing the assistant: Move a pawn to the dining, to the island or using a CC
+     *
+     * @param nickname
+     * @param numPawnMoved
+     */
     @Override
     public void requestMovePawn(String nickname, int numPawnMoved) {
         Platform.runLater(()-> {
@@ -190,6 +218,12 @@ public class Gui extends Application implements View {
             }
         });
     }
+
+    /**Ask the player if he want to use a CC (if he didn't use one before)
+     *
+     * @param nickname
+     * @param bool
+     */
     @Override
     public void requestCharacterCard(String nickname, boolean bool) {
         Platform.runLater(()-> {
@@ -322,6 +356,10 @@ public class Gui extends Application implements View {
         });
     }
 
+    /**Update the view for all the players
+     *
+     * @param object
+     */
     @Override
     public void updateAll(LightGame object) {
         this.lightGame=object;
@@ -367,6 +405,11 @@ public class Gui extends Application implements View {
     @Override
     public void displayStartRound() {
     }
+
+    /**You can click on a cloud in the "choose cloud" phase
+     *
+     * @param nickname
+     */
     @Override
     public void selectCloud(String nickname) {
         Platform.runLater(()->{
@@ -388,6 +431,10 @@ public class Gui extends Application implements View {
         });
     }
 
+    /**You can click on an assistant during the "choose assistant" phase
+     *
+     * @param nickname
+     */
     @Override
     public void selectAssistantCard(String nickname) {
         Platform.runLater(()-> {
@@ -402,6 +449,10 @@ public class Gui extends Application implements View {
         });
     }
 
+    /**You can choose an island during "move MN" phase
+     *
+     * @param nickname
+     */
     @Override
     public void requestMoveMotherNature(String nickname) {
         Platform.runLater(()->{
@@ -426,6 +477,10 @@ public class Gui extends Application implements View {
     public void registerClient() {
 
     }
+
+    /**if someone choose an assistant, the other players can't choose the same for that round
+     *
+     */
     public void assistantSelected(){
         Platform.runLater(()-> {
             assistantCardController.setDisableAll();
@@ -434,6 +489,9 @@ public class Gui extends Application implements View {
         });
     }
 
+    /**Wait until all the players join
+     *
+     */
     @Override
     public void waitOtherPlayers() {
         Platform.runLater(()-> {
@@ -464,7 +522,6 @@ public class Gui extends Application implements View {
     }
 
     @Override
-    //va bene vuota
     public void playerWait() {
 
     }
@@ -478,12 +535,15 @@ public class Gui extends Application implements View {
         }
     }
 
+    /**If a player quit all the others are warned
+     *
+     */
     public void closeAll(){
         try {
             socketNetworkHandler.getOut().reset();
             socketNetworkHandler.getOut().flush();
             socketNetworkHandler.sendMessage(new ReadyTodisconnection());
-            System.out.println("c'è stata una disconnessione improvvisa. La lobby è stata chiusa");
+            System.out.println("C'è stata una disconnessione improvvisa. La lobby è stata chiusa");
             socketNetworkHandler.closeConnection();
             Platform.exit();
         }catch (Exception e){
@@ -491,6 +551,9 @@ public class Gui extends Application implements View {
         }
     }
 
+    /**Set all the initial view of the game
+     *
+     */
     @Override
     public void newGameStart() {
         if (lightGame.getNumPlayers() == 2 || lightGame.getNumPlayers() == 4) {
@@ -618,7 +681,9 @@ public class Gui extends Application implements View {
 
     }
 
-
+    /**If someone try to join but the lobby is full
+     *
+     */
     @Override
     public void lobbyFull(){
         Platform.runLater(()-> {
@@ -642,6 +707,10 @@ public class Gui extends Application implements View {
         return stage;
     }
 
+    /**Show the order of that turn
+     *
+     * @param players
+     */
     @Override
     public void turnOrder(ArrayList<String> players) {
         Platform.runLater(()-> {
@@ -649,6 +718,12 @@ public class Gui extends Application implements View {
         });
         var=false;
     }
+
+    /**Show the current player that it's his turn
+     *
+     * @param players
+     * @param actualPlayer
+     */
     @Override
     public void startTurn(ArrayList<String> players, String actualPlayer) {
         Platform.runLater(()->{
@@ -670,6 +745,7 @@ public class Gui extends Application implements View {
             }
         });
     }
+
     @Override
     public void displayOnePlayerBoard(String nickname) {
     }
@@ -686,7 +762,6 @@ public class Gui extends Application implements View {
 
     @Override
     public void wrongSameAssistantMessage() {
-        //parte di testo in gametable:"ERRORE: assistente già usato da un altro player"
         gameTable.setMessages("ASSISTANTCARD ALREADY SELECTED BY ANOTHER PLAYER");
         selectAssistantCard(socketNetworkHandler.getNicknameThisPlayer());
     }
