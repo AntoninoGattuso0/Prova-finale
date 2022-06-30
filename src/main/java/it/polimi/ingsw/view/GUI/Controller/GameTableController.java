@@ -1033,6 +1033,7 @@ public class GameTableController {
         gui.setNumPawnsCount(parseInt(number0.getText()));
 
         if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)) {
+            showCharacterCard.setVisible(true);
             gui.getGameTable().whatToDo.setText("Select Pawn from CC");
             gui.setNumPawns(gui.getNumPawns() * 2);
             gui.setNumPawnsCount(gui.getNumPawnsCount() * 2);
@@ -1049,6 +1050,7 @@ public class GameTableController {
             gui.getCharacterCardController().setColorCharacterDisabled(3, i, false);
             gui.getCharacterCardController().setColorCharacterDisabled(4, i, false);
         }else if(gui.getButtonClicked().equals(ButtonAction.MARIA)){
+            showCharacterCard.setVisible(true);
             gui.getGameTable().whatToDo.setText("Select Pawn from Entrance");
             gui.setNumPawns(gui.getNumPawns() * 2);
             gui.setNumPawnsCount(gui.getNumPawnsCount() * 2);
@@ -1134,6 +1136,7 @@ public class GameTableController {
         gui.setNumPawnsCount(parseInt(number1.getText()));
 
         if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            showCharacterCard.setVisible(true);
             gui.getGameTable().whatToDo.setText("Select Pawn from CC");
             gui.setNumPawns(gui.getNumPawns() * 2);
             gui.setNumPawnsCount(gui.getNumPawnsCount() * 2);
@@ -1150,6 +1153,7 @@ public class GameTableController {
             gui.getCharacterCardController().setColorCharacterDisabled(3, i, false);
             gui.getCharacterCardController().setColorCharacterDisabled(4, i, false);
         }else if(gui.getButtonClicked().equals(ButtonAction.MARIA)){
+            showCharacterCard.setVisible(true);
             gui.getGameTable().whatToDo.setText("Select Pawn from Entrance");
             gui.setNumPawns(gui.getNumPawns() * 2);
             gui.setNumPawnsCount(gui.getNumPawnsCount() * 2);
@@ -1238,6 +1242,7 @@ public class GameTableController {
         gui.setNumPawnsCount(parseInt(number2.getText()));
 
         if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            showCharacterCard.setVisible(true);
             gui.getGameTable().whatToDo.setText("Select Pawn from CC");
             gui.setNumPawns(gui.getNumPawns() * 2);
             gui.setNumPawnsCount(gui.getNumPawnsCount() * 2);
@@ -1254,6 +1259,7 @@ public class GameTableController {
             gui.getCharacterCardController().setColorCharacterDisabled(3, i, false);
             gui.getCharacterCardController().setColorCharacterDisabled(4, i, false);
         }else if(gui.getButtonClicked().equals(ButtonAction.MARIA)){
+            showCharacterCard.setVisible(true);
             gui.getGameTable().whatToDo.setText("Select Pawn from Entrance");
             gui.setNumPawns(gui.getNumPawns() * 2);
             gui.setNumPawnsCount(gui.getNumPawnsCount() * 2);
@@ -1327,8 +1333,8 @@ public class GameTableController {
         showSchool1.setVisible(false);
         showSchool2.setVisible(false);
         showSchool3.setVisible(false);
-        showAssistant.setVisible(false);
         showCharacterCard.setVisible(false);
+        showAssistant.setVisible(false);
         number0.setVisible(false);
         number0.setDisable(true);
         number1.setVisible(false);
@@ -1342,6 +1348,7 @@ public class GameTableController {
         gui.setNumPawnsCount(parseInt(number3.getText()));
 
         if(gui.getButtonClicked().equals(ButtonAction.GIUSEPPE)){
+            showCharacterCard.setVisible(true);
             gui.getGameTable().whatToDo.setText("Select Pawn from CC");
             gui.setNumPawns(gui.getNumPawns() * 2);
             gui.setNumPawnsCount(gui.getNumPawnsCount() * 2);
@@ -1358,6 +1365,7 @@ public class GameTableController {
             gui.getCharacterCardController().setColorCharacterDisabled(3, i, false);
             gui.getCharacterCardController().setColorCharacterDisabled(4, i, false);
         }else if(gui.getButtonClicked().equals(ButtonAction.MARIA)){
+            showCharacterCard.setVisible(true);
             gui.getGameTable().whatToDo.setText("Select Pawn from Entrance");
             gui.setNumPawns(gui.getNumPawns() * 2);
             gui.setNumPawnsCount(gui.getNumPawnsCount() * 2);
