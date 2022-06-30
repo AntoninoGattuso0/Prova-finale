@@ -41,7 +41,7 @@ The [network protocol](deliveries/communicationProtocol.pdf) describes the commu
 |4 – Player Game| **X** |
 
 ## JAR:
-The following jars allow to launch the game as descriped:  
+To run the jar via Terminal you have to go to the project directory where the jar is located and later you can run the jar as descripted for: 
 
 Server: java -jar ServerMain.jar 
 
