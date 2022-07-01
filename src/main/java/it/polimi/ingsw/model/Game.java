@@ -296,13 +296,13 @@ public class Game {
         if (island.getProhibited()) {
             island.setProhibited(false);
             game.ernesto.setNumProhibitionCard(game.ernesto.getNumProhibitionCard() + 1);
-            System.out.println("vvv");
         } else {
                 boolean notUnique = false;
                 ArrayList<Integer> influence = new ArrayList<>();
                 for (i = 0; i < game.totPlayer; i++) influence.add(0);
                 if(ivan!=null&&ivan.isEffectActive()){
                     influence.set(ivan.getNumPlayer(),2);
+                    ivan.setEffectActive(false);
                 }
                 for (color = 0; color < 5; color++) {
                     n = game.profTable.checkProf(color);
