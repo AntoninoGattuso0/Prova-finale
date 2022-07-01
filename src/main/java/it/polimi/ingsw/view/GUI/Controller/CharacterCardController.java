@@ -242,7 +242,7 @@ public class CharacterCardController {
         if (color == 0) {
             name = "#greenCharacter" + character;
             characterCards.lookup(name).setVisible(visible);
-            if(gui.getButtonClicked()!=ButtonAction.LANCILLOTTO) {
+            if(gui.getButtonClicked()!=ButtonAction.LANCILLOTTO&&gui.getButtonClicked()!=ButtonAction.OMNIA) {
                 text = "#textGreenCharacter" + character;
                 characterCards.lookup(text).setVisible(visible);
             }
@@ -401,6 +401,7 @@ public class CharacterCardController {
             } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 8) {
                 gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getLancillotto().getCoinPrice());
                 gui.setButtonClicked(ButtonAction.LANCILLOTTO);
+                gui.getGameTable().setMessages("Select Color From CC");
                 setColorCharacterDisabled(0, characterPosition, false);
                 setColorCharacterVisible(0, characterPosition, true);
                 setColorCharacterDisabled(1, characterPosition, false);
@@ -459,6 +460,7 @@ public class CharacterCardController {
             } else if (gui.getLightGame().getCharacterCards().get(characterPosition).getNumCard() == 11) {
                 gui.getLightGame().getPlayers().get(player).setNumCoin(gui.getLightGame().getPlayers().get(player).getNumCoin() - gui.getLightGame().getOmnia().getCoinPrice());
                 gui.setButtonClicked(ButtonAction.OMNIA);
+                gui.getGameTable().setMessages("Select Color From CC");
                 setColorCharacterDisabled(0, characterPosition, false);
                 setColorCharacterVisible(0, characterPosition, true);
                 setColorCharacterDisabled(1, characterPosition, false);
