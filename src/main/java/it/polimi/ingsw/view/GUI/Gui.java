@@ -655,7 +655,6 @@ public class Gui extends Application implements View {
                 scene = new Scene(new Label("Error"));
             }
             stage.setScene(scene);
-            LobbyIsFullController lobbyIsFullController=fxmlLoader.getController();
             stage.show();
         });
         socketNetworkHandler.closeConnection();

@@ -116,8 +116,10 @@ public class Lobby implements ConnectionObserver {
                 virtualView.getClients().remove(i);
             }
         }
-        isDisconnectAll=true;
-        virtualView.sendBroadcast(new DisconnectionMessage(nickname));
+        if(game.getPlayers().size()!=clients.size()){
+            isDisconnectAll = true;
+            virtualView.sendBroadcast(new DisconnectionMessage(nickname));
+        }
     }
     private Player getPlayerByNick(String nick) {
         for (Player player : players) {

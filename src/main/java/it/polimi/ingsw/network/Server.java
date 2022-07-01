@@ -26,8 +26,8 @@ public class Server {
         }
     while(true){
             try {
+                if(!getLobby().isLobbyOk()) {
                     System.out.println("SERVER: Waiting client connection.");
-                    if (!lobby.isLobbyOk()) {
                         Socket socket = serverSocket.accept();
                         System.out.println("SERVER: Client connected.");
                         ClientHandlerInterface client = (ClientHandlerInterface) new ClientHandler(socket, getLobby());
